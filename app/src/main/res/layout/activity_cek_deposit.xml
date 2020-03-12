@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CekDepositActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Saldo Anda saat ini"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/textViewSaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/shape_card_edge_grey"
+                    android:fontFamily="@font/roboto_medium"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Rp 0"
+
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/_18sdp" />
+
+                <TextView
+                    android:id="@+id/textViewRefresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/ic_refresh_blue"
+                    android:gravity="center"
+                    android:text="Klik untuk refresh"
+                    android:textColor="@color/md_blue_500"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_5sdp"
+                    android:indeterminate="true"
+
+
+                    android:visibility="gone" />
+
+                <com.bm.main.fpl.templates.JustifyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Keterangan: \nJika Deposit Anda belum masuk ke Saldo Anda. Yuk bantu kami untuk mempercepat proses deposit tersebut dengan upload bukti pembayaran Anda disini "
+                    android:textColor="@color/md_black_1000"
+
+                    android:textSize="@dimen/_12sdp" />
+
+                <LinearLayout
+                    android:id="@+id/lin_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/grey_shape"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:id="@+id/imageViewUpload"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_160sdp"
+                        android:padding="@dimen/_12sdp"
+                        android:src="@drawable/ic_upload_to_cloud" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_upload_resume"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_weight="2"
+                        android:background="@drawable/selector_button_blue_pressed"
+                        android:text="@string/upload_resume"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.3"
+                        android:gravity="center"
+                        android:text="Upload bukti transfer deposit Anda"
+                        android:textColor="@color/md_grey_50"
+                        android:textSize="@dimen/_11sdp" />
+
+                </LinearLayout>
+
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/textViewBankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableEnd="@drawable/spinner_down"
+                    android:drawableRight="@drawable/spinner_down"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Nama Bank"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/_12sdp"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/colorAccent"
+                    app:met_primaryColor="@color/colorAccent"
+                    app:met_singleLineEllipsis="true" />
+
+                <com.bm.main.fpl.templates.CurrencyEditText
+                    android:id="@+id/materialEditTextNominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:hint="Nominal Deposit"
+                    android:imeOptions="actionDone"
+
+                    android:inputType="numberDecimal"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/_12sdp"
+
+                    app:locale="@string/locale"
+                    app:met_accentTypeface="@string/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+
+                    app:met_clearButton="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelAnimating="true"
+
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_primaryColor="@color/colorAccent"
+                    app:met_singleLineEllipsis="true"
+                    app:met_underlineColor="@color/md_grey_500" />
+
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextCatatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="top"
+                    android:hint="Catatan"
+
+
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLength="160"
+                    android:maxLines="5"
+                    android:minLines="5"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+
+                    android:textSize="@dimen/_12sdp"
+                    app:customFont="@font/roboto_regular"
+                    app:met_accentTypeface="@string/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_checkCharactersCountAtBeginning="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelAnimating="true"
+
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_helperTextColor="@color/md_red_500"
+                    app:met_maxCharacters="160"
+
+                    app:met_primaryColor="@color/colorAccent"
+
+                    app:met_underlineColor="@color/md_grey_500" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/appCompatButtonKonfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:background="@drawable/selector_button_red_pressed"
+                    android:text="Konfirmasi"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

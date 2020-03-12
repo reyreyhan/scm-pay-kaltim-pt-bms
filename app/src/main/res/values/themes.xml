@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Design.TopSheetDialog" parent="Theme.AppCompat.Dialog">
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorPrimaryDark">#154F78</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.TopSheetDialog</item>
+        <item name="bottomSheetStyle">@style/Widget.Design.TopSheet.Modal</item>
+    </style>
+    <!--<style airLineName="CaptureTheme" parent="android:Theme.Holo">-->
+        <!--<item airLineName="android:windowFullscreen">true</item>-->
+        <!--<item airLineName="android:windowContentOverlay">@null</item>-->
+        <!--<item airLineName="android:windowActionBarOverlay">true</item>-->
+        <!--<item airLineName="android:windowActionModeOverlay">true</item>-->
+      <!---->
+    <!--</style>-->
+    <style name="CaptureTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <item name="android:windowBackground">@color/md_white_1000</item>
+
+
+    </style>
+</resources>

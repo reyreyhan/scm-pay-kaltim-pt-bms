@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="@drawable/bg_batik_putih"
+    tools:context="com.bm.main.fpl.activities.KeySmsActivity">
+
+    <LinearLayout
+        android:id="@+id/lin_footer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_190sdp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        tools:background="@drawable/bg_footer">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/selector_button_blue_white_pressed"
+            android:importantForAccessibility="no"
+            android:paddingBottom="5dp"
+            android:src="@drawable/speedcash_colour" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel_header"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/shape_banner_static">
+
+            <RelativeLayout
+                android:id="@+id/linToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorTransparent"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/_115sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:cropToPadding="true"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/logo_putih" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/key_sms"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/textLarge" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-30dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/card_key_sms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_edge_grey_fill_white"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/text_input_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/input_key_sms"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="@dimen/textSmall" />
+
+                <ImageView
+                    android:id="@+id/imageViewInputKey"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_below="@+id/text_input_key"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_input_key" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/card_key_baru"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_edge_grey_fill_white"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/text_request_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/request_key_baru"
+                    android:textColor="@color/md_grey_900"
+                    android:textSize="@dimen/textSmall" />
+
+                <ImageView
+                    android:id="@+id/imageViewReqKey"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_below="@+id/text_request_key"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_request_key" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lin_textKeySms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/edit_input_key_sms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/hint_input_key_sms"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:maxLength="6"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+                        android:textSize="@dimen/textNormal"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true"
+                        app:met_textColorHint="@color/md_grey_500" />
+
+                    <ImageView
+                        android:id="@+id/imageViewSmsInbox"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_sms_key"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewDescAvailKey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center"
+                    android:textColor="@color/md_black_1000"
+                    tools:text="Key SMS Anda status aktif, silahkan cek key SMS di nomor handphone yang terdaftar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/atau"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/imageViewQRCodeScan"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:src="@drawable/qr_code"
+                    android:visibility="gone"
+                    tools:ignore="ContentDescription"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_requestKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/text_menu_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/pilih_durasi_request_key_baru"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textSmall" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupKey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/shape_toolbar"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonRK3"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_tab"
+                        android:button="@null"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:tag="RK3"
+                        android:text="@string/radioRK3"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/rbtn_textcolor_selector_tab"
+                        android:textSize="@dimen/textSmall"
+                        android:typeface="normal" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonRK5"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_tab"
+                        android:button="@null"
+                        android:checked="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:tag="RK5"
+                        android:text="@string/radioRK5"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/rbtn_textcolor_selector_tab"
+                        android:textSize="@dimen/textSmall"
+                        android:typeface="normal" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonRK7"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_tab"
+                        android:button="@null"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:tag="RK7"
+                        android:text="@string/radioRK7"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/rbtn_textcolor_selector_tab"
+                        android:textSize="@dimen/textSmall"
+                        android:typeface="normal" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/textViewPlusWaitingReqKey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:fontFamily="@font/roboto_light"
+                    android:orientation="horizontal"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textSmall"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_kirim"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_button_red_pressed"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_light"
+            android:text="MASUK"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_cancel"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/selector_button_white_pressed"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_light"
+            android:text="BATAL"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_red_500"
+            android:textSize="@dimen/textNormal" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    app:cardBackgroundColor="@color/md_white_1000"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:id="@+id/linMainListProduk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:weightSum="2"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/linMainListBinaan1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="4"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            >
+
+            <ImageView
+                android:id="@+id/imageViewDrop1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_right_arrow"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/imageViewDrop1Empty"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+
+                />
+
+            <ImageView
+
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+
+                android:layout_gravity="center"
+                android:layout_marginEnd="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginStart="5dp"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_level_1"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.8"
+                android:orientation="vertical"
+
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textViewNamaBinaan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light"
+                    tools:text="Mitra Binaan 1"
+                    android:textSize="@dimen/textSmall" />
+
+                <TextView
+                    android:id="@+id/textViewJumlahBinaan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Jumlah Binaan : 20"
+                    android:textSize="@dimen/textSmall" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearInfoMitra1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewIdBinaan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center"
+                    android:text="FAMitra1"
+                    android:textSize="@dimen/textSmall" />
+
+                <ImageView
+
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:src="@drawable/ic_info_binaan"
+
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

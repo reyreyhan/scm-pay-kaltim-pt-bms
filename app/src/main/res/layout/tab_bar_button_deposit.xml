@@ -1,0 +1,79 @@
+<LinearLayout
+
+    android:id="@+id/buttonGroupTabs"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/shape_toolbar_deposit"
+    android:gravity="center"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/appButtonItemTabDep24"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector_tab_btn_dep"
+
+
+
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:padding="5dp"
+        android:tag="0"
+        android:text="Deposit Cepat"
+        android:textAllCaps="false"
+        android:textColor="@drawable/selector_tab_btn_textcolor"
+        android:textSize="@dimen/textSmall" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appButtonItemTabDepTiket"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+
+        android:background="@drawable/unselector_tab_btn_dep"
+
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:padding="5dp"
+        android:tag="1"
+        android:text="Transfer Bank"
+        android:textAllCaps="false"
+        android:textColor="@drawable/unselector_tab_btn_textcolor"
+        android:textSize="@dimen/textSmall" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appButtonItemTabDepTunai"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+
+        android:background="@drawable/unselector_tab_btn_dep"
+
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:padding="5dp"
+        android:tag="2"
+        android:text="Tunai Via"
+        android:textAllCaps="false"
+        android:textColor="@drawable/unselector_tab_btn_textcolor"
+        android:textSize="@dimen/textSmall" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appButtonItemTabDepHistory"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+
+        android:background="@drawable/unselector_tab_btn_dep"
+
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:padding="5dp"
+        android:tag="3"
+        android:text="History Tiket Aktif"
+        android:textAllCaps="false"
+        android:textColor="@drawable/unselector_tab_btn_textcolor"
+        android:textSize="@dimen/textSmall" />
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:layout_marginBottom="10dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/country_photo"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+
+            android:adjustViewBounds="true"
+            android:contentDescription="icon"
+            android:scaleType="fitCenter"
+
+            tools:ignore="HardcodedText"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/country_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/country_photo"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="Nama Menu"
+            android:textColor="@color/md_grey_900"
+            android:textSize="@dimen/textVerySmall"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+    <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+        android:id="@+id/frame_ribbon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="-1dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:duration="5000">
+
+        <ImageView
+            android:id="@+id/image_ribbon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            card_view:srcCompat="@drawable/ic_coming_soon"
+            tools:ignore="ContentDescription" />
+
+    </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+</androidx.cardview.widget.CardView>

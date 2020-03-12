@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:clickable="true"
+              android:foreground="@drawable/selector_primary_light_foreground"
+>
+
+    <com.bm.main.pos.ui.SquareFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/standard_margin_3x"
+            android:background="@drawable/rounded_white_4dp_stroke_gray">
+
+        <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/iv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        android:scaleType="fitCenter"/>
+    </com.bm.main.pos.ui.SquareFrameLayout>
+
+    <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_small_margin"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/primaryText"/>
+</LinearLayout>

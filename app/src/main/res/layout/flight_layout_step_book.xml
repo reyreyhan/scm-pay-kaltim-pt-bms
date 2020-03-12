@@ -1,0 +1,3541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewBook"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollMainBook"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none"
+
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Rincian Perjalanan"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/textDetailTransit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Detail"
+                        android:textColor="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/textCodeFlight"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="start|center"
+                            android:textColor="@color/md_black_1000"
+                            tools:text="GARUDA GA-007" />
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8"
+
+
+                            >
+
+                            <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                                android:id="@+id/avi_flight_book"
+                                style="@style/AVLoadingIndicatorView.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+
+
+                                app:indicatorColor="@color/colorPrimary" />
+
+                            <TextView
+                                android:id="@+id/textPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/roboto_bold"
+
+                                android:gravity="center|end"
+
+
+                                android:textColor="@color/md_orange_500"
+                                tools:text="Rp 999.999.999" />
+                        </FrameLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_margin="5dp"
+
+
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.2">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_alignParentTop="true"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:id="@+id/textOrigin"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/md_black_1000"
+                                    app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="HardcodedText"
+                                    tools:targetApi="o"
+
+                                    tools:text="Jakarta (CGK)" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center_vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true"
+                                    android:text="Yogyakarta (YOG)"
+                                    android:textColor="@color/md_grey_500"
+                                    android:textSize="@dimen/textVerySmall"
+                                    tools:ignore="HardcodedText" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_alignParentBottom="true"
+                                android:gravity="center_vertical"
+
+                                >
+
+                                <TextView
+                                    android:id="@+id/textDestination"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/md_black_1000"
+                                    app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="HardcodedText"
+                                    tools:targetApi="o"
+
+                                    tools:text="Surabaya (SUB)" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="0.1">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/line_connector_vertical" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.7">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_alignParentTop="true"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:id="@+id/jamBerangkatFlight"
+                                    android:layout_width="35dp"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/shape_blue"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:padding="2dp"
+                                    android:textColor="@android:color/white"
+                                    app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="HardcodedText"
+                                    tools:targetApi="o"
+
+                                    tools:text="16:00" />
+
+                                <TextView
+                                    android:id="@+id/textDepartureDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="2dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:gravity="center"
+                                    android:textColor="@color/md_black_1000"
+                                    app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="HardcodedText"
+                                    tools:targetApi="o"
+
+                                    tools:text="Minggu, 19 Desember 2017" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/grey_shape"
+                                    android:padding="3dp"
+                                    android:text="16:00"
+                                    android:textColor="@color/md_white_1000"
+                                    android:textSize="@dimen/textVerySmall"
+                                    tools:ignore="HardcodedText" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="Minggu, 19 Desember 2017"
+                                    android:textColor="@color/md_grey_500"
+                                    android:textSize="@dimen/textVerySmall"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_alignParentBottom="true"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/jamTibaFlight"
+                                    android:layout_width="35dp"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/shape_blue"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:padding="2dp"
+                                    android:textColor="@android:color/white"
+                                    app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="HardcodedText"
+                                    tools:targetApi="o"
+
+                                    tools:text="16:00" />
+
+                                <TextView
+                                    android:id="@+id/textArrivalDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="2dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:gravity="center"
+                                    android:textColor="@color/md_black_1000"
+                                    app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                    app:autoSizeTextType="uniform"
+                                    tools:ignore="HardcodedText"
+                                    tools:targetApi="o"
+
+                                    tools:text="Minggu, 20 Desember 2017" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="Data Penumpang"
+                        android:textColor="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <!-- Start pasengers  -->
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+
+
+                    android:background="@drawable/shape_card_edge_grey_fill_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult1Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail1"
+                            app:handle="@+id/imageViewExpandPassangerAdult1">
+                            <!--<RelativeLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent">-->
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult1"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:fontFamily="@font/roboto_regular"
+
+
+                                    android:gravity="center|center_vertical"
+                                    android:text="1"
+                                    android:textColor="@color/md_black_1000" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:fontFamily="@font/roboto_regular"
+
+
+                                    android:gravity="center_vertical"
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult1"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linMobileAdult1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_mobile"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewMobileAdult1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="08132342354334563" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linEmailAdult1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_email"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewEmailAdult1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="dvsdf@dgds.com" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                            <!--</RelativeLayout>-->
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult2Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail2"
+                            app:handle="@+id/imageViewExpandPassangerAdult2">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult2"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+
+                                    android:text="2"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult2"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:text="@string/hint_mobile"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewMobileAdult2"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="08132342354334563"/>-->
+
+                                <!--</LinearLayout>-->
+
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:text="@string/hint_email"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewEmailAdult2"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="dvsdf@dgds.com"/>-->
+
+                                <!--</LinearLayout>-->
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult3Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail3"
+                            app:handle="@+id/imageViewExpandPassangerAdult3">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult3"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="3"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult3"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_mobile"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewMobileAdult3"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="08132342354334563"/>-->
+
+                                <!--</LinearLayout>-->
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_email"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewEmailAdult3"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="dvsdf@dgds.com"/>-->
+
+                                <!--</LinearLayout>-->
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult4Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail4"
+                            app:handle="@+id/imageViewExpandPassangerAdult4">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult4"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="4"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult4"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_mobile"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewMobileAdult4"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="08132342354334563"/>-->
+
+                                <!--</LinearLayout>-->
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_email"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewEmailAdult4"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="dvsdf@dgds.com"/>-->
+
+                                <!--</LinearLayout>-->
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult5Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail5"
+                            app:handle="@+id/imageViewExpandPassangerAdult5">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult5"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="5"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult5"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult5"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult5"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_mobile"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewMobileAdult5"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="08132342354334563"/>-->
+
+                                <!--</LinearLayout>-->
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_email"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewEmailAdult5"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="dvsdf@dgds.com"/>-->
+
+                                <!--</LinearLayout>-->
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult6Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail6"
+                            app:handle="@+id/imageViewExpandPassangerAdult6">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult6"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="6"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult6"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult6"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult6"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult6"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_mobile"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewMobileAdult6"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="08132342354334563"/>-->
+
+                                <!--</LinearLayout>-->
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_email"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewEmailAdult6"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="dvsdf@dgds.com"/>-->
+
+                                <!--</LinearLayout>-->
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerAdult7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerAdult7Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linAdultDetail7"
+                            app:handle="@+id/imageViewExpandPassangerAdult7">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerAdult7"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerAdult7"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutAdult7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="7"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentAdult7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG DEWASA"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionAdult7"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="adult"
+
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionAdult7"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="adult"
+                                        android:text="UBAH"
+
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linAdultDetail7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/linNoIdentitasAdult7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_no_identitas"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewNoIdentitasAdult7"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="52353454645654" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linTanggalLahirAdult7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirAdult7"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_mobile"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewMobileAdult7"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="08132342354334563"/>-->
+
+                                <!--</LinearLayout>-->
+                                <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <!--<TextView-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight=".5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--android:text="@string/hint_email"/>-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/textViewEmailAdult7"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:textColor="@color/md_black_1000"-->
+                                <!--android:textSize="@dimen/textVerySmall"-->
+                                <!--tools:text="dvsdf@dgds.com"/>-->
+
+                                <!--</LinearLayout>-->
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerChild1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerChild1Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linChildDetail1"
+                            app:handle="@+id/imageViewExpandPassangerChild1">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerChild1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerChild1"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutChild1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="1"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentChild1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG ANAK"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionChild1"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="child"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionChild1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="child"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linChildDetail1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirChild1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerChild2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerChild2Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linChildDetail2"
+                            app:handle="@+id/imageViewExpandPassangerChild2">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerChild2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerChild2"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutChild2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="2"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentChild2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG ANAK"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionChild2"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="child"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionChild2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="child"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linChildDetail2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirChild2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerChild3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerChild3Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linChildDetail3"
+                            app:handle="@+id/imageViewExpandPassangerChild3">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerChild3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerChild3"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutChild3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="3"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentChild3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG ANAK"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionChild3"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="child"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionChild3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="child"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linChildDetail3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirChild3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerChild4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerChild4Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linChildDetail4"
+                            app:handle="@+id/imageViewExpandPassangerChild4">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerChild4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerChild4"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutChild4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="4"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentChild4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG ANAK"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionChild4"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="child"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionChild4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="child"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linChildDetail4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirChild4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerChild5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerChild5Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linChildDetail5"
+                            app:handle="@+id/imageViewExpandPassangerChild5">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerChild5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerChild5"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutChild5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="5"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentChild5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG ANAK"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionChild5"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="child"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionChild5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="child"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linChildDetail5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirChild5"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerChild6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerChild6Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linChildDetail6"
+                            app:handle="@+id/imageViewExpandPassangerChild6">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerChild6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerChild6"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutChild6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="6"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentChild6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG ANAK"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionChild6"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="child"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionChild6"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="child"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linChildDetail6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirChild6"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerInfant1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerInfant1Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linInfantDetail1"
+                            app:handle="@+id/imageViewExpandPassangerInfant1">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerInfant1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerInfant1"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutInfant1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="1"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentInfant1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG BAYI"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionInfant1"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="infant"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionInfant1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="infant"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linInfantDetail1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirInfant1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerInfant2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerInfant2Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linInfantDetail2"
+                            app:handle="@+id/imageViewExpandPassangerInfant2">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerInfant2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerInfant2"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutInfant2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="1"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentInfant2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG BAYI"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionInfant2"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="infant"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionInfant2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="infant"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linInfantDetail2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirInfant2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerInfant3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerInfant3Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linInfantDetail3"
+                            app:handle="@+id/imageViewExpandPassangerInfant3">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerInfant3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerInfant3"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutInfant3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="1"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentInfant3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG BAYI"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionInfant3"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="infant"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionInfant3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="infant"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linInfantDetail3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirInfant3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardPassangerInfant4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+
+                        >
+
+                        <com.bm.main.fpl.templates.ExpandablePanel
+                            android:id="@+id/panelPassangerInfant4Detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            app:animationDuration="500"
+
+                            app:content="@+id/linInfantDetail4"
+                            app:handle="@+id/imageViewExpandPassangerInfant4">
+
+                            <LinearLayout
+                                android:id="@+id/rlPassangerInfant4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="4"
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/imageViewExpandPassangerInfant4"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+
+                                    tools:src="@drawable/ic_expand" />
+
+                                <TextView
+                                    android:id="@+id/textUrutInfant4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".2"
+                                    android:gravity="center|center_vertical"
+                                    android:text="1"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <TextView
+                                    android:id="@+id/textContentInfant4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.3"
+                                    android:gravity="center_vertical"
+
+
+                                    android:text="ISI DATA PENUMPANG BAYI"
+                                    android:textColor="@color/md_black_1000"
+                                    android:textSize="@dimen/textVerySmall" />
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="20dp"
+                                    android:layout_weight=".5"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:id="@+id/imageActionInfant4"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:background="@drawable/ic_right_arrow"
+                                        android:tag="infant"
+
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textActionInfant4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:gravity="center"
+                                        android:tag="infant"
+                                        android:text="UBAH"
+                                        android:textColor="@color/md_blue_700"
+                                        android:textSize="@dimen/textVerySmall"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText" />
+                                </RelativeLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linInfantDetail4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingBottom="10dp"
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:text="@string/hint_tanggal_lahir"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall" />
+
+                                    <TextView
+                                        android:id="@+id/textViewTanggalLahirInfant4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:textColor="@color/md_black_1000"
+                                        android:textSize="@dimen/textVerySmall"
+                                        tools:text="01 Januari 1977" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+                        </com.bm.main.fpl.templates.ExpandablePanel>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:gravity="center"
+                        android:text="Data Kontak"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textSmall" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:orientation="vertical">
+
+                        <com.bm.main.materialedittext.MaterialEditText
+                            android:id="@+id/textHpKontak"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Telepon/HP"
+                            android:inputType="phone"
+                            android:textAllCaps="true"
+                            android:textCursorDrawable="@drawable/text_cursor_accent"
+                            android:textSize="@dimen/textVerySmall"
+                            app:met_baseColor="@color/text_secondary"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextColor="@color/colorAccent"
+                            app:met_primaryColor="@color/colorAccent"
+                            app:met_singleLineEllipsis="true" />
+
+                        <com.bm.main.materialedittext.MaterialEditText
+                            android:id="@+id/textEmailKontak"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Alamat Email"
+                            android:inputType="textEmailAddress"
+                            android:textAllCaps="true"
+                            android:textCursorDrawable="@drawable/text_cursor_accent"
+                            android:textSize="@dimen/textVerySmall"
+                            app:met_baseColor="@color/text_secondary"
+                            app:met_floatingLabel="highlight"
+                            app:met_floatingLabelTextColor="@color/colorAccent"
+                            app:met_primaryColor="@color/colorAccent"
+                            app:met_singleLineEllipsis="true" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/shape_card_edge_grey_fill_white"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:id="@+id/linBeliBagasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:orientation="horizontal">
+                        <CheckBox
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Beli Bagasi"
+                            android:fontFamily="@font/roboto_regular"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/appButtonLanjutkan"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+
+                    android:layout_gravity="bottom"
+                    android:layout_margin="16dp"
+
+                    android:background="@drawable/selector_button_orange_pressed"
+                    android:text="Lanjutkan"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal"
+                    tools:ignore="HardcodedText"
+                    android:onClick="onClickLanjutkan"/>
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

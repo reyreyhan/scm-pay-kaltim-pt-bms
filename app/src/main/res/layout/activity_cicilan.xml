@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootLayout"
+
+    tools:context="com.bm.main.fpl.activities.CicilanActivity">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+    <!--<LinearLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+
+        <!--android:background="@drawable/radius_border"-->
+        <!--android:orientation="vertical"-->
+        <!--tools:ignore="UselessParent">-->
+        <include layout="@layout/toolbar_color_primary" android:id="@+id/toolbar"/>
+    <View
+
+        android:background="@drawable/curve_toolbar_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="10dip"
+
+        />
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:scrollbars="none"-->
+            <!--android:background="@color/md_white_1000">-->
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+                <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+
+                <!--android:animateLayoutChanges="true"-->
+                <!--android:orientation="vertical">-->
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextProduk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/hint_pilih_finance"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+
+                    android:fontFamily="@font/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_accentTypeface="@string/roboto_regular"
+
+                    app:met_underlineColor="@color/md_grey_500"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+                    android:drawableRight="@drawable/ic_dropdown"
+                    android:drawableEnd="@drawable/ic_dropdown" />
+                <include layout="@layout/tab_bar_button_group"
+                    android:id="@+id/buttonGroupTabs" android:visibility="gone"/>
+
+                <!--<RadioGroup-->
+
+                <!--android:id="@+id/radioGroupTabs"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:background="@drawable/shape_toolbar"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<RadioButton-->
+
+                <!--android:id="@+id/radioButtonItemTabIdPelanggan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/rbtn_selector_tab"-->
+                <!--android:button="@null"-->
+
+                <!--android:checked="true"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:tag="0"-->
+                <!--android:text="@string/tab_id_pelanggan"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@drawable/rbtn_textcolor_selector_tab"-->
+                <!--android:textSize="@dimen/textSmall" />-->
+
+                <!--<RadioButton-->
+                <!--android:id="@+id/radioButtonItemTabDaftarPelanggan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/rbtn_selector_tab"-->
+                <!--android:button="@null"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:tag="1"-->
+                <!--android:text="@string/tab_daftar_id_pelanggan"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@drawable/rbtn_textcolor_selector_tab"-->
+                <!--android:textSize="@dimen/textSmall" />-->
+                <!--</RadioGroup>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+                    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextIdPelanggan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                  android:layout_weight="1"
+
+                    android:hint="@string/hint_id_pelanggan"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+android:maxLength="16"
+                    android:fontFamily="@font/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_floatingLabelAnimating="true"
+                    app:met_accentTypeface="@string/roboto_regular"
+
+                    app:met_underlineColor="@color/md_grey_500"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+app:met_clearButton="true"
+                    />
+                    <ImageView android:id="@+id/imageViewAddressBook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:layout_gravity="center"
+
+                        android:layout_marginLeft="-25dp"
+                        android:layout_marginStart="-25dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_address_book" />
+                </LinearLayout>
+
+                <com.bm.main.fpl.templates.CustomFontCheckBox
+                    android:id="@+id/checkboxSimpanId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpan_id_pelanggan"
+                    android:checked="false"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_lanjutkan"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/selector_button_red_pressed"
+                    android:fontFamily="@font/roboto_light"
+                    android:clickable="true"
+
+                    android:focusable="true"
+                    android:text="@string/lanjutkan"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal"
+                    />
+
+
+            </LinearLayout>
+
+            <!--</RelativeLayout>-->
+        <!--</ScrollView>-->
+    </LinearLayout>
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
+    <include
+
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar" />
+    <!--</LinearLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

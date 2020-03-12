@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.ListProductActivity">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <include layout="@layout/toolbar_color_primary" android:id="@+id/toolbar"/>
+
+        <!--<View-->
+
+            <!--android:background="@drawable/curve_toolbar_bg"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="10dip"-->
+
+            <!--/>-->
+<LinearLayout
+    android:id="@+id/linMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="vertical">
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/md_grey_100"
+
+
+            android:iconifiedByDefault="false"
+            android:paddingEnd="-10dp"
+            android:paddingLeft="-10dp"
+            android:paddingRight="-10dp"
+
+
+            android:paddingStart="-10dp" />
+
+        <View
+
+            android:layout_width="fill_parent"
+            android:layout_height="3dip"
+            android:background="@drawable/drop_shadowbottom" />
+        <!--<ProgressBar-->
+            <!--android:id="@+id/progressBar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:layout_gravity="top|end"-->
+
+            <!--android:max="100"-->
+            <!--android:progress="0"-->
+            <!--style="?android:attr/progressBarStyleHorizontal" />-->
+
+        <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:duration="800">
+
+            <!-- Adding 3 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/recipe_placeholder_produk_item" />
+                <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                <include layout="@layout/recipe_placeholder_produk_item" />
+                <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                <include layout="@layout/recipe_placeholder_produk_item" />
+                <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                <include layout="@layout/recipe_placeholder_produk_item" />
+                <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                <include layout="@layout/recipe_placeholder_produk_item" />
+                <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                <include layout="@layout/recipe_placeholder_produk_item" />
+                <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+
+            </LinearLayout>
+        </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewProduk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/md_white_1000"
+            android:visibility="gone" />
+    </LinearLayout>
+        <include
+            android:id="@+id/layout_no_connection"
+            layout="@layout/layout_no_connection"
+            android:visibility="gone" />
+        <include
+            android:id="@+id/layout_data_empty"
+            layout="@layout/layout_data_empty"
+            android:visibility="gone" />
+    <!--</LinearLayout>-->
+</LinearLayout>

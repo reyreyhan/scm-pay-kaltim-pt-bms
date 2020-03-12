@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rootLayout"
+    tools:context="com.bm.main.single.ftl.ship.activities.ShipReviewBookActivity">
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--&gt;-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/core_toolbar" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/md_white_1000">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:orientation="vertical">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginRight="32dp"
+                            android:layout_marginTop="5dp">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:background="@color/md_grey_300" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/oval_inactive"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@android:color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/oval_active"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:text="2"
+                                android:textColor="@android:color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/oval_inactive"
+                                android:gravity="center"
+                                android:text="3"
+                                android:textColor="@android:color/white" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:gravity="center"
+                                android:text="Lengkapi Data"
+                                android:textColor="@color/md_grey_300"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:text="Pembayaran"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:text="Status"
+                                android:textColor="@color/md_grey_300"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        tools:ignore="RtlSymmetry">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="Rincian Perjalanan"
+                            android:textColor="@color/colorPrimary" />
+
+                    </RelativeLayout>
+                <!--<RelativeLayout-->
+
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="5dp"-->
+                    <!--android:background="@drawable/selector_button_blue_white_pressed">-->
+
+                <!---->
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:weightSum="2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/textViewNamaKapalReviewBook"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.4"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/md_black_1000"
+                            tools:text="KM. XXXXX " />
+                        <TextView
+                            android:id="@+id/textViewKelasReviewBook"
+                            android:layout_width="0dp"
+                            android:layout_weight=".6"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/md_black_1000"
+                            tools:text="Kelas EK1/A" />
+                    </LinearLayout>
+                <!--</RelativeLayout> -->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/selector_button_blue_white_pressed">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:weightSum="3"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.2"
+                                >
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textOriginReviewBook"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="KM. XXXXX"
+
+
+                                        />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+                                    android:layout_alignParentBottom="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textDestinationReviewBook"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Gambir"
+
+
+                                        />
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:layout_weight="0.1">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerHorizontal="true"
+                                    android:background="@drawable/line_connector_vertical"
+
+                                    />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.7"
+
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:layout_alignParentTop="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textDepartureTimeReviewBook"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/shape_blue"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:padding="1dp"
+                                        android:textColor="@android:color/white"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+
+                                        tools:targetApi="o"
+                                        tools:text="16:00"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textDepartureDateReviewBook"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_marginLeft="2dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Minggu, 19 Des 2017"
+                                        />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:layout_alignParentBottom="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textArrivalTimeReviewBook"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/shape_blue"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:padding="1dp"
+                                        android:textColor="@android:color/white"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+
+                                        tools:targetApi="o"
+                                        tools:text="16:00"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textArrivalDateReviewBook"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_marginLeft="2dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Minggu, 20 Des 2017"
+
+                                        />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center|start"
+                            android:text="Penumpang"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/colorPrimary"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textViewNamaPenumpang"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center|start"
+                            android:fontFamily="@font/roboto_regular"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"/>
+
+                        <TextView
+                            android:id="@+id/textViewSeatPenumpang"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:gravity="center|start"
+                            android:fontFamily="@font/roboto_regular"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"/>
+
+                    </LinearLayout>
+
+
+                    <!--<android.support.v7.widget.AppCompatButton-->
+                        <!--android:id="@+id/btnGantiKursi"-->
+
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:textSize="@dimen/textNormal"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:layout_marginLeft="16dp"-->
+                        <!--android:layout_marginStart="16dp"-->
+                        <!--android:layout_marginTop="16dp"-->
+                        <!--android:background="@drawable/selector_button_orange_white_pressed"-->
+
+                        <!--android:padding="0dp"-->
+                        <!--android:text="Ganti Kursi"-->
+                        <!--android:textAllCaps="false"-->
+                        <!--android:textColor="@color/md_orange_600" />-->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/md_grey_300" />
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:layout_margin="5dp"-->
+                        <!--android:background="@drawable/selector_button_blue_white_pressed">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Harga Tiket"-->
+                            <!--android:fontFamily="@font/roboto_medium"-->
+
+
+                            <!--android:textColor="@color/md_black_1000"-->
+                            <!--android:layout_marginLeft="16dp"-->
+                            <!--android:layout_marginStart="16dp"-->
+                            <!--android:layout_centerVertical="true"/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/textViewNormalSalesShip"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+
+                            <!--android:layout_marginRight="16dp"-->
+                            <!--android:layout_marginEnd="16dp"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_alignParentEnd="true"-->
+                            <!--android:fontFamily="@font/roboto_medium"-->
+
+
+                            <!--android:textColor="@color/md_black_1000"-->
+                            <!--android:text="Rp.0"-->
+                            <!--/>-->
+
+                    <!--</RelativeLayout>-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:layout_margin="5dp"-->
+                        <!--android:background="@drawable/selector_button_blue_white_pressed">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Biaya Admin"-->
+
+                            <!--android:layout_marginLeft="16dp"-->
+                            <!--android:layout_marginStart="16dp"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:fontFamily="@font/roboto_medium"-->
+
+
+                            <!--android:textColor="@color/md_black_1000"/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/textViewBiayaAdminShip"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_alignParentEnd="true"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_marginRight="16dp"-->
+                            <!--android:layout_marginEnd="16dp"-->
+                            <!--android:text="Rp.0"-->
+                            <!--android:fontFamily="@font/roboto_medium"-->
+
+
+                            <!--android:textColor="@color/md_black_1000" />-->
+
+                    <!--</RelativeLayout>-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:layout_margin="5dp"-->
+                        <!--android:background="@drawable/selector_button_blue_white_pressed">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="Diskon Channel"-->
+                            <!--android:fontFamily="@font/roboto_medium"-->
+                            <!--android:textColor="@color/md_black_1000"-->
+                            <!--android:layout_marginLeft="16dp"-->
+                            <!--android:layout_marginStart="16dp"-->
+                            <!--android:layout_centerVertical="true"/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/textViewDiscountShip"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:fontFamily="@font/roboto_medium"-->
+
+
+                            <!--android:textColor="@color/md_black_1000"-->
+                            <!--android:layout_marginRight="16dp"-->
+                            <!--android:layout_marginEnd="16dp"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_alignParentEnd="true"-->
+                            <!--android:text="Rp.0"-->
+                            <!--/>-->
+
+                    <!--</RelativeLayout>-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@drawable/shape_blue">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:text="Total Harga"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textColor="@color/md_white_1000"
+                            />
+
+                        <TextView
+                            android:id="@+id/textViewTotalHargaReviewBookShip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Rp.0"
+                            android:textColor="@color/md_white_1000"
+                            android:fontFamily="@font/roboto_medium" />
+
+                    </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="(Sudah termasuk biaya admin)"
+                           android:layout_gravity="end"
+                            android:textSize="@dimen/textVerySmall"
+                            android:textColor="@color/md_grey_300"
+                            />
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Komisi"
+                            android:fontFamily="@font/roboto_medium"
+
+
+                            android:textColor="@color/md_black_1000"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/textViewKomisiReviewBookShip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+
+
+                            android:textColor="@color/md_black_1000"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text="Rp.0"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/md_grey_100"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true">
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_bayar"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_vertical"
+
+
+android:layout_marginRight="@dimen/activity_horizontal_margin"
+android:layout_marginEnd="@dimen/activity_horizontal_margin"
+android:layout_marginLeft="@dimen/activity_horizontal_margin"
+android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/textNormal"
+                        android:text="Lakukan Pembayaran"
+                        android:textColor="@color/md_white_1000"
+                        android:textAllCaps="false"
+                        android:background="@drawable/selector_button_orange_pressed"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    <!--</FrameLayout>-->
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="58dp"-->
+        <!--android:layout_gravity="bottom"-->
+
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp">-->
+        <!---->
+
+    <!--</FrameLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

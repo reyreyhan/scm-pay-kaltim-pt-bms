@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_blue_900"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/image_carousel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            tools:ignore="ContentDescription" />
+        <!--<TextView
+            android:id="@+id/text_carousel_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/taupe"
+            android:textSize="26.67sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/text_carousel_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/outer_space"
+            android:textSize="20sp"/>-->
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/img_carousel_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_navigate_next_white_24dp"
+        android:layout_alignParentEnd="true" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/md_grey_600"
+        android:layout_above="@id/img_carousel_next"/>
+</RelativeLayout>

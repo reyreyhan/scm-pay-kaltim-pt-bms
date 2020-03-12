@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/bottom_toolbar_calendar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+
+    android:orientation="vertical">
+    <!--<LinearLayout-->
+    <!--android:id="@+id/linMain"-->
+    <!--android:layout_width="match_parent"-->
+
+    <!--android:layout_height="50dp"-->
+    <!--android:orientation="vertical"-->
+    <!--&gt;-->
+    <View
+
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:background="@drawable/drop_shadowtop" />
+    <!--This linear layout is da wrapper for all the button which are added.-->
+    <!--It should be horizontal and change weightsum to the number of buttons you want to add-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shadow"
+        android:baselineAligned="false"
+        android:gravity="center"
+
+        android:orientation="horizontal"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:weightSum="3">
+
+        <!--All these are just wrapper for image view and text view that will act as button-->
+        <!--They have da vertical layout, center gravity and clickable true-->
+        <!--They also have layout weight as 1 to divide space equally amongst buttons-->
+        <!--Also enable haptic feedback if you want to create touch vibration on click-->
+        <LinearLayout
+            android:id="@+id/linTanggalAwal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_calendar_fp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_background"
+
+                android:gravity="center"
+
+                android:orientation="vertical"
+
+                android:weightSum="2">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="Tanggal Awal"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/textSmall" />
+
+                <!--A txt view to add text below the image-->
+                <!--Align it to the center and change size as you find fit-->
+                <TextView
+                    android:id="@+id/textViewTanggalAwal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center"
+                    android:text="1 Jan 1977"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/textSmall" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linTanggalAkhir"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:hapticFeedbackEnabled="true"
+            android:weightSum="2">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_calendar_fp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_background"
+
+                android:gravity="center"
+
+                android:orientation="vertical"
+
+                android:weightSum="2">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="Tanggal Akhir"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/textSmall" />
+
+                <!--A txt view to add text below the image-->
+                <!--Align it to the center and change size as you find fit-->
+                <TextView
+                    android:id="@+id/textViewTanggalAkhir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center"
+                    android:text="31 Jan 1977"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/textSmall" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/relTampilkan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_card_blue"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:textColor="@color/md_white_1000"
+
+               android:padding="5dp"
+                android:text="Tampilkan"
+                android:textAlignment="center"
+                android:textSize="@dimen/textSmall" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout><!--</LinearLayout>-->

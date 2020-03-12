@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.PdamActivity">
+    <!--<LinearLayout-->
+
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:paddingLeft="2dp"-->
+    <!--android:paddingRight="2dp"-->
+
+    <!--android:background="@drawable/radius_border"-->
+    <!--android:orientation="vertical">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+        <View
+
+            android:layout_width="fill_parent"
+            android:layout_height="10dip"
+            android:background="@drawable/curve_toolbar_bg"
+
+            />
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+
+        <!--android:orientation="vertical">-->
+        <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:scrollbars="none"-->
+
+
+        <!--android:background="@color/md_white_1000">-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:animateLayoutChanges="true"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linMain"
+
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextProduk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="10dp"
+                    android:drawableEnd="@drawable/ic_dropdown"
+                    android:drawableRight="@drawable/ic_dropdown"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/roboto_light"
+                    android:hint="@string/hint_pilih_pdam"
+                    android:imeOptions="actionDone"
+
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+
+                    app:met_accentTypeface="@string/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+
+                    app:met_floatingLabelAnimating="true"
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+                    app:met_underlineColor="@color/md_grey_500" />
+
+                <com.bm.main.fpl.templates.CustomFontCheckBox
+                    android:id="@+id/checkboxSimpanDefaultPdam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="5dp"
+                    android:checked="false"
+
+                    android:text="@string/simpan_default_pdam" />
+
+                <include
+                    android:id="@+id/buttonGroupTabs"
+                    layout="@layout/tab_bar_button_group"
+                    android:visibility="gone" />
+                <!--<RadioGroup-->
+
+                <!--android:id="@+id/radioGroupTabs"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:background="@drawable/shape_toolbar"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<RadioButton-->
+
+                <!--android:id="@+id/radioButtonItemTabIdPelanggan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/rbtn_selector_tab"-->
+                <!--android:button="@null"-->
+
+                <!--android:checked="true"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:tag="0"-->
+                <!--android:text="@string/tab_id_pelanggan"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@drawable/rbtn_textcolor_selector_tab"-->
+                <!--android:textSize="@dimen/textSmall" />-->
+
+                <!--<RadioButton-->
+                <!--android:id="@+id/radioButtonItemTabDaftarPelanggan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/rbtn_selector_tab"-->
+                <!--android:button="@null"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:tag="1"-->
+                <!--android:text="@string/tab_daftar_id_pelanggan"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@drawable/rbtn_textcolor_selector_tab"-->
+                <!--android:textSize="@dimen/textSmall" />-->
+                <!--</RadioGroup>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/materialEditTextIdPelanggan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/roboto_light"
+                        android:hint="@string/hint_id_pelanggan_no_sambungan"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:maxLength="24"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+                        android:textSize="@dimen/textNormal"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_clearButton="true"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true"
+
+                        />
+
+                    <ImageView
+                        android:id="@+id/imageViewAddressBook"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+
+                        android:layout_gravity="center"
+                        android:layout_marginStart="-20dp"
+                        android:layout_marginLeft="-20dp"
+                        android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_address_book"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_thin"
+                    android:text="Atau"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/textNormal"
+                    android:visibility="gone" />
+                <!--<com.bm.main.materialedittext.MaterialEditText-->
+                <!--android:id="@+id/materialEditTextNoMeter"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:hint="@string/hint_no_meter"-->
+                <!--android:imeOptions="actionDone"-->
+
+                <!--android:inputType="text"-->
+                <!--android:textCursorDrawable="@drawable/text_cursor_accent"-->
+                <!--android:textSize="@dimen/textNormal"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--app:met_baseColor="@color/text_secondary"-->
+                <!--app:met_floatingLabel="highlight"-->
+
+                <!--app:met_floatingLabelTextColor="@color/colorAccent_ppob"-->
+                <!--app:met_primaryColor="@color/colorAccent_ppob"-->
+                <!--app:met_singleLineEllipsis="true" />-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:animateLayoutChanges="true">
+
+                    <com.bm.main.fpl.templates.CustomFontCheckBox
+                        android:id="@+id/checkboxSimpanId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="@string/simpan_id_pelanggan" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_lanjutkan"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_below="@+id/checkboxSimpanId"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/selector_button_red_pressed"
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:fontFamily="@font/roboto_light"
+                        android:text="@string/lanjutkan"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="@dimen/textNormal" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        <!--</ScrollView>-->
+    </LinearLayout>
+
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+    <!--<include-->
+
+    <!--android:id="@+id/bottom_toolbar"-->
+    <!--layout="@layout/bottom_toolbar" />-->
+    <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
+
+    <include
+
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar" />
+
+    <!--</LinearLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

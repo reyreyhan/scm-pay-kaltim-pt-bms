@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bm.main.fpl.activities.LoginActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:id="@+id/linMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewLogo"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin_2x"
+                android:gravity="center"
+                android:text="@string/lbl_tagline_1"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/subheading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/lbl_tagline_2"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/body" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="@dimen/standard_margin_4x"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_card_edge_grey_fill_white"
+                android:orientation="vertical"
+                android:padding="@dimen/_8sdp">
+
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextUserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableEnd="@drawable/ic_user"
+                    android:drawableRight="@drawable/ic_user"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="@string/hint_id"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords|textNoSuggestions"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true" />
+
+                <com.bm.main.fpl.templates.PasswordEditText
+                    android:id="@+id/materialEditTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="@string/hint_password"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberPassword"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+                    app:pet_disableIconAlpha="true"
+                    app:pet_hoverShowsPw="true" />
+
+                <TextView
+                    android:id="@+id/textViewPlusLupaPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="end"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/string_lupa_password"
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="@dimen/textSmall"
+                    android:visibility="gone" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="25dp"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/materialEditTextKey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_sms_key"
+                        android:drawableRight="@drawable/ic_sms_key"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="@string/hint_input_key_sms"
+                        android:imeOptions="actionDone"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+                        android:textSize="@dimen/textNormal"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true" />
+
+                    <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                        android:id="@+id/aviLoading"
+                        style="@style/AVLoadingIndicatorView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        app:indicatorColor="@color/colorPrimary_ppob" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButtonLogin"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/selector_button_red_pressed"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/string_masuk"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/textNormal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/string_belum_member"
+                android:textColor="@color/md_grey_900"
+                android:textSize="@dimen/textSmall"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textViewDaftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                tools:text="Belum memiliki akun? Daftar Sekarang"
+                tools:textColor="@color/colorPrimary_ppob" />
+
+            <LinearLayout
+                android:id="@+id/linDemo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Atau"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textVerySmall"
+                    android:visibility="gone"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/textViewDemo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:visibility="gone"
+                    tools:text="Coba Aplikasi Demo"
+                    tools:textColor="@color/colorPrimary" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/selector_button_white_pressed"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/string_daftar"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/md_red_500"
+                android:textSize="@dimen/textNormal"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textViewPlusInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_horizontal"
+                android:text="info"
+                android:textColor="@color/md_orange_600"
+                android:textSize="@dimen/textSmall"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/layout_update_apps"
+        layout="@layout/layout_update_apps"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

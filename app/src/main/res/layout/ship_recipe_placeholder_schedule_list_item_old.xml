@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+    <com.bm.main.fpl.templates.ticketview.TicketView
+        android:id="@+id/ticketView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+
+
+        app:ticketBorderColor="@color/colorAccent"
+        app:ticketBorderWidth="1dp"
+        app:ticketCornerType="rounded"
+        app:ticketDividerPadding="20dp"
+        app:ticketDividerType="dash"
+        app:ticketElevation="8dp"
+        app:ticketOrientation="vertical"
+        app:ticketScallopPositionPercent="57"
+        app:ticketScallopRadius="7dp"
+        app:ticketShowBorder="true"
+        app:ticketShowDivider="true" />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+
+        >
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/placeholder_bg"
+            android:background="@color/placeholder_bg"
+            tools:text="KM NGAPULU (NP-120-8) EK1 / A"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1.2">
+
+                        <TextView
+                            android:id="@+id/textViewDepTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="04:40"
+
+                            android:gravity="center_horizontal"
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="@color/placeholder_bg"
+                            android:background="@color/placeholder_bg"
+                            android:textSize="@dimen/textMedium"/>
+
+                        <TextView
+                            android:id="@+id/textViewDepDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="20 Desember 2019"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/placeholder_bg"
+                            android:background="@color/placeholder_bg"
+                            android:textSize="@dimen/textVerySmall"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".6">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:textColor="@color/placeholder_bg"
+                            android:background="@color/placeholder_bg"
+                            android:src="@null"
+                            android:layout_centerInParent="true"/>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1.2">
+
+                        <TextView
+                            android:id="@+id/textViewArvTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            tools:text="04:40"
+                            android:textSize="@dimen/textMedium"
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="@color/placeholder_bg"
+                            android:background="@color/placeholder_bg" />
+
+                        <TextView
+                            android:id="@+id/textViewArvDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="20 Desember 2019"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/placeholder_bg"
+                            android:background="@color/placeholder_bg"
+                            android:textSize="@dimen/textVerySmall"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/textViewRute"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rute"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="@color/placeholder_bg"
+                        android:background="@color/placeholder_bg"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        />
+                    <ImageView
+                        android:id="@+id/imageViewDown"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/textViewRute"
+                        android:layout_toEndOf="@id/textViewRute"
+                        android:layout_width="30dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_down_primary"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:layout_gravity="center_vertical"/>
+                    <ImageView
+                        android:id="@+id/imageViewNext"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/textViewRute"
+                        android:layout_toEndOf="@id/textViewRute"
+                        android:layout_width="30dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+
+                        android:background="@color/placeholder_bg"
+                        android:src="@null"
+                        android:layout_gravity="center_vertical"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".8"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                >
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:weightSum="2"-->
+                <!--android:orientation="vertical">-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(Dewasa)"
+                        android:textSize="@dimen/textVerySmall"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/placeholder_bg"
+                        android:background="@color/placeholder_bg"
+                        android:layout_weight="1.5"/>
+                    <TextView
+                        android:id="@+id/textViewPriceAdult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Rp. 999.999,00"
+                        android:textSize="@dimen/textVerySmall"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/placeholder_bg"
+                        android:background="@color/placeholder_bg"
+                        android:gravity="end"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:visibility="invisible">-->
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="(Anak)"-->
+                <!--android:textSize="@dimen/textVerySmall"-->
+                <!--android:layout_weight="1.5"/>-->
+                <!--<TextView-->
+                <!--android:id="@+id/textViewPriceAdult"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--tools:text="Rp. 100.000,00"-->
+                <!--android:gravity="end"-->
+                <!--android:textSize="@dimen/textVerySmall"-->
+                <!--android:layout_weight="1"/>-->
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(Bayi)"
+                        android:textSize="@dimen/textVerySmall"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/placeholder_bg"
+                        android:background="@color/placeholder_bg"
+                        android:layout_weight="1.5"/>
+                    <TextView
+                        android:id="@+id/textViewPriceInfant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Rp. 999.999,00"
+                        android:gravity="end"
+                        android:textSize="@dimen/textVerySmall"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/placeholder_bg"
+                        android:background="@color/placeholder_bg"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+
+
+                <!--</LinearLayout>-->
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPesan"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+
+
+                    android:text="PESAN"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/placeholder_bg"
+                    android:background="@color/placeholder_bg" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textVerySmall"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/md_black_1000"
+            android:visibility="gone"
+
+            android:text="TANJUNG PERAK (SURABAYA)-MAKASAR-BITUNG-TERNATE-BITUNG-BAUBAU-MAKASAR"/>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:padding="10dp">
+
+    <!--    <com.bm.main.fpl.templates.ticketview.TicketView-->
+    <!--        android:id="@+id/ticketView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="90dp"-->
+
+    <!--        app:ticketBorderColor="@color/colorAccent_ppob"-->
+    <!--        app:ticketBorderWidth="1dp"-->
+    <!--        app:ticketCornerType="rounded"-->
+    <!--        app:ticketDividerPadding="18dp"-->
+    <!--        app:ticketDividerType="dash"-->
+    <!--        app:ticketElevation="8dp"-->
+    <!--        app:ticketOrientation="vertical"-->
+    <!--        app:ticketScallopPositionPercent="60"-->
+    <!--        app:ticketScallopRadius="7dp"-->
+    <!--        app:ticketShowBorder="true"-->
+    <!--        app:ticketShowDivider="true" />-->
+    <LinearLayout
+        android:id="@+id/linMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/ic_launcher"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+
+                android:layout_below="@+id/image_app"
+                android:layout_alignStart="@+id/image_app"
+                android:layout_alignLeft="@+id/image_app"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="-17dp"
+                android:background="@drawable/grey_shape"
+                android:src="@drawable/ic_logo_status_bar"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                style="Custom Notification Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header"
+                android:textColor="@android:color/black"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/text"
+                style="Custom Notification Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                tools:text="Text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/subtext"
+                style="Custom Notification Text"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                tools:text="Text \n text" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

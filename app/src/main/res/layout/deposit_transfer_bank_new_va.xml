@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/layout_transfer_bank_va"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+    <LinearLayout
+        android:id="@+id/linMainVa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+
+
+        android:orientation="vertical">
+        <View
+
+
+            android:layout_width="fill_parent"
+            android:layout_height="10dip"
+
+            />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Deposit cepat 24 Jam, tanpa perlu konfirmasi"
+           android:fontFamily="@font/roboto_medium"
+           android:layout_marginBottom="5dp"
+          />
+    <!--<LinearLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+
+<!--android:visibility="gone"-->
+
+        <!--android:orientation="vertical" >-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@drawable/ic_checked"&ndash;&gt;-->
+                <!--&lt;!&ndash;tools:ignore="ContentDescription" />&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:text="Deposit dalam hitungan detik otomatis langsung masuk ke saldo Anda tanpa perlu konfirmasi."-->
+                <!--android:drawableStart="@drawable/ic_checked"-->
+                <!--android:drawableLeft="@drawable/ic_checked"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginStart="5dp" />-->
+
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:src="@drawable/ic_checked"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:ignore="ContentDescription" />&ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Anda bisa melakukan deposit 24 jam non stop."-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginStart="5dp"-->
+            <!--android:drawableStart="@drawable/ic_checked"-->
+            <!--android:drawableLeft="@drawable/ic_checked"-->
+             <!--/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:src="@drawable/ic_checked"&ndash;&gt;-->
+            <!--&lt;!&ndash;&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:ignore="ContentDescription" />&ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Tanpa ribet memasukkan nominal unik."-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginStart="5dp"-->
+            <!--android:drawableStart="@drawable/ic_checked"-->
+            <!--android:drawableLeft="@drawable/ic_checked"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Bank"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBankVAChoice"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+        <include layout="@layout/layout_no_connection" android:id="@+id/layout_no_connection_va" android:visibility="gone"/>
+    <LinearLayout
+        android:id="@+id/linBankDepositVA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible"
+        >
+       <include layout="@layout/list_bank_va"
+           android:id="@+id/list_bank_va"
+           />
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linBankDepositVANominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/roboto_light"
+                android:text="Pilih Nominal Deposit"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.RadioGroupPlus
+                android:id="@+id/radioGroupBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center">
+
+                    <RadioButton
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_table"
+                        android:button="@null"
+                        android:checked="false"
+                        android:fontFamily="@font/roboto_medium"
+
+                        android:gravity="center"
+                        android:padding="2dip"
+                        android:tag="250000"
+                        android:text="250.000"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/rbtn_textcolor_selector_table"
+                        android:textSize="@dimen/textNormal" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonBank2"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_table"
+                        android:button="@null"
+                        android:checked="true"
+                        android:fontFamily="@font/roboto_medium"
+
+                        android:gravity="center"
+                        android:padding="2dip"
+                        android:tag="500000"
+                        android:text="500.000"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/rbtn_textcolor_selector_table"
+                        android:textSize="@dimen/textNormal" />
+
+                    <RadioButton
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_table"
+                        android:button="@null"
+                        android:checked="false"
+
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:padding="2dip"
+                        android:tag="750000"
+                        android:text="750.000"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/rbtn_textcolor_selector_table"
+                        android:textSize="@dimen/textNormal" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center">
+
+                    <RadioButton
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_table"
+                        android:button="@null"
+                        android:checked="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:padding="2dip"
+                        android:tag="1000000"
+                        android:text="1.000.000"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/rbtn_textcolor_selector_table"
+                        android:textSize="@dimen/textNormal" />
+
+                    <RadioButton
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_table"
+                        android:button="@null"
+                        android:checked="false"
+
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:padding="2dip"
+                        android:tag="1500000"
+                        android:text="1.500.000"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/rbtn_textcolor_selector_table"
+                        android:textSize="@dimen/textNormal" />
+
+                    <RadioButton
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/rbtn_selector_table"
+                        android:button="@null"
+                        android:checked="false"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:padding="2dip"
+                        android:tag="2000000"
+                        android:text="2.000.000"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/rbtn_textcolor_selector_table"
+                        android:textSize="@dimen/textNormal" />
+
+
+                </TableRow>
+            </com.bm.main.fpl.templates.RadioGroupPlus>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

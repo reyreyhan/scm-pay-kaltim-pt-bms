@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.UbahPinActivity">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+        <!--android:orientation="vertical">-->
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+        <!--<View-->
+
+            <!--android:background="@drawable/curve_toolbar_bg"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="10dip"-->
+
+            <!--/>-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewPetunjuk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:text="@string/petunjuk_ubah_pin"
+                    android:textSize="@dimen/textNormal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="2" >
+
+                    <TextView
+                        android:id="@+id/textViewFormatSms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/format_ganti_pin"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textNormalCaption" />
+
+                    <ImageView
+                        android:id="@+id/imageViewFormatSms"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_copy" />
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewPetunjuk1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_vertical"
+                    android:text="@string/petunjuk_ubah_pin1"
+                    android:textSize="@dimen/textNormal" />
+                <LinearLayout
+                    android:id="@+id/linNumberSms1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/textViewNumberSms1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="081 2288 99888"
+
+                        android:textSize="@dimen/textNormalCaption" />
+
+                    <ImageView
+                        android:id="@+id/imageViewNumberSms1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_send_email" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linNumberSms2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/textViewNumberSms2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="087 8383 95999"
+
+                        android:textSize="@dimen/textNormalCaption" />
+
+                    <ImageView
+                        android:id="@+id/imageViewNumberSms2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_send_email" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linNumberSms3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/textViewNumberSms3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="085 7303 20058"
+
+                        android:textSize="@dimen/textNormalCaption" />
+
+                    <ImageView
+                        android:id="@+id/imageViewNumberSms3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_send_email" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:background="@color/md_grey_300"/>
+                <TextView
+                    android:id="@+id/textViewPetunjuk2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center_vertical"
+                    android:text="@string/petunjuk_ubah_pin2"
+                    android:textSize="@dimen/textNormal" />
+                <TextView
+                    android:id="@+id/textViewLinkLiveChat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+android:layout_marginTop="5dp"
+android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/link_live_chat"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textNormalCaption" />
+            </LinearLayout>
+
+        </ScrollView>
+    <!--</LinearLayout>-->
+</LinearLayout>

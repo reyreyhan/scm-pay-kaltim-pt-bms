@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="@color/colorPrimary_ppob"
+    android:orientation="vertical">
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/frame_rounded">-->
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <!--<include layout="@layout/sheet_header" />-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:gravity="center"
+
+android:paddingStart="10dp"
+android:paddingEnd="10dp"
+android:paddingTop="10dp"
+
+        >
+
+        <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+
+        <TextView
+            android:id="@+id/textViewVersion"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7"
+android:gravity="center_vertical"
+            android:fontFamily="@font/roboto_regular"
+          tools:text="V.1.0.0"
+            android:textSize="@dimen/textNormal"
+            android:textColor="@color/md_white_1000" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:clickable="true"
+            android:fontFamily="@font/roboto_regular"
+            android:onClick="closeTopSheet"
+            android:text="X"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textNormal"
+            android:textColor="@color/md_white_1000"
+            android:focusable="true" />
+
+        <!--</FrameLayout>-->
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/whiteLily" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/textViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Beranda"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+             />
+        <!--<TextView-->
+            <!--android:id="@+id/textViewPromo"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:fontFamily="@font/roboto_regular"-->
+            <!--android:padding="8dp"-->
+            <!--android:text="Promo"-->
+            <!--android:visibility="gone"-->
+            <!--android:textColor="@color/md_white_1000"-->
+            <!--android:textSize="@dimen/textNormal" />-->
+        <TextView
+            android:id="@+id/textViewLiveChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Bantuan Live Chat"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+        <TextView
+            android:id="@+id/textViewAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Admin"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+        <TextView
+            android:id="@+id/textViewLaporan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Laporan Transaksi"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+        <TextView
+            android:id="@+id/textViewDeposit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Deposit"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+        <TextView
+            android:id="@+id/textViewKunci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Kunci Aplikasi"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+        <TextView
+            android:id="@+id/textViewLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:padding="8dp"
+            android:text="Keluar"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+
+    </LinearLayout>
+<!--</LinearLayout>-->
+    <!--</FrameLayout>-->
+
+</LinearLayout>

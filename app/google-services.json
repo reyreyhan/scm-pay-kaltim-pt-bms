@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "845818725373",
+    "firebase_url": "https://toko-modern-fastpay.firebaseio.com",
+    "project_id": "toko-modern-fastpay",
+    "storage_bucket": "toko-modern-fastpay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845818725373:android:07dc55236d58ca83ba4f94",
+        "android_client_info": {
+          "package_name": "com.bm.main.pos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845818725373-5qq5t55gsqierqp0sicmfbj3rfs5v2fc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bm.main.pos",
+            "certificate_hash": "f3bc9755a3cc2c191a3392897ecd2e1346959cc6"
+          }
+        },
+        {
+          "client_id": "845818725373-tmiouqglekk58e8hib1301gi83s0ep6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bm.main.pos",
+            "certificate_hash": "5d08b429562bbff976c67b2d8992c1069cbd20ce"
+          }
+        },
+        {
+          "client_id": "845818725373-45p6l5ctd112kqn92hmropbo3t8uarsh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bm.main.pos",
+            "certificate_hash": "27edb84e514c87f44b708de3057fb0ba10863939"
+          }
+        },
+        {
+          "client_id": "845818725373-tap2469rd60p0mel4j0jrfjcn2eauo4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyDTlmi0lFODJC-5AQNUKpc4kNqlHbFnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845818725373-tap2469rd60p0mel4j0jrfjcn2eauo4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

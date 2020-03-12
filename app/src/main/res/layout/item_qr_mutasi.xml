@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_2sdp"
+    android:layout_marginRight="@dimen/_8sdp"
+    android:background="@color/white"
+    android:padding="@dimen/_4sdp">
+
+    <TextView
+        android:id="@+id/trx_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/trx_nominal"
+        android:layout_toLeftOf="@id/trx_nominal"
+        android:textColor="@color/dark_gray"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        tools:text="#12334565894" />
+
+    <TextView
+        android:id="@+id/trx_nominal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginLeft="@dimen/_6sdp"
+        android:textColor="@color/md_green_500"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="Rp 1.000" />
+
+    <TextView
+        android:id="@+id/trx_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/trx_id"
+        android:layout_toStartOf="@id/trx_nominal"
+        android:layout_toLeftOf="@id/trx_nominal"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        tools:text="Nama pembeli" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/trx_name"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:background="@color/bg_gray" />
+
+    <TextView
+        android:id="@+id/trx_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:textColor="@color/dark_gray"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        tools:text="10:11:12" />
+</RelativeLayout>

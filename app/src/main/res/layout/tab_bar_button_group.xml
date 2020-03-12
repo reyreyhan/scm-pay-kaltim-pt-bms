@@ -1,0 +1,47 @@
+<LinearLayout
+
+    android:id="@+id/buttonGroupTabs"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/shape_toolbar"
+    android:gravity="center"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/appButtonItemTabIdPelanggan"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector_tab_btn"
+
+
+
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:padding="5dp"
+        android:tag="0"
+        android:text="@string/tab_id_pelanggan"
+        android:textAllCaps="false"
+        android:textColor="@drawable/selector_tab_btn_textcolor"
+        android:textSize="@dimen/textSmall" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appButtonItemTabDaftarPelanggan"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+
+        android:background="@drawable/unselector_tab_btn"
+
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center"
+        android:padding="5dp"
+        android:tag="1"
+        android:text="@string/tab_daftar_id_pelanggan"
+        android:textAllCaps="false"
+        android:textColor="@drawable/unselector_tab_btn_textcolor"
+        android:textSize="@dimen/textSmall" />
+</LinearLayout>

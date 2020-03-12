@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/colorPrimary_ppob"
+    android:minHeight="?android:attr/actionBarSize"
+    android:theme="@style/SBFTheme"
+    app:contentInsetEnd="0dp"
+    app:contentInsetEndWithActions="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:orientation="horizontal">
+
+            <com.bm.main.fpl.templates.AutoScaleTextView
+                android:id="@+id/asal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                tools:text="ASAL 1234567890123456"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_arrows_long_right"
+                tools:ignore="ContentDescription" />
+
+            <com.bm.main.fpl.templates.AutoScaleTextView
+                android:id="@+id/tujuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                tools:text="TUJUAN 1234567890 1234567890"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+
+        <com.bm.main.fpl.templates.AutoScaleTextView
+            android:id="@+id/textViewToolbarSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:maxLines="1"
+            tools:text="19 Desember 2017 - 3 Penumpang"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSmall"/>
+    </LinearLayout>
+</androidx.appcompat.widget.Toolbar>
+
+

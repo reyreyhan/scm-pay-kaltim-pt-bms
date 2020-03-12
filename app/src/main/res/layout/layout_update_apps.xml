@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_update_apps"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+
+    android:gravity="center"
+    android:background="@drawable/footer_landscape">
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" -->
+    <!---->
+    <!--android:layout_margin="@dimen/activity_horizontal_margin"-->
+    <!---->
+    <!---->
+    <!--android:orientation="vertical" >-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_gravity="center"
+
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="Pembaruan tersedia"
+            android:textColor="@color/md_grey_600" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+android:layout_weight="1"
+        android:layout_gravity="center"
+
+
+        android:adjustViewBounds="true"
+android:importantForAccessibility="no"
+
+        android:src="@drawable/ic_update_apps" />
+<!--<android.support.v7.widget.AppCompatButton-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+   <!---->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/activity_horizontal_margin"-->
+    <!---->
+    <!--android:background="@drawable/button_grey_selector"-->
+    <!--android:clickable="true"-->
+    <!--android:focusable="true"-->
+
+    <!--android:fontFamily="@font/roboto_light"-->
+    <!--android:text="Apa yang baru !!!"-->
+    <!--android:textAllCaps="false"-->
+
+
+    <!--android:textColor="@color/md_black_1000"-->
+    <!--android:textSize="@dimen/textNormal" />-->
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:background="@drawable/selector_button_blue_white_pressed"
+        android:textColor="@drawable/selector_text_blue_white_selected"
+        tools:text="Untuk dapat melanjutkan,\n silakan perbarui aplikasi Anda." />
+
+    <LinearLayout
+        android:id="@+id/linUrgentYes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_no"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_blue_white_pressed"
+            android:clickable="true"
+            android:focusable="true"
+
+            android:fontFamily="@font/roboto_light"
+            android:text="Tidak"
+            android:textAllCaps="false"
+
+
+            android:textColor="@color/md_blue_500"
+            android:textSize="@dimen/textNormal" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_yes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_blue_pressed"
+            android:clickable="true"
+            android:focusable="true"
+
+            android:fontFamily="@font/roboto_light"
+            android:text="Ya"
+            android:textAllCaps="false"
+
+
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linUrgentNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_nanti"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_blue_white_pressed"
+            android:clickable="true"
+            android:focusable="true"
+
+            android:fontFamily="@font/roboto_light"
+            android:text="Nanti"
+            android:textAllCaps="false"
+
+
+            android:textColor="@color/md_blue_500"
+            android:textSize="@dimen/textNormal" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_perbaharui"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_blue_pressed"
+            android:clickable="true"
+            android:focusable="true"
+
+            android:fontFamily="@font/roboto_light"
+            android:text="Perbaharui"
+            android:textAllCaps="false"
+
+
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+    </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

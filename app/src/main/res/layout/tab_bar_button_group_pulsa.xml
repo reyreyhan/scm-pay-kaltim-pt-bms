@@ -1,0 +1,88 @@
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/buttonGroupTabs"
+    android:layout_width="match_parent"
+android:baselineAligned="false"
+    android:layout_height="40dp"
+    android:background="@drawable/shape_toolbar_pulsa"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linItemTabRegular"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:id="@+id/appButtonItemTabRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/selector_tab_btn_pulsa"
+
+
+
+            android:fontFamily="@font/roboto_regular"
+
+            android:padding="5dp"
+            android:tag="0"
+            android:text="REGULAR"
+            android:textAllCaps="false"
+            android:textColor="@drawable/selector_tab_btn_textcolor"
+            android:textSize="@dimen/textSmall" />
+
+        <View
+            android:id="@+id/viewItemTabRegular"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/selector_indicator_tab_btn_group_home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linItemTabPaketData"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appButtonItemTabPaketData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:background="@drawable/unselector_tab_btn_pulsa"
+
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:padding="5dp"
+            android:tag="1"
+            android:text="PAKET DATA"
+            android:textAllCaps="false"
+            android:textColor="@drawable/unselector_tab_btn_textcolor"
+            android:textSize="@dimen/textSmall" />
+        <View
+            android:id="@+id/viewItemTabPaketData"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/unselector_indicator_tab_btn_group_home" />
+    </LinearLayout>
+</LinearLayout>

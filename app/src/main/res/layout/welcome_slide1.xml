@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:importantForAccessibility="no"
+    android:orientation="vertical"
+    android:background="@drawable/bg_batik_blue"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+
+        android:layout_height="match_parent"
+        >
+        <!--<View android:layout_height="50dp" android:layout_width="match_parent" android:background="@drawable/intro_shadow_effect_blue" android:layout_alignParentBottom="true"/>-->
+
+
+        <!--<com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout-->
+
+            <!--android:layout_width="@dimen/intro_image"-->
+            <!--android:layout_height="@dimen/intro_image"-->
+
+
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_marginTop="75dp"-->
+
+            <!--android:orientation="vertical"-->
+            <!--shimmer:auto_start="true"-->
+            <!--shimmer:duration="5000">-->
+
+
+
+        <!--</com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>-->
+        <FrameLayout
+android:id="@+id/linCurve"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_curve_intro"
+android:background="@drawable/curve_intro_blue"
+
+
+
+android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+            <!--<com.bm.main.fpl.templates.AutoResizeTextView-->
+                <!--android:id="@+id/textViewHeader"-->
+
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/md_grey_500"-->
+                <!--android:gravity="center"-->
+
+                <!--android:textSize="@dimen/textMediumHeader"-->
+                <!--android:text="@string/intro_header_satu"/>-->
+            <!--<com.bm.main.fpl.templates.AutoResizeTextView-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/md_grey_500"-->
+                <!--android:gravity="center"-->
+
+
+                <!--android:textSize="@dimen/textNormalCaption"-->
+                <!--android:text="@string/intro_sub_header_satu"/>-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" android:src="@drawable/curve_intro_blue" />-->
+        </FrameLayout>
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+
+            <!--android:background="@drawable/frame_rounded_transparant"-->
+            <!--/>-->
+        <ImageView
+            android:id="@+id/imageViewIntro1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+
+
+
+            android:src="@drawable/intro1"
+            android:importantForAccessibility="no" />
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

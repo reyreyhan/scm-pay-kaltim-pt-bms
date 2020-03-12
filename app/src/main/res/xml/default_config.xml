@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>apiUrlFP</key>
+        <value>http://dev.apimobilesbf.fastpay.co.id/simulator/</value>
+    </entry>
+    <entry>
+        <key>apiUrlFpDevel</key>
+        <value>http://dev.apimobilesbf.fastpay.co.id/simulator/</value>
+    </entry>
+
+    <entry>
+        <key>apiUrlFT</key>
+        <value>https://api.fastravel.co.id/</value>
+    </entry>
+
+    <entry>
+        <key>apiUrlPOSDevel</key>
+        <value>https://api-pos.fastpay.co.id/api/</value>
+    </entry>
+
+    <entry>
+        <key>apiUrlPOS</key>
+        <value>https://api-pos.fastpay.co.id/api/</value>
+    </entry>
+
+    <!-- URL -->
+    <!--<entry>-->
+        <!--<key>urlHelp</key>-->
+        <!--<value>https://support.fastpay.co.id:4437/phplive/phplive.php?d=0&amp;onpage=livechatimagelink&amp;title=Live+Chat+Image+Link</value>-->
+    <!--</entry>-->
+
+    <entry>
+        <key>minVersionCode</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>forceUpdate</key>
+        <value>no</value>
+    </entry>
+    <entry>
+        <key>onBoard</key>
+        <value>{"response_value":[{"onboard":"https://www.fastpay.co.id/blog/wp-content/uploads/2019/10/onboard_profit-01-min-1.jpg"},{"onboard":"https://www.fastpay.co.id/blog/wp-content/uploads/2019/10/onboard_profit-02-min-1.jpg"},{"onboard":"https://www.fastpay.co.id/blog/wp-content/uploads/2019/10/onboard_profit-03-min-1.jpg"},{"onboard":"https://www.fastpay.co.id/blog/wp-content/uploads/2019/10/onboard_profit-04-min-1.jpg"}]}</value>
+    </entry>
+    <entry>
+        <key>isBigPromo</key>
+        <value>0</value>
+    </entry>
+    <entry>
+        <key>bigPromo</key>
+        <value>''</value>
+    </entry>
+
+    <entry>
+        <key>isToolTipAjakBisnis</key>
+        <value>0</value>
+    </entry>
+
+    <entry>
+        <key>contentToolTipAjakBisnis</key>
+        <value>Ajak mitra Anda dan raih komisinya</value>
+    </entry>
+
+    <entry>
+        <key>isPopupPromo</key>
+        <value>0</value>
+    </entry>
+    <entry>
+        <key>urlImgPopupPromo</key>
+        <value>''</value>
+    </entry>
+    <entry>
+        <key>urlCTAPopupPromo</key>
+        <value>https://fastpay.co.id</value>
+    </entry>
+
+    <entry>
+        <key>date_range_komisi</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>date_range_mutasi</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>date_range_report</key>
+        <value>1</value>
+    </entry>
+
+    <entry>
+        <key>api_youtube</key>
+        <value>xxxxxx</value>
+    </entry>
+
+    <entry>
+        <key>qrStrukJogjaKita</key>
+        <value>0</value>
+    </entry>
+
+
+
+</defaultsMap>

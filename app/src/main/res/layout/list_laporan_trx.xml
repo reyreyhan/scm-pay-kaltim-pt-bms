@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+
+    android:animateLayoutChanges="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:orientation="vertical" android:animateLayoutChanges="true" android:background="@drawable/shape_card_edge_grey">
+
+        <LinearLayout
+            android:id="@+id/linMainListProduk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center"
+            android:orientation="horizontal"
+android:weightSum="3"
+            android:padding="10dp"
+
+           >
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1.7"
+               android:orientation="vertical">
+               <TextView
+                   android:id="@+id/textViewProduk"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical|start"
+                   android:layout_gravity="center"
+                   tools:text="123456789012"
+                   android:textSize="@dimen/textSmall"
+                   android:fontFamily="@font/roboto_light"  />
+               <TextView
+                   android:id="@+id/textViewKeterangan"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical|start"
+                   android:layout_gravity="center"
+                   tools:text="123456789012"
+                   android:textSize="@dimen/textSmall"
+                   android:fontFamily="@font/roboto_light"  />
+               <TextView
+                   android:id="@+id/textViewTanggalTrx"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical|start"
+                   android:layout_gravity="center"
+                   tools:text="123456789012"
+                   android:textSize="@dimen/textSmall"
+                   android:fontFamily="@font/roboto_light"  />
+           </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                >
+                <TextView
+                    android:id="@+id/textViewNominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|end"
+                    android:layout_gravity="center"
+                    tools:text="Rp 1.000.000"
+                    android:textSize="@dimen/textSmall"
+                    android:fontFamily="@font/roboto_light"  />
+                <TextView
+                    android:id="@+id/textViewStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|end"
+                    android:layout_gravity="center"
+                    tools:text="SUKSES"
+                    android:textColor="@color/md_green_500"
+                    android:textSize="@dimen/textSmall"
+                    android:fontFamily="@font/roboto_light"  />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewCetak"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="0.3"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_print_blue"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linMainListProdukInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+
+
+
+        android:visibility="gone"
+        >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="@color/md_blue_grey_300"/>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3"
+  >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.7"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:layout_marginStart="5dp">
+            <TextView
+                android:id="@+id/textViewProdukInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|start"
+                android:layout_gravity="center"
+                tools:text="Pembelian voucher pulsa XXXXXXXXXXXXXXXXXXXXX berhasil ke no XXXXXXXXXXXX"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"  />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="2dp">
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_gravity="center"
+                tools:text="Kode Voucher SN"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_thin"  />
+            <TextView
+                android:id="@+id/textViewSerialNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_gravity="center"
+                tools:text="00000000000000000000"
+                android:textColor="@color/md_green_500"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"  />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imageViewClosed"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="top"
+                android:adjustViewBounds="true"
+android:layout_marginTop="-2dp"
+android:layout_marginRight="-2dp"
+                android:src="@drawable/ic_closed_blue"
+                tools:ignore="ContentDescription"
+                android:layout_marginEnd="-2dp" />
+
+            <ImageView
+                android:id="@+id/imageViewCopySn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_gravity="bottom"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:src="@drawable/ic_copy"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CaraDepositActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="130dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="Silahkan pilih informasi yang Anda butuhkan"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/textViewJudul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_light"
+                android:text="Pilih Kategori"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/_12sdp" />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textViewNamaKategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="5dp"
+                android:drawableEnd="@drawable/spinner_down"
+                android:drawableRight="@drawable/spinner_down"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Kategori"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/_12sdp"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true" />
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/md_white_1000"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+
+                app:cardUseCompatPadding="true">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/md_white_1000"
+
+                        android:orientation="vertical">
+
+                        <com.bm.main.fpl.templates.htmltextview.HtmlTextView
+                            android:id="@+id/textViewShowContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/activity_horizontal_margin" />
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="@dimen/_70sdp"
+
+
+        android:animateLayoutChanges="true"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appCompatButtonDeposit"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+
+            android:background="@drawable/selector_button_red_pressed"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Deposit Sekarang"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:gravity="center"
+    android:weightSum="3">
+<ImageView
+    android:id="@+id/imageViewChoicePrinter"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.3"
+    app:srcCompat="@drawable/ic_success_green"
+    android:visibility="invisible"
+    tools:visibility="visible"/>
+    <LinearLayout
+        android:id="@+id/lin_main_device"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.7"
+        android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="@dimen/textNormalCaption"
+        android:textColor="@color/md_black_1000"
+        android:textAllCaps="false"
+        android:text="Galaxy Nexus"
+        android:fontFamily="@font/roboto_light"
+        />
+	
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/roboto_light"
+        android:textSize="@dimen/textNormal"
+        android:text="000000000"
+       />
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_pair"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/selector_button_blue_pressed"
+        android:text="@string/text_pair"
+        android:fontFamily="@font/roboto_light"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textNormal"
+        android:textColor="@color/md_white_1000"
+        />
+</LinearLayout>

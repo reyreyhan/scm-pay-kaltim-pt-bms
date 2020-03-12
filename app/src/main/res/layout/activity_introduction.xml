@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context="com.bm.main.fpl.activities.IntroductionActivity">
+
+
+<androidx.core.view.ViewPager
+    android:id="@+id/view_pager"
+    android:labelFor="@id/view_pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+<LinearLayout
+    android:id="@+id/layoutDots"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="5dp"
+    android:gravity="center"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:orientation="horizontal"/>
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:alpha=".5"
+    android:layout_above="@id/layoutDots"
+    android:background="@android:color/white" />
+
+<Button
+    android:id="@+id/btn_next"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:textSize="@dimen/textNormal"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginEnd="20dp"
+
+    android:textAllCaps="true"
+    android:fontFamily="@font/roboto_medium"
+    android:background="@null"
+    android:text="Berikutnya"
+    android:gravity="center"
+    android:textColor="@color/md_grey_600"
+    android:layout_marginBottom="5dp"/>
+
+<Button
+    android:id="@+id/btn_skip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:background="@null"
+    android:text="lewat"
+    android:gravity="center"
+    android:visibility="invisible"
+    android:layout_marginBottom="5dp"
+   />
+
+</RelativeLayout>
+

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.BpjsActivity">
+
+    <LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+
+    android:orientation="vertical"
+  >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary" />
+
+    <!--<View-->
+
+    <!--android:background="@drawable/curve_toolbar_bg"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="10dip"-->
+
+    <!--/>-->
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+
+        android:scrollbars="none"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+                >
+
+                <!--<include-->
+                    <!--android:id="@+id/buttonGroupTabs"-->
+                    <!--layout="@layout/tab_bar_button_group"-->
+                    <!--android:visibility="gone" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/materialEditTextPrefix"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|center_vertical"
+                        android:layout_weight="0.7"
+
+                        android:focusableInTouchMode="false"
+
+                        android:fontFamily="@font/roboto_light"
+                        android:gravity="center"
+                        android:text="88888"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+
+                        android:textSize="@dimen/textNormal"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true"
+
+                        />
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/materialEditTextIdPelanggan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|center_vertical"
+
+                        android:layout_weight="2.3"
+
+                        android:fontFamily="@font/roboto_light"
+                        android:hint="@string/hint_id_pelanggan"
+                        android:imeOptions="actionNext"
+
+
+                        android:inputType="number"
+                        android:maxLength="16"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+                        android:textSize="@dimen/textNormal"
+
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_bottomTextSize="@dimen/textSmall"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true"
+                        app:met_clearButton="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewAddressBook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:layout_gravity="center"
+
+                        android:layout_marginLeft="-25dp"
+                        android:layout_marginStart="-25dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_address_book" />
+
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextNoHandphone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+android:layout_weight="2"
+
+                    android:fontFamily="@font/roboto_light"
+                    android:hint="@string/hint_no_hp_customer"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:digits="1234567890"
+                    android:maxLength="19"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+app:met_clearButton="true"
+
+                    />
+                <ImageView
+                    android:id="@+id/imageViewContactBook"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+
+                    android:layout_gravity="center"
+
+                    android:layout_marginLeft="-25dp"
+                    android:layout_marginStart="-25dp"
+                    android:src="@drawable/ic_address_book" />
+            </LinearLayout>
+                <com.bm.main.fpl.templates.CustomFontCheckBox
+                    android:id="@+id/checkboxSimpanId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:checked="false"
+                    android:text="@string/simpan_id_pelanggan"
+
+                    />
+
+                <com.bm.main.fpl.templates.TextViewPlus
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Bayar Hingga"
+                    android:textSize="@dimen/textNormal"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.bm.main.fpl.templates.RadioGroupTable
+                        android:id="@+id/radioGroupPeriode"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:padding="2dp">
+
+                        <TableRow
+                            android:layout_marginTop="2dp"
+                            android:weightSum="4">
+
+                            <RadioButton
+                                android:id="@+id/radioButton1"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:checked="true"
+                                android:fontFamily="@font/roboto_regular"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="1"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton2"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="2"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton3"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="3"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton4"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="4"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginTop="1dp"
+                            android:weightSum="4">
+
+                            <RadioButton
+                                android:id="@+id/radioButton5"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="5"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton6"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="6"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton7"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="7"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton8"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="8"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginBottom="2dp"
+                            android:weightSum="4">
+
+                            <RadioButton
+                                android:id="@+id/radioButton9"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="9"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton10"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="10"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton11"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="11"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton12"
+                                android:layout_width="0px"
+                                android:layout_height="50dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rbtn_selector_table"
+                                android:button="@null"
+                                android:fontFamily="@font/roboto_regular"
+
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:tag="12"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                                android:textSize="@dimen/textSmall" />
+                        </TableRow>
+                    </com.bm.main.fpl.templates.RadioGroupTable>
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_lanjutkan"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/selector_button_red_pressed"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/lanjutkan"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    </LinearLayout>
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
+    <include
+
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout><!--</RelativeLayout>-->

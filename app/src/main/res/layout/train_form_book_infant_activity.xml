@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    android:orientation="vertical"
+    tools:context="com.bm.main.single.ftl.train.activities.TrainFormBookInfantActivity">
+
+    <include
+        android:id="@+id/toolbarForm"
+        layout="@layout/toolbar_form_passanger" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+
+           
+            <com.bm.main.fpl.templates.clearableedittext.ClearableEditText
+                android:id="@+id/textNameInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Lengkap (Sesuai Kartu Keluarga/Paspor)"
+                android:maxLength="100"
+                android:inputType="text"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:textAllCaps="true"
+                android:maxLines="1"
+
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                android:fontFamily="@font/roboto_regular"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="(tanpa gelar dan tanda baca)"
+                android:textSize="@dimen/textSmall" />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="No Identitas"
+                android:inputType="text"
+                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+
+                android:textAllCaps="true"
+                android:maxLength="20"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                android:fontFamily="@font/roboto_regular"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+                app:met_clearButton="true"
+                tools:visibility="visible"
+                android:visibility="gone"
+                app:met_maxCharacters="20"
+                app:met_minCharacters="5"
+
+                />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textBornInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:hint="Tanggal Lahir"
+                android:inputType="text"
+
+                android:textAllCaps="true"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                android:focusableInTouchMode="false"
+                android:fontFamily="@font/roboto_regular"
+
+
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true" />
+
+          
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+
+                android:layout_marginBottom="100dp"
+
+
+                android:textAlignment="center"
+                android:textSize="@dimen/textMedium"
+                android:text="Selesai"
+                android:textColor="@color/md_white_1000"
+                android:textAllCaps="false"
+                android:background="@drawable/selector_button_orange_pressed"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

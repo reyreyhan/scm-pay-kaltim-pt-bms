@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="95dp"
+
+
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:id="@+id/linMainListProduk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_card_selected"
+
+        android:gravity="center" android:layout_gravity="center">
+
+        <FrameLayout
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/imageViewWatermark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:alpha="0.1"
+                card_view:srcCompat="@drawable/srikandi"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+
+        <TextView
+
+            android:id="@+id/textViewPlusNamaProduk"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+android:layout_alignParentTop="true"
+            android:gravity="center"
+
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            tools:text="Nama Menu \n menu \n menu \n menu"
+            android:textColor="@drawable/selector_card_textcolor_selected"
+            android:textSize="@dimen/textVerySmall"
+
+            android:fontFamily="@font/roboto_medium"
+            tools:ignore="HardcodedText" />
+        <TextView
+android:layout_below="@+id/textViewPlusNamaProduk"
+            android:id="@+id/textViewPlusNominalProduk"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+
+            android:gravity="center"
+android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            tools:text="Nama Menu"
+            android:textColor="@drawable/selector_card_textcolor_selected"
+            android:textSize="@dimen/textVerySmall"
+
+            android:fontFamily="@font/roboto_regular"
+             />
+
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/frame_ribbon"
+        android:visibility="gone"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="-1dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            card_view:srcCompat="@drawable/ic_promo"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

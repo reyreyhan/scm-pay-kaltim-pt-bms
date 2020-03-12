@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">PROFIT</string>
+
+    <string name="default_lang">id</string>
+    <string name="id_lang">in</string>
+    <string name="id_country">IN</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="menu_home">Beranda</string>
+    <string name="menu_sell">Penjualan</string>
+    <string name="menu_qris">Pembayaran QR</string>
+    <string name="menu_history">Histori Transaksi</string>
+    <string name="menu_report">Laporan</string>
+    <string name="menu_management">Kelola Toko</string>
+    <string name="menu_setting">Pengaturan</string>
+    <string name="menu_help">Bantuan</string>
+    <string name="menu_category">Kategori Produk</string>
+    <string name="menu_add_category">Tambah Kategori</string>
+    <string name="menu_edit_category">Edit Kategori</string>
+    <string name="menu_add_supplier">Tambah Supplier</string>
+    <string name="menu_edit_supplier">Edit Supplier</string>
+    <string name="menu_add_customer">Tambah Pelanggan</string>
+    <string name="menu_edit_customer">Edit Pelanggan</string>
+    <string name="menu_add_product">Tambah Barang</string>
+    <string name="menu_edit_product">Edit Barang</string>
+    <string name="menu_scan_barcode">Scan Barcode</string>
+    <string name="menu_detail_transaction">Detail Transaksi</string>
+    <string name="menu_hutang_piutang">Hutang/Piutang</string>
+    <string name="menu_hutang_supplier">Daftar Hutang Supplier</string>
+    <string name="menu_piutang_customer">Daftar Piutang Pelanggan</string>
+    <string name="menu_piutang_customer_all">Piutang Terakhir</string>
+    <string name="menu_hutang_supplier_all">Hutang Terakhir</string>
+    <string name="menu_choose_product">Pilih Barang</string>
+    <string name="menu_sell_manual">Penjualan</string>
+    <string name="menu_choose_customer">Pilih Pelanggan</string>
+    <string name="menu_choose_supplier">Pilih Supplier</string>
+
+
+    <string name="reason_permission_read_phone_state">Anda harus memberikan izin untuk mengakses IMEI dari perangkat Anda</string>
+    <string name="reason_permission_location">Izinkan untuk mendapatkan lokasi dari perangkat Anda</string>
+    <string name="reason_permission_camera">Anda harus memberikan izin sebelum dapat menggunakan kamera dan penyimpanan</string>
+    <string name="reason_permission_bluetooth">Izinkan untuk mengakses bluetooth dari perangkat Anda</string>
+    <string name="reason_permission_write_external">Izinkan untuk menyimpan gambar ke perangkat Anda</string>
+
+
+    <string name="lbl_tagline_1">Kelola Toko dengan Mudah!</string>
+    <string name="lbl_tagline_2">Silahkan masuk dan kelola kebutuhan toko Anda!</string>
+    <string name="lbl_welcome">Selamat Datang!</string>
+    <string name="lbl_tagline_3">Daftarkan warung Anda dan nikmati kemudahannya.</string>
+    <string name="lbl_tagline_4">Kelola semua kebutuhan toko Anda</string>
+
+    <string name="lbl_title_manage">Cek sesuaikan data barang, kategori produk,\ndata pelanggan, data supplier dan hutang piutang\nToko Anda</string>
+    <string name="lbl_manage_produk_title">Data Barang</string>
+    <string name="lbl_manage_produk_info">Atur Data Barang Toko Anda!</string>
+    <string name="lbl_manage_kategori_title">Kategori Produk</string>
+    <string name="lbl_manage_kategori_info">Atur Kategori Produk Toko Anda!</string>
+    <string name="lbl_manage_discount_title">Diskon Barang</string>
+    <string name="lbl_manage_discount_info">Atur Diskon Toko Anda!</string>
+    <string name="lbl_manage_supplier_title">Data Supplier</string>
+    <string name="lbl_manage_supplier_info">Cek Data Supplier Toko Anda!</string>
+    <string name="lbl_manage_pelanggan_title">Data Pelanggan</string>
+    <string name="lbl_manage_pelanggan_info">Cek Data Pelanggan Anda!</string>
+    <string name="lbl_manage_credit_title">Hutang / Piutang</string>
+    <string name="lbl_manage_credit_info">Cek Hutang/Piutang Toko Anda!</string>
+    <string name="lbl_manage_kulakan_title">Barang Kulakan</string>
+    <string name="lbl_manage_kulakan_info">Atur Barang Kulakan Toko Anda!</string>
+
+
+    <string name="lbl_title_report">Cek stok barang, transaksi,laba rugi, dan mutasi\nToko Anda</string>
+    <string name="lbl_report_produk_title">Stok Barang</string>
+    <string name="lbl_report_produk_info">Cek stok barang Anda!</string>
+    <string name="lbl_report_kulakan_title">Histori Kulakan</string>
+    <string name="lbl_report_kulakan_info">Cek histori kulakan Anda!</string>
+    <string name="lbl_report_transaksi_title">Transaksi</string>
+    <string name="lbl_report_transaksi_info">Cek transaksi toko Anda!</string>
+    <string name="lbl_report_profit_title">Laba Rugi</string>
+    <string name="lbl_report_profit_info">Cek laba rugi toko Anda!</string>
+    <string name="lbl_report_mutasi_title">Mutasi Kas</string>
+    <string name="lbl_report_mutasi_info">Cek mutasi kas toko Anda!</string>
+
+    <string name="lbl_input_name_title">Nama barang</string>
+    <string name="lbl_input_name_info">Masukkan nama barang. Contoh: Minyak goreng</string>
+    <string name="lbl_input_category_title">Kategori barang</string>
+    <string name="lbl_input_category_info">Pilih kategori barang</string>
+    <string name="lbl_input_price_stock_title">Harga &amp; Stok Barang</string>
+    <string name="lbl_input_price_sell_title">Harga Jual</string>
+    <string name="lbl_input_price_buy_title">Harga Beli</string>
+    <string name="lbl_input_stock_title">Stok Barang</string>
+    <string name="lbl_input_minstock_title">Minimum Stok</string>
+    <string name="lbl_input_desc_title">Keterangan Barang</string>
+    <string name="lbl_input_discount_title">Diskon Barang</string>
+    <string name="lbl_input_barcode_title">Barcode</string>
+    <string name="lbl_input_barcode_info">Masukkan barcode</string>
+
+    <string name="lbl_piutang_sum">Jumlah Piutang</string>
+    <string name="lbl_hutang_sum">Jumlah Hutang</string>
+    <string name="lbl_hutang_supplier">Ke Supplier</string>
+    <string name="lbl_piutang_customer">Pelanggan</string>
+    <string name="lbl_hutang_rp">(Rp)</string>
+    <string name="lbl_hutang">Hutang</string>
+    <string name="lbl_piutang">Piutang</string>
+    <string name="lbl_transaksi">Transaksi</string>
+    <string name="lbl_hutang_belum_lunas">Belum Lunas</string>
+    <string name="lbl_hutang_jatuh_tempo">Jatuh Tempo</string>
+    <string name="lbl_hutang_terakhir">Hutang Terakhir</string>
+    <string name="lbl_piutang_terakhir">Piutang Terakhir</string>
+    <string name="lbl_tagihan">Jumlah Tagihan</string>
+    <string name="lbl_jumlah_yang_dibayarkan">Jumlah yang sudah dibayarkan</string>
+    <string name="lbl_total_yang_dibayarkan">Total yang sudah dibayarkan</string>
+    <string name="lbl_hutang_nominal">Nominal</string>
+
+
+    <string name="lbl_name">Nama</string>
+    <string name="lbl_name_hint">Masukkan Nama Lengkap Anda</string>
+    <string name="lbl_phone">No. Handphone</string>
+    <string name="lbl_phone_hint">Masukkan No. Handphone Anda</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_email_hint">Masukkan Email Anda</string>
+    <string name="lbl_address">Alamat</string>
+    <string name="lbl_address_hint">Masukkan Alamat Anda</string>
+    <string name="lbl_province">Provinsi</string>
+    <string name="lbl_province_hint">Provinsi Anda</string>
+    <string name="lbl_city">Kota</string>
+    <string name="lbl_city_hint">Kota Anda</string>
+    <string name="lbl_phone_login">No. Handphone Anda</string>
+    <string name="lbl_password_login">Password Anda</string>
+    <string name="lbl_omset">Omzet Toko Anda</string>
+    <string name="lbl_phone_2">No. HP</string>
+    <string name="lbl_rp_0">Rp 0</string>
+
+    <string name="lbl_search_product">Cari Barang</string>
+    <string name="lbl_search_category">Cari Kategori</string>
+    <string name="lbl_search_discount">Cari Diskon</string>
+    <string name="lbl_search_customer">Cari Pelanggan</string>
+    <string name="lbl_search_supplier">Cari Supplier</string>
+    <string name="lbl_search_staff">Cari Staff</string>
+    <string name="lbl_search_customer_piutang">Cari Pelanggan Piutang</string>
+    <string name="lbl_search_transaction">Cari Transaksi</string>
+    <string name="lbl_search_invoice">Masukkkan nomor invoice</string>
+    <string name="lbl_search_product_transaction">Cari transaksi barang</string>
+
+
+    <string name="lbl_category_title">Kategori Produk</string>
+    <string name="lbl_category_hint">Nama Kategori Produk</string>
+
+    <string name="lbl_name_supplier">Nama Supplier</string>
+    <string name="lbl_name_supplier_hint">Masukkan Nama Lengkap Supplier Anda</string>
+    <string name="lbl_phone_supplier_hint">Masukkan No. Handphone Supplier Anda</string>
+    <string name="lbl_email_supplier_hint">Masukkan Email Supplier Anda</string>
+    <string name="lbl_address_supplier_hint">Masukkan Alamat Supplier Anda</string>
+
+    <string name="lbl_setting_account_title">Akun</string>
+    <string name="lbl_setting_account_info">Data Diri, Alamat dan Keamanan Akun</string>
+    <string name="lbl_setting_store_title">Toko</string>
+    <string name="lbl_setting_store_info">Profile Toko, Lokasi Toko dan Telepon Toko</string>
+    <string name="lbl_setting_printer_title">Printer</string>
+    <string name="lbl_setting_printer_info">Pengaturan Printer</string>
+    <string name="lbl_setting_staff_title">Data Staff</string>
+    <string name="lbl_setting_staff_info">Aset Data Staff, Tambah Staff, Status Staff</string>
+    <string name="lbl_setting_privacy_title">Kebijakan Privasi</string>
+    <string name="lbl_setting_term_title">Syarat &amp; Ketentuan</string>
+    <string name="lbl_setting_help_title">Pusat Bantuan</string>
+
+    <string name="lbl_detail_id">ID Transaksi:</string>
+    <string name="lbl_detail_datetime">Tanggal</string>
+    <string name="lbl_detail_payment_method">Metode Pembayaran</string>
+    <string name="lbl_detail_operator">Operator</string>
+    <string name="lbl_detail_customer">Pelanggan</string>
+    <string name="lbl_detail_supplier">Supplier</string>
+    <string name="lbl_detail_products">Daftar Produk</string>
+    <string name="lbl_detail_subtotal">Subtotal</string>
+    <string name="lbl_detail_total">Total</string>
+    <string name="lbl_detail_total_item">Total Item</string>
+    <string name="lbl_detail_bayar">Bayar</string>
+    <string name="lbl_detail_tunai">Tunai</string>
+    <string name="lbl_detail_kembalian">Kembalian</string>
+    <string name="lbl_detail_status">Status</string>
+
+
+    <string name="btn_save">Simpan</string>
+    <string name="btn_login">Masuk</string>
+    <string name="btn_register">Daftar</string>
+    <string name="btn_pos">Tokoku</string>
+    <string name="btn_ppob">Pembayaran</string>
+    <string name="btn_grosir">Grosir</string>
+    <string name="btn_add_product">Tambah Barang</string>
+    <string name="btn_add_discount">Tambah Diskon</string>
+    <string name="btn_add_customer">Tambah Pelanggan</string>
+    <string name="btn_add_category">Tambah Kategori</string>
+    <string name="btn_add_supplier">Tambah Supplier</string>
+    <string name="btn_add_staff">Tambah Staff</string>
+    <string name="btn_upload_product">Upload Barang</string>
+    <string name="btn_print">Cetak Struk</string>
+    <string name="btn_cancel_transaction">Batalkan Transaksi</string>
+    <string name="btn_detail_hutang_supplier">Detail Hutang Supplier</string>
+    <string name="btn_detail_piutang_customer">Detail Piutang Pelanggan</string>
+    <string name="btn_bayar">Bayar</string>
+    <string name="btn_add_to_cart">Tambah Ke Keranjang</string>
+    <string name="btn_end">Selesai</string>
+    <string name="btn_share_social">Bagikan</string>
+    <string name="btn_next">Lanjutkan</string>
+
+
+    <string name="btn_see_all">Lihat Semua</string>
+
+
+    <string name="err_empty_category">Nama kategori harus diisi</string>
+    <string name="err_empty_name">Nama lengkap harus diisi</string>
+    <string name="err_empty_email">Email harus diisi</string>
+    <string name="err_email_format">Format Email salah</string>
+    <string name="err_phone_format">Format No. handphone salah</string>
+    <string name="err_empty_phone">No. handphone harus diisi</string>
+    <string name="err_empty_address">Alamat harus diisi</string>
+    <string name="err_empty_province">Provinsi harus diisi</string>
+    <string name="err_empty_city">Kota harus diisi</string>
+    <string name="err_empty_product_name">Nama barang harus diisi</string>
+    <string name="err_empty_stock">Stok tidak boleh kosong</string>
+    <string name="err_empty_sell">Harga jual tidak boleh kosong</string>
+    <string name="err_empty_buy">Harga beli tidak boleh kosong</string>
+    <string name="err_empty_product_category">Kategori barang harus diisi</string>
+
+    <string name="choose_photo_using">Pilih Foto</string>
+    <string name="action_close">Keluar</string>
+    <string name="camera">Foto dari kamera</string>
+    <string name="gallery">Upload dari galeri</string>
+    <string name="remove_photo">Hapus foto</string>
+
+    <integer name="viewfinder_border_width">4</integer>
+    <integer name="viewfinder_border_length">60</integer>
+
+    <plurals name="num_locations_reported">
+        <item quantity="zero">No location reported</item>
+        <item quantity="one">One location reported</item>
+        <item quantity="other">%d locations reported</item>
+    </plurals>
+    <!--    <string name="app_name">FastPay</string>-->
+    <string name="top_sheet_behavior" translatable="false">com.bm.main.fpl.templates.topsheet.TopSheetBehavior</string>
+
+    <string name="roboto_regular">fonts/Roboto-Regular.ttf</string>
+
+    <!--TODO:login menu string-->
+    <string name="roboto_light">fonts/Roboto-Light.ttf</string>
+    <string name="roboto_thin">fonts/Roboto-Thin.ttf</string>
+    <string name="progress_bar_wording">Mohon Tunggu, sedang di proses</string>
+    <string name="string_lupa_password">Lupa Password? Klik disini</string>
+    <string name="string_lupa_password_pin">Lupa Password atau PIN ?</string>
+    <string name="string_masuk">M A S U K</string>
+
+    <!--TODO:InputKey menu String-->
+
+    <!--TODO:detail notif-->
+    <string name="string_daftar">D A F T A R</string>
+
+    <!-- TODO:Hint -->
+    <string name="string_belum_member">Belum Jadi Member?</string>
+    <string name="string_info_login"><![CDATA[Key SMS <strong>otomatis</strong> terisi jika ID outlet dan password yang Anda isikan benar]]></string>
+    <string name="string_question_notif">Apakah Promo ini Menarik Untuk Anda?</string>
+
+
+    <string name="hint_input_key_sms">Masukkan Key SMS Anda</string>
+    <string name="hint_id">No HP atau ID Outlet </string>
+    <string name="hint_password">Password atau PIN</string>
+    <string name="hint_kode_area">Kode Area</string>
+    <string name="hint_no_telepon">No Telepon</string>
+    <string name="hint_no_rekening">Nomor Rekening</string>
+    <string name="hint_OTP">One Time Code</string>
+    <string name="hint_no_kartu">Nomor Kartu</string>
+    <string name="hint_id_pelanggan_no_sambungan">ID Pelanggan/No Sambungan</string>
+    <string name="hint_id_pelanggan">ID Pelanggan</string>
+    <string name="hint_id_pelanggan_no_pajak">Nomor Objek Pajak</string>
+    <string name="hint_id_pelanggan_no_polisi">Nomor Polisi Kendaraan</string>
+    <string name="hint_no_polis">No Polis</string>
+    <string name="hint_transfer_nominal">Nominal Yang Ditransfer</string>
+    <string name="hint_setor_nominal">Nominal Yang Disetor</string>
+    <string name="hint_tarik_nominal">Nominal Yang Ditarik</string>
+    <string name="hint_bayar_nominal">Nominal Yang Dibayar</string>
+    <string name="hint_masuk_nominal_deposit">Masukkan Nominal Deposit</string>
+    <string name="hint_masuk_nominal_deposit_non">Atau Masukkan Nominal Lainnya</string>
+    <string name="hint_no_met_id_pel">No.Meter/ID Pelanggan</string>
+
+    <string name="hint_no_hp_pembeli">No Handphone Pembeli</string>
+    <string name="hint_no_hp_customer">No Handphone Customer</string>
+    <string name="hint_no_handphone">No Handphone</string>
+    <string name="hint_pilih_bank">Pilih BANK</string>
+    <string name="hint_pilih_pdam">Pilih PDAM</string>
+    <string name="hint_pilih_bank_transfer">Pilih Bank Tujuan</string>
+    <string name="hint_pilih_propinsi">Pilih Propinsi</string>
+    <string name="hint_pilih_samsat">Pilih SAMSAT PKB</string>
+    <string name="hint_cari_fmcg">Cari Nama Produk Grosir</string>
+    <string name="hint_cari_propinsi">Cari Propinsi</string>
+    <string name="hint_pilih_kabupaten">Pilih Kabupaten/Kota</string>
+    <string name="hint_pilih_kecamatan">Pilih Kecamatan</string>
+    <string name="hint_pilih_kodepos">Pilih Kodepos</string>
+    <string name="hint_cari_kabupaten">Cari Kabupaten/Kota</string>
+    <string name="hint_cari_kecamatan">Cari Kecamatan</string>
+    <string name="hint_cari_kodepos">Cari Kodepos</string>
+    <string name="hint_pilih_finance">Pilih Finance</string>
+    <string name="hint_pilih_pascabayar">Pilih Provider</string>
+    <string name="hint_pilih_asuransi">Pilih Asuransi</string>
+
+    <string name="hint_pilih_tvkabel">Pilih TV Berlangganan</string>
+    <string name="hint_pilih_kartu_kredit">Pilih Kartu Kredit</string>
+    <string name="hint_cari_pelanggan">Cari Data Pelanggan</string>
+    <string name="hint_tahun_pajak">Tahun Pajak</string>
+    <string name="hint_pilih_pajak">Pilih PAJAK PBB</string>
+    <string name="string_hint_pendaftaran_nama">Isikan Nama Lengkap</string>
+    <string name="string_hint_upline">Upline</string>
+    <string name="string_hint_id_downline">Isikan ID FA/ID Outlet Tujuan</string>
+    <string name="string_hint_pin_transfer">Isikan Password FA/ID Anda</string>
+    <string name="string_hint_nominal_transfer">Isikan Nominal Transfer</string>
+    <string name="string_hint_pendaftaran_nomorhp">Isikan No.HP</string>
+    <string name="string_hint_pendaftaran_alamatemail">Isikan Alamat Email Yang Valid</string>
+    <string name="string_hint_pendaftaran_alamat">Isikan Alamat Lengkap</string>
+    <string name="string_hint_pendaftaran_nama_toko">Isikan Nama Toko Anda</string>
+
+    <string name="string_hint_pendaftaran_propinsi">Pilih Propinsi</string>
+
+
+    <!-- TODO: BLUETOOTH SEVICE-->
+    <string name="string_hint_pendaftaran_kota">Pilih Kota atau Kabupaten</string>
+    <string name="string_hint_pendaftaran_kecamatan">Pilih Kecamatan</string>
+    <!-- TODO:static text-->
+
+    <string name="string_hint_pendaftaran_kodepos">Isikan Kode Pos</string>
+    <string name="hint_kritik_saran"><![CDATA[Isi Komplain di sini]]></string>
+    <string name="text_pair">Pair</string>
+    <string name="lihat_promo">Lihat Promo</string>
+    <string name="cetak">Cetak</string>
+    <string name="on_print">Proses Mencetak..</string>
+    <string name="bayar">Bayar</string>
+
+
+    <string name="beli">BELI</string>
+    <string name="lihat_etiket_pdf">Lihat Etiket PDF</string>
+    <string name="cetak_struk">Cetak Struk</string>
+
+    <string name="warning_nominal_produk">Nominal Produk Harus Dipilih</string>
+    <string name="sukses_terbayar">Sukses Terbayar</string>
+
+    <string name="komisi">Komisi Rp. %1$s/Transaksi</string>
+    <string name="text_bluetooth_off">Bluetooth is Off</string>
+
+    <string name="text_enable">Enable</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--TODO:SMS KEY PAGE-->
+    <string name="text_view_paired">Paired Devices</string>
+    <string name="text_scan_devices">Scan Devices</string>
+    <string name="text_list_devices">List of Devices</string>
+
+
+    <!-- TODO:Menu PLN -->
+
+    <string name="radioRK3">3 Hari</string>
+    <string name="radioRK5">5 Hari</string>
+
+
+    <string name="radioRK7">7 Hari</string>
+    <string name="tab_id_pelanggan">Masukan Id Pelanggan</string>
+    <string name="tab_daftar_id_pelanggan">Daftar Id Pelanggan</string>
+    <string name="laporkan">Laporkan</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="daftar">Daftar Sekarang</string>
+    <string name="baca_selengkapnya">Baca Selengkapnya</string>
+    <string name="tidak_nanti_saja">Nanti Saja</string>
+
+
+    <string name="simpan_id_pelanggan">Simpan Id Pelanggan</string>
+    <string name="simpan_id_pelanggan_pajak">Simpan Nomor Objek Pajak</string>
+    <string name="simpan_id_pelanggan_pkb">Simpan Nomor Polisi Kendaraan</string>
+    <string name="simpan_norek_pelanggan">Simpan No Rekening Pelanggan</string>
+    <string name="simpan_default_pdam">PDAM Favorit Anda</string>
+    <string name="simpan_default_pajak">PAJAK PBB Favorit Anda</string>
+    <string name="simpan_default_samsat">SAMSAT PKB Favorit Anda</string>
+    <string name="locale">in_ID</string>
+    <!--<string airLineName="petunjuk_ubah_pin1"><![CDATA[kirim ke <strong>salah satu</strong> sms center Sentra Bisnis Fastpay dibawah ini:]]></string>-->
+    <string name="head_office"><![CDATA[PT. Bimasakti Multi Sinergi\nGrha Bimasakti, Jl. Delta Raya Utara Kav 49–51\nDeltasari Baru, Sidoarjo, Jawa Timur 61256 ]]></string>
+    <string name="petunjuk_ubah_pin"><![CDATA[Untuk mengubah PIN/Password ID FA Anda, gunakan <strong>Nomor Handphone Yang SUDAH TERDAFTAR di Sentra Bisnis Fastpay.</strong> dengan format:]]></string>
+    <string name="petunjuk_ubah_pin_dialog"><![CDATA[*Pastikan Anda mengirimkan format sms ini menggunakan <strong>Nomor Yang SUDAH TERDAFTAR di Sentra Bisnis Fastpay.</strong>]]></string>
+    <string name="petunjuk_ubah_pin1"><![CDATA[Anda harus memilih salah satu SMS Center dari Sentra Bisnis Fastpay yang ada dibawah ini:]]></string>
+    <string name="petunjuk_ubah_pin_dialog1"><![CDATA[*Pastikan pulsa Anda cukup untuk mengirim SMS.]]></string>
+    <string name="petunjuk_ubah_pin2"><![CDATA[<i>Jika Anda membutuhkan Bantuan, silahkan Klik Live Chat Customer Service dibawah ini:</i>]]></string>
+    <string name="format_ganti_pin">GPIN*PinBaru*PinLama</string>
+    <!--<string airLineName="link_affiliasi"><![CDATA[Dapatkan penghasilan tambahan hingga <strong>Rp. 50.000 - Rp. 700.000 per hari</strong>. Jika ada yang mendaftar  aktivasi melalui link marketing Anda.-->
+    <!--<strong>SEGERA Copy Paste</strong> link marketing Anda dan sebarkan di berbagai media online seperti Website, Blog, Media Sosial seperti Facebook, Twitter, Google+, dll.]]></string>-->
+    <string name="link_live_chat"><![CDATA[<u>Live Chat Customer Service</u>]]></string>
+
+    <string name="sukses_pulsa">Pembelian pulsa %1$s berhasil! \n Pulsa akan segera terkirim ke no hp : %2$s</string>
+
+    <string name="string_header_kritik"><![CDATA[Pilih Kategori Saran & Kritik]]></string>
+    <string name="bluetooth_not_connected"><![CDATA[Tidak dapat terhubung ke printer bluetooth  <br> Pastikan printer bluetooth Anda telah menyala dan <strong>coba kembali.</strong>]]></string>
+
+    <string name="link_affiliasi"><![CDATA[Ayo maksimalkan pendapatanmu hingga <strong>Rp. 800.000 per hari</strong> melalui program <strong>Link Ajak Bisnis</strong>.
+<strong>Cukup klik salin</strong> link ajak bisnis di bawah ini dan sebarkan ke siapapun melalui media social, website, blog, grup Whatsapp, dll.]]></string>
+    <string name="link_web_replika">http://www.fastpay.co.id/?%s</string>
+    <string name="link_refferal">https://play.google.com/store/apps/details?%s</string>
+    <string name="rate_title">Rating %s</string>
+    <string name="rate_message">Jika Anda menyukai %s, maukah Anda memberikan rating kepada aplikasi ini? Rating hanya memakan waktu kurang dari 1 menit. Terimakasih untuk dukungan Anda!</string>
+    <string name="rate">Rating %s</string>
+    <string name="rate_later">Silakan ingatkan saya lagi</string>
+    <string name="rate_cancel">Tidak, terimakasih</string>
+
+
+    <string name="love_dialog_content">Apakah Anda menyukai Aplikasi Fastpay Mobile ini ?</string>
+
+    <!--<string airLineName="panduan_desc">Link Marketing adalah tool marketing loket agar bisa lebih mudah mendaftarkan calon mitra menjadi outlet Sentra Bisnis Fastpay dibawah sistem kemitraan Anda.</string>-->
+    <string name="love_dialog_yes">Ya</string>
+
+    <string name="love_dialog_no">Tidak</string>
+    <string name="panduan_header" tools:ignore="TypographyEllipsis">Dapatkan penghasilan tambahan \n Rp.50,000 hingga Rp. 800,000 per hari...</string>
+
+    <string name="panduan_desc">Link ajak bisnis adalah tool marketing yang akan membantu Anda mendapatkan penghasilan tambahan setiap calon mitra mendaftar dan aktif menjadi outlet Toko Modern Fastpay.</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <!--<string airLineName="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum-->
+    <!--dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel-->
+    <!--semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.-->
+    <!--Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper-->
+    <!--ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis-->
+    <!--viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec-->
+    <!--tortor.-->
+    <!--</string>-->
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+    <string name="action_share">Bagikan</string>
+    <string name="action_reply">Reply</string>
+    <string name="failure_message">Tidak dapat tersambung ke server, silahkan periksa koneksi internet anda (ERR%1$s)</string>
+
+    <string name="failure_message_payment">Tidak dapat menerima respon dari server, silahkan Cek Status Transaksi Anda di menu Laporan Transaksi</string>
+    <string name="currency_symbol">Rp</string>
+    <string name="default_balance">Rp0,00</string>
+    <string name="default_card_number">**** **** **** ****</string>
+
+
+    <string name="preference_mute">mute</string>
+    <string name="turn_on_nfc">Mohon aktifkan NFC untuk membaca informasi kartu.</string>
+    <string name="nfc_off_error">NFC is turned off</string>
+    <string name="reading_card">Membaca Kartu</string>
+
+    <!-- TODO: showcase -->
+    <string name="dont_move">Jangan lepaskan kartu</string>
+    <string name="content_icon_scanner">Klik Scanner untuk input id Pelanggan menggunakan barcode atau QR Code</string>
+    <string name="content_icon_book">Klik Icon untuk memilih ID/Kontak yang telah tersimpan</string>
+    <string name="content_cek_fav">Klik PDAM Favorit Anda untuk mempermudah transaksi</string>
+    <string name="content_cek_simpan">Setelah mengisi ID Pelanggan, Klik Simpan ID Pelanggan mempermudah transaksi</string>
+    <string name="content_cek_fav_pajak">Klik PAJAK PBB Favorit Anda untuk mempermudah transaksi</string>
+    <string name="content_cek_fav_pkb">Klik PAJAK PKB Favorit Anda untuk mempermudah transaksi</string>
+    <string name="content_pilih_tahun_pajak">Pilih Tahun Pajak</string>
+    <string name="ppob_ticketing"><![CDATA[PPOB & TICKETING]]></string>
+    <string name="scan_qrCode"><![CDATA[Scan QR code/Barcode for Fastpay mobile. Jarak ideal untuk membaca Barcode/QRCode kurang lebih 20 Cm.]]></string>
+    <string name="scan_qrCodeKey"><![CDATA[Scan QR code for Fastpay mobile.<br> Jarak ideal untuk membaca QRCode kurang lebih 20 Cm.]]></string>
+    <string name="zxing_button_ok">OK</string>
+    <string name="zxing_msg_camera_framework_bug">Sorry, the Android camera encountered nfc card problem. You may need to restart the device.</string>
+
+
+    <string name="zxing_msg_default_status">Scan the QR or Barcode</string>
+    <string name="content_alert_gps">
+<![CDATA[
+<big><strong>GPS perangkat Anda tidak aktif </strong></big><br>Jangan cemas !!, Aplikasi Fastpay menggunakan service GPS yang ramah baterai.<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat melakukan request ke server atau tidak berjalan dengan normal.
+]]>
+</string>
+
+    <string name="content_alert_location">
+<![CDATA[
+<big><strong>Ijin lokasi  belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay kemungkinan tidak berjalan dengan normal.
+]]>
+</string>
+    <string name="content_alert_group_storage">
+<![CDATA[
+<big><strong>Ijin membaca dan menulis ke penyimpanan handphone  belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat membagikan struk ini.
+]]>
+</string>
+
+    <string name="content_alert_read_key">
+<![CDATA[
+<big><strong>Ijin membaca SMS belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat membaca SMS KEY Anda secara otomatis.
+]]>
+</string>
+    <string name="content_alert_read_otp">
+    <![CDATA[
+    <big><strong>Ijin membaca OTP belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat membaca OTP Anda secara otomatis.
+    ]]>
+    </string>
+    <!--<string airLineName="content_alert_read_contact">-->
+    <!--<![CDATA[-->
+    <!--<big><strong>Ijin membaca buku telepon belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat membaca buku telepon Anda.-->
+    <!--]]>-->
+    <!--</string>-->
+    <string name="content_alert_group_sms">
+    <![CDATA[
+    <big><strong>Ijin membaca dan menerima SMS belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat membaca dan menerima SMS KEY Anda secara otomatis.
+    ]]>
+    </string>
+    <string name="content_alert_camera">
+<![CDATA[
+<big><strong>Ijin mengakses kamera belum di setujui oleh Anda<br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat membaca QRCode id pelanggan Anda.
+]]>
+</string>
+
+
+    <string name="content_alert_kontak">
+<![CDATA[
+<big><strong>Ijin Baca Kontak</strong></big><br>Sampai Anda memberi ijin, aplikasi Fastpay tidak dapat menampilkan nama kontak telepon anda
+]]>
+</string>
+
+    <string name="petunjuk_login"><![CDATA[<big><strong>Berikut cara login aplikasi Fastpay di Android:</strong></big><p>
+1. Masukan nomor handphone Anda atau ID Outlet (Contoh : FA0000) atau (Contoh : 081100000000)<br>2. Lalu masukkan 6 digit pin/ password<br>3. Kemudian klik `Masukan Key SMS Anda`<br>4. Lalu pilih Request Key Baru<br>5. Klik tombol KIRIM<br>6. Tunggu Key SMS sampai masuk di inbox Anda dari Fastpay<br>7.Masukan key SMS Anda yang dikirim oleh Fastpay<br>8. Klik tombol MASUK. Aplikasi Fastpay siap digunakan<br>9. Untuk login berikutnya di handphone yang sama, Anda cukup inputkan Id Outlet dan Pin.<p>
+Berikut video tutorial login aplikasi Fastpay di Android]]></string>
+
+    <string name="upload_resume">Lanjutkan unggah</string>
+    <string name="upload_paused">Unggahan tertunda</string>
+
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="petunjuk_aktivasi_1"><![CDATA[Akun Anda masih <strong>BELUM AKTIF</strong>, sehingga Anda tidak bisa <strong>LOGIN</strong> dan Transaksi. Silakan Aktivasi akun dengan transfer senilai <strong>%s</strong> agar Anda bisa meraih keuntungan jutaan rupiah setiap bulannya.]]></string>
+    <string name="petunjuk_aktivasi_2"><![CDATA[Silakan transfer senilai <strong>%s</strong>, termasuk 3 digit terakhir ke salah satu nomor rekening dibawah ini:]]></string>
+    <string name="petunjuk_aktivasi_3" tools:ignore="TypographyDashes"><![CDATA[1. Mandiri : No.Rek. 141-0021-778899 a.n. Ibnu Sunanto<br>2. BRI : No.Rek. 0360-01000-279-306 a.n. PT Bimasakti Multi Sinergi<br>3. BCA : No.Rek. 822-063-3579 a.n. Ibnu Sunanto<br>4. BNI : No.Rek. 22-7575-8998 a.n. Ibnu Sunanto]]></string>
+
+    <string name="petunjuk_aktivasi_4" tools:ignore="TypographyDashes"><![CDATA[Setelah transfer, silakan kirim bukti transfer ke nomor Whatsapp 0815 5300 4000 atau hubungi CS support kami dengan klik <strong><font color=#2196F3>Live Chat</font></strong>.]]></string>
+
+    <string name="petunjuk_aktivasi_5" tools:ignore="TypographyDashes"><![CDATA[<i>Keterangan :<br> Setelah melakukan transfer, akun Anda akan aktif secara otomatis dan paket  perlengkapan loket akan segera dikirim ke alamat Anda. Info paket perlengkapan loket cek disini.</i>]]></string>
+
+    <string name="petunjuk_aktivasi_6" tools:ignore="TypographyDashes"><![CDATA[Ini dia layanan yang pasti Anda dapatkan dengan menjadi memberfastpay dan bersiaplah mendapatkan keuntungan ratusan ribu tiap harinya]]></string>
+
+    <string name="petunjuk_aktivasi_7" tools:ignore="TypographyDashes"><![CDATA[1. PLN<br>2. pdam<br>3. bpjs<br>4. kartu kredit<br>5. cicilan sepeda motor (fif, adira dll)<br>6. tiket pesawat<br>7. tiket kereta api<br>8. tiket bus & travel<br>9. tiket kapal laut<br>10. menjadi agen bank (melayani tarik tunai, setor tunai)<br>11. penjualan barang tanpa stok barang (fashion, gadget, elektronik, 		mainan anak dll)]]></string>
+    <!--<string airLineName="notification_error_ssl_cert_invalid">pemberitahuan kesalahan ssl cert tidak valid</string>-->
+    <string name="petunjuk_aktivasi_8" tools:ignore="TypographyDashes"><![CDATA[dan masih banyak lagi!! Ayo segera aktifkan akun Anda sekarang juga!untuk selengkapnya bisa dilihat dihalaman ini <strong><font color=#2196F3>%s</font></strong>.]]></string>
+
+    <string name="notification_error_ssl_cert_invalid">Layanan ini sementara tidak dapat di akses</string>
+    <string name="salahpin"><![CDATA[Anda sudah salah memasukan <u><strong>PIN</strong> sebanyak 3 kali.</u> Jika butuh bantuan silahkan klik <strong>Lupa Password atau PIN</strong> di bawah]]></string>
+    <string name="key_sms">Key SMS</string>
+    <string name="request_key_baru">Request Key Baru</string>
+    <string name="input_key_sms">Input Key SMS</string>
+    <string name="atau">Atau</string>
+    <string name="pilih_durasi_request_key_baru">Pilih durasi request key baru</string>
+
+    <string name="aktivasi_akun">Aktivasi Akun</string>
+    <string name="unknown_location">Unknown location</string>
+
+    <string name="default_channel">Default channel</string>
+
+
+    <!--TRAVEL-->
+    <string name="info_status">Terimakasih telah melakukan transaksi di aplikasi Fastpay Mobile. Dapatkan keuntungan berlimpah dengan mengikuti promo Fastpay Travel</string>
+
+
+    <!--PESAWAT -->
+
+    <string name="content_flight_airport_asal">Klik Bandara Asal untuk memilih bandara asal keberangkatan Anda</string>
+    <string name="content_flight_tukar_airport">Klik disini untuk menukar bandara asal keberangkatan Anda menjadi bandara tujuan kedatangan Anda</string>
+
+    <string name="content_flight_airport_tujuan">Klik Bandara Tujuan untuk memilih bandara tujuan kedatangan Anda</string>
+    <string name="content_flight_tanggal_berangkat">Klik Tanggal Keberangkatan untuk memilih tanggal keberangkatan Anda</string>
+    <string name="content_flight_jumlah_penumpang">Klik Jumlah Penumpang untuk menentukan jumlah penumpang dewasa,anak dan bayi dalam keberangkatan Anda</string>
+    <string name="content_flight_cari_pilih_harga">Pilih salah satu untuk menampilkan hasil pencarian berdasarkan harga</string>
+
+
+    <string name="cari_bandara">Cari Kota atau Bandara</string>
+    <!--Header picker-->
+    <string name="title_header_picker_flight_adult">Dewasa</string>
+    <string name="title_header_picker_flight_child">Anak</string>
+    <string name="title_header_picker_flight_baby">Bayi</string>
+    <string name="title_subheader_picker_flight_adult" tools:ignore="Typos">Diatas 12 thn</string>
+    <string name="title_subheader_picker_flight_child" tools:ignore="TypographyDashes,Typos">2-12 thn</string>
+    <string name="title_subheader_picker_flight_baby" tools:ignore="Typos">Dibawah 2 thn</string>
+    <!--action button-->
+    <string name="action_filter">FILTER</string>
+    <string name="action_ganti_tanggal">GANTI TANGGAL</string>
+    <string name="action_ganti_jadwal">GANTI JADWAL</string>
+    <string name="action_tutup">Tutup</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_ok">OK</string>
+    <!--message-->
+    <string name="penumpang_bayi_picker">Jumlah penumpang bayi tidak boleh melebihi jumlah penumpang dewasa </string>
+    <string name="penumpang_max">Jumlah dewasa dan anak maksimum 7 </string>
+    <!--parameter string flight-->
+    <string name="filter_header">Lihat %1$d penerbangan mulai %2$s</string>
+    <string name="filter_button">Lihat %1$d penerbangan</string>
+
+    <!--FLIGHT-->
+
+    <string name="flight_content_same_airport">Bandara asal tidak boleh sama dengan bandara tujuan </string>
+
+    <string name="flight_penumpang_dewasa_1_kosong">Nama Penumpang Dewasa Pertama Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_dewasa_2_kosong">Nama Penumpang Dewasa Kedua Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_dewasa_3_kosong">Nama Penumpang Dewasa Ketiga Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_dewasa_4_kosong">Nama Penumpang Dewasa Kempat Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_dewasa_5_kosong">Nama Penumpang Dewasa Kelima Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_dewasa_6_kosong">Nama Penumpang Dewasa Keenam Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_dewasa_7_kosong">Nama Penumpang Dewasa Ketujuh Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_anak_1_kosong">Nama Penumpang Anak Pertama Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_anak_2_kosong">Nama Penumpang Anak Kedua Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_anak_3_kosong">Nama Penumpang Anak Ketiga Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_anak_4_kosong">Nama Penumpang Anak Kempat Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_anak_5_kosong">Nama Penumpang Anak Kelima Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_anak_6_kosong">Nama Penumpang Anak Keenam Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_bayi_1_kosong">Nama Penumpang Bayi Pertama Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_bayi_2_kosong">Nama Penumpang Bayi Kedua Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_bayi_3_kosong">Nama Penumpang Bayi Ketiga Tidak Boleh Kosong</string>
+    <string name="flight_penumpang_bayi_4_kosong">Nama Penumpang Bayi Keempat Tidak Boleh Kosong</string>
+
+
+    <!--HOTEL-->
+
+    <string name="cari_hotel">Kota, Hotel, Daerah</string>
+
+
+    <!--SHIP-->
+    <string name="cari_pelabuhan">Cari Kota, Pelabuhan, Daerah</string>
+    <string name="title_header_picker_ship_man">Pria</string>
+    <string name="title_header_picker_ship_woman">Wanita</string>
+    <string name="title_subheader_picker_ship_adult" tools:ignore="Typos">2 thn ke atas</string>
+    <string name="title_subheader_picker_ship_baby" tools:ignore="Typos">0 – 2 thn</string>
+    <string name="penumpang_ship_max">Jumlah Penumpan Maximum 10 </string>
+
+    <string name="content_ship_pelabuhan_asal">Klik Pelabuhan Asal untuk memilih pelabuhan asal keberangkatan Anda</string>
+    <string name="content_ship_tukar_pelabuhan">Klik disini untuk menukar pelabuhan asal keberangkatan Anda menjadi pelabuhan tujuan kedatangan Anda</string>
+
+    <string name="content_ship_pelabuhan_tujuan">Klik Pelabuhan Tujuan untuk memilih pelabuhan tujuan kedatangan Anda</string>
+    <string name="content_ship_tahun_berangkat">Klik panah kiri atau kanan untuk memilih tahun keberangkatan Anda</string>
+    <string name="content_ship_bulan_berangkat">Klik nama bulan untuk memilih bulan keberangkatan Anda</string>
+    <string name="content_ship_jadwal_berangkat">Klik Jadwal Keberangkatan untuk memilih jadwal keberangkatan Anda</string>
+    <!--    <string name="content_ship_jumlah_penumpang">Klik Jumlah Penumpang untuk menentukan jumlah penumpang pria dan wanita dalam keberangkatan Anda</string>-->
+    <string name="content_ship_jumlah_penumpang">Klik Jumlah Penumpang untuk menentukan jumlah penumpang dewasa dan bayi dalam keberangkatan Anda</string>
+    <string name="ship_content_same_pelabuhan">Pelabuhan asal tidak boleh sama dengan pelabuhan tujuan</string>
+
+
+    <string name="hint_mobile">No. Phone</string>
+    <string name="hint_nama">Nama</string>
+    <string name="hint_no_identitas">No Identitas</string>
+    <string name="hint_tanggal_lahir">Tanggal Lahir</string>
+    <string name="hint_email">Email</string>
+
+
+    <!--<string name="penumpang_pria_1_kosong">Nama Penumpang Pria Pertama Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_2_kosong">Nama Penumpang Pria Kedua Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_3_kosong">Nama Penumpang Pria Ketiga Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_4_kosong">Nama Penumpang Pria Kempat Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_5_kosong">Nama Penumpang Pria Kelima Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_6_kosong">Nama Penumpang Pria Keenam Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_7_kosong">Nama Penumpang Pria Ketujuh Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_8_kosong">Nama Penumpang Pria Kedelapan Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_9_kosong">Nama Penumpang Pria Kesembilan Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_pria_10_kosong">Nama Penumpang Pria Kesepuluh Tidak Boleh Kosong</string>-->
+
+    <!--<string name="penumpang_wanita_1_kosong">Nama Penumpang Wanita Pertama Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_2_kosong">Nama Penumpang Wanita Kedua Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_3_kosong">Nama Penumpang Wanita Ketiga Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_4_kosong">Nama Penumpang Wanita Keempat Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_5_kosong">Nama Penumpang Wanita Kelima Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_6_kosong">Nama Penumpang Wanita Keenam Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_7_kosong">Nama Penumpang Wanita Ketujuh Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_8_kosong">Nama Penumpang Wanita Kedelapan Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_9_kosong">Nama Penumpang Wanita Kesembilan Tidak Boleh Kosong</string>-->
+    <!--<string name="penumpang_wanita_10_kosong">Nama Penumpang Wanita Kesepuluh Tidak Boleh Kosong</string>-->
+
+
+    <string name="ship_penumpang_dewasa_1_kosong">Nama Penumpang Dewasa Pertama Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_2_kosong">Nama Penumpang Dewasa Kedua Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_3_kosong">Nama Penumpang Dewasa Ketiga Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_4_kosong">Nama Penumpang Dewasa Kempat Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_5_kosong">Nama Penumpang Dewasa Kelima Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_6_kosong">Nama Penumpang Dewasa Keenam Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_7_kosong">Nama Penumpang Dewasa Ketujuh Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_8_kosong">Nama Penumpang Dewasa Kedelapan Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_9_kosong">Nama Penumpang Dewasa Kesembilan Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_dewasa_10_kosong">Nama Penumpang Dewasa Kesepuluh Tidak Boleh Kosong</string>
+
+    <string name="ship_penumpang_bayi_1_kosong">Nama Penumpang Bayi Pertama Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_bayi_2_kosong">Nama Penumpang Bayi Kedua Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_bayi_3_kosong">Nama Penumpang Bayi Ketiga Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_bayi_4_kosong">Nama Penumpang Bayi Keempat Tidak Boleh Kosong</string>
+    <string name="ship_penumpang_bayi_5_kosong">Nama Penumpang Bayi Kelima Tidak Boleh Kosong</string>
+
+
+    <!--TOUR-->
+
+    <string name="dateMonthFormat">MMMM yyyy</string>
+    <string name="dateMonthNumericFormat">MM</string>
+    <string name="dbDateFormat">yyyy-MM-dd</string>
+    <string name="readableDateFormat">EEEE dd MMMM yyyy</string>
+    <string name="defaultDestination">Bali</string>
+    <string name="destinationName">"Semua di %1$s (%2$d Paket Wisata)"</string>
+    <string name="detailPrice">%1$s/pax</string>
+    <string name="detailBuyerData">%1$s, %2$s, %3$s</string>
+    <string name="detailParticipantData">%1$s, %2$s</string>
+    <string name="detailParticipantDataNote">, %1$s</string>
+    <string name="detailParticipantTotal">%1$s Orang</string>
+    <string name="daysLength"> \u2022 %1$d Hari</string>
+    <string name="nightsLength"> \u2022 %1$d Malam</string>
+    <string name="prefixChoosenDestination">Semua di</string>
+
+    <string name="emailEmptyNotification">Email tidak boleh kosong</string>
+    <string name="emailValidityNotification">Format email tidak valid</string>
+    <string name="buyerNameEmptyNotification">Nama Pemesan tidak boleh kosong</string>
+    <string name="phoneNumberEmptyNotification">Nomor handphone tidak boleh kosong</string>
+
+    <string name="participantNameEmptyNotification">Nama Peserta tidak boleh kosong</string>
+    <string name="participantPhoneEmptyNotification">Nomor telepon Peserta tidak boleh kosong</string>
+
+    <string name="participantZeroNotification">Peserta harus lebih dari satu.</string>
+    <string name="tourDateEmptyNotification">Mohon pilih tanggal wisata.</string>
+
+
+    <!--KERETA-->
+    <string name="cari_station">Cari Kota atau Stasiun</string>
+
+    <string name="title_subheader_picker_train_adult" tools:ignore="Typos">3 thn ke atas</string>
+
+    <string name="title_subheader_picker_train_baby" tools:ignore="Typos">0 – 3 thn</string>
+
+    <string name="train_content_same_station">Stasiun asal tidak boleh sama dengan stasiun tujuan </string>
+    <string name="hint_no_handphone_passanger"><![CDATA[No Handphone <i>(08xxxxxxxxxx)</i>]]></string>
+
+    <string name="content_train_station_asal">Klik Stasiun Asal untuk memilih stasiun asal keberangkatan Anda</string>
+    <string name="content_train_tukar_station">Klik disini untuk menukar stasiun asal keberangkatan Anda menjadi stasiun tujuan kedatangan Anda</string>
+
+    <string name="content_train_station_tujuan">Klik Stasiun Tujuan untuk memilih stasiun tujuan kedatangan Anda</string>
+    <string name="content_train_tanggal_berangkat">Klik Tanggal Keberangkatan untuk memilih tanggal keberangkatan Anda</string>
+    <string name="content_train_jumlah_penumpang">Klik Jumlah Penumpang untuk menentukan jumlah penumpang dewasa dan bayi dalam keberangkatan Anda</string>
+
+    <string name="train_content_not_avail_seat">Tidak tersedia kursi</string>
+
+
+    <string name="penumpang_dewasa_1_kosong">Nama Penumpang Dewasa Pertama Tidak Boleh Kosong</string>
+    <string name="penumpang_dewasa_2_kosong">Nama Penumpang Dewasa Kedua Tidak Boleh Kosong</string>
+    <string name="penumpang_dewasa_3_kosong">Nama Penumpang Dewasa Ketiga Tidak Boleh Kosong</string>
+    <string name="penumpang_dewasa_4_kosong">Nama Penumpang Dewasa Kempat Tidak Boleh Kosong</string>
+    <string name="penumpang_bayi_1_kosong">Nama Penumpang Bayi Pertama Tidak Boleh Kosong</string>
+    <string name="penumpang_bayi_2_kosong">Nama Penumpang Bayi Kedua Tidak Boleh Kosong</string>
+    <string name="penumpang_bayi_3_kosong">Nama Penumpang Bayi Ketiga Tidak Boleh Kosong</string>
+    <string name="penumpang_bayi_4_kosong">Nama Penumpang Bayi Keempat Tidak Boleh Kosong</string>
+
+
+    <string name="content_cancek_book"><![CDATA[Kode Booking Anda <strong>%s</strong> tersimpan di Menu Pesanan Saya]]></string>
+    <string name="content_cancek_book_ship"><![CDATA[Kode Pembayaran Anda <strong>%s</strong> tersimpan di Menu Pesanan Saya]]></string>
+
+
+    <string name="info_otp_tarik_tunai"><![CDATA[* Pastikan pulsa <strong>No HP Nasabah</strong> tidak kurang dari Rp.1.000 untuk proses pengiriman <strong>OTP</strong>]]></string>
+
+
+    <!--Syarat Ketentuan dan privasi-->
+    <string name="p_judul">Ketentuan Penggunaan Aplikasi Fastpay</string>
+    <string name="p_pengantar">Pengantar</string>
+    <string name="p_definisi">Definisi</string>
+    <string name="p_sub_definisi">Dalam Ketentuan Penggunaan ini menggunakan istilah-istilah sebagai berikut:</string>
+    <string name="p_kecakapan_hukum">Kecakapan Hukum</string>
+    <string name="p_detail_kecakapan_hukum">Dengan menggunakan Aplikasi, Anda dianggap benar-benar cakap, mampu, dan kompeten untuk mengikatkan diri dalam persyaratan, kondisi dan pernyataan yang diperlukan untuk setiap Layanan yang termuat di dalamnya, yang tidak perlu dibuktikan lebih lanjut oleh Fastpay.</string>
+    <string name="p_haki">Hak atas Kekayaan Intelektual</string>
+    <string name="p_detail_haki">Anda mengakui dan menyetujui bahwa Hak atas Kekayaan Intelektual (selanjutnya disebut sebagai "HAKI") seperti (namun tidak terbatas pada) logo, aplikasi, merek, layanan konten, produk, fitur adalah milik Fastpay yang digunakan atau ditampilkan pada Aplikasi, dan/atau setiap HAKI milik pihak ketiga selain Fastpay yang menawarkan dan/atau menyediakan produk dan/atau layanan pada atau melalui Aplikasi. Anda tidak dibenarkan untuk menyalin, menggunakan, mengaplikasikan dan mengimplementasikan secara keseluruhan atau sebagian, tanpa persetujuan tertulis sebelumnya dari Fastpay dan/atau pihak lainnya yang memiliki HAKI yang terdapat pada Aplikasi. Setiap HAKI berada di bawah perlindungan hukum yang berlaku di Indonesia.</string>
+    <string name="p_akses_apps">Mengakses Aplikasi</string>
+    <string name="p_privacy_policy">Privacy Policy</string>
+    <string name="p_password">Password</string>
+    <string name="p_sms_key">SMS Key</string>
+    <string name="p_layanan">Layanan</string>
+    <string name="p_tarif">Tarif</string>
+    <string name="p_bonus_trx">Bonus Transaksi pada Aplikasi</string>
+    <string name="p_hentikan_akses">Penghentian Akses</string>
+    <string name="p_batas_tanggungjawab">Pembatasan Tanggung Jawab</string>
+    <string name="p_perubahan_ketentuan">Perubahan Ketentuan Penggunaan</string>
+    <string name="p_hukum_yg_berlaku">Hukum yang Berlaku</string>
+
+
+    <string name="detail_header_definisi">Dalam Ketentuan Penggunaan ini menggunakan istilah-istilah sebagai berikut:</string>
+
+    <string name="url_fastpay"><![CDATA[<center>Untuk informasi lebih lanjut dapat dilihat di <font color=\"#2196F3\"><a href=\"http://www.fastpay.co.id\">www.fastpay.co.id</a></font> atau menghubungi:</center> ]]></string>
+
+    <string name="detail_header_hentikan_akses">Fastpay dapat menangguhkan dan/atau menghentikan akses Anda atas Aplikasi ataupun Layanan apabila:</string>
+
+
+    <string name="detail_header_hukum">Ketentuan Penggunaan ini beserta Syarat dan Ketentuan Layanan sepenuhnya tunduk pada dan ditafsirkan berdasarkan ketentuan hukum yang berlaku di wilayah Republik Indonesia. Dengan menyetujui Ketentuan Penggunaan ini, Anda juga menyetujui Syarat dan Ketentuan Penggunaan Aplikasi Fastpay.</string>
+    <string name="syarat_ketentuan_dan_kebijakan_privacy_fastpay"><![CDATA[<u>Syarat</u>,<u>ketentuan</u>, dan <u>kebijakan privasi</u> Fastpay]]></string>
+    <string name="action_urutkan">urutkan</string>
+
+
+    <string name="ms_back">BACK</string>
+    <string name="ms_next">NEXT</string>
+
+    <string name="ms_complete">COMPLETE</string>
+    <string name="demo_min_label">Min</string>
+
+
+    <string name="demo_max_label">Max</string>
+
+    <string name="search_hint">Search</string>
+
+    <string name="html"><![CDATA[%s]]></string>
+
+    <string-array name="array_header_privacy">
+        <item>Pengantar</item>
+        <item>Definisi</item>
+        <item>Kecakapan Hukum</item>
+        <item>Hak atas Kekayaan Intelektual</item>
+        <item>Mengakses Aplikasi</item>
+        <item>Privacy Policy</item>
+        <item>Password</item>
+        <item>Sms Key</item>
+        <item>Layanan</item>
+        <item>Tarif</item>
+        <item>Bonus Transaksi pada Aplikasi</item>
+        <item>Penghentian Akses</item>
+        <item>Pembatasan Tanggung Jawab</item>
+        <item>Perubahan Ketentuan Penggunaan</item>
+        <item>Hukum yang Berlaku</item>
+    </string-array>
+
+    <string-array name="array_romawi">
+        <item>I.</item>
+        <item>II.</item>
+        <item>III.</item>
+        <item>IV.</item>
+        <item>V.</item>
+        <item>VI.</item>
+        <item>VII.</item>
+        <item>VIII.</item>
+        <item>IX.</item>
+        <item>X.</item>
+        <item>XI.</item>
+        <item>XII.</item>
+        <item>XIII.</item>
+        <item>XIV.</item>
+        <item>XV.</item>
+    </string-array>
+    <string-array name="array_alfabet">
+        <item>a.</item>
+        <item>b.</item>
+        <item>c.</item>
+        <item>d.</item>
+        <item>e.</item>
+        <item>f.</item>
+        <item>g.</item>
+
+    </string-array>
+    <string-array name="array_pengantar">
+        <item>Ketentuan Penggunaan ini merupakan ketentuan umum dalam penggunaan aplikasi Fastpay (selanjutnya disebut sebagai “Aplikasi”) serta penggunaan atas Layanan yang ada di dalamnya.</item>
+        <item>Selain Ketentuan Penggunaan ini, terdapat pula Syarat dan Ketentuan untuk masing-masing Layanan, dimana Anda terikat terhadap Syarat dan Ketentuan tersebut pada saat Anda menggunakan Layanan bersangkutan.</item>
+        <item>Harap membaca Ketentuan Penggunaan ini dengan seksama. Dengan mengakses dan/atau menggunakan Aplikasi dengan cara apapun, Anda setuju untuk mematuhi Ketentuan Penggunaan ini beserta Syarat dan Ketentuan Layanan. Jika Anda tidak setuju dengan semua ketentuan yang berlaku, Anda diperkenankan untuk berhenti menggunakan Layanan yang terdapat pada Aplikasi.</item>
+    </string-array>
+    <string-array name="array_definisi">
+        <item>"Aplikasi" adalah aplikasi Fastpay yang memungkinkan Anda melakukan transaksi Layanan, melakukan pengecekan transaksi, serta fitur-fitur Layanan lainnya yang tersedia di Aplikasi. </item>
+        <item>"Layanan" adalah jasa yang disediakan oleh Fastpay melalui Aplikasi, dimana atas setiap Layanan tersebut memiliki Syarat dan Ketentuan Layanan.</item>
+        <item>"Mitra" adalah profil yang digunakan untuk mengakses/menggunakan Aplikasi.</item>
+        <item>"ID Outlet" adalah identitas pengguna Aplikasi Fastpay yang digunakan untuk mengakses/menggunakan Aplikasi.</item>
+        <item>"Password" adalah kode rahasia yang digunakan untuk mengakses/menggunakan Aplikasi.</item>
+        <item>"SMS Key" adalah kode rahasia yang bersifat sementara untuk keamanan kedua setelah Password untuk mengakses/menggunakan Aplikasi.</item>
+        <item>"Bonus Transaksi" adalah bonus berbentuk cashback berupa saldo Fastpay yang diberikan setiap bulan dari akumulasi transaksi.</item>
+    </string-array>
+
+    <string-array name="array_akses_apps">
+        <item>Anda harus mendaftarkan diri dengan mengisi nomor telepon, email, alamat, dan
+informasi lainnya di www.fastpay.co.id/paket_pendaftaran atau langsung dari
+Aplikasi sebelum Anda login ke Aplikasi.</item>
+        <item>Anda akan menerima Sms bahwa Anda telah terdaftar dan Anda menerima Id Outlet dan Password/Pin.</item>
+        <item>Setelah Anda mendaftar, Anda harus melakukan aktivasi paket sesuai pilihan di www.fastpay.co.id/aktivasi</item>
+        <item>Setelah Anda melakukan aktivasi, Anda bisa login/mengakses Aplikasi menggunakan ID Outlet dan Password/Pin.</item>
+        <item>Anda bertanggung jawab sepenuhnya untuk setiap aktivitas yang dilakukan dengan menggunakan dengan menggunakan akun Anda, termasuk (namun tidak terbatas pada) biaya yang ditimbulkan pada saat mengakses Aplikasi, setiap risiko dan/atau kerugian yang muncul akibat terjadi penyalahgunaan oleh Anda dan/atau pihak ketiga yang didasarkan pada alasan dan/atau sebab apapun sebagai akibat langsung maupun tidak langsung dari penggunaan Aplikasi, dan dengan ini Anda membebaskan Fastpay dari segala tuntutan yang mungkin timbul dalam bentuk apapun dan dari pihak apapun.</item>
+    </string-array>
+    <string-array name="array_privacy_policy">
+        <item>Fastpay menyadari bahwa informasi Mitra bersifat rahasia dan pribadi, oleh karena itu Fastpay berkomitmen untuk melindungi dan merahasiakan data Mitra sesuai dengan peraturan perundang-undangan.</item>
+        <item>Fastpay mengumpulkan data pribadi pada saat Anda mendaftar atau registrasi. Data pribadi tersebut berupa informasi yang berkenaan dengan Anda termasuk (namun tidak terbatas pada) nomor handphone, akun email, maupun informasi ID Outlet dan Password.</item>
+        <item>Seluruh informasi yang Anda berikan sehubungan dengan transaksi menggunakan Aplikasi akan dijaga dan dirahasiakan dari pihak lain yang tidak berkepentingan.</item>
+        <item>Fastpay berhak menggunakan data pribadi Anda untuk kepentingan komunikasi layanan Fastpay, tidak terbatas hanya pada keperluan registrasi dan login Aplikasi.</item>
+    </string-array>
+
+    <string-array name="array_password">
+        <item>Pada saat mendaftar layanan Fastpay, Anda akan mendapat 6 digit Password/pin yang dikirim ke nomor ponsel yang telah Anda daftarkan.</item>
+        <item>Anda bertanggung jawab sepenuhnya untuk menjaga kerahasiaan Password/pin yang Anda miliki, oleh karena itu Anda tidak diperkenankan untuk:</item>
+        <item>Fastpay berhak menganggap bahwa akses terhadap Aplikasi yang menggunakan Password/pin Anda sebagai akses yang sah terhadap Aplikasi yang dilakukan oleh Anda tanpa perlu dibuktikan.</item>
+        <item>Anda bertanggung jawab sepenuhnya untuk setiap aktivitas yang dilakukan dengan menggunakan Password Anda, termasuk (namun tidak terbatas pada) setiap risiko dan/atau kerugian yang muncul sebagai akibat apabila terjadi penyalahgunaan oleh Anda dan/atau sebab apapun sebagai akibat langsung maupun tidak langsung dari penggunaan Aplikasi, dan dengan ini Anda membebaskan Fastpay dari segala tuntutan yang mungkin timbul dalam bentuk apapun dan dari pihak manapun. </item>
+
+    </string-array>
+
+
+    <string-array name="array_sub_password_1">
+        <item>Memberitahukan Password/pin kepada orang lain.</item>
+        <item>Menyimpan Password/pin dalam perangkat komunikasi Anda atau saran penyimpanan lain yang memungkinkan diketahui oleh pihak ketiga.</item>
+    </string-array>
+
+
+    <string-array name="array_sms_key">
+        <item>SMS Key digunakan saat Anda akan melakukan login di Aplikasi yang berisi 6 digit angka yang dikirim melalui SMS ke nomor Anda yang telah terdaftar.</item>
+        <item>SMS Key memiliki masa penggunaan terbatas sesuai pilihan durasi yang Anda pilih (1 hari/3 hari/5 hari/ 7 hari), dan Anda harus memperbarui SMS Key jika masa berlaku telah berakhir.</item>
+        <item>Anda bertanggung jawab sepenuhnya untuk menjaga kerahasiaan SMS Key yang Anda miliki, oleh karena itu Anda tidak diperkenankan untuk:</item>
+        <item>Fastpay berhak menganggap bahwa akses terhadap Aplikasi yang menggunakan SMS Key Anda sebagai akses yang sah terhadap Aplikasi yang dilakukan oleh Anda tanpa perlu dibuktikan.</item>
+        <item>Anda bertanggung jawab sepenuhnya untuk setiap aktivitas yang dilakukan dengan menggunakan SMS Key, termasuk (namun tidak terbatas pada) setiap risiko dan/atau kerugian yang muncul sebagai akibat apabila terjadi penyalahgunaan oleh Anda dan/atau sebab apapun sebagai akibat langsung maupun tidak langsung dari penggunaan Aplikasi, dan dengan ini Anda membebaskan Fastpay dari segala tuntutan yang mungkin timbul dalam bentuk apapun dan dari pihak manapun.</item>
+
+    </string-array>
+
+    <string-array name="array_sub_sms_key_2">
+        <item>Memberitahukan SMS Key kepada orang lain.</item>
+        <item>Menyimpan SMS Key dalam perangkat komunikasi Anda atau saran penyimpanan lain yang memungkinkan diketahui oleh pihak ketiga.</item>
+    </string-array>
+    <string-array name="array_layanan">
+        <item>Dengan Anda menggunakan setiap Layanan yang terdapat di Aplikasi, Anda telah setuju untuk tunduk sepenuhnya pada Syarat dan Ketentuan Layanan serta Anda telah setuju untuk menggunakan Layanan sesuai dengan ketentuan hukum yang berlaku di Republik Indonesia.</item>
+        <item>Bahwa dengan ini Anda juga menyatakan bersedia untuk menerima setiap informasi produk maupun informasi lainnya yang akan disampaikan oleh Fastpay melalui Aplikasi. Apabila Anda tidak setuju ataupun tidak dapat menerima pemberlakuan atas Syarat dan Ketentuan Layanan, Anda diperkenankan untuk berhenti menggunakan Layanan yang terdapat pada Aplikasi.</item>
+        <item>Fastpay setiap saat dapat mengubah Syarat dan Ketentuan Layanan. Perubahan ini akan berlaku pada saat perubahan tersebut diumumkan pada halaman ini. Oleh karena itu, Fastpay menghimbau Anda untuk mengakses halaman ini secara berkala untuk mengetahui perubahannya (apabila ada).</item>
+        <item>Setiap penggunaan atas Layanan yang terdapat di Aplikasi merupakan suatu bentuk pengikatan diri antara Anda dengan Fastpay dalam suatu perjanjian. Oleh karena itu, Anda diwajibkan untuk menyetujui dan mempelajari Syarat dan Ketentuan Layanan secara berkala.</item>
+        <item>Dengan tetap menggunakan Layanan, berarti Anda telah memahami dan menerima sepenuhnya Syarat dan Ketentuan Layanan beserta perubahannya.</item>
+        <item>Untuk informasi lebih lanjut dapat dilihat di www.fastpay.co.id atau menghubungi: </item>
+
+    </string-array>
+    <string-array name="array_sub_layanan_6">
+        <item>031 &#8211; 8535 799 (hunting)</item>
+        <item>0813 857 857 99 (call only)</item>
+        <item>Sosial media Fastpay Official</item>
+    </string-array>
+
+
+    <string-array name="array_tarif">
+        <item>Aplikasi disediakan secara gratis, Anda dapat mengakses aplikasi setelah aktivasi</item>
+        <item>Apabila Anda melakukan transaksi atas setiap Layanan pada Aplikasi, Anda akan dikenakan biaya sesuai dengan harga yang muncul pada Aplikasi.</item>
+        <item>Untuk informasi tarif lebih lanjut dapat dilihat di www.fastpay.co.id di menu Member Area.</item>
+    </string-array>
+    <string-array name="array_bonus">
+        <item><![CDATA[<center>Bonus transaksi diberikan kepada Mitra yang telah melakukan transaksi di Aplikasi. Bonus transaksi di akumulasikan dari total transaksi selama 1 bulan. Apabila Anda tidak melakukan transaksi, artinya Anda tidak akan mendapatkan bonus dari Fastpay.</center>]]></item>
+        <item><![CDATA[<center>Bonus transaksi akan di transfer setiap 1 bulan sekali yaitu berupa saldo Fastpay. Anda akan menerima pemberitahuan bonus transaksi yang Anda terima yaitu melalui SMS dari Fastpay yang ditujukan ke nomor Anda yang terdaftar di Aplikasi. Anda juga dapat melakukan pengecekan rincian bonus transaksi di member area www.fastpay.co.id/webreport/ di menu mutasi saldo.</center> ]]></item>
+        <item><![CDATA[Untuk informasi lebih lanjut dapat dilihat di www.fastpay.co.id atau menghubungi:]]></item>
+        <!--<item><![CDATA[Untuk informasi lebih lanjut dapat dilihat di <font color=#2196F3><a href=\"http://www.fastpay.co.id\">www.fastpay.co.id</a></font> atau menghubungi: ]]></item>-->
+        <!--<item>@string/url_fastpay</item>-->
+    </string-array>
+    <string-array name="array_sub_bonus_3">
+        <item>031 &#8211; 8535 799 (hunting)</item>
+        <item>0813 857 857 99 (call only)</item>
+        <item>Sosial media Fastpay Official</item>
+    </string-array>
+
+
+    <string-array name="array_hentikan_akses">
+        <item>Anda melanggar Ketentuan Penggunaan ini dan/atau Syarat dan Ketentuan Layanan terkait;</item>
+        <item>Anda dan/atau pihak lain, yang berdasarkan pertimbangan Fastpay akan mengakibatkan kerugian dan/atau kerusakan terhadap Fastpay dan/atau Aplikasi dan/atau Mitra Fastpay lainnya; </item>
+        <item>Adanya kerusakan secara teknis pada Aplikasi dan/atau Layanan yang terdapat pada Aplikasi;</item>
+        <item>Terdapat perbaikan, perubahan atau pemeliharaan pada Aplikasi dan/atau Layanan yang terdapat pada Aplikasi;</item>
+        <item>Apabila berdasarkan pertimbangan Fastpay, Aplikasi dan/atau Layanan disalahgunakan untuk melakukan pelanggaran terhadap ketentuan hukum yang berlaku di wilayah Republik Indonesia yang dilakukan oleh Anda dan/atau pihak ketiga;</item>
+        <item>Adanya permintaan dari pihak yang berwenang berdasarkan ketentuan hukum yang berlaku di wilayah Republik Indonesia;</item>
+        <item>Adanya ketentuan yang mewajibkan hal tersebut berdasarkan ketentuan hukum yang berlaku di wilayah Republik Indonesia.</item>
+    </string-array>
+
+    <string-array name="array_batas_tanggungjawab">
+        <item>Fastpay tidak bertanggung jawab atas setiap kerugian yang timbul yang diakibatkan karena ketidakmampuan atau kegagalan Anda untuk menggunakan/mengakses Aplikasi baik sebagian maupun seluruhnya karena kejadian-kejadian dan/atau sebab-sebab di luar kekuasaan dan/atau kemampuan Fastpay, termasuk (namun tidak terbatas pada) seluruh informasi, materi, Layanan, fitur-fitur atau hal lainnya yang disajikan dalam Aplikasi.</item>
+        <item>Fastpay tidak menjamin bahwa:</item>
+        <item>Fastpay tidak bertanggungjawab atas setiap kerugian yang timbul yang diakibatkan karena adanya pelanggaran atau akses tidak sah terhadap Aplikasi, termasuk (namun tidak terbatas pada) hal-hal ataupun Layanan yang terdapat di dalam Aplikasi yang dilakukan oleh Anda dan/atau pihak ketiga dengan cara yang bertentangan dengan Ketentuan Penggunaan ini, Syarat dan Ketentuan Layanan terkait maupun ketentuan hukum di wilayah Republik Indonesia</item>
+        <item>Dalam hal Anda dan/atau pihak ketiga melakukan segala tindakan-tindakan ataupun hal-hal yang dilarang sebagaimana dinyatakan dalam Ketentuan Penggunaan ini, maka segala konsekuensi dan akibat hukum yang timbul sepenuhnya menjadi tanggung jawab Anda dan/atau pihak ketiga.</item>
+    </string-array>
+    <string-array name="array_sub_batas_tanggungjawab_2">
+        <item>Aplikasi akan selalu dapat memenuhi kebutuhan Anda atau akan selalu diakses/digunakan;</item>
+        <item>Aplikasi tidak akan terganggu, tepat waktu, bebas dari kesalahan atau bebas dari virus komputer maupun ponsel, kode invasi serta hal-hal yang merusak lainnya;</item>
+        <item>Hasil yang mungkin diperoleh dari penggunaan Aplikasi akan selalu akurat; dan</item>
+        <item>Kualitas setiap informasi, materi, Layanan, fitur-fitur maupun hal lainnya yang disajikan dalam Aplikasi yang diperoleh oleh Anda dari Aplikasi akan memenuhi harapan Anda.</item>
+    </string-array>
+
+
+    <string-array name="array_perubahan_ketentuan">
+        <item>Fastpay berhak mengubah dan/atau memodifikasi Ketentuan Penggunaan ini dari waktu ke waktu tanpa pemberitahuan sebelumnya.</item>
+        <item>Setiap perubahan atas Ketentuan Penggunaan ini mulai berlaku sejak perubahan atas Ketentuan Penggunaan ini ditampilkan pada halaman ini dan perubahan tersebut mengikat kepada seluruh pengguna dan/atau pengakses Aplikasi.</item>
+    </string-array>
+
+    <string-array name="steps">
+        <item>Beginning</item>
+        <item>Intermediate\npage</item>
+        <item>End</item>
+        <item>Post step</item>
+    </string-array>
+    <string name="required_permission_is_not_granted">Required permission is not granted!</string>
+    <string name="required_permissions_are_not_granted">Required permissions are not granted!</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for barcode detection.</string>
+    <string name="no_camera_permission">Cannot start the barcode reader because the camera permission was not granted.</string>
+
+</resources>

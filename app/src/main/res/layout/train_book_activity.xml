@@ -1,0 +1,1943 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bm.main.single.ftl.train.activities.TrainBookActivity">
+ 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@id/toolbar"
+                layout="@layout/core_toolbar" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/md_white_1000"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:id="@+id/view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:background="@color/md_grey_300" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/oval_active"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@android:color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/oval_inactive"
+                                android:enabled="true"
+                                android:gravity="center"
+                                android:text="2"
+                                android:textColor="@android:color/white" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/oval_inactive"
+                                android:gravity="center"
+                                android:text="3"
+                                android:textColor="@android:color/white" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:gravity="center"
+                                android:text="Lengkapi Data"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:text="Pembayaran"
+                                android:textColor="@color/md_grey_300"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="Status"
+                                android:textColor="@color/md_grey_300"
+                                android:textSize="12sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <include
+                android:id="@id/loading_view_train"
+                layout="@layout/flight_loading_view"
+                android:visibility="gone" 
+                />
+
+            <ScrollView
+                android:id="@+id/scrollMainBook"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        tools:ignore="RtlSymmetry">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Rincian Perjalanan"
+                            android:textColor="@color/colorPrimary"
+                            />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/selector_button_blue_white_pressed">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="horizontal"
+                            android:padding="5dp"
+                            android:paddingEnd="@dimen/activity_horizontal_margin"
+                            android:paddingLeft="@dimen/activity_horizontal_margin"
+                            android:paddingRight="@dimen/activity_horizontal_margin"
+                            android:paddingStart="@dimen/activity_horizontal_margin">
+
+                            <TextView
+                                android:id="@+id/textCodeTrain"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="start|center"
+                                tools:text="ARGO BROMO"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textColor="@color/md_black_1000"
+                                tools:ignore="HardcodedText" />
+
+                            <TextView
+                                android:id="@+id/textPrice"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                tools:text="Rp 999.999.999"
+                                android:textColor="@color/colorPrimary"
+
+                                android:textSize="@dimen/textSmall"
+                                android:textStyle="bold"
+                               />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/selector_button_blue_white_pressed">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:weightSum="3"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.2"
+                                >
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+
+
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textOrigin"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Surabaya Gubeng"
+
+
+                                        />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+                                    android:layout_alignParentBottom="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textDestination"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Gambir"
+
+
+                                        />
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:layout_weight="0.1">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerHorizontal="true"
+                                    android:background="@drawable/line_connector_vertical"
+
+                                    />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.7"
+
+
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:layout_alignParentTop="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/jamBerangkatTrain"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/shape_blue"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:padding="1dp"
+                                        android:textColor="@android:color/white"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+
+                                        tools:targetApi="o"
+                                        tools:text="16:00"
+                                         />
+
+                                    <TextView
+                                        android:id="@+id/textDepartureDate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_marginLeft="2dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Minggu, 19 Des 2017"
+                                         />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:layout_alignParentBottom="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/jamTibaTrain"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/shape_blue"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:padding="1dp"
+                                        android:textColor="@android:color/white"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+
+                                        tools:targetApi="o"
+                                        tools:text="16:00"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/textArrivalDate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_marginLeft="2dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:gravity="center"
+                                        android:textColor="@color/md_black_1000"
+                                        app:autoSizePresetSizes="@array/auto_size_text_sizes"
+                                        app:autoSizeTextType="uniform"
+                                        tools:ignore="HardcodedText"
+                                        tools:targetApi="o"
+                                        tools:text="Minggu, 20 Des 2017"
+
+                                       />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                       >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="Data Penumpang"
+                            android:textColor="@color/colorPrimary" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerAdultTrain1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+
+
+                        android:background="@drawable/selector_button_blue_white_pressed"
+
+
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerAdultTrain1Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linAdultTrainDetail1"
+                                app:handle="@+id/imageViewExpandPassangerAdultTrain1" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerAdultTrain1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical">
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerAdultTrain1"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_adult"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutAdultTrain1"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"
+                                        android:text="1"
+                                        />
+                                <LinearLayout
+                                    android:id="@+id/linContentAdultTrain1"
+                                    android:tag="adult"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textContentAdultTrain1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+                                        android:text="ISI DATA PENUMPANG DEWASA"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"
+                                        />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionAdultTrain1"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+                                             />
+
+                                        <TextView
+                                            android:id="@+id/textActionAdultTrain1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+                                            
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText" />
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linAdultTrainDetail1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2"
+                                        >
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_no_identitas"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewNoIdentitasAdultTrain1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="52353454645654" />
+
+                                    </LinearLayout>
+
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_mobile"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewMobileAdultTrain1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="08132342354334563" />
+
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerAdultTrain2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerAdultTrain2Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linAdultTrainDetail2"
+                                app:handle="@+id/imageViewExpandPassangerAdultTrain2" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerAdultTrain2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical"
+
+                                    >
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerAdultTrain2"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_adult"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutAdultTrain2"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="2"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                <LinearLayout
+                                    android:id="@+id/linContentAdultTrain2"
+                                    android:tag="adult"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textContentAdultTrain2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+
+                                        android:text="ISI DATA PENUMPANG DEWASA"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000" />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionAdultTrain2"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionAdultTrain2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText"    />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linAdultTrainDetail2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2"
+                                        >
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_no_identitas"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewNoIdentitasAdultTrain2"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="52353454645654" />
+
+                                    </LinearLayout>
+
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_mobile"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewMobileAdultTrain2"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="08132342354334563" />
+
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerAdultTrain3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                       >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerAdultTrain3Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linAdultTrainDetail3"
+                                app:handle="@+id/imageViewExpandPassangerAdultTrain3" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerAdultTrain3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical">
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerAdultTrain3"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_adult"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutAdultTrain3"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="3"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                <LinearLayout
+                                    android:id="@+id/linContentAdultTrain3"
+                                    android:tag="adult"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textContentAdultTrain3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+                                        android:text="ISI DATA PENUMPANG DEWASA"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000" />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionAdultTrain3"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionAdultTrain3"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linAdultTrainDetail3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2"
+                                        >
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_no_identitas"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewNoIdentitasAdultTrain3"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="52353454645654" />
+
+                                    </LinearLayout>
+
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_mobile"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewMobileAdultTrain3"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="08132342354334563" />
+
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerAdultTrain4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerAdultTrain4Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linAdultTrainDetail4"
+                                app:handle="@+id/imageViewExpandPassangerAdultTrain4" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerAdultTrain4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical"
+                                    >
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerAdultTrain4"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_adult"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutAdultTrain4"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="4"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                <LinearLayout
+                                    android:id="@+id/linContentAdultTrain4"
+                                    android:tag="adult"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textContentAdultTrain4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+                                        android:text="ISI DATA PENUMPANG DEWASA"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionAdultTrain4"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionAdultTrain4"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText"/>
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linAdultTrainDetail4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2"
+                                        >
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_no_identitas"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewNoIdentitasAdultTrain4"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="52353454645654" />
+
+                                    </LinearLayout>
+
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:text="@string/hint_mobile"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall" />
+
+                                        <TextView
+                                            android:id="@+id/textViewMobileAdultTrain4"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="08132342354334563" />
+
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerInfantTrain1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                       >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerInfantTrain1Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linInfantTrainDetail1"
+                                app:handle="@+id/imageViewExpandPassangerInfantTrain1" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerInfantTrain1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical"
+                                    >
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerInfantTrain1"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_baby"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutInfantTrain1"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="1"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                <LinearLayout
+                                    android:id="@+id/linContentInfantTrain1"
+                                    android:tag="infant"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textContentInfantTrain1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+                                        android:text="ISI DATA PENUMPANG BAYI"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionInfantTrain1"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+
+
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionInfantTrain1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linInfantTrainDetail1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:text="@string/hint_tanggal_lahir" />
+
+                                        <TextView
+                                            android:id="@+id/textViewTanggalLahirInfantTrain1"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="01 Januari 1977" />
+
+                                    </LinearLayout>
+
+
+
+
+
+
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerInfantTrain2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:background="@drawable/selector_button_blue_white_pressed">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerInfantTrain2Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linInfantTrainDetail2"
+                                app:handle="@+id/imageViewExpandPassangerInfantTrain2" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerInfantTrain2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical"
+
+                                    >
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerInfantTrain2"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_baby"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutInfantTrain2"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="2"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                <LinearLayout
+                                    android:id="@+id/linContentInfantTrain2"
+                                    android:tag="infant"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+                                    <TextView
+                                        android:id="@+id/textContentInfantTrain2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+
+                                        android:text="ISI DATA PENUMPANG BAYI"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000"  />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionInfantTrain2"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+
+
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionInfantTrain2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linInfantTrainDetail2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:text="@string/hint_tanggal_lahir" />
+
+                                        <TextView
+                                            android:id="@+id/textViewTanggalLahirInfantTrain2"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="01 Januari 1977" />
+
+                                    </LinearLayout>
+
+
+
+
+
+
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerInfantTrain3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:background="@drawable/selector_button_blue_white_pressed">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerInfantTrain3Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linInfantTrainDetail3"
+                                app:handle="@+id/imageViewExpandPassangerInfantTrain3" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerInfantTrain3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical"
+                                    >
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerInfantTrain3"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_baby"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutInfantTrain3"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="3"
+                                        android:textColor="@color/md_black_1000"
+                                        />
+                                <LinearLayout
+                                    android:id="@+id/linContentInfantTrain3"
+                                    android:tag="infant"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+                                    <TextView
+                                        android:id="@+id/textContentInfantTrain3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+                                        android:text="ISI DATA PENUMPANG BAYI"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000" />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionInfantTrain3"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+
+
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionInfantTrain3"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linInfantTrainDetail3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:text="@string/hint_tanggal_lahir" />
+
+                                        <TextView
+                                            android:id="@+id/textViewTanggalLahirInfantTrain3"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="01 Januari 1977" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/cardPassangerInfantTrain4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:background="@drawable/selector_button_blue_white_pressed">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:orientation="vertical">
+                            <com.bm.main.fpl.templates.ExpandablePanel
+                                android:id="@+id/panelPassangerInfantTrain4Detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+
+                                app:animationDuration="500"
+
+                                app:content="@+id/linInfantTrainDetail4"
+                                app:handle="@+id/imageViewExpandPassangerInfantTrain4" >
+                                <LinearLayout
+                                    android:id="@+id/rlPassangerInfantTrain4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="horizontal"
+                                    android:weightSum="3"
+                                    android:gravity="center_vertical"
+                                    >
+                                    <ImageView
+                                        android:id="@+id/imageViewExpandPassangerInfantTrain4"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+
+                                        tools:src="@drawable/ic_baby"
+                                        />
+                                    <TextView
+                                        android:id="@+id/textUrutInfantTrain4"
+                                        android:layout_width="0dp"
+                                        android:layout_weight=".2"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center|center_vertical"
+                                        android:text="4"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000" />
+                                <LinearLayout
+                                    android:id="@+id/linContentInfantTrain4"
+                                    android:tag="infant"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.8"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    
+                                    android:hapticFeedbackEnabled="true"
+                                    >
+                                    <TextView
+                                        android:id="@+id/textContentInfantTrain4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.7"
+
+                                        android:gravity="center_vertical"
+
+                                        android:text="ISI DATA PENUMPANG BAYI"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:textColor="@color/md_black_1000" />
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="20dp"
+                                        android:layout_weight=".3"
+                                        android:gravity="center">
+                                        <ImageView
+                                            android:id="@+id/imageActionInfantTrain4"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+
+                                            android:background="@drawable/ic_right_arrow"
+
+
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/textActionInfantTrain4"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="20dp"
+                                            android:gravity="center"
+
+                                            android:text="GANTI"
+                                            android:textColor="@color/md_blue_700"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:textStyle="bold"
+                                            android:visibility="gone"
+                                            tools:visibility="visible"
+                                            tools:ignore="HardcodedText"/>
+                                    </RelativeLayout>
+                                </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+
+                                    android:id="@+id/linInfantTrainDetail4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="10dp"
+                                    >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight=".5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            android:text="@string/hint_tanggal_lahir" />
+
+                                        <TextView
+                                            android:id="@+id/textViewTanggalLahirInfantTrain4"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColor="@color/md_black_1000"
+                                            android:textSize="@dimen/textVerySmall"
+                                            tools:text="01 Januari 1977" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </com.bm.main.fpl.templates.ExpandablePanel>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        tools:ignore="RtlSymmetry">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Data Kontak"
+                            android:textColor="@color/colorPrimary"
+                           />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:background="@color/md_white_1000"
+                            android:orientation="vertical"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp">
+
+
+                            <com.bm.main.materialedittext.MaterialEditText
+                                android:id="@+id/textHpKontak"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Telepon/HP"
+
+
+                                android:inputType="number"
+                                android:digits="0123456789"
+                                android:textAllCaps="true"
+                                android:textCursorDrawable="@drawable/text_cursor_accent"
+                                android:textSize="@dimen/textVerySmall"
+                                app:met_baseColor="@color/text_secondary"
+
+                                app:met_floatingLabel="highlight"
+                                app:met_floatingLabelTextColor="@color/colorAccent"
+
+                                app:met_primaryColor="@color/colorAccent"
+                                app:met_singleLineEllipsis="true" />
+
+                            <com.bm.main.materialedittext.MaterialEditText
+                                android:id="@+id/textEmailKontak"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Alamat Email"
+
+
+                                android:inputType="textEmailAddress"
+                                android:textAllCaps="true"
+                                android:textCursorDrawable="@drawable/text_cursor_accent"
+                                android:textSize="@dimen/textVerySmall"
+                                app:met_baseColor="@color/text_secondary"
+                                app:met_floatingLabel="highlight"
+
+                                app:met_floatingLabelTextColor="@color/colorAccent"
+                                app:met_primaryColor="@color/colorAccent"
+
+                                app:met_singleLineEllipsis="true" />
+                            <!--<com.bm.main.ftl.materialedittext.MaterialEditText-->
+                            <!--android:id="@+id/textHpKontakOptional"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="5dp"-->
+                            <!--android:layout_marginStart="5dp"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:hint="Telepon/HP 2(Optional)"-->
+                            <!--android:inputType="text|phone"-->
+                            <!--android:singleLine="true"-->
+                            <!--android:textAllCaps="true"-->
+                            <!--android:textCursorDrawable="@drawable/text_cursor_cyan"-->
+                            <!--android:textSize="@dimen/textSmall"-->
+                            <!--app:met_baseColor="@color/text_secondary"-->
+                            <!--app:met_floatingLabel="highlight"-->
+
+                            <!--app:met_floatingLabelTextColor="@color/colorAccent"-->
+                            <!--app:met_primaryColor="@color/colorAccent"-->
+
+                            <!--app:met_singleLineEllipsis="true"/>-->
+
+                            <!--</LinearLayout>-->
+
+                            <!--<RelativeLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@color/md_white_1000"-->
+                            <!--android:paddingEnd="5dp"-->
+                            <!--android:paddingStart="5dp"-->
+
+                            <!--&gt;-->
+
+                            <!--<com.bm.main.ftl.materialedittext.MaterialEditText-->
+                            <!--android:id="@+id/textEmailKontak"-->
+                            <!--android:layout_width="match_parent"-->
+
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:hint="Alamat Email"-->
+                            <!--android:inputType="text|textEmailAddress"-->
+                            <!--android:textAllCaps="true"-->
+                            <!--android:textCursorDrawable="@drawable/text_cursor_cyan"-->
+                            <!--android:textSize="@dimen/textSmall"-->
+                            <!--app:met_baseColor="@color/text_secondary"-->
+                            <!--app:met_floatingLabel="highlight"-->
+                            <!--app:met_floatingLabelTextColor="@color/colorAccent"-->
+
+                            <!--app:met_primaryColor="@color/colorAccent"-->
+                            <!--app:met_singleLineEllipsis="true"-->
+
+                            <!--/>-->
+                            <!--</RelativeLayout>-->
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_pesan"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/selector_button_orange_pressed"
+                        android:tag="pesan"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+
+
+                        android:text="Pesan Sekarang"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="@dimen/textNormal"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    <!--</FrameLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

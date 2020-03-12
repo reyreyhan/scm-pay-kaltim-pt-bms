@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+
+   >
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true"
+   >
+
+    <LinearLayout
+        android:id="@+id/linMain"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="1dp">
+
+        <com.bm.main.fpl.templates.TextViewPlus
+            android:id="@+id/textViewPlusNamaBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nama bank"
+            android:textSize="@dimen/textSmall"
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.bm.main.fpl.templates.TextViewPlus
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="No Rek"
+                android:layout_gravity="center"
+                android:textSize="@dimen/textSmall"
+                 />
+
+            <com.bm.main.fpl.templates.TextViewPlus
+                android:id="@+id/textViewPlusNoRek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="No Rek"
+                android:layout_gravity="center"
+                android:textSize="@dimen/textSmall"
+                 />
+
+            <ImageView
+                android:id="@+id/imageViewCopyNoRek"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_copy" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.bm.main.fpl.templates.TextViewPlus
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Nominal"
+                android:layout_gravity="center"
+                android:textSize="@dimen/textSmall"
+                 />
+
+            <com.bm.main.fpl.templates.TextViewPlus
+                android:id="@+id/textViewPlusNonimal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.2"
+
+                android:text="Nominal"
+                android:textSize="@dimen/textSmall"
+                 />
+
+            <ImageView
+                android:id="@+id/imageViewNominal"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_copy" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.bm.main.fpl.templates.TextViewPlus
+                android:id="@+id/textViewPlusKeterangan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:text="Keterangan"
+                android:layout_gravity="center"
+                android:textSize="@dimen/textSmall"
+                 />
+
+            <ImageView
+                android:id="@+id/imageViewKeterangan"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.4"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_copy" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame_ribbon_aktif"
+        android:visibility="gone"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="-1dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_aktif"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/frame_ribbon_sukses"
+        android:visibility="gone"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="-1dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_sukses"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/frame_ribbon_expired"
+        android:visibility="gone"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="-1dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_expired"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

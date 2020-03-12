@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+        android:orientation="vertical">
+<TextView
+    android:id="@+id/textViewHeaderLinkAffiliasi"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:textSize="@dimen/textSmall"
+
+android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"
+    tools:text="@string/link_affiliasi"
+    />
+        <TextView
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:textSize="@dimen/textNormalCaption"
+android:textColor="@color/md_blue_500"
+    android:text="Link Ajak Bisnis Anda"
+    />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textSmall"
+
+            android:text="Link ini digunakan untuk pendaftaran melalui website"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:weightSum="3">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_link_ajak"/>
+        <TextView
+    android:id="@+id/textViewLinkWebReplika"
+    android:layout_width="0dp"
+            android:layout_weight="3"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:textSize="@dimen/textSmall"
+android:layout_marginLeft="5dp"
+android:layout_marginRight="5dp"
+    android:text="@string/link_web_replika"
+
+    />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:clickable="true"
+            android:id="@+id/button_copy_link_web"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+
+            android:text="Salin"
+
+            android:fontFamily="@font/roboto_bold"
+            android:textAlignment="center"
+            android:textSize="@dimen/textNormal"
+            android:textAllCaps="false"
+            android:textColor="@color/md_blue_500"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/selector_button_blue_white_pressed"
+            android:focusable="true"/>
+        </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"
+            android:background="@android:color/darker_gray"/>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textNormalCaption"
+            android:textColor="@color/md_blue_500"
+            android:text="Link Ajak Bisnis melalui Play Store"
+            />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textSmall"
+
+            android:text="Link ini digunakan untuk pendaftaran melalui aplikasi Fastpay Mobile"
+            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:gravity="center"
+android:layout_marginTop="15dp"
+        android:weightSum="3">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_google_play"/>
+        <TextView
+            android:id="@+id/textViewLinkPlaystore"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textSmall"
+android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/link_refferal"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:clickable="true"
+            android:id="@+id/button_copy_link_playstore"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
+
+            android:text="Salin"
+            android:fontFamily="@font/roboto_bold"
+            android:textAlignment="center"
+            android:textSize="@dimen/textNormal"
+            android:textAllCaps="false"
+            android:textColor="@color/md_blue_500"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:background="@drawable/selector_button_blue_white_pressed"
+            android:focusable="true"/>
+    </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>

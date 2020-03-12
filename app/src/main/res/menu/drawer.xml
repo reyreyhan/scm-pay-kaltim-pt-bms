@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:checked="true"
+            android:icon="@drawable/ic_sidemenu_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_sell"
+            android:icon="@drawable/ic_sidemenu_penjualan"
+            android:title="@string/menu_sell" />
+        <item
+            android:id="@+id/nav_qris"
+            android:icon="@drawable/ic_sidemenu_qr"
+            android:title="@string/menu_qris" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_sidemenu_histori_transaksi"
+            android:title="@string/menu_history" />
+        <item
+            android:id="@+id/nav_report"
+            android:icon="@drawable/ic_sidemenu_laporan"
+            android:title="@string/menu_report" />
+        <item
+            android:id="@+id/nav_management"
+            android:icon="@drawable/ic_sidemenu_manajemen"
+            android:title="@string/menu_management" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_sidemenu_pengaturan"
+            android:title="@string/menu_setting" />
+        <item
+            android:id="@+id/nav_help"
+            android:checkable="false"
+            android:icon="@drawable/ic_sidemenu_bantuan"
+            android:title="@string/menu_help" />
+    </group>
+</menu>

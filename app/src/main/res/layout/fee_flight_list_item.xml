@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+            android:id="@+id/imageViewIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/ic_launcher"
+            tools:ignore="ContentDescription" />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/textFeeFlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:layout_toStartOf="@+id/btn_simpanFee"
+            android:layout_toLeftOf="@+id/btn_simpanFee"
+            android:layout_toEndOf="@+id/imageViewIcon"
+            android:layout_toRightOf="@+id/imageViewIcon"
+            android:gravity="end"
+            android:imeOptions="actionDone"
+
+            android:inputType="number"
+            android:text="0"
+            android:textColor="@color/md_black_1000"
+
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+            app:met_errorColor="@color/md_red_500"
+
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_simpanFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/selector_button_orange_pressed"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="3dp"
+
+            android:text="SET"
+
+            android:textAlignment="center"
+
+
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

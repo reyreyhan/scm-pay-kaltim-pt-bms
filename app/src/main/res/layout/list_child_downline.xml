@@ -1,0 +1,103 @@
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    android:weightSum="2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<LinearLayout android:id="@+id/linMainListBinaan2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="30dp"
+    android:layout_marginStart="30dp"
+    android:orientation="horizontal"
+    android:padding="5dp"
+
+    android:weightSum="4"
+   >
+
+
+
+    <ImageView
+
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+
+        android:layout_gravity="center"
+        android:layout_marginEnd="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginStart="5dp"
+        android:gravity="center_vertical"
+        android:src="@drawable/ic_level_2"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.6"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/textViewNamaBinaan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_light"
+            android:text="Mitra Binaan 1"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            android:id="@+id/textViewJumlahBinaan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_light"
+            android:text="Jumlah Binaan : 20"
+            android:textSize="@dimen/textSmall" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearInfoMitra2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.4"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewIdBinaan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:text="FAMitra1"
+            android:textSize="@dimen/textSmall" />
+
+        <ImageView
+
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+
+            android:layout_gravity="center"
+
+            android:gravity="center"
+            android:src="@drawable/ic_info_binaan"
+
+            />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootLayout"
+
+    tools:context="com.bm.main.fpl.activities.LinkMarketingActivity">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+
+
+
+        <!--android:background="@drawable/toolbar_tab"-->
+        <!--android:orientation="vertical">-->
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:orientation="vertical">
+        <include layout="@layout/tab_layout"
+            android:id="@+id/tabs"
+            />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:animateLayoutChanges="true"
+        >
+        <!--<include-->
+            <!--android:id="@+id/layout_affiliasi_downline"-->
+            <!--layout="@layout/layout_affiliasi_downline"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
+        <include
+            android:id="@+id/layout_affiliasi_link"
+            layout="@layout/layout_affiliasi_link"
+
+
+           />
+        <!--<include-->
+            <!--android:id="@+id/layout_affiliasi_promosi"-->
+            <!--layout="@layout/layout_affiliasi_promosi"-->
+            <!--android:visibility="gone"-->
+
+            <!--/>-->
+        <include
+            android:id="@+id/layout_affiliasi_panduan"
+            layout="@layout/layout_affiliasi_panduan"
+            android:visibility="gone"
+
+            />
+    </RelativeLayout>
+</LinearLayout>

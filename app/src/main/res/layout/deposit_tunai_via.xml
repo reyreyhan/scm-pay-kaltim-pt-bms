@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/layout_tunai_via"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linMainDepositTunai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+            android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+            android:layout_marginBottom="10dp"
+
+            android:orientation="vertical">
+
+            <View
+
+
+                android:layout_width="fill_parent"
+                android:layout_height="10dip"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/roboto_light"
+                android:text="Pilih Merchant"
+                android:textSize="@dimen/textNormal" />
+
+            <include
+                android:id="@+id/loading_bar_merchant"
+                layout="@layout/loading_bar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMerchant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+
+                android:scrollbars="none" />
+
+            <LinearLayout
+                android:id="@+id/lin_content_indomaret"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.bm.main.fpl.templates.CurrencyEditText
+                    android:id="@+id/materialEditTextNominalTopUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:hint="@string/hint_masuk_nominal_deposit"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+
+                    android:maxLength="9"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+
+                    app:locale="@string/locale"
+                    app:met_accentTypeface="@string/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+
+                    app:met_clearButton="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelAnimating="true"
+
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_primaryColor="@color/colorAccent"
+                    app:met_singleLineEllipsis="true"
+                    app:met_underlineColor="@color/md_grey_500" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_req_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/selector_button_red_pressed"
+
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/roboto"
+                    android:text="Ambil Kode Deposit"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal" />
+
+                <com.bm.main.fpl.templates.htmltextview.HtmlTextView
+                    android:id="@+id/htmlTextViewTopup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMerchantDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+
+                android:scrollbars="none" />
+
+            <TextView
+                android:id="@+id/textViewNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/md_grey_500"
+                android:textSize="@dimen/textVerySmall" />
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:background="@drawable/circle_blue_stroke_shape"-->
+            <!--android:gravity="center"-->
+            <!--android:text="1"-->
+            <!--android:textColor="@color/md_light_blue_500" />-->
+
+            <!--<TextView-->
+            <!--android:id="@id/textView1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_toEndOf="@+id/textView"-->
+            <!--android:layout_toRightOf="@+id/textView"-->
+            <!--android:text="sdvdgdgdfgdfbdfgndfjknxcvvxvxcvcxvxcvxcvxvxcvkdfnvkdjjnvkdvfdgmgndfkngd"-->
+            <!--android:layout_marginStart="5dp" />-->
+
+
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignBottom="@+id/textView1"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_below="@+id/textView"-->
+            <!--android:layout_marginTop="2dp"-->
+
+
+            <!--android:src="@drawable/line_vertical_shape"-->
+            <!--android:layout_marginStart="12dp"-->
+            <!--android:layout_marginLeft="12dp" />-->
+            <!--</RelativeLayout>-->
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout_no_connection_tunai"
+            layout="@layout/layout_no_connection"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

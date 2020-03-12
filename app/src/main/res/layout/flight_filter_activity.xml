@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bm.main.single.ftl.flight.activities.FlightFilterActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_gravity="bottom"
+        android:background="@color/md_white_1000">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_pilih"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/selector_button_orange_pressed"
+            android:text="Lihat 0 Penerbangan"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+            tools:ignore="HardcodedText" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/core_toolbar" />
+
+            <include layout="@layout/flight_layout_header_filter" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center"
+                            android:text="WAKTU BERANGKAT"
+                            android:textColor="@color/md_grey_700"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="center"
+                            android:text="Bebas"
+                            android:textColor="@color/md_grey_600"
+                            android:textSize="@dimen/textNormal" />
+                    </RelativeLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:divider="@drawable/layout_divider"
+                            android:orientation="vertical"
+                            android:showDividers="middle|end">
+
+                            <CheckBox
+                                android:id="@+id/checkboxJam1"
+                                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="00:00 - 06:00"
+                                android:textSize="@dimen/textSmall" />
+
+                            <CheckBox
+                                android:id="@+id/checkboxJam2"
+                                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="06:00 - 12:00"
+                                android:textSize="@dimen/textSmall" />
+
+                            <CheckBox
+                                android:id="@+id/checkboxJam3"
+                                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="12:00 - 18:00"
+                                android:textSize="@dimen/textSmall" />
+
+                            <CheckBox
+                                android:id="@+id/checkboxJam4"
+                                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="18:00 - 24:00"
+                                android:textSize="@dimen/textSmall" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:padding="16dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewMaskapai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:divider="@drawable/layout_divider"
+                            android:dividerPadding="22dp"
+                            android:orientation="vertical"
+                            android:showDividers="middle">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical">
+
+                                <ImageView
+                                    android:id="@+id/imageViewMaskapai"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/ic_flight_free" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_toStartOf="@+id/imageView2"
+                                    android:layout_toLeftOf="@+id/imageView2"
+                                    android:layout_toEndOf="@+id/imageViewMaskapai"
+                                    android:layout_toRightOf="@+id/imageViewMaskapai"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Maskapai"
+                                        android:textSize="@dimen/textNormal"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/textViewHasilFilterAirlines"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Bebas"
+                                        android:textSize="@dimen/textVerySmall" />
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:id="@+id/imageView2"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/ic_right_arrow" />
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center"
+                            android:text="HARGA/PENUMPANG"
+                            android:textColor="@color/md_grey_700"
+                            android:textSize="@dimen/textNormal" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:padding="16dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textViewLowPrice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/textSmall" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textSize="@dimen/textNormal" />
+
+                                <TextView
+                                    android:id="@+id/textViewHighPrice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/textSmall" />
+                            </LinearLayout>
+
+                            <com.bm.main.fpl.templates.rangeseekbar.RangeSeekBar
+                                android:id="@+id/seekBarPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="15dp"
+                                app:activeColor="@color/colorPrimary"
+                                app:defaultColor="@color/colorPrimary"
+                                app:showLabels="false"
+                                app:textAboveThumbsColor="@color/colorPrimary"
+                                app:thumbShadowColor="@color/colorPrimary"
+                                app:valuesAboveThumbs="false" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:id="@+id/textViewSeekBarLowPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="start"
+                                    android:textSize="@dimen/textSmall" />
+
+                                <TextView
+                                    android:id="@+id/textViewSeekBarHighPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:textSize="@dimen/textSmall" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

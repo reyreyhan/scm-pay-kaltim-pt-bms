@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"  android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+    <TextView
+        android:id="@+id/love_dialog_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:text="@string/love_dialog_content"
+        android:fontFamily="@font/roboto_light"
+        android:textStyle="bold"
+        android:textSize="@dimen/textNormal"/>
+
+    <Button
+        android:id="@+id/love_dialog_yes"
+        android:background="@drawable/button_appirator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+
+        android:text="@string/love_dialog_yes"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/md_white_1000"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/love_dialog_no"
+        android:background="@drawable/selector_button_grey_pressed"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+
+        android:text="@string/love_dialog_no"
+        android:fontFamily="@font/roboto_regular"
+        android:textStyle="bold"/>
+</LinearLayout>

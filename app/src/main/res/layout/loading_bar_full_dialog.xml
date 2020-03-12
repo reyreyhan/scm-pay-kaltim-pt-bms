@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+android:layout_gravity="center"
+style="@style/MaterialDialogSheet"
+    >
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--&gt;-->
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--app:cardCornerRadius="10dp"-->
+
+        <!--&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center"-->
+       <!---->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical">-->
+
+        <!--&gt;-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorTransparent"
+        android:layout_marginLeft="16dp"
+
+        android:layout_marginRight="16dp"
+        tools:ignore="UselessParent">
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="center|center_vertical"-->
+        <!--&gt;-->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/md_white_1000"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:id="@+id/contentHost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+
+                    android:src="@drawable/srikandi"
+                    tools:ignore="ContentDescription" />
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                        android:id="@+id/avi"
+                        style="@style/AVLoadingIndicatorView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+
+
+                        android:padding="5dp"
+                        app:indicatorColor="@color/colorPrimary_ppob" />
+
+                    <TextView
+                        android:id="@+id/textContentProgressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+
+                        android:gravity="center"
+
+
+                        android:padding="5dp"
+                        android:text="Sedang Mempersiapkan Data Anda"
+
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+    <!--</LinearLayout>-->
+    <!--</android.support.v7.widget.CardView>-->
+    <!--</android.support.v7.widget.CardView>-->
+</FrameLayout>

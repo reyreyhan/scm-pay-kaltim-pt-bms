@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lin_list_main"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+              android:orientation="vertical"
+              >
+
+    <TextView
+        android:id="@+id/textCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="CGK"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Button"
+        android:visibility="gone"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Juanda"
+        android:textColor="@color/md_black_1000"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.TextView"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/textGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        tools:text="Bandung"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Button"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="gone"
+        tools:ignore="HardcodedText"/>
+</LinearLayout>

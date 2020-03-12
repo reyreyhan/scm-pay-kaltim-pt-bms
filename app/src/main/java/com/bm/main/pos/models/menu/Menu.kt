@@ -1,0 +1,24 @@
+package com.bm.main.pos.models.menu
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.google.gson.Gson
+import com.bm.main.pos.models.category.Category
+import java.io.Serializable
+import com.bm.main.pos.R
+
+
+/**
+ * Created by Richie on 7/15/17.
+ */
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+class Menu : Serializable {
+    var id: Int? = null
+    var name: String? = ""
+    var image: Int? = R.drawable.logo
+    var enabled = true
+
+    fun json(): String {
+        return Gson().toJson(this)
+    }
+}

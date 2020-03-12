@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:orientation="vertical"
+
+
+    tools:context="com.bm.main.fpl.activities.PulsaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <!--<LinearLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+
+        <!--android:background="@drawable/radius_border"-->
+        <!--android:orientation="vertical">-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+        <!--android:orientation="vertical">-->
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="50dp"-->
+        <!--android:orientation="vertical">-->
+        <!--<LinearLayout-->
+        <!--android:id="@+id/linHeader"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?actionBarSize"-->
+
+
+        <!--android:background="@drawable/toolbar_header_rounded"-->
+
+        <!--android:orientation="vertical">-->
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+        <!--<include-->
+        <!--android:id="@+id/tabs"-->
+        <!--layout="@layout/tab_layout" android:visibility="gone"/>-->
+        <!--</LinearLayout>-->
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:id="@+id/textViewPlusSukses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:animateLayoutChanges="true"
+                android:background="@color/md_light_green_100"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textAlignment="center"
+                android:textColor="@color/md_green_800"
+                android:textSize="@dimen/textSmall"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+                android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <ImageView android:id="@+id/imageViewVoicePulsa"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:layout_gravity="center"
+
+                        android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_keyboard_voice_grey"
+                        />
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/materialEditTextNoHandphone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="2"
+
+                        android:hint="@string/hint_no_hp_pembeli"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+android:maxLength="19"
+                        android:focusable="true"
+                        android:bufferType="editable"
+                        android:hapticFeedbackEnabled="true"
+                        android:digits="0123456789"
+                        android:singleLine="true"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+                        android:textSize="@dimen/textNormal"
+android:fontFamily="@font/roboto_regular"
+                        app:met_accentTypeface="@string/roboto_regular"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_checkCharactersCountAtBeginning="true"
+app:met_clearButton="true"
+
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelAnimating="true"
+
+                        app:met_floatingLabelTextColor="@color/md_black_1000"
+
+                        app:met_helperTextColor="@color/md_red_500"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true"
+                        app:met_underlineColor="@color/md_grey_500" />
+
+                    <FrameLayout
+                        android:id="@+id/frameIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="-20dp"
+                        android:layout_marginLeft="-20dp">
+
+                        <ImageView
+                            android:id="@+id/imageViewPrefix"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:gravity="center"
+                            android:importantForAccessibility="no"
+
+
+                            />
+
+                        <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                            android:id="@+id/avi"
+                            style="@style/AVLoadingIndicatorView.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:layout_gravity="center"
+
+
+                            app:indicatorColor="@color/colorPrimary_ppob" />
+                    </FrameLayout>
+
+                    <ImageView
+                        android:id="@+id/imageViewAddressBook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+
+                        android:src="@drawable/ic_address_book"
+                        tools:ignore="ContentDescription" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                android:orientation="vertical"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_vertical_margin">
+
+                    <!--<include-->
+                    <!--android:id="@+id/tabs"-->
+                    <!--layout="@layout/tab_layout_pulsa" />-->
+
+                    <include
+                        android:id="@+id/buttonGroupTabs"
+                        layout="@layout/tab_bar_button_group_pulsa" />
+                </RelativeLayout>
+                <!--<ScrollView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+
+
+                <!--android:background="@color/md_white_1000">-->
+
+                <!--</ScrollView>-->
+
+
+                <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_view_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:duration="800">
+
+                    <!-- Adding 3 rows of placeholders -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+
+                            <include
+                                layout="@layout/recipe_placeholder_pulsa_item"
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+                <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp" android:layout_weight="1" android:background="@drawable/srikandi">-->
+                <!--<android.support.v4.widget.NestedScrollView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<android.support.v4.widget.NestedScrollView-->
+                <!--android:id="@+id/nestedScrollView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:overScrollMode="never"-->
+                <!--android:visibility="gone">-->
+
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewNominalProduk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+
+                    android:scrollbars="none"
+                    android:visibility="gone" />
+                <!--</LinearLayout>-->
+                <!--</android.support.v4.widget.NestedScrollView>-->
+                <!--</android.support.v4.widget.NestedScrollView>-->
+                <!--</RelativeLayout>-->
+                <!--</FrameLayout>-->
+
+                <!--</LinearLayout>-->
+
+
+                <!--</LinearLayout>-->
+                <!--<FrameLayout-->
+
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="60dp"-->
+                <!---->
+                <!--android:layout_marginBottom="50dp"-->
+                <!---->
+                <!--android:background="@color/md_white_1000">-->
+
+
+                <!--<View-->
+
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="@drawable/drop_shadowtop" />-->
+
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/layout_no_connection"
+                layout="@layout/layout_no_connection"
+
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!--</LinearLayout>-->
+
+
+        <include
+            android:id="@+id/bottom_toolbar"
+            layout="@layout/bottom_toolbar" />
+    </LinearLayout>
+</RelativeLayout>

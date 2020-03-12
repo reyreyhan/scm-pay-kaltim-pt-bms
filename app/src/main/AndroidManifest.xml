@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bm.main.pos"
+    android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <permission
+        android:name="com.bm.main.pos.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.bm.main.pos.permission.ACTION_MANAGE_OVERLAY_PERMISSION"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="android.permission.STATUS_BAR"
+        android:protectionLevel="signature|privileged" /> <!-- <uses-feature -->
+    <permission
+        android:name="android.permission.EXPAND_STATUS_BAR"
+        android:protectionLevel="normal" /> <!-- <permission -->
+    <permission
+        android:name="android.permission.BROADCAST_PACKAGE_REMOVED"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="android.permission.WRITE_SETTINGS"
+        android:protectionLevel="signature|preinstalled|appop|pre23" /> <!-- NORMAL PERMISION -->
+    <permission
+        android:name="com.bm.main.pos.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" /> <!-- <uses-permission android:name="android.permission.GET_TASKS" /> -->
+    <supports-screens
+        android:anyDensity="true"
+        android:isScrollContainer="false"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:windowSoftInputMode="stateHidden"
+        android:xlargeScreens="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" /> <!-- <uses-permission android:airLineName="android.permission.INSTALL_SHORTCUT" /> -->
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.location" />
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature android:name="android.hardware.location.network" /> <!-- <uses-permission android:airLineName="android.permission.MANAGE_OWN_CALLS" /> -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.screen.portrait" />
+    <uses-feature
+        android:name="android.inputmethodservice.InputMethodService"
+        android:required="false" /> <!--  -->
+    <!-- Signature permissions -->
+    <uses-feature
+        android:name="android.widget.view.View.OnUnhandledKeyEventListener"
+        android:required="false" /> <!--  -->
+    <!-- DANGEROUS permision -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!--  -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- <uses-permission android:airLineName="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+    <!-- <uses-permission android:airLineName="com.android.launcher.action.INSTALL_SHORTCUT" /> -->
+    <!-- <uses-permission android:airLineName="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> &lt;!&ndash; for Samsung &ndash;&gt; -->
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- for htc -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- for sony -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- for apex -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- for solid -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- for huawei -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.bm.main.pos.permission.C2D_MESSAGE" /> <!-- for ZUK -->
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" /> <!-- for OPPO -->
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for OPPO -->
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for EvMe -->
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- <uses-feature -->
+    <uses-permission android:name="android.permission.READ_APP_BADGE" />
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.bbk.launcher2.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.bbk.launcher2.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+
+    <application
+        android:name=".SBFApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:logo="@mipmap/ic_launcher"
+        android:protectionLevel="installer"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/SBFTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup"
+        tools:targetApi="m">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.bm.main.pos.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider"
+                tools:replace="android:resource" />
+        </provider>
+
+        <activity
+            android:name=".SplashScreenActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="profit.fastpay.co.id"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".feature.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.register.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.drawer.DrawerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.manage.product.list.ProductListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".feature.manage.category.list.CategoryListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".feature.manage.discount.list.DiscountListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".feature.manage.customer.list.CustomerListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".feature.manage.supplier.list.SupplierListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".feature.manage.category.add.AddCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.category.edit.EditCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.supplier.add.AddSupplierActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.supplier.edit.EditSupplierActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.customer.add.AddCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.customer.edit.EditCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.customer.detail.CustomerDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.scan.ScanCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.product.add.AddProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+        <activity
+            android:name=".feature.manage.product.search.ProductSearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+        <activity
+            android:name=".feature.transaction.detail.DetailSuccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar.DarkStatusBar" />
+        <activity
+            android:name=".feature.webpage.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+        <activity
+            android:name=".feature.manage.product.edit.EditProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+        <activity
+            android:name=".feature.transaction.detail.DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.lastHutang.LastHutangActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.lastPiutang.LastPiutangActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.hutangSupplier.HutangSupplierActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.detailHutang.DetailHutangActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.sell.chooseProduct.ChooseProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.sell.add.AddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+        <activity
+            android:name=".feature.sell.edit.EditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.printer.PrinterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.sell.chooseCustomer.ChooseCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.sell.addCustomer.AddCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.transaction.success.SuccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar.DarkStatusBar" />
+        <activity
+            android:name=".feature.kulakan.main.KulakanActivity"
+            android:label="Data Kulakan"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.kulakan.chooseSupplier.ChooseSupplierActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.kulakan.addProduct.AddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.kulakan.editProduct.EditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.report.transaction.TransactionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.report.labarugi.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.report.mutasi.MutasiActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.report.stock.StockActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.report.kulakan.KulakanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.setting.account.AccountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.setting.password.PasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.setting.store.StoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.setting.staff.list.StaffListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".feature.setting.staff.add.AddStaffActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.setting.staff.edit.EditStaffActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.filterDate.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentCompat" />
+        <activity
+            android:name="com.bm.main.fpl.activities.NewHomeActivity"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.activities.FeePesawatActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightCountryActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.DepositNewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.DepositTopupResultActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PinjamDanaActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipStatusPayActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipReviewBookActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipFormBookInfantActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipFormBookAdultActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipBookActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipTanggalActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipScheduleActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipPortActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipSearchActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.ship.activities.ShipSearchRevActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelStatusPembayaranActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelTiketPesananActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelDetailPesananActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelDaftarPesananActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelTanggalPesananActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelPesananActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainStatusPayActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainChangeSeatActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainReviewBookActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainFormBookInfantActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainFormBookAdultActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainBookActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainScheduleActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainStationActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainSearchActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.train.activities.TrainSearchRevActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ShowPdfActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightSearchRevActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightStatusPayActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightReviewBookActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightBookActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightBaggageActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightDetailActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightFormBookInfantActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightFormBookChildActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightFormBookAdultActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.webview.FMCGWebActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightAirlinesFilterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightFilterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PrivacyPolicyActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.BigPromoActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightScheduleActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightAirPortActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name=".OnBoardingActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.activities.IntroductionActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme"
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity
+            android:name="com.bm.main.fpl.activities.BaseActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateUnchanged">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+                <category android:name="android.intent.category.APP_MESSAGING" />
+                <category android:name="android.intent.category.VOICE" />
+
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="application/pdf" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.activities.LoginActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.APP_MESSAGING" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.activities.PetunjukLoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.AktivasiAkunActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.KeySmsActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.APP_MESSAGING" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.activities.HomeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.APP_MESSAGING" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.activities.NotificationActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.NotificationDetail"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PromoProdukDetail"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.activities.TestTabLayoutCustomActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.FilterActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PlnActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.DaftarPelangganActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.WebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.InqueryResultActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListProductActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListBankActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PdamActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.bm.main.fpl.activities.BpjsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.SettingPrinterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.activities.IndiHomeActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" /> <!-- <meta-data -->
+        <activity
+            android:name="com.bm.main.fpl.activities.TeleponActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" /> <!-- <activity -->
+        <activity
+            android:name="com.bm.main.fpl.activities.CicilanActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListGridProdukActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.GameActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PulsaActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PascaBayarActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.KartuKreditActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.TvKabelActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.AsuransiActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.KunciActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.DepositActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.TiketDepositActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.AkunSayaActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.HubungiKamiActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.RegistrasiActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListPropinsiActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListKabupatenActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListKodePosActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListKecamatanActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.UbahPinActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.TransferSaldoActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.CaraDepositActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.CekDepositActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.LaporanGridActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.LaporanActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.TanggalActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.KritikSaranActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.DeviceListActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.webview.FCMActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.webview.SBFWebActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.activities.CetakUlangActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme" />
+        <activity
+            android:name="com.bm.main.fpl.activities.TopUpEmoneyActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ToursTiketingActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PengaturanActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.AnotherActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_EMAIL" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bm.main.fpl.activities.BaseActivity" />
+        </activity>
+        <activity
+            android:name="com.bm.main.fpl.activities.LinkMarketingActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.ListProdukTabActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.NotificationTopSingleActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.LupaPinActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.CekSaldoEmoneyActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
+        <activity android:name="com.cardnfc.lib.bninfc.tapcashgo.ReadingTagActivity" />
+        <activity android:name="com.bm.main.fpl.activities.FmcgDetailActivity" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="sensorPortrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/FullscreenTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            tools:replace="android:screenOrientation,android:theme">
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bm.main.fpl.activities.BaseActivity" />
+        </activity>
+        <activity android:name="com.bm.main.fpl.activities.SettingPrinterAdvanceActivity" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PgnActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PertagasActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.GasActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PajakActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.SamsatActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PerbankanActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.fpl.activities.PerbankanBNIActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.activities.TravelTanggalActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bm.main.single.ftl.flight.activities.FlightSearchActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SBFTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_logofcm_white" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="com.cardnfc.lib.bninfc.tapcashgo.provider.CardProvider"
+            android:authorities="com.bm.main.pos.cardprovider"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".services.RestarterBroadcastReceiver"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped" />
+        <receiver
+            android:name=".services.BootBroadcast"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+
+                <category android:name="com.bm.main.pos" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".services.backgroundlocationupdates.LocationUpdatesBroadcastReceiver"
+            android:exported="true"
+            android:permission="android.permission.ACCESS_FINE_LOCATION">
+            <intent-filter>
+                <action android:name=".LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".services.UplineReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+                <category android:name="com.bm.main.pos" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".services.ScreenOnOffBackgroundService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+
+                <category android:name="com.bm.main.pos" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- <activity android:airLineName="com.google.zxing.client.android.CaptureActivity" android:screenOrientation="portrait"> -->
+        <service
+            android:name=".services.SensorService"
+            android:enabled="true" />
+        <service
+            android:name=".services.SBFService"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:stopWithTask="false">
+            <intent-filter android:priority="999">
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+
+                <category android:name="com.bm.main.pos" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.backgroundlocationupdates.LocationUpdatesIntentService"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".services.BadgeIntentService"
+            android:exported="false" /> <!-- TRAVEL -->
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service> <!-- FLIGHT -->
+    </application>
+</manifest>

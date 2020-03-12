@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:orientation="vertical"
+
+    >
+
+
+
+        <LinearLayout
+            android:id="@+id/linMainListCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2"
+
+            android:padding="10dp"
+
+           >
+            <FrameLayout
+                android:id="@+id/frameIcon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+
+                android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/imageViewCountryFlag"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:gravity="center_vertical"
+android:layout_gravity="center"
+                tools:ignore="ContentDescription" />
+                <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                    android:id="@+id/avi"
+                    style="@style/AVLoadingIndicatorView.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+
+                    app:indicatorColor="@color/colorPrimary_ppob" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/textViewNama"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+android:layout_weight="1.7"
+               android:layout_margin="2dp"
+
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                tools:text="Indonesia"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_regular"  />
+
+        </LinearLayout>
+
+</LinearLayout>

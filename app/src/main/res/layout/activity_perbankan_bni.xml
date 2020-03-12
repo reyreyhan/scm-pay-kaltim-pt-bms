@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:fitsSystemWindows="true"
+
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.PerbankanBNIActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="110dp"-->
+        <!--android:background="@drawable/toolbar_tab"-->
+
+        <!--android:orientation="vertical">-->
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/tabs"
+                layout="@layout/tab_layout_pln" />
+
+        </LinearLayout>
+        <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/view_pager"-->
+        <!--android:labelFor="@id/view_pager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" >-->
+
+
+        <!--<android.support.v4.widget.NestedScrollView-->
+
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+
+        <!--android:overScrollMode="never"-->
+
+        <!--android:scrollbars="none">-->
+
+        <!--<ScrollView-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+        <!--android:fillViewport="true"-->
+        <!--&gt;-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lin_content"
+
+            android:orientation="vertical">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+
+                android:scrollbars="none"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="?android:attr/actionBarSize"
+                    android:background="@color/md_white_1000"
+                    android:orientation="vertical">
+
+
+                    <include
+                        android:id="@+id/layout_setor_tunai"
+                        layout="@layout/layout_setor_tunai" />
+
+                    <include
+                        android:id="@+id/layout_tarik_tunai"
+                        layout="@layout/layout_tarik_tunai"
+                        android:visibility="gone" />
+
+                    <include
+                        android:id="@+id/layout_transfer_tunai"
+                        layout="@layout/layout_transfer_tunai"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </ScrollView>
+            <!--</ScrollView>-->
+            <!--</android.support.v4.widget.NestedScrollView>-->
+            <!--</LinearLayout>-->
+            <!--</android.support.v4.view.ViewPager>-->
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout_no_connection"
+            layout="@layout/layout_no_connection"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <include
+
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar" />
+</RelativeLayout>

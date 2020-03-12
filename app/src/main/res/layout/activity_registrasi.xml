@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.RegistrasiActivity">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:paddingLeft="2dp"-->
+        <!--android:paddingRight="2dp"-->
+        <!--android:paddingTop="0dp"-->
+        <!--android:paddingBottom="0dp"-->
+
+        <!--android:background="@drawable/radius_border"-->
+        <!--android:orientation="vertical">-->
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary" />
+        <!--<View-->
+<!--android:layout_marginTop="-10dp"-->
+            <!--android:background="@drawable/curve_toolbar_bg"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="15dip"-->
+
+            <!--/>-->
+    <ScrollView android:id="@+id/scrollViewRegistrasi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextIdUplineReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_upline"
+
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+
+            android:fontFamily="@font/roboto_light"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true" android:visibility="gone" />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextNamaReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_pendaftaran_nama"
+            android:imeOptions="actionNext"
+            android:inputType="textVisiblePassword"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,. "
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+android:maxLength="24"
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+
+            android:text="Pilih Paket"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textVerySmall"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/textViewErrorPaket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+
+            android:text="Paket Harus Dipilih"
+            android:textColor="@color/md_red_500"
+            android:textSize="@dimen/textVerySmall"
+            android:visibility="gone" />
+        <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            app:indicatorColor="@color/colorPrimary_ppob"
+
+            android:visibility="gone"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPaketOutlet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none"
+
+android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:id="@+id/linPaket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/shape_card_blue_light"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textViewNominalOutlet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Rp 0"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/textSmall"
+                android:textStyle="bold" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textViewTypeOutlet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:fontFamily="@font/roboto_light"
+                tools:text="Enterprise"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/textSmall" />
+    <TextView
+        android:id="@+id/imageInfoPaket"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.3" android:fontFamily="@font/roboto_medium"
+        tools:text="Lihat kelengkapan Paket"
+        android:gravity="right"
+
+        android:textColor="@color/md_green_500"
+        android:textSize="@dimen/textSmall" />
+</LinearLayout>
+        </LinearLayout>
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextNoHpReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_pendaftaran_nomorhp"
+            android:imeOptions="actionNext"
+
+            android:inputType="number"
+            android:digits="0123456789"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+android:maxLength="13"
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextEmailReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_pendaftaran_alamatemail"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextNamaTokoReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_pendaftaran_nama_toko"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextAlamatReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_pendaftaran_alamat"
+            android:imeOptions="actionNext"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:lines="5"
+            android:minLines="5"
+            android:maxLines="5"
+            android:maxLength="160"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="@font/roboto_regular"
+            app:met_accentTypeface="@string/roboto_regular"
+            app:met_baseColor="@color/text_secondary"
+            app:met_checkCharactersCountAtBeginning="true"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelAnimating="true"
+            app:met_floatingLabelTextColor="@color/md_black_1000"
+
+            app:met_helperTextColor="@color/md_red_500"
+            app:met_maxCharacters="160"
+            app:met_primaryColor="@color/colorAccent_ppob"
+
+            app:met_underlineColor="@color/md_grey_500"
+
+            />
+
+
+        <!--<include layout="@layout/progress_bar" />-->
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextPropinsiReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_sort_down"
+
+
+            android:hint="@string/string_hint_pendaftaran_propinsi"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            android:drawableEnd="@drawable/ic_sort_down" />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextKotaReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_sort_down"
+
+            android:hint="@string/string_hint_pendaftaran_kota"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            android:drawableEnd="@drawable/ic_sort_down" />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextKecamatanReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_sort_down"
+
+            android:hint="@string/string_hint_pendaftaran_kecamatan"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            android:drawableEnd="@drawable/ic_sort_down" />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextKodePosReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_sort_down"
+
+            android:hint="@string/string_hint_pendaftaran_kodepos"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            android:drawableEnd="@drawable/ic_sort_down" />
+
+<!--        <com.bm.main.materialedittext.MaterialEditText-->
+<!--            android:id="@+id/materialEditTextKodePosReg"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+
+<!--            android:hint="@string/string_hint_pendaftaran_kodepos"-->
+<!--            android:imeOptions="actionNext"-->
+<!--            android:inputType="textPostalAddress"-->
+
+<!--            android:digits="0123456789"-->
+<!--            android:textCursorDrawable="@drawable/text_cursor_accent"-->
+<!--            android:textSize="@dimen/textNormal"-->
+<!--android:maxLength="6"-->
+<!--            app:customFont="fonts/Roboto-Light.ttf"-->
+<!--            app:met_baseColor="@color/text_secondary"-->
+<!--            app:met_floatingLabel="highlight"-->
+<!--            app:met_floatingLabelTextColor="@color/colorAccent_ppob"-->
+<!--            app:met_primaryColor="@color/colorAccent_ppob"-->
+<!--            app:met_singleLineEllipsis="true"-->
+<!--android:text="00000"-->
+<!--            android:visibility="gone"-->
+<!--            />-->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_registrasi"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_button_red_pressed"
+
+            android:clickable="true"
+           android:fontFamily="@font/roboto_light"
+            android:focusable="true"
+            android:text="@string/daftar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+            />
+
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+<!--</LinearLayout>-->

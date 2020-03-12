@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/bottom_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+
+    android:orientation="vertical">
+<!--<LinearLayout-->
+
+    <!--android:background="@color/colorPrimaryDark"-->
+    <!--android:layout_width="match_parent"-->
+
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+   <!--&gt;-->
+    <View
+
+        android:background="@drawable/drop_shadowtop"
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        />
+    <!--This linear layout is da wrapper for all the button which are added.-->
+    <!--It should be horizontal and change weightsum to the number of buttons you want to add-->
+    <LinearLayout
+        android:background="@drawable/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="4"
+        android:baselineAligned="false">
+
+        <!--All these are just wrapper for image view and text view that will act as button-->
+        <!--They have da vertical layout, center gravity and clickable true-->
+        <!--They also have layout weight as 1 to divide space equally amongst buttons-->
+        <!--Also enable haptic feedback if you want to create touch vibration on click-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+
+            android:hapticFeedbackEnabled="true"
+            android:onClick="toggleSaldo"
+            android:orientation="vertical"
+            android:focusable="true">
+
+            <!-- A text view pointing to  drawable-->
+            <!--make sure to make clickable false-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+
+                android:src="@drawable/ic_nav_saldo"
+                tools:ignore="ContentDescription" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:textAlignment="center"-->
+                <!--android:text="Saldo"-->
+                <!--android:textSize="@dimen/textSmall"-->
+                <!--android:fontFamily="@font/roboto_light"/>-->
+
+            <!--A txt view to add text below the image-->
+            <!--Align it to the center and change size as you find fit-->
+            <TextView
+                android:id="@+id/TextViewPlusSaldoBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="@color/md_grey_500"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="toggleDeposit"
+            android:orientation="vertical"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:clickable="false"
+                android:src="@drawable/ic_admin_deposit"
+                android:importantForAccessibility="no"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Deposit"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="togglePesanan"
+            android:orientation="vertical"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:clickable="false"
+                android:src="@drawable/ic_nav_pesanan"
+                android:importantForAccessibility="no"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Pesanan"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="toggleKunci"
+            android:orientation="vertical"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:clickable="false"
+                android:src="@drawable/ic_nav_kunci"
+                android:importantForAccessibility="no"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Kunci"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame_bottom_ribbon_demo"
+        android:visibility="gone"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="-1dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="start">
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_demo_ribbon"
+            />
+    </FrameLayout>
+<!--</LinearLayout>-->
+</RelativeLayout>
+<!--</LinearLayout>-->

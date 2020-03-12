@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.KritikSaranActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary" />
+    <!--<View-->
+
+        <!--android:background="@drawable/curve_toolbar_bg"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="10dip"-->
+
+        <!--/>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+    <LinearLayout
+        android:id="@+id/lin_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/string_header_kritik" android:fontFamily="@font/roboto_regular" android:textSize="@dimen/textNormal"/>
+        <include layout="@layout/loading_bar" android:id="@+id/loading_bar"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list_komplain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none" android:visibility="gone"/>
+
+
+
+
+
+    <com.bm.main.materialedittext.MaterialEditText
+        android:id="@+id/materialEditTextSaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+
+        android:layout_marginTop="5dp"
+
+        android:hint="@string/hint_kritik_saran"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:lines="5"
+        android:minLines="5"
+        android:maxLines="5"
+        android:maxLength="160"
+        android:textCursorDrawable="@drawable/text_cursor_accent"
+        android:textSize="@dimen/textNormal"
+
+        app:customFont="@font/roboto_regular"
+        app:met_accentTypeface="@string/roboto_regular"
+        app:met_baseColor="@color/text_secondary"
+        app:met_checkCharactersCountAtBeginning="true"
+        app:met_floatingLabel="highlight"
+        app:met_floatingLabelAnimating="true"
+        app:met_floatingLabelTextColor="@color/md_black_1000"
+
+        app:met_helperTextColor="@color/md_red_500"
+        app:met_maxCharacters="160"
+        app:met_primaryColor="@color/colorAccent_ppob"
+
+        app:met_underlineColor="@color/md_grey_500"
+
+        />
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_lanjutkan"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+android:layout_marginTop="30dp"
+android:layout_marginBottom="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_button_red_pressed"
+            android:clickable="true"
+            android:fontFamily="@font/roboto_light"
+
+
+            android:focusable="true"
+            android:text="@string/lanjutkan"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+          />
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

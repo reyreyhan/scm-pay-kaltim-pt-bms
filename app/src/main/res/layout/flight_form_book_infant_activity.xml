@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:id="@+id/rootLayout"
+    tools:context="com.bm.main.single.ftl.flight.activities.FlightFormBookInfantActivity">
+    <include
+        android:id="@+id/toolbarForm"
+        layout="@layout/toolbar_form_passanger"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textTitleInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/spinner_down"
+                android:hint="Title"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"/>
+
+            <com.bm.main.fpl.templates.clearableedittext.ClearableEditText
+                android:id="@+id/textNameInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+
+                android:imeOptions="actionNext"
+                android:inputType="text"
+
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+                app:met_checkCharactersCountAtBeginning="true"
+              />
+            <TextView
+                android:id="@+id/textViewCheckLenghtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                tools:text="Nama penumpang dewasa dan bayi tidak boleh > 29 karakter"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/md_green_500"
+                android:textSize="@dimen/textSmall"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:text="(tanpa gelar dan tanda baca)"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"/>
+
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="No Identitas"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                android:visibility="gone"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+                app:met_clearButton="true"/>
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textBornInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
+                android:hint="Tanggal Lahir"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"/>
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textNationalityInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/spinner_down"
+                android:drawableRight="@drawable/spinner_down"
+                android:hint="Kewarganegaraan"
+                android:focusableInTouchMode="false"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true" />
+            <com.bm.main.fpl.templates.clearableedittext.ClearableEditText
+                android:id="@+id/textNoPassportInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nomor Passport"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:digits="1234567890 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:maxLength="50"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:met_baseColor="@color/text_secondary"
+
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+                app:met_checkCharactersCountAtBeginning="true"
+                app:met_maxCharacters="50"
+                app:met_minCharacters="6"/>
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textIssuingCountryInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/spinner_down"
+                android:drawableRight="@drawable/spinner_down"
+                android:hint="Negara Penerbit"
+                android:focusableInTouchMode="false"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true" />
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textExpirationDateInfant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="false"
+                android:hint="Tanggal Habis Berlaku"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                android:drawableEnd="@drawable/ic_date_range_blue"
+                android:drawableRight="@drawable/ic_date_range_blue"
+                android:visibility="gone"
+                tools:visibility="visible"
+
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="100dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/selector_button_orange_pressed"
+                android:text="Selesai"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/md_white_1000"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

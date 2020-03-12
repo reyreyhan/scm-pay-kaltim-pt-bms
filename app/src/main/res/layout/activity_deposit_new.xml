@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bm.main.fpl.activities.DepositNewActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary" />
+    <!--<include layout="@layout/tab_layout"-->
+    <!--android:id="@+id/tabs"-->
+    <!--/>-->
+
+
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+
+
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="10dip"-->
+
+    <!--/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tabs"
+            layout="@layout/tab_layout_deposit" />
+    </LinearLayout>
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="@dimen/activity_vertical_margin">-->
+    <!--<include-->
+    <!--android:id="@+id/buttonGroupTabsDeposit"-->
+    <!--layout="@layout/tab_bar_button_group_deposit" />-->
+    <!--</RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:animateLayoutChanges="true">
+
+        <include
+            android:id="@+id/layout_transfer_bank_va"
+            layout="@layout/deposit_transfer_bank_new_va"
+
+            />
+
+        <include
+            android:id="@+id/layout_transfer_bank"
+            layout="@layout/deposit_transfer_bank"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/layout_tunai_via"
+            layout="@layout/deposit_tunai_via"
+            android:visibility="gone" />
+
+
+        <include
+            android:id="@+id/layout_history"
+            layout="@layout/deposit_tiket_history"
+            android:visibility="gone" />
+    </RelativeLayout>
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+    <include
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar"
+        android:visibility="gone" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

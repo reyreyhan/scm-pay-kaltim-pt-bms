@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/md_black_1000"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingTop="5dp"
+            android:text="FILTER HASIL PENCARIAN"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textSmall"
+            tools:ignore="RtlSymmetry" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdgeLength="0dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+
+            android:layout_marginBottom="68dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/md_white_1000"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingTop="5dp"
+                    android:text="Kelas"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textSmall" />
+
+
+                <com.bm.main.fpl.templates.NonScrollListView
+                    android:id="@+id/list_kelas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+
+                    android:background="@color/md_white_1000"
+                    tools:listitem="@layout/train_time_list_item_filter"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingStart="@dimen/activity_horizontal_margin"
+                    android:paddingTop="5dp"
+                    android:text="Kereta"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textSmall"
+                    tools:ignore="RtlSymmetry" />
+
+
+                <com.bm.main.fpl.templates.NonScrollListView
+                    android:id="@+id/list_kereta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+                    android:background="@color/md_white_1000"
+
+                    />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/md_white_1000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:orientation="horizontal"
+
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_reset"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+
+                android:layout_margin="5dp"
+
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/textSmall"
+
+
+               android:text="Reset"
+                android:textColor="@color/md_orange_800"
+                tools:ignore="HardcodedText"
+                android:background="@drawable/selector_button_orange_white_pressed"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_selesai"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+
+                android:layout_margin="5dp"
+
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/textSmall"
+
+
+                android:text="Pilih"
+                android:textColor="@color/md_white_1000"
+                tools:ignore="HardcodedText"
+                android:background="@drawable/selector_button_orange_pressed"/>
+
+
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

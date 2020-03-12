@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.TransferSaldoActivity">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+        <!--android:orientation="vertical">-->
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary" />
+
+        <!--<View-->
+
+            <!--android:background="@drawable/curve_toolbar_bg"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="10dip"-->
+
+            <!--/>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+       >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Form ini digunakan untuk transfer saldo ke mitra binaan Anda" android:fontFamily="@font/roboto_regular" android:textSize="@dimen/textNormal" android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextIdDownline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_id_downline"
+            android:imeOptions="actionNext"
+            android:inputType="text|textCapCharacters"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+        <com.bm.main.fpl.templates.CurrencyEditText
+            android:id="@+id/materialEditTextNominalTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/string_hint_nominal_transfer"
+
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            app:locale="@string/locale"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+
+            app:met_floatingLabelTextColor="@color/colorPrimary"
+            app:met_floatingLabelAnimating="true"
+            app:met_accentTypeface="@string/roboto_regular"
+
+
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+        <com.bm.main.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextPinTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/string_hint_pin_transfer"
+            android:imeOptions="actionDone"
+            android:inputType="numberPassword"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            app:customFont="fonts/Roboto-Light.ttf"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_lanjutkan"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/selector_button_red_pressed"
+            android:fontFamily="@font/roboto_light"
+            android:clickable="true"
+
+            android:focusable="true"
+            android:text="@string/lanjutkan"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+            />
+    </LinearLayout>
+
+    </ScrollView>
+    </LinearLayout>
+<!--</LinearLayout>-->

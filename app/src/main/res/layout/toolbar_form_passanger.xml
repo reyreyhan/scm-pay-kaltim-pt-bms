@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbarForm"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/colorPrimary_ppob"
+    android:layout_width="match_parent"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:theme="@style/SBFTheme"
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        >
+
+
+        <TextView
+            android:id="@+id/titleToolbar"
+            android:text="CONTOH TITLE"
+            android:textColor="@color/md_white_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/actionToolbar"
+            android:text="Contoh"
+            android:textColor="@color/md_white_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp" />
+
+
+    </RelativeLayout>
+</androidx.appcompat.widget.Toolbar>

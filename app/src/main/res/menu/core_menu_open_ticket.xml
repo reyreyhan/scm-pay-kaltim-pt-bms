@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <!--<item android:id="@+id/action_right_drawer" android:title=""-->
+        <!--android:orderInCategory="100" app:showAsAction="always"-->
+        <!--android:icon="@drawable/ic_more_vert_white_24dp"-->
+        <!--android:actionLayout="@layout/toolbar"-->
+        <!--/>-->
+    <item android:id="@+id/action_right_pdf" android:title=""
+        android:orderInCategory="100" app:showAsAction="always"
+        android:icon="@drawable/ic_open_ticket"
+        android:actionLayout="@layout/core_toolbar"
+        />
+</menu>

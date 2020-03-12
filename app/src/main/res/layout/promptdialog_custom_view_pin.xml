@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:gravity="center"
+    android:orientation="vertical">
+    <!--<RelativeLayout-->
+
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center_horizontal">-->
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:cardBackgroundColor="@color/colorTransparent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:id="@+id/linViewPin">
+
+            <TextView
+                android:id="@+id/dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="5dp"
+                android:text="Request Perubahan PIN."
+
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/textNormalCaption"
+                tools:ignore="HardcodedText" />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/et_name_new"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:digits="0123456789"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="start"
+                android:hint="Masukkan PIN Baru"
+                android:inputType="number"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+
+                app:customFont="fonts/Roboto-Light.ttf"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+
+                tools:ignore="HardcodedText" />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/et_name_old"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:digits="0123456789"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="start"
+                android:hint="Masukkan PIN Lama"
+                android:inputType="number"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+                app:customFont="fonts/Roboto-Light.ttf"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/textViewPetunjukDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_vertical"
+                android:text="@string/petunjuk_ubah_pin_dialog"
+                android:textSize="@dimen/textNormal" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_vertical"
+                android:text="@string/petunjuk_ubah_pin_dialog1"
+                android:textSize="@dimen/textNormal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dialog_sim1_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/selector_button_blue_pressed"
+                    android:text="Kirim SIM1"
+                    android:textColor="@color/md_white_1000"
+
+                    android:textSize="@dimen/textVerySmall"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dialog_sim2_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toStartOf="@+id/dialog_sim1_btn"
+                    android:layout_toLeftOf="@+id/dialog_sim1_btn"
+                    android:background="@drawable/selector_button_grey_pressed"
+                    android:text="Kirim SIM2"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textVerySmall"
+                    android:visibility="invisible"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dialog_negative_btn"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+
+                    android:layout_alignParentStart="true"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+                    android:text="Batal"
+                    android:textColor="@color/md_blue_500"
+                    android:textSize="@dimen/textVerySmall"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <!--</RelativeLayout>-->
+</LinearLayout>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rootLayout"
+    tools:context="com.bm.main.single.ftl.train.activities.TrainChangeSeatActivity">
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?attr/actionBarSize"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--app:layout_scrollFlags="scroll|enterAlways"-->
+    <!--app:popupTheme="@style/SBFTheme.PopupOverlay"-->
+    <!--android:layout_alignParentTop="true"/>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@id/toolbar"
+                layout="@layout/core_toolbar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/headerView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <LinearLayout
+                android:id="@+id/vwHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/vwHeaderEko"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/md_grey_700"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tvEkoNo"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="NO"
+                        android:textColor="@color/md_white_1000"
+                        android:fontFamily="@font/roboto_medium" />
+
+                    <TextView
+                        android:id="@+id/tvEkoA"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toEndOf="@id/tvEkoNo"
+                        android:layout_toRightOf="@id/tvEkoNo"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:id="@+id/tvEkoB"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toEndOf="@id/tvEkoA"
+                        android:layout_toRightOf="@id/tvEkoA"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="B"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toEndOf="@id/tvEkoB"
+                        android:layout_toRightOf="@id/tvEkoB"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="C"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:id="@+id/tvEkoE"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="E"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toStartOf="@id/tvEkoE"
+                        android:layout_toLeftOf="@id/tvEkoE"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="D"
+                        android:textColor="@color/md_white_1000" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/vwHeaderEks"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/md_grey_700"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tvEksNo"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="NO"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:id="@+id/tvEksA"
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toEndOf="@id/tvEksNo"
+                        android:layout_toRightOf="@id/tvEksNo"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toEndOf="@id/tvEksA"
+                        android:layout_toRightOf="@id/tvEksA"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="B"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:id="@+id/tvEksD"
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="D"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_toStartOf="@id/tvEksD"
+                        android:layout_toLeftOf="@id/tvEksD"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="C"
+                        android:textColor="@color/md_white_1000" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="none"
+
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/panelInfo"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/md_grey_600"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:id="@+id/tvTextGerbong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_white_1000"
+                    tools:text="Gerbong Saat Ini : EKONOMI-1" />
+
+                <TextView
+                    android:id="@+id/tvTextSeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_white_1000"
+                    tools:text="Gerbong dan Kursi Terpilih : EKO-1/6A, EKO-2/GB" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSimpan"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/selector_button_orange_pressed"
+                android:text="Simpan"
+                android:textAllCaps="false"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/white"
+
+
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

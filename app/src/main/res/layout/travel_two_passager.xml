@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:orientation="vertical"
+        android:weightSum="3"
+        tools:ignore="UselessParent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTransparent"
+            android:text="TAMBAHKAN PENUMPANG"
+            android:textSize="@dimen/textVerySmall"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/md_white_1000"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="211dp"
+            android:baselineAligned="true"
+            android:padding="5dp"
+
+
+            android:orientation="horizontal"
+            android:background="@color/md_white_1000"
+            android:weightSum="2">
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!---->
+
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:ignore="NestedWeights">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_adult"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+android:orientation="vertical"
+
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/selector_button_blue_grey_50_pressed">
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/title_header_picker_flight_adult"
+                            android:textColor="@color/text_secondary"
+
+                            android:fontFamily="@font/roboto_medium"
+
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/title_subheader_picker_train_adult"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="@dimen/textSmall"
+                            tools:ignore="HardcodedText" />
+                        <View
+
+                            android:background="@drawable/drop_shadowtop"
+                            android:layout_width="fill_parent"
+                            android:layout_height="3dip"
+                            />
+                    <com.bm.main.fpl.templates.MaterialNumberPicker
+                        android:id="@+id/jumlahDewasa"
+                        android:layout_width="match_parent"
+
+                        app:npBackgroundColor="@color/md_grey_100"
+                        app:npFocusValue="true"
+                        app:npSeparatorColor="@color/md_blue_500"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        app:npDefaultValue="1"
+
+                        app:npMaxValue="4"
+                        app:npMinValue="1"
+
+                        app:npTextColor="@color/text_secondary"
+                        app:npTextSize="@dimen/textMedium"
+                        app:npWrapValue="false"
+                        tools:ignore="NestedWeights" />
+                    </LinearLayout>
+                </LinearLayout>
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:weightSum="1">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
+
+                   <!---->
+
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:ignore="NestedWeights">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_baby"
+                        tools:ignore="ContentDescription" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+
+android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/selector_button_blue_grey_50_pressed">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/title_header_picker_flight_baby"
+                            android:textColor="@color/text_secondary"
+                            android:fontFamily="@font/roboto_medium"
+
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/title_subheader_picker_train_baby"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="@dimen/textSmall"
+                            tools:ignore="HardcodedText" />
+                        <View
+
+                            android:background="@drawable/drop_shadowtop"
+                            android:layout_width="fill_parent"
+                            android:layout_height="3dip"
+                            />
+                        <com.bm.main.fpl.templates.MaterialNumberPicker
+                        android:id="@+id/jumlahBayi"
+                        android:layout_width="match_parent"
+
+                        app:npBackgroundColor="@color/md_grey_100"
+                        app:npFocusValue="true"
+                        app:npSeparatorColor="@color/md_blue_500"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        app:npDefaultValue="0"
+
+                        app:npMaxValue="4"
+                        app:npMinValue="0"
+                        app:npTextColor="@color/text_secondary"
+                        app:npTextSize="@dimen/textMedium"
+                        app:npWrapValue="false"
+                        tools:ignore="NestedWeights" />
+                    </LinearLayout>
+                </LinearLayout>
+            <!--</LinearLayout>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_white_1000"
+            android:baselineAligned="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_batal"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_button_orange_white_pressed"
+                android:layout_gravity="center"
+
+                android:layout_margin="5dp"
+
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/textNormal"
+
+
+                android:text="Batal"
+                android:textColor="@color/md_orange_500"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_pilih"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_button_orange_pressed"
+                android:layout_gravity="center"
+
+                android:layout_margin="5dp"
+
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/textNormal"
+
+
+                android:text="Pilih"
+                android:textColor="@color/md_white_1000"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:orientation="vertical">-->
+
+        <FrameLayout
+            android:id="@+id/toast_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+        <!--</LinearLayout>-->
+    </LinearLayout>
+
+</FrameLayout>

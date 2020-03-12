@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bm.main.single.ftl.ship.activities.ShipScheduleActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+
+        android:layout_gravity="bottom">
+
+        <com.bm.main.fpl.templates.AutoResizeTextView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+ android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+            android:background="@drawable/selector_button_grey_pressed"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_light"
+
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="openCalendar"
+            android:text="@string/action_ganti_jadwal"
+            android:textAllCaps="true"
+
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSmall" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/core_toolbar_custom_resize" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewTabs"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+android:visibility="gone"
+                android:orientation="horizontal"
+                tools:listitem="@layout/ship_schedule_place_holder_tab"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container_tab"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+
+                android:orientation="horizontal"
+
+                app:duration="800">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:gravity="center"
+                    android:weightSum="4"
+                    >
+
+                    <include layout="@layout/ship_schedule_place_holder_tab" />
+
+                    <include layout="@layout/ship_schedule_place_holder_tab" />
+                    <include layout="@layout/ship_schedule_place_holder_tab" />
+                    <include layout="@layout/ship_schedule_place_holder_tab" />
+
+                </LinearLayout>
+            </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+            <View
+
+                android:background="@drawable/drop_shadowtop"
+                android:layout_width="fill_parent"
+                android:layout_height="3dip"
+                />
+
+            <!--<LinearLayout-->
+
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:padding="5dp"-->
+
+                <!--android:orientation="vertical"-->
+                <!--android:visibility="gone"-->
+                <!--&gt;-->
+                <!--<TextView-->
+                    <!--android:id="@+id/textViewNamaKapal"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--tools:text="KM. XXXXX"-->
+                    <!--android:fontFamily="@font/roboto_medium"-->
+                    <!--android:textColor="@color/md_black_1000"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/textViewBerangkatKapal"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--tools:text="Berangkat 01 Januari 2019 Pukul 01:00"-->
+                    <!--android:fontFamily="@font/roboto_regular"-->
+                    <!--android:textColor="@color/md_black_1000"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/textViewTibaKapal"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--tools:text="TIba 02 Januari 2019 Pukul 02:00"-->
+                    <!--android:fontFamily="@font/roboto_regular"-->
+                    <!--android:textColor="@color/md_black_1000"/>-->
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/relRoute"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal">-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/textViewRute"-->
+                        <!--android:layout_marginTop="10dp"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Rute"-->
+                        <!--android:fontFamily="@font/roboto_regular"-->
+                        <!--android:textColor="@color/md_black_1000"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_alignParentStart="true"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--tools:ignore="HardcodedText" />-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageViewDown"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_toRightOf="@id/textViewRute"-->
+                        <!--android:layout_toEndOf="@id/textViewRute"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="15dp"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginStart="10dp"-->
+                        <!--android:src="@drawable/ic_down_primary"-->
+                        <!--android:visibility="gone"-->
+                        <!--tools:visibility="visible"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--tools:ignore="ContentDescription" />-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageViewNext"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_toRightOf="@id/textViewRute"-->
+                        <!--android:layout_toEndOf="@id/textViewRute"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="15dp"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginStart="10dp"-->
+                        <!--android:src="@drawable/ic_right_primary"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--tools:ignore="ContentDescription" />-->
+                <!--</RelativeLayout>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/textViewRoute"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/textVerySmall"-->
+
+                    <!--android:fontFamily="@font/roboto_regular"-->
+                    <!--android:textColor="@color/md_black_1000"-->
+                    <!--android:visibility="gone"-->
+                    <!--tools:visibility="visible"-->
+                    <!--tools:text="TANJUNG PERAK (SURABAYA)-MAKASAR-BITUNG-TERNATE-BITUNG-BAUBAU-MAKASAR"/>-->
+
+            <!--</LinearLayout>-->
+            <!--<View-->
+
+                <!--android:background="@drawable/drop_shadowtop"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="3dip"-->
+                <!--/>-->
+
+
+        <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:duration="800">
+
+            <!-- Adding 3 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <include layout="@layout/ship_recipe_placeholder_schedule_list_item_old" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/placeholder_bg" />
+
+                <include layout="@layout/ship_recipe_placeholder_schedule_list_item_old" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/placeholder_bg" />
+
+                <include layout="@layout/ship_recipe_placeholder_schedule_list_item_old" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/placeholder_bg" />
+
+                <include layout="@layout/ship_recipe_placeholder_schedule_list_item_old" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/placeholder_bg" />
+
+                <include layout="@layout/ship_recipe_placeholder_schedule_list_item_old" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/placeholder_bg" />
+
+                <include layout="@layout/ship_recipe_placeholder_schedule_list_item_old" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/placeholder_bg" />
+
+
+            </LinearLayout>
+        </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylerList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:scrollbars="none"
+            android:visibility="gone"
+
+            />
+
+        <include
+            android:id="@id/empty_view_train"
+            layout="@layout/ship_empty_view"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</FrameLayout></androidx.coordinatorlayout.widget.CoordinatorLayout>

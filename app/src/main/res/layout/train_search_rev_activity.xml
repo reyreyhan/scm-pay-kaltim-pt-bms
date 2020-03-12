@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:id="@+id/rootLayout"
+
+    android:orientation="vertical"
+    tools:context="com.bm.main.single.ftl.train.activities.TrainSearchRevActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/core_toolbar" />
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_white_1000">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+
+                >
+
+                <RelativeLayout
+                    android:id="@+id/linKotaAsal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageKotaAsal"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentTop="false"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_train_origin"
+                        tools:ignore="ContentDescription"
+
+                        />
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/textKotaAsal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="false"
+                        android:layout_toEndOf="@+id/imageKotaAsal"
+
+                        android:layout_toLeftOf="@+id/btnExchange"
+                        android:layout_toRightOf="@+id/imageKotaAsal"
+                        android:layout_toStartOf="@+id/btnExchange"
+                        android:focusableInTouchMode="false"
+
+                        android:hint="Station Asal"
+                        android:textSize="@dimen/textNormal"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelAlwaysShown="true"
+
+                        app:met_floatingLabelText="Kota Asal"
+                        app:met_primaryColor="@color/md_grey_700"
+                        app:met_singleLineEllipsis="true"
+                        tools:ignore="HardcodedText" />
+
+                    <ImageView
+                        android:id="@+id/btnExchange"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentBottom="false"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="false"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="30dp"
+                        android:cropToPadding="false"
+
+                        android:src="@drawable/ic_exchange_arrows"
+                        tools:ignore="ContentDescription" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linKotaTujuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="-10dp">
+
+                    <ImageView
+                        android:id="@+id/imageKotaTujuan"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentTop="false"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_train_destination"
+                        tools:ignore="ContentDescription"
+
+                        />
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/textKotaTujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentTop="false"
+                        android:layout_centerInParent="false"
+
+                        android:layout_toEndOf="@+id/imageKotaTujuan"
+                        android:layout_toRightOf="@+id/imageKotaTujuan"
+
+                        android:focusableInTouchMode="false"
+                        android:hint="Station Tujuan"
+
+                        android:textSize="@dimen/textNormal"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelAlwaysShown="true"
+                        app:met_floatingLabelText="Kota Tujuan"
+
+                        app:met_primaryColor="@color/md_grey_700"
+                        app:met_singleLineEllipsis="true"
+                        tools:ignore="HardcodedText" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/linTanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:id="@+id/relTanggalBerangkat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imageViewTanggalBerangkat"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentStart="false"
+                            android:layout_alignParentTop="false"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_calendar_travel"
+                            tools:ignore="ContentDescription" />
+
+                        <com.bm.main.materialedittext.MaterialEditText
+                            android:id="@+id/textTanggalBerangkat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="false"
+                            android:layout_toEndOf="@+id/imageViewTanggalBerangkat"
+                            android:layout_toRightOf="@+id/imageViewTanggalBerangkat"
+                            android:focusableInTouchMode="false"
+                            android:text="Sabtu,20 Mei 2017"
+                            android:textSize="@dimen/textSmall"
+                            app:met_baseColor="@color/text_secondary"
+                            app:met_floatingLabel="normal"
+                            app:met_floatingLabelAlwaysShown="true"
+                            app:met_floatingLabelText="Tanggal Berangkat"
+                            app:met_hideUnderline="true"
+
+                            app:met_primaryColor="@color/md_grey_700"
+                            app:met_singleLineEllipsis="true"
+                            tools:ignore="HardcodedText" />
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentEnd="true"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_alignParentTop="false"-->
+<!--                            android:layout_centerInParent="false"-->
+<!--                            android:layout_marginLeft="5dp"-->
+<!--                            android:layout_marginRight="5dp"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:visibility="gone">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="top|center_horizontal"-->
+<!--                                android:text="Pulang-Pergi?"-->
+<!--                                android:textSize="@dimen/textSmall"-->
+<!--                                tools:ignore="HardcodedText" />-->
+
+<!--                            <com.bm.main.ftl.core_template.switchbutton.SwitchButton-->
+<!--                                android:id="@+id/switchPP"-->
+<!--                                style="@style/SwitchButtonStyle"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                app:kswAnimationDuration="300"-->
+<!--                                app:kswBackDrawable="@drawable/ios_back_drawable"-->
+<!--                                app:kswBackMeasureRatio="1.4"-->
+<!--                                app:kswThumbDrawable="@drawable/ios_thumb_selector"-->
+<!--                                app:kswThumbMarginBottom="-8dp"-->
+<!--                                app:kswThumbMarginLeft="-5dp"-->
+<!--                                app:kswThumbMarginRight="-5dp"-->
+
+<!--                                app:kswThumbMarginTop="-2.5dp" />-->
+<!--                        </LinearLayout>-->
+                    </RelativeLayout>
+
+<!--                    <RelativeLayout-->
+<!--                        android:id="@+id/relTanggalPulang"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+
+<!--                        android:visibility="gone">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/imageViewTanggalPulang"-->
+<!--                            android:layout_width="23dp"-->
+<!--                            android:layout_height="23dp"-->
+<!--                            android:layout_alignParentLeft="false"-->
+<!--                            android:layout_alignParentStart="false"-->
+<!--                            android:layout_alignParentTop="false"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            android:layout_marginRight="5dp"-->
+<!--                            android:src="@drawable/ic_event_back"-->
+<!--                            tools:ignore="ContentDescription" />-->
+
+<!--                        <com.bm.main.ftl.materialedittext.MaterialEditText-->
+<!--                            android:id="@+id/textTanggalPulang"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+
+<!--                            android:layout_alignParentTop="false"-->
+
+<!--                            android:layout_centerInParent="false"-->
+<!--                            android:layout_centerVertical="false"-->
+<!--                            android:layout_toEndOf="@+id/imageViewTanggalPulang"-->
+
+<!--                            android:layout_toRightOf="@+id/imageViewTanggalPulang"-->
+
+<!--                            android:focusableInTouchMode="false"-->
+<!--                            android:text="Sabtu,20 Mei 2017"-->
+<!--                            android:textSize="@dimen/textNormal"-->
+<!--                            app:met_baseColor="@color/text_secondary"-->
+<!--                            app:met_floatingLabel="normal"-->
+<!--                            app:met_floatingLabelAlwaysShown="true"-->
+<!--                            app:met_floatingLabelText="Tanggal Pulang"-->
+<!--                            app:met_hideUnderline="true"-->
+<!--                            app:met_primaryColor="@color/md_grey_700"-->
+<!--                            app:met_singleLineEllipsis="true"-->
+<!--                            tools:ignore="HardcodedText" />-->
+<!--                    </RelativeLayout>-->
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+
+
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
+                    android:background="@color/cardview_shadow_start_color" />
+
+                <RelativeLayout
+                    android:id="@+id/linPenumpang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp"
+                    android:clickable="true">
+
+                    <ImageView
+                        android:id="@+id/imageViewPenumpang"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentStart="false"
+                        android:layout_alignParentTop="false"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_passenger_travel"
+                        tools:ignore="ContentDescription" />
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/textJumlahPenumpang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentTop="false"
+                        android:layout_centerInParent="false"
+                        android:layout_toEndOf="@+id/imageViewPenumpang"
+
+                        android:layout_toRightOf="@+id/imageViewPenumpang"
+                        android:focusableInTouchMode="false"
+
+                        android:text="1 Dewasa"
+
+                        android:textSize="@dimen/textSmall"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="normal"
+                        app:met_floatingLabelAlwaysShown="true"
+                        app:met_floatingLabelText="Penumpang"
+
+                        app:met_primaryColor="@color/md_grey_700"
+                        app:met_singleLineEllipsis="true"
+                        tools:ignore="HardcodedText" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonCari_Train"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="16dp"
+
+            android:layout_marginEnd="16dp"
+
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+
+
+            android:textAlignment="center"
+            android:textSize="@dimen/textNormal"
+            android:text="Cari"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+
+            android:background="@drawable/selector_button_orange_pressed"
+            tools:ignore="HardcodedText" />
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/toast_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+        <!--</LinearLayout>-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

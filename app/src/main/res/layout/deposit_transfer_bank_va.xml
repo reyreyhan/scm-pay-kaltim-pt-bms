@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/layout_transfer_bank_va"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+    <LinearLayout
+        android:id="@+id/linMainVa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+
+
+        android:orientation="vertical">
+        <View
+
+
+            android:layout_width="fill_parent"
+            android:layout_height="10dip"
+
+            />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Deposit cepat 24 Jam, tanpa perlu konfirmasi" android:fontFamily="@font/roboto_medium"
+           android:layout_marginBottom="5dp"
+          />
+    <!--<LinearLayout-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+
+<!--android:visibility="gone"-->
+
+        <!--android:orientation="vertical" >-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
+            <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:src="@drawable/ic_checked"&ndash;&gt;-->
+                <!--&lt;!&ndash;tools:ignore="ContentDescription" />&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:text="Deposit dalam hitungan detik otomatis langsung masuk ke saldo Anda tanpa perlu konfirmasi."-->
+                <!--android:drawableStart="@drawable/ic_checked"-->
+                <!--android:drawableLeft="@drawable/ic_checked"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginStart="5dp" />-->
+
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:src="@drawable/ic_checked"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:ignore="ContentDescription" />&ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Anda bisa melakukan deposit 24 jam non stop."-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginStart="5dp"-->
+            <!--android:drawableStart="@drawable/ic_checked"-->
+            <!--android:drawableLeft="@drawable/ic_checked"-->
+             <!--/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:src="@drawable/ic_checked"&ndash;&gt;-->
+            <!--&lt;!&ndash;&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:ignore="ContentDescription" />&ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Tanpa ribet memasukkan nominal unik."-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginStart="5dp"-->
+            <!--android:drawableStart="@drawable/ic_checked"-->
+            <!--android:drawableLeft="@drawable/ic_checked"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Bank"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBankVa"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:scrollbars="none"/>
+        <include layout="@layout/layout_no_connection" android:id="@+id/layout_no_connection_va" android:visibility="gone"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

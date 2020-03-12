@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.single.ftl.flight.activities.FlightSearchActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="60dp"
+
+            android:scrollbars="none"
+
+            >
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+            <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+            <!--android:paddingBottom="?android:attr/actionBarSize"-->
+            <!--android:animateLayoutChanges="true"-->
+            <!--android:orientation="vertical">-->
+
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:clipToPadding="true" android:background="@null"
+                    android:orientation="vertical">
+                    <!--<android.support.design.widget.TextInputLayout-->
+                    <!--android:id="@+id/input_layout_name"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+
+
+                    <!--android:textColorHint="@color/colorAccent_ppob"-->
+                    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+
+                    <!--&gt;-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:layout_centerInParent="true"
+                        android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_white_transparant"
+                        >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="Airport Asal"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="@dimen/textSmall" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+
+
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:text="Soekarno – Hatta"
+                        android:textColor="@color/md_white_1000"
+                        android:textCursorDrawable="@drawable/text_cursor_white"
+                        android:textSize="@dimen/textMedium"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="Jakarta (CGK)"
+                        android:textColor="@color/md_white_1000" />
+                    </LinearLayout>
+                    <!--</android.support.design.widget.TextInputLayout>-->
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_swap_vertical_circle_white_48dp"
+                        tools:ignore="ContentDescription" />
+
+
+                    <!--<android.support.design.widget.TextInputLayout-->
+
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+
+
+                    <!--android:textColorHint="@color/colorAccent_ppob"-->
+                    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+
+                    <!--&gt;-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/shape_white_transparant"
+                            >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="Airport Tujuan"
+                        android:textColor="@color/md_white_1000"
+                        android:textSize="@dimen/textSmall" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+
+                        android:hint="Kota Tujuan"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:text="Juanda"
+                        android:textColor="@color/md_white_1000"
+
+                        android:textSize="@dimen/textMedium"
+                      />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:text="Surabaya (SUB)"
+                        android:textColor="@color/md_white_1000" />
+                    <!--</android.support.design.widget.TextInputLayout>-->
+                    </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="Tanggal Berangkat"
+                    android:textColor="@color/md_blue_500"
+                    android:textSize="@dimen/textSmall" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textMedium"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textNormal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--</RelativeLayout>-->
+        </ScrollView>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Cari"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textMedium"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/md_white_1000"
+        android:background="@drawable/selector_button_orange_pressed"
+        android:layout_gravity="bottom"/>
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

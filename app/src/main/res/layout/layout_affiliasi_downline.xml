@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_affiliasi_downline">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ID Upline/Sponsor"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="ID Upline/Sponsor"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nama Upline"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="08xxxxxxxxxxxxx"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_500" android:layout_marginTop="@dimen/activity_horizontal_margin_rounded" android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"/>
+        </LinearLayout>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="Komisi Dari Mitra Binaan Anda Bulan Ini" android:textSize="@dimen/textNormalCaption" android:fontFamily="@font/roboto_regular"/>
+
+        <TextView
+            android:id="@+id/textViewKomisiDownline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+
+            android:text="Rp. 0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textNormalCaption"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_500" android:layout_marginTop="@dimen/activity_horizontal_margin_rounded" android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"/>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:text="Data Mitra Binaan Anda" android:textSize="@dimen/textNormalCaption" android:fontFamily="@font/roboto_regular"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_card_edge_grey" android:orientation="horizontal" android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Level1"/>
+                <TextView
+                    android:id="@+id/textViewJmlLevel1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="0"/>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent" android:background="@color/md_grey_300"/>
+            <LinearLayout  android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Level2"/>
+                <TextView
+                    android:id="@+id/textViewJmlLevel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent" android:background="@color/md_grey_300"/>
+            <LinearLayout  android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"/>
+                <TextView
+                    android:id="@+id/textViewJmlTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--<ExpandableListView-->
+            <!--android:id="@+id/expandableListView_Parent"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:groupIndicator="@null" />-->
+        <LinearLayout
+            android:id="@+id/linMainListBinaan0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="4"
+
+            >
+
+            <ImageView
+                android:id="@+id/imageViewDrop0"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_right_arrow"
+                />
+            <ImageView
+                android:id="@+id/imageViewDrop0Empty"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+
+                />
+
+            <ImageView
+
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+
+                android:layout_gravity="center"
+                android:layout_marginEnd="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginStart="5dp"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_level_0"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.8"
+                android:orientation="vertical"
+
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textViewNamaBinaan0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Mitra Binaan 0"
+                    android:textSize="@dimen/textSmall" />
+
+                <TextView
+                    android:id="@+id/textViewJumlahBinaan0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Jumlah Binaan : 0"
+                    android:textSize="@dimen/textSmall" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewIdBinaan0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="center"
+                    android:text="FAMitra0"
+                    android:textSize="@dimen/textSmall" />
+
+                <ImageView
+
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:src="@drawable/ic_info_binaan"
+
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/recyclerViewBinaan"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+            <!--android:scrollbars="none" android:visibility="gone"/>-->
+        <ExpandableListView
+            android:id="@+id/exp_listViewBinaan"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" android:groupIndicator="@null">
+    </ExpandableListView>
+    </LinearLayout>
+</LinearLayout>

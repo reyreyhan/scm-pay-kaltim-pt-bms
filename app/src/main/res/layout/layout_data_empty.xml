@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_data_empty"
+    android:orientation="vertical"
+
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:importantForAccessibility="no"
+        android:background="@drawable/ic_icon_data_empty" />
+
+    <TextView
+        android:id="@+id/txtHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+android:fontFamily="@font/roboto_light"
+        android:textSize="@dimen/textMediumHeader"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.TextView"/>
+
+    <TextView
+android:id="@+id/txtSub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_light"
+        android:textColor="@color/md_red_A700"
+        android:textStyle="bold"
+        android:textSize="@dimen/textLarge"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.TextView"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="NewApi" />
+</LinearLayout>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+    <com.bm.main.fpl.templates.ticketview.TicketView
+        android:id="@+id/ticketView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+
+        app:ticketBorderColor="@color/colorAccent"
+        app:ticketBorderWidth="1dp"
+        app:ticketCornerType="rounded"
+        app:ticketDividerPadding="10dp"
+        app:ticketDividerType="dash"
+        app:ticketElevation="8dp"
+        app:ticketOrientation="vertical"
+        app:ticketScallopPositionPercent="65"
+        app:ticketScallopRadius="7dp"
+        app:ticketShowBorder="true"
+        app:ticketShowDivider="true" />
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+           >
+
+            <LinearLayout
+                android:id="@+id/linUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="NAMA AIRLINE"
+                    android:textColor="@color/placeholder_bg"
+                    android:background="@color/placeholder_bg"
+                    android:textSize="@dimen/textMedium"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/placeholder_bg"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linUp"
+                android:layout_alignEnd="@+id/linUp"
+                android:layout_alignRight="@+id/linUp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/placeholder_bg"
+                        android:text="06:00"
+                        android:textColor="@color/placeholder_bg"
+                        android:textSize="@dimen/textSmall"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/placeholder_bg"
+                        android:text=" - "
+                        android:textColor="@color/placeholder_bg" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/placeholder_bg"
+                        android:text="07:10"
+                        android:textColor="@color/placeholder_bg"
+                        android:textSize="@dimen/textSmall" />
+                </LinearLayout>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="1j 10m"
+                    android:background="@color/placeholder_bg"
+                    android:textColor="@color/placeholder_bg"
+                    android:textSize="@dimen/textSmall" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+android:id="@+id/transit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Langsung"
+                        android:background="@color/placeholder_bg"
+                        android:textColor="@color/placeholder_bg"
+                        android:textSize="@dimen/textSmall" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@+id/transit"
+                        android:text="(JOG)"
+                        android:background="@color/placeholder_bg"
+                        android:textColor="@color/placeholder_bg"
+                        android:textSize="@dimen/textSmall"
+                        android:layout_toRightOf="@+id/transit" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/placeholder_bg"
+                android:textColor="@color/placeholder_bg"
+                android:text="Harga / org"
+
+                android:textSize="@dimen/textSmall" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 1.000.000"
+                android:background="@color/placeholder_bg"
+                android:textColor="@color/placeholder_bg"
+                android:textSize="@dimen/textMedium" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

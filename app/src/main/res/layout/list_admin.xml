@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/colorTransparent">
+
+
+
+        <LinearLayout
+            android:id="@+id/linMainListProduk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center"
+            android:orientation="horizontal"
+android:weightSum="2"
+            android:padding="2dp"
+
+           >
+
+            <TextView
+                android:id="@+id/textViewPlusNamaMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="123456789012"
+                android:textSize="@dimen/textSmall"
+                android:fontFamily="@font/roboto_light"  />
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:layout_gravity="center"
+
+    android:src="@drawable/ic_right_arrow"/>
+
+        </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

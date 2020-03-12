@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linHeaderVA"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/textViewHeaderVA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2" android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textViewNomorVA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            tools:text="3464564564564543"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewCopyVA"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_copy"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <TextView
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:text="Pilih Cara Transfer :" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSubVa"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"/>
+
+
+
+
+</LinearLayout>

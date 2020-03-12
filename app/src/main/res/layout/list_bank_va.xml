@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true">
+
+
+    <LinearLayout
+        android:id="@+id/linMainListProduk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:weightSum="2"
+
+
+        >
+
+        <LinearLayout
+            android:id="@+id/linProdukVA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="3"
+
+
+            >
+
+            <FrameLayout
+                android:id="@+id/frameIcon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start
+"
+
+                android:layout_weight=".7">
+
+                <ImageView
+                    android:id="@+id/imageViewProduk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+
+
+                    tools:ignore="ContentDescription" />
+
+                <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                    android:id="@+id/avi"
+                    style="@style/AVLoadingIndicatorView.Small"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_gravity=""
+                    app:indicatorColor="@color/colorPrimary_ppob" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewLabelVa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+
+                    android:text="No.Rekening VA Anda"
+                    android:textSize="@dimen/textSmall" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewNoVa"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/md_red_500"
+                        android:textSize="@dimen/textSmall"
+
+                        tools:text="1234567890123456" />
+
+                    <ImageView
+                        android:id="@+id/imageViewCopyVAHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="24dp"
+                        android:layout_weight=".4"
+                        android:src="@drawable/ic_copy"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewHeader"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_down_arrow"
+
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/linHeaderVA"
+            layout="@layout/layout_subheader_va"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/linHeaderNonVA"
+            layout="@layout/layout_subheader_non_va"
+            android:visibility="gone" />
+        <!--<LinearLayout-->
+        <!--android:id="@+id/linHeaderVA"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:visibility="visible">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textViewHeaderVA"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="" />-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="2">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textViewNomorVA"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="2"-->
+        <!--android:text="3464564564564543"-->
+        <!--android:textStyle="bold" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/imageViewCopyVA"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:src="@drawable/ic_copy" />-->
+        <!--</LinearLayout>-->
+
+        <!--<TextView-->
+
+        <!--android:layout_width="match_parent"-->
+
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Pilih Cara Transfer Melalui :" />-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/linSubHeaderVA"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:onClick="onSlideViewDescProdukVAClick"-->
+        <!--android:paddingLeft="5dp"-->
+        <!--android:paddingRight="5dp">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textViewSubHeaderVA"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_weight="1.7"-->
+        <!--android:text="Internet Banking"-->
+        <!--android:textColor="@color/md_white_1000" />-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="24dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_weight="0.3"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:src="@drawable/ic_down_arrow_white"-->
+        <!--tools:ignore="ContentDescription" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/linInetVA"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+
+        <!--android:visibility="gone">-->
+
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recyclerStepperVA"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:scrollbars="none" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textViewNotesVA"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="dfsddsgs" />-->
+        <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_ribbon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="-1dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_promo"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

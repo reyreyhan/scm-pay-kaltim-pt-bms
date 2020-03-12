@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linSubHeaderVA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_grey_500"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/textViewSubHeaderVA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.7"
+            android:text="Internet Banking"
+            android:textColor="@color/md_white_1000" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:gravity="center_vertical"
+            android:src="@drawable/ic_down_arrow_white"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linInetVA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+
+        android:visibility="gone">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerStepperSubVA"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:scrollbars="none" />
+
+        <TextView
+            android:id="@+id/textViewNotesVA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textVerySmall"
+            android:fontFamily="@font/roboto_light"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_rounded"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"
+            android:text="note" />
+    </LinearLayout>
+
+</LinearLayout>

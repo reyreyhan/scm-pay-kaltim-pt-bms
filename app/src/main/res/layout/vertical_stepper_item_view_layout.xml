@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+	<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+
+			android:orientation="vertical"
+			android:gravity="center_horizontal"
+		>
+
+		<FrameLayout
+				android:layout_width="@dimen/stepper_point_size"
+				android:layout_height="@dimen/stepper_point_size">
+
+
+			<!-- Stepper Point -->
+			<com.bm.main.fpl.templates.stepperview.internal.ClipOvalFrameLayout
+                android:layout_width="@dimen/stepper_point_size"
+					android:layout_height="@dimen/stepper_point_size"
+				android:background="@drawable/circle_blue_stroke_shape">
+
+				<!--<View-->
+						<!--android:id="@+id/stepper_point_background"-->
+						<!--android:layout_width="match_parent"-->
+						<!--android:layout_height="match_parent"-->
+						<!--android:background="@color/md_grey_500"/>-->
+
+				<TextView
+						android:id="@+id/stepper_number"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						tools:text="1"
+						android:textSize="12sp"
+						android:maxLines="1"
+						android:maxLength="2"
+						android:textColor="@color/md_light_blue_500"/>
+
+				<!--<ImageView-->
+					<!--android:id="@+id/stepper_done_icon"-->
+					<!--android:layout_width="wrap_content"-->
+					<!--android:layout_height="wrap_content"-->
+					<!--android:layout_gravity="center"-->
+					<!--android:alpha="0"-->
+					<!--android:src="@drawable/circle_blue_stroke_shape"-->
+					<!--android:importantForAccessibility="no"/>-->
+
+			</com.bm.main.fpl.templates.stepperview.internal.ClipOvalFrameLayout>
+
+			<!--<ImageView-->
+				<!--android:id="@+id/stepper_error_icon"-->
+				<!--android:layout_width="@dimen/stepper_point_size"-->
+				<!--android:layout_height="@dimen/stepper_point_size"-->
+				<!--android:src="@drawable/circle_blue_stroke_shape"-->
+				<!--android:alpha="0"-->
+				<!--android:importantForAccessibility="no"/>-->
+
+		</FrameLayout>
+
+		<!-- Vertical Stepper Line -->
+		<View
+				android:id="@+id/stepper_line"
+				android:layout_width="@dimen/vertical_stepper_line_width"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:layout_marginTop="2dp"
+				android:background="@color/md_light_blue_500"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+        android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+
+			android:animateLayoutChanges="true"
+		>
+
+		<TextView
+				android:id="@+id/stepper_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+android:fontFamily="@font/roboto_light"
+android:textSize="@dimen/textSmall"
+			tools:text="Title"
+			android:layout_marginLeft="5dp"
+
+			android:layout_marginStart="5dp" />
+
+
+		<View
+            android:layout_width="match_parent"
+			android:layout_height="20dp"/>
+
+	</LinearLayout>
+
+</LinearLayout>

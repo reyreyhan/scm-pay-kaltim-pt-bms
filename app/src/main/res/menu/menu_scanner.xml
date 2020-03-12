@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+    <item android:id="@+id/action_right_scanner" android:title="Pilih"
+        android:orderInCategory="100" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_barcode_reader"
+
+        />
+    <item android:id="@+id/action_right_drawer" android:title="Pilih"
+        android:orderInCategory="101" app:showAsAction="always"
+        android:icon="@drawable/ic_menu"
+
+        />
+</menu>

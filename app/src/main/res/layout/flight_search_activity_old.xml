@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.single.ftl.flight.activities.FlightSearchActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="60dp"
+            android:layout_weight="1"
+
+            android:scrollbars="none"
+
+            >
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+            <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+            <!--android:paddingBottom="?android:attr/actionBarSize"-->
+            <!--android:animateLayoutChanges="true"-->
+            <!--android:orientation="vertical">-->
+
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <RelativeLayout
+                    android:id="@+id/relImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+
+                    android:background="@null"
+
+                    android:clipToPadding="true"
+                    android:orientation="vertical">
+                    <!--<android.support.design.widget.TextInputLayout-->
+                    <!--android:id="@+id/input_layout_name"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+
+
+                    <!--android:textColorHint="@color/colorAccent_ppob"-->
+                    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+
+                    <!--&gt;-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/linAirportAsal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_gravity="center"
+                            android:layout_marginStart="60dp"
+
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginEnd="60dp"
+                            android:layout_marginRight="60dp"
+android:weightSum="1"
+                            android:orientation="horizontal">
+                            <LinearLayout
+
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+
+                                android:layout_gravity="center"
+
+
+                                android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="Airport Asal"
+                                android:gravity="center"
+                                android:textColor="@color/md_white_1000"
+                                android:textSize="@dimen/textSmall"
+                                android:textStyle="bold" />
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:gravity="center"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <TextView
+android:id="@+id/textViewNamaAirportAsal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:gravity="center"
+
+android:layout_gravity="center"
+                                    android:text="Soekarno – Hatta "
+                                    android:textColor="@color/md_white_1000"
+                                    android:textCursorDrawable="@drawable/text_cursor_white"
+                                    android:textSize="@dimen/textMedium" />
+
+                                <!--<ImageView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:src="@drawable/ic_down_white"-->
+                                    <!--tools:ignore="ContentDescription" />-->
+                            <!--</LinearLayout>-->
+
+                            <TextView
+                                android:id="@+id/textViewKodeNamaAirportAsal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Jakarta (CGK)"
+android:gravity="center"
+                                android:textColor="@color/md_white_1000"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_down_white"
+                                tools:ignore="ContentDescription" />
+                        </LinearLayout>
+                        <!--</android.support.design.widget.TextInputLayout>-->
+
+                        <ImageView
+                            android:id="@+id/imageViewTukarAirport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_swap_vertical_circle_white_48dp"
+                            tools:ignore="ContentDescription" />
+
+
+                        <!--<android.support.design.widget.TextInputLayout-->
+
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+
+
+                        <!--android:textColorHint="@color/colorAccent_ppob"-->
+                        <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+
+                        <!--&gt;-->
+                    <LinearLayout
+                        android:id="@+id/linAirportTujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_gravity="center"
+                        android:layout_marginStart="60dp"
+
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginRight="60dp"
+                        android:weightSum="1"
+                        android:orientation="horizontal">
+                        <LinearLayout
+
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+
+                            android:layout_gravity="center"
+
+
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="Airport Tujuan"
+                                android:textColor="@color/md_white_1000"
+                                android:textSize="@dimen/textSmall"
+                                android:gravity="center"
+                                android:textStyle="bold" />
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:weightSum="2">-->
+
+                                <TextView
+                                    android:id="@+id/textViewNamaAirportTujuan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+
+                                    android:fontFamily="@font/roboto_medium"
+
+                                    android:gravity="center"
+
+                                    android:text="Juanda"
+                                    android:textColor="@color/md_white_1000"
+
+                                    android:textSize="@dimen/textMedium" />
+
+                                <!--<ImageView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:src="@drawable/ic_down_white"-->
+                                    <!--tools:ignore="ContentDescription" />-->
+                            <!--</LinearLayout>-->
+
+                            <TextView
+                                android:id="@+id/textViewKodeNamaAirportTujuan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_regular"
+                                android:gravity="center"
+                                android:text="Surabaya (SUB)"
+                                android:textColor="@color/md_white_1000"
+                                android:textStyle="bold" />
+                            <!--</android.support.design.widget.TextInputLayout>-->
+                        </LinearLayout>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_down_white"
+                                tools:ignore="ContentDescription" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="Tanggal Berangkat"
+                    android:textColor="@color/md_blue_500"
+                    android:textSize="@dimen/textSmall" />
+
+                <LinearLayout
+                    android:id="@+id/linTanggalBerangkat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:background="@drawable/selector_button_blue_white_pressed"
+
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewTanggalBerangkat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+
+
+                        tools:text="20"
+                        android:textColor="@color/md_blue_500"
+                        android:textSize="@dimen/textLarge" />
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:weightSum="2"
+                        android:gravity="center"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/textViewBulanBerangkat"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+
+
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            tools:text="Januari"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textMedium" />
+
+                        <TextView
+                            android:id="@+id/textViewHariTahunBerangkat"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+
+                            android:layout_gravity="center"
+                            tools:text="Minggu 2019"
+                            android:textColor="@color/md_blue_500"
+                            android:textSize="@dimen/textSmall" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:adjustViewBounds="true"
+
+                        android:src="@drawable/ic_down_primary"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="Jumlah Penumpang"
+                    android:textColor="@color/md_blue_500"
+                    android:textSize="@dimen/textSmall" />
+
+                <LinearLayout
+                    android:id="@+id/linMainJumlahPenumpang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/selector_button_blue_white_pressed"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:weightSum="3"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_adult_primary"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textViewJumlahDewasa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/textMedium"
+                                android:text="1" />
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_down_primary"
+                                tools:ignore="ContentDescription" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Dewasa"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/textNormal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_child_primary"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textViewJumlahAnak"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:gravity="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/textMedium"
+                                android:text="0" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_down_primary"
+                                tools:ignore="ContentDescription" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Anak"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/textNormal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_button_blue_white_pressed"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_baby_primary"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textViewJumlahBayi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/textMedium"
+                                android:text="0" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_down_primary"
+                                tools:ignore="ContentDescription" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="Bayi"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/textNormal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--</RelativeLayout>-->
+        </ScrollView>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appButtonCariPesawat"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/selector_button_orange_pressed"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Cari"
+        android:textAllCaps="false"
+        android:textColor="@color/md_white_1000"
+        android:textSize="@dimen/textMedium"
+        android:textStyle="bold" />
+
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

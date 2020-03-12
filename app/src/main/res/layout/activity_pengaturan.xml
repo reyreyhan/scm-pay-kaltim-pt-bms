@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context="com.bm.main.fpl.activities.PengaturanActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+           android:id="@+id/linSettingPrinter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Setting Printer"
+                android:textSize="@dimen/textNormal" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="0.3"
+                android:layout_gravity="center"
+
+                android:src="@drawable/ic_right_arrow"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linSettingFeeFlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:hapticFeedbackEnabled="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Setting Fee Pesawat"
+                android:textSize="@dimen/textNormal" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="0.3"
+                android:layout_gravity="center"
+
+                android:src="@drawable/ic_right_arrow"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Komisi Transaksi"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchKomisi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Harga Pulsa, Game Online dan Topup (Go-Pay,E-Toll dll)"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchHarga"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Komisi Produk TOMO"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchKomisiProdukTomo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan QR Code di Struk"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchQRCodeStruk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Voice Assistant"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchVoiceAssistant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+android:padding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="2" android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Harga Pulsa"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchHargaPulsa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+
+            android:orientation="horizontal"
+            android:weightSum="2" android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Harga Game Online"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchHargaGame"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+
+            android:orientation="horizontal"
+            android:weightSum="2" android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Harga Topup \n (Go-Pay,E-Toll dll)"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchHargaTopup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+
+            android:orientation="horizontal"
+            android:weightSum="2" android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.7"
+                android:fontFamily="@font/roboto_light"
+                android:text="Tampilkan Promo di Struk"
+                android:textSize="@dimen/textNormal" />
+
+            <com.bm.main.fpl.templates.switchbutton.SwitchButton
+                android:id="@+id/switchPromoStruk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:checked="true" />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton android:id="@+id/appButtonCek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="cek" android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

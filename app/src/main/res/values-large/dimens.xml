@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textVerySmall">12sp</dimen><!--// 12-->
+    <dimen name="textSmall">14sp</dimen><!--// 14-->
+    <dimen name="textNormal">16sp</dimen><!--//14-->
+    <dimen name="textNormalCaption">18sp</dimen><!--//14-->
+    <dimen name="textMedium">20sp</dimen><!--//18-->
+    <dimen name="textMediumHeader">22sp</dimen><!--//18-->
+    <dimen name="textLarge">24sp</dimen><!--//22-->
+    <!--//22-->
+    <!--//22-->
+    <!--//22-->
+    <dimen name="textXVeryLarge">40sp</dimen><!--//22-->
+    <!--//22-->
+    <!--//22-->
+
+    <dimen name="height_curve_intro">220dp</dimen>
+</resources>

@@ -1,0 +1,162 @@
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/fragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+
+    <!--tools:context="com.bm.main.fpl.fragments.PlnNonFragment">-->
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        tools:context="com.bm.main.fpl.fragments.PlnNonFragment">
+    <LinearLayout
+        android:id="@+id/linMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+        <include layout="@layout/tab_bar_button_group"
+            android:id="@+id/buttonGroupTabs" android:visibility="gone"/>
+        <!-- TODO: Update blank fragment layout -->
+        <!--<RadioGroup-->
+
+            <!--android:id="@+id/radioGroupTabs"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+
+            <!--android:background="@drawable/shape_toolbar"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<RadioButton-->
+
+                <!--android:id="@+id/radioButtonItemTabIdPelanggan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/rbtn_selector_tab"-->
+                <!--android:button="@null"-->
+
+                <!--android:checked="true"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:tag="0"-->
+                <!--android:text="@string/tab_id_pelanggan"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@drawable/rbtn_textcolor_selector_tab"-->
+                <!--android:textSize="@dimen/textSmall" />-->
+
+            <!--<RadioButton-->
+                <!--android:id="@+id/radioButtonItemTabDaftarPelanggan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/rbtn_selector_tab"-->
+                <!--android:button="@null"-->
+                <!--android:fontFamily="@font/roboto_light"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:tag="1"-->
+                <!--android:text="@string/tab_daftar_id_pelanggan"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@drawable/rbtn_textcolor_selector_tab"-->
+                <!--android:textSize="@dimen/textSmall" />-->
+        <!--</RadioGroup>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal" android:weightSum="2">
+            <ImageView android:id="@+id/imageViewVoiceBookNon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+
+                android:layout_gravity="center"
+
+                android:layout_marginBottom="5dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_keyboard_voice_grey"
+                android:visibility="gone"/>
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/materialEditTextIdPelanggan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+android:layout_weight="2"
+                android:hint="@string/hint_id_pelanggan"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+android:maxLength="13"
+
+                android:fontFamily="@font/roboto_light"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+app:met_clearButton="true"
+                />
+
+            <ImageView android:id="@+id/imageViewAddressBookNon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+
+                android:layout_gravity="center"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginStart="-20dp"
+                android:layout_marginBottom="5dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_address_book"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:animateLayoutChanges="true">-->
+        <com.bm.main.fpl.templates.CustomFontCheckBox
+            android:id="@+id/checkboxSimpanIdNon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/simpan_id_pelanggan" />
+
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:id="@+id/button_lanjutkan"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+
+            android:background="@drawable/selector_button_red_pressed"
+
+            android:clickable="true"
+            android:fontFamily="@font/roboto_light"
+            android:focusable="true"
+            android:text="@string/lanjutkan"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+            />
+        <!--</RelativeLayout>-->
+    </LinearLayout>
+        <include
+            android:id="@+id/layout_no_connection"
+            layout="@layout/layout_no_connection"
+            android:visibility="gone" />
+    </LinearLayout>
+<!--</ScrollView>-->

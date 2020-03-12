@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.IndiHomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
+    <View
+
+        android:background="@drawable/curve_toolbar_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="10dip"
+
+        />
+
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+           <!---->
+           <!--&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+
+        <!--android:orientation="vertical">-->
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:scrollbars="none"-->
+
+
+            <!--android:background="@color/md_white_1000">-->
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/activity_horizontal_margin"-->
+                <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
+
+               <!--android:animateLayoutChanges="true"-->
+                <!--android:orientation="vertical">-->
+            <LinearLayout
+                android:id="@+id/linMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <include layout="@layout/tab_bar_button_group"
+                    android:id="@+id/buttonGroupTabs" android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <com.bm.main.materialedittext.MaterialEditText
+                        android:id="@+id/materialEditTextIdPelanggan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+android:layout_weight="2"
+
+                        android:hint="@string/hint_id_pelanggan"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:textCursorDrawable="@drawable/text_cursor_accent"
+                        android:textSize="@dimen/textNormal"
+android:maxLength="16"
+                        android:fontFamily="@font/roboto_light"
+                        app:met_baseColor="@color/text_secondary"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                        app:met_primaryColor="@color/colorAccent_ppob"
+                        app:met_singleLineEllipsis="true"
+app:met_clearButton="true"
+                        />
+
+                    <ImageView android:id="@+id/imageViewAddressBook"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:layout_gravity="center"
+
+                        android:layout_marginLeft="-25dp"
+                        android:layout_marginStart="-25dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_address_book" />
+                </LinearLayout>
+
+                <com.bm.main.fpl.templates.CustomFontCheckBox
+                    android:id="@+id/checkboxSimpanId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simpan_id_pelanggan" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_lanjutkan"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/selector_button_red_pressed"
+                    android:fontFamily="@font/roboto_light"
+                    android:clickable="true"
+
+                    android:focusable="true"
+                    android:text="@string/lanjutkan"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal"
+                    />
+            </LinearLayout>
+
+            <!--</RelativeLayout>-->
+        <!--</ScrollView>-->
+    </LinearLayout>
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
+        <include
+
+            android:id="@+id/bottom_toolbar"
+            layout="@layout/bottom_toolbar" />
+        <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

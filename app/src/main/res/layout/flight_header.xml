@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/textCity_Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:padding="5dp"
+        android:textColor="@color/md_white_1000"
+        android:textSize="@dimen/textNormalCaption"
+        android:textStyle="bold"
+        android:background="@color/md_orange_500"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.TextView"
+        tools:text="SURABAYA"/>
+</RelativeLayout>

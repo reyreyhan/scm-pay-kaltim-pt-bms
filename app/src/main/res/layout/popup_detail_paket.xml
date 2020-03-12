@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+style="@style/MaterialDialogSheet"
+    android:layout_height="match_parent"
+    android:background="@color/black_overlay_dark"
+    app:cardBackgroundColor="@color/black_overlay_dark">
+
+    <RelativeLayout
+        android:id="@+id/contentHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linPromo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/md_white_1000"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linBasic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/header_basic"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="BASIC"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal" />
+
+                <ImageView
+android:id="@+id/imageViewBasic"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/image_basic"
+android:adjustViewBounds="true"
+                    android:importantForAccessibility="no"
+                    tools:src="@drawable/paket_basic_sbf" />
+
+                <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+                    android:id="@+id/frame_ribbon_termurah"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="-150dp"
+
+                    android:visibility="gone"
+                    app:duration="5000"
+
+                    >
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|top"
+                        android:src="@drawable/ic_termurah"
+                        tools:ignore="ContentDescription" />
+
+                </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linPro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/header_pro"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="PRO"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal" />
+
+                <ImageView
+                    android:id="@+id/imageViewPro"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/image_pro"
+                    android:adjustViewBounds="true"
+                    tools:src="@drawable/paket_pro_sbf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linEnterprise"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/header_enterprise"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="ENTERPRISE"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/textNormal" />
+
+                <ImageView
+                    android:id="@+id/imageViewEnterprise"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/image_enterprise"
+                    android:adjustViewBounds="true"
+                    tools:src="@drawable/paket_enterprise_sbf" />
+
+                <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+                    android:id="@+id/frame_ribbon_terlaris"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="-150dp"
+
+
+                    android:visibility="gone"
+                    app:duration="5000">
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:src="@drawable/ic_terlaris"
+                        tools:ignore="ContentDescription" />
+
+                </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_paket_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+
+                android:layout_weight="1"
+                android:scrollbars="none" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@color/md_grey_100">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+
+
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/textViewHargaCoret"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textNormal"
+
+                    tools:text="Rp.000.000"/>
+                <TextView
+                    android:id="@+id/textViewHargaHemat"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textAlignment="gravity"
+                    android:fontFamily="@font/roboto"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_red_500"
+                    android:textSize="@dimen/textNormal"
+                    tools:text="Hemat Rp.0.000.000"/>
+
+            </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewHargaPaket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Rp.000.000"
+                   android:textAlignment="center"
+                    android:fontFamily="@font/roboto"
+                    android:textStyle="bold"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="@dimen/textNormalCaption"
+                   />
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/relBottomPaket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_basic">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/appButtonTutupPaket"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selector_button_red_pressed"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Tutup"
+                    android:textAllCaps="false"
+                    android:textColor="@color/md_white_1000" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

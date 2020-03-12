@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--56 for mdpi-->
+    <!--// 20-->
+    <!--// 20-->
+    <!--// 20-->
+
+
+    <dimen name="textVerySmall">10sp</dimen><!--// 12-->
+    <dimen name="textSmall">12sp</dimen><!--// 14-->
+    <dimen name="textNormal">14sp</dimen><!--//14-->
+    <dimen name="textNormalCaption">16sp</dimen><!--//14-->
+    <dimen name="textMedium">18sp</dimen><!--//18-->
+    <dimen name="textMediumHeader">20sp</dimen><!--//18-->
+    <dimen name="textLarge">22sp</dimen><!--//22-->
+    <!--//22-->
+    <!--//22-->
+    <!--//22-->
+    <dimen name="textXVeryLarge">38sp</dimen><!--//22-->
+    <!--//22-->
+    <!--//22-->
+
+    <dimen name="height_curve_intro">300dp</dimen>
+
+</resources>

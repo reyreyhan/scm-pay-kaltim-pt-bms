@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+<!--android:fillViewport="true"-->
+        <!--android:scrollbars="none">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/materialEditTextBankTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                android:drawableEnd="@drawable/ic_dropdown"
+                android:drawableRight="@drawable/ic_dropdown"
+                android:focusableInTouchMode="false"
+                android:fontFamily="@font/roboto_light"
+                android:hint="@string/hint_pilih_bank_transfer"
+                android:imeOptions="actionDone"
+
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+
+                app:met_accentTypeface="@string/roboto_regular"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/md_black_1000"
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+                app:met_underlineColor="@color/md_grey_500" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/materialEditTextNoRekTransfer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="2"
+                    android:digits="01234567890"
+                    android:fontFamily="@font/roboto_light"
+                    android:hint="@string/hint_no_rekening"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="19"
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textNormal"
+                    app:met_accentTypeface="@string/roboto_regular"
+                    app:met_baseColor="@color/text_secondary"
+
+                    app:met_clearButton="true"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelAnimating="true"
+
+                    app:met_floatingLabelTextColor="@color/md_black_1000"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+                    app:met_underlineColor="@color/md_grey_500" />
+
+                <ImageView
+                    android:id="@+id/imageViewAddressBookTransfer"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginLeft="-20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_address_book"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
+
+            <com.bm.main.fpl.templates.CustomFontCheckBox
+                android:id="@+id/checkboxSimpanNoRekTransfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/simpan_norek_pelanggan" />
+
+            <com.bm.main.fpl.templates.CurrencyEditText
+                android:id="@+id/materialEditTextNominalTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+
+                android:fontFamily="@font/roboto_light"
+                android:hint="@string/hint_transfer_nominal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+
+                android:textSize="@dimen/textNormal"
+                app:met_accentTypeface="@string/roboto_regular"
+                app:met_baseColor="@color/text_secondary"
+
+                app:locale="@string/locale"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/md_black_1000"
+
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+                app:met_underlineColor="@color/md_grey_500"
+
+                />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/materialEditTextNoHpTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:digits="0123456789"
+                android:maxLength="19"
+                android:fontFamily="@font/roboto_light"
+                android:hint="@string/hint_no_handphone"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+
+                android:textSize="@dimen/textNormal"
+                app:met_accentTypeface="@string/roboto_regular"
+                app:met_baseColor="@color/text_secondary"
+
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/md_black_1000"
+
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+                app:met_underlineColor="@color/md_grey_500"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_lanjutkanTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/selector_button_red_pressed"
+                android:clickable="true"
+                android:focusable="true"
+
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/lanjutkan"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/textNormal" />
+        </LinearLayout>
+    <!--</ScrollView>-->
+<!--</LinearLayout>-->

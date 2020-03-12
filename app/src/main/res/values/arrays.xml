@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="attraction_detail_menu_label">
+        <item>Overview</item>
+        <item>Informasi</item>
+        <item>Fasiitas</item>
+        <item>Review</item>
+        <item>Galeri</item>
+        <item>Penawaran</item>
+    </string-array>
+
+    <string-array name="months">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
+
+
+    <color name="dot_dark_screen1">@color/md_blue_500</color>
+    <color name="dot_dark_screen2">@color/md_blue_500</color>
+    <color name="dot_dark_screen3">@color/md_blue_500</color>
+    <color name="dot_dark_screen4">@color/md_blue_500</color>
+    <color name="dot_dark_screen5">@color/md_blue_500</color>
+    <!--<color airLineName="dot_dark_screen6">#95d8c6</color>-->
+    <color name="dot_dark_screen7">@color/md_blue_500</color>
+    <color name="dot_dark_screen8">@color/md_blue_500</color>
+
+    <color name="dot_light_screen1">@color/md_orange_500</color>
+    <color name="dot_light_screen2">@color/md_orange_500</color>
+    <color name="dot_light_screen3">@color/md_orange_500</color>
+    <color name="dot_light_screen4">@color/md_orange_500</color>
+    <color name="dot_light_screen5">@color/md_orange_500</color>
+    <!--<color airLineName="dot_light_screen6">#efa022</color>-->
+    <color name="dot_light_screen7">@color/md_orange_500</color>
+    <color name="dot_light_screen8">@color/md_orange_500</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+        <!--<item>@color/dot_light_screen6</item>-->
+        <item>@color/dot_light_screen7</item>
+        <item>@color/dot_light_screen8</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen5</item>
+        <!--<item>@color/dot_dark_screen6</item>-->
+        <item>@color/dot_dark_screen7</item>
+        <item>@color/dot_dark_screen8</item>
+    </array>
+
+    <!--<string-array airLineName="array_pengantar">-->
+    <!--<item>Ketentuan Penggunaan ini merupakan ketentuan umum dalam penggunaan aplikasi Fastpay (selanjutnya disebut sebagai “Aplikasi”) serta penggunaan atas Layanan yang ada di dalamnya.</item>-->
+    <!--<item>Selain Ketentuan Penggunaan ini, terdapat pula Syarat dan Ketentuan untuk masing-masing Layanan, dimana Anda terikat terhadap Syarat dan Ketentuan tersebut pada saat Anda menggunakan Layanan bersangkutan.</item>-->
+    <!--<item>Harap membaca Ketentuan Penggunaan ini dengan seksama. Dengan mengakses dan/atau menggunakan Aplikasi dengan cara apapun, Anda setuju untuk mematuhi Ketentuan Penggunaan ini beserta Syarat dan Ketentuan Layanan. Jika Anda tidak setuju dengan semua ketentuan yang berlaku, Anda diperkenankan untuk berhenti menggunakan Layanan yang terdapat pada Aplikasi.</item>-->
+    <!--</string-array>-->
+
+    <!--<string-array airLineName="array_definisi">-->
+    <!--<item>"Aplikasi" adalah aplikasi Fastpay yang memungkinkan Anda melakukan transaksi Layanan, melakukan pengecekan transaksi, serta fitur-fitur Layanan lainnya yang tersedia di Aplikasi. </item>-->
+    <!--<item>"Layanan" adalah jasa yang disediakan oleh Fastpay melalui Aplikasi, dimana atas setiap Layanan tersebut memiliki Syarat dan Ketentuan Layanan.</item>-->
+    <!--<item>"Mitra" adalah profil yang digunakan untuk mengakses/menggunakan Aplikasi.</item>-->
+    <!--<item>"ID Outlet" adalah identitas pengguna Aplikasi Fastpay yang digunakan untuk mengakses/menggunakan Aplikasi.</item>-->
+    <!--<item>"Password" adalah kode rahasia yang digunakan untuk mengakses/menggunakan Aplikasi.</item>-->
+    <!--<item>"SMS Key" adalah kode rahasia yang bersifat sementara untuk keamanan kedua setelah Password untuk mengakses/menggunakan Aplikasi.</item>-->
+    <!--<item>"Bonus Transaksi" adalah bonus berbentuk cashback berupa saldo Fastpay yang diberikan setiap bulan dari akumulasi transaksi.</item>-->
+    <!--</string-array>-->
+
+    <!--<string-array airLineName="array_akses_apps">-->
+    <!--<item>Anda harus mendaftarkan diri dengan mengisi nomor telepon, email, alamat, dan informasi lainnya di https://www.fastpay.co.id/paket_pendaftaran atau langsung dari Aplikasi sebelum Anda login ke Aplikasi.</item>-->
+    <!--<item>Anda akan menerima SMS bahwa Anda telah terdaftar dan Anda menerima ID Outlet dan Password/pin.</item>-->
+    <!--<item>Setelah Anda mendaftar, Anda harus melakukan aktivasi paket sesuai pilihan di www.fastpay.co.id/aktivasi</item>-->
+    <!--<item>Setelah Anda melakukan aktivasi, Anda bisa login/mengakses Aplikasi menggunakan ID Outlet dan Password/pin.</item>-->
+    <!--<item>Anda bertanggung jawab sepenuhnya untuk setiap aktivitas yang dilakukan dengan menggunakan dengan menggunakan akun Anda, termasuk (namun tidak terbatas pada) biaya yang ditimbulkan pada saat mengakses Aplikasi, setiap risiko dan/atau kerugian yang muncul akibat terjadi penyalahgunaan oleh Anda dan/atau pihak ketiga yang didasarkan pada alasan dan/atau sebab apapun sebagai akibat langsung maupun tidak langsung dari penggunaan Aplikasi, dan dengan ini Anda membebaskan Fastpay dari segala tuntutan yang mungkin timbul dalam bentuk apapun dan dari pihak apapun.</item>-->
+    <!--</string-array>-->
+    <!--<string-array airLineName="array_privacy_policy">-->
+    <!--<item>Fastpay menyadari bahwa informasi Mitra bersifat rahasia dan pribadi, oleh karena itu Fastpay berkomitmen untuk melindungi dan merahasiakan data Mitra sesuai dengan peraturan perundang-undangan.</item>-->
+    <!--<item>Fastpay mengumpulkan data pribadi pada saat Anda mendaftar atau registrasi. Data pribadi tersebut berupa informasi yang berkenaan dengan Anda termasuk (namun tidak terbatas pada) nomor handphone, akun email, maupun informasi ID Outlet dan Password.</item>-->
+    <!--<item>Seluruh informasi yang Anda berikan sehubungan dengan transaksi menggunakan Aplikasi akan dijaga dan dirahasiakan dari pihak lain yang tidak berkepentingan.</item>-->
+    <!--<item>Fastpay berhak menggunakan data pribadi Anda untuk kepentingan komunikasi layanan Fastpay, tidak terbatas hanya pada keperluan registrasi dan login Aplikasi.</item>-->
+    <!--</string-array>-->
+
+    <!--<string-array airLineName="array_password">-->
+    <!--<item>Pada saat mendaftar layanan Fastpay, Anda akan mendapat 6 digit Password/pin yang dikirim ke nomor ponsel yang telah Anda daftarkan.</item>-->
+    <!--<item>Anda bertanggung jawab sepenuhnya untuk menjaga kerahasiaan Password/pin yang Anda miliki, oleh karena itu Anda tidak diperkenankan untuk:</item>-->
+    <!--<item>Fastpay berhak menganggap bahwa akses terhadap Aplikasi yang menggunakan Password/pin Anda sebagai akses yang sah terhadap Aplikasi yang dilakukan oleh Anda tanpa perlu dibuktikan.</item>-->
+    <!--<item>Anda bertanggung jawab sepenuhnya untuk setiap aktivitas yang dilakukan dengan menggunakan Password Anda, termasuk (namun tidak terbatas pada) setiap risiko dan/atau kerugian yang muncul sebagai akibat apabila terjadi penyalahgunaan oleh Anda dan/atau sebab apapun sebagai akibat langsung maupun tidak langsung dari penggunaan Aplikasi, dan dengan ini Anda membebaskan Fastpay dari segala tuntutan yang mungkin timbul dalam bentuk apapun dan dari pihak manapun. </item>-->
+
+    <!--</string-array>-->
+    <!--<string-array airLineName="array_sub_password_1">-->
+    <!--<item>Memberitahukan Password/pin kepada orang lain.</item>-->
+    <!--<item>Menyimpan Password/pin dalam perangkat komunikasi Anda atau saran penyimpanan lain yang memungkinkan diketahui oleh pihak ketiga.</item>-->
+    <!--</string-array>-->
+
+
+    <!--<string-array airLineName="array_sms_key">-->
+    <!--<item>SMS Key digunakan saat Anda akan melakukan login di Aplikasi yang berisi 6 digit angka yang dikirim melalui SMS ke nomor Anda yang telah terdaftar.</item>-->
+    <!--<item>SMS Key memiliki masa penggunaan terbatas sesuai pilihan durasi yang Anda pilih (1 hari/3 hari/5 hari/ 7 hari), dan Anda harus memperbarui SMS Key jika masa berlaku telah berakhir.</item>-->
+    <!--<item>Anda bertanggung jawab sepenuhnya untuk menjaga kerahasiaan SMS Key yang Anda miliki, oleh karena itu Anda tidak diperkenankan untuk:</item>-->
+    <!--<item>Fastpay berhak menganggap bahwa akses terhadap Aplikasi yang menggunakan SMS Key Anda sebagai akses yang sah terhadap Aplikasi yang dilakukan oleh Anda tanpa perlu dibuktikan.</item>-->
+    <!--<item>Anda bertanggung jawab sepenuhnya untuk setiap aktivitas yang dilakukan dengan menggunakan SMS Key, termasuk (namun tidak terbatas pada) setiap risiko dan/atau kerugian yang muncul sebagai akibat apabila terjadi penyalahgunaan oleh Anda dan/atau sebab apapun sebagai akibat langsung maupun tidak langsung dari penggunaan Aplikasi, dan dengan ini Anda membebaskan Fastpay dari segala tuntutan yang mungkin timbul dalam bentuk apapun dan dari pihak manapun.</item>-->
+
+    <!--</string-array>-->
+
+    <!--<string-array airLineName="array_sub_sms_key_2">-->
+    <!--<item>Memberitahukan SMS Key kepada orang lain.</item>-->
+    <!--<item>Menyimpan SMS Key dalam perangkat komunikasi Anda atau saran penyimpanan lain yang memungkinkan diketahui oleh pihak ketiga.</item>-->
+    <!--</string-array>-->
+
+    <!--<string-array airLineName="array_layanan">-->
+    <!--<item>Dengan Anda menggunakan setiap Layanan yang terdapat di Aplikasi, Anda telah setuju untuk tunduk sepenuhnya pada Syarat dan Ketentuan Layanan serta Anda telah setuju untuk menggunakan Layanan sesuai dengan ketentuan hukum yang berlaku di Republik Indonesia.</item>-->
+    <!--<item>Bahwa dengan ini Anda juga menyatakan bersedia untuk menerima setiap informasi produk maupun informasi lainnya yang akan disampaikan oleh Fastpay melalui Aplikasi. Apabila Anda tidak setuju ataupun tidak dapat menerima pemberlakuan atas Syarat dan Ketentuan Layanan, Anda diperkenankan untuk berhenti menggunakan Layanan yang terdapat pada Aplikasi.</item>-->
+    <!--<item>Fastpay setiap saat dapat mengubah Syarat dan Ketentuan Layanan. Perubahan ini akan berlaku pada saat perubahan tersebut diumumkan pada halaman ini. Oleh karena itu, Fastpay menghimbau Anda untuk mengakses halaman ini secara berkala untuk mengetahui perubahannya (apabila ada).</item>-->
+    <!--<item>Setiap penggunaan atas Layanan yang terdapat di Aplikasi merupakan suatu bentuk pengikatan diri antara Anda dengan Fastpay dalam suatu perjanjian. Oleh karena itu, Anda diwajibkan untuk menyetujui dan mempelajari Syarat dan Ketentuan Layanan secara berkala.</item>-->
+    <!--<item>Dengan tetap menggunakan Layanan, berarti Anda telah memahami dan menerima sepenuhnya Syarat dan Ketentuan Layanan beserta perubahannya.</item>-->
+    <!--<item>Untuk informasi lebih lanjut dapat dilihat di www.fastpay.co.id atau menghubungi:-->
+    <!--031 - 8535 799 (hunting) -->
+    <!--0813 857 857 99 (call only)-->
+    <!--Sosial media Fastpay Official</item>-->
+    <!--</string-array>-->
+
+    <array name="auto_size_text_sizes">
+        <item>12sp</item>
+        <item>14sp</item>
+        <item>16sp</item>
+        <item>20sp</item>
+        <item>48sp</item>
+        <item>100sp</item>
+    </array>
+
+</resources>

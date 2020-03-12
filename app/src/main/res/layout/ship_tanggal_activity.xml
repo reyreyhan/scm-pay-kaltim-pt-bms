@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bm.main.single.ftl.ship.activities.ShipTanggalActivity">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_color_primary"
+        />
+    <LinearLayout
+        android:id="@+id/relativeTahun"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:weightSum="3"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/selector_button_blue_white_pressed">
+
+        <ImageView
+            android:id="@+id/btnPrevYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+
+            android:src="@drawable/ic_left_primary"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:id="@+id/textViewYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:textColor="@color/md_blue_500"
+            tools:text="2017" />
+        <ImageView
+            android:id="@+id/btnNextYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+
+            android:src="@drawable/ic_right_primary"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerViewCalendar"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_marginStart="@dimen/activity_horizontal_margin"
+
+
+          android:layout_marginLeft="@dimen/activity_horizontal_margin"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="@dimen/activity_horizontal_margin"
+          android:layout_marginRight="@dimen/activity_horizontal_margin"
+          android:layout_weight="1"
+          android:background="@drawable/selector_button_blue_white_pressed"
+
+          app:spanCount="3"
+          tools:itemCount="9"
+          tools:listitem="@layout/ship_item_month"
+
+          tools:layoutManager="GridLayoutManager" />
+  </LinearLayout>
+    <!--<android.support.v7.widget.AppCompatButton-->
+        <!--android:id="@+id/appButtonPilihTanggal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+
+        <!--android:layout_marginStart="30dp"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_marginEnd="30dp"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:background="@drawable/selector_button_orange_pressed"-->
+        <!--android:fontFamily="@font/roboto_regular"-->
+        <!--android:text="Pilih"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textColor="@color/md_white_1000"-->
+        <!--android:textSize="@dimen/textMedium"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_alignParentBottom="true"/>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

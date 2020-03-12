@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@color/md_white_1000"
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <TextView
+        android:id="@+id/textViewKelasFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/textSmall"
+        android:focusable="false"
+        tools:text="Siang - Sore (12:00 - 18:00)"
+    />
+    <CheckBox
+        android:id="@+id/checkBoxKelasFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:checked="true"
+        android:focusable="false"
+        android:clickable="false"
+
+
+        />
+</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

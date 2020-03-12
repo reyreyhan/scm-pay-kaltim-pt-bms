@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bm.main.single.ftl.ship.activities.ShipFormBookAdultActivity">
+    <include
+        android:id="@+id/toolbarForm"
+        layout="@layout/toolbar_form_passanger" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textSexAdult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/spinner_down"
+                android:drawableRight="@drawable/spinner_down"
+                android:hint="Jenis Kelamin"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true" />
+            <com.bm.main.fpl.templates.clearableedittext.ClearableEditText
+                android:id="@+id/textNameAdultShip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Lengkap (Sesuai KK/KTP/SIM)"
+                android:maxLength="100"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:textAllCaps="true"
+                android:maxLines="1"
+
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="(tanpa gelar dan tanda baca)"
+                android:fontFamily="@font/roboto_regular"
+
+                android:textSize="@dimen/textSmall" />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textIDAdultShip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:hint="No Identitas"
+                android:inputType="number"
+                android:digits="0123456789"
+
+                android:textAllCaps="true"
+
+                android:maxLength="20"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+                app:met_clearButton="true"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+                app:met_maxCharacters="20"
+                app:met_minCharacters="5"
+
+                />
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/textBornAdultShip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal Lahir"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:textAllCaps="true"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/textNormal"
+
+                android:focusableInTouchMode="false"
+
+
+                app:met_baseColor="@color/text_secondary"
+                app:met_floatingLabel="highlight"
+
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_singleLineEllipsis="true"
+               />
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_selesaiShip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+
+                android:layout_marginBottom="100dp"
+
+
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto_regular"
+
+                android:textSize="@dimen/textNormal"
+                android:text="Selesai"
+                android:textColor="@color/md_white_1000"
+                android:textAllCaps="false"
+                android:background="@drawable/selector_button_orange_pressed"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

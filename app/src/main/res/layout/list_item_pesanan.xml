@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:id="@+id/linDataView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvInfo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Jakarta"
+                    android:textSize="@dimen/textNormal"
+                    android:textStyle="bold"
+                    android:weightSum="1.0"/>
+
+                <ImageView
+                    android:id="@+id/ivInfoSeparation"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@+id/tvInfo1"
+                    android:layout_toRightOf="@+id/tvInfo1"
+                    android:src="@drawable/ic_arrow_right_black" />
+
+                <TextView
+                    android:id="@+id/tvInfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/ivInfoSeparation"
+                    android:layout_toEndOf="@+id/ivInfoSeparation"
+                    android:layout_toRightOf="@+id/ivInfoSeparation"
+                    android:text="Surabaya"
+                    android:textSize="@dimen/textNormal"
+                    android:textStyle="bold"
+                    android:weightSum="2.0" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvTanggalWaktuBerangkat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Senin, 31 Desember 2017 16:50"
+                android:textSize="@dimen/textSmall" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:id="@+id/tvNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/ivIcon"
+                    android:layout_toRightOf="@+id/ivIcon"
+                    android:text="NAMA MASKAPAI"
+                    android:textSize="@dimen/textNormal" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black_overlay" />
+
+        <TextView
+            android:id="@+id/tvPembayaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Lanjutkan Pembayaran"
+            android:textAlignment="center"
+            android:textColor="@color/md_blue_700"
+            android:textSize="@dimen/textNormal"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_EmptyViewItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Ada Pesanan"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:padding="5dp"
+                android:text="Seluruh pesanan Anda akan muncul di sini, tapi kini Anda belum punya satu pun. Mari buat pesanan via homepage!"
+                android:textColor="@color/text_secondary" />
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

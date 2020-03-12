@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:background="@color/colorTransparent"
+    android:theme="@style/Theme.Transparent"
+    tools:context="com.bm.main.fpl.activities.BigPromoActivity">
+
+
+
+    <RelativeLayout
+        android:id="@+id/linMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/relBigPromo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:clipToPadding="true"
+            tools:background="@drawable/promo"
+
+
+            >
+
+
+            <!--<ImageView-->
+            <!--android:id="@+id/imageViewBigPromo"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--tools:ignore="ContentDescription"-->
+            <!--tools:src="@drawable/intro1" />-->
+
+
+            <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                android:id="@+id/avi"
+                style="@style/AVLoadingIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerInParent="true"
+
+
+                android:layout_gravity="center"
+
+                android:padding="5dp"
+                app:indicatorColor="@color/colorPrimary_ppob" />
+
+
+            <!--<ImageView-->
+            <!--android:id="@+id/imageViewClosed"-->
+            <!--android:layout_width="45dp"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_marginEnd="12dp"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:src="@drawable/met_ic_clear"-->
+            <!--android:hapticFeedbackEnabled="true"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--tools:ignore="ContentDescription" />-->
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutDots"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/textViewSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="end"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+
+
+        android:background="@drawable/grey_shape"
+        android:clickable="true"
+        android:focusable="true"
+        android:hapticFeedbackEnabled="true"
+        android:padding="5dp"
+        android:textColor="@color/md_white_1000"
+        tools:ignore="ContentDescription"
+        tools:text="Lewati" />
+</RelativeLayout>

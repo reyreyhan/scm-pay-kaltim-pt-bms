@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.bm.main.single.ftl.activities.TravelStatusPembayaranActivity">
+    <LinearLayout
+        android:id="@+id/linMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/core_toolbar" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_card_edge">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/statusTx1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Selamat"
+                            android:textSize="@dimen/textMediumHeader" />
+
+                        <TextView
+                            android:id="@+id/statusTx2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Transaksi Anda Berhasil" />
+
+                        <ImageView
+                            android:id="@+id/ivPembayaran"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            app:srcCompat="@drawable/ic_success_green" />
+
+                        <TextView
+                            android:id="@+id/textViewKomisi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            tools:text="Komisi Anda Rp 0"
+                            android:textColor="@color/md_orange_700"
+                            android:textSize="@dimen/textMedium" />
+
+                        <TextView
+                            android:id="@+id/keteranganPx1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/activity_horizontal_margin"
+                            android:gravity="center"
+                            android:text="@string/info_status" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_margin="@dimen/activity_horizontal_margin"
+
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1">
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/button_etiket"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+
+                                    android:background="@drawable/selector_button_orange_pressed"
+                                    android:padding="10dp"
+
+
+                                    android:text="@string/lihat_etiket_pdf"
+                                    android:textAllCaps="false"
+
+                                    android:textColor="@android:color/white" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1">
+
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/button_cetak_struk"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+
+                                    android:background="@drawable/selector_button_orange_pressed"
+                                    android:padding="10dp"
+
+
+                                    android:text="@string/cetak_struk"
+                                    android:textAllCaps="false"
+
+                                    android:textColor="@android:color/white"
+
+                                    />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <include layout="@layout/layout_status_pay" />
+
+                <include layout="@layout/layout_status_button" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <include
+
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar" />
+</RelativeLayout>

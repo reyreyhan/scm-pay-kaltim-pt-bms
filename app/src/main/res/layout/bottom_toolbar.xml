@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:background="@drawable/drop_shadowtop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shadow"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="toggleSaldo"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_nav_saldo"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/TextViewPlusSaldoBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="@color/md_grey_500"
+                android:textSize="@dimen/textSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="toggleDeposit"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:clickable="false"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_admin_deposit" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="Deposit"
+                android:textSize="@dimen/textSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="togglePrinter"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:clickable="false"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_nav_printer" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="Printer"
+                android:textSize="@dimen/textSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:onClick="toggleKunci"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:clickable="false"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_nav_kunci" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="Kunci"
+                android:textSize="@dimen/textSmall" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_bottom_ribbon_demo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="start"
+        android:layout_marginTop="-1dp"
+        android:visibility="gone">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_demo_ribbon" />
+    </FrameLayout>
+</RelativeLayout>

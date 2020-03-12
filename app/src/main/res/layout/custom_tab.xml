@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="48dp"--><!--android:layout_height="48dp"--><!--android:id="@+id/tab"--><!--android:textColor="@color/colorAccent_ppob"--><!--android:textSize="@dimen/tab_label"--><!--android:fontFamily="fonts/Roboto-Light.ttf"--><!--tools:ignore="UnusedAttribute" />-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/shape_button_blue_big_tab_item_default"
+    android:layout_centerVertical="true"
+    android:gravity="center">
+
+
+    <TextView
+        android:id="@+id/textTab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_light"
+        android:text="Masukan ID Pelanggan"
+        android:textColor="@color/md_grey_500"
+        android:textSize="@dimen/textSmall"
+        tools:ignore="HardcodedText" />
+</RelativeLayout>

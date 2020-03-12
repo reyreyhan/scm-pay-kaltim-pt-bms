@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.TiketDepositActivity">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+
+        <!--android:orientation="vertical">-->
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+        <!--<View-->
+
+            <!--android:background="@drawable/curve_toolbar_bg"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="10dip"-->
+
+            <!--/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="5dp"
+
+            >
+
+            <com.bm.main.fpl.templates.TextViewPlus
+                android:id="@+id/textViewPlusNamaBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nama bank"
+                android:textSize="@dimen/textNormal"
+                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="2">
+                <com.bm.main.fpl.templates.TextViewPlus
+android:id="@+id/labelViewPlusNoRek"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="No Rek"
+                    android:textSize="@dimen/textNormal"
+                     />
+                <com.bm.main.fpl.templates.TextViewPlus
+                    android:id="@+id/textViewPlusNoRek"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No Rek"
+                    android:textSize="@dimen/textNormal"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewCopyNoRek"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.4"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_copy" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="2">
+                <com.bm.main.fpl.templates.TextViewPlus
+                    android:id="@+id/labelViewPlusNominal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Nominal"
+                    android:textSize="@dimen/textNormal"
+                     />
+                <com.bm.main.fpl.templates.TextViewPlus
+                    android:id="@+id/textViewPlusNonimal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+
+                    android:text="Nominal"
+                    android:textSize="@dimen/textNormal"
+                     />
+
+                <ImageView
+                    android:id="@+id/imageViewNominal"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.4"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_copy" />
+
+            </LinearLayout>
+
+            <com.bm.main.fpl.templates.TextViewPlus
+                android:id="@+id/textViewPlusKeterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan"
+
+                android:textSize="@dimen/textNormal"
+                 />
+
+
+        </LinearLayout>
+    <!--</LinearLayout>-->
+</LinearLayout>

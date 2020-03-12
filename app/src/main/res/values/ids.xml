@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="visible" type="id"/>
+    <item name="search_edit_frame" type="id"/>
+    <item name="masked" type="id"/>
+    <item name="produkCode" type="id"/>
+    <item name="isGangguanProduk" type="id" />
+    <item name="urlProduk" type="id" />
+    <item name="id_trx" type="id" />
+    <item name="posisi" type="id" />
+    <item name="baggage_posisi" type="id" />
+
+
+    <!--<item type="id" airLineName="zxing_back_button" />-->
+    <!--<item type="id" airLineName="zxing_camera_closed" />-->
+    <!--<item type="id" airLineName="zxing_camera_error" />-->
+    <!--<item type="id" airLineName="zxing_decode" />-->
+    <!--<item type="id" airLineName="zxing_decode_failed" />-->
+    <!--<item type="id" airLineName="zxing_decode_succeeded" />-->
+    <!--<item type="id" airLineName="zxing_possible_result_points" />-->
+    <!--<item type="id" airLineName="zxing_preview_failed" />-->
+    <!--<item type="id" airLineName="zxing_prewiew_size_ready" />-->
+
+     <item name="toolbar" type="id"/>
+    <item name="loading_view" type="id"/>
+    <item name="backButton" type="id"/>
+    <item name="status" type="id"/>
+    <item name="data" type="id"/>
+    <item name="progressBar" type="id"/>
+    <item name="refreshLayout" type="id"/>
+    <item name="idfee" type="id"/>
+    <item name="idTrx" type="id" />
+    <!--<item airLineName="visible" type="id"/>-->
+    <item name="urlPdf" type="id" />
+    <item name="urlStruk" type="id" />
+
+    <!--<item airLineName="masked" type="id" />-->
+
+    <item name="loading_view_flight" type="id"/>
+    <item name="empty_view_flight" type="id"/>
+
+
+    <item name="titleTempAdult1" type="id"/>
+    <item name="titleAdult1" type="id"/>
+    <item name="sexTempAdult1" type="id"/>
+    <item name="sexAdult1" type="id"/>
+    <item name="nameAdult1" type="id"/>
+    <item name="idAdult1" type="id"/>
+    <item name="phoneAdult1" type="id"/>
+    <item name="bornAdult1" type="id"/>
+    <item name="emailAdult1" type="id"/>
+    <item name="mobilePhoneAdult1" type="id"/>
+    <item name="bornShowAdult1" type="id"/>
+    <item name="expiredShowAdult1" type="id"/>
+    <item name="expiredAdult1" type="id"/>
+    <item name="nasinatilyAdult1" type="id"/>
+    <item name="nasinatilyKodeAdult1" type="id"/>
+    <item name="issuingCountryAdult1" type="id"/>
+    <item name="issuingCountryKodeAdult1" type="id"/>
+    <item name="noPassportAdult1" type="id"/>
+
+
+
+
+    <item name="adultBaggage1" type="id"/>
+    <item name="isBuyAdultBaggage1" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition1" type="id"/>
+    <item name="titleTempAdultBaggage1_1" type="id"/>
+    <item name="titleTempAdultBaggage1_2" type="id"/>
+    <item name="titleTempAdultBaggage1_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage1_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage1_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage1_3" type="id"/>-->
+
+    <item name="titleTempAdult2" type="id"/>
+    <item name="titleAdult2" type="id"/>
+    <item name="sexTempAdult2" type="id"/>
+    <item name="sexAdult2" type="id"/>
+    <item name="nameAdult2" type="id"/>
+    <item name="idAdult2" type="id"/>
+    <item name="phoneAdult2" type="id"/>
+    <item name="bornAdult2" type="id"/>
+    <item name="emailAdult2" type="id"/>
+    <item name="mobilePhoneAdult2" type="id"/>
+    <item name="bornShowAdult2" type="id"/>
+    <item name="expiredShowAdult2" type="id"/>
+    <item name="expiredAdult2" type="id"/>
+    <item name="nasinatilyAdult2" type="id"/>
+    <item name="nasinatilyKodeAdult2" type="id"/>
+    <item name="issuingCountryAdult2" type="id"/>
+    <item name="issuingCountryKodeAdult2" type="id"/>
+    <item name="noPassportAdult2" type="id"/>
+
+    <item name="adultBaggage2" type="id"/>
+    <item name="isBuyAdultBaggage2" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition2" type="id"/>
+    <item name="titleTempAdultBaggage2_1" type="id"/>
+    <item name="titleTempAdultBaggage2_2" type="id"/>
+    <item name="titleTempAdultBaggage2_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage2_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage2_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage2_3" type="id"/>-->
+
+    <item name="titleTempAdult3" type="id"/>
+    <item name="titleAdult3" type="id"/>
+    <item name="sexTempAdult3" type="id"/>
+    <item name="sexAdult3" type="id"/>
+    <item name="nameAdult3" type="id"/>
+    <item name="idAdult3" type="id"/>
+    <item name="phoneAdult3" type="id"/>
+    <item name="bornAdult3" type="id"/>
+    <item name="emailAdult3" type="id"/>
+    <item name="mobilePhoneAdult3" type="id"/>
+    <item name="bornShowAdult3" type="id"/>
+    <item name="expiredShowAdult3" type="id"/>
+    <item name="expiredAdult3" type="id"/>
+    <item name="nasinatilyAdult3" type="id"/>
+    <item name="nasinatilyKodeAdult3" type="id"/>
+    <item name="issuingCountryAdult3" type="id"/>
+    <item name="issuingCountryKodeAdult3" type="id"/>
+    <item name="noPassportAdult3" type="id"/>
+
+    <item name="adultBaggage3" type="id"/>
+    <item name="isBuyAdultBaggage3" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition3" type="id"/>
+    <item name="titleTempAdultBaggage3_1" type="id"/>
+    <item name="titleTempAdultBaggage3_2" type="id"/>
+    <item name="titleTempAdultBaggage3_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage3_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage3_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage3_3" type="id"/>-->
+
+    <item name="titleTempAdult4" type="id"/>
+    <item name="titleAdult4" type="id"/>
+    <item name="sexTempAdult4" type="id"/>
+    <item name="sexAdult4" type="id"/>
+    <item name="nameAdult4" type="id"/>
+    <item name="idAdult4" type="id"/>
+    <item name="phoneAdult4" type="id"/>
+    <item name="bornAdult4" type="id"/>
+    <item name="emailAdult4" type="id"/>
+    <item name="mobilePhoneAdult4" type="id"/>
+    <item name="bornShowAdult4" type="id"/>
+    <item name="expiredShowAdult4" type="id"/>
+    <item name="expiredAdult4" type="id"/>
+    <item name="nasinatilyAdult4" type="id"/>
+    <item name="nasinatilyKodeAdult4" type="id"/>
+    <item name="issuingCountryAdult4" type="id"/>
+    <item name="issuingCountryKodeAdult4" type="id"/>
+    <item name="noPassportAdult4" type="id"/>
+
+    <item name="adultBaggage4" type="id"/>
+    <item name="isBuyAdultBaggage4" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition4" type="id"/>
+    <item name="titleTempAdultBaggage4_1" type="id"/>
+    <item name="titleTempAdultBaggage4_2" type="id"/>
+    <item name="titleTempAdultBaggage4_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage4_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage4_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage4_3" type="id"/>-->
+
+
+    <item name="titleTempAdult5" type="id"/>
+    <item name="titleAdult5" type="id"/>
+    <item name="sexTempAdult5" type="id"/>
+    <item name="sexAdult5" type="id"/>
+    <item name="nameAdult5" type="id"/>
+    <item name="idAdult5" type="id"/>
+    <item name="phoneAdult5" type="id"/>
+    <item name="bornAdult5" type="id"/>
+    <item name="emailAdult5" type="id"/>
+    <item name="mobilePhoneAdult5" type="id"/>
+    <item name="bornShowAdult5" type="id"/>
+    <item name="expiredShowAdult5" type="id"/>
+    <item name="expiredAdult5" type="id"/>
+    <item name="nasinatilyAdult5" type="id"/>
+    <item name="nasinatilyKodeAdult5" type="id"/>
+    <item name="issuingCountryAdult5" type="id"/>
+    <item name="issuingCountryKodeAdult5" type="id"/>
+    <item name="noPassportAdult5" type="id"/>
+    <item name="adultBaggage5" type="id"/>
+    <item name="isBuyAdultBaggage5" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition5" type="id"/>
+    <item name="titleTempAdultBaggage5_1" type="id"/>
+    <item name="titleTempAdultBaggage5_2" type="id"/>
+    <item name="titleTempAdultBaggage5_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage5_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage5_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage5_3" type="id"/>-->
+
+    <item name="titleTempAdult6" type="id"/>
+    <item name="titleAdult6" type="id"/>
+    <item name="sexTempAdult6" type="id"/>
+    <item name="sexAdult6" type="id"/>
+    <item name="nameAdult6" type="id"/>
+    <item name="idAdult6" type="id"/>
+    <item name="phoneAdult6" type="id"/>
+    <item name="bornAdult6" type="id"/>
+    <item name="emailAdult6" type="id"/>
+    <item name="mobilePhoneAdult6" type="id"/>
+    <item name="bornShowAdult6" type="id"/>
+    <item name="expiredShowAdult6" type="id"/>
+    <item name="expiredAdult6" type="id"/>
+    <item name="nasinatilyAdult6" type="id"/>
+    <item name="nasinatilyKodeAdult6" type="id"/>
+    <item name="issuingCountryAdult6" type="id"/>
+    <item name="issuingCountryKodeAdult6" type="id"/>
+    <item name="noPassportAdult6" type="id"/>
+    <item name="adultBaggage6" type="id"/>
+    <item name="isBuyAdultBaggage6" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition6" type="id"/>
+    <item name="titleTempAdultBaggage6_1" type="id"/>
+    <item name="titleTempAdultBaggage6_2" type="id"/>
+    <item name="titleTempAdultBaggage6_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage6_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage6_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage6_3" type="id"/>-->
+
+    <item name="titleTempAdult7" type="id"/>
+    <item name="titleAdult7" type="id"/>
+    <item name="sexTempAdult7" type="id"/>
+    <item name="sexAdult7" type="id"/>
+    <item name="nameAdult7" type="id"/>
+    <item name="idAdult7" type="id"/>
+    <item name="phoneAdult7" type="id"/>
+    <item name="bornAdult7" type="id"/>
+    <item name="emailAdult7" type="id"/>
+    <item name="mobilePhoneAdult7" type="id"/>
+    <item name="bornShowAdult7" type="id"/>
+    <item name="expiredShowAdult7" type="id"/>
+    <item name="expiredAdult7" type="id"/>
+    <item name="nasinatilyAdult7" type="id"/>
+    <item name="nasinatilyKodeAdult7" type="id"/>
+    <item name="issuingCountryAdult7" type="id"/>
+    <item name="issuingCountryKodeAdult7" type="id"/>
+    <item name="noPassportAdult7" type="id"/>
+    <item name="adultBaggage7" type="id"/>
+    <item name="isBuyAdultBaggage7" type="id" format="integer"/>
+    <item name="titleAdultBaggagePosition7" type="id"/>
+    <item name="titleTempAdultBaggage7_1" type="id"/>
+    <item name="titleTempAdultBaggage7_2" type="id"/>
+    <item name="titleTempAdultBaggage7_3" type="id"/>
+    <!--<item airLineName="titleAdultBaggage7_1" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage7_2" type="id"/>-->
+    <!--<item airLineName="titleAdultBaggage7_3" type="id"/>-->
+
+
+    <item name="titleTempAdult8" type="id"/>
+    <item name="titleAdult8" type="id"/>
+    <item name="sexTempAdult8" type="id"/>
+    <item name="sexAdult8" type="id"/>
+    <item name="nameAdult8" type="id"/>
+    <item name="idAdult8" type="id"/>
+    <item name="phoneAdult8" type="id"/>
+    <item name="bornAdult8" type="id"/>
+    <item name="emailAdult8" type="id"/>
+    <item name="mobilePhoneAdult8" type="id"/>
+    <item name="bornShowAdult8" type="id"/>
+
+
+    <item name="titleTempAdult9" type="id"/>
+    <item name="titleAdult9" type="id"/>
+    <item name="sexTempAdult9" type="id"/>
+    <item name="sexAdult9" type="id"/>
+    <item name="nameAdult9" type="id"/>
+    <item name="idAdult9" type="id"/>
+    <item name="phoneAdult9" type="id"/>
+    <item name="bornAdult9" type="id"/>
+    <item name="emailAdult9" type="id"/>
+    <item name="mobilePhoneAdult9" type="id"/>
+    <item name="bornShowAdult9" type="id"/>
+
+
+    <item name="titleTempAdult10" type="id"/>
+    <item name="titleAdult10" type="id"/>
+    <item name="sexTempAdult10" type="id"/>
+    <item name="sexAdult10" type="id"/>
+    <item name="nameAdult10" type="id"/>
+    <item name="idAdult10" type="id"/>
+    <item name="phoneAdult10" type="id"/>
+    <item name="bornAdult10" type="id"/>
+    <item name="emailAdult10" type="id"/>
+    <item name="mobilePhoneAdult10" type="id"/>
+    <item name="bornShowAdult10" type="id"/>
+
+
+    <item name="titleTempChild1" type="id"/>
+    <item name="titleChild1" type="id"/>
+    <item name="nameChild1" type="id"/>
+    <item name="bornChild1" type="id"/>
+    <item name="bornShowChild1" type="id"/>
+
+    <item name="expiredShowChild1" type="id"/>
+    <item name="expiredChild1" type="id"/>
+    <item name="nasinatilyChild1" type="id"/>
+    <item name="nasinatilyKodeChild1" type="id"/>
+    <item name="issuingCountryChild1" type="id"/>
+    <item name="issuingCountryKodeChild1" type="id"/>
+    <item name="noPassportChild1" type="id"/>
+
+    <item name="childBaggage1" type="id"/>
+    <item name="isBuyChildBaggage1" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition1" type="id"/>
+    <item name="titleTempChildBaggage1_1" type="id"/>
+    <item name="titleTempChildBaggage1_2" type="id"/>
+    <item name="titleTempChildBaggage1_3" type="id"/>
+    <!--<item airLineName="titleChildBaggage1_1" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage1_2" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage1_3" type="id"/>-->
+
+    <item name="titleTempChild2" type="id"/>
+    <item name="titleChild2" type="id"/>
+    <item name="nameChild2" type="id"/>
+    <item name="bornChild2" type="id"/>
+    <item name="bornShowChild2" type="id"/>
+    <item name="expiredShowChild2" type="id"/>
+    <item name="expiredChild2" type="id"/>
+    <item name="nasinatilyChild2" type="id"/>
+    <item name="nasinatilyKodeChild2" type="id"/>
+    <item name="issuingCountryChild2" type="id"/>
+    <item name="issuingCountryKodeChild2" type="id"/>
+    <item name="noPassportChild2" type="id"/>
+
+    <item name="childBaggage2" type="id"/>
+    <item name="isBuyChildBaggage2" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition2" type="id"/>
+    <item name="titleTempChildBaggage2_1" type="id"/>
+    <item name="titleTempChildBaggage2_2" type="id"/>
+    <item name="titleTempChildBaggage2_3" type="id"/>
+    <!--<item airLineName="titleChildBaggage2_1" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage2_2" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage2_3" type="id"/>-->
+
+    <item name="titleTempChild3" type="id"/>
+    <item name="titleChild3" type="id"/>
+    <item name="nameChild3" type="id"/>
+    <item name="bornChild3" type="id"/>
+    <item name="bornShowChild3" type="id"/>
+    <item name="expiredShowChild3" type="id"/>
+    <item name="expiredChild3" type="id"/>
+    <item name="nasinatilyChild3" type="id"/>
+    <item name="nasinatilyKodeChild3" type="id"/>
+    <item name="issuingCountryChild3" type="id"/>
+    <item name="issuingCountryKodeChild3" type="id"/>
+    <item name="noPassportChild3" type="id"/>
+
+    <item name="childBaggage3" type="id"/>
+    <item name="isBuyChildBaggage3" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition3" type="id"/>
+    <item name="titleTempChildBaggage3_1" type="id"/>
+    <item name="titleTempChildBaggage3_2" type="id"/>
+    <item name="titleTempChildBaggage3_3" type="id"/>
+    <!--<item airLineName="titleChildBaggage3_1" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage3_2" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage3_3" type="id"/>-->
+
+    <item name="titleTempChild4" type="id"/>
+    <item name="titleChild4" type="id"/>
+    <item name="nameChild4" type="id"/>
+    <item name="bornChild4" type="id"/>
+    <item name="bornShowChild4" type="id"/>
+    <item name="expiredShowChild4" type="id"/>
+    <item name="expiredChild4" type="id"/>
+    <item name="nasinatilyChild4" type="id"/>
+    <item name="nasinatilyKodeChild4" type="id"/>
+    <item name="issuingCountryChild4" type="id"/>
+    <item name="issuingCountryKodeChild4" type="id"/>
+    <item name="noPassportChild4" type="id"/>
+    <item name="childBaggage4" type="id"/>
+    <item name="isBuyChildBaggage4" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition4" type="id"/>
+    <item name="titleTempChildBaggage4_1" type="id"/>
+    <item name="titleTempChildBaggage4_2" type="id"/>
+    <item name="titleTempChildBaggage4_3" type="id"/>
+    <!--<item airLineName="titleChildBaggage4_1" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage4_2" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage4_3" type="id"/>-->
+
+    <item name="titleTempChild5" type="id"/>
+    <item name="titleChild5" type="id"/>
+    <item name="nameChild5" type="id"/>
+    <item name="bornChild5" type="id"/>
+    <item name="bornShowChild5" type="id"/>
+    <item name="expiredShowChild5" type="id"/>
+    <item name="expiredChild5" type="id"/>
+    <item name="nasinatilyChild5" type="id"/>
+    <item name="nasinatilyKodeChild5" type="id"/>
+    <item name="issuingCountryChild5" type="id"/>
+    <item name="issuingCountryKodeChild5" type="id"/>
+    <item name="noPassportChild5" type="id"/>
+
+    <item name="childBaggage5" type="id"/>
+    <item name="isBuyChildBaggage5" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition5" type="id"/>
+    <item name="titleTempChildBaggage5_1" type="id"/>
+    <item name="titleTempChildBaggage5_2" type="id"/>
+    <item name="titleTempChildBaggage5_3" type="id"/>
+    <!--<item airLineName="titleChildBaggage5_1" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage5_2" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage5_3" type="id"/>-->
+
+    <item name="titleTempChild6" type="id"/>
+    <item name="titleChild6" type="id"/>
+    <item name="nameChild6" type="id"/>
+    <item name="bornChild6" type="id"/>
+    <item name="bornShowChild6" type="id"/>
+    <item name="expiredShowChild6" type="id"/>
+    <item name="expiredChild6" type="id"/>
+    <item name="nasinatilyChild6" type="id"/>
+    <item name="nasinatilyKodeChild6" type="id"/>
+    <item name="issuingCountryChild6" type="id"/>
+    <item name="issuingCountryKodeChild6" type="id"/>
+    <item name="noPassportChild6" type="id"/>
+
+    <item name="childBaggage6" type="id"/>
+    <item name="isBuyChildBaggage6" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition6" type="id"/>
+    <item name="titleTempChildBaggage6_1" type="id"/>
+    <item name="titleTempChildBaggage6_2" type="id"/>
+    <item name="titleTempChildBaggage6_3" type="id"/>
+
+    <item name="titleTempChild7" type="id"/>
+    <item name="titleChild7" type="id"/>
+    <item name="nameChild7" type="id"/>
+    <item name="bornChild7" type="id"/>
+    <item name="bornShowChild7" type="id"/>
+    <item name="expiredShowChild7" type="id"/>
+    <item name="expiredChild7" type="id"/>
+    <item name="nasinatilyChild7" type="id"/>
+    <item name="nasinatilyKodeChild7" type="id"/>
+    <item name="issuingCountryChild7" type="id"/>
+    <item name="issuingCountryKodeChild7" type="id"/>
+    <item name="noPassportChild7" type="id"/>
+
+    <item name="childBaggage7" type="id"/>
+    <item name="isBuyChildBaggage7" type="id" format="integer"/>
+    <item name="titleChildBaggagePosition7" type="id"/>
+    <item name="titleTempChildBaggage7_1" type="id"/>
+    <item name="titleTempChildBaggage7_2" type="id"/>
+    <item name="titleTempChildBaggage7_3" type="id"/>
+    <!--<item airLineName="titleChildBaggage6_1" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage6_2" type="id"/>-->
+    <!--<item airLineName="titleChildBaggage6_3" type="id"/>-->
+
+
+    <item name="titleTempInfant1" type="id"/>
+    <item name="titleInfant1" type="id"/>
+    <item name="sexTempInfant1" type="id"/>
+    <item name="sexInfant1" type="id"/>
+    <item name="nameInfant1" type="id"/>
+    <item name="bornInfant1" type="id"/>
+    <item name="bornShowInfant1" type="id"/>
+    <item name="expiredShowInfant1" type="id"/>
+    <item name="expiredInfant1" type="id"/>
+    <item name="nasinatilyInfant1" type="id"/>
+    <item name="nasinatilyKodeInfant1" type="id"/>
+    <item name="issuingCountryInfant1" type="id"/>
+    <item name="issuingCountryKodeInfant1" type="id"/>
+    <item name="noPassportInfant1" type="id"/>
+
+
+    <item name="titleTempInfant2" type="id"/>
+    <item name="titleInfant2" type="id"/>
+    <item name="sexTempInfant2" type="id"/>
+    <item name="sexInfant2" type="id"/>
+    <item name="nameInfant2" type="id"/>
+    <item name="bornInfant2" type="id"/>
+    <item name="bornShowInfant2" type="id"/>
+    <item name="expiredShowInfant2" type="id"/>
+    <item name="expiredInfant2" type="id"/>
+    <item name="nasinatilyInfant2" type="id"/>
+    <item name="nasinatilyKodeInfant2" type="id"/>
+    <item name="issuingCountryInfant2" type="id"/>
+    <item name="issuingCountryKodeInfant2" type="id"/>
+    <item name="noPassportInfant2" type="id"/>
+
+
+    <item name="titleTempInfant3" type="id"/>
+    <item name="titleInfant3" type="id"/>
+    <item name="sexTempInfant3" type="id"/>
+    <item name="sexInfant3" type="id"/>
+    <item name="nameInfant3" type="id"/>
+    <item name="bornInfant3" type="id"/>
+    <item name="bornShowInfant3" type="id"/>
+    <item name="expiredShowInfant3" type="id"/>
+    <item name="expiredInfant3" type="id"/>
+    <item name="nasinatilyInfant3" type="id"/>
+    <item name="nasinatilyKodeInfant3" type="id"/>
+    <item name="issuingCountryInfant3" type="id"/>
+    <item name="issuingCountryKodeInfant3" type="id"/>
+    <item name="noPassportInfant3" type="id"/>
+
+
+
+    <item name="titleTempInfant4" type="id"/>
+    <item name="titleInfant4" type="id"/>
+    <item name="sexTempInfant4" type="id"/>
+    <item name="sexInfant4" type="id"/>
+    <item name="nameInfant4" type="id"/>
+    <item name="bornInfant4" type="id"/>
+    <item name="bornShowInfant4" type="id"/>
+    <item name="expiredShowInfant4" type="id"/>
+    <item name="expiredInfant4" type="id"/>
+    <item name="nasinatilyInfant4" type="id"/>
+    <item name="nasinatilyKodeInfant4" type="id"/>
+    <item name="issuingCountryInfant4" type="id"/>
+    <item name="issuingCountryKodeInfant4" type="id"/>
+    <item name="noPassportInfant4" type="id"/>
+
+
+    <item name="titleTempInfant5" type="id"/>
+    <item name="titleInfant5" type="id"/>
+    <item name="sexTempInfant5" type="id"/>
+    <item name="sexInfant5" type="id"/>
+    <item name="nameInfant5" type="id"/>
+    <item name="bornInfant5" type="id"/>
+    <item name="bornShowInfant5" type="id"/>
+    <item name="expiredShowInfant5" type="id"/>
+    <item name="expiredInfant5" type="id"/>
+    <item name="nasinatilyInfant5" type="id"/>
+    <item name="nasinatilyKodeInfant5" type="id"/>
+    <item name="issuingCountryInfant5" type="id"/>
+    <item name="issuingCountryKodeInfant5" type="id"/>
+    <item name="noPassportInfant5" type="id"/>
+
+
+    <item name="titleTempInfant6" type="id"/>
+    <item name="titleInfant6" type="id"/>
+    <item name="sexTempInfant6" type="id"/>
+    <item name="sexInfant6" type="id"/>
+    <item name="nameInfant6" type="id"/>
+    <item name="bornInfant6" type="id"/>
+    <item name="bornShowInfant6" type="id"/>
+    <item name="expiredShowInfant6" type="id"/>
+    <item name="expiredInfant6" type="id"/>
+    <item name="nasinatilyInfant6" type="id"/>
+    <item name="nasinatilyKodeInfant6" type="id"/>
+    <item name="issuingCountryInfant6" type="id"/>
+    <item name="issuingCountryKodeInfant6" type="id"/>
+    <item name="noPassportInfant6" type="id"/>
+
+    <item name="titleTempInfant7" type="id"/>
+    <item name="titleInfant7" type="id"/>
+    <item name="sexTempInfant7" type="id"/>
+    <item name="sexInfant7" type="id"/>
+    <item name="nameInfant7" type="id"/>
+    <item name="bornInfant7" type="id"/>
+    <item name="bornShowInfant7" type="id"/>
+    <item name="expiredShowInfant7" type="id"/>
+    <item name="expiredInfant7" type="id"/>
+    <item name="nasinatilyInfant7" type="id"/>
+    <item name="nasinatilyKodeInfant7" type="id"/>
+    <item name="issuingCountryInfant7" type="id"/>
+    <item name="issuingCountryKodeInfant7" type="id"/>
+    <item name="noPassportInfant7" type="id"/>
+    
+    
+    
+    <item name="cardPassangerAdult1" type="id" />
+    <item name="rlPassangerAdult1" type="id"/>
+    <item name="textUrutAdult1" type="id"/>
+    <item name="textContentAdult1" type="id"/>
+
+
+    <item name="submit" type="id"/>
+
+
+    <!--<item airLineName="visible" type="id"/>-->
+    <!--<item airLineName="masked" type="id"/>-->
+    <item name="loading_view_train" type="id"/>
+    <item name="empty_view_train" type="id"/>
+
+    <item name="loading_view_ship" type="id"/>
+    <item name="empty_view_ship" type="id"/>
+    <item name="anchor_dropdown" type="id"/>
+
+    <!--<item name="titleTempMan1" type="id"/>-->
+    <!--<item name="titleMan1" type="id"/>-->
+    <!--<item name="nameMan1" type="id"/>-->
+    <!--<item name="idMan1" type="id"/>-->
+    <!--<item name="phoneMan1" type="id"/>-->
+    <!--<item name="bornMan1" type="id"/>-->
+    <!--<item name="emailMan1" type="id"/>-->
+    <!--<item name="mobilePhoneMan1" type="id"/>-->
+    <!--<item name="bornShowMan1" type="id"/>-->
+    <!---->
+
+    <!--<item name="titleTempMan2" type="id"/>-->
+    <!--<item name="titleMan2" type="id"/>-->
+    <!--<item name="nameMan2" type="id"/>-->
+    <!--<item name="idMan2" type="id"/>-->
+    <!--<item name="phoneMan2" type="id"/>-->
+    <!--<item name="bornMan2" type="id"/>-->
+    <!--<item name="emailMan2" type="id"/>-->
+    <!--<item name="mobilePhoneMan2" type="id"/>-->
+    <!--<item name="bornShowMan2" type="id"/>-->
+    <!---->
+
+    <!--<item name="titleTempMan3" type="id"/>-->
+    <!--<item name="titleMan3" type="id"/>-->
+    <!--<item name="nameMan3" type="id"/>-->
+    <!--<item name="idMan3" type="id"/>-->
+    <!--<item name="phoneMan3" type="id"/>-->
+    <!--<item name="bornMan3" type="id"/>-->
+    <!--<item name="emailMan3" type="id"/>-->
+    <!--<item name="mobilePhoneMan3" type="id"/>-->
+    <!--<item name="bornShowMan3" type="id"/>-->
+   <!---->
+
+    <!--<item name="titleTempMan4" type="id"/>-->
+    <!--<item name="titleMan4" type="id"/>-->
+    <!--<item name="nameMan4" type="id"/>-->
+    <!--<item name="idMan4" type="id"/>-->
+    <!--<item name="phoneMan4" type="id"/>-->
+    <!--<item name="bornMan4" type="id"/>-->
+    <!--<item name="emailMan4" type="id"/>-->
+    <!--<item name="mobilePhoneMan4" type="id"/>-->
+    <!--<item name="bornShowMan4" type="id"/>-->
+    <!---->
+
+
+    <!--<item name="titleTempMan5" type="id"/>-->
+    <!--<item name="titleMan5" type="id"/>-->
+    <!--<item name="nameMan5" type="id"/>-->
+    <!--<item name="idMan5" type="id"/>-->
+    <!--<item name="bornMan5" type="id"/>-->
+    <!--<item name="emailMan5" type="id"/>-->
+    <!--<item name="mobilePhoneMan5" type="id"/>-->
+    <!--<item name="bornShowMan5" type="id"/>-->
+    <!---->
+
+    <!--<item name="titleTempMan6" type="id"/>-->
+    <!--<item name="titleMan6" type="id"/>-->
+    <!--<item name="nameMan6" type="id"/>-->
+    <!--<item name="idMan6" type="id"/>-->
+    <!--<item name="bornMan6" type="id"/>-->
+    <!--<item name="emailMan6" type="id"/>-->
+    <!--<item name="mobilePhoneMan6" type="id"/>-->
+    <!--<item name="bornShowMan6" type="id"/>-->
+    <!---->
+
+    <!--<item name="titleTempMan7" type="id"/>-->
+    <!--<item name="titleMan7" type="id"/>-->
+    <!--<item name="nameMan7" type="id"/>-->
+    <!--<item name="idMan7" type="id"/>-->
+    <!--<item name="bornMan7" type="id"/>-->
+    <!--<item name="emailMan7" type="id"/>-->
+    <!--<item name="mobilePhoneMan7" type="id"/>-->
+    <!--<item name="bornShowMan7" type="id"/>-->
+
+    <!--<item name="titleTempMan8" type="id"/>-->
+    <!--<item name="titleMan8" type="id"/>-->
+    <!--<item name="nameMan8" type="id"/>-->
+    <!--<item name="idMan8" type="id"/>-->
+    <!--<item name="bornMan8" type="id"/>-->
+    <!--<item name="emailMan8" type="id"/>-->
+    <!--<item name="mobilePhoneMan8" type="id"/>-->
+    <!--<item name="bornShowMan8" type="id"/>-->
+
+    <!--<item name="titleTempMan9" type="id"/>-->
+    <!--<item name="titleMan9" type="id"/>-->
+    <!--<item name="nameMan9" type="id"/>-->
+    <!--<item name="idMan9" type="id"/>-->
+    <!--<item name="bornMan9" type="id"/>-->
+    <!--<item name="emailMan9" type="id"/>-->
+    <!--<item name="mobilePhoneMan9" type="id"/>-->
+    <!--<item name="bornShowMan9" type="id"/>-->
+
+    <!--<item name="titleTempMan10" type="id"/>-->
+    <!--<item name="titleMan10" type="id"/>-->
+    <!--<item name="nameMan10" type="id"/>-->
+    <!--<item name="idMan10" type="id"/>-->
+    <!--<item name="bornMan10" type="id"/>-->
+    <!--<item name="emailMan10" type="id"/>-->
+    <!--<item name="mobilePhoneMan10" type="id"/>-->
+    <!--<item name="bornShowMan10" type="id"/>-->
+
+
+    <!--<item name="titleTempWoman1" type="id"/>-->
+    <!--<item name="titleWoman1" type="id"/>-->
+    <!--<item name="nameWoman1" type="id"/>-->
+    <!--<item name="idWoman1" type="id"/>-->
+    <!--<item name="phoneWoman1" type="id"/>-->
+    <!--<item name="bornWoman1" type="id"/>-->
+    <!--<item name="emailWoman1" type="id"/>-->
+    <!--<item name="mobilePhoneWoman1" type="id"/>-->
+    <!--<item name="bornShowWoman1" type="id"/>-->
+
+
+    <!--<item name="titleTempWoman2" type="id"/>-->
+    <!--<item name="titleWoman2" type="id"/>-->
+    <!--<item name="nameWoman2" type="id"/>-->
+    <!--<item name="idWoman2" type="id"/>-->
+    <!--<item name="phoneWoman2" type="id"/>-->
+    <!--<item name="bornWoman2" type="id"/>-->
+    <!--<item name="emailWoman2" type="id"/>-->
+    <!--<item name="mobilePhoneWoman2" type="id"/>-->
+    <!--<item name="bornShowWoman2" type="id"/>-->
+
+
+    <!--<item name="titleTempWoman3" type="id"/>-->
+    <!--<item name="titleWoman3" type="id"/>-->
+    <!--<item name="nameWoman3" type="id"/>-->
+    <!--<item name="idWoman3" type="id"/>-->
+    <!--<item name="phoneWoman3" type="id"/>-->
+    <!--<item name="bornWoman3" type="id"/>-->
+    <!--<item name="emailWoman3" type="id"/>-->
+    <!--<item name="mobilePhoneWoman3" type="id"/>-->
+    <!--<item name="bornShowWoman3" type="id"/>-->
+
+
+    <!--<item name="titleTempWoman4" type="id"/>-->
+    <!--<item name="titleWoman4" type="id"/>-->
+    <!--<item name="nameWoman4" type="id"/>-->
+    <!--<item name="idWoman4" type="id"/>-->
+    <!--<item name="phoneWoman4" type="id"/>-->
+    <!--<item name="bornWoman4" type="id"/>-->
+    <!--<item name="emailWoman4" type="id"/>-->
+    <!--<item name="mobilePhoneWoman4" type="id"/>-->
+    <!--<item name="bornShowWoman4" type="id"/>-->
+
+
+
+    <!--<item name="titleTempWoman5" type="id"/>-->
+    <!--<item name="titleWoman5" type="id"/>-->
+    <!--<item name="nameWoman5" type="id"/>-->
+    <!--<item name="idWoman5" type="id"/>-->
+    <!--<item name="bornWoman5" type="id"/>-->
+    <!--<item name="emailWoman5" type="id"/>-->
+    <!--<item name="mobilePhoneWoman5" type="id"/>-->
+    <!--<item name="bornShowWoman5" type="id"/>-->
+
+
+    <!--<item name="titleTempWoman6" type="id"/>-->
+    <!--<item name="titleWoman6" type="id"/>-->
+    <!--<item name="nameWoman6" type="id"/>-->
+    <!--<item name="idWoman6" type="id"/>-->
+    <!--<item name="bornWoman6" type="id"/>-->
+    <!--<item name="emailWoman6" type="id"/>-->
+    <!--<item name="mobilePhoneWoman6" type="id"/>-->
+    <!--<item name="bornShowWoman6" type="id"/>-->
+
+
+    <!--<item name="titleTempWoman7" type="id"/>-->
+    <!--<item name="titleWoman7" type="id"/>-->
+    <!--<item name="nameWoman7" type="id"/>-->
+    <!--<item name="idWoman7" type="id"/>-->
+    <!--<item name="bornWoman7" type="id"/>-->
+    <!--<item name="emailWoman7" type="id"/>-->
+    <!--<item name="mobilePhoneWoman7" type="id"/>-->
+    <!--<item name="bornShowWoman7" type="id"/>-->
+
+    <!--<item name="titleTempWoman8" type="id"/>-->
+    <!--<item name="titleWoman8" type="id"/>-->
+    <!--<item name="nameWoman8" type="id"/>-->
+    <!--<item name="idWoman8" type="id"/>-->
+    <!--<item name="bornWoman8" type="id"/>-->
+    <!--<item name="emailWoman8" type="id"/>-->
+    <!--<item name="mobilePhoneWoman8" type="id"/>-->
+    <!--<item name="bornShowWoman8" type="id"/>-->
+
+    <!--<item name="titleTempWoman9" type="id"/>-->
+    <!--<item name="titleWoman9" type="id"/>-->
+    <!--<item name="nameWoman9" type="id"/>-->
+    <!--<item name="idWoman9" type="id"/>-->
+    <!--<item name="bornWoman9" type="id"/>-->
+    <!--<item name="emailWoman9" type="id"/>-->
+    <!--<item name="mobilePhoneWoman9" type="id"/>-->
+    <!--<item name="bornShowWoman9" type="id"/>-->
+
+    <!--<item name="titleTempWoman10" type="id"/>-->
+    <!--<item name="titleWoman10" type="id"/>-->
+    <!--<item name="nameWoman10" type="id"/>-->
+    <!--<item name="idWoman10" type="id"/>-->
+    <!--<item name="bornWoman10" type="id"/>-->
+    <!--<item name="emailWoman10" type="id"/>-->
+    <!--<item name="mobilePhoneWoman10" type="id"/>-->
+    <!--<item name="bornShowWoman10" type="id"/>-->
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+
+</resources>

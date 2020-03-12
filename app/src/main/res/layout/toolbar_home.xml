@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:minHeight="?android:attr/actionBarSize"
+    android:background="@color/colorTransparent"
+    android:layout_width="match_parent"
+    app:popupTheme="@style/SBFTheme.PopupOverlay"
+    android:theme="@style/SBFTheme"
+
+    android:fitsSystemWindows="true"
+
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    android:layout_height="?android:attr/actionBarSize">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+
+            android:cropToPadding="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logo" />
+
+        <LinearLayout
+            android:id="@+id/linGradeOutlet"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:weightSum="2"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/imageViewRatingOutlet"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                tools:src="@drawable/ic_star1" />
+
+            <TextView
+                android:id="@+id/textViewTypeOutletToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/textVerySmall"
+                tools:text="ENTERPRISE" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.Toolbar>

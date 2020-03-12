@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+<!--    <group android:id="@+id/group_action_pop1" android:visible="true" android:checkableBehavior="none">-->
+    <!--    <layer-list xmlns:android="http://schemas.android.com/apk/res/android"  android:layout_height="2dp"  android:layout_width="match_parent">-->
+        <item android:id="@+id/action_pop1" android:title="Lihat E-Tiket" app:showAsAction="always"
+
+            />
+<!--    </group>-->
+
+<!--    </layer-list>-->
+<!--    <group android:id="@+id/group_action_pop2" android:visible="true" android:checkableBehavior="none">-->
+    <item android:id="@+id/action_pop2" android:title="Kirim E-Tiket" app:showAsAction="always"
+
+        />
+<!--    </group>-->
+<!--    <group android:id="@+id/group_action_pop3" android:visible="true" android:checkableBehavior="none">-->
+    <item android:id="@+id/action_pop3" android:title="Cetak Struk" app:showAsAction="always"
+
+        />
+<!--    </group>-->
+</menu>

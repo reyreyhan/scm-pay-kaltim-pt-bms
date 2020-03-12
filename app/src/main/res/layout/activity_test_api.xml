@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    tools:context="com.bm.main.fpl.activities.TestAPIActivity">
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        tools:layout_editor_absoluteX="0dp">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:background="#F2F2F2"
+            android:hint="RESULT"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/getApiBtn"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:background="#3498DB"
+                android:text="GET API"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/postApiBtn"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:background="#000000"
+                android:text="POST API"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center_horizontal"
+
+            android:background="@drawable/selector_button_red_pressed"
+            android:text="Contoh Big Button"
+            android:textAlignment="center"
+
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+
+            android:textSize="@dimen/textNormal"
+            tools:ignore="HardcodedText" />
+
+        <com.bm.main.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:drawableEnd="@drawable/ic_pin_hide"
+            android:drawableRight="@drawable/ic_pin_hide"
+            android:focusableInTouchMode="false"
+
+            android:hint="Key Sms"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textSmall"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+            tools:ignore="HardcodedText" />
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_marginBottom="16dp"
+
+                card_view:cardCornerRadius="5dp"
+                card_view:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/country_photo"
+                        android:layout_width="64dp"
+
+
+                        android:layout_height="64dp"
+
+
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="icon"
+                        android:gravity="center"
+                        android:paddingBottom="1dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+
+                        android:src="@mipmap/ic_launcher"
+                        tools:ignore="HardcodedText" />
+
+
+
+                    <TextView
+                        android:id="@+id/country_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+                        android:layout_below="@+id/country_photo"
+
+
+                        android:gravity="center_horizontal"
+
+
+                        android:paddingBottom="8dp"
+
+                        android:text="Nama Menu"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/textSmall"
+                        tools:ignore="HardcodedText" />
+
+
+
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+android:layout_marginTop="-1dp"
+
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="end"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+
+                        android:src="@drawable/ic_ribbon"
+                        tools:ignore="ContentDescription" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

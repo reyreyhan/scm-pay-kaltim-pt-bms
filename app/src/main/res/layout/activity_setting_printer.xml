@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.bm.main.fpl.activities.SettingPrinterActivity">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <include layout="@layout/toolbar_color_primary"
+            android:id="@+id/toolbar"/>
+        <!--<View-->
+
+            <!--android:background="@drawable/curve_toolbar_bg"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="10dip"-->
+
+            <!--/>-->
+        <LinearLayout
+            android:id="@+id/linScanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTransparent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+android:layout_weight="1"
+                >
+
+                <com.bm.main.fpl.templates.Radar.RadarScanView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.bm.main.fpl.templates.RandomTextView
+                    android:id="@+id/random_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_batal_scanner"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+
+
+                android:layout_margin="@dimen/activity_vertical_margin"
+
+                android:background="@drawable/selector_button_red_pressed"
+                android:fontFamily="@font/roboto_light"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Hentikan"
+                android:textAllCaps="false"
+                android:textColor="@drawable/selector_button_textcolor" />
+
+        </LinearLayout>
+
+        <!--<View-->
+
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="3dip"-->
+            <!--android:background="@drawable/drop_shadowbottom" />-->
+
+        <LinearLayout
+android:id="@+id/linMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            >
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="left"
+                android:text="@string/text_bluetooth_off"
+                android:textColor="@color/md_red_500"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="start|center"
+
+                android:orientation="horizontal"
+
+                >
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchBluetooth"
+                    style="@style/SwitchButtonLittleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    />
+
+                <TextView
+                    android:id="@+id/textViewSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:text="Bluetooth Mati"
+                    android:textSize="@dimen/textSmall"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_view_paired"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@drawable/selector_button_blue_pressed"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_light"
+                android:enabled="false"
+
+                android:focusable="true"
+                android:text="@string/text_view_paired"
+                android:textAllCaps="false"
+                android:textColor="@drawable/selector_button_textcolor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@drawable/selector_button_blue_pressed"
+                android:fontFamily="@font/roboto_light"
+                android:clickable="true"
+
+                android:focusable="true"
+                android:text="@string/text_enable"
+                android:textAllCaps="false"
+                android:textColor="@drawable/selector_button_textcolor"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_scan"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@drawable/selector_button_blue_pressed"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_light"
+                android:enabled="false"
+
+                android:focusable="true"
+                android:text="@string/text_scan_devices"
+                android:textAllCaps="false"
+                android:textColor="@drawable/selector_button_textcolor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_test_print"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@drawable/selector_button_blue_pressed"
+                android:clickable="true"
+                android:fontFamily="@font/roboto_light"
+                android:focusable="true"
+
+                android:text="Test Print"
+                android:textAllCaps="false"
+                android:textColor="@drawable/selector_button_textcolor" />
+        </LinearLayout>
+    <!--</LinearLayout>-->
+    <include
+
+        android:id="@+id/bottom_toolbar"
+        layout="@layout/bottom_toolbar"
+        android:visibility="gone"/>
+</LinearLayout>

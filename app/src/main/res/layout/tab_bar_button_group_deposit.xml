@@ -1,0 +1,159 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/buttonGroupTabs"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_toolbar_deposit"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linItemTabDepCepat"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:id="@+id/appButtonItemTabDepCepat"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:background="@drawable/selector_tab_btn_dep"
+
+
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:tag="0"
+            android:text="Deposit Cepat"
+            android:textAllCaps="false"
+            android:textColor="@drawable/selector_tab_btn_textcolor"
+            android:textSize="@dimen/textSmall" />
+
+        <View
+            android:id="@+id/viewItemTabDepCepat"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
+            android:background="@drawable/selector_indicator_tab_btn_group_home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linItemTabTiket"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appButtonItemTabTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+
+            android:background="@drawable/unselector_tab_btn_dep"
+
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:tag="1"
+            android:text="Transfer Bank"
+            android:textAllCaps="false"
+            android:textColor="@drawable/unselector_tab_btn_textcolor"
+            android:textSize="@dimen/textSmall" />
+
+        <View
+            android:id="@+id/viewItemTabTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/unselector_indicator_tab_btn_group_home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linItemTabTunai"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appButtonItemTabTunai"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+
+            android:background="@drawable/unselector_tab_btn_dep"
+
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:tag="1"
+            android:text="Tunai Via"
+            android:textAllCaps="false"
+            android:textColor="@drawable/unselector_tab_btn_textcolor"
+            android:textSize="@dimen/textSmall" />
+
+        <View
+            android:id="@+id/viewItemTabTunai"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/unselector_indicator_tab_btn_group_home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linItemTabHistory"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appButtonItemTabHistory"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+
+            android:background="@drawable/unselector_tab_btn_dep"
+
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:tag="1"
+            android:text="History Tiket Aktif"
+            android:textAllCaps="false"
+            android:textColor="@drawable/unselector_tab_btn_textcolor"
+            android:textSize="@dimen/textSmall" />
+
+        <View
+            android:id="@+id/viewItemTabHistory"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/unselector_indicator_tab_btn_group_home" />
+    </LinearLayout>
+</LinearLayout>

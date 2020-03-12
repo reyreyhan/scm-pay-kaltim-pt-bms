@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/image_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/ic_launcher"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/title"
+        style="Custom Notification Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/image_app"
+        android:layout_toRightOf="@+id/image_app"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header"
+        android:textColor="@android:color/black"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/text"
+        style="Custom Notification Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_toEndOf="@+id/image_app"
+        android:layout_toRightOf="@+id/image_app"
+        android:textColor="@android:color/black"
+        tools:text="Text" />
+
+    <ImageView
+
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+
+
+        android:layout_below="@+id/image_app"
+        android:layout_alignEnd="@+id/image_app"
+        android:layout_alignRight="@+id/image_app"
+        android:layout_marginTop="-17dp"
+        android:layout_marginEnd="-7dp"
+        android:layout_marginRight="-7dp"
+        android:background="@drawable/grey_shape"
+        android:src="@drawable/ic_logo_status_bar"
+        tools:ignore="ContentDescription" />
+</RelativeLayout>

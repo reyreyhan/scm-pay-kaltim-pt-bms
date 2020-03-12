@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+    <!--<item-->
+        <!--android:state_focused="true"-->
+        <!--android:state_pressed="true"-->
+
+        <!--android:drawable="@drawable/button_red_big_pressed" />-->
+    <!--<item-->
+        <!--android:state_focused="false"-->
+        <!--android:state_pressed="true"-->
+
+        <!--android:drawable="@drawable/button_red_big_pressed" />-->
+    <!--<item-->
+
+        <!--android:state_enabled="false"-->
+        <!--android:drawable="@drawable/button_red_big_enabled" />-->
+    <!--<item-->
+        <!--android:state_enabled="true"-->
+        <!--android:drawable="@drawable/button_red_big_default"/>-->
+<!--</selector>-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" >
+        <layer-list>
+            <item android:top="2dp">
+                <shape>
+                    <solid android:color="@color/md_orange_200" />
+                    <corners android:radius="10dip"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_pressed="true">
+        <layer-list>
+            <item android:top="2dp">
+                <shape>
+                    <solid android:color="@color/md_orange_600" />
+                    <corners android:radius="10dip"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <!--<item android:top="2dp">-->
+                <!--<shape>-->
+                    <!--<corners-->
+                        <!--android:radius="30dp" />-->
+                    <!--<solid-->
+                        <!--android:color="@color/md_grey_300" />-->
+                <!--</shape>-->
+            <!--</item>-->
+            <item
+                android:bottom="0dp">
+                <shape>
+                    <solid
+                        android:color="@color/md_orange_500" />
+
+                    <stroke android:width="0dp" android:color="@color/md_grey_300" />
+
+                    <corners
+                        android:radius="10dp" />
+                    <padding
+                        android:bottom="5dp"
+                        android:left="2dp"
+                        android:right="2dp"
+                        android:top="5dp" />
+
+                </shape>
+
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

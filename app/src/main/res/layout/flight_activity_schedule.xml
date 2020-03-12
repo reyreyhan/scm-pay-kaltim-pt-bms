@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.bm.main.single.ftl.flight.activities.FlightScheduleActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        >
+
+        <include layout="@layout/travel_three_search_result_activity"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/core_toolbar_custom_resize"/>
+
+            <ProgressBar
+                android:id="@+id/progressFlightPergi"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="false"
+                android:maxHeight="3dip"
+                android:minHeight="3dip"
+                android:progress="50"
+                android:progressDrawable="@drawable/orangeprogress"
+                android:visibility="gone"/>
+            <SeekBar
+                android:id="@+id/seek_barprogressFlightPergi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="3dip"
+                android:minHeight="3dip"
+                android:layout_margin="10dp"
+                android:max="100"
+                android:progressDrawable="@drawable/orangeprogress"
+                android:progress="50"
+                android:thumb="@drawable/ic_flight_progress"
+                android:visibility="visible"/>
+            <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                app:duration="800"
+                >
+
+                <!-- Adding 3 rows of placeholders -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/flight_recipe_placeholder_schedule_item" />
+                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                    <include layout="@layout/flight_recipe_placeholder_schedule_item" />
+                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                    <include layout="@layout/flight_recipe_placeholder_schedule_item" />
+                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                    <include layout="@layout/flight_recipe_placeholder_schedule_item" />
+                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                    <include layout="@layout/flight_recipe_placeholder_schedule_item" />
+                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+                    <include layout="@layout/flight_recipe_placeholder_schedule_item" />
+                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+
+                </LinearLayout>
+            </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recylerList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:visibility="gone"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:listitem="@layout/flight_schedule_list_item"/>
+
+            <include
+                android:id="@id/empty_view_flight"
+                layout="@layout/flight_empty_view"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

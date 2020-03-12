@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/tvEksNo"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/md_black_1000" />
+
+        <LinearLayout
+            android:id="@+id/tvEkoA"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/tvEksNo"
+            android:layout_toRightOf="@id/tvEksNo"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/ivEksA"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/seat_empty"
+                android:textColor="@color/md_white_1000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tvEkoB"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/tvEkoA"
+            android:layout_toRightOf="@id/tvEkoA"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/ivEksB"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/seat_empty"
+                android:textColor="@color/md_white_1000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/tvEksD"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/ivEksD"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/seat_empty"
+                android:textColor="@color/md_white_1000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/tvEksD"
+            android:layout_toLeftOf="@id/tvEksD"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/ivEksC"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/seat_empty"
+                android:textColor="@color/md_white_1000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

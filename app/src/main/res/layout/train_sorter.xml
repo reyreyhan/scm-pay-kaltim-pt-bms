@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/md_black_1000"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:text="URUTKAN BERDASARKAN"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+            tools:ignore="RtlSymmetry" />
+        <RelativeLayout
+            android:id="@+id/linDefaultSorter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            >
+
+            <TextView
+                android:id="@+id/textSorterDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imageViewSorterDefault"
+                android:layout_toStartOf="@+id/imageViewSorterDefault"
+                android:gravity="center_vertical"
+                android:text="Default"
+                android:textColor="@color/md_blue_700"
+                android:textSize="@dimen/textNormal" />
+
+            <ImageView
+
+                android:id="@+id/imageViewSorterDefault"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:src="@null" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/linLowPriceSorter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            >
+
+            <TextView
+                android:id="@+id/textSorterLowPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imageViewSorterLowPrice"
+                android:layout_toStartOf="@+id/imageViewSorterLowPrice"
+                android:gravity="center_vertical"
+                android:text="Harga terendah"
+                android:textColor="@color/md_grey_600"
+                android:textSize="@dimen/textNormal" />
+
+            <ImageView
+
+                android:id="@+id/imageViewSorterLowPrice"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:src="@null" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/linEarlyGoSorter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:id="@+id/textSorterEarlyDept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imageViewSorterEarlyDept"
+                android:layout_toStartOf="@+id/imageViewSorterEarlyDept"
+                android:gravity="center_vertical"
+                android:text="Waktu berangkat paling awal"
+                android:textColor="@color/md_grey_600"
+                android:textSize="@dimen/textNormal" />
+
+            <ImageView
+
+                android:id="@+id/imageViewSorterEarlyDept"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:src="@null" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/linFastDurasiSorter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:id="@+id/textSorterShortDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imageViewSorterShortDuration"
+                android:layout_toStartOf="@+id/imageViewSorterShortDuration"
+                android:gravity="center_vertical"
+                android:text="Durasi tersingkat"
+                android:textColor="@color/md_grey_600"
+                android:textSize="@dimen/textNormal" />
+
+            <ImageView
+
+                android:id="@+id/imageViewSorterShortDuration"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+
+                android:src="@null" />
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_tutup"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="10dp"
+            android:textSize="@dimen/textNormal"
+
+
+            android:text="Tutup"
+            android:textColor="@color/md_blue_500"
+            android:background="@drawable/selector_button_blue_white_pressed" />
+
+    </LinearLayout>
+</FrameLayout>

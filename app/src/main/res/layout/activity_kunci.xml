@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="@drawable/bg_batik_putih"
+    tools:context="com.bm.main.fpl.activities.KunciActivity">
+
+    <LinearLayout
+        android:id="@+id/rel_footer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_190sdp"
+
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        android:paddingBottom="10dp"
+        tools:background="@drawable/bg_footer">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/selector_button_blue_white_pressed"
+            android:importantForAccessibility="no"
+
+            android:paddingBottom="5dp"
+            android:src="@drawable/speedcash_colour"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/linSlider"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"
+
+
+            android:background="@drawable/shape_banner_static">
+            <RelativeLayout
+                android:id="@+id/linToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/colorTransparent"
+
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:cropToPadding="true"
+
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/logo_putih" />
+            </RelativeLayout>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Lock"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/_22sdp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Untuk alasan keamanan.\nSilahkan masukkan kembali PIN Anda."
+                android:textAlignment="center"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/_12sdp"
+                tools:ignore="HardcodedText" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+
+            android:layout_marginLeft="42dp"
+
+            android:layout_marginTop="@dimen/_minus20sdp"
+            android:layout_marginRight="42dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/shape_card_edge_grey_fill_white"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+                <com.bm.main.materialedittext.MaterialEditText
+                    android:id="@+id/edit_input_pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+
+                    android:textCursorDrawable="@drawable/text_cursor_accent"
+                    android:textSize="@dimen/textMedium"
+
+                    app:met_baseColor="@color/text_secondary"
+                    app:met_floatingLabel="highlight"
+                    app:met_floatingLabelTextColor="@color/colorAccent_ppob"
+                    app:met_primaryColor="@color/colorAccent_ppob"
+                    app:met_singleLineEllipsis="true"
+                    />
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:paddingBottom="5dp"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="1"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="2"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:padding="10dip"
+                            android:text="3"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="4"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:padding="10dip"
+                            android:text="5"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="6"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+                    </TableRow>
+
+                    <TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="7"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="8"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="9"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+                    </TableRow>
+
+                    <TableRow
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/textViewKeluar"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="Keluar"
+                            android:textSize="@dimen/_14sdp"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textView0"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="0"
+                            android:textSize="@dimen/textMedium"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/textViewHapus"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dip"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto_light"
+                            android:gravity="center"
+                            android:hapticFeedbackEnabled="true"
+                            android:padding="10dip"
+                            android:text="Hapus"
+                            android:textSize="@dimen/_14sdp"
+                            tools:ignore="HardcodedText" />
+                    </TableRow>
+
+                </TableLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:gravity="center"
+
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButtonMasuk"
+                android:layout_width="175dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/selector_button_red_pressed"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/string_masuk"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textViewPlusLupa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="@string/string_lupa_password_pin"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/_16sdp"
+                android:visibility="gone" />
+
+            <FrameLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                    android:id="@+id/avi"
+                    style="@style/AVLoadingIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+
+                    app:indicatorColor="@color/colorPrimary_ppob" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+    <!--<include-->
+    <!--android:id="@+id/layout_update_apps"-->
+    <!--layout="@layout/layout_update_apps"-->
+    <!--android:visibility="gone" />-->
+    <!--</RelativeLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

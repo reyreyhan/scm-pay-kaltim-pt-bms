@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_awal"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda"
+        android:checked="true"
+
+        app:showAsAction="ifRoom"
+        />
+    <!--<item-->
+    <!--android:id="@+id/navigation_deposit"-->
+    <!--android:icon="@drawable/ic_saldo"-->
+    <!--android:title="Rp.0"-->
+    <!--android:checked="true"-->
+
+    <!--app:showAsAction="ifRoom"-->
+    <!--/>-->
+
+
+    <item
+        android:id="@+id/navigation_add_member"
+        android:icon="@drawable/ic_add_member"
+        android:title="Member Baru"
+        android:checked="true"
+        app:showAsAction="ifRoom"
+
+        />
+
+    <item
+        android:id="@+id/navigation_live_chat"
+        android:icon="@drawable/ic_bantuan"
+        android:title="Live Chat"
+        android:checked="true"
+        app:showAsAction="ifRoom"
+
+        />
+
+    <item
+        android:id="@+id/navigation_administrasi"
+        android:icon="@drawable/ic_admin"
+        android:checked="true"
+        android:title="Admin"
+        app:showAsAction="ifRoom"
+
+        />
+    <item
+        android:id="@+id/navigation_webreport"
+        android:icon="@drawable/ic_admin_webreport"
+        android:checked="true"
+        android:title="Web Report"
+
+
+        app:showAsAction="ifRoom"
+
+        />
+
+</menu>

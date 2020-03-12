@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:importantForAccessibility="no"
+    android:orientation="vertical"
+    android:background="@drawable/bg_batik_orange">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+
+        android:layout_height="match_parent"
+        >
+        <!--<View android:layout_height="50dp" android:layout_width="match_parent" android:background="@drawable/intro_shadow_effect_blue" android:layout_alignParentBottom="true"/>-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:background="@drawable/frame_rounded_transparant"-->
+            <!--/>-->
+
+        <!--<com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout-->
+
+            <!--android:layout_width="@dimen/intro_image"-->
+            <!--android:layout_height="@dimen/intro_image"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_marginTop="75dp"-->
+            <!--android:orientation="vertical"-->
+            <!--shimmer:auto_start="true"-->
+            <!--shimmer:duration="5000">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="@dimen/intro_image"-->
+                <!--android:layout_height="@dimen/intro_image"-->
+
+
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_marginTop="75dp"-->
+                <!--android:src="@drawable/intro7" />-->
+        <!--</com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>-->
+        <!--<LinearLayout-->
+
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginBottom="50dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:orientation="vertical" >-->
+            <!--<com.bm.main.fpl.templates.AutoResizeTextView-->
+                <!--android:id="@+id/textViewHeader"-->
+
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/md_grey_500"-->
+                <!--android:gravity="center"-->
+
+                <!--android:textSize="@dimen/textMediumHeader"-->
+                <!--android:text="@string/intro_header_tujuh"/>-->
+            <!--<com.bm.main.fpl.templates.AutoResizeTextView-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/md_grey_500"-->
+                <!--android:gravity="center"-->
+
+
+                <!--android:textSize="@dimen/textNormalCaption"-->
+                <!--android:text="@string/intro_sub_header_tujuh"/>-->
+        <!--</LinearLayout>-->
+        <FrameLayout
+            android:id="@+id/linCurve"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_curve_intro"
+            android:background="@drawable/curve_intro_blue"
+
+
+
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+        </FrameLayout>
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+
+            <!--android:background="@drawable/frame_rounded_transparant"-->
+            <!--/>-->
+        <ImageView
+            android:id="@+id/imageViewIntro7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+
+
+            android:importantForAccessibility="no"
+            android:src="@drawable/intro7" />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_transfer_bank24"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:orientation="horizontal"
+           >
+
+            <com.bm.main.materialedittext.MaterialEditText
+                android:id="@+id/materialEditTextBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+
+                android:layout_marginTop="5dp"
+
+                android:hint="@string/hint_pilih_bank"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:focusableInTouchMode="false"
+                android:textCursorDrawable="@drawable/text_cursor_accent"
+                android:textSize="@dimen/textNormal"
+
+                android:fontFamily="@font/roboto_regular"
+                app:met_accentTypeface="@string/roboto_regular"
+                app:met_baseColor="@color/text_secondary"
+
+                app:met_helperTextColor="@color/md_red_500"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/md_black_1000"
+
+                app:met_primaryColor="@color/colorAccent_ppob"
+                app:met_singleLineEllipsis="true"
+                app:met_underlineColor="@color/md_grey_500"
+app:met_clearButton="true"
+                />
+
+            <FrameLayout
+                android:id="@+id/frameIcon"
+                android:layout_width="70dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+android:layout_marginBottom="5dp"
+                android:layout_marginLeft="-80dp"
+                android:layout_marginStart="-80dp">
+
+                <ImageView
+                    android:id="@+id/imageViewBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:adjustViewBounds="true"
+
+                    android:gravity="center"
+
+
+                    tools:ignore="ContentDescription" />
+
+                <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+                    android:id="@+id/avi24"
+                    style="@style/AVLoadingIndicatorView.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_gravity="center"
+
+
+                    app:indicatorColor="@color/colorPrimary_ppob"
+                    />
+            </FrameLayout>
+
+
+
+        </LinearLayout>
+
+        <com.bm.main.fpl.templates.TextViewPlus
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Pilih Nominal Deposit"
+            android:textSize="@dimen/textNormal"
+
+            />
+        <com.bm.main.fpl.templates.RadioGroupPlus
+            android:id="@+id/radioGroupBank24"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            >
+
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rbtn_selector_table"
+                android:button="@null"
+
+                android:fontFamily="@font/roboto_medium"
+
+                android:tag="250000"
+                android:text="250.000"
+                android:textAlignment="center"
+                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                android:textSize="@dimen/textNormal"
+                android:padding="2dip"
+                android:layout_margin="3dip"/>
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rbtn_selector_table"
+                android:button="@null"
+                android:fontFamily="@font/roboto_medium"
+
+
+                android:tag="500000"
+                android:text="500.000"
+                android:textAlignment="center"
+                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                android:textSize="@dimen/textNormal"
+                android:padding="2dip"
+                android:layout_margin="3dip"/>
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rbtn_selector_table"
+                android:button="@null"
+                android:fontFamily="@font/roboto_medium"
+
+
+                android:tag="750000"
+                android:text="750.000"
+                android:textAlignment="center"
+                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                android:textSize="@dimen/textNormal"
+                android:padding="2dip"
+                android:layout_margin="3dip"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rbtn_selector_table"
+                android:button="@null"
+                android:fontFamily="@font/roboto_medium"
+
+                android:tag="1000000"
+                android:text="1.000.000"
+                android:textAlignment="center"
+                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                android:textSize="@dimen/textNormal"
+                android:padding="2dip"
+                android:layout_margin="3dip"/>
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rbtn_selector_table"
+                android:button="@null"
+                android:fontFamily="@font/roboto_medium"
+
+
+                android:tag="1500000"
+                android:text="1.500.000"
+                android:textAlignment="center"
+                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                android:textSize="@dimen/textNormal"
+                android:padding="2dip"
+                android:layout_margin="3dip" />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rbtn_selector_table"
+                android:button="@null"
+                android:fontFamily="@font/roboto_medium"
+
+                android:tag="2000000"
+                android:text="2.000.000"
+                android:textAlignment="center"
+                android:textColor="@drawable/rbtn_textcolor_selector_table"
+                android:textSize="@dimen/textNormal"
+                android:padding="2dip"
+                android:layout_margin="3dip"/>
+
+
+        </TableRow>
+        </com.bm.main.fpl.templates.RadioGroupPlus>
+        <com.bm.main.fpl.templates.TextViewPlus
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Atau"
+            android:textSize="@dimen/textNormal"
+            android:fontFamily="@font/roboto_light"
+            />
+        <com.bm.main.fpl.templates.CurrencyEditText
+            android:id="@+id/materialEditTextNominal24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/hint_masuk_nominal_deposit"
+
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            app:locale="@string/locale"
+            android:textCursorDrawable="@drawable/text_cursor_accent"
+            android:textSize="@dimen/textNormal"
+
+            android:fontFamily="@font/roboto_light"
+            app:met_baseColor="@color/text_secondary"
+            app:met_floatingLabel="highlight"
+
+            app:met_floatingLabelTextColor="@color/md_black_1000"
+            app:met_floatingLabelAnimating="true"
+            app:met_accentTypeface="@string/roboto_regular"
+
+            app:met_underlineColor="@color/md_grey_500"
+            app:met_primaryColor="@color/colorAccent_ppob"
+            app:met_singleLineEllipsis="true"
+app:met_clearButton="true"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_lanjutkan24"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/selector_button_red_pressed"
+
+            android:clickable="true"
+           android:fontFamily="@font/roboto_light"
+            android:focusable="true"
+            android:text="@string/lanjutkan"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:textSize="@dimen/textNormal"
+            />
+    </LinearLayout>
+</ScrollView>

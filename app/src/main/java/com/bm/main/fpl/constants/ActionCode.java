@@ -1,0 +1,75 @@
+package com.bm.main.fpl.constants;
+
+public class ActionCode {
+    public static final int REQUEST_KEY = 50;
+    public static final int PING = 51;
+    public static final int LOGIN = 52;
+    public static final int SIGNOUT = 53;
+    public static final int ACCOUNT = 54;
+    public static final int SLIDE_LOGIN = 55;
+    public static final int SLIDE_HOME = 56;
+    public static final int LIST_NOTIF_KATEGORI = 57;
+    public static final int LIST_NOTIF_HOME = 58;
+    public static final int POPUP_PROMO_PRODUK = 59;
+    public static final int LIST_PELANGGAN = 60;
+    public static final int INQ = 61;
+    public static final int PAY = 62;
+    public static final int LIST_PRODUK_PULSA_REGULAR = 63;
+    public static final int LIST_PRODUK_PULSA_INTERNET = 64;
+    public static final int LIST_PRODUK_GAME = 65;
+    public static final int LIST_PRODUK = 66;
+    public static final int LIST_NOMINAL_PRODUK = 67;
+    public static final int PAY_PULSA = 68;
+    public static final int REQUEST_DEPOSIT = 69;
+    public static final int REQUEST_DEPOSIT24 = 70;
+    public static final int LIST_TIKET_HISTORY = 71;
+    public static final int REQUEST_KOMISI = 72;
+    public static final int REQUEST_MEMBER = 73;
+    public static final int CHECK_UPDATE = 74;
+    public static final int REQUEST_TRANSFER = 75;
+    public static final int LIST_LAPORAN_TRX = 76;
+    public static final int LIST_LAPORAN_MUTASI = 77;
+    public static final int LIST_KATEGORI_SARAN = 78;
+    public static final int REQUEST_SARAN = 79;
+    public static final int REQUEST_SALDO = 80;
+    public static final int UPDATE_LOCATION = 81;
+    public static final int CETAK_ULANG = 82;
+    public static final int LIST_PRODUK_MERCHANT_DEPOSIT = 83;
+    public static final int LIST_PRODUK_MERCHANT_DESCRIPTION = 84;
+    public static final int LIST_PRODUK_BANK_VA = 85;
+    public static final int GET_UPLINE = 86;
+    public static final int LIST_LAPORAN_KOMISI = 87;
+    public static final int LIST_DOWNLINE = 88;
+    public static final int LIST_JUMLAH_DOWNLINE = 89;
+
+    public static final int CEK_SALDO = 90;
+    public static final int LIST_KOMISI_DOWNLINE = 91;
+    public static final int PICK_CONTACT = 92;
+    public static final int LIST_PRODUK_TOMO = 93;
+    public static final int BARCODE = 94;
+    public static final int UPDATE_LOKET = 95;
+    public static final int GET_DEMO = 96;
+    public static final int LIST_PRODUK_FMCG = 97;
+    public static final int LIST_PRODUK_FMCG_LOAD_MORE = 98;
+
+    public static final int AKTIVASI_AKUN = 99;
+    public static final int CHECK_AKTIF = 100;
+    public static final int CHECK_KADALUARSA = 101;
+    public static final int REQUEST_CODE_EMAIL = 102;
+    public static final int INQ_RESULT = 103;
+    public static final int REQUEST_VALIDATION = 104;
+    public static final int REQUEST_AJAK_BISNIS = 105;
+    public static final int REQUEST_PANDUAN_AJAK_BISNIS = 106;
+    public static final int LIST_PROPINSI = 107;
+    public static final int LIST_KABUPATEN = 108;
+    public static final int LIST_KECAMATAN = 109;
+    public static final int LIST_KODEPOS = 110;
+    public static final int REQUEST_STATUS = 111;
+    public static final int CHECK_AVAIL_KEY = 112;
+    public static final int REQUEST_LOGOUT = 113;
+
+    public static final int LIST_PRODUK_BANK_VA_CHOICE = 114;
+    public static final int CEK_SALDO_FROM_NOTIF = 115;
+    public static final int REQUEST_TOP_DEPOSIT = 116;
+    public static final int REQUEST_KONFIRMASI_UPLOAD = 117;
+}

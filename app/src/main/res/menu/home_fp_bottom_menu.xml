@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/m_beranda"
+        android:icon="@drawable/ic_nav_beranda"
+        android:title="Beranda"
+        android:visible="false" />
+    <item
+        android:id="@+id/m_deposit"
+        android:icon="@drawable/ic_admin_deposit"
+        android:title="Deposit" />
+    <item
+        android:id="@+id/m_invite"
+        android:icon="@drawable/ic_nav_ajakbisnis"
+        android:title="Ajak Bisnis" />
+    <item
+        android:id="@+id/m_help"
+        android:icon="@drawable/ic_nav_bantuan"
+        android:title="Bantuan" />
+    <item
+        android:id="@+id/m_admin"
+        android:icon="@drawable/ic_nav_admin"
+        android:title="Admin" />
+</menu>

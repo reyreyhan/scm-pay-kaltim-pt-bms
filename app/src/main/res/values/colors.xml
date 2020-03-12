@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00a79d</color>
+    <color name="colorPrimaryDark">#007065</color>
+    <color name="colorPrimaryLight">#B4F3EF</color>
+    <color name="colorPrimaryLight30">#4DB4F3EF</color>
+    <color name="colorAccent">#28aae1</color>
+    <color name="colorAccentLight">#E1E7FC</color>
+    <color name="colorAccentDark">#002BD6</color>
+
+    <color name="primaryText">#40514e</color>
+    <color name="secondaryText">#697586</color>
+
+    <color name="white_gray">#f3f5f7</color>
+    <color name="white">#ffffff</color>
+    <color name="divider">#E2E2E2</color>
+    <color name="vermillion">#dc1818</color>
+    <color name="orange">#f69220</color>
+    <color name="orange_dark">#B87700</color>
+    <color name="black_60">#99000000</color>
+    <color name="bg_gray">#EEEEEE</color>
+    <color name="bg_tab">#A2A2A2</color>
+    <color name="dark_gray">#858585</color>
+    <color name="black">#000000</color>
+    <color name="bg_header_success">#17B80C</color>
+    <color name="charcoal_grey_two_opa_64">#A339434E</color>
+
+
+    <color name="colorPrimary_ppob">#29abe2</color>
+    <!--<color name="colorPrimary">#03a9f4</color>-->
+    <color name="colorPrimaryDark_ppob">#154F78</color>
+    <!--<color airLineName="colorPrimaryDark">#000000</color>-->
+    <color name="colorAccent_ppob">#1ba0e2</color>
+
+
+    <color name="text_secondary">@color/md_grey_800</color>
+
+    <color name="black_overlay">#10000000</color>
+    <color name="black_overlay_dark">#60000000</color>
+    <color name="black_overlay_dark1">#90000000</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="window_background">#E6EAED</color>
+
+    <!-- Google's Material Design colors from
+    https://www.google.com/design/spec/style/color.html#color-color-palette -->
+
+    <!-- Items Light -->
+
+    <!-- Items Dark -->
+
+    <!-- Red -->
+    <color name="md_red_200">#EF9A9A</color>
+    <!--<color airLineName="md_red_500">#F44336</color>-->
+    <color name="md_red_600">#E53935</color>
+    <color name="md_red_A700">#D50000</color>
+    <color name="md_red_500">#FF0000</color>
+    <!--red fastpay-->
+
+    <!-- Pink -->
+
+    <!-- Purple -->
+
+    <!-- Deep Purple -->
+
+    <!-- Indigo -->
+
+    <!-- Blue -->
+    <color name="md_blue_100">#BBDEFB</color>
+    <color name="md_blue_200">#90CAF9</color>
+    <color name="md_blue_400">#42A5F5</color>
+    <color name="md_blue_500">#2196F3</color>
+    <!--<color airLineName="md_blue_600">#1E88E5</color>-->
+    <color name="md_blue_700">#1976D2</color>
+    <color name="md_blue_800">#1565C0</color>
+    <color name="md_blue_900">#0D47A1</color>
+    <color name="md_blue_600">#00A6FF</color>
+    <!--blue fastpay-->
+
+    <!-- Light Blue -->
+    <color name="md_light_blue_50">#E1F5FE</color>
+    <color name="md_light_blue_100">#B3E5FC</color>
+    <color name="md_light_blue_500">#03A9F4</color>
+    <color name="md_light_blue_600">#039BE5</color>
+
+    <!-- Cyan -->
+
+    <!-- Teal -->
+
+    <!--&lt;!&ndash; Green &ndash;&gt;-->
+    <!--<color name="md_green_400">#66BB6A</color>-->
+    <!--<color name="md_green_500">#4CAF50</color>-->
+    <!--<color name="md_green_600">#43A047</color>-->
+    <!--<color name="md_green_700">#388E3C</color>-->
+    <!--<color name="md_green_800">#2E7D32</color>-->
+    <!--<color name="md_green_A100">#B9F6CA</color>-->
+
+    <!--&lt;!&ndash; Light Green &ndash;&gt;-->
+    <!--<color name="md_light_green_100">#DCEDC8</color>-->
+    <!--<color name="md_light_green_500">#8BC34A</color>-->
+    <!--<color name="md_light_green_600">#7CB342</color>-->
+
+
+    <!-- Green -->
+    <color name="md_green_50">#E8F5E9</color>
+    <color name="md_green_100">#C8E6C9</color>
+    <color name="md_green_200">#A5D6A7</color>
+    <color name="md_green_300">#81C784</color>
+    <color name="md_green_400">#66BB6A</color>
+    <color name="md_green_500">#4CAF50</color>
+    <color name="md_green_600">#43A047</color>
+    <color name="md_green_700">#388E3C</color>
+    <color name="md_green_800">#2E7D32</color>
+    <color name="md_green_900">#1B5E20</color>
+    <color name="md_green_A100">#B9F6CA</color>
+    <color name="md_green_A200">#69F0AE</color>
+    <color name="md_green_A400">#00E676</color>
+    <color name="md_green_A700">#00C853</color>
+
+    <!-- Light Green -->
+    <color name="md_light_green_50">#F1F8E9</color>
+    <color name="md_light_green_100">#DCEDC8</color>
+    <color name="md_light_green_200">#C5E1A5</color>
+    <color name="md_light_green_300">#AED581</color>
+    <color name="md_light_green_400">#9CCC65</color>
+    <color name="md_light_green_500">#8BC34A</color>
+    <color name="md_light_green_600">#7CB342</color>
+    <color name="md_light_green_700">#689F38</color>
+    <color name="md_light_green_800">#558B2F</color>
+    <color name="md_light_green_900">#33691E</color>
+    <color name="md_light_green_A100">#CCFF90</color>
+    <color name="md_light_green_A200">#B2FF59</color>
+    <color name="md_light_green_A400">#76FF03</color>
+    <color name="md_light_green_A700">#64DD17</color>
+
+
+    <!-- Lime -->
+    <color name="md_lime_50">#F9FBE7</color>
+    <color name="md_lime_100">#F0F4C3</color>
+    <color name="md_lime_200">#E6EE9C</color>
+    <color name="md_lime_300">#DCE775</color>
+    <color name="md_lime_400">#D4E157</color>
+    <color name="md_lime_500">#CDDC39</color>
+    <color name="md_lime_600">#C0CA33</color>
+    <color name="md_lime_700">#AFB42B</color>
+    <color name="md_lime_800">#9E9D24</color>
+    <color name="md_lime_900">#827717</color>
+    <color name="md_lime_A100">#F4FF81</color>
+    <color name="md_lime_A200">#EEFF41</color>
+    <color name="md_lime_A400">#C6FF00</color>
+    <color name="md_lime_A700">#AEEA00</color>
+
+    <!-- Yellow -->
+
+    <!-- Amber -->
+
+    <!-- Orange -->
+    <color name="md_orange_50">#FFF3E0</color>
+    <color name="md_orange_100">#FFE0B2</color>
+    <color name="md_orange_200">#FFCC80</color>
+    <color name="md_orange_300">#FFB74D</color>
+    <color name="md_orange_400">#FFA726</color>
+    <color name="md_orange_500">#FF9800</color>
+    <color name="md_orange_600">#FB8C00</color>
+    <color name="md_orange_700">#F57C00</color>
+    <color name="md_orange_800">#EF6C00</color>
+    <color name="md_orange_900">#E65100</color>
+    <color name="md_orange_A100">#FFD180</color>
+    <color name="md_orange_A200">#FFAB40</color>
+    <color name="md_orange_A400">#FF9100</color>
+    <color name="md_orange_A700">#FF6D00</color>
+
+    <!-- Deep Orange -->
+    <color name="md_deep_orange_50">#FBE9E7</color>
+    <color name="md_deep_orange_100">#FFCCBC</color>
+    <color name="md_deep_orange_200">#FFAB91</color>
+    <color name="md_deep_orange_300">#FF8A65</color>
+    <color name="md_deep_orange_400">#FF7043</color>
+    <color name="md_deep_orange_500">#FF5722</color>
+    <color name="md_deep_orange_600">#F4511E</color>
+    <color name="md_deep_orange_700">#E64A19</color>
+    <color name="md_deep_orange_800">#D84315</color>
+    <color name="md_deep_orange_900">#BF360C</color>
+    <color name="md_deep_orange_A100">#FF9E80</color>
+    <color name="md_deep_orange_A200">#FF6E40</color>
+    <color name="md_deep_orange_A400">#FF3D00</color>
+    <color name="md_deep_orange_A700">#DD2C00</color>
+
+    <!-- Brown -->
+
+    <!-- Grey -->
+    <color name="md_grey_50">#FAFAFA</color>
+    <color name="md_grey_100">#F5F5F5</color>
+    <color name="md_grey_200">#EEEEEE</color>
+    <color name="md_grey_300">#E0E0E0</color>
+    <color name="md_grey_400">#BDBDBD</color>
+    <color name="md_grey_500">#9E9E9E</color>
+    <color name="md_grey_600">#757575</color>
+    <color name="md_grey_700">#616161</color>
+    <color name="md_grey_800">#424242</color>
+    <color name="md_grey_900">#212121</color>
+
+    <!-- Blue Grey -->
+    <color name="md_blue_grey_300">#90A4AE</color>
+    <color name="md_blue_grey_800">#37474F</color>
+
+    <!-- Black & White -->
+    <color name="md_black_1000">#000000</color>
+    <color name="md_white_1000">#FFFFFF</color>
+
+
+    <color name="error_color">@color/md_red_600</color>
+    <color name="warning_color">@color/md_lime_600</color>
+    <color name="information_color">@color/md_light_blue_600</color>
+    <color name="successs_color">@color/md_light_green_600</color>
+
+    <color name="viewfinder_mask">#60000000</color>
+    <!--<color airLineName="viewfinder_laser">#ffcc0000</color>-->
+    <color name="viewfinder_laser">#ffafed44</color>
+    <color name="viewfinder_border">#ffafed44</color>
+
+
+    <color name="placeholder_bg">#dddddd</color>
+
+
+    <color name="whiteLily">#ffe7f8ff</color>
+    <color name="whitesembilan">#fdfdfd</color>
+    <color name="header_basic">#92CBF7</color>
+    <color name="image_basic">#A8D5F9</color>
+    <color name="header_pro">#2B98F0</color>
+    <color name="image_pro">#55ADF3</color>
+    <color name="header_enterprise">#FD9827</color>
+    <color name="image_enterprise">#FDAD52</color>
+
+
+    <!--<color airLineName="zxing_custom_possible_result_points">#903a89cf</color>-->
+    <!--<color airLineName="zxing_custom_result_view">#b0000000</color>-->
+    <!--<color airLineName="zxing_custom_viewfinder_laser">#ff1976d2</color>-->
+    <!--<color airLineName="zxing_custom_viewfinder_mask">#60000000</color>-->
+    <!--<color airLineName="zxing_custom_viewfinder_scanbg">#ffedf0ee</color>-->
+    <!--<color airLineName="zxing_possible_result_points">#c0ffbd21</color>-->
+    <!--<color airLineName="zxing_result_view">#b0000000</color>-->
+    <!--<color airLineName="zxing_status_text">#ffffffff</color>-->
+    <!--<color airLineName="zxing_transparent">#00000000</color>-->
+    <!--<color airLineName="zxing_viewfinder_laser">#ffcc0000</color>-->
+    <!--<color airLineName="zxing_viewfinder_mask">#60000000</color>-->
+    <!--<color airLineName="zxing_viewfinder_scanbg">#cffffffc</color>-->
+    <color name="cfdialog_title_font_color">#000000</color>
+    <color name="cfdialog_desc_font_color">#434343</color>
+    <color name="cfdialog_button_drawable_stroke">#0d000000</color>
+
+    <color name="cfdialog_default_button_text_color">#263238</color>
+    <color name="cfdialog_button_white_text_color">#ffffff</color>
+
+    <color name="cfdialog_positive_button_color">#29c64d</color>
+    <color name="cfdialog_positive_button_pressed_color">#80e598</color>
+    <color name="cfdialog_negative_button_color">#FF4B4B</color>
+    <color name="cfdialog_negative_button_pressed_color">#ff9999</color>
+    <color name="glide_slider_indicator_color">#FFFFFF</color>
+
+
+    <color name="selected_dot">@color/md_grey_300</color>
+    <color name="idle_dot">@color/md_grey_500</color>
+
+    <color name="ms_black">#000000</color>
+    <color name="ms_black_87_opacity">#DD000000</color>
+    <color name="ms_black_38_opacity">#61000000</color>
+    <color name="ms_white">#FFFFFF</color>
+    <color name="ms_white_54_opacity">#89FFFFFF</color>
+    <color name="ms_material_blue_500">#2196f3</color>
+    <color name="ms_material_grey_400">#BDBDBD</color>
+    <color name="ms_errorColor">#f44336</color>
+    <color name="ms_selectedColor">@color/ms_material_blue_500</color>
+    <color name="ms_unselectedColor">@color/ms_material_grey_400</color>
+    <color name="ms_bottomNavigationButtonTextColor">@color/ms_material_grey_400</color>
+    <color name="ms_bottomNavigationBackgroundColor">#FFFFFF</color>
+    <color name="ms_defaultButtonBackgroundColor">#15000000</color>
+    <color name="ms_defaultContentOverlayColor">@color/ms_white_54_opacity</color>
+
+
+    <color name="stepview_line_done">@android:color/white</color>
+    <color name="stepview_line_next">#26ffffff</color>
+    <color name="stepview_text_next">#40ffffff</color>
+    <color name="stepview_text_done">#40ffffff</color>
+    <color name="stepview_text_selected">@android:color/white</color>
+    <color name="stepview_circle_done">@android:color/white</color>
+    <color name="stepview_circle_selected">@android:color/white</color>
+    <color name="stepview_selected_number">#25448a</color>
+    <color name="stepview_mark">@color/stepview_selected_number</color>
+
+
+
+    <color name="iconMenuPesawat">#3597FD</color>
+    <color name="iconMenuKereta">#FF9900</color>
+    <color name="iconMenuRailink">#DFDC2B</color>
+    <color name="iconMenuHotel">#FF66CC</color>
+    <color name="iconMenuPelni">#FF3334</color>
+    <color name="iconMenuWisata">#6766FF</color>
+    <color name="iconMenuUmroh">#339933</color>
+    <color name="iconMenuTravel">#CD9967</color>
+    <color name="iconMenuRental">#9966CB</color>
+
+
+    <color name="simpletooltip_background">@color/colorAccent</color>
+    <color name="simpletooltip_text">@android:color/primary_text_light</color>
+    <color name="simpletooltip_arrow">@color/colorAccent</color>
+
+    <color name="material_light_primary_text">#DE000000</color>
+    <color name="material_light_hint_text">#61000000</color>
+    <color name="material_light_active_icon">#8A000000</color>
+    <color name="material_ripple_light">#1F000000</color>
+    <color name="divider_color">#1F000000</color>
+    <color name="active_icon_color">#8A000000</color>
+    <color name="cards_and_dialogs_color">@android:color/white</color>
+    <color name="quantum_grey_600">#757575</color>
+
+    <color name="travel_orange">#fbb03b</color>
+
+    <color name="black_trans80">#33000000</color>
+
+    <color name="search_layover_bg">#50000000</color>
+
+    <color name="textColorPrimary">#212121</color>
+
+    <color name="colorControlHighlight">#DFDFDF</color>
+    <color name="rippleColorHighlight">#7F717171</color>
+    <color name="pressColorHighlight">#1F515151</color>
+    <color name="focusColorHighlight">#1F717171</color>
+
+
+    <color name="text_shadow">#7F000000</color>
+</resources>

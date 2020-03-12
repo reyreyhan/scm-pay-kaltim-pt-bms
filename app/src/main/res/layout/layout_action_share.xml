@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/framecontentHost">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/md_white_1000"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/roboto_light"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:text="Bagikan Ke / Simpan"
+            android:textColor="@color/md_black_1000"
+            android:textSize="@dimen/textNormal" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:background="@drawable/drop_shadowbottom" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal" android:gravity="center"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/imageViewWa"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_share_wa" />
+
+            <ImageView
+                android:id="@+id/imageViewGmail"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:importantForAccessibility="no"
+                android:layout_weight="1"
+                android:src="@drawable/ic_share_gmail" android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/imageViewTelegram"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_share_telegram" android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/imageViewBbm"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_share_bbm_messenger" android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/imageViewPdf"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_pdf" />
+            <ImageView
+                android:id="@+id/imageViewImage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_save_as_img" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_affiliasi_panduan"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_rounded"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_rounded"
+        android:orientation="vertical">
+<TextView
+    android:id="@+id/textViewHeaderPanduan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:text="@string/panduan_header"
+    android:gravity="center" android:textSize="@dimen/textNormal"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" android:text="@string/panduan_sub_header"-->
+            <!--android:layout_marginTop="@dimen/activity_horizontal_margin_rounded"-->
+            <!--android:layout_marginBottom="@dimen/activity_horizontal_margin_rounded"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="@dimen/textNormal"/>-->
+        <TextView
+            android:id="@+id/textViewKeteranganPanduan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_rounded"
+            android:textSize="@dimen/textSmall"
+
+            tools:text="@string/panduan_desc" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_table"
+            android:text="Paket Mitra Anda"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_table"
+            android:text="Bonus Saldo yang Anda dapatkan"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_table"
+            android:text="BASIC"/>
+        <TextView
+            android:id="@+id/textViewBasicValue"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_table"
+            tools:text="Rp. 0"/>
+
+    </LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:background="@drawable/border_table"
+        android:text="PROFESIONAL"/>
+    <TextView
+        android:id="@+id/textViewProValue"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:background="@drawable/border_table"
+        tools:text="Rp. 0"/>
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_table"
+            android:text="ENTERPRISE"/>
+        <TextView
+            android:id="@+id/textViewEnterpriseValue"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_table"
+            tools:text="Rp. 0"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+<!--        <fragment-->
+<!--            android:id="@+id/youtube_view_panduan_link"-->
+<!--            android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+
+<!--            />-->
+        <fragment
+            android:id="@+id/youtube_view_panduan_link"
+            android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:clickable="true"
+            android:id="@+id/button_selangkapnya"
+            android:layout_width="125dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:text="Selengkapnya"
+            android:fontFamily="@font/roboto_light"
+            android:textAlignment="center"
+            android:textSize="@dimen/textNormal"
+            android:textAllCaps="false"
+            android:textColor="@color/md_white_1000"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_button_red_big_default"
+            android:focusable="true"/>
+    </LinearLayout>
+</ScrollView>
