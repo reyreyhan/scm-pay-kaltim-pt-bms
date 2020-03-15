@@ -654,4 +654,14 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="ButtonWhiteTextAccent" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="ButtonWhiteTextPrimary" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
 </resources>

@@ -20,6 +20,7 @@
 	<dimen name="loading_size">50dp</dimen>
     <dimen name="standart_input_height">36dp</dimen>
     <dimen name="standart_button_width">260dp</dimen>
+    <dimen name="standart_button_small_width">130dp</dimen>
 
     <dimen name="profic_size_big">72dp</dimen>
     <dimen name="profic_size_standart">24dp</dimen>

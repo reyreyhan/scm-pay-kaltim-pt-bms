@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bayar_tunai"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="right|center_vertical"
+    android:layout_marginRight="@dimen/standard_margin_3x"
+    android:layout_marginLeft="@dimen/standard_margin_3x"
+    android:layout_marginTop="@dimen/standard_margin"
+    android:layout_marginBottom="@dimen/standard_margin_3x"
+    android:weightSum="2">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Data Pelanggan"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginRight="@dimen/standard_margin"
+        android:layout_weight="1.1"
+        android:gravity="right"/>
+    <TextView
+        android:id="@+id/et_data_pelanggan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/standard_margin"
+        android:padding="@dimen/standard_margin"
+        android:background="@drawable/rounded_white_4dp_stroke_gray"
+        android:gravity="end"
+        android:drawableRight="@drawable/ic_penjualan_daftar_pelanggan"
+        android:layout_weight="0.9"/>
+</LinearLayout>

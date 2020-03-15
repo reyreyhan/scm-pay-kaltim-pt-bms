@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Hapus Data Pelanggan?"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:layout_marginBottom="@dimen/standard_margin"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginBottom="@dimen/standard_margin_2x">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_hapus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hapus"
+            android:textSize="@dimen/_13sdp"
+            android:paddingLeft="@dimen/standard_margin_2x"
+            android:paddingRight="@dimen/standard_margin_2x"
+            android:backgroundTint="@color/md_red_A700"
+            android:textAllCaps="false"
+            android:layout_marginRight="@dimen/standard_margin"/>
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak"
+            android:textSize="@dimen/_13sdp"
+            android:paddingLeft="@dimen/standard_margin_2x"
+            android:paddingRight="@dimen/standard_margin_2x"
+            android:theme="@style/ButtonWhiteTextPrimary"
+            android:textAllCaps="false"
+            android:layout_marginLeft="@dimen/standard_margin"/>
+    </LinearLayout>
+</LinearLayout>

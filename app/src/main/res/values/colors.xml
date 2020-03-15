@@ -328,4 +328,6 @@
 
 
     <color name="text_shadow">#7F000000</color>
+
+    <color name="scanner_line">@color/colorAccent</color>
 </resources>

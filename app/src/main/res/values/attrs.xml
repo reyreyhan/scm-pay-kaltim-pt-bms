@@ -863,4 +863,24 @@
             <enum name="notch" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="CheckOutView">
+        <attr format="color" name="cov_dashColor"/>
+        <attr format="dimension" name="cov_dashSize"/>
+        <attr format="dimension" name="cov_circleSpace"/>
+        <attr format="dimension" name="cov_circleRadius"/>
+    </declare-styleable>
+
+    <declare-styleable name="ScannerOverlay">
+        <attr name="square_width" format="integer" />
+        <attr name="square_height" format="integer" />
+        <attr name="line_color" format="color" />
+        <attr name="line_width" format="integer" />
+        <attr name="line_speed" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="BarcodeReaderFragment">
+        <attr name="auto_focus" format="boolean" />
+        <attr name="use_flash" format="boolean" />
+    </declare-styleable>
 </resources>
