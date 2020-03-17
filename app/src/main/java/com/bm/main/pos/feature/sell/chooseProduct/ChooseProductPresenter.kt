@@ -3,6 +3,8 @@ package com.bm.main.pos.feature.sell.chooseProduct
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.bm.main.fpl.activities.BaseActivity
+import com.bm.main.fpl.activities.NewHomeActivity
 import com.bm.main.fpl.constants.EventParam
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.SBFApplication
@@ -17,6 +19,19 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
 
     private var interactor  = ChooseProductInteractor(this)
     private var restModel = ProductRestModel(context)
+
+    override fun onFragmentViewCreated(intent: Intent) {
+        logEventFireBaseVIEW_ITEM_LIST(
+            "Pilih Barang",
+            "Show All Product",
+            EventParam.EVENT_ACTION_VISIT,
+            EventParam.EVENT_SUCCESS,
+            NewHomeActivity::class.java.simpleName
+        )
+        val check = intent.getBooleanExtra(AppConstant.DATA,true)
+        view.checkStockProducts(check)
+        loadProducts()
+    }
 
     override fun onViewCreated(intent: Intent) {
         logEventFireBaseVIEW_ITEM_LIST(

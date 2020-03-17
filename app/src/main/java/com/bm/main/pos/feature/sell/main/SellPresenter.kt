@@ -1,16 +1,12 @@
 package com.bm.main.pos.feature.sell.main
 
 import android.content.Context
-import android.util.Log
 import android.view.View
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.constants.EventParam
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.callback.PermissionCallback
-import com.bm.main.pos.models.DialogModel
-import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.product.Product
@@ -20,7 +16,7 @@ import com.bm.main.pos.models.transaction.RequestTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.utils.PermissionUtil
-import com.google.firebase.analytics.FirebaseAnalytics
+import com.prolificinteractive.materialcalendarview.CalendarDay
 
 class SellPresenter(val context: Context, val view: SellContract.View) : BasePresenter<SellContract.View>(),
     SellContract.Presenter, SellContract.InteractorOutput {

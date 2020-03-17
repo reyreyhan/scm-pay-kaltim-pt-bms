@@ -32,6 +32,7 @@ interface SellContract {
         fun getPayValue():Double
         fun setCashback(value:Double)
         fun hideShowCashback(value:Int)
+        fun hideContentView()
         fun enableBtnBuy(isEnable:Boolean)
         fun updateCart(cart:Cart,position: Int)
         fun deleteCart(position: Int)

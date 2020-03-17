@@ -135,11 +135,9 @@ class SellAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 callback?.onNote(data, position)
             }
 
-            countTv.setOnClickListener {
+            itemView.setOnClickListener {
                 callback?.onCountDialog(data, position)
             }
-
-
         }
     }
 

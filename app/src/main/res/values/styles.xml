@@ -664,4 +664,14 @@
         <item name="colorButtonNormal">@color/white</item>
         <item name="android:textColor">@color/textColorPrimary</item>
     </style>
+
+    <style name="DialogTheme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/rounded_white_8dp_shadow</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
 </resources>

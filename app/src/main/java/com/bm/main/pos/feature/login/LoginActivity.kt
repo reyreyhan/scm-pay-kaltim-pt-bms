@@ -66,7 +66,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             }
         })
 
-        btn_password.setOnCheckedChangeListener { view, isChecked ->
+        btn_password.setOnCheckedChangeListener {view, isChecked ->
             if(isChecked){
                 et_password.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
@@ -92,7 +92,6 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
 
     override fun openRegisterPage() {
         startActivity(Intent(this, RegisterActivity::class.java))
-
     }
 
     override fun onDestroy() {

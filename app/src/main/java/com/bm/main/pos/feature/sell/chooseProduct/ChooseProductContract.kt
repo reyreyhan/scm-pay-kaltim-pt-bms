@@ -2,6 +2,7 @@ package com.bm.main.pos.feature.sell.chooseProduct
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
@@ -22,6 +23,7 @@ interface ChooseProductContract {
     }
 
     interface Presenter : BasePresenterImpl<View> {
+        fun onFragmentViewCreated(intent: Intent)
         fun onViewCreated(intent: Intent)
         fun onDestroy()
         fun loadProducts()

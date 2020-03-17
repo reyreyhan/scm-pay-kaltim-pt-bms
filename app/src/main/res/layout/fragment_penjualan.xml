@@ -15,6 +15,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
         <LinearLayout
+            android:id="@+id/btn_search"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -37,6 +39,8 @@
                 android:textSize="@dimen/_13sdp" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/btn_scanner"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -60,9 +64,190 @@
         </LinearLayout>
     </LinearLayout>
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:visibility="gone"
+        android:id="@+id/container_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/top_menu"
+        app:layout_constraintTop_toBottomOf="@id/divider1"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <View
+        app:layout_constraintTop_toBottomOf="@id/top_menu"
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/divider"
+        android:layout_marginTop="@dimen/standard_margin_2x"/>
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/divider1"
+        app:layout_constraintBottom_toTopOf="@id/bottom_menu">
+        <LinearLayout
+            android:id="@+id/ll_error"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/top_menu"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_err_search" />
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/standard_margin_2x"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:layout_marginRight="@dimen/standard_margin_2x"
+                android:gravity="center"
+                android:text="Keranjang belanja kosong"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/subtitle"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/divider"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/standard_margin_3x"
+                android:layout_marginTop="@dimen/standard_margin_2x">
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_orange_4dp"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/white"
+                    android:paddingTop="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_6sdp"
+                    android:paddingLeft="@dimen/_12sdp"
+                    android:paddingRight="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:text="0"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Belanja"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12sdp"/>
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:textColor="@color/orange"
+                        android:text="Rp 0"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:layout_marginBottom="@dimen/standard_margin"
+                android:paddingLeft="@dimen/standard_margin_3x"
+                android:paddingRight="@dimen/standard_margin_3x">
+                <TextView
+                    android:id="@+id/btn_tunai"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Tunai"
+                    android:background="@drawable/selector_btn_left_accent"
+                    android:textColor="@drawable/selector_text_blue_white_checked"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:paddingRight="@dimen/_20sdp"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/btn_non_tunai"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Non Tunai"
+                    android:background="@drawable/selector_btn_rect_accent"
+                    android:textColor="@drawable/selector_text_blue_white_checked"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:paddingRight="@dimen/_20sdp"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/btn_hutang"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Hutang"
+                    android:background="@drawable/selector_btn_right_accent"
+                    android:textColor="@drawable/selector_text_blue_white_checked"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:paddingRight="@dimen/_20sdp"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <include layout="@layout/layout_bayar_tunai"/>
+            <include layout="@layout/layout_bayar_hutang"/>
+            <FrameLayout
+                android:id="@+id/btn_bayar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_grey_500"
+                android:clickable="true">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/_40sdp"
+                    android:text="Bayar Sekarang"
+                    android:gravity="center"
+                    android:textSize="@dimen/title"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

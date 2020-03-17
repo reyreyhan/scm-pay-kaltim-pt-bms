@@ -4,6 +4,9 @@
     package="com.bm.main.pos"
     android:installLocation="auto">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <permission
@@ -186,6 +189,10 @@
             android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.drawer.DrawerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar" />
+        <activity
+            android:name=".feature.newhome.NewHomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity

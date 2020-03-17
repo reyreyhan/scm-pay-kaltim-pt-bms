@@ -20,12 +20,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bm.main.fpl.activities.BigPromoActivity;
 import com.bm.main.fpl.activities.LoginActivity;
+//import com.bm.main.pos.feature.login.LoginActivity;
 import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.templates.MutedVideoView;
 import com.bm.main.fpl.utils.DetectConnection;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.pos.feature.drawer.DrawerActivity;
+import com.bm.main.pos.feature.newhome.NewHomeActivity;
 import com.bm.main.pos.services.SBFService;
 import com.bm.main.single.ftl.utils.RequestUtilsTravel;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -210,7 +212,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 //                                vm.getThread().start();
 //                                intent = new Intent(SplashScreenActivity.this, KunciActivity.class);
 
-                                intent = new Intent(SplashScreenActivity.this, DrawerActivity.class);
+                                intent = new Intent(SplashScreenActivity.this, NewHomeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

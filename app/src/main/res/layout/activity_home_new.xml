@@ -4,17 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:theme="@style/ReverseAppTheme">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarx"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ReverseAppTheme">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textAllCaps="true"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/subtitle"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/toolbar_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/logo"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.Toolbar>
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
             app:tabGravity="fill"
             app:tabMode="fixed"/>
-        <androidx.viewpager2.widget.ViewPager2
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        <com.bm.main.pos.ui.NonSwipeableViewPage
             android:id="@+id/fragment_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
