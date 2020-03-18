@@ -17,6 +17,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.browser.customtabs.CustomTabsIntent;
 //import android.support.design.widget.CoordinatorLayout;
 
@@ -29,10 +30,16 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.os.Handler;
 import android.text.Html;
 import android.text.InputFilter;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,6 +49,7 @@ import android.widget.Toast;
 
 import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.templates.AsteriskPasswordTransformationMethod;
+import com.bm.main.fpl.utils.DetectConnection;
 import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.DialogUtils;
 import com.bm.main.pos.R;
@@ -74,6 +82,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
@@ -86,6 +95,18 @@ import timber.log.Timber;
 
 public class LoginActivity extends KeyboardListenerActivity implements ProgressResponseCallback {
     private static final String TAG = LoginActivity.class.getSimpleName();
+
+    /**
+     * New Login Layout activity_login_pos
+     */
+
+    EditText editTextUser;
+    EditText editTextPassword;
+    Button btnLogin;
+    CheckBox btnShowPassword;
+    TextView btnBantuan;
+    View btnRegister;
+
     TextView textViewDaftar;
     TextView textViewPlusInfo, text_lupa_password;
     AppCompatButton appCompatButtonLogin;
@@ -118,9 +139,19 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ppob_activity_login);
+        setContentView(R.layout.activity_login_pos);
         logEventFireBase("Login", "Login", EventParam.EVENT_ACTION_VISIT, EventParam.EVENT_SUCCESS, TAG);
         context = this;
+
+        if (!DetectConnection.isOnline(context)){
+            new AlertDialog.Builder(this, R.style.AlertDialogCustom)
+                    .setTitle("Tidak Ada Koneksi Internet!")
+                    .setMessage("Anda tidak sedang terhubung ke internet. Tolong periksa kembali koneksi internet Anda!")
+                    .setCancelable(true)
+                    //.setNeutralButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        };
 
         if (this.getIntent() != null) {
             if (this.getIntent().getIntExtra("isDemo", 0) == 1) {
@@ -129,6 +160,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
             }
         }
         keyUser = PreferenceClass.getKey();
+        /*
         aviLoading = findViewById(R.id.aviLoading);
         layout_update_apps = findViewById(R.id.layout_update_apps);
         demo = findViewById(R.id.textViewDemo);
@@ -139,7 +171,6 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         linDemo = findViewById(R.id.linDemo);
 
         demo.setOnClickListener(v -> requestLoginDemo());
-
         button_nanti = findViewById(R.id.button_nanti);
         button_nanti.setOnClickListener(v -> layout_update_apps.setVisibility(View.GONE));
         button_perbaharui = findViewById(R.id.button_perbaharui);
@@ -175,8 +206,8 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         textViewPlusInfo = findViewById(R.id.textViewPlusInfo);
         textViewPlusInfo.setText(FormatString.htmlString(getString(R.string.string_info_login)));
 
-        appCompatButtonLogin = findViewById(R.id.appCompatButtonLogin);
-        appCompatButtonLogin.setOnClickListener(v -> {
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(v -> {
             ViewGroup parent = findViewById(R.id.contentHost);
             final FrameLayout view = (FrameLayout) View.inflate(this, R.layout.loading_bar_full_dialog, parent);
             TextView tv = view.findViewById(R.id.textContentProgressBar);
@@ -196,26 +227,30 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
             startActivity(intent);
             Device.vibrate(LoginActivity.this);
         });
+*/
+        /**
+         * Edit Text Material OLD
+         */
+        /*
+        editTextUser = findViewById(R.id.editTextUser);
 
-        materialEditTextUserId = findViewById(R.id.materialEditTextUserId);
-
-        materialEditTextUserId.setOnFocusChangeListener((v, hasFocus) -> {
+        editTextUser.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 checkRequestStatus();
             }
         });
 
         InputFilter[] filter = new saring_karakter().DisableSpecialCharactersAllCaps(20);
-        materialEditTextUserId.setFilters(filter);
-        materialEditTextPassword = findViewById(R.id.materialEditTextPassword);
+        editTextUser.setFilters(filter);
+        editTextPassword = findViewById(R.id.editTextPassword);
         materialEditTextKey = findViewById(R.id.materialEditTextKey);
-        materialEditTextPassword.setTransformationMethod(new AsteriskPasswordTransformationMethod());
-        materialEditTextPassword.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus && materialEditTextUserId.getText() != null) {
-                if (materialEditTextUserId.getText().length() == 0 || materialEditTextUserId.getText().toString().isEmpty()) {
-                    materialEditTextUserId.setFocusable(true);
-                    materialEditTextUserId.setFocusableInTouchMode(true);
-                    materialEditTextUserId.requestFocus();
+        editTextPassword.setTransformationMethod(new AsteriskPasswordTransformationMethod());
+        editTextPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus && editTextUser.getText() != null) {
+                if (editTextUser.getText().length() == 0 || editTextUser.getText().toString().isEmpty()) {
+                    editTextUser.setFocusable(true);
+                    editTextUser.setFocusableInTouchMode(true);
+                    editTextUser.requestFocus();
                 }
             }
         });
@@ -239,6 +274,66 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                 textViewMessage.setText("Silahkan perbarui.");
             }
         }
+        */
+        editTextUser = findViewById(R.id.et_no_hp);
+        editTextUser.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus) {
+                checkRequestStatus();
+            }
+        });
+        InputFilter[] filter = new saring_karakter().DisableSpecialCharactersAllCaps(16);
+        editTextUser.setFilters(filter);
+        editTextPassword = findViewById(R.id.et_password);
+        editTextPassword.setTransformationMethod(AsteriskPasswordTransformationMethod.getInstance());
+        editTextPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus && editTextUser.getText() != null) {
+                if (editTextUser.getText().length() == 0 || editTextUser.getText().toString().isEmpty()) {
+                    v.setFocusable(false);
+                    editTextUser.setFocusable(true);
+                    editTextUser.setFocusableInTouchMode(true);
+                    editTextUser.requestFocus();
+                    editTextUser.setError("Nomor Handphone Tidak Boleh Kosong!");
+                }
+            }
+        });
+
+        btnLogin = findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(v -> {
+            ViewGroup parent = findViewById(R.id.contentHost);
+            final FrameLayout view = (FrameLayout) View.inflate(this, R.layout.loading_bar_full_dialog, parent);
+            TextView tv = view.findViewById(R.id.textContentProgressBar);
+            tv.setText("Mohon Tunggu, sedang di proses");
+            openProgressBarDialog(LoginActivity.this, view);
+            readInboxGranted();
+            //doLogin();
+            Device.vibrate(LoginActivity.this);
+        });
+        btnShowPassword = findViewById(R.id.btn_show_password);
+        btnShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    // show password
+                    editTextPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    editTextPassword.setTransformationMethod(AsteriskPasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+        btnBantuan = findViewById(R.id.btn_bantuan);
+        btnBantuan.setOnClickListener(v -> {
+            String url = "https://lc-fastpay.fastpay.co.id/phplive/phplive.php";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        });
+
+        btnRegister = findViewById(R.id.btn_register);
+        btnRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegistrasiActivity.class);
+            startActivity(intent);
+            Device.vibrate(LoginActivity.this);
+        });
 
         attachKeyboardListeners();
     }
@@ -247,7 +342,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         token = PreferenceClass.getDeviceToken();
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject = new JSONObject(stringJson.requestCheckStatus(materialEditTextUserId.getEditableText().toString(), token));
+            jsonObject = new JSONObject(stringJson.requestCheckStatus(editTextUser.getEditableText().toString(), token));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -260,28 +355,28 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         }
 
         if (keyx.equalsIgnoreCase("") || keyx.isEmpty()) {
-            materialEditTextKey.setText("");
-            if (materialEditTextUserId.getEditableText().toString().equalsIgnoreCase("")) {
-                materialEditTextUserId.setAnimation(animShake);
-                materialEditTextUserId.startAnimation(animShake);
-                materialEditTextUserId.setError("No HP atau ID Outlet Tidak Boleh Kosong");
+            //materialEditTextKey.setText("");
+            if (editTextUser.getEditableText().toString().equalsIgnoreCase("")) {
+                editTextUser.setAnimation(animShake);
+                editTextUser.startAnimation(animShake);
+                editTextUser.setError("Nomor Handphone Tidak Boleh Kosong!");
                 Device.vibrate(LoginActivity.this);
                 if (mProgressDialog != null && mProgressDialog.isShowing()) {
                     closeProgressBarDialog();
                 }
-            } else if (materialEditTextPassword.getEditableText().toString().equalsIgnoreCase("")) {
-                materialEditTextPassword.setAnimation(animShake);
-                materialEditTextPassword.startAnimation(animShake);
-                materialEditTextPassword.setError("Password Atau PIN Tidak Boleh Kosong");
+            } else if (editTextPassword.getEditableText().toString().equalsIgnoreCase("")) {
+                editTextPassword.setAnimation(animShake);
+                editTextPassword.startAnimation(animShake);
+                editTextPassword.setError("Password Atau PIN Tidak Boleh Kosong");
                 Device.vibrate(LoginActivity.this);
                 if (mProgressDialog != null && mProgressDialog.isShowing()) {
                     closeProgressBarDialog();
                 }
             } else {
-                cekAktif(materialEditTextUserId.getEditableText().toString());
+                cekAktif(editTextUser.getEditableText().toString());
             }
         } else {
-            materialEditTextKey.setText(keyx);
+            //materialEditTextKey.setText(keyx);
             if (!PreferenceClass.isLoggedIn()) {
                 doLogin();
             }
@@ -328,7 +423,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         StringJson stringJson = new StringJson(this);
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject = new JSONObject(stringJson.requestCheckAvailKey(materialEditTextUserId.getEditableText().toString()));
+            jsonObject = new JSONObject(stringJson.requestCheckAvailKey(editTextUser.getEditableText().toString()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -340,18 +435,18 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
     }
 
     private void doLogin() {
-        if (materialEditTextUserId.getEditableText().toString().equalsIgnoreCase("")) {
-            materialEditTextUserId.setAnimation(animShake);
-            materialEditTextUserId.startAnimation(animShake);
-            materialEditTextUserId.setError("Id Outlet Tidak Boleh Kosong");
+        if (editTextUser.getEditableText().toString().equalsIgnoreCase("")) {
+            editTextUser.setAnimation(animShake);
+            editTextUser.startAnimation(animShake);
+            editTextUser.setError("Nomor Handphone Tidak Boleh Kosong!");
             Device.vibrate(LoginActivity.this);
             if (mProgressDialog != null && mProgressDialog.isShowing()) {
                 closeProgressBarDialog();
             }
-        } else if (materialEditTextPassword.getEditableText().toString().equalsIgnoreCase("")) {
-            materialEditTextPassword.setAnimation(animShake);
-            materialEditTextPassword.startAnimation(animShake);
-            materialEditTextPassword.setError("Password atau Pin Tidak Boleh Kosong");
+        } else if (editTextPassword.getEditableText().toString().equalsIgnoreCase("")) {
+            editTextPassword.setAnimation(animShake);
+            editTextPassword.startAnimation(animShake);
+            editTextPassword.setError("Password atau Pin Tidak Boleh Kosong!");
             Device.vibrate(LoginActivity.this);
             if (mProgressDialog != null && mProgressDialog.isShowing()) {
                 closeProgressBarDialog();
@@ -359,7 +454,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         } else {
 //            if (activeSession) {
             checkPin();
-//            requestLogin(materialEditTextUserId.getEditableText().toString(), materialEditTextPassword.getEditableText().toString(), keyx);
+//            requestLogin(editTextUser.getEditableText().toString(), editTextPassword.getEditableText().toString(), keyx);
 //            } else {
 //                if (materialEditTextKey.getEditableText().toString().equalsIgnoreCase("")) {
 //                    materialEditTextKey.setAnimation(animShake);
@@ -367,7 +462,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
 //                    materialEditTextKey.setError("Sms Key Tidak Boleh Kosong");
 //                    Device.vibrate(LoginActivity.this);
 //                } else {
-//                    requestLogin(materialEditTextUserId.getEditableText().toString(), materialEditTextPassword.getEditableText().toString(), keyx);
+//                    requestLogin(editTextUser.getEditableText().toString(), editTextPassword.getEditableText().toString(), keyx);
 //                }
 //            }
         }
@@ -390,14 +485,14 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                     logEventFireBase("Login", "Login", EventParam.EVENT_ACTION_RESULT_LOGIN, EventParam.EVENT_SUCCESS, TAG);
                     PreferenceClass.storedLoggedUser(signOn);
                     String keyLite = "R4h4s14a3w3s";
-                    //  String plainKey = signOn.getId() + '|' + materialEditTextPassword.getText().toString() + '|' + Calendar.getInstance().getTimeInMillis();
-                    String plainKey = userModel.getId_outlet() + '|' + materialEditTextPassword.getEditableText().toString() + '|' + Calendar.getInstance().getTimeInMillis();
+                    //  String plainKey = signOn.getId() + '|' + editTextPassword.getText().toString() + '|' + Calendar.getInstance().getTimeInMillis();
+                    String plainKey = userModel.getId_outlet() + '|' + editTextPassword.getEditableText().toString() + '|' + Calendar.getInstance().getTimeInMillis();
                     //String plainKey ="TEST";
                     MobileAES.defineKey(keyLite);
                     String plainTextKey = plainKey;
-                    Timber.d("onResponse login materialEditTextKey: %s", plainTextKey);
+                    //Timber.d("onResponse login materialEditTextKey: %s", plainTextKey);
                     plainTextKey = MobileAES.encrypt(plainTextKey);
-                    Timber.d("onResponse login materialEditTextKey encript: %s", plainTextKey);
+                    //Timber.d("onResponse login materialEditTextKey encript: %s", plainTextKey);
                     PreferenceClass.setAuth(plainTextKey);
                     Timber.d("onSuccess: %s", userModel.getId_outlet());
                     Timber.d("onSuccess: ->%s", MobileAES.decrypt("98da895e95cadcd2aa1e1ca552e6e0c1d258ce006f9a2be8879c98a3b467f355"));
@@ -408,14 +503,14 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                         PreferenceClass.setPin(PreferenceClass.getPinDemo());
                         PreferenceClass.setKey(PreferenceClass.getKeyDemo());
                     } else {
-                        PreferenceClass.setPin(materialEditTextPassword.getEditableText().toString());
-                        PreferenceClass.setKey(materialEditTextKey.getEditableText().toString());
+                        PreferenceClass.setPin(editTextPassword.getEditableText().toString());
+                        //PreferenceClass.setKey(materialEditTextKey.getEditableText().toString());
                     }
 
                     PreferenceClass.putString("nama_logo", userModel.getNama_logo());
                     PreferenceClass.putString("checksumFP", userModel.getCek_sum_logo());
                     PreferenceClass.putString("saldo", FormatString.CurencyIDR(userModel.getSaldo()));
-                    doUpdateLocation(materialEditTextKey.getEditableText().toString());
+                    //doUpdateLocation(materialEditTextKey.getEditableText().toString());
                     Bundle bundle = new Bundle();
                     bundle.putString(FirebaseAnalytics.Param.ITEM_ID, userModel.getId_outlet());
                     bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, userModel.getNama_pemilik());
@@ -443,12 +538,12 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
 //                    break;
                 case "04":
                     logEventFireBase("Login", "Login", EventParam.EVENT_ACTION_RESULT_LOGIN, EventParam.EVENT_NOT_SUCCESS, TAG);
-                    materialEditTextUserId.setAnimation(animShake);
-                    materialEditTextUserId.startAnimation(animShake);
-                    materialEditTextUserId.setError(userModel.getResponse_desc());
-                    materialEditTextPassword.setAnimation(animShake);
-                    materialEditTextPassword.startAnimation(animShake);
-                    materialEditTextPassword.setError(userModel.getResponse_desc());
+                    editTextUser.setAnimation(animShake);
+                    editTextUser.startAnimation(animShake);
+                    editTextUser.setError(userModel.getResponse_desc());
+                    editTextPassword.setAnimation(animShake);
+                    editTextPassword.startAnimation(animShake);
+                    editTextPassword.setError(userModel.getResponse_desc());
                     Device.vibrate(LoginActivity.this);
                     break;
                 default:
@@ -531,7 +626,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
             try {
                 switch (response.getString("response_code")) {
                     case "00":
-                        materialEditTextKey.setVisibility(View.GONE);
+                        //materialEditTextKey.setVisibility(View.GONE);
                         activeSession = true;
                         PreferenceClass.putString("expired_time", response.getString("expired_time"));
                         break;
@@ -540,8 +635,8 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                     case "04":
                         logEventFireBase("LOGIN", "CHECK OUTLET DEVICE", EventParam.EVENT_ACTION_RESULT_LOGIN, EventParam.EVENT_NOT_SUCCESS, TAG);
                         new_popup_alert(this, "Informasi", response.getString("response_desc"));
-                        materialEditTextUserId.setText("");
-                        materialEditTextUserId.requestFocus();
+                        editTextUser.setText("");
+                        editTextUser.requestFocus();
                         PreferenceClass.putBoolean("otp_set", false);
                         break;
                     default:
@@ -580,7 +675,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                 Timber.e(e);
             } finally {
                 Timber.e("pin valid: %s", PreferenceClass.getBoolean("otp_set", false));
-                requestLogin(materialEditTextUserId.getText().toString(), materialEditTextPassword.getText().toString(), keyx);
+                requestLogin(editTextUser.getText().toString(), editTextPassword.getText().toString(), keyx);
             }
         }
     }
@@ -633,7 +728,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
     private void checkPin() {
         if (allowLogin) {
             try {
-                JSONObject jsonObject = new JSONObject(stringJson.requestCheckValidation(materialEditTextPassword.getText().toString(), materialEditTextUserId.getText().toString()));
+                JSONObject jsonObject = new JSONObject(stringJson.requestCheckValidation(editTextPassword.getText().toString(), editTextUser.getText().toString()));
                 RequestUtils.transportWithProgressResponse(this, jsonObject, ActionCode.REQUEST_VALIDATION, this);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -740,8 +835,8 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
             if (actionCode == ActionCode.CHECK_AKTIF) {
                 aktifvasi_akun(nominal, id_outlet);
             } else if (actionCode == ActionCode.CHECK_KADALUARSA) {
-                materialEditTextUserId.setText("");
-                materialEditTextPassword.setText("");
+                editTextUser.setText("");
+                editTextPassword.setText("");
 
                 CustomTabsIntent customTabsIntent = buildCustomTabsIntent();
                 customTabsIntent.launchUrl(LoginActivity.this, Uri.parse("https://www.fastpay.co.id/aktivasi"));
@@ -766,8 +861,8 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
 
         if (resultCode == AppCompatActivity.RESULT_OK) {
             if (requestCode == ActionCode.AKTIVASI_AKUN) {
-                materialEditTextUserId.setText("");
-                materialEditTextPassword.setText("");
+                editTextUser.setText("");
+                editTextPassword.setText("");
             }
         }
     }
