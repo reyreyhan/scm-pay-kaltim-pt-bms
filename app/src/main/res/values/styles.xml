@@ -445,6 +445,15 @@
         <item name="android:background">@drawable/alert_dialog_edge</item>
     </style>
 
+    <style name="AlertDialogNoInternet" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarNeutralButtonStyle">@style/neutral</item>
+    </style>
+
+    <style name="neutral">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="MSNavBarButton" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:textSize">@dimen/ms_navigation_button_text_size</item>
         <item name="android:layout_width">wrap_content</item>

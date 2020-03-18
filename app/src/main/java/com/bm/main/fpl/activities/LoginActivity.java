@@ -8,31 +8,12 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.browser.customtabs.CustomTabsIntent;
-//import android.support.design.widget.CoordinatorLayout;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.os.Handler;
-import android.text.Html;
 import android.text.InputFilter;
 import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,15 +26,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bm.main.fpl.constants.RConfig;
-import com.bm.main.fpl.templates.AsteriskPasswordTransformationMethod;
-import com.bm.main.fpl.utils.DetectConnection;
-import com.bm.main.fpl.utils.Device;
-import com.bm.main.fpl.utils.DialogUtils;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
+
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.constants.ResponseCode;
@@ -63,9 +44,12 @@ import com.bm.main.fpl.models.CheckUpdateModel;
 import com.bm.main.fpl.models.DemoModel;
 import com.bm.main.fpl.models.SignOn;
 import com.bm.main.fpl.models.UserModel;
+import com.bm.main.fpl.templates.AsteriskPasswordTransformationMethod;
 import com.bm.main.fpl.templates.PasswordEditText;
 import com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView;
 import com.bm.main.fpl.templates.toast.MyDynamicToast;
+import com.bm.main.fpl.utils.DetectConnection;
+import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.MobileAES;
 import com.bm.main.fpl.utils.PreferenceClass;
@@ -73,16 +57,12 @@ import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.fpl.utils.StringJson;
 import com.bm.main.fpl.utils.saring_karakter;
 import com.bm.main.materialedittext.MaterialEditText;
+import com.bm.main.pos.R;
+import com.bm.main.pos.SBFApplication;
 import com.bm.main.pos.feature.drawer.DrawerActivity;
+import com.bm.main.pos.feature.newhome.NewHomeActivity;
 import com.bm.main.single.ftl.constants.TravelActionCode;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-//import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-//import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
-import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
@@ -92,6 +72,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import timber.log.Timber;
+
+//import android.support.design.widget.CoordinatorLayout;
+//import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+//import com.bumptech.glide.request.animation.GlideAnimation;
 
 public class LoginActivity extends KeyboardListenerActivity implements ProgressResponseCallback {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -143,16 +127,6 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         logEventFireBase("Login", "Login", EventParam.EVENT_ACTION_VISIT, EventParam.EVENT_SUCCESS, TAG);
         context = this;
 
-        if (!DetectConnection.isOnline(context)){
-            new AlertDialog.Builder(this, R.style.AlertDialogCustom)
-                    .setTitle("Tidak Ada Koneksi Internet!")
-                    .setMessage("Anda tidak sedang terhubung ke internet. Tolong periksa kembali koneksi internet Anda!")
-                    .setCancelable(true)
-                    //.setNeutralButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        };
-
         if (this.getIntent() != null) {
             if (this.getIntent().getIntExtra("isDemo", 0) == 1) {
                 Intent intent = new Intent(this, RegistrasiActivity.class);
@@ -160,8 +134,8 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
             }
         }
         keyUser = PreferenceClass.getKey();
-        /*
         aviLoading = findViewById(R.id.aviLoading);
+        /*
         layout_update_apps = findViewById(R.id.layout_update_apps);
         demo = findViewById(R.id.textViewDemo);
         String text = "<font color=#1565C0>Coba Aplikasi </font> <font color=#2196F3>Demo</font>";
@@ -523,7 +497,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                         PreferenceClass.putBoolean("otp_set", PreferenceClass.getString("last_id", "").equals(PreferenceClass.getId()));
                     }
 
-                    Intent toHome = new Intent(LoginActivity.this, DrawerActivity.class);
+                    Intent toHome = new Intent(LoginActivity.this, NewHomeActivity.class);
                     toHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     toHome.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
@@ -893,5 +867,19 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
             Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName()));
             startActivity(webIntent);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!DetectConnection.checkInternet(context)){
+            new AlertDialog.Builder(this, R.style.AlertDialogNoInternet)
+                    .setTitle("Tidak Ada Koneksi Internet!")
+                    .setMessage("Anda tidak sedang terhubung ke internet. Tolong periksa kembali koneksi internet Anda!")
+                    .setCancelable(true)
+                    //.setNeutralButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        };
     }
 }

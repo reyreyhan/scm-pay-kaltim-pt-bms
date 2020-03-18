@@ -434,7 +434,7 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
             getSupportActionBar().setElevation(0);
             getSupportActionBar().setDisplayShowCustomEnabled(true);
             if (type == back) {
-                getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_back));
+                getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_toolbar_back));
             } else if (type == close) {
                 getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_cancel));
             } else if (type == drawer) {

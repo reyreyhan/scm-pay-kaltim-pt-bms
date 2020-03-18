@@ -61,11 +61,11 @@ public class ListKecamatanActivity extends BaseActivity implements ProgressRespo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_kecamatan);
+        setContentView(R.layout.activity_pos_list_kecamatan);
         Intent intent = getIntent();
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Kecamatan");
-        init(1);
+        init(0);
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         layout_data_empty = findViewById(R.id.layout_data_empty);
         txtHeader = layout_data_empty.findViewById(R.id.txtHeader);

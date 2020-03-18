@@ -175,4 +175,13 @@
         android:layout_gravity="bottom"
         app:srcCompat="@drawable/ic_bg_login_footer"
         android:scaleType="center"/>
+    <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
+        android:id="@+id/aviLoading"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorPrimary_ppob" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

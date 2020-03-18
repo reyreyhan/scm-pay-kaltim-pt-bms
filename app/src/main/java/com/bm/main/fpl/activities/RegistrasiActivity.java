@@ -7,9 +7,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -18,11 +20,14 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bm.main.fpl.utils.DetectConnection;
 import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.DialogUtils;
 import com.bm.main.pos.R;
@@ -66,8 +71,13 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
 
     LinearLayout linPaket;
     TextView imageInfoPaket;
-    MaterialEditText materialEditTextIdUplineReg, materialEditTextNamaReg, materialEditTextNamaTokoReg, materialEditTextNoHpReg, materialEditTextEmailReg, materialEditTextAlamatReg, materialEditTextPropinsiReg, materialEditTextKotaReg, materialEditTextKecamatanReg, materialEditTextKodePosReg;
+    MaterialEditText materialEditTextIdUplineReg, materialEditTextNamaReg,
+            materialEditTextNamaTokoReg, materialEditTextNoHpReg, materialEditTextEmailReg, materialEditTextAlamatReg,
+            materialEditTextPropinsiReg, materialEditTextKotaReg, materialEditTextKecamatanReg, materialEditTextKodePosReg;
     AppCompatButton button_registrasi;
+
+    EditText etName, etNoHp, etEmail, etNamaToko, etAlamat, etProvinsi, etKota, etKecamatan, etKodePos;
+    Button btnRegister;
 
     TextView textViewErrorPaket;
     private ScrollView scrollViewRegistrasi;
@@ -84,13 +94,14 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrasi);
+        setContentView(R.layout.activity_register);
         logEventFireBase("Registrasi", "Registrasi", EventParam.EVENT_ACTION_VISIT, EventParam.EVENT_SUCCESS, TAG);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Daftar");
-        init(1);
+        init(0);
 
         scrollViewRegistrasi = findViewById(R.id.scrollViewRegistrasi);
+        /*
         textViewErrorPaket = findViewById(R.id.textViewErrorPaket);
         avi = findViewById(R.id.avi);
         materialEditTextIdUplineReg = findViewById(R.id.materialEditTextIdUplineReg);
@@ -100,12 +111,12 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
             requestGetUpline(PreferenceClass.getUpline());
         }
         materialEditTextNamaReg = findViewById(R.id.materialEditTextNamaReg);
-        materialEditTextNamaTokoReg = findViewById(R.id.materialEditTextNamaTokoReg);
-        materialEditTextNoHpReg = findViewById(R.id.materialEditTextNoHpReg);
-        materialEditTextEmailReg = findViewById(R.id.materialEditTextEmailReg);
-        materialEditTextAlamatReg = findViewById(R.id.materialEditTextAlamatReg);
-        materialEditTextPropinsiReg = findViewById(R.id.materialEditTextPropinsiReg);
-        materialEditTextPropinsiReg.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etNamaToko = findViewById(R.id.etNamaToko);
+        etNoHp = findViewById(R.id.etNoHp);
+        etEmail = findViewById(R.id.etEmail);
+        etAlamat = findViewById(R.id.etAlamat);
+        etProvinsi = findViewById(R.id.etProvinsi);
+        etProvinsi.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(@NonNull View v, boolean hasFocus) {
                 Log.d("member", "onFocusChange: " + hasFocus + " " + v.getId());
@@ -116,7 +127,7 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 }
             }
         });
-        materialEditTextPropinsiReg.setOnClickListener(new View.OnClickListener() {
+        etProvinsi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrasiActivity.this, ListPropinsiActivity.class);
@@ -124,16 +135,16 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 startActivityForResult(intent, ActionCode.LIST_PROPINSI);
             }
         });
-        materialEditTextKotaReg = findViewById(R.id.materialEditTextKotaReg);
-        materialEditTextKotaReg.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etKota = findViewById(R.id.etKota);
+        etKota.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    if (materialEditTextPropinsiReg.getEditableText().toString().isEmpty()) {
-                        materialEditTextPropinsiReg.setAnimation(BaseActivity.animShake);
-                        materialEditTextPropinsiReg.startAnimation(BaseActivity.animShake);
-                        materialEditTextPropinsiReg.setError("Propinsi Tidak Boleh Kosong");
-                        materialEditTextKotaReg.requestFocus();
+                    if (etProvinsi.getEditableText().toString().isEmpty()) {
+                        etProvinsi.setAnimation(BaseActivity.animShake);
+                        etProvinsi.startAnimation(BaseActivity.animShake);
+                        etProvinsi.setError("Propinsi Tidak Boleh Kosong");
+                        etKota.requestFocus();
                         Device.vibrate(RegistrasiActivity.this);
 
                         return;
@@ -145,13 +156,13 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 }
             }
         });
-        materialEditTextKotaReg.setOnClickListener(new View.OnClickListener() {
+        etKota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (materialEditTextPropinsiReg.getEditableText().toString().isEmpty()) {
-                    materialEditTextPropinsiReg.setAnimation(BaseActivity.animShake);
-                    materialEditTextPropinsiReg.startAnimation(BaseActivity.animShake);
-                    materialEditTextPropinsiReg.setError("Propinsi Tidak Boleh Kosong");
+                if (etProvinsi.getEditableText().toString().isEmpty()) {
+                    etProvinsi.setAnimation(BaseActivity.animShake);
+                    etProvinsi.startAnimation(BaseActivity.animShake);
+                    etProvinsi.setError("Propinsi Tidak Boleh Kosong");
                     Device.vibrate(RegistrasiActivity.this);
 
                     return;
@@ -162,16 +173,16 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 startActivityForResult(intent, ActionCode.LIST_KABUPATEN);
             }
         });
-        materialEditTextKecamatanReg = findViewById(R.id.materialEditTextKecamatanReg);
-        materialEditTextKecamatanReg.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etKecamatan = findViewById(R.id.etKecamatan);
+        etKecamatan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    if (materialEditTextKotaReg.getEditableText().toString().isEmpty()) {
-                        materialEditTextKotaReg.setAnimation(BaseActivity.animShake);
-                        materialEditTextKotaReg.startAnimation(BaseActivity.animShake);
-                        materialEditTextKotaReg.setError("Kabupaten/Kota Tidak Boleh Kosong");
-                        materialEditTextKecamatanReg.requestFocus();
+                    if (etKota.getEditableText().toString().isEmpty()) {
+                        etKota.setAnimation(BaseActivity.animShake);
+                        etKota.startAnimation(BaseActivity.animShake);
+                        etKota.setError("Kabupaten/Kota Tidak Boleh Kosong");
+                        etKecamatan.requestFocus();
                         Device.vibrate(RegistrasiActivity.this);
 
                         return;
@@ -183,13 +194,13 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 }
             }
         });
-        materialEditTextKecamatanReg.setOnClickListener(new View.OnClickListener() {
+        etKecamatan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (materialEditTextKotaReg.getEditableText().toString().isEmpty()) {
-                    materialEditTextKotaReg.setAnimation(BaseActivity.animShake);
-                    materialEditTextKotaReg.startAnimation(BaseActivity.animShake);
-                    materialEditTextKotaReg.setError("Kabupaten/Kota Tidak Boleh Kosong");
+                if (etKota.getEditableText().toString().isEmpty()) {
+                    etKota.setAnimation(BaseActivity.animShake);
+                    etKota.startAnimation(BaseActivity.animShake);
+                    etKota.setError("Kabupaten/Kota Tidak Boleh Kosong");
                     Device.vibrate(RegistrasiActivity.this);
 
                     return;
@@ -201,16 +212,16 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
             }
         });
 
-        materialEditTextKodePosReg = findViewById(R.id.materialEditTextKodePosReg);
-        materialEditTextKodePosReg.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etKodePos = findViewById(R.id.etKodePos);
+        etKodePos.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    if (materialEditTextKecamatanReg.getEditableText().toString().isEmpty()) {
-                        materialEditTextKecamatanReg.setAnimation(BaseActivity.animShake);
-                        materialEditTextKecamatanReg.startAnimation(BaseActivity.animShake);
-                        materialEditTextKecamatanReg.setError("Kecamatan Tidak Boleh Kosong");
-                        materialEditTextKodePosReg.requestFocus();
+                    if (etKecamatan.getEditableText().toString().isEmpty()) {
+                        etKecamatan.setAnimation(BaseActivity.animShake);
+                        etKecamatan.startAnimation(BaseActivity.animShake);
+                        etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
+                        etKodePos.requestFocus();
                         Device.vibrate(RegistrasiActivity.this);
 
                         return;
@@ -222,13 +233,13 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 }
             }
         });
-        materialEditTextKodePosReg.setOnClickListener(new View.OnClickListener() {
+        etKodePos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (materialEditTextKecamatanReg.getEditableText().toString().isEmpty()) {
-                    materialEditTextKecamatanReg.setAnimation(BaseActivity.animShake);
-                    materialEditTextKecamatanReg.startAnimation(BaseActivity.animShake);
-                    materialEditTextKecamatanReg.setError("Kecamatan Tidak Boleh Kosong");
+                if (etKecamatan.getEditableText().toString().isEmpty()) {
+                    etKecamatan.setAnimation(BaseActivity.animShake);
+                    etKecamatan.startAnimation(BaseActivity.animShake);
+                    etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
                     Device.vibrate(RegistrasiActivity.this);
 
                     return;
@@ -265,81 +276,230 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
         recyclerViewPaketOutlet.setLayoutManager(mLayoutManagerPaket);
 
         listGridPaketAdapter = new ListGridPaketAdapter(dataPaket, this, this);
-        recyclerViewPaketOutlet.setAdapter(listGridPaketAdapter);
+        recyclerViewPaketOutlet.setAdapter(listGridPaketAdapter);*/
+
+        etName = findViewById(R.id.et_name);
+        etEmail = findViewById(R.id.et_email);
+        etNoHp = findViewById(R.id.et_no_hp);
+        etNamaToko = findViewById(R.id.et_nama_toko);
+        etAlamat = findViewById(R.id.et_address);
+        etProvinsi = findViewById(R.id.et_province);
+        etProvinsi.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(@NonNull View v, boolean hasFocus) {
+                Log.d("member", "onFocusChange: " + hasFocus + " " + v.getId());
+                if (hasFocus) {
+                    Intent intent = new Intent(RegistrasiActivity.this, ListPropinsiActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivityForResult(intent, ActionCode.LIST_PROPINSI);
+                }
+            }
+        });
+        etProvinsi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegistrasiActivity.this, ListPropinsiActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivityForResult(intent, ActionCode.LIST_PROPINSI);
+            }
+        });
+        etKota = findViewById(R.id.et_city);
+        etKota.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (etProvinsi.getEditableText().toString().isEmpty()) {
+                        etProvinsi.setAnimation(BaseActivity.animShake);
+                        etProvinsi.startAnimation(BaseActivity.animShake);
+                        etProvinsi.setError("Propinsi Tidak Boleh Kosong");
+                        etKota.requestFocus();
+                        Device.vibrate(RegistrasiActivity.this);
+
+                        return;
+                    }
+                    Intent intent = new Intent(RegistrasiActivity.this, ListKabupatenActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.putExtra("propCode", propCode);
+                    startActivityForResult(intent, ActionCode.LIST_KABUPATEN);
+                }
+            }
+        });
+        etKota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (etProvinsi.getEditableText().toString().isEmpty()) {
+                    etProvinsi.setAnimation(BaseActivity.animShake);
+                    etProvinsi.startAnimation(BaseActivity.animShake);
+                    etProvinsi.setError("Propinsi Tidak Boleh Kosong");
+                    Device.vibrate(RegistrasiActivity.this);
+
+                    return;
+                }
+                Intent intent = new Intent(RegistrasiActivity.this, ListKabupatenActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("propCode", propCode);
+                startActivityForResult(intent, ActionCode.LIST_KABUPATEN);
+            }
+        });
+        etKecamatan = findViewById(R.id.et_district);
+        etKecamatan.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (etKota.getEditableText().toString().isEmpty()) {
+                        etKota.setAnimation(BaseActivity.animShake);
+                        etKota.startAnimation(BaseActivity.animShake);
+                        etKota.setError("Kabupaten/Kota Tidak Boleh Kosong");
+                        etKecamatan.requestFocus();
+                        Device.vibrate(RegistrasiActivity.this);
+
+                        return;
+                    }
+                    Intent intent = new Intent(RegistrasiActivity.this, ListKecamatanActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.putExtra("kabCode", kabCode);
+                    startActivityForResult(intent, ActionCode.LIST_KECAMATAN);
+                }
+            }
+        });
+        etKecamatan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (etKota.getEditableText().toString().isEmpty()) {
+                    etKota.setAnimation(BaseActivity.animShake);
+                    etKota.startAnimation(BaseActivity.animShake);
+                    etKota.setError("Kabupaten/Kota Tidak Boleh Kosong");
+                    Device.vibrate(RegistrasiActivity.this);
+
+                    return;
+                }
+                Intent intent = new Intent(RegistrasiActivity.this, ListKecamatanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("kabCode", kabCode);
+                startActivityForResult(intent, ActionCode.LIST_KECAMATAN);
+            }
+        });
+
+        etKodePos = findViewById(R.id.et_postcode);
+        etKodePos.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if (etKecamatan.getEditableText().toString().isEmpty()) {
+                        etKecamatan.setAnimation(BaseActivity.animShake);
+                        etKecamatan.startAnimation(BaseActivity.animShake);
+                        etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
+                        etKodePos.requestFocus();
+                        Device.vibrate(RegistrasiActivity.this);
+
+                        return;
+                    }
+                    Intent intent = new Intent(RegistrasiActivity.this, ListKodePosActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.putExtra("kecCode", kecCode);
+                    startActivityForResult(intent, ActionCode.LIST_KODEPOS);
+                }
+            }
+        });
+        etKodePos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (etKecamatan.getEditableText().toString().isEmpty()) {
+                    etKecamatan.setAnimation(BaseActivity.animShake);
+                    etKecamatan.startAnimation(BaseActivity.animShake);
+                    etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
+                    Device.vibrate(RegistrasiActivity.this);
+
+                    return;
+                }
+                Intent intent = new Intent(RegistrasiActivity.this, ListKodePosActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("kecCode", kecCode);
+                startActivityForResult(intent, ActionCode.LIST_KODEPOS);
+            }
+        });
+
+        btnRegister = findViewById(R.id.btn_register_now);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callRegister();
+            }
+        });
     }
 
     private void callRegister() {
-        if (materialEditTextNamaReg.getEditableText().toString().trim().isEmpty() || materialEditTextNamaReg.getEditableText().toString().trim().equals("")) {
-            materialEditTextNamaReg.setAnimation(animShake);
-            materialEditTextNamaReg.startAnimation(animShake);
-            materialEditTextNamaReg.setError("Nama Tidak Boleh Kosong");
+        if (etName.getEditableText().toString().trim().isEmpty() || etName.getEditableText().toString().trim().equals("")) {
+            etName.setAnimation(animShake);
+            etName.startAnimation(animShake);
+            etName.setError("Nama Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             scrollViewRegistrasi.fullScroll(ScrollView.FOCUS_DOWN);
             return;
         }
 
-        if (materialEditTextNamaTokoReg.getEditableText().toString().trim().isEmpty() || materialEditTextNamaTokoReg.getEditableText().toString().trim().equals("")) {
-            materialEditTextNamaTokoReg.setAnimation(animShake);
-            materialEditTextNamaTokoReg.startAnimation(animShake);
-            materialEditTextNamaTokoReg.setError("Nama Toko Tidak Boleh Kosong");
+        if (etNamaToko.getEditableText().toString().trim().isEmpty() || etNamaToko.getEditableText().toString().trim().equals("")) {
+            etNamaToko.setAnimation(animShake);
+            etNamaToko.startAnimation(animShake);
+            etNamaToko.setError("Nama Toko Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             scrollViewRegistrasi.fullScroll(ScrollView.FOCUS_DOWN);
             return;
         }
 
-        if (materialEditTextNoHpReg.getEditableText().toString().trim().isEmpty() || materialEditTextNoHpReg.getEditableText().toString().trim().equals("")) {
-            materialEditTextNoHpReg.setAnimation(animShake);
-            materialEditTextNoHpReg.startAnimation(animShake);
-            materialEditTextNoHpReg.setError("No Handphone Tidak Boleh Kosong");
+        if (etNoHp.getEditableText().toString().trim().isEmpty() || etNoHp.getEditableText().toString().trim().equals("")) {
+            etNoHp.setAnimation(animShake);
+            etNoHp.startAnimation(animShake);
+            etNoHp.setError("No Handphone Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
 
-        boolean isValid = new saring_karakter().isEmailValid(materialEditTextEmailReg.getEditableText().toString());
+        boolean isValid = new saring_karakter().isEmailValid(etEmail.getEditableText().toString());
         if (!isValid) {
-            materialEditTextEmailReg.setAnimation(animShake);
-            materialEditTextEmailReg.startAnimation(animShake);
-            materialEditTextEmailReg.setError("Format email salah, Pastikan format email : contoh@sbf.com");
+            etEmail.setAnimation(animShake);
+            etEmail.startAnimation(animShake);
+            etEmail.setError("Format email salah, Pastikan format email : contoh@sbf.com");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
 
-        if (materialEditTextAlamatReg.getEditableText().toString().trim().isEmpty() || materialEditTextAlamatReg.getEditableText().toString().trim().equals("")) {
-            materialEditTextAlamatReg.setAnimation(animShake);
-            materialEditTextAlamatReg.startAnimation(animShake);
-            materialEditTextAlamatReg.setError("Alamat Tidak Boleh Kosong");
+        if (etAlamat.getEditableText().toString().trim().isEmpty() || etAlamat.getEditableText().toString().trim().equals("")) {
+            etAlamat.setAnimation(animShake);
+            etAlamat.startAnimation(animShake);
+            etAlamat.setError("Alamat Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
 
-        if (materialEditTextPropinsiReg.getEditableText().toString().trim().isEmpty() || materialEditTextPropinsiReg.getEditableText().toString().trim().equals("") || propCode.equals("")) {
-            materialEditTextPropinsiReg.setAnimation(animShake);
-            materialEditTextPropinsiReg.startAnimation(animShake);
-            materialEditTextPropinsiReg.setError("Propinsi Tidak Boleh Kosong");
+        if (etProvinsi.getEditableText().toString().trim().isEmpty() || etProvinsi.getEditableText().toString().trim().equals("") || propCode.equals("")) {
+            etProvinsi.setAnimation(animShake);
+            etProvinsi.startAnimation(animShake);
+            etProvinsi.setError("Propinsi Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
 
-        if (materialEditTextKotaReg.getEditableText().toString().trim().isEmpty() || materialEditTextKotaReg.getEditableText().toString().trim().equals("") || kabCode.equals("")) {
-            materialEditTextKotaReg.setAnimation(animShake);
-            materialEditTextKotaReg.startAnimation(animShake);
-            materialEditTextKotaReg.setError("Kota/Kabupaten Tidak Boleh Kosong");
+        if (etKota.getEditableText().toString().trim().isEmpty() || etKota.getEditableText().toString().trim().equals("") || kabCode.equals("")) {
+            etKota.setAnimation(animShake);
+            etKota.startAnimation(animShake);
+            etKota.setError("Kota/Kabupaten Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
 
-        if (materialEditTextKecamatanReg.getEditableText().toString().trim().isEmpty() || materialEditTextKecamatanReg.getEditableText().toString().trim().equals("") || kecCode.equals("")) {
-            materialEditTextKecamatanReg.setAnimation(animShake);
-            materialEditTextKecamatanReg.startAnimation(animShake);
-            materialEditTextKecamatanReg.setError("Kecamatan Tidak Boleh Kosong");
+        if (etKecamatan.getEditableText().toString().trim().isEmpty() || etKecamatan.getEditableText().toString().trim().equals("") || kecCode.equals("")) {
+            etKecamatan.setAnimation(animShake);
+            etKecamatan.startAnimation(animShake);
+            etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
 
-        if (materialEditTextKodePosReg.getText().toString().trim().isEmpty() || materialEditTextKodePosReg.getText().toString().trim().equals("") || kodePos.equals("")) {
-            materialEditTextKodePosReg.setAnimation(animShake);
-            materialEditTextKodePosReg.startAnimation(animShake);
-            materialEditTextKodePosReg.setError("Kodepos Tidak Boleh Kosong");
+        if (etKodePos.getText().toString().trim().isEmpty() || etKodePos.getText().toString().trim().equals("") || kodePos.equals("")) {
+            etKodePos.setAnimation(animShake);
+            etKodePos.startAnimation(animShake);
+            etKodePos.setError("Kodepos Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
@@ -353,7 +513,17 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject = new JSONObject(stringJson.requestRegister(
-                    materialEditTextNoHpReg.getEditableText().toString(), materialEditTextNamaReg.getEditableText().toString(), materialEditTextNamaTokoReg.getEditableText().toString(), materialEditTextAlamatReg.getEditableText().toString(), propCode, kabCode, kecCode, materialEditTextEmailReg.getEditableText().toString(), kodePos, paketCode, materialEditTextIdUplineReg.getEditableText().toString()));
+                    etNoHp.getEditableText().toString(),
+                    etName.getEditableText().toString(),
+                    etNamaToko.getEditableText().toString(),
+                    etAlamat.getEditableText().toString(),
+                    propCode,
+                    kabCode,
+                    kecCode,
+                    etEmail.getEditableText().toString(),
+                    kodePos,
+                    paketCode,
+                    materialEditTextIdUplineReg.getEditableText().toString()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -442,11 +612,11 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     eventMap.put("upline", materialEditTextIdUplineReg.getEditableText().toString());
                     eventMap.put("is_register", "1");
                     eventMap.put("paket", paketName);
-                    eventMap.put("email", materialEditTextEmailReg.getEditableText().toString());
-                    eventMap.put("nama", materialEditTextNamaReg.getEditableText().toString());
-                    eventMap.put("no_handphone", materialEditTextNoHpReg.getEditableText().toString());
-                    eventMap.put("kabupaten", materialEditTextKotaReg.getEditableText().toString());
-                    eventMap.put("propinsi", materialEditTextPropinsiReg.getEditableText().toString());
+                    eventMap.put("email", etEmail.getEditableText().toString());
+                    eventMap.put("nama", etName.getEditableText().toString());
+                    eventMap.put("no_handphone", etNoHp.getEditableText().toString());
+                    eventMap.put("kabupaten", etKota.getEditableText().toString());
+                    eventMap.put("propinsi", etProvinsi.getEditableText().toString());
 
                     SBFApplication.sendEvent(FirebaseAnalytics.Event.SIGN_UP, eventMap);
                 } else {
@@ -515,16 +685,16 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
         if (resultCode == AppCompatActivity.RESULT_OK) {
             if (requestCode == ActionCode.LIST_PROPINSI) {
                 propCode = data.getStringExtra("kodePropinsi");
-                materialEditTextPropinsiReg.setText(data.getStringExtra("namaPropinsi"));
+                etProvinsi.setText(data.getStringExtra("namaPropinsi"));
             } else if (requestCode == ActionCode.LIST_KABUPATEN) {
                 kabCode = data.getStringExtra("kodeKabupaten");
-                materialEditTextKotaReg.setText(data.getStringExtra("namaKabupaten"));
+                etKota.setText(data.getStringExtra("namaKabupaten"));
             } else if (requestCode == ActionCode.LIST_KECAMATAN) {
                 kecCode = data.getStringExtra("kodeKecamatan");
-                materialEditTextKecamatanReg.setText(data.getStringExtra("namaKecamatan"));
+                etKecamatan.setText(data.getStringExtra("namaKecamatan"));
             } else if (requestCode == ActionCode.LIST_KODEPOS) {
                 kodePos = data.getStringExtra("kodepos");
-                materialEditTextKodePosReg.setText(data.getStringExtra("detail"));
+                etKodePos.setText(data.getStringExtra("detail"));
             }
         }
     }
@@ -541,5 +711,19 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!DetectConnection.checkInternet(this)){
+            new AlertDialog.Builder(this, R.style.AlertDialogNoInternet)
+                    .setTitle("Tidak Ada Koneksi Internet!")
+                    .setMessage("Anda tidak sedang terhubung ke internet. Tolong periksa kembali koneksi internet Anda!")
+                    .setCancelable(true)
+                    //.setNeutralButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        };
     }
 }
