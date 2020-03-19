@@ -39,7 +39,8 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
             "Show All Product",
             EventParam.EVENT_ACTION_VISIT,
             EventParam.EVENT_SUCCESS,
-            ChooseProductActivity::class.java.getSimpleName())
+            ChooseProductActivity::class.java.simpleName
+        )
         val check = intent.getBooleanExtra(AppConstant.DATA,true)
         view.checkStockProducts(check)
         loadProducts()

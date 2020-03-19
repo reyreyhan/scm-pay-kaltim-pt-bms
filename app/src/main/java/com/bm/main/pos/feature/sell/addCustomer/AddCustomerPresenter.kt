@@ -27,7 +27,7 @@ class AddCustomerPresenter(val context: Context, val view: AddCustomerContract.V
 
     }
 
-    override fun onCheck(name:String,email:String,phone:String,address:String) {
+    override fun onCheck(name:String,email:String,phone:String) {
         if(name.isNullOrBlank() || name.isNullOrEmpty()){
             view.showMessage(999,context.getString(R.string.err_empty_name))
             return
@@ -53,12 +53,7 @@ class AddCustomerPresenter(val context: Context, val view: AddCustomerContract.V
             return
         }
 
-        if(address.isNullOrBlank() || address.isNullOrEmpty()){
-            view.showMessage(999,context.getString(R.string.err_empty_address))
-            return
-        }
-
-        interactor.callAddCustomerAPI(context,restModel,name,email,phone,address)
+        interactor.callAddCustomerAPI(context,restModel,name,email,phone)
     }
 
     override fun onDestroy() {

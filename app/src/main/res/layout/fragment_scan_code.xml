@@ -25,7 +25,6 @@
 produk yang Anda ingin tambahkan"
                 android:layout_marginLeft="@dimen/standard_margin_3x"
                 android:layout_marginRight="@dimen/standard_margin_3x"/>
-
             <FrameLayout
                 android:id="@+id/content_frame"
                 android:layout_width="match_parent"

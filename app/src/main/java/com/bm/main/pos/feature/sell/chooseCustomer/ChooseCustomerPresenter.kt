@@ -42,6 +42,4 @@ class ChooseCustomerPresenter(val context: Context, val view: ChooseCustomerCont
     override fun onFailedAPI(code: Int, msg: String) {
         view.showErrorMessage(code,msg)
     }
-
-
 }

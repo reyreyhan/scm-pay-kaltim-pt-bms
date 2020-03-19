@@ -47,10 +47,16 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="@color/colorTransparent"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            app:tabTextColor="@color/colorAccent"/>
+            app:tabIndicatorFullWidth="false"
+            app:tabTextColor="@color/colorAccent"
+            app:tabIndicatorColor="@color/orange"
+            app:tabIndicatorHeight="@dimen/_3sdp"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            android:paddingVertical="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/standard_margin_3x"/>
         <com.bm.main.pos.ui.NonSwipeableViewPage
             android:id="@+id/fragment_pager"
             android:layout_width="match_parent"

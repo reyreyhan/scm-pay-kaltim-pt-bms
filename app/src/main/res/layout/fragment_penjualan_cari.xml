@@ -51,8 +51,6 @@
             android:id="@+id/rv_list_barang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="@dimen/standard_margin_2x"
-            android:paddingRight="@dimen/standard_margin_2x"
             android:clipToPadding="false"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

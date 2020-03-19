@@ -1,7 +1,10 @@
 package com.bm.main.pos.feature.newhome
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
@@ -14,6 +17,7 @@ import com.bm.main.pos.feature.dialog.SingleDateDialog
 import com.bm.main.pos.feature.manage.product.ProductViewModel
 import com.bm.main.pos.feature.newhome.adapter.NewHomeFragmentStateAdapter
 import com.bm.main.pos.feature.newhome.adapter.PENJUALAN_FRAGMENT_INDEX
+import com.bm.main.pos.feature.scan.ScanCodeFragment
 import com.bm.main.pos.feature.sell.chooseProduct.ChooseProductFragment
 import com.bm.main.pos.feature.sell.main.SellFragment
 import com.bm.main.pos.models.cart.Cart
@@ -21,6 +25,7 @@ import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rabbit.QrisViewModel
 import com.bm.main.pos.rest.salesforce.SfViewModel
 import com.google.android.material.tabs.TabLayout
+import com.google.zxing.Result
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_home_new.*
@@ -28,7 +33,7 @@ import org.threeten.bp.LocalDate
 
 
 class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), NewHomeContract.View,
-    SellFragment.ShowDate, ChooseProductFragment.OnProductSelectedListener{
+    SellFragment.ShowDate, ChooseProductFragment.OnProductSelectedListener, ScanCodeFragment.OnProductSelectedListener{
 
     private var currentPage = 0
 
@@ -89,6 +94,12 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), 
         supportActionBar?.apply {
             setDisplayShowTitleEnabled(false)
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = getColor(R.color.white)
+        }
         /*toolbar_logo.setOnClickListener {
             RabbitMqPrint.printStrukRabbit(
                 "aku adalah\nanak gembala\nselalu riang\ndan bergembira\n",
@@ -109,7 +120,6 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), 
         currentPage = fragment_pager.currentItem
         fragment_pager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {
-                TODO("Not yet implemented")
             }
 
             override fun onPageScrolled(
@@ -123,7 +133,6 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), 
             }
 
             override fun onPageSelected(position: Int) {
-                TODO("Not yet implemented")
             }
 
         })
@@ -169,6 +178,14 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), 
         val fragment = fragmentAdapter.getItem(fragment_pager.currentItem)
         if (fragment is SellFragment) {
             fragment.getPresenter()?.checkCart(data)
+            fragment.hideContainerFragment()
+        }
+    }
+
+    override fun onProductSelected(data: String) {
+        val fragment = fragmentAdapter.getItem(fragment_pager.currentItem)
+        if (fragment is SellFragment) {
+            fragment.getPresenter()?.searchByBarcode(data)
             fragment.hideContainerFragment()
         }
     }

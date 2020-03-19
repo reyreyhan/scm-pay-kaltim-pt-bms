@@ -27,6 +27,7 @@ interface SuccessContract {
         fun getParentLayout(): NestedScrollView
         fun setProducts(list: List<DetailTransaction.Data>)
         fun takeScreenshot(filename: String)
+        fun shareToWhatsapp(contact:String, filename: String)
     }
 
     interface Presenter : BasePresenterImpl<View> {
@@ -37,7 +38,6 @@ interface SuccessContract {
         fun onCheckShare()
         fun getDataStruk(): DetailTransaction
         fun getTabPosition(): Int
-
     }
 
     interface Interactor : BaseInteractorImpl {

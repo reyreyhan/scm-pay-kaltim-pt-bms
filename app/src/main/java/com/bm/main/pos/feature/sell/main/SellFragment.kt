@@ -9,33 +9,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.R
-import com.bm.main.pos.models.cart.Cart
+import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.feature.scan.ScanCodeActivity
-import com.bm.main.pos.ui.ext.toast
-import com.bm.main.pos.rest.entity.RestException
-import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.feature.sell.chooseProduct.ChooseProductActivity
-import com.bm.main.pos.feature.sell.chooseCustomer.ChooseCustomerActivity
-import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
-import com.bm.main.pos.feature.transaction.success.SuccessActivity
+import com.bm.main.pos.feature.scan.ScanCodeFragment
 import com.bm.main.pos.feature.sell.add.AddActivity
+import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
+import com.bm.main.pos.feature.sell.chooseCustomer.ChooseCustomerActivity
 import com.bm.main.pos.feature.sell.chooseProduct.ChooseProductFragment
 import com.bm.main.pos.feature.sell.edit.EditActivity
+import com.bm.main.pos.feature.transaction.success.SuccessActivity
+import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.product.Product
+import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.OnFragmentBackPressed
 import com.bm.main.pos.ui.PaymentNumberTextWatcher
+import com.bm.main.pos.ui.ext.toast
+import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.Helper
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.android.synthetic.main.fragment_penjualan.view.*
 import kotlinx.android.synthetic.main.layout_bayar_hutang.view.*
+import kotlinx.android.synthetic.main.layout_bayar_non_tunai.view.*
 import kotlinx.android.synthetic.main.layout_bayar_tunai.view.*
 import org.threeten.bp.LocalDate
 
@@ -56,6 +56,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     private var payType = 1
     private var ft: FragmentTransaction? = null
     private val chooseProductFragment = ChooseProductFragment.newInstance()
+    private val scanCodeFragment = ScanCodeFragment.newInstance()
 
     companion object {
 
@@ -83,16 +84,12 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         checkCarts()
     }
 
-//    private val ic_check by lazy { ResourcesCompat.getDrawable(resources, R.drawable.circle_thick_gray, null) }
-//    private val ic_checked by lazy { ResourcesCompat.getDrawable(resources, R.drawable.ic_checked_circle, null) }
-
     private fun renderView() {
         val layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         _view.rv_list.layoutManager = layoutManager
         _view.rv_list.adapter = adapter
         adapter.callback = object : SellAdapter.ItemClickCallback {
             override fun onCountDialog(data: Cart, position: Int) {
-                //showDate?.openCountDialog(data, position)
                 val dialog = ProductDialog.newInstance().apply {
                     arguments = Bundle().apply {
                         putSerializable(AppConstant.DATA, data)
@@ -129,21 +126,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             openChooseProduct()
         }
 
-        /*
-        _view.btn_manual.setOnClickListener {
-            openAddManual("")
-        }
-        */
-
         _view.et_pay.addTextChangedListener(PaymentNumberTextWatcher(_view.et_pay, getPresenter()!!))
-
-//        _view.rb_tunai.setOnClickListener {
-//            payType = 1
-//            _view.ic_check_tunai.setImageDrawable(ic_checked)
-//            _view.ic_check_nontunai.setImageDrawable(ic_check)
-//            _view.ic_check_piutang.setImageDrawable(ic_check)
-//            showTunaiView()
-//        }
 
         _view.btn_tunai.isSelected = true
         _view.layout_bayar_tunai.visibility = View.VISIBLE
@@ -186,16 +169,11 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             openChooseCustomer()
         }
 
-//        _view.btn_date.setOnClickListener {
-//            val now = LocalDate.now()
-//            showDate?.openSingleDatePickerDialog(getPresenter()?.getSelectedDate(), now, null, AppConstant.Code.CODE_FILTER_DATE_SELL)
-//        }
 
         _view.btn_bayar.setOnClickListener {
             showLoadingDialog()
-//            when (_view.rg_payment.checkedRadioButtonId) {
             when (payType) {
-                1 -> getPresenter()?.checkTunai()
+                1 -> showConfirmPayTunaiDialog(getPayValue().toInt(), getPresenter()!!.calculateCashBack(), getPresenter()!!.countAllBarang())
                 2 -> {
                     hideLoadingDialog()
                     showToast("Fitur belum tersedia")
@@ -232,8 +210,8 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     override fun setCartText(count: String, nominal: String) {
         _view.tv_number.text = count
-        _view.tv_total.text = nominal
-        _view.et_pay.setText(nominal)
+        _view.tv_total_harga.text = "Rp $nominal"
+        //_view.et_pay.setText(nominal)
     }
 
     override fun addCart(data: Cart) {
@@ -252,9 +230,14 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun openScanPage() {
-        val intent = Intent(activity, ScanCodeActivity::class.java)
-        intent.putExtra(AppConstant.SCAN.TYPE, AppConstant.SCAN.SELL)
-        startActivityForResult(intent, CODE_OPEN_SCAN)
+//        val intent = Intent(activity, ScanCodeActivity::class.java)
+//        intent.putExtra(AppConstant.SCAN.TYPE, AppConstant.SCAN.SELL)
+//        startActivityForResult(intent, CODE_OPEN_SCAN)
+        if (scanCodeFragment != null) {
+            hideContentView()
+            hideContainerFragment()
+            showContainerFragment(CODE_OPEN_SCAN)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -335,25 +318,18 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             } else {
                 getPresenter()?.updateCustomer(customer)
             }
-        } else if (requestCode == CODE_OPEN_ADD_CUSTOMER && resultCode == Activity.RESULT_OK) {
-            if (data == null) {
-                toast("Data tidak ditemukan")
-                return
-            }
-            if (data.getSerializableExtra(AppConstant.DATA) == null) {
-                toast("Data tidak ditemukan")
-                return
-            }
-            val customer = data.getSerializableExtra(AppConstant.DATA) as Customer
-            if (customer.id_pelanggan == null) {
-                toast("Data tidak ditemukan")
-            } else {
-                getPresenter()?.updateCustomer(customer)
-            }
         } else if (requestCode == 101 && resultCode == 1001){
             val cart = data?.getSerializableExtra(AppConstant.DATA) as Cart
             val pos = data.getIntExtra("CartPosition", 0)
             getPresenter()?.updateCart(cart, pos)
+        }
+        else if (requestCode == 101 && resultCode == 1002){
+            val cart = data?.getSerializableExtra(AppConstant.DATA) as Cart
+            val pos = data.getIntExtra("CartPosition", 0)
+            getPresenter()?.deleteCart(cart, pos)
+        }
+        else if (requestCode == 102 && resultCode == Activity.RESULT_OK){
+            getPresenter()?.checkTunai()
         }
     }
 
@@ -364,10 +340,9 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun openChooseProduct() {
-//        val intent = Intent(activity, ChooseProductActivity::class.java)
-//        startActivityForResult(intent, CODE_OPEN_CHOOSE_PRODUCT)
         if (chooseProductFragment != null) {
             hideContentView()
+            hideContainerFragment()
             showContainerFragment(CODE_OPEN_CHOOSE_PRODUCT)
         }
     }
@@ -385,16 +360,16 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun getTotalValue(): Double {
-        val value = _view.tv_total.text.toString().replace("Rp", "").replace(".", "")
+        val value = _view.tv_total_harga.text.toString().replace("Rp ", "").replace(".", "")
         if (value.isBlank() || value.isEmpty()) {
             return 0.0
         }
         return value.toDouble()
-
     }
 
     override fun getPayValue(): Double {
         val value = _view.et_pay.text.toString().replace(Regex("\\D"), "").replace(".", "")
+        //val value = _view.et_pay.text.toString()
         if (value.isBlank() || value.isEmpty()) {
             return 0.0
         }
@@ -403,43 +378,31 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     @SuppressLint("SetTextI18n")
     override fun setCashback(value: Double) {
-//        when {
-//            value == 0.0 -> {
-//                hideShowCashback(View.GONE)
-//                //enableBtnBuy(true)
-//            }
-//            value < 0.0  -> {
-//                val ret = -1 * value
-//                hideShowCashback(View.VISIBLE)
-//                //enableBtnBuy(true)
-//                _view.tv_kembalian.text = "Kembalian Rp ${Helper.convertToCurrency(ret)}"
-//                _view.tv_kembalian.setTextColor(ContextCompat.getColor(activity!!, R.color.colorAccent))
-//            }
-//            else         -> {
-//                hideShowCashback(View.VISIBLE)
-//                //enableBtnBuy(false)
-//                _view.tv_kembalian.text = "Kurang bayar Rp ${Helper.convertToCurrency(value)}"
-//                _view.tv_kembalian.setTextColor(ContextCompat.getColor(activity!!, R.color.vermillion))
-//            }
-//        }
+        enableBtnBuy(true)
+        when {
+            value == 0.0 -> {
+                hideShowCashback(View.INVISIBLE)
+            }
+            value < 0.0  -> {
+                val ret = -1 * value
+                hideShowCashback(View.VISIBLE)
+                _view.tv_kembalian.text = "Kembalian Rp ${Helper.convertToCurrency(ret)}"
+                _view.tv_kembalian.setTextColor(ContextCompat.getColor(activity!!, R.color.colorAccent))
+            }
+            else -> {
+                hideShowCashback(View.VISIBLE)
+                _view.tv_kembalian.text = "Kurang bayar Rp ${Helper.convertToCurrency(value)}"
+                _view.tv_kembalian.setTextColor(ContextCompat.getColor(activity!!, R.color.vermillion))
+            }
+        }
     }
 
     override fun hideShowCashback(value: Int) {
-//        _view.tv_kembalian.visibility = value
+        _view.tv_kembalian.visibility = value
     }
 
     override fun enableBtnBuy(isEnable: Boolean) {
-//        when(_view.rg_payment.checkedRadioButtonId){
-//            R.id.rb_tunai -> _view.btn_bayar.isEnabled = isEnable
-//            R.id.rb_nontunai -> _view.btn_bayar.isEnabled = true
-//            R.id.rb_piutang -> _view.btn_bayar.isEnabled = true
-//        }
         _view.btn_bayar.isEnabled = isEnable
-        if (isEnable) {
-//            _view.btn_bayar.backgroundTintList = ContextCompat.getColorStateList(activity!!, R.color.orange)
-        } else {
-//            _view.btn_bayar.backgroundTintList = ContextCompat.getColorStateList(activity!!, R.color.divider)
-        }
     }
 
     override fun updateCart(cart: Cart, position: Int) {
@@ -451,39 +414,39 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun showTunaiView() {
-//        _view.ll_tunai.visibility = View.VISIBLE
-//        _view.ll_hutang.visibility = View.GONE
-//        _view.tv_pay.visibility = View.VISIBLE
-//        _view.et_pay.visibility = View.VISIBLE
-//        getPresenter()?.countCashback()
         _view.layout_bayar_hutang.visibility = View.GONE
+        _view.layout_bayar_non_tunai.visibility = View.GONE
         _view.layout_bayar_tunai.visibility = View.VISIBLE
     }
 
+    override fun showConfirmPayTunaiDialog(jumlah:Int, cashback:String, jumlahBarang:Int) {
+        val dialog = ConfirmPayDialog.newInstance().apply {
+            arguments = Bundle().apply {
+                putString("JumlahPembayaran", "Rp $jumlah")
+                putString("Cashback", cashback)
+                putString("JumlahBarang", "$jumlahBarang Barang")
+            }
+        }
+        dialog.setTargetFragment(this@SellFragment, 102)
+        dialog.show(fragmentManager!!, ProductDialog.TAG)
+    }
+
     override fun showNonTunaiView() {
-//        _view.ll_tunai.visibility = View.VISIBLE
-//        _view.ll_hutang.visibility = View.GONE
-//        _view.et_pay.visibility = View.GONE
-//        _view.tv_pay.visibility = View.GONE
-//        _view.tv_kembalian.visibility = View.GONE
-        //enableBtnBuy(true)
+        _view.layout_bayar_hutang.visibility = View.GONE
+        _view.layout_bayar_non_tunai.visibility = View.VISIBLE
+        _view.layout_bayar_tunai.visibility = View.GONE
     }
 
     override fun showPiutangView() {
-//        _view.ll_tunai.visibility = View.GONE
-//        _view.ll_hutang.visibility = View.VISIBLE
         _view.layout_bayar_hutang.visibility = View.VISIBLE
+        _view.layout_bayar_non_tunai.visibility = View.GONE
         _view.layout_bayar_tunai.visibility = View.GONE
-        //enableBtnBuy(true)
     }
 
     override fun setCustomerName(data: Customer?) {
-//        _view.et_customer.text = ""
-//        _view.btn_delete_customer.visibility = View.GONE
-//        data?.let {
-//            _view.et_customer.text = it.nama_pelanggan
-//            _view.btn_delete_customer.visibility = View.VISIBLE
-//        }
+        data?.let{
+            _view.et_data_pelanggan.text = it.nama_pelanggan
+        }
     }
 
     override fun openChooseCustomer() {
@@ -520,11 +483,6 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     override fun setSelectedDate(date: CalendarDay?) {
         getPresenter()?.setSelectedDate(date)
-//        if (date == null) {
-//            et_date.text = ""
-//        } else {
-//            et_date.text = Helper.getDateFormat(activity!!, date.date.toString(), "yyyy-MM-dd", "dd MMMM yyyy")
-//        }
     }
 
     override fun onNoteSaved(selected: Cart, pos: Int) {
@@ -537,7 +495,10 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     fun hideContainerFragment(){
         _view.container_fragment.visibility = View.GONE
-        hideFragment(ft!!, chooseProductFragment)
+        if (ft != null){
+            hideFragment(ft!!, chooseProductFragment)
+            hideFragment(ft!!, scanCodeFragment)
+        }
     }
 
     fun showContainerFragment(code: Int){
@@ -545,15 +506,22 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         _view.container_fragment.visibility = View.VISIBLE
         when(code){
             CODE_OPEN_SCAN ->{
-
+                if (scanCodeFragment.isAdded){
+                    ft!!.show(scanCodeFragment)
+                }else{
+                    ft!!.add(R.id.container_fragment, scanCodeFragment)
+                }
+                ft!!.commit()
+                hideFragment(ft!!, chooseProductFragment)
             }
             CODE_OPEN_CHOOSE_PRODUCT->{
                 if (chooseProductFragment.isAdded){
                     ft!!.show(chooseProductFragment)
                 }else{
                     ft!!.add(R.id.container_fragment, chooseProductFragment)
-                    ft!!.commit()
                 }
+                ft!!.commit()
+                hideFragment(ft!!, scanCodeFragment)
             }
         }
     }

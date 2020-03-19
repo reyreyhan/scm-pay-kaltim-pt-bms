@@ -7,10 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.utils.Helper
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import kotlinx.android.synthetic.main.item_list_sell.view.*
+import kotlinx.android.synthetic.main.item_list_sell_new.view.*
 
 class SellAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -20,7 +17,7 @@ class SellAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_sell, parent, false)
+                .inflate(R.layout.item_list_sell_new, parent, false)
         )
     }
 
@@ -81,59 +78,17 @@ class SellAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val nameTv = view.tv_name
-        private val priceTv = view.tv_price
-        private val stockTv = view.tv_stok
-        private val imageIv = view.iv_photo
-        private val countLayout = view.ll_count
-        private val countTv = view.tv_count
-        private val decreaseBtn = view.btn_minus
-        private val increaseBtn = view.btn_plus
-        private val deleteBtn = view.btn_delete
-        private val noteTv = view.tv_note
-
+        private val tvName = view.tv_name
+        private val tvTotal = view.tv_total
+        private val tvProductCount = view.tv_product_count
 
         fun bindData(data: Cart, position: Int) {
 
             val product = data.product
-            nameTv.text = "${product?.nama_barang}"
-            priceTv.text = "Rp ${Helper.convertToCurrency(product?.hargajual!!)}"
-            var stock = product?.stok!!.toDouble()
-            stockTv.text = "Stok : ${Helper.convertToCurrency(stock!!)}"
-            countTv.text = "${Helper.convertToCurrency(data.count!!)}"
-            noteTv.text = "${data.note}"
-
-            if (product?.gbr == null) {
-                Glide.with(itemView.context)
-                    .load(R.drawable.logo)
-                    .transform(CenterCrop(), RoundedCorners(8))
-                    .into(imageIv)
-            } else {
-                Glide.with(itemView.context)
-                    .load(product?.gbr)
-                    .error(Glide.with(imageIv).load("https://api-pos.fastpay.co.id/api/images/small_no_product.jpg"))
-//                    .placeholder(R.drawable.logo)
-                    .transform(CenterCrop(), RoundedCorners(8))
-                    .into(imageIv)
-            }
-
-            increaseBtn.setOnClickListener {
-                callback?.onIncrease(data, position)
-            }
-
-
-            decreaseBtn.setOnClickListener {
-                callback?.onDecrease(data, position)
-
-            }
-
-            deleteBtn.setOnClickListener {
-                callback?.onDelete(data, position)
-            }
-
-            noteTv.setOnClickListener {
-                callback?.onNote(data, position)
-            }
+            val count = "${Helper.convertToCurrency(data.count!!)}"
+            tvName.text = "${product?.nama_barang}"
+            tvTotal.text = "Harga : $count x Rp ${Helper.convertToCurrency(product?.hargajual!!)}"
+            tvProductCount.text = count
 
             itemView.setOnClickListener {
                 callback?.onCountDialog(data, position)

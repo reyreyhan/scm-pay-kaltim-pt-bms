@@ -8,8 +8,7 @@ import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.toast
-import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activity_add_customer_sell.*
+import kotlinx.android.synthetic.main.activity_add_customer_new.*
 
 
 class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContract.View>(), AddCustomerContract.View {
@@ -19,7 +18,7 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_add_customer_sell
+        return R.layout.activity_add_customer_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -28,15 +27,13 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
     }
 
     private fun renderView(){
-
-        btn_save.setOnClickListener {
+        btn_tambah.setOnClickListener {
             hideKeyboard()
             showLoadingDialog()
             val name = et_name.text.toString().trim()
             val email = et_email.text.toString().trim()
-            val phone = et_phone.text.toString().trim()
-            val address = et_address.text.toString().trim()
-            getPresenter()?.onCheck(name,email,phone,address)
+            val phone = et_no_hp.text.toString().trim()
+            checkIfAllFieldFilled(name, email, phone)
         }
     }
 
@@ -46,10 +43,9 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.menu_add_customer)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
-
     }
 
     override fun onResume() {
@@ -77,9 +73,7 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
     }
 
     override fun onSuccess(data: Customer) {
-        val newIntent = intent
-        newIntent.putExtra(AppConstant.DATA,data)
-        setResult(Activity.RESULT_OK,newIntent)
+        setResult(Activity.RESULT_OK)
         finish()
     }
 
@@ -90,5 +84,22 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
         return super.onOptionsItemSelected(item!!)
     }
 
+    private fun checkIfAllFieldFilled(name:String, email:String, phone:String){
+        if (name.isEmpty() && name == ""){
+            et_name.error = "Nama Pelanggan Tidak Boleh Kosong"
+            return
+        }
 
+        if (email.isEmpty() && email == ""){
+            et_no_hp.error = "Nomor Handphone Pelanggan Tidak Boleh Kosong"
+            return
+        }
+
+        if (phone.isEmpty() && phone == ""){
+            et_email.error = "Alamat Email Pelanggan Tidak Boleh Kosong"
+            return
+        }
+
+        getPresenter()?.onCheck(name,email,phone)
+    }
 }

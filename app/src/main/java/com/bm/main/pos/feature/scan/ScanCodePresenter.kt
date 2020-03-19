@@ -2,6 +2,7 @@ package com.bm.main.pos.feature.scan
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.utils.AppConstant
@@ -10,6 +11,10 @@ class ScanCodePresenter(val context: Context, val view: ScanCodeContract.View) :
     ScanCodeContract.Presenter, ScanCodeContract.InteractorOutput {
 
     private val interactor = ScanCodeInteractor(this)
+
+    override fun onViewFragmentCreated(bundle: Bundle){
+        val type = bundle.getInt(AppConstant.SCAN.TYPE,-1)
+    }
 
     override fun onViewCreated(intent: Intent) {
         val type = intent.getIntExtra(AppConstant.SCAN.TYPE,-1)

@@ -18,7 +18,6 @@ import org.jetbrains.anko.windowManager
 
 
 class ProductDialog : DialogFragment() {
-
     companion object {
         const val TAG = "ProductDialog"
 
@@ -39,13 +38,6 @@ class ProductDialog : DialogFragment() {
     override fun onResume() {
         super.onResume()
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        val displayMetrics = DisplayMetrics()
-//        requireActivity().application.windowManager.defaultDisplay.getMetrics(displayMetrics)
-//
-//        val width = displayMetrics.widthPixels * 0.8
-//        val height = displayMetrics.heightPixels * 0.5
-//
-//        this.dialog!!.window!!.setLayout(width.toInt(), height.toInt())
     }
 
     override fun onCreateView(
@@ -62,12 +54,12 @@ class ProductDialog : DialogFragment() {
         tv_title_product.text = cart.product!!.nama_barang
         tv_product_count.text = cart.count!!.toInt().toString()
         btn_product_decrease.setOnClickListener {
-            val stok = cart.product!!.stok.toDouble()
             val count = cart.count!!.minus(1)
             if(count > 0){
                 cart.count = count
             }
             tv_product_count.text = cart.count!!.toInt().toString()
+            setTotalHargaText(cart)
         }
         btn_product_increase.setOnClickListener {
             val stok = cart.product!!.stok.toDouble()
@@ -76,9 +68,9 @@ class ProductDialog : DialogFragment() {
                 cart.count = count
             }
             tv_product_count.text = cart.count!!.toInt().toString()
+            setTotalHargaText(cart)
         }
-        tv_total_harga.text = "Jumlah ${cart!!.count!!.toInt()} x ${cart.product!!.hargajual} = ${cart.product!!.hargajual.toDouble().times(
-            cart.count!!).toInt()}"
+        setTotalHargaText(cart)
         btn_update_barang.setOnClickListener {
             val newIntent: Intent = activity!!.intent
             newIntent.putExtra(AppConstant.DATA, cart)
@@ -87,11 +79,19 @@ class ProductDialog : DialogFragment() {
             dismiss()
         }
         btn_delete.setOnClickListener {
+            val newIntent: Intent = activity!!.intent
+            newIntent.putExtra(AppConstant.DATA, cart)
+            newIntent.putExtra("CartPosition", position)
             targetFragment!!.onActivityResult(targetRequestCode, 1002, activity!!.intent)
             dismiss()
         }
         btn_close.setOnClickListener {
             dismiss()
         }
+    }
+
+    fun setTotalHargaText(cart:Cart){
+        tv_total_harga.text = "Jumlah ${cart!!.count!!.toInt()} x ${cart.product!!.hargajual} = ${cart.product!!.hargajual.toDouble().times(
+            cart.count!!).toInt()}"
     }
 }

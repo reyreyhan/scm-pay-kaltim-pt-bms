@@ -162,7 +162,7 @@
                         android:textStyle="bold"
                         android:textSize="@dimen/_12sdp"/>
                     <TextView
-                        android:id="@+id/tv_total"
+                        android:id="@+id/tv_total_harga"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_12sdp"
@@ -231,11 +231,12 @@
             </LinearLayout>
             <include layout="@layout/layout_bayar_tunai"/>
             <include layout="@layout/layout_bayar_hutang"/>
+            <include layout="@layout/layout_bayar_non_tunai"/>
             <FrameLayout
                 android:id="@+id/btn_bayar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/md_grey_500"
+                android:background="@drawable/selector_btn_rect_orange"
                 android:clickable="true">
                 <TextView
                     android:layout_width="match_parent"

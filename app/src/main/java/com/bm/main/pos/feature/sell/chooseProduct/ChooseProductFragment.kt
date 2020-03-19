@@ -1,6 +1,7 @@
 package com.bm.main.pos.feature.sell.chooseProduct
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,12 +11,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bm.main.fpl.activities.BaseActivity
+import com.bm.main.fpl.constants.EventParam
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
+import com.bm.main.pos.ui.LinearItemDecoration
 import com.bm.main.pos.ui.ext.toast
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.fragment_penjualan_cari.*
 import kotlinx.android.synthetic.main.fragment_penjualan_cari.view.*
 
@@ -74,15 +79,16 @@ class ChooseProductFragment : BaseFragment<ChooseProductPresenter, ChooseProduct
     }
 
     private fun renderView() {
-        _view.sw_refresh.isRefreshing = false
-        _view.sw_refresh.setOnRefreshListener {
-            scrollListener.resetState()
-            reloadData()
-        }
+            _view.sw_refresh.isRefreshing = false
+            _view.sw_refresh.setOnRefreshListener {
+                scrollListener.resetState()
+                reloadData()
+            }
 
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         _view.rv_list_barang.layoutManager = layoutManager
         _view.rv_list_barang.adapter = adapter
+        //_view.rv_list_barang.addItemDecoration(LinearItemDecoration(space = resources.getDimensionPixelSize(R.dimen._4sdp)))
 
         scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onFirstItemVisible(isFirstItem: Boolean) {
@@ -157,17 +163,14 @@ class ChooseProductFragment : BaseFragment<ChooseProductPresenter, ChooseProduct
     }
 
     override fun onSelected(data: Product) {
-//        activity.logEventFireBase(
-//            "Pilih Product",
-//            data.nama_barang,
-//            EventParam.EVENT_ACTION_CHOICE_PRODUCT,
-//            FirebaseAnalytics.Event.ADD_TO_WISHLIST,
-//            EventParam.EVENT_SUCCESS,
-//            ChooseProductActivity::class.java!!.getSimpleName())
-//        val newintent: Intent = intent
-//        newintent.putExtra(AppConstant.DATA,data)
-//        setResult(BaseActivity.RESULT_OK,newintent)
-//        finish()
+        (context as BaseActivity).logEventFireBase(
+            "Pilih Product",
+            data.nama_barang,
+            EventParam.EVENT_ACTION_CHOICE_PRODUCT,
+            FirebaseAnalytics.Event.ADD_TO_WISHLIST,
+            EventParam.EVENT_SUCCESS,
+            ChooseProductActivity::class.java.simpleName
+        )
         if (productListener != null){
             productListener!!.onProductSelected(data)
         }

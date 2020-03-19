@@ -331,7 +331,7 @@
         <activity
             android:name=".feature.transaction.success.SuccessActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar.DarkStatusBar" />
+            android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.kulakan.main.KulakanActivity"
             android:label="Data Kulakan"

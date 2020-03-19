@@ -19,13 +19,13 @@ interface AddCustomerContract {
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated()
         fun onDestroy()
-        fun onCheck(name:String,email:String,phone:String,address:String)
+        fun onCheck(name:String,email:String,phone:String)
     }
 
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
         fun onRestartDisposable()
-        fun callAddCustomerAPI(context: Context,model:CustomerRestModel,name:String,email:String,phone:String,address:String)
+        fun callAddCustomerAPI(context: Context,model:CustomerRestModel,name:String,email:String,phone:String)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {

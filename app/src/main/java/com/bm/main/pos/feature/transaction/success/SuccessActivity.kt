@@ -3,19 +3,17 @@ package com.bm.main.pos.feature.transaction.success
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,22 +21,20 @@ import com.bm.main.fpl.constants.EventParam
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.callback.BluetoothCallback
-import com.bm.main.pos.feature.drawer.DrawerActivity
 import com.bm.main.pos.feature.printer.PrinterActivity
-import com.bm.main.pos.feature.transaction.detail.DetailActivity
 import com.bm.main.pos.feature.transaction.detail.DetailSuccessActivity
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.rest.entity.RestException
-import com.bm.main.pos.ui.LinearItemDecoration
-import com.bm.main.pos.ui.ext.htmlText
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.*
 import com.bm.main.pos.utils.print.PrinterUtil
-import kotlinx.android.synthetic.main.activity_transaction_success.*
+import kotlinx.android.synthetic.main.activity_transaction_success_new.*
 import java.lang.Integer.parseInt
 
 class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     SuccessContract.View {
+
+    private var fileStruk:String = ""
 
     override fun setProducts(list: List<DetailTransaction.Data>) {
         hideLoadingDialog()
@@ -53,7 +49,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_transaction_success
+        return R.layout.activity_transaction_success_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -62,25 +58,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     }
 
     private fun renderView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = ResourcesCompat.getColor(resources, R.color.bg_header_success, null)
-        }
-
-        setSupportActionBar(toolbarx)
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
-            toolbar_title.text = "Pembayaran Sukses!"
-            title = ""
-
-            setHomeAsUpIndicator(
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_back_pos, null)?.apply { colorFilter = PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN) }
-            )
-            toolbarx.setNavigationOnClickListener {
-                startActivity(Intent(this@SuccessActivity, DrawerActivity::class.java))
-                finishAffinity()
-            }
-        }
+        setupToolbar()
 
         sw_refresh.isRefreshing = false
         sw_refresh.setOnRefreshListener {
@@ -88,22 +66,36 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
         }
 
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        rv_list.layoutManager = layoutManager
-        rv_list.adapter = adapter
-        rv_list.addItemDecoration(LinearItemDecoration(space = resources.getDimensionPixelSize(R.dimen._4sdp)))
+        rv_list_barang.layoutManager = layoutManager
+        rv_list_barang.adapter = adapter
+        //rv_list.addItemDecoration(LinearItemDecoration(space = resources.getDimensionPixelSize(R.dimen._4sdp)))
 
-        btn_print.setOnClickListener {
+        btn_cetak_struk.setOnClickListener {
             getPresenter()?.onCheckBluetooth()
         }
 
-        btn_share_social.setOnClickListener {
+        btn_kirim_email.setOnClickListener {
             getPresenter()?.onCheckShare()
 //            openDetailPage()
         }
 
-        btn_end.setOnClickListener {
-            onClose()
+        btn_kirim_no_wa.setOnClickListener {
+            if (et_no_wa.editableText.toString().isNotEmpty() && fileStruk.isNotEmpty()){
+                shareToWhatsapp(et_no_wa.editableText.toString(), fileStruk)
+            }
         }
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            title = "Cetak Struk"
+
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
+            setHomeAsUpIndicator(backArrow)
+        }
+
     }
 
     private val filterWhite by lazy { PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN) }
@@ -121,10 +113,28 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     }
 
     override fun takeScreenshot(filename: String) {
-        actions.visibility = View.GONE
+        container_action.visibility = View.GONE
         ImageHelper.takeScreenshot(this, ns_content, filename) {
-            actions.visibility = View.VISIBLE
-            Helper.shareBitmapToApps(this, Uri.parse(it))
+            container_action.visibility = View.VISIBLE
+            fileStruk = it
+            //Helper.shareBitmapToApps(this, Uri.parse(it))
+        }
+    }
+
+    override fun shareToWhatsapp(contact:String, filename: String) {
+        var mContact = contact.substring(1)
+        mContact = "62$mContact"
+        try {
+            val sendIntent = Intent("android.intent.action.MAIN")
+            sendIntent.component = ComponentName("com.whatsapp", "com.whatsapp.Conversation")
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.type = "image/*"
+            sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(filename))
+            sendIntent.putExtra("jid", mContact + "@s.whatsapp.net")
+            sendIntent.setPackage("com.whatsapp")
+            startActivity(sendIntent)
+        } catch (e: Exception) {
+            toast(this, "Error/n$e")
         }
     }
 
@@ -158,10 +168,13 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
             EventParam.EVENT_ACTION_SELL_PRODUCT,
 
             EventParam.EVENT_SUCCESS,
-            SuccessActivity::class.java.getSimpleName()
+            SuccessActivity::class.java.simpleName
         )
 
-        tv_info_toko.htmlText("${detail.struk?.nama_toko} / ${detail.struk?.nohp}<br>${detail.struk?.alamat}")
+        tv_nama_toko.text = detail.struk?.nama_toko
+        tv_alamat_toko.text = detail.struk?.alamat
+        tv_no_telepon_toko.text=  detail.struk?.nohp
+        //htmlText("${detail.struk?.nama_toko} / ${detail.struk?.nohp}<br>${detail.struk?.alamat}")
 
         val kembalianString = detail.struk?.kembalian
         var kembalian = 0.0
@@ -170,15 +183,15 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
             kembalian = kembalianString.toDouble()
             kembalianValue = "Rp ${Helper.convertToCurrency(kembalian)}"
         }
-        tv_id.text = id
+        tv_id_transaksi.text = id
 //        if(!detail.struk?.status.equals("tunai")) {
 //            ll_pay.visibility = View.GONE
 //            ll_bayar.visibility=View.GONE
 //            tv_pay.text = "tunai"
 //        }else{
-        ll_pay.visibility = View.GONE
-        ll_bayar.visibility = View.VISIBLE
-        tv_pay.text = detail.struk?.status
+//        ll_pay.visibility = View.GONE
+//        ll_bayar.visibility = View.VISIBLE
+//        tv_pay.text = detail.struk?.status
         // tv_pay.text = pay
 //        }
 //        for (i in 0 until detail.data.size){
@@ -194,56 +207,56 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 //        }
         totQty = detail.data?.sumBy { parseInt(it.jumlah!!) } ?: 0
 
-        tv_total_qty.text = totQty.toString()
-        tv_total.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
-        tv_bayar.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalbayar!!)}"
-        tv_date.text =
-            Helper.getDateFormat(this, detail.struk?.tanggal!!, "yyyy-MM-dd", "EEE, dd MMMM yyyy")
-        ll_kembalian.visibility = View.GONE
+        //tv_total_qty.text = totQty.toString()
+        tv_total_item.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
+        tv_tunai.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalbayar!!)}"
+//        tv_date.text =
+//            Helper.getDateFormat(this, detail.struk?.tanggal!!, "yyyy-MM-dd", "EEE, dd MMMM yyyy")
+        tv_kembalian.visibility = View.GONE
         kembalian?.let {
             tv_kembalian.text = kembalianValue
-            ll_kembalian.visibility = View.VISIBLE
+            tv_kembalian.visibility = View.VISIBLE
         }
         onSuccessView()
     }
 
     override fun onSuccessCash(
-            total: String,
-            pay: String,
-            kembalian: String?,
-            date: String,
-            id: String
+        total: String,
+        pay: String,
+        kembalian: String?,
+        date: String,
+        id: String
     ) {
-        tv_id.text = id
+//        tv_id_transaksi.text = id
         // tv_order.text = total
-        tv_date.text = date
+        //tv_date.text = date
 //        ll_info.visibility = View.VISIBLE
-        if (!pay.equals("tunai")) {
-            ll_pay.visibility = View.VISIBLE
-            tv_pay.text = pay
-        } else {
-            ll_pay.visibility = View.GONE
-            tv_pay.text = pay
-        }
+//        if (!pay.equals("tunai")) {
+////            ll_pay.visibility = View.VISIBLE
+//            tv_pay.text = pay
+//        } else {
+//            ll_pay.visibility = View.GONE
+//            tv_pay.text = pay
+//        }
 //        ll_piutang.visibility = View.GONE
-        ll_kembalian.visibility = View.GONE
-        kembalian?.let {
-            tv_kembalian.text = kembalian
-            ll_kembalian.visibility = View.VISIBLE
-        }
+//        ll_kembalian.visibility = View.GONE
+//        kembalian?.let {
+//            tv_kembalian.text = kembalian
+//            ll_kembalian.visibility = View.VISIBLE
+//        }
         onSuccessView()
     }
 
     override fun onSuccessPiutang(total: String, date: String, id: String) {
-        println("hutang")
-        tv_id.text = id
+//        println("hutang")
+//        tv_id.text = id
 //        tv_order.text = total
-        tv_date.text = date
+//        tv_date.text = date
 //        ll_info.visibility = View.VISIBLE
 //        ll_piutang.visibility = View.VISIBLE
-        ll_pay.visibility = View.GONE
-        ll_kembalian.visibility = View.GONE
-//        tv_piutang.text = total
+//        ll_pay.visibility = View.GONE
+//        ll_kembalian.visibility = View.GONE
+//       tv_piutang.text = total
         onSuccessView()
     }
 
@@ -256,30 +269,30 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
             EventParam.EVENT_SUCCESS,
             SuccessActivity::class.java.getSimpleName()
         )
-        tv_id.text = id
-        ll_pay.visibility = View.VISIBLE
-        ll_bayar.visibility = View.GONE
-        tv_pay.text = detail.struk?.status
-        // tv_pay.text = pay
-        tv_jatuh_tempo.text =
-            Helper.getDateFormat(this, detail.struk?.jatuh_tempo!!, "yyyy-MM-dd", "dd-MM-yyyy")
-        ll_jatuh_tempo.visibility = View.VISIBLE
-        totQty = detail.data?.sumBy { parseInt(it.jumlah!!) } ?: 0
-
-        tv_total_qty.text = totQty.toString()
-        tv_total.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
+//        tv_id.text = id
+//        ll_pay.visibility = View.VISIBLE
+//        ll_bayar.visibility = View.GONE
+//        tv_pay.text = detail.struk?.status
+//        // tv_pay.text = pay
+//        tv_jatuh_tempo.text =
+//            Helper.getDateFormat(this, detail.struk?.jatuh_tempo!!, "yyyy-MM-dd", "dd-MM-yyyy")
+//        ll_jatuh_tempo.visibility = View.VISIBLE
+//        totQty = detail.data?.sumBy { parseInt(it.jumlah!!) } ?: 0
+//
+//        tv_total_qty.text = totQty.toString()
+//        tv_total.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
 //        tv_bayar.text="Rp ${Helper.convertToCurrency(detail.struk?.totalbayar!!)}"
-        tv_date.text =
-            Helper.getDateFormat(this, detail.struk?.tanggal!!, "yyyy-MM-dd", "EEE, dd MMMM yyyy")
-        ll_kembalian.visibility = View.GONE
+//        tv_date.text =
+//            Helper.getDateFormat(this, detail.struk?.tanggal!!, "yyyy-MM-dd", "EEE, dd MMMM yyyy")
+//        ll_kembalian.visibility = View.GONE
 
         onSuccessView()
     }
 
     override fun onSuccess(total: String, date: String, id: String) {
-        tv_id.text = id
+        tv_id_transaksi.text = id
 //        tv_order.text = total
-        tv_date.text = date
+//        tv_date.text = date
 //        ll_info.visibility = View.GONE
         onSuccessView()
     }
@@ -295,16 +308,17 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 
     override fun onErrorView(msg: String) {
         sw_refresh.isRefreshing = false
-        fl_content.visibility = View.GONE
+        checkout_view.visibility = View.GONE
+        container_action.visibility = View.GONE
         ll_error.visibility = View.VISIBLE
         tv_error.text = msg
-        toolbar_title.text = "Pembayaran Gagal!"
-        toolbarx.setBackgroundColor(Color.WHITE)
+        supportActionBar!!.title = "Pembayaran Gagal!"
     }
 
     override fun onSuccessView() {
         sw_refresh.isRefreshing = false
-        fl_content.visibility = View.VISIBLE
+        checkout_view.visibility = View.VISIBLE
+        container_action.visibility = View.VISIBLE
         ll_error.visibility = View.GONE
     }
 
@@ -319,11 +333,11 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
                                          taskType: Int,
                                          device: BluetoothDevice?) {
                     PrinterUtil.print(socket,
-                            getPresenter()?.getDataStruk(),
-                            null,
-                            getString(R.string.app_name),
-                            getLogo(),
-                            device?.name.orEmpty())
+                        getPresenter()?.getDataStruk(),
+                        null,
+                        getString(R.string.app_name),
+                        getLogo(),
+                        device?.name.orEmpty())
                     hideLoadingDialog()
                     showToast("Sedang mencetak struk")
                     listDevice.union(BluetoothUtil.getPairedDevices())
@@ -345,15 +359,15 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     fun dialogSelectPrinter() {
         hideLoadingDialog()
         DialogUtils.showDialog(this,
-                getString(R.string.btn_print),
-                "Gagal menghubungkan printer, buka halaman pilih printer?",
-                false,
-                buttonOkLabel = "Ya",
-                buttonOkAction = {
-                    startActivity(Intent(this,
-                            PrinterActivity::class.java).putExtra(AppConstant.DATA,
-                            getPresenter()?.getDataStruk()))
-                })
+            getString(R.string.btn_print),
+            "Gagal menghubungkan printer, buka halaman pilih printer?",
+            false,
+            buttonOkLabel = "Ya",
+            buttonOkAction = {
+                startActivity(Intent(this,
+                    PrinterActivity::class.java).putExtra(AppConstant.DATA,
+                    getPresenter()?.getDataStruk()))
+            })
     }
 
     override fun openDetailPage() {

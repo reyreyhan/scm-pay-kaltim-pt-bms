@@ -21,7 +21,7 @@ class ChooseProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_choose_product, parent, false))
+            .inflate(R.layout.item_list_choose_product, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -55,34 +55,23 @@ class ChooseProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val nameTv = view.tv_name
-        private val priceTv = view.tv_price
-        private val stockTv = view.tv_stok
+        private val kodeTv = view.tv_kode
         private val imageIv = view.iv_photo
-        private val infoTv = view.tv_info
         private val wrapper = view.ll_wrapper
-
 
         @SuppressLint("SetTextI18n")
         fun bindData(data: Product, position: Int) {
             nameTv.text = "${data.nama_barang}"
-            var desc = data.deskripsi
-            if(desc.isNullOrEmpty() || desc.isNullOrBlank()){
-                desc = "-"
-            }
-
-            infoTv.text = "$desc"
-            priceTv.text = "Rp ${Helper.convertToCurrency(data.hargajual!!)}"
-            stockTv.text = "Stok : ${Helper.convertToCurrency(data.stok!!)}"
+            kodeTv.text = "Kode: ${data.kodebarang}"
 
             if(checkStock){
-                wrapper.isEnabled = data.stok!!.toDouble() > 0
-                wrapper.isClickable = data.stok!!.toDouble() > 0
+                wrapper.isEnabled = data.stok.toDouble() > 0
+                wrapper.isClickable = data.stok.toDouble() > 0
             }
             else{
                 wrapper.isEnabled = true
                 wrapper.isClickable = true
             }
-
 
             if(data.gbr == null){
                 Glide.with(itemView.context)

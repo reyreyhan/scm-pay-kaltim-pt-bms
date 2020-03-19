@@ -46,9 +46,6 @@ public class PaymentNumberTextWatcher implements TextWatcher {
             et.addTextChangedListener(this);
             return;
         }
-
-
-
         try {
             int inilen, endlen;
             inilen = et.getText().length();
@@ -74,9 +71,7 @@ public class PaymentNumberTextWatcher implements TextWatcher {
         } catch (ParseException e) {
             // do nothing?
         }
-
         presenter.countCashback();
-
         et.addTextChangedListener(this);
     }
 

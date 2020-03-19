@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
+import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activity_choose_customer.*
+import kotlinx.android.synthetic.main.activity_choose_customer_new.*
 
 class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCustomerContract.View>(),
     ChooseCustomerContract.View {
@@ -29,7 +30,7 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_choose_customer
+        return R.layout.activity_choose_customer_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -82,6 +83,11 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
 
             }
         })
+
+        btn_pelanggan_baru.setOnClickListener {
+            val intent = Intent(this, AddCustomerActivity::class.java)
+            startActivityForResult(intent, 100)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -98,7 +104,7 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.menu_choose_customer)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
 
@@ -134,7 +140,6 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
             Toast.makeText(this,msg, Toast.LENGTH_SHORT).show()
         }
         reloadData()
-
     }
 
     override fun reloadData() {
@@ -160,5 +165,10 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
         finish()
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
+            reloadData()
+        }
+    }
 }
