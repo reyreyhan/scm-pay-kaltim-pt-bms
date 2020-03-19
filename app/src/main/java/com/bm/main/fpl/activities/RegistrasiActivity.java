@@ -279,8 +279,8 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
         recyclerViewPaketOutlet.setAdapter(listGridPaketAdapter);*/
 
         etName = findViewById(R.id.et_name);
-        etEmail = findViewById(R.id.et_email);
-        etNoHp = findViewById(R.id.et_no_hp);
+        etEmail = findViewById(R.id.et_mail);
+        etNoHp = findViewById(R.id.et_phone);
         etNamaToko = findViewById(R.id.et_nama_toko);
         etAlamat = findViewById(R.id.et_address);
         etProvinsi = findViewById(R.id.et_province);
@@ -312,9 +312,8 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                         etProvinsi.setAnimation(BaseActivity.animShake);
                         etProvinsi.startAnimation(BaseActivity.animShake);
                         etProvinsi.setError("Propinsi Tidak Boleh Kosong");
-                        etKota.requestFocus();
+                        etProvinsi.requestFocus();
                         Device.vibrate(RegistrasiActivity.this);
-
                         return;
                     }
                     Intent intent = new Intent(RegistrasiActivity.this, ListKabupatenActivity.class);
@@ -332,7 +331,6 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     etProvinsi.startAnimation(BaseActivity.animShake);
                     etProvinsi.setError("Propinsi Tidak Boleh Kosong");
                     Device.vibrate(RegistrasiActivity.this);
-
                     return;
                 }
                 Intent intent = new Intent(RegistrasiActivity.this, ListKabupatenActivity.class);
@@ -350,9 +348,8 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                         etKota.setAnimation(BaseActivity.animShake);
                         etKota.startAnimation(BaseActivity.animShake);
                         etKota.setError("Kabupaten/Kota Tidak Boleh Kosong");
-                        etKecamatan.requestFocus();
+                        etKota.requestFocus();
                         Device.vibrate(RegistrasiActivity.this);
-
                         return;
                     }
                     Intent intent = new Intent(RegistrasiActivity.this, ListKecamatanActivity.class);
@@ -370,7 +367,6 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     etKota.startAnimation(BaseActivity.animShake);
                     etKota.setError("Kabupaten/Kota Tidak Boleh Kosong");
                     Device.vibrate(RegistrasiActivity.this);
-
                     return;
                 }
                 Intent intent = new Intent(RegistrasiActivity.this, ListKecamatanActivity.class);
@@ -389,9 +385,8 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                         etKecamatan.setAnimation(BaseActivity.animShake);
                         etKecamatan.startAnimation(BaseActivity.animShake);
                         etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
-                        etKodePos.requestFocus();
+                        etKecamatan.requestFocus();
                         Device.vibrate(RegistrasiActivity.this);
-
                         return;
                     }
                     Intent intent = new Intent(RegistrasiActivity.this, ListKodePosActivity.class);
@@ -409,7 +404,6 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     etKecamatan.startAnimation(BaseActivity.animShake);
                     etKecamatan.setError("Kecamatan Tidak Boleh Kosong");
                     Device.vibrate(RegistrasiActivity.this);
-
                     return;
                 }
                 Intent intent = new Intent(RegistrasiActivity.this, ListKodePosActivity.class);
@@ -418,7 +412,6 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                 startActivityForResult(intent, ActionCode.LIST_KODEPOS);
             }
         });
-
         btnRegister = findViewById(R.id.btn_register_now);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -429,19 +422,14 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
     }
 
     private void callRegister() {
+        if (!checkInternetDialog()){
+            return;
+        }
+
         if (etName.getEditableText().toString().trim().isEmpty() || etName.getEditableText().toString().trim().equals("")) {
             etName.setAnimation(animShake);
             etName.startAnimation(animShake);
             etName.setError("Nama Tidak Boleh Kosong");
-            Device.vibrate(RegistrasiActivity.this);
-            scrollViewRegistrasi.fullScroll(ScrollView.FOCUS_DOWN);
-            return;
-        }
-
-        if (etNamaToko.getEditableText().toString().trim().isEmpty() || etNamaToko.getEditableText().toString().trim().equals("")) {
-            etNamaToko.setAnimation(animShake);
-            etNamaToko.startAnimation(animShake);
-            etNamaToko.setError("Nama Toko Tidak Boleh Kosong");
             Device.vibrate(RegistrasiActivity.this);
             scrollViewRegistrasi.fullScroll(ScrollView.FOCUS_DOWN);
             return;
@@ -461,6 +449,15 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
             etEmail.startAnimation(animShake);
             etEmail.setError("Format email salah, Pastikan format email : contoh@sbf.com");
             Device.vibrate(RegistrasiActivity.this);
+            return;
+        }
+
+        if (etNamaToko.getEditableText().toString().trim().isEmpty() || etNamaToko.getEditableText().toString().trim().equals("")) {
+            etNamaToko.setAnimation(animShake);
+            etNamaToko.startAnimation(animShake);
+            etNamaToko.setError("Nama Toko Tidak Boleh Kosong");
+            Device.vibrate(RegistrasiActivity.this);
+            scrollViewRegistrasi.fullScroll(ScrollView.FOCUS_DOWN);
             return;
         }
 
@@ -503,7 +500,6 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
             Device.vibrate(RegistrasiActivity.this);
             return;
         }
-
         requestRegistrasi();
     }
 
@@ -523,7 +519,8 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     etEmail.getEditableText().toString(),
                     kodePos,
                     paketCode,
-                    materialEditTextIdUplineReg.getEditableText().toString()));
+                    ""));
+                    //materialEditTextIdUplineReg.getEditableText().toString()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -609,7 +606,7 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     builder.show();
 
                     HashMap<String, String> eventMap = new HashMap<>();
-                    eventMap.put("upline", materialEditTextIdUplineReg.getEditableText().toString());
+                    eventMap.put("upline", "");//materialEditTextIdUplineReg.getEditableText().toString());
                     eventMap.put("is_register", "1");
                     eventMap.put("paket", paketName);
                     eventMap.put("email", etEmail.getEditableText().toString());
@@ -716,6 +713,10 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
     @Override
     protected void onResume() {
         super.onResume();
+        checkInternetDialog();
+    }
+
+    private boolean checkInternetDialog(){
         if (!DetectConnection.checkInternet(this)){
             new AlertDialog.Builder(this, R.style.AlertDialogNoInternet)
                     .setTitle("Tidak Ada Koneksi Internet!")
@@ -724,6 +725,9 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
                     //.setNeutralButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
-        };
+            return false;
+        }else{
+            return true;
+        }
     }
 }

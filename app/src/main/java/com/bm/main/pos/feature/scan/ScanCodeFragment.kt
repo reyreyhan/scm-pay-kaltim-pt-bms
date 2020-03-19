@@ -77,6 +77,9 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
         _view.permission_btn.setOnClickListener {
             openCameraPermission()
         }
+        _view.content_frame.setOnClickListener {
+            mFlash = if(mFlash) true else false
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

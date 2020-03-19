@@ -1,7 +1,6 @@
 package com.bm.main.pos.feature.sell.chooseProduct
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,10 +17,8 @@ import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
-import com.bm.main.pos.ui.LinearItemDecoration
 import com.bm.main.pos.ui.ext.toast
 import com.google.firebase.analytics.FirebaseAnalytics
-import kotlinx.android.synthetic.main.fragment_penjualan_cari.*
 import kotlinx.android.synthetic.main.fragment_penjualan_cari.view.*
 
 class ChooseProductFragment : BaseFragment<ChooseProductPresenter, ChooseProductContract.View>(), ChooseProductContract.View {
@@ -88,7 +85,6 @@ class ChooseProductFragment : BaseFragment<ChooseProductPresenter, ChooseProduct
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         _view.rv_list_barang.layoutManager = layoutManager
         _view.rv_list_barang.adapter = adapter
-        //_view.rv_list_barang.addItemDecoration(LinearItemDecoration(space = resources.getDimensionPixelSize(R.dimen._4sdp)))
 
         scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onFirstItemVisible(isFirstItem: Boolean) {
@@ -106,6 +102,16 @@ class ChooseProductFragment : BaseFragment<ChooseProductPresenter, ChooseProduct
                 }
             }
         }
+
+//        _view.et_search.addTextChangedListener(object : TextWatcher {
+//            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+//            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+//            }
+//            override fun afterTextChanged(editable: Editable) {
+//                adapter.filter.filter(editable.toString())
+//            }
+//        })
+
 
         _view.et_search.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(p0: Editable?) {

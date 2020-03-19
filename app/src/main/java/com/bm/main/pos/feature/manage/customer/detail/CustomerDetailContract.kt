@@ -12,9 +12,9 @@ interface CustomerDetailContract {
     interface View : BaseViewImpl {
         fun onClose(status:Int)
         fun setCustomer(name: String?,email:String?,phone:String?,address:String?,url:String?)
-        fun hideShowToolbar(isShow:Boolean)
+//        fun hideShowToolbar(isShow:Boolean)
         fun openEditPage()
-
+        fun showButtonTransaction()
     }
 
     interface Presenter : BasePresenterImpl<View> {

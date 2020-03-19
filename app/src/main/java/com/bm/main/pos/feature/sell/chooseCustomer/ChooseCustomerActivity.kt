@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
+import com.bm.main.pos.feature.manage.customer.detail.CustomerDetailActivity
 import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.rest.entity.RestException
@@ -154,10 +155,12 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     }
 
     override fun onSelected(data: Customer) {
-        val newintent:Intent = intent
-        newintent.putExtra(AppConstant.DATA,data)
-        setResult(RESULT_OK,newintent)
-        finish()
+//        val newintent:Intent = intent
+//        newintent.putExtra(AppConstant.DATA,data)
+//        setResult(RESULT_OK,newintent)
+        val intent = Intent(this, CustomerDetailActivity::class.java)
+        intent.putExtra(AppConstant.DATA, data)
+        startActivityForResult(intent, 101)
     }
 
     override fun onBackPressed() {
@@ -169,6 +172,13 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
             reloadData()
+        }
+        else if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
+            val customer = data!!.getSerializableExtra(AppConstant.DATA) as Customer
+            val newintent: Intent = intent
+            newintent.putExtra(AppConstant.DATA, customer)
+            setResult(RESULT_OK, newintent)
+            finish()
         }
     }
 }

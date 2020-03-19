@@ -2,6 +2,7 @@ package com.bm.main.pos.feature.sell.main
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -54,7 +55,15 @@ class ConfirmPayDialog : DialogFragment() {
             dismiss()
         }
         btn_cancel.setOnClickListener {
+            val newIntent: Intent = activity!!.intent
+            targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_CANCELED, activity!!.intent)
             dismiss()
         }
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        val newIntent: Intent = activity!!.intent
+        targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_CANCELED, activity!!.intent)
+        super.onCancel(dialog)
     }
 }

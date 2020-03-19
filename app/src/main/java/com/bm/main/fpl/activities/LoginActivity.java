@@ -352,6 +352,9 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         } else {
             //materialEditTextKey.setText(keyx);
             if (!PreferenceClass.isLoggedIn()) {
+                if (!checkInternetDialog()){
+                    return;
+                }
                 doLogin();
             }
         }
@@ -872,7 +875,11 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
     @Override
     protected void onResume() {
         super.onResume();
-        if (!DetectConnection.checkInternet(context)){
+        checkInternetDialog();
+    }
+
+    private boolean checkInternetDialog(){
+        if (!DetectConnection.checkInternet(this)){
             new AlertDialog.Builder(this, R.style.AlertDialogNoInternet)
                     .setTitle("Tidak Ada Koneksi Internet!")
                     .setMessage("Anda tidak sedang terhubung ke internet. Tolong periksa kembali koneksi internet Anda!")
@@ -880,6 +887,9 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                     //.setNeutralButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
-        };
+            return false;
+        }else{
+            return true;
+        }
     }
 }

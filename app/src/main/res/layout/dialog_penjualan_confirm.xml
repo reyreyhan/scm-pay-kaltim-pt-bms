@@ -120,8 +120,9 @@
             android:id="@+id/btn_cancel"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/standard_margin"
-            android:layout_marginBottom="@dimen/standard_margin"
-            android:text="Cek Penjualan Lagi"/>
+            android:layout_marginTop="@dimen/standard_margin_2x"
+            android:layout_marginBottom="@dimen/standard_margin_2x"
+            android:text="Cek Penjualan Lagi"
+            android:clickable="true"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

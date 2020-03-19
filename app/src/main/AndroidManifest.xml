@@ -247,7 +247,7 @@
         <activity
             android:name=".feature.manage.customer.detail.CustomerDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar" />
+            android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.scan.ScanCodeActivity"
             android:screenOrientation="portrait"

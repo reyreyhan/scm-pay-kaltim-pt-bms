@@ -14,10 +14,12 @@ class CustomerDetailPresenter(val context: Context, val view: CustomerDetailCont
     private var interactor = CustomerDetailInteractor(this)
     private var title = ""
     private var data : Customer?= null
+    private var isTransaction:Boolean = false
 
 
     override fun onViewCreated(intent: Intent) {
         data = intent.getSerializableExtra(AppConstant.DATA) as Customer
+        isTransaction = intent.getBooleanExtra("isTransaction", false)
         if(data == null){
             view.onClose(Activity.RESULT_CANCELED)
             return
@@ -26,6 +28,10 @@ class CustomerDetailPresenter(val context: Context, val view: CustomerDetailCont
         data?.let {
             title = it.nama_pelanggan!!
             view.setCustomer(it.nama_pelanggan,it.email,it.telpon,it.alamat,it.gbr)
+        }
+
+        if (isTransaction){
+            view.showButtonTransaction()
         }
     }
 

@@ -37,7 +37,7 @@ interface SellContract {
         fun updateCart(cart:Cart,position: Int)
         fun deleteCart(position: Int)
         fun showTunaiView()
-        fun showConfirmPayTunaiDialog(jumlah:Int, cashback:String, jumlahBarang:Int)
+        fun showConfirmPayTunaiDialog(jumlah:String, cashback:String, jumlahBarang:Int)
         fun showNonTunaiView()
         fun showPiutangView()
         fun setCustomerName(data:Customer?)
