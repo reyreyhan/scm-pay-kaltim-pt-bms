@@ -33,6 +33,8 @@ class NewHomeFragmentStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapt
     override fun getPageTitle(position: Int): CharSequence? {
         when (position) {
             0 -> return "Penjualan"
+            1 -> return "Toko"
+            2 -> return "PPOB"
         }
         return null
     }
