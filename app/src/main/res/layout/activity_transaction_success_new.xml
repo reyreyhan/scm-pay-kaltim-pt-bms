@@ -143,6 +143,7 @@
                         android:layout_marginRight="@dimen/standard_margin_2x"
                         android:layout_marginBottom="@dimen/standard_margin">
                         <TextView
+                            android:id="@+id/tv_status"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Tunai:"
@@ -150,7 +151,7 @@
                             android:textSize="@dimen/_12sdp"
                             android:layout_weight="1"/>
                         <TextView
-                            android:id="@+id/tv_tunai"
+                            android:id="@+id/tv_pay"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="Rp 120.000"
@@ -159,6 +160,7 @@
                             android:layout_weight="2"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/layout_kembalian"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -230,7 +232,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Silakan pilih metode struck yang diinginkan"
+                        android:text="Silakan pilih metode struk yang diinginkan"
                         android:textSize="@dimen/_12sdp"
                         android:textColor="@color/white"
                         android:layout_marginBottom="@dimen/standard_margin"/>
@@ -238,7 +240,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/standard_margin">
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -271,13 +274,16 @@
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:backgroundTint="@color/md_green_500"/>
+                            android:paddingVertical="@dimen/standard_margin"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:backgroundTint="@color/selector_btn_green"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/standard_margin">
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -304,15 +310,17 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/standard_margin"
+                            android:paddingVertical="@dimen/standard_margin"
                             android:gravity="center"
                             android:text="Kirim"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:backgroundTint="@color/md_green_500"/>
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:backgroundTint="@color/selector_btn_green"/>
                     </LinearLayout>
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_cetak_struk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -321,7 +329,10 @@
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
                         android:textAllCaps="false"
-                        style="@style/ButtonWhiteTextAccent"
+                        android:textColor="@color/colorAccent"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:paddingVertical="@dimen/standard_margin"
+                        android:backgroundTint="@color/white"
                         android:layout_marginBottom="@dimen/standard_margin"/>
                     <TextView
                         android:id="@+id/tv_nanti"

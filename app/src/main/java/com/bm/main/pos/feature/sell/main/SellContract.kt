@@ -38,6 +38,7 @@ interface SellContract {
         fun deleteCart(position: Int)
         fun showTunaiView()
         fun showConfirmPayTunaiDialog(jumlah:String, cashback:String, jumlahBarang:Int)
+        fun showConfirmPayHutangDialog(jumlah:String, cashback:String, jumlahBarang:Int, namaPelanggan:String)
         fun showTambahBarangDialog(code:String)
         fun showNonTunaiView()
         fun showPiutangView()
@@ -70,6 +71,7 @@ interface SellContract {
         fun checkTunai()
         fun checkPiutang()
         fun getCartsSize():Int
+        fun getCustomerName():String
     }
 
     interface Interactor : BaseInteractorImpl {

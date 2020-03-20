@@ -25,12 +25,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.fragment_add_product_new.view.*
-import org.jetbrains.anko.image
 import timber.log.Timber
 import java.io.File
 
 class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.View>(),
-    AddProductContract.View, BottomDialog.Listener{
+    AddProductContract.View{
 
     companion object {
         @JvmStatic
@@ -236,9 +235,5 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
     override fun setBarcodeText(code: String) {
         _view.tv_barcode.visibility = View.VISIBLE
         _view.tv_barcode.text = code
-    }
-
-    override fun onItemClicked(data: DialogModel, type: Int) {
-        getPresenter()?.setSelectedCategory(data)
     }
 }

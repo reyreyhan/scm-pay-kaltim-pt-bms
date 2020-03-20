@@ -75,7 +75,7 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
         val layoutManager = GridLayoutManager(activity, 3, RecyclerView.VERTICAL, false)
         _view.rv_list.layoutManager = layoutManager
         _view.rv_list.adapter = adapter
-        val isCoverGrosir = PreferenceClass.getUser().isCoverGrosir
+        //val isCoverGrosir = PreferenceClass.getUser().isCoverGrosir
         /*if (isCoverGrosir == "0") {
             //            frameTabGroupHome.setVisibility(View.GONE);
             _view.btn_grocery.setText("Pembayaran QR")
@@ -83,7 +83,7 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
         }*/
         adapter.callback = object : MenuAdapter.ItemClickCallback {
             override fun onClick(data: Menu) {
-                if (data.id == R.id.nav_management) {
+                if (data.id == 0) {
                     val intent = Intent(requireContext(), AddProductMainActivity::class.java)
                     startActivity(intent)
                 }

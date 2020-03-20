@@ -20,8 +20,8 @@
             android:background="@drawable/selector_btn_left_accent"
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp"
+            android:paddingLeft="@dimen/standard_margin_2x"
+            android:paddingRight="@dimen/standard_margin_2x"
             android:gravity="center"
             android:clickable="true">
             <ImageView
@@ -36,11 +36,10 @@
                 android:layout_height="wrap_content"
                 android:text="Scan"
                 android:textColor="@drawable/selector_text_blue_white_checked"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
-
             android:id="@+id/btn_cari"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -49,8 +48,8 @@
             android:background="@drawable/selector_btn_rect_accent"
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp"
+            android:paddingLeft="@dimen/standard_margin_2x"
+            android:paddingRight="@dimen/standard_margin_2x"
             android:gravity="center"
             android:clickable="true">
             <ImageView
@@ -65,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cari"
                 android:textColor="@drawable/selector_text_blue_white_checked"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
@@ -76,8 +75,8 @@
             android:background="@drawable/selector_btn_right_accent"
             android:paddingTop="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp"
+            android:paddingLeft="@dimen/standard_margin_2x"
+            android:paddingRight="@dimen/standard_margin_2x"
             android:gravity="center"
             android:clickable="true"
             android:id="@+id/btn_manual">
@@ -93,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:text="Manual"
                 android:textColor="@drawable/selector_text_blue_white_checked"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

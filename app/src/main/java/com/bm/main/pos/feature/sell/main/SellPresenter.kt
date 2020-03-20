@@ -275,10 +275,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             view.showMessage(999,"Data pelanggan belum diisi")
             return
         }
-        if(date == null){
-            view.showMessage(999,"Jatuh tempo belum diisi")
-            return
-        }
+//        if(date == null){
+//            view.showMessage(999,"Jatuh tempo belum diisi")
+//            return
+//        }
         val total = view.getTotalValue()
         val req = RequestTransaction()
         req.tipe_pembayaran = 3
@@ -292,7 +292,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
 
             EventParam.EVENT_ACTION_SELL_PRODUCT,
-            SellFragment::class.java!!.simpleName
+            SellFragment::class.java.simpleName
         )
         interactor.callOrderAPI(context,transactionRestModel,req)
     }
@@ -327,12 +327,11 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     }
 
     fun countAllBarang():Int{
-        var count = 0
-        val list = getBarang()
-        for(cart in list){
-            cart.jumlah_barang
+        var count = 0.0
+        for(cart:Cart in carts.values){
+            count += cart.count!!
         }
-        return count
+        return count.toInt()
     }
 
     override fun onSuccessOrder(order: Order) {
@@ -346,6 +345,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     override fun getCartsSize():Int {
         return carts.size
+    }
+
+    override fun getCustomerName():String {
+        return customer!!.nama_pelanggan!!
     }
 
 }

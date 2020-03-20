@@ -11,6 +11,8 @@ import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -29,6 +31,7 @@ import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.*
 import com.bm.main.pos.utils.print.PrinterUtil
 import kotlinx.android.synthetic.main.activity_transaction_success_new.*
+import org.jetbrains.anko.sdk25.coroutines.textChangedListener
 import java.lang.Integer.parseInt
 
 class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
@@ -75,14 +78,47 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
         }
 
         btn_kirim_email.setOnClickListener {
-            getPresenter()?.onCheckShare()
+            //getPresenter()?.onCheckShare()
 //            openDetailPage()
+
         }
+
+        et_email.addTextChangedListener(object:TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                if(!s.isNullOrEmpty()){
+                    btn_kirim_email.isEnabled = true
+                }else{
+                    btn_kirim_email.isEnabled = false
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        et_no_wa.addTextChangedListener(object:TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                if(!s.isNullOrEmpty()){
+                    btn_kirim_no_wa.isEnabled = true
+                }else{
+                    btn_kirim_no_wa.isEnabled = false
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
 
         btn_kirim_no_wa.setOnClickListener {
             if (et_no_wa.editableText.toString().isNotEmpty() && fileStruk.isNotEmpty()){
                 shareToWhatsapp(et_no_wa.editableText.toString(), fileStruk)
             }
+        }
+
+        tv_nanti.setOnClickListener {
+            finish()
         }
     }
 
@@ -100,7 +136,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 
     private val filterWhite by lazy { PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN) }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_share, menu)
+        menuInflater.inflate(R.menu.menu_struk, menu)
         menu?.findItem(R.id.action_share)?.apply { icon = icon?.apply { colorFilter = filterWhite } }
         return super.onCreateOptionsMenu(menu)
     }
@@ -108,34 +144,47 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.action_share -> getPresenter()?.onCheckShare()
+            R.id.action_download -> getPresenter()?.onCheckDownload()
         }
         return super.onOptionsItemSelected(item!!)
     }
 
-    override fun takeScreenshot(filename: String) {
+    override fun takeScreenshot(filename: String, isShare:Boolean) {
         container_action.visibility = View.GONE
-        ImageHelper.takeScreenshot(this, ns_content, filename) {
-            container_action.visibility = View.VISIBLE
-            fileStruk = it
-            //Helper.shareBitmapToApps(this, Uri.parse(it))
+        if (isShare){
+            ImageHelper.takeScreenshot(this, ns_content, filename) {
+                //container_action.visibility = View.VISIBLE
+                Helper.shareBitmapToApps(this, Uri.parse(it))
+                //fileStruk = it
+            }
+        }else{
+            ImageHelper.takeScreenshot(this, ns_content, filename)
         }
+        container_action.visibility = View.VISIBLE
     }
 
     override fun shareToWhatsapp(contact:String, filename: String) {
         var mContact = contact.substring(1)
         mContact = "62$mContact"
-        try {
-            val sendIntent = Intent("android.intent.action.MAIN")
-            sendIntent.component = ComponentName("com.whatsapp", "com.whatsapp.Conversation")
-            sendIntent.action = Intent.ACTION_SEND
-            sendIntent.type = "image/*"
-            sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(filename))
-            sendIntent.putExtra("jid", mContact + "@s.whatsapp.net")
-            sendIntent.setPackage("com.whatsapp")
-            startActivity(sendIntent)
-        } catch (e: Exception) {
-            toast(this, "Error/n$e")
-        }
+//        try {
+//            val sendIntent = Intent("android.intent.action.MAIN")
+//            sendIntent.component = ComponentName("com.whatsapp", "com.whatsapp.Conversation")
+//            sendIntent.action = Intent.ACTION_SEND
+//            sendIntent.type = "image/*"
+//            sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(filename))
+//            sendIntent.putExtra("jid", mContact + "@s.whatsapp.net")
+//            sendIntent.setPackage("com.whatsapp")
+//            startActivity(sendIntent)
+//        } catch (e: Exception) {
+//            toast(this, "Error/n$e")
+//        }
+
+        val uri = Uri.parse("smsto:$mContact")
+        val i = Intent(Intent.ACTION_SENDTO, uri)
+        i.setPackage("com.whatsapp")
+        i.type = "image/*"
+        i.putExtra(Intent.EXTRA_STREAM, Uri.parse(filename))
+        startActivity(Intent.createChooser(i, ""))
     }
 
     override fun showMessage(code: Int, msg: String?) {
@@ -206,10 +255,10 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 //            totQty += parseInt(values)
 //        }
         totQty = detail.data?.sumBy { parseInt(it.jumlah!!) } ?: 0
-
+        tv_status.text = "Tunai"
         //tv_total_qty.text = totQty.toString()
         tv_total_item.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
-        tv_tunai.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalbayar!!)}"
+        tv_pay.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalbayar!!)}"
 //        tv_date.text =
 //            Helper.getDateFormat(this, detail.struk?.tanggal!!, "yyyy-MM-dd", "EEE, dd MMMM yyyy")
         tv_kembalian.visibility = View.GONE
@@ -249,14 +298,15 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 
     override fun onSuccessPiutang(total: String, date: String, id: String) {
 //        println("hutang")
-//        tv_id.text = id
-//        tv_order.text = total
-//        tv_date.text = date
-//        ll_info.visibility = View.VISIBLE
-//        ll_piutang.visibility = View.VISIBLE
-//        ll_pay.visibility = View.GONE
-//        ll_kembalian.visibility = View.GONE
-//       tv_piutang.text = total
+        tv_id_transaksi.text = id
+        tv_total_item.text = total
+        //tv_date.text = date
+        //ll_info.visibility = View.VISIBLE
+        //ll_piutang.visibility = View.VISIBLE
+        layout_kembalian.visibility = View.GONE
+        //ll_kembalian.visibility = View.GONE
+        tv_status.text = "Hutang"
+        tv_pay.text = total
         onSuccessView()
     }
 
@@ -269,11 +319,16 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
             EventParam.EVENT_SUCCESS,
             SuccessActivity::class.java.getSimpleName()
         )
-//        tv_id.text = id
+        tv_id_transaksi.text = id
+        tv_nama_toko.text = detail.struk?.nama_toko
+        tv_alamat_toko.text = detail.struk?.alamat
+        tv_no_telepon_toko.text=  detail.struk?.nohp
 //        ll_pay.visibility = View.VISIBLE
 //        ll_bayar.visibility = View.GONE
-//        tv_pay.text = detail.struk?.status
-//        // tv_pay.text = pay
+        tv_status.text = "Hutang"
+        tv_total_item.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
+        tv_pay.text = "Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}"
+        layout_kembalian.visibility = View.GONE
 //        tv_jatuh_tempo.text =
 //            Helper.getDateFormat(this, detail.struk?.jatuh_tempo!!, "yyyy-MM-dd", "dd-MM-yyyy")
 //        ll_jatuh_tempo.visibility = View.VISIBLE
@@ -285,7 +340,6 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 //        tv_date.text =
 //            Helper.getDateFormat(this, detail.struk?.tanggal!!, "yyyy-MM-dd", "EEE, dd MMMM yyyy")
 //        ll_kembalian.visibility = View.GONE
-
         onSuccessView()
     }
 
@@ -296,6 +350,8 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 //        ll_info.visibility = View.GONE
         onSuccessView()
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

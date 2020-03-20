@@ -60,7 +60,7 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
 
     override fun showMessage(code: Int, msg: String?) {
         hideLoadingDialog()
-        if(code == RestException.CODE_USER_NOT_FOUND){
+        /*if(code == RestException.CODE_USER_NOT_FOUND){
             restartLoginActivity()
         }
         else{
@@ -68,8 +68,7 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
                 toast(this,it)
             }
 
-        }
-
+        }*/
     }
 
     override fun onSuccess(data: Customer) {
@@ -87,16 +86,19 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
     private fun checkIfAllFieldFilled(name:String, email:String, phone:String){
         if (name.isEmpty() && name == ""){
             et_name.error = "Nama Pelanggan Tidak Boleh Kosong"
+            hideLoadingDialog()
             return
         }
 
         if (email.isEmpty() && email == ""){
             et_no_hp.error = "Nomor Handphone Pelanggan Tidak Boleh Kosong"
+            hideLoadingDialog()
             return
         }
 
         if (phone.isEmpty() && phone == ""){
             et_email.error = "Alamat Email Pelanggan Tidak Boleh Kosong"
+            hideLoadingDialog()
             return
         }
 

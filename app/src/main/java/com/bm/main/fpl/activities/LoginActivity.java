@@ -352,9 +352,9 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
         } else {
             //materialEditTextKey.setText(keyx);
             if (!PreferenceClass.isLoggedIn()) {
-                if (!checkInternetDialog()){
-                    return;
-                }
+//                if (!checkInternetDialog()){
+//                    return;
+//                }
                 doLogin();
             }
         }
@@ -429,10 +429,13 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                 closeProgressBarDialog();
             }
         } else {
-//            if (activeSession) {
-            checkPin();
-//            requestLogin(editTextUser.getEditableText().toString(), editTextPassword.getEditableText().toString(), keyx);
-//            } else {
+            if (activeSession) {
+                checkPin();
+                requestLogin(editTextUser.getEditableText().toString().trim(), editTextPassword.getEditableText().toString().trim(), "");
+            }else{
+                requestLogin(editTextUser.getEditableText().toString().trim(), editTextPassword.getEditableText().toString().trim(), "");
+            }
+            // else {
 //                if (materialEditTextKey.getEditableText().toString().equalsIgnoreCase("")) {
 //                    materialEditTextKey.setAnimation(animShake);
 //                    materialEditTextKey.startAnimation(animShake);

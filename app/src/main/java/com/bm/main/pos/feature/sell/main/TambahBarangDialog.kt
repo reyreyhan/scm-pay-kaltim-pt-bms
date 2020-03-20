@@ -51,7 +51,7 @@ class TambahBarangDialog : DialogFragment() {
         btn_daftar_barang.setOnClickListener {
             val newIntent: Intent = activity!!.intent
             newIntent.putExtra(AppConstant.DATA, arguments!!.getString(AppConstant.DATA))
-            targetFragment!!.onActivityResult(targetRequestCode, 101, activity!!.intent)
+            targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_OK, activity!!.intent)
             dismiss()
         }
         btn_scan_barang.setOnClickListener {

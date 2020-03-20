@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintLeft_toLeftOf="@id/tv_title"
         app:layout_constraintRight_toRightOf="@id/tv_title"
-        app:layout_constraintBottom_toTopOf="@id/container_button"
+        app:layout_constraintBottom_toTopOf="@id/container_total"
         android:layout_marginTop="@dimen/standard_margin_2x"
         android:layout_marginLeft="@dimen/standard_margin_3x"
         android:layout_marginRight="@dimen/standard_margin_3x"
@@ -95,14 +96,44 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/container_hutang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        app:layout_constraintTop_toBottomOf="@id/container_total"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/container_button"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hutang ke Pelanggan"
+            android:gravity="center"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_marginTop="@dimen/standard_margin"
+            android:id="@+id/tv_nama_pelanggan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Rizal Aminin"
+            android:gravity="center"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/container_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/container_hutang"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/standard_margin_2x">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_update_barang"
             android:layout_width="@dimen/standart_button_width"

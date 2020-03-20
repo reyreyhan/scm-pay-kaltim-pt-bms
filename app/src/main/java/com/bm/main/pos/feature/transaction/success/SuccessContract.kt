@@ -26,7 +26,7 @@ interface SuccessContract {
         fun openPrinterPage()
         fun getParentLayout(): NestedScrollView
         fun setProducts(list: List<DetailTransaction.Data>)
-        fun takeScreenshot(filename: String)
+        fun takeScreenshot(filename: String, isShare:Boolean)
         fun shareToWhatsapp(contact:String, filename: String)
     }
 
@@ -38,6 +38,8 @@ interface SuccessContract {
         fun onCheckShare()
         fun getDataStruk(): DetailTransaction
         fun getTabPosition(): Int
+        fun getStrukImageFileName():String
+        fun onCheckDownload()
     }
 
     interface Interactor : BaseInteractorImpl {

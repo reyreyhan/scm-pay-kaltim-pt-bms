@@ -49,6 +49,16 @@ class ConfirmPayDialog : DialogFragment() {
         tv_total_belanja.text = arguments!!.getString("JumlahBarang")
         tv_uang_diterima.text = arguments!!.getString("JumlahPembayaran")
         tv_uang_kembalian.text = arguments!!.getString("Cashback")
+        if (!arguments!!.getString("NamaPelanggan").isNullOrEmpty()){
+            tv_nama_pelanggan.text = arguments!!.getString("NamaPelanggan")
+        }
+
+        if (arguments!!.getBoolean("Hutang")){
+            container_hutang.visibility = View.VISIBLE
+        }else{
+            container_hutang.visibility = View.GONE
+        }
+
         btn_update_barang.setOnClickListener {
             val newIntent: Intent = activity!!.intent
             targetFragment!!.onActivityResult(targetRequestCode, Activity.RESULT_OK, activity!!.intent)

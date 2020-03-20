@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rounded_white_4dp_stroke_gray"
-    android:paddingVertical="@dimen/standard_margin"
-    android:paddingHorizontal="@dimen/standard_margin"
+    android:paddingVertical="@dimen/standard_small_margin"
+    android:paddingHorizontal="@dimen/standard_small_margin"
     android:clickable="true">
     <LinearLayout
         android:layout_width="match_parent"

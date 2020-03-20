@@ -14,8 +14,20 @@ import com.bm.main.pos.R
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Menu : Serializable {
     var id: Int? = null
+        get() = field
+        set(value) {
+            field = value
+        }
     var name: String? = ""
+        get() = field
+        set(value) {
+            field = value
+        }
     var image: Int? = R.drawable.logo
+        get() = field
+        set(value) {
+            field = value
+        }
     var enabled = true
 
     fun json(): String {

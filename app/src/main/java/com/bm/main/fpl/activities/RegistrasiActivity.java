@@ -422,9 +422,9 @@ public class RegistrasiActivity extends BaseActivity implements ProgressResponse
     }
 
     private void callRegister() {
-        if (!checkInternetDialog()){
-            return;
-        }
+//        if (!checkInternetDialog()){
+//            return;
+//        }
 
         if (etName.getEditableText().toString().trim().isEmpty() || etName.getEditableText().toString().trim().equals("")) {
             etName.setAnimation(animShake);

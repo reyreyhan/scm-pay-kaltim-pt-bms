@@ -14,6 +14,7 @@ import com.bm.main.pos.feature.dialog.BottomDialog
 import com.bm.main.pos.feature.manage.product.ProductViewModel
 import com.bm.main.pos.feature.manage.product.add.AddProductFragment
 import com.bm.main.pos.feature.scan.ScanCodeFragment
+import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
@@ -27,7 +28,8 @@ const val ADD_PRODUCT_MANUAL = 104
 
 class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductMainContract.View>(),
     AddProductMainContract.View,
-    ScanCodeFragment.OnProductSelectedListener {
+    ScanCodeFragment.OnProductSelectedListener ,
+BottomDialog.Listener {
 
     private val categoryDialog = BottomDialog.newInstance()
     private var ft: FragmentTransaction? = null
@@ -97,7 +99,7 @@ class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductM
             putString("Barcode", barcode!!)
         }
         val fragment = AddProductFragment.newInstance(bundle)
-        ft!!.replace(R.id.container_fragment, fragment)
+        ft!!.replace(R.id.container_fragment, fragment, AddProductFragment::class.java.simpleName)
         ft!!.commit()
     }
 
@@ -111,7 +113,7 @@ class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductM
             putBoolean("FromScan", false)
         }
         val fragment = AddProductFragment.newInstance(bundle)
-        ft!!.replace(R.id.container_fragment, fragment)
+        ft!!.replace(R.id.container_fragment, fragment, AddProductFragment::class.java.simpleName)
         ft!!.commit()
     }
 
@@ -199,5 +201,12 @@ class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductM
 
     override fun onProductSelected(data: String) {
         openAddProductFragmentFromScan(data)
+    }
+
+    override fun onItemClicked(data: DialogModel, type: Int) {
+        val fragment = supportFragmentManager.findFragmentByTag(AddProductFragment::class.java.simpleName)
+        if (fragment is AddProductFragment){
+            fragment.getPresenter()?.setSelectedCategory(data)
+        }
     }
 }

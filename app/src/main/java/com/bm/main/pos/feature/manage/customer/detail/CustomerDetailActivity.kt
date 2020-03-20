@@ -1,28 +1,23 @@
 package com.bm.main.pos.feature.manage.customer.detail
 
+//import com.bm.main.pos.utils.glide.GlideApp
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.tabs.TabLayout
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
-import com.bm.main.pos.feature.manage.customer.credit.CustomerCreditFragment
 import com.bm.main.pos.feature.manage.customer.edit.EditCustomerActivity
-import com.bm.main.pos.feature.manage.customer.transaction.CustomerTransactionFragment
-import com.bm.main.pos.models.TabModel
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.ui.ViewPagerAdapter
 import com.bm.main.pos.utils.AppConstant
-import com.bumptech.glide.Glide
-//import com.bm.main.pos.utils.glide.GlideApp
-import kotlinx.android.synthetic.main.activity_customer_detail.*
 import kotlinx.android.synthetic.main.activity_customer_detail_new.*
+
 
 class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDetailContract.View>(),
     CustomerDetailContract.View {
@@ -154,6 +149,10 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_customer_detail, menu)
+        val item = menu!!.getItem(0)
+        val s = SpannableString(item.title)
+        s.setSpan(ForegroundColorSpan(Color.WHITE), 0, s.length, 0)
+        item.title = s
         return true
     }
 

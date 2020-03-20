@@ -54,22 +54,25 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bindData(data: Menu, position: Int) {
 
-            nameTv.text = "${data.name}"
+            nameTv.text = listMenu[position].name
+            imageIv.setImageDrawable(itemView.context.resources.getDrawable(listMenu[position].image!!))
 
-            if (data.image == null) {
-                Glide.with(itemView.context)
-                    .load(R.drawable.logo)
-                    //.transform(CenterCrop(), RoundedCorners(8))
-                    .into(imageIv)
-
-            } else {
-                Glide.with(itemView.context)
-                    .load(data.image)
-                    .error(R.drawable.logo)
-                    .placeholder(R.drawable.logo)
-                    //.transform(CenterCrop(), RoundedCorners(8))
-                    .into(imageIv)
-            }
+//            nameTv.text = "${data.name}"
+//
+//            if (data.image == null) {
+//                Glide.with(itemView.context)
+//                    .load(R.drawable.logo)
+//                    //.transform(CenterCrop(), RoundedCorners(8))
+//                    .into(imageIv)
+//
+//            } else {
+//                Glide.with(itemView.context)
+//                    .load(data.image)
+//                    .error(R.drawable.logo)
+//                    .placeholder(R.drawable.logo)
+//                    //.transform(CenterCrop(), RoundedCorners(8))
+//                    .into(imageIv)
+//            }
 
             itemView.setOnClickListener {
                 callback?.onClick(data)

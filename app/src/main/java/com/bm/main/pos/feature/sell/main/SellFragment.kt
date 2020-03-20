@@ -48,6 +48,14 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     private val CODE_OPEN_EDIT_MANUAL = 1004
     private val CODE_OPEN_CHOOSE_CUSTOMER = 1005
     private val CODE_OPEN_ADD_CUSTOMER = 1006
+    private val CODE_CONFIRM_TUNAI = 1007
+    private val CODE_CONFIRM_HUTANG = 1008
+    private val CODE_CONFIRM_NONTUNAI = 1009
+    private val CODE_DIALOG_SCAN_BARANG = 1101
+    private val CODE_DIALOG_COUNT_BARANG = 1102
+
+    private val CODE_RESULT_UPDATE_CART = 1201
+    private val CODE_RESULT_DELETE_CART = 1202
 
     private var showDate: ShowDate? = null
 
@@ -56,7 +64,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     private var payType = 1
     private var ft: FragmentTransaction? = null
     private val chooseProductFragment = ChooseProductFragment.newInstance()
-    private val scanCodeFragment = ScanCodeFragment.newInstance()
+    private var scanCodeFragment = ScanCodeFragment.newInstance()
 
     companion object {
 
@@ -181,7 +189,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
                     hideLoadingDialog()
                     showToast("Fitur belum tersedia")
                 }
-                3 -> getPresenter()?.checkPiutang()
+                3 -> showConfirmPayHutangDialog(Helper.convertToCurrency(getPayValue()) , getPresenter()!!.calculateCashBack(), getPresenter()!!.countAllBarang(), getPresenter()!!.getCustomerName())
             }
         }
     }
@@ -320,29 +328,35 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             } else {
                 getPresenter()?.updateCustomer(customer)
             }
-        } else if (requestCode == 101 && resultCode == 1001){
+        } else if (requestCode == CODE_DIALOG_COUNT_BARANG && resultCode == CODE_RESULT_UPDATE_CART){
             val cart = data?.getSerializableExtra(AppConstant.DATA) as Cart
             val pos = data.getIntExtra("CartPosition", 0)
             getPresenter()?.updateCart(cart, pos)
         }
-        else if (requestCode == 101 && resultCode == 1002){
+        else if (requestCode == CODE_DIALOG_COUNT_BARANG && resultCode == CODE_RESULT_DELETE_CART){
             val cart = data?.getSerializableExtra(AppConstant.DATA) as Cart
             val pos = data.getIntExtra("CartPosition", 0)
             getPresenter()?.deleteCart(cart, pos)
         }
-        else if (requestCode == 102 && resultCode == Activity.RESULT_OK){
+        else if (requestCode == CODE_CONFIRM_TUNAI && resultCode == Activity.RESULT_OK){
             getPresenter()?.checkTunai()
         }
-        else if (requestCode == 102 && resultCode == Activity.RESULT_CANCELED){
+        else if (requestCode == CODE_CONFIRM_TUNAI && resultCode == Activity.RESULT_CANCELED){
             hideLoadingDialog()
         }
-        else if (requestCode == 9999 && resultCode == 101){
+        else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_OK){
+            getPresenter()?.checkPiutang()
+        }
+        else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_CANCELED){
+            hideLoadingDialog()
+        }
+        else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_OK){
             val code = data?.getStringExtra(AppConstant.DATA)
             if (!code.isNullOrEmpty()){
                 openAddProduct(code)
             }
         }
-        else if (requestCode == 9999 && resultCode == Activity.RESULT_CANCELED){
+        else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_CANCELED){
             hideLoadingDialog()
             showContainerFragment(ADD_PRODUCT_SCAN)
         }
@@ -438,7 +452,21 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
                 putString("JumlahBarang", "$jumlahBarang Barang")
             }
         }
-        dialog.setTargetFragment(this@SellFragment, 102)
+        dialog.setTargetFragment(this@SellFragment, CODE_CONFIRM_TUNAI)
+        dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
+    }
+
+    override fun showConfirmPayHutangDialog(jumlah:String, cashback:String, jumlahBarang:Int, namaPelanggan:String) {
+        val dialog = ConfirmPayDialog.newInstance().apply {
+            arguments = Bundle().apply {
+                putString("JumlahPembayaran", "Rp $jumlah")
+                putString("Cashback", cashback)
+                putString("JumlahBarang", "$jumlahBarang Barang")
+                putString("NamaPelanggan", namaPelanggan)
+                putBoolean("Hutang", true)
+            }
+        }
+        dialog.setTargetFragment(this@SellFragment, CODE_CONFIRM_HUTANG)
         dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
     }
 
@@ -448,7 +476,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
                 putSerializable(AppConstant.DATA, code)
             }
         }
-        dialog.setTargetFragment(this@SellFragment, 9999)
+        dialog.setTargetFragment(this@SellFragment, CODE_DIALOG_SCAN_BARANG)
         dialog.show(fragmentManager!!, TambahBarangDialog.TAG)
     }
 
@@ -523,7 +551,8 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         _view.container_fragment.visibility = View.VISIBLE
         ft = fragmentManager?.beginTransaction()
         if (code == CODE_OPEN_SCAN) {
-            ft!!.replace(R.id.container_fragment,scanCodeFragment)
+            scanCodeFragment = ScanCodeFragment.newInstance()
+            ft!!.replace(R.id.container_fragment, scanCodeFragment)
             ft!!.commit()
         }
         else if (code == CODE_OPEN_CHOOSE_PRODUCT) {

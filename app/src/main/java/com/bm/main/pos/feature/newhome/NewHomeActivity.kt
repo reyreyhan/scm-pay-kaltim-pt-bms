@@ -3,6 +3,7 @@ package com.bm.main.pos.feature.newhome
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.FragmentTransaction
@@ -191,5 +192,10 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
         if (fragment is SellFragment) {
             fragment.getPresenter()?.searchByBarcode(data)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_home_new, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

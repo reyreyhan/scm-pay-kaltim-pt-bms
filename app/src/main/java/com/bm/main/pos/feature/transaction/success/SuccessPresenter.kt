@@ -26,7 +26,8 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
     private var detail: DetailTransaction? = null
     private val permissionUtil = PermissionUtil(context)
     private lateinit var bluetoothPermission: PermissionCallback
-    private lateinit var storagePermission: PermissionCallback
+    private lateinit var shareStruk: PermissionCallback
+    private lateinit var downloadStruk: PermissionCallback
     private var position: Int? = 0
 
 
@@ -46,9 +47,19 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
             }
         }
 
-        storagePermission = object : PermissionCallback {
+        shareStruk = object : PermissionCallback {
             override fun onSuccess() {
-                view.takeScreenshot("Struk_${ detail?.struk?.no_invoice ?: System.currentTimeMillis() }.jpg")
+                view.takeScreenshot("Struk_${ detail?.struk?.no_invoice ?: System.currentTimeMillis() }.jpg", true)
+            }
+
+            override fun onFailed() {
+                onFailedAPI(999, context.getString(R.string.reason_permission_write_external))
+            }
+        }
+
+        downloadStruk = object : PermissionCallback {
+            override fun onSuccess() {
+                view.takeScreenshot("Struk_${ detail?.struk?.no_invoice ?: System.currentTimeMillis() }.jpg", false)
             }
 
             override fun onFailed() {
@@ -84,9 +95,9 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
             return
         }
         when {
-            "hutang".equals(
-                detail.struk?.status, true
-            )    -> {
+            "Hutang".equals(detail.struk?.status,
+                true)
+            -> {
                 //  view.onSuccessPiutang("Rp ${Helper.convertToCurrency(detail.struk?.totalorder!!)}",Helper.getDateFormat(context,detail.struk?.tanggal!!,"yyyy-MM-dd","EEE, dd MMMM yyyy"),invoice!!)
                 view.onSuccessPiutang(detail, invoice!!)
                 position = 1
@@ -115,7 +126,11 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
     }
 
     override fun onCheckShare() {
-        permissionUtil.checkWriteExternalPermission(storagePermission)
+        permissionUtil.checkWriteExternalPermission(shareStruk)
+    }
+
+    override fun onCheckDownload(){
+        permissionUtil.checkWriteExternalPermission(downloadStruk)
     }
 
     override fun getDataStruk(): DetailTransaction {
@@ -124,5 +139,9 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
 
     override fun getTabPosition(): Int {
         return position!!
+    }
+
+    override fun getStrukImageFileName():String{
+        return "Struk_${ detail?.struk?.no_invoice ?: System.currentTimeMillis() }.jpg"
     }
 }
