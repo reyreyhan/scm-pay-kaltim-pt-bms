@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/standard_margin_2x"
         android:layout_marginRight="@dimen/standard_margin_2x"
-        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin_2x"
         android:layout_marginBottom="@dimen/standard_margin_2x"
         android:text="Tambahkan"
         android:textColor="@color/white"
@@ -94,5 +94,6 @@
         android:paddingTop="@dimen/standard_margin"
         android:paddingBottom="@dimen/standard_margin"
         android:backgroundTint="@color/md_red_A700"
-        android:layout_gravity="bottom|center"/>
+        android:layout_gravity="bottom|center"
+        android:gravity="center"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,13 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseFragment
-import com.bm.main.pos.feature.scan.ScanCodeActivity
+import com.bm.main.pos.feature.manage.product.main.ADD_PRODUCT_SCAN
+import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
 import com.bm.main.pos.feature.scan.ScanCodeFragment
 import com.bm.main.pos.feature.sell.add.AddActivity
 import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
@@ -119,10 +119,22 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         }
 
         _view.btn_scanner.setOnClickListener {
+            _view.btn_search.isSelected = false
+            _view.iv_cari_barang.isSelected = false
+            _view.tv_cari_barang.isSelected = false
+            _view.btn_scanner.isSelected = true
+            _view.iv_scan_barcode.isSelected = true
+            _view.tv_scan_barcode.isSelected = true
             getPresenter()?.onCheckScan()
         }
 
         _view.btn_search.setOnClickListener {
+            _view.btn_search.isSelected = true
+            _view.iv_cari_barang.isSelected = true
+            _view.tv_cari_barang.isSelected = true
+            _view.btn_scanner.isSelected = false
+            _view.iv_scan_barcode.isSelected = false
+            _view.tv_scan_barcode.isSelected = false
             openChooseProduct()
         }
 
@@ -156,15 +168,6 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             showPiutangView()
         }
 
-//        _view.rg_payment.setOnCheckedChangeListener { _, p1 ->
-//            when (p1) {
-//                R.id.rb_tunai    -> showTunaiView()
-//                R.id.rb_nontunai -> showNonTunaiView()
-//                R.id.rb_piutang  -> showPiutangView()
-//            }
-//        }
-//        _view.rg_payment.check(R.id.rb_tunai)
-
         _view.et_data_pelanggan.setOnClickListener {
             openChooseCustomer()
         }
@@ -185,6 +188,12 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     override fun checkCarts() {
         if (getPresenter()?.getCartsSize() == 0) {
+            _view.btn_search.isSelected = true
+            _view.iv_cari_barang.isSelected = true
+            _view.tv_cari_barang.isSelected = true
+            _view.btn_scanner.isSelected = false
+            _view.iv_scan_barcode.isSelected = false
+            _view.tv_scan_barcode.isSelected = false
             openChooseProduct()
         }
     }
@@ -211,7 +220,6 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     override fun setCartText(count: String, nominal: String) {
         _view.tv_number.text = count
         _view.tv_total_harga.text = "Rp $nominal"
-        //_view.et_pay.setText(nominal)
     }
 
     override fun addCart(data: Cart) {
@@ -230,9 +238,6 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun openScanPage() {
-//        val intent = Intent(activity, ScanCodeActivity::class.java)
-//        intent.putExtra(AppConstant.SCAN.TYPE, AppConstant.SCAN.SELL)
-//        startActivityForResult(intent, CODE_OPEN_SCAN)
         hideContentView()
         showContainerFragment(CODE_OPEN_SCAN)
     }
@@ -268,7 +273,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             if (product.id_barang == null) {
                 toast("Data tidak ditemukan")
             } else {
-                getPresenter()?.checkCart(product)
+                getPresenter()?.checkCart(product, null)
             }
         } else if (requestCode == CODE_OPEN_ADD_MANUAL && resultCode == Activity.RESULT_OK) {
             if (data == null) {
@@ -331,6 +336,16 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         else if (requestCode == 102 && resultCode == Activity.RESULT_CANCELED){
             hideLoadingDialog()
         }
+        else if (requestCode == 9999 && resultCode == 101){
+            val code = data?.getStringExtra(AppConstant.DATA)
+            if (!code.isNullOrEmpty()){
+                openAddProduct(code)
+            }
+        }
+        else if (requestCode == 9999 && resultCode == Activity.RESULT_CANCELED){
+            hideLoadingDialog()
+            showContainerFragment(ADD_PRODUCT_SCAN)
+        }
     }
 
     override fun onDetach() {
@@ -366,7 +381,6 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     override fun getPayValue(): Double {
         val value = _view.et_pay.text.toString().replace(Regex("\\D"), "").replace(".", "")
-        //val value = _view.et_pay.text.toString()
         if (value.isBlank() || value.isEmpty()) {
             return 0.0
         }
@@ -426,6 +440,16 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         }
         dialog.setTargetFragment(this@SellFragment, 102)
         dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
+    }
+
+    override fun showTambahBarangDialog(code: String) {
+        val dialog = TambahBarangDialog.newInstance().apply {
+            arguments = Bundle().apply {
+                putSerializable(AppConstant.DATA, code)
+            }
+        }
+        dialog.setTargetFragment(this@SellFragment, 9999)
+        dialog.show(fragmentManager!!, TambahBarangDialog.TAG)
     }
 
     override fun showNonTunaiView() {
@@ -493,51 +517,28 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     fun hideContainerFragment(){
         _view.container_fragment.visibility = View.GONE
-        /*if (!scanCodeFragment.isHidden){
-            ft!!.hide(scanCodeFragment)
-        }else if(!chooseProductFragment.isHidden){
-            ft!!.hide(chooseProductFragment)
-        }*/
     }
 
     private fun showContainerFragment(code: Int){
         _view.container_fragment.visibility = View.VISIBLE
         ft = fragmentManager?.beginTransaction()
         if (code == CODE_OPEN_SCAN) {
-//            if (scanCodeFragment.isAdded){
-//                ft!!.show(scanCodeFragment)
-//            }else{
-//                ft!!.add(R.id.container_fragment, scanCodeFragment)
-//            }
-//            ft!!.commit()
-//            hideContainerFragment()
-            //                hideFragment(ft!!, chooseProductFragment)
             ft!!.replace(R.id.container_fragment,scanCodeFragment)
             ft!!.commit()
         }
         else if (code == CODE_OPEN_CHOOSE_PRODUCT) {
-            //hideContainerFragment()
-//            if (chooseProductFragment.isAdded){
-//                ft!!.show(chooseProductFragment)
-//            }else{
-//                ft!!.add(R.id.container_fragment, chooseProductFragment)
-//            }
-//            ft!!.commit()
-//            hideContainerFragment()
-            //                hideFragment(ft!!, scanCodeFragment)
             ft!!.replace(R.id.container_fragment, chooseProductFragment)
             ft!!.commit()
         }
     }
 
-    override fun onFragmentBackPressed() {
-        //hideContainerFragment()
+    private fun openAddProduct(barcode:String){
+        val intent = Intent(activity, AddProductMainActivity::class.java)
+        intent.putExtra(AppConstant.DATA, barcode)
+        startActivityForResult(intent, CODE_OPEN_ADD_MANUAL)
     }
 
-    private fun hideFragment(ft: FragmentTransaction, fragment: Fragment) {
-        if (fragment.isAdded) {
-            ft.hide(fragment)
-        }
+    override fun onFragmentBackPressed() {
     }
 
 }

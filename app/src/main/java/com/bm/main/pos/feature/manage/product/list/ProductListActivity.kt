@@ -5,15 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
-import com.bm.main.pos.events.onCode
-import com.bm.main.pos.feature.manage.product.add.AddProductActivity
 import com.bm.main.pos.feature.manage.product.edit.EditProductActivity
 import com.bm.main.pos.feature.scan.ScanCodeActivity
 import com.bm.main.pos.models.product.Product
@@ -22,8 +19,6 @@ import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
 import kotlinx.android.synthetic.main.activity_list_product.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
 
 class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContract.View>(),
     ProductListContract.View {
@@ -214,8 +209,9 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
     }
 
     override fun openAddPage() {
-        val intent = Intent(this,AddProductActivity::class.java)
-        startActivityForResult(intent,CODE_OPEN_ADD)
+//        val intent = Intent(this,
+//            AddProductActivity::class.java)
+//        startActivityForResult(intent,CODE_OPEN_ADD)
     }
 
     override fun openEditPage(data: Product) {

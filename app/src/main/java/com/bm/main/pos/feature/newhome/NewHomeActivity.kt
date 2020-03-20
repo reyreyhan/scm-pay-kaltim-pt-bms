@@ -14,6 +14,7 @@ import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.di.userComponent
 import com.bm.main.pos.feature.dialog.NoteDialog
 import com.bm.main.pos.feature.dialog.SingleDateDialog
+import com.bm.main.pos.feature.home.HomeFragment
 import com.bm.main.pos.feature.manage.product.ProductViewModel
 import com.bm.main.pos.feature.newhome.adapter.NewHomeFragmentStateAdapter
 import com.bm.main.pos.feature.newhome.adapter.PENJUALAN_FRAGMENT_INDEX
@@ -32,8 +33,11 @@ import kotlinx.android.synthetic.main.activity_home_new.*
 import org.threeten.bp.LocalDate
 
 
-class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), NewHomeContract.View,
-    SellFragment.ShowDate, ChooseProductFragment.OnProductSelectedListener, ScanCodeFragment.OnProductSelectedListener{
+class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
+    NewHomeContract.View,
+    SellFragment.ShowDate,
+    ChooseProductFragment.OnProductSelectedListener,
+    ScanCodeFragment.OnProductSelectedListener{
 
     private var currentPage = 0
 
@@ -177,7 +181,7 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), 
     override fun onProductSelected(data: Product) {
         val fragment = fragmentAdapter.getItem(fragment_pager.currentItem)
         if (fragment is SellFragment) {
-            fragment.getPresenter()?.checkCart(data)
+            fragment.getPresenter()?.checkCart(data, null)
             fragment.hideContainerFragment()
         }
     }
@@ -186,7 +190,6 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(), 
         val fragment = fragmentAdapter.getItem(fragment_pager.currentItem)
         if (fragment is SellFragment) {
             fragment.getPresenter()?.searchByBarcode(data)
-            fragment.hideContainerFragment()
         }
     }
 }

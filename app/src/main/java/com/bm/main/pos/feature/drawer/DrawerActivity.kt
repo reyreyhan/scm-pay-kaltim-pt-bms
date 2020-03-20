@@ -60,7 +60,9 @@ import org.threeten.bp.LocalDate
 import timber.log.Timber
 
 class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), DrawerContract.View,
-    NavigationView.OnNavigationItemSelectedListener, HomeFragment.MenuClick, SellFragment.ShowDate,
+    NavigationView.OnNavigationItemSelectedListener,
+//    HomeFragment.MenuClick,
+    SellFragment.ShowDate,
     SettingFragment.Listener, SingleDateDialog.Listener, NoteDialog.Listener,
     CartCountDialog.Listener, TransactionFragment.Listener, RangeDateDialog.Listener,
     BottomDialog.Listener {

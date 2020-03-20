@@ -196,6 +196,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
+            android:name=".feature.manage.product.main.AddProductMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
             android:name=".feature.manage.product.list.ProductListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
@@ -253,7 +257,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.product.add.AddProductActivity"
+            android:name=".feature.manage.product.main.AddProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar2" />
         <activity

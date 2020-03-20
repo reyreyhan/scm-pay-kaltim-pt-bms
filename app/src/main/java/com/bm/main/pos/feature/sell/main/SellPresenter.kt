@@ -87,12 +87,14 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         }
     }
 
-    override fun checkCart(data: Product) {
+    override fun checkCart(data: Product, barcode:String?) {
         if(data.posisi == true){
             addCart(data)
         }
         else{
-            view.openEditManual(data)
+            view.showTambahBarangDialog(barcode!!)
+            //view.openAddManual(tempBarcode!!)
+            tempBarcode = ""
         }
     }
 
@@ -202,20 +204,16 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         view.hideLoadingDialog()
         if(list.isNotEmpty()){
             val product = list[0]
-            checkCart(product)
-        }
-        else{
-            view.openAddManual(tempBarcode!!)
+            checkCart(product, tempBarcode!!)
             tempBarcode = ""
         }
-
-
     }
 
     override fun onFailedBarcode(code: Int, msg: String) {
         if("tidak ada data" == msg){
             view.hideLoadingDialog()
-            view.openAddManual(tempBarcode!!)
+            view.showTambahBarangDialog(tempBarcode!!)
+            //view.openAddManual(tempBarcode!!)
             tempBarcode = ""
         }
         else{
@@ -294,7 +292,8 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
 
             EventParam.EVENT_ACTION_SELL_PRODUCT,
-            SellFragment::class.java!!.getSimpleName())
+            SellFragment::class.java!!.simpleName
+        )
         interactor.callOrderAPI(context,transactionRestModel,req)
     }
 
@@ -329,8 +328,9 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     fun countAllBarang():Int{
         var count = 0
-        for(cart in carts.values){
-            count.plus(cart.count?.toInt()!!)
+        val list = getBarang()
+        for(cart in list){
+            cart.jumlah_barang
         }
         return count
     }

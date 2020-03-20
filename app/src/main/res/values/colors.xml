@@ -6,7 +6,7 @@
     <color name="colorPrimaryLight30">#4DB4F3EF</color>
     <color name="colorAccent">#238ACB</color>
     <color name="colorAccentLight">#E1E7FC</color>
-    <color name="colorAccentDark">#002BD6</color>
+    <color name="colorAccentDark">#238ACB</color>
 
     <color name="primaryText">#40514e</color>
     <color name="secondaryText">#697586</color>

@@ -78,7 +78,13 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
             openCameraPermission()
         }
         _view.content_frame.setOnClickListener {
-            mFlash = if(mFlash) true else false
+           if (mFlash){
+               mFlash = false
+               mScannerView.flash = mFlash
+           }else{
+               mFlash = true
+               mScannerView.flash = mFlash
+           }
         }
     }
 
@@ -90,6 +96,7 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
             mScannerView.startCamera(mCameraId)
             mScannerView.flash = mFlash
             mScannerView.setAutoFocus(mAutoFocus)
+            resumeCamera()
         }
     }
 
@@ -129,11 +136,16 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
         Log.d("scan", resultText)
         if (productListener != null){
             productListener!!.onProductSelected(resultText)
+            mScannerView.stopCamera()
         }
     }
 
     override fun resumeCamera() {
         mScannerView.resumeCameraPreview(this)
+    }
+
+    override fun showMessage(code: Int, msg: String?) {
+        hideLoadingDialog()
     }
 
     override fun hideShowSearchHeader(visibility: Int) {
@@ -246,7 +258,8 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
     }
 
     override fun onDetach() {
-        super.onDetach()
+        mScannerView.stopCamera()
         productListener = null
+        super.onDetach()
     }
 }

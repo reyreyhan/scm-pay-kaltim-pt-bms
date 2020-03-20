@@ -11,45 +11,46 @@ import com.bm.main.pos.models.menu.Menu
 import com.bumptech.glide.Glide
 ////import com.bm.main.pos.utils.glide.GlideApp
 import kotlinx.android.synthetic.main.item_list_menu.view.*
+import kotlinx.android.synthetic.main.item_menu_home.view.*
 
 class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val listProduct = mutableListOf<Menu>()
+    private val listMenu = mutableListOf<Menu>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_menu, parent, false)
+                .inflate(R.layout.item_menu_home, parent, false)
         )
     }
 
     override fun getItemCount(): Int {
-        return listProduct.size
+        return listMenu.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) {
-            val product = listProduct[position]
+            val product = listMenu[position]
             holder.bindData(product, position)
         }
     }
 
-    fun setItems(listProduct: List<Menu>?) {
-        //this.listProduct.clear()
+    fun setItems(listMenu: List<Menu>?) {
+        this.listMenu.clear()
         val lastCount = itemCount
-        listProduct?.let { this.listProduct.addAll(it) }
-        notifyItemRangeInserted(lastCount, listProduct!!.size)
+        listMenu?.let { this.listMenu.addAll(it) }
+        notifyItemRangeInserted(lastCount, listMenu!!.size)
     }
 
     fun clearAdapter() {
-        listProduct.clear()
+        listMenu.clear()
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val nameTv = view.tv_name
-        private val imageIv = view.iv_photo
+        private val nameTv = view.tv_menu
+        private val imageIv = view.iv_menu
 
         fun bindData(data: Menu, position: Int) {
 
@@ -58,7 +59,7 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             if (data.image == null) {
                 Glide.with(itemView.context)
                     .load(R.drawable.logo)
-                    .transform(CenterCrop(), RoundedCorners(8))
+                    //.transform(CenterCrop(), RoundedCorners(8))
                     .into(imageIv)
 
             } else {
@@ -66,14 +67,12 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     .load(data.image)
                     .error(R.drawable.logo)
                     .placeholder(R.drawable.logo)
-                    .transform(CenterCrop(), RoundedCorners(8))
+                    //.transform(CenterCrop(), RoundedCorners(8))
                     .into(imageIv)
             }
 
             itemView.setOnClickListener {
-                if (callback != null) {
-                    callback?.onClick(data)
-                }
+                callback?.onClick(data)
             }
         }
     }

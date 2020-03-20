@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.bm.main.pos.feature.home.HomeFragment
 import com.bm.main.pos.feature.sell.main.SellFragment
 
 
@@ -17,7 +18,7 @@ class NewHomeFragmentStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapt
     init {
         childFragments = arrayOf(
             SellFragment.newInstance(),
-            SellFragment.newInstance(),
+            HomeFragment.newInstance(),
             SellFragment.newInstance()//0
         )
     }

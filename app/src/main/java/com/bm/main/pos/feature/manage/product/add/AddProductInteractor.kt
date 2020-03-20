@@ -2,6 +2,7 @@ package com.bm.main.pos.feature.manage.product.add
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
+import com.bm.main.pos.base.BaseInteractor
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.category.Category
 import com.bm.main.pos.models.category.CategoryRestModel
@@ -14,7 +15,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import timber.log.Timber
 
-class AddProductInteractor(var output: AddProductContract.InteractorOutput?) :
+class AddProductInteractor (var output: AddProductContract.InteractorOutput?) :
     AddProductContract.Interactor {
 
     private var disposable = CompositeDisposable()
@@ -91,9 +92,9 @@ class AddProductInteractor(var output: AddProductContract.InteractorOutput?) :
     }
 
     override fun callSearchByBarcodeAPI(
-            context: Context,
-            restModel: ProductRestModel,
-            search: String
+        context: Context,
+        restModel: ProductRestModel,
+        search: String
     ) {
         val key = PreferenceClass.getTokenPos()
         disposable.add(restModel.searchByBarcode(key!!, search).subscribeWith(object :
@@ -102,7 +103,7 @@ class AddProductInteractor(var output: AddProductContract.InteractorOutput?) :
             override fun onNext(@NonNull response: List<Product>) {
 
                 Timber.d("onNext $response")
-                output?.onSuccessByBarcode(response)
+                //output?.onSuccessByBarcode(response)
             }
 
             override fun onError(@NonNull e: Throwable) {
@@ -115,7 +116,7 @@ class AddProductInteractor(var output: AddProductContract.InteractorOutput?) :
                 } else {
                     errorMessage = e.message.toString()
                 }
-                output?.onFailedByBarcode(errorCode, errorMessage)
+                //output?.onFailedByBarcode(errorCode, errorMessage)
             }
 
             override fun onComplete() {

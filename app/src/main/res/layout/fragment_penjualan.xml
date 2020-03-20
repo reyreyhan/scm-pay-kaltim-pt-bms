@@ -20,23 +20,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:background="@drawable/selector_btn_accent"
             android:gravity="center"
             android:padding="@dimen/search_icon_padding"
             android:layout_marginRight="@dimen/standard_margin">
             <ImageView
+                android:id="@+id/iv_cari_barang"
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_24sdp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_search"
                 android:layout_marginRight="@dimen/standard_small_margin"
-                android:tint="@color/md_grey_600"/>
+                android:tint="@drawable/selector_text_white_grey_selected"/>
             <TextView
+                android:id="@+id/tv_cari_barang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/lbl_search_product"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@drawable/selector_text_white_grey_selected"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/btn_scanner"
@@ -44,23 +47,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:background="@drawable/selector_btn_accent"
             android:gravity="center"
             android:padding="@dimen/search_icon_padding"
             android:layout_marginLeft="@dimen/standard_margin">
             <ImageView
+                android:id="@+id/iv_scan_barcode"
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_24sdp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_barcode_button"
                 android:layout_marginRight="@dimen/standard_small_margin"
-                android:tint="@color/md_grey_600"/>
+                android:tint="@drawable/selector_text_white_grey_selected"/>
             <TextView
+                android:id="@+id/tv_scan_barcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/menu_scan_barcode"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@drawable/selector_text_white_grey_selected"/>
         </LinearLayout>
     </LinearLayout>
     <FrameLayout
