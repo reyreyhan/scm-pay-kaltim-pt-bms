@@ -246,8 +246,6 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
         return true
     }
 
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnProductSelectedListener) {

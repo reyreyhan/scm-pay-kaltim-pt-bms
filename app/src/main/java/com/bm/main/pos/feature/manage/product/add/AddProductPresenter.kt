@@ -13,7 +13,9 @@ import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.category.Category
 import com.bm.main.pos.models.category.CategoryRestModel
+import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.models.product.ProductRestModel
+import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.PermissionUtil
 import com.google.gson.Gson
 import timber.log.Timber
@@ -29,6 +31,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
     private var categoryRestModel = CategoryRestModel(context)
     private var categories: ArrayList<DialogModel> = ArrayList()
     private var category: DialogModel? = null
+    private var categoryId:String? = null
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var photoPermission: PermissionCallback
     private var photoPath: String? = null
@@ -46,9 +49,16 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
         }
 
         if (bundle.getBoolean("FromScan")){
-            bundle.getString("Barcode")?.let { view.setBarcodeText(it) }
+            bundle.getString(AppConstant.DATA)?.let { view.setBarcodeText(it) }
         }else{
-            view.hideBarcode()
+            if (bundle.getSerializable(AppConstant.DATA) is Product) {
+                val product = bundle.getSerializable(AppConstant.DATA) as Product
+                categoryId = product.id_kategori
+                view.setProduct(product)
+            }
+            else {
+                view.hideBarcode()
+            }
         }
     }
 
@@ -113,7 +123,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             restModel,
             name,
             barcode,
-            category?.id!!,
+            categoryId!!,
             sell,
             buy,
             stok,
@@ -153,11 +163,12 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             categories.add(model)
         }
         Log.d("categories", Gson().toJson(categories))
-        view.openCategories("Pilih Kategori", categories!!, category)
+        view.openCategories("Pilih Kategori", categories, category)
     }
 
     override fun setSelectedCategory(data: DialogModel) {
         category = data
+        categoryId = data.id
         view.setCategoryName(data.value!!)
     }
 }

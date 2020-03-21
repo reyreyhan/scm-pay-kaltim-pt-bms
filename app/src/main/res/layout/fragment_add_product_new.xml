@@ -227,8 +227,10 @@
                                 <ImageView
                                     android:id="@+id/iv_foto"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:minHeight="@dimen/_50sdp"/>
+                                    android:layout_height="@dimen/_250sdp"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="fitCenter"
+                                    android:visibility="gone"/>
                             </FrameLayout>
                             <TextView
                                 android:layout_marginTop="@dimen/standard_margin_2x"

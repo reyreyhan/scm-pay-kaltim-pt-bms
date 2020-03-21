@@ -34,7 +34,7 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_list_product
+        return R.layout.activity_product_search
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -71,10 +71,10 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
                 }
             }
 
-            override fun onDelete(data: Product) {
-                showLoadingDialog()
-                getPresenter()?.deleteProduct(data.id_barang!!)
-            }
+//            override fun onDelete(data: Product) {
+//                showLoadingDialog()
+//                getPresenter()?.deleteProduct(data.id_barang!!)
+//            }
         }
 
         et_search.addTextChangedListener(object: TextWatcher {

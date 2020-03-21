@@ -39,6 +39,7 @@ interface SellContract {
         fun showTunaiView()
         fun showConfirmPayTunaiDialog(jumlah:String, cashback:String, jumlahBarang:Int)
         fun showConfirmPayHutangDialog(jumlah:String, cashback:String, jumlahBarang:Int, namaPelanggan:String)
+        fun showPayNonTunai(jumlah:String)
         fun showTambahBarangDialog(code:String)
         fun showNonTunaiView()
         fun showPiutangView()

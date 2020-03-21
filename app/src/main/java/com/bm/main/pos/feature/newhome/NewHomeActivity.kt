@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
+import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.fpl.webview.FCMActivity
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
@@ -29,9 +30,12 @@ import com.bm.main.pos.rest.salesforce.SfViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.zxing.Result
 import com.prolificinteractive.materialcalendarview.CalendarDay
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.activity_home_new.*
 import org.threeten.bp.LocalDate
+import timber.log.Timber
 
 
 class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
@@ -141,6 +145,28 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
             }
 
         })
+
+        disposables.add(
+            qrisViewModel.service.check(PreferenceClass.getId().orEmpty())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
+                    //nav_view.menu.findItem(R.id.nav_qris).isEnabled = res.rc == "00"
+                    //homeFragment.enableQrMenu(res.rc == "00")
+                    res.result.firstOrNull()?.let {
+                        Timber.d("Outlet ID: ${PreferenceClass.getId()}")
+                        Timber.d("url_qr: ${it.url_qr}")
+                        Timber.d("nmid: ${it.nmid}")
+                        PreferenceClass.putString("url_qr", it.url_qr)
+                        PreferenceClass.putString("nmid", it.nmid)
+                        PreferenceClass.putString("id_speedcash", it.id_speedcash)
+                        PreferenceClass.putString("nama_toko", it.nama_toko)
+                        PreferenceClass.putString("nama_pemilik", it.nama_pemilik)
+                    }
+                }, { e ->
+                    Timber.e(e)
+                    //nav_view.menu.findItem(R.id.nav_qris).isEnabled = false
+                    //homeFragment.enableQrMenu(false)
+                })
+        )
     }
 
     override fun onBackPressed() {

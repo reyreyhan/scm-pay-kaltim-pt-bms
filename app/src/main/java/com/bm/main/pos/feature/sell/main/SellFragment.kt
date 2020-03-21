@@ -50,7 +50,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     private val CODE_OPEN_ADD_CUSTOMER = 1006
     private val CODE_CONFIRM_TUNAI = 1007
     private val CODE_CONFIRM_HUTANG = 1008
-    private val CODE_CONFIRM_NONTUNAI = 1009
+    private val CODE_PAY_NONTUNAI = 1009
     private val CODE_DIALOG_SCAN_BARANG = 1101
     private val CODE_DIALOG_COUNT_BARANG = 1102
 
@@ -185,10 +185,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             showLoadingDialog()
             when (payType) {
                 1 -> showConfirmPayTunaiDialog(Helper.convertToCurrency(getPayValue()) , getPresenter()!!.calculateCashBack(), getPresenter()!!.countAllBarang())
-                2 -> {
-                    hideLoadingDialog()
-                    showToast("Fitur belum tersedia")
-                }
+                2 -> showPayNonTunai(Helper.convertToCurrency(getTotalValue()))
                 3 -> showConfirmPayHutangDialog(Helper.convertToCurrency(getPayValue()) , getPresenter()!!.calculateCashBack(), getPresenter()!!.countAllBarang(), getPresenter()!!.getCustomerName())
             }
         }
@@ -350,6 +347,9 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_CANCELED){
             hideLoadingDialog()
         }
+        else if (requestCode == CODE_PAY_NONTUNAI && resultCode == Activity.RESULT_CANCELED){
+            hideLoadingDialog()
+        }
         else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_OK){
             val code = data?.getStringExtra(AppConstant.DATA)
             if (!code.isNullOrEmpty()){
@@ -470,6 +470,16 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
     }
 
+    override fun showPayNonTunai(jumlah:String) {
+        val dialog = NonTunaiDialog.newInstance().apply {
+            arguments = Bundle().apply {
+                putString("JumlahPembayaran", "Rp $jumlah")
+            }
+        }
+        dialog.setTargetFragment(this@SellFragment, CODE_PAY_NONTUNAI)
+        dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
+    }
+
     override fun showTambahBarangDialog(code: String) {
         val dialog = TambahBarangDialog.newInstance().apply {
             arguments = Bundle().apply {
@@ -484,6 +494,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         _view.layout_bayar_hutang.visibility = View.GONE
         _view.layout_bayar_non_tunai.visibility = View.VISIBLE
         _view.layout_bayar_tunai.visibility = View.GONE
+        enableBtnBuy(true)
     }
 
     override fun showPiutangView() {

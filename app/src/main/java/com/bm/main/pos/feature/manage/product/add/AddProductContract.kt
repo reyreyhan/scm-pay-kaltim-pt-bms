@@ -17,6 +17,7 @@ interface AddProductContract {
         fun showMessage(code: Int, msg: String?)
         fun onClose(msg: String?, status: Int)
         fun setBarcodeText(code:String)
+        fun setProduct(data:Product)
         fun openImageChooser()
         fun hideBarcode()
         fun expandTambahKeterangan()

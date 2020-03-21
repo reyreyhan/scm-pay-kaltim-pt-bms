@@ -10,8 +10,7 @@ import com.bm.main.pos.R
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.utils.Helper
 import com.bumptech.glide.Glide
-//import com.bm.main.pos.utils.glide.GlideApp
-import kotlinx.android.synthetic.main.item_list_product.view.*
+import kotlinx.android.synthetic.main.item_list_choose_product.view.*
 
 class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -19,7 +18,7 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_product, parent, false))
+                .inflate(R.layout.item_list_choose_product, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -48,11 +47,8 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val nameTv = view.tv_name
-        private val priceTv = view.tv_price
-        private val stockTv = view.tv_stok
+        private val kodeTv = view.tv_kode
         private val imageIv = view.iv_photo
-        private val infoTv = view.tv_info
-        private val deleteBtn = view.btn_delete
 
         fun bindData(data: Product, position: Int) {
             nameTv.text = "${data.nama_barang}"
@@ -61,9 +57,11 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 desc = "-"
             }
 
-            infoTv.text = "$desc"
-            priceTv.text = "Rp ${Helper.convertToCurrency(data.hargajual!!)}"
-            stockTv.text = "Stok : ${Helper.convertToCurrency(data.stok!!)}"
+//            infoTv.text = "$desc"
+//            priceTv.text = "Rp ${Helper.convertToCurrency(data.hargajual!!)}"
+//            stockTv.text = "Stok : ${Helper.convertToCurrency(data.stok!!)}"
+
+            kodeTv.text = data.kodebarang
 
             if(data.gbr == null){
                 Glide.with(itemView.context)
@@ -87,11 +85,11 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 }
             }
 
-            deleteBtn.setOnClickListener {
-                if(callback != null){
-                    callback?.onDelete(data)
-                }
-            }
+//            deleteBtn.setOnClickListener {
+//                if(callback != null){
+//                    callback?.onDelete(data)
+//                }
+//            }
 
         }
     }
@@ -100,6 +98,6 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface ItemClickCallback{
         fun onClick(data: Product)
-        fun onDelete(data: Product)
+//        fun onDelete(data: Product)
     }
 }

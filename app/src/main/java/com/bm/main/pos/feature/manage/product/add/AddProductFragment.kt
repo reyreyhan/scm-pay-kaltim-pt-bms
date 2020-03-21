@@ -16,6 +16,7 @@ import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.feature.dialog.BottomDialog
 import com.bm.main.pos.feature.manage.category.add.AddCategoryActivity
 import com.bm.main.pos.models.DialogModel
+import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.ui.ext.toast
@@ -77,6 +78,10 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
         }
 
         _view.iv_tambah_foto.setOnClickListener {
+            getPresenter()?.onCheckPhoto()
+        }
+
+        _view.iv_foto.setOnClickListener {
             getPresenter()?.onCheckPhoto()
         }
 
@@ -146,7 +151,9 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
     }
 
     override fun onClose(msg: String?, status: Int) {
-
+        hideLoadingDialog()
+        toast(msg!!)
+        activity!!.finish()
     }
 
     override fun onRequestPermissionsResult(
@@ -191,6 +198,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
                 .transform(CenterCrop(), RoundedCorners(4))
                 .into(_view.iv_foto)
         }
+        _view.iv_foto.visibility = View.VISIBLE
     }
 
     override fun openCategories(title: String, list: List<DialogModel>, selected: DialogModel?) {
@@ -235,5 +243,11 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
     override fun setBarcodeText(code: String) {
         _view.tv_barcode.visibility = View.VISIBLE
         _view.tv_barcode.text = code
+    }
+
+    override fun setProduct(data: Product) {
+        _view.tv_barcode.text = data.kodebarang
+        _view.et_name_product.setText(data.nama_barang)
+        _view.et_product_category.text = data.nama_kategori
     }
 }

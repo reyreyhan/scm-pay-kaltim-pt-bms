@@ -13,8 +13,10 @@ import com.bm.main.pos.di.userComponent
 import com.bm.main.pos.feature.dialog.BottomDialog
 import com.bm.main.pos.feature.manage.product.ProductViewModel
 import com.bm.main.pos.feature.manage.product.add.AddProductFragment
+import com.bm.main.pos.feature.manage.product.list.ProductListFragment
 import com.bm.main.pos.feature.scan.ScanCodeFragment
 import com.bm.main.pos.models.DialogModel
+import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
@@ -28,8 +30,9 @@ const val ADD_PRODUCT_MANUAL = 104
 
 class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductMainContract.View>(),
     AddProductMainContract.View,
-    ScanCodeFragment.OnProductSelectedListener ,
-BottomDialog.Listener {
+    ScanCodeFragment.OnProductSelectedListener,
+    ProductListFragment.OnProductSearchSelectedListener,
+    BottomDialog.Listener {
 
     private val categoryDialog = BottomDialog.newInstance()
     private var ft: FragmentTransaction? = null
@@ -73,7 +76,7 @@ BottomDialog.Listener {
             btn_scan.isSelected = false
             btn_cari.isSelected = true
             btn_manual.isSelected = false
-            //changeFragmentPage(ADD_PRODUCT_SEARCH, null)
+            openSearchFragment()
         }
 
         btn_manual.setOnClickListener {
@@ -96,21 +99,35 @@ BottomDialog.Listener {
         Log.d("SELECTEDTOADDPRODUCT", "TEST")
         val bundle = Bundle().apply {
             putBoolean("FromScan", true)
-            putString("Barcode", barcode!!)
+            putString(AppConstant.DATA, barcode)
         }
         val fragment = AddProductFragment.newInstance(bundle)
         ft!!.replace(R.id.container_fragment, fragment, AddProductFragment::class.java.simpleName)
         ft!!.commit()
     }
 
-    fun openSearchFragment(){
+    private fun openSearchFragment(){
         ft = supportFragmentManager.beginTransaction()
+        val fragment = ProductListFragment.newInstance()
+        ft!!.replace(R.id.container_fragment, fragment, ProductListFragment::class.java.simpleName)
+        ft!!.commit()
     }
 
-    fun openAddProductFragment(){
+    private fun openAddProductFragment(){
         ft = supportFragmentManager.beginTransaction()
         val bundle = Bundle().apply {
             putBoolean("FromScan", false)
+        }
+        val fragment = AddProductFragment.newInstance(bundle)
+        ft!!.replace(R.id.container_fragment, fragment, AddProductFragment::class.java.simpleName)
+        ft!!.commit()
+    }
+
+    private fun openAddProductFragmentFromSearch(data:Product){
+        ft = supportFragmentManager.beginTransaction()
+        val bundle = Bundle().apply {
+            putBoolean("FromScan", false)
+            putSerializable(AppConstant.DATA, data)
         }
         val fragment = AddProductFragment.newInstance(bundle)
         ft!!.replace(R.id.container_fragment, fragment, AddProductFragment::class.java.simpleName)
@@ -188,15 +205,16 @@ BottomDialog.Listener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         Timber.d(requestCode.toString())
-        if (requestCode == ADD_PRODUCT_SCAN && resultCode == Activity.RESULT_OK) {
-            val code = data?.getStringExtra(AppConstant.DATA)
-            if (!code.isNullOrBlank() || !code.isNullOrEmpty()) {
-                changeFragmentPage(ADD_PRODUCT_INPUT, code)
-            }
-            else {
-                super.onActivityResult(requestCode, resultCode, data)
-            }
-        }
+//        if (requestCode == ADD_PRODUCT_SCAN && resultCode == Activity.RESULT_OK) {
+//            val code = data?.getStringExtra(AppConstant.DATA)
+//            if (!code.isNullOrBlank() || !code.isNullOrEmpty()) {
+//                changeFragmentPage(ADD_PRODUCT_INPUT, code)
+//            }
+//            else {
+//                super.onActivityResult(requestCode, resultCode, data)
+//            }
+//        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onProductSelected(data: String) {
@@ -208,5 +226,9 @@ BottomDialog.Listener {
         if (fragment is AddProductFragment){
             fragment.getPresenter()?.setSelectedCategory(data)
         }
+    }
+
+    override fun onProductSearchSelectedListener(data: Product) {
+        openAddProductFragmentFromSearch(data)
     }
 }
