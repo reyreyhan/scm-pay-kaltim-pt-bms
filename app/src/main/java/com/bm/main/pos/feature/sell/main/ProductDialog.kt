@@ -75,14 +75,14 @@ class ProductDialog : DialogFragment() {
             val newIntent: Intent = activity!!.intent
             newIntent.putExtra(AppConstant.DATA, cart)
             newIntent.putExtra("CartPosition", position)
-            targetFragment!!.onActivityResult(targetRequestCode, 1001, activity!!.intent)
+            targetFragment!!.onActivityResult(targetRequestCode, 1201, activity!!.intent)
             dismiss()
         }
         btn_delete.setOnClickListener {
             val newIntent: Intent = activity!!.intent
             newIntent.putExtra(AppConstant.DATA, cart)
             newIntent.putExtra("CartPosition", position)
-            targetFragment!!.onActivityResult(targetRequestCode, 1002, activity!!.intent)
+            targetFragment!!.onActivityResult(targetRequestCode, 1202, activity!!.intent)
             dismiss()
         }
         btn_close.setOnClickListener {

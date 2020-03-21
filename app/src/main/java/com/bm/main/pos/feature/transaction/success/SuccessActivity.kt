@@ -143,6 +143,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
+            android.R.id.home -> finish()
             R.id.action_share -> getPresenter()?.onCheckShare()
             R.id.action_download -> getPresenter()?.onCheckDownload()
         }
