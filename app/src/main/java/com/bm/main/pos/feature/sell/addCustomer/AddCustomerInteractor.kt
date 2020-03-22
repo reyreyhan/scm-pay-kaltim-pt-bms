@@ -26,7 +26,7 @@ class AddCustomerInteractor(var output: AddCustomerContract.InteractorOutput?) :
         disposable = CompositeDisposable()
     }
 
-    override fun callAddCustomerAPI(context: Context, model: CustomerRestModel, name:String,email:String,phone:String) {
+    override fun callAddCustomerAPI(context: Context, model: CustomerRestModel, name:String, email:String, phone:String) {
         val key = PreferenceClass.getTokenPos()
         disposable.add(model.addPenjualan(key!!,name,email,phone,"").subscribeWith(object : DisposableObserver<List<Customer>>() {
 

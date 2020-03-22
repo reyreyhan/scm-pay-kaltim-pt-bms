@@ -1,26 +1,22 @@
 package com.bm.main.pos.feature.manage.customer.edit
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import com.bm.main.fpl.templates.choosephotohelper.ChoosePhotoHelper
-import com.bm.main.fpl.templates.choosephotohelper.callback.ChoosePhotoCallback
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.callback.DialogCallback
 import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.ui.ext.toast
-import kotlinx.android.synthetic.main.activity_edit_customer.*
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.successDialog
-import com.bm.main.pos.utils.*
+import com.bm.main.pos.ui.ext.toast
+import com.bm.main.pos.utils.AppConstant
 import com.bumptech.glide.Glide
-import java.io.File
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import kotlinx.android.synthetic.main.activity_edit_customer_new.*
 
 class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerContract.View>(),
     EditCustomerContract.View {
@@ -33,7 +29,7 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_edit_customer
+        return R.layout.activity_edit_customer_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -43,47 +39,47 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
 
     private fun renderView() {
 
-        choosePhotoHelper = ChoosePhotoHelper.with(this)
-            .asFilePath()
-            .build(ChoosePhotoCallback { photo ->
-                if (photo.isNullOrEmpty() || photo.isNullOrBlank()) {
-                    getPresenter()?.setImagePhotoPath(null)
-                    loadPhoto("")
-                } else {
-                    val imageUtil = @SuppressLint("StaticFieldLeak")
-                    object : ImageCompression(this@EditCustomerActivity) {
-                        override fun onPostExecute(imagePath: String) {
-                            super.onPostExecute(imagePath)
-                            val compressedImageFile = File(imagePath)
-                            if (compressedImageFile.exists()) {
-                                val compressedSize = ImageUtil.getSizeFile(imagePath)
-                                Log.d("choosePhotoHelper compressed size", "" + compressedSize)
-                                getPresenter()?.setImagePhotoPath(imagePath)
-                                loadPhoto(imagePath)
-                            } else {
-                                getPresenter()?.setImagePhotoPath(null)
-                                loadPhoto("")
-                                showMessage(999, "Foto tidak ditemukan")
-                            }
-                        }
-                    }
-                    imageUtil.execute(photo)
-                }
-            })
+//        choosePhotoHelper = ChoosePhotoHelper.with(this)
+//            .asFilePath()
+//            .build(ChoosePhotoCallback { photo ->
+//                if (photo.isNullOrEmpty() || photo.isNullOrBlank()) {
+//                    getPresenter()?.setImagePhotoPath(null)
+//                    loadPhoto("")
+//                } else {
+//                    val imageUtil = @SuppressLint("StaticFieldLeak")
+//                    object : ImageCompression(this@EditCustomerActivity) {
+//                        override fun onPostExecute(imagePath: String) {
+//                            super.onPostExecute(imagePath)
+//                            val compressedImageFile = File(imagePath)
+//                            if (compressedImageFile.exists()) {
+//                                val compressedSize = ImageUtil.getSizeFile(imagePath)
+//                                Log.d("choosePhotoHelper compressed size", "" + compressedSize)
+//                                getPresenter()?.setImagePhotoPath(imagePath)
+//                                loadPhoto(imagePath)
+//                            } else {
+//                                getPresenter()?.setImagePhotoPath(null)
+//                                loadPhoto("")
+//                                showMessage(999, "Foto tidak ditemukan")
+//                            }
+//                        }
+//                    }
+//                    imageUtil.execute(photo)
+//                }
+//            })
 
-        btn_save.setOnClickListener {
+        btn_simpan.setOnClickListener {
             hideKeyboard()
             showLoadingDialog()
             val name = et_name.text.toString().trim()
             val email = et_email.text.toString().trim()
-            val phone = et_phone.text.toString().trim()
-            val address = et_address.text.toString().trim()
-            getPresenter()?.onCheck(name, email, phone, address)
+            val phone = et_no_hp.text.toString().trim()
+//            val address = et_address.text.toString().trim()
+            getPresenter()?.onCheck(name, email, phone)
         }
 
-        iv_photo.setOnClickListener {
-            getPresenter()?.onCheckPhoto()
-        }
+//        iv_photo.setOnClickListener {
+//            getPresenter()?.onCheckPhoto()
+//        }
     }
 
     private fun setupToolbar() {
@@ -92,7 +88,7 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.menu_edit_customer)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
 
@@ -167,16 +163,16 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
         }
 
         phone?.let {
-            et_phone.setText(it)
+            et_no_hp.setText(it)
         }
 
-        address?.let {
-            et_address.setText(it)
-        }
-
-        url?.let {
-            loadPhoto(it)
-        }
+//        address?.let {
+//            et_address.setText(it)
+//        }
+//
+//        url?.let {
+//            loadPhoto(it)
+//        }
 
 
     }
@@ -186,11 +182,11 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
     }
 
     override fun loadPhoto(path: String) {
-        Glide.with(this)
-            .load(path)
-            .error(R.drawable.ic_user_pos)
-            .transform(CenterCrop(), CircleCrop())
-            .into(iv_photo)
+//        Glide.with(this)
+//            .load(path)
+//            .error(R.drawable.ic_user_pos)
+//            .transform(CenterCrop(), CircleCrop())
+//            .into(iv_photo)
 
     }
 

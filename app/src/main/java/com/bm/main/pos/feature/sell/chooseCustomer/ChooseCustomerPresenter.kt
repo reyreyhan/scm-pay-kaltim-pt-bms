@@ -1,6 +1,7 @@
 package com.bm.main.pos.feature.sell.chooseCustomer
 
 import android.content.Context
+import android.content.Intent
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.customer.CustomerRestModel
@@ -13,7 +14,10 @@ class ChooseCustomerPresenter(val context: Context, val view: ChooseCustomerCont
     private var interactor  = ChooseCustomertInteractor(this)
     private var restModel = CustomerRestModel(context)
 
-    override fun onViewCreated() {
+    override fun onViewCreated(intent: Intent) {
+        if (intent.getBooleanExtra("FromToko", false)){
+            view.setBackgroundButtonAddCustomer()
+        }
         loadData()
     }
 

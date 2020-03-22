@@ -14,7 +14,7 @@ import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.toast
 import com.bumptech.glide.Glide
 //import com.bm.main.pos.utils.glide.GlideApp
-import kotlinx.android.synthetic.main.activity_piutang_detail.*
+import kotlinx.android.synthetic.main.activity_piutang_detail_new.*
 
 
 class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutangContract.View>(), DetailPiutangContract.View {
@@ -27,7 +27,7 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_piutang_detail
+        return R.layout.activity_piutang_detail_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -37,21 +37,21 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
 
     private fun renderView(){
         setupToolbar()
-        appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (Math.abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
-
-                var title = ""
-                getPresenter()?.getTitleName()?.let {
-                    title = it
-                }
-                ctl.title = title
-
-            } else {
-                ctl.title = ""
-
-            }
-        })
-        ctl.title = ""
+//        appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+//            if (Math.abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
+//
+//                var title = ""
+//                getPresenter()?.getTitleName()?.let {
+//                    title = it
+//                }
+//                ctl.title = title
+//
+//            } else {
+//                ctl.title = ""
+//
+//            }
+//        })
+//        ctl.title = ""
         sw_refresh.isRefreshing = true
         sw_refresh.setOnRefreshListener {
             reloadData()
@@ -63,12 +63,12 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
         supportActionBar?.apply {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
     }
@@ -83,25 +83,25 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
             tv_name.text = it
         }
 
-        email?.let {
-            tv_email.text = it
-        }
-
-        phone?.let {
-            tv_phone.text = it
-        }
-
-        address?.let {
-            tv_address.text = it
-        }
-
-        url?.let {
-            Glide.with(this)
-                .load(it)
-                .error(R.drawable.ic_user_pos)
-                .transform(CenterCrop(), CircleCrop())
-                .into(iv_photo)
-        }
+//        email?.let {
+//            tv_email.text = it
+//        }
+//
+//        phone?.let {
+//            tv_phone.text = it
+//        }
+//
+//        address?.let {
+//            tv_address.text = it
+//        }
+//
+//        url?.let {
+//            Glide.with(this)
+//                .load(it)
+//                .error(R.drawable.ic_user_pos)
+//                .transform(CenterCrop(), CircleCrop())
+//                .into(iv_photo)
+//        }
     }
 
     override fun onResume() {
@@ -144,10 +144,10 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
 
     override fun setPiutang(tagihan: String, piutang: String, total: String, jatuhTempo: String) {
         sw_refresh.isRefreshing = false
-        tv_tagihan.text = tagihan
-        tv_piutang.text = piutang
-        tv_total.text = total
-        tv_jatuh_tempo.text = jatuhTempo
+        tv_jumlah_hutang.text = total
+//        tv_piutang.text = piutang
+//        tv_total.text = total
+        tv_tanggal_hutang.text = jatuhTempo
     }
 
     override fun setList(list: List<DetailPiutang.Data>) {

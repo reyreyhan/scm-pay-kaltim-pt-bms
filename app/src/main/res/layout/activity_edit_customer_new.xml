@@ -96,23 +96,26 @@
         android:backgroundTint="@color/md_red_A700"
         android:layout_gravity="bottom|center"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_delete"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/subheading"
         android:textStyle="bold"
-        android:backgroundTint="@color/md_grey_300"
+        android:backgroundTint="@color/md_grey_400"
         app:iconGravity="textStart"
         app:icon="@drawable/ic_delete_black_24dp"
         app:iconPadding="0dp"
         android:layout_marginLeft="@dimen/standard_margin_2x"
         android:layout_marginBottom="@dimen/standard_margin_2x"
         android:layout_toRightOf="@id/btn_simpan"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:paddingTop="@dimen/standard_margin"
+        android:paddingBottom="@dimen/standard_margin"/>
 </RelativeLayout>

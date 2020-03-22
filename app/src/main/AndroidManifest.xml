@@ -256,10 +256,10 @@
             android:name=".feature.scan.ScanCodeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
-        <activity
-            android:name=".feature.manage.product.main.AddProductActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+<!--        <activity-->
+<!--            android:name=".feature.manage.product.main.AddProductMainActivity"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:theme="@style/ReverseAppTheme.NoActionBar2" />-->
         <activity
             android:name=".feature.manage.product.search.ProductSearchActivity"
             android:screenOrientation="portrait"
@@ -267,7 +267,7 @@
         <activity
             android:name=".feature.transaction.detail.DetailSuccessActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar.DarkStatusBar" />
+            android:theme="@style/ReverseAppTheme"/>
         <activity
             android:name=".feature.webpage.WebViewActivity"
             android:screenOrientation="portrait"
@@ -278,6 +278,10 @@
             android:theme="@style/ReverseAppTheme.NoActionBar2" />
         <activity
             android:name=".feature.transaction.detail.DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.transaction.historyTransaction.TransactionHistoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
@@ -303,11 +307,11 @@
         <activity
             android:name=".feature.manage.hutangpiutang.detailHutang.DetailHutangActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar" />
+            android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar" />
+            android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.sell.chooseProduct.ChooseProductActivity"
             android:screenOrientation="portrait"
@@ -371,6 +375,10 @@
             android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.report.kulakan.KulakanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.setting.main.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity

@@ -110,7 +110,7 @@ class AccountActivity : BaseActivity<AccountPresenter, AccountContract.View>(), 
             setDisplayShowHomeEnabled(true)
             title = "Akun"
 
-            val backArrow = ContextCompat.getDrawable(this@AccountActivity,R.drawable.ic_back_pos)//resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = ContextCompat.getDrawable(this@AccountActivity,R.drawable.ic_toolbar_back)//resources.getDrawable(R.drawable.ic_back_pos)
             setHomeAsUpIndicator(backArrow)
         }
 

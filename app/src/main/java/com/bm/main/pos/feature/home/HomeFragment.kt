@@ -21,8 +21,13 @@ import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.feature.drawer.DrawerActivity
+import com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity
+import com.bm.main.pos.feature.manage.product.list.ProductListActivity
 import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
+import com.bm.main.pos.feature.sell.chooseCustomer.ChooseCustomerActivity
 import com.bm.main.pos.feature.setting.account.AccountActivity
+import com.bm.main.pos.feature.setting.main.SettingActivity
+import com.bm.main.pos.feature.transaction.historyTransaction.TransactionHistoryActivity
 import com.bm.main.pos.feature.webpage.WebViewActivity
 import com.bm.main.pos.models.menu.Menu
 import com.bm.main.pos.rest.entity.RestException
@@ -83,9 +88,28 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
         }*/
         adapter.callback = object : MenuAdapter.ItemClickCallback {
             override fun onClick(data: Menu) {
-                if (data.id == 0) {
-                    val intent = Intent(requireContext(), AddProductMainActivity::class.java)
-                    startActivity(intent)
+                when (data.id) {
+                    0 -> {
+                        val intent = Intent(requireContext(), AddProductMainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    1 -> {
+                        val intent = Intent(requireContext(), TransactionHistoryActivity::class.java)
+                        startActivity(intent)
+                    }
+                    3 -> {
+                        val intent = Intent(requireContext(), ProductListActivity::class.java)
+                        startActivity(intent)
+                    }
+                    4 -> {
+                        val intent = Intent(requireContext(), PiutangCustomerActivity::class.java)
+                        startActivity(intent)
+                    }
+                    5 -> {
+                        val intent = Intent(requireContext(), ChooseCustomerActivity::class.java)
+                        intent.putExtra("FromToko", true)
+                        startActivity(intent)
+                    }
                 }
                 //EventBus.getDefault().post(onMenuClicked(data.id!!))
                 //onMenu?.selectMenu(data.id!!)
@@ -254,7 +278,7 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
     }
 
     override fun openAccountPage() {
-        val intent = Intent(activity, AccountActivity::class.java)
+        val intent = Intent(activity, SettingActivity::class.java)
         startActivityForResult(intent, CODE_ACCOUNT)
     }
 

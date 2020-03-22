@@ -3,16 +3,11 @@ package com.bm.main.pos.feature.transaction.detail
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,11 +17,10 @@ import com.bm.main.pos.feature.dialog.PaymentDialog
 import com.bm.main.pos.feature.printer.PrinterActivity
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.rest.entity.RestException
-import com.bm.main.pos.ui.ext.htmlText
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.*
 import com.bm.main.pos.utils.print.PrinterUtil
-import kotlinx.android.synthetic.main.activity_detail_success.*
+import kotlinx.android.synthetic.main.activity_transaction_detail_new.*
 import timber.log.Timber
 
 class DetailSuccessActivity :
@@ -40,7 +34,7 @@ class DetailSuccessActivity :
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_detail_success
+        return R.layout.activity_transaction_detail_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -49,13 +43,13 @@ class DetailSuccessActivity :
     }
 
     private fun renderView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = ResourcesCompat.getColor(
-                resources,
-                R.color.bg_header_success,
-                null
-            )
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.statusBarColor = ResourcesCompat.getColor(
+//                resources,
+//                R.color.bg_header_success,
+//                null
+//            )
+//        }
 
         sw_refresh.isRefreshing = false
         sw_refresh.setOnRefreshListener {
@@ -66,19 +60,19 @@ class DetailSuccessActivity :
         rv_list.layoutManager = layoutManager
         rv_list.adapter = adapter
 
-        btn_cancel.setOnClickListener {
-            showLoadingDialog()
-            getPresenter()?.deleteDetail()
-        }
-
-        btn_printer.setOnClickListener {
-            getPresenter()?.onCheckBluetooth()
-        }
-
-        btn_share_social.setOnClickListener {
-            getPresenter()?.onCheckShare()
+//        btn_cancel.setOnClickListener {
+//            showLoadingDialog()
+//            getPresenter()?.deleteDetail()
+//        }
+//
+//        btn_printer.setOnClickListener {
+//            getPresenter()?.onCheckBluetooth()
+//        }
+//
+//        btn_share_social.setOnClickListener {
+//            getPresenter()?.onCheckShare()
 //            openDetailPage()
-        }
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -89,36 +83,44 @@ class DetailSuccessActivity :
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbarx)
+//        setSupportActionBar(toolbarx)
+//        supportActionBar?.apply {
+//            setDisplayHomeAsUpEnabled(true)
+//            setDisplayShowHomeEnabled(true)
+//            title = ""
+//            toolbar_title.text = getString(R.string.menu_detail_transaction)
+//
+//            setHomeAsUpIndicator(ResourcesCompat.getDrawable(
+//                resources,
+//                R.drawable.ic_back_pos,
+//                null
+//            )?.apply {
+//                colorFilter = PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
+//            })
+//        }
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            title = ""
-            toolbar_title.text = getString(R.string.menu_detail_transaction)
+            title = "Detail Laporan"
 
-            setHomeAsUpIndicator(ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_back_pos,
-                null
-            )?.apply {
-                colorFilter = PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
-            })
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
+            setHomeAsUpIndicator(backArrow)
         }
     }
 
     override fun takeScreenshot(filename: String) {
-        actions.visibility = View.GONE
-        ImageHelper.takeScreenshot(this, ns_content, filename) {
-            actions.visibility = View.VISIBLE
-            Helper.shareBitmapToApps(this, Uri.parse(it))
-        }
+//        actions.visibility = View.GONE
+//        ImageHelper.takeScreenshot(this, ns_content, filename) {
+//            actions.visibility = View.VISIBLE
+//            Helper.shareBitmapToApps(this, Uri.parse(it))
+//        }
     }
 
     override fun setProducts(list: List<DetailTransaction.Data>) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
         adapter.setItems(list)
-        tv_total_qty.text = list.sumBy { it.jumlah?.toInt() ?: 0 }.toString()
+//        tv_total_qty.text = list.sumBy { it.jumlah?.toInt() ?: 0 }.toString()
     }
 
     override fun onResume() {
@@ -164,39 +166,44 @@ class DetailSuccessActivity :
         nohp: String,
         alamat: String
     ) {
-        tv_info_toko.htmlText("${nama_toko} / ${nohp}<br>${alamat}")
-        tv_id.text = id
+        tv_metode_pembayaran.text = payment
+        tv_id_transaksi.text = id
+        tv_tanggal.text = date
+        tv_total_item.text = total
+        tv_tunai.text = bayar
+        tv_kembalian.text = kembalian
+        //tv_info_toko.htmlText("${nama_toko} / ${nohp}<br>${alamat}")
+
         //        tv_subtotal.text = subtotal
         //        tv_total_big.text = total
-        tv_total.text = total
-        tv_date.text = date
-        tv_operator.text = operator
-        tv_bayar.text = payment
-        tv_status.text = status
 
-        ll_operator.visibility = View.GONE
-        operator?.let {
-            ll_operator.visibility = View.GONE
-            tv_operator.text = it
-        }
+//        tv_operator.text = operator
 
-        ll_customer.visibility = View.GONE
-        customer?.let {
-            ll_customer.visibility = View.VISIBLE
-            tv_customer.text = it
-        }
+//        tv_status.text = status
 
-        ll_bayar.visibility = View.GONE
-        bayar?.let {
-            ll_bayar.visibility = View.VISIBLE
-            tv_bayar.text = it
-        }
+//        ll_operator.visibility = View.GONE
+//        operator?.let {
+//            ll_operator.visibility = View.GONE
+//            tv_operator.text = it
+//        }
 
-        ll_kembalian.visibility = View.GONE
-        kembalian?.let {
-            ll_kembalian.visibility = View.VISIBLE
-            tv_kembalian.text = it
-        }
+//        ll_customer.visibility = View.GONE
+//        customer?.let {
+//            ll_customer.visibility = View.VISIBLE
+//            tv_customer.text = it
+//        }
+
+//        ll_bayar.visibility = View.GONE
+//        bayar?.let {
+//            ll_bayar.visibility = View.VISIBLE
+//            tv_bayar.text = it
+//        }
+
+//        ll_kembalian.visibility = View.GONE
+//        kembalian?.let {
+//            ll_kembalian.visibility = View.VISIBLE
+//            tv_kembalian.text = it
+//        }
     }
 
     override fun onDestroy() {
@@ -215,19 +222,19 @@ class DetailSuccessActivity :
     override fun enableBtn(type: String?) {
         when (type) {
             "batal" -> {
-                btn_cancel.visibility = View.GONE
-                btn_printer.visibility = View.GONE
-                v_space.visibility = View.GONE
+//                btn_cancel.visibility = View.GONE
+//                btn_printer.visibility = View.GONE
+//                v_space.visibility = View.GONE
             }
             "hutang" -> {
-                btn_cancel.visibility = View.VISIBLE
-                btn_printer.visibility = View.GONE
-                v_space.visibility = View.VISIBLE
+//                btn_cancel.visibility = View.VISIBLE
+//                btn_printer.visibility = View.GONE
+//                v_space.visibility = View.VISIBLE
             }
             else -> {
-                btn_cancel.visibility = View.VISIBLE
-                btn_printer.visibility = View.VISIBLE
-                v_space.visibility = View.VISIBLE
+//                btn_cancel.visibility = View.VISIBLE
+//                btn_printer.visibility = View.VISIBLE
+//                v_space.visibility = View.VISIBLE
 
             }
         }
@@ -299,6 +306,7 @@ class DetailSuccessActivity :
     }
 
     override fun getParentLayout(): NestedScrollView {
-        return ns_content
+//        return ns_content
+        return NestedScrollView(this)
     }
 }

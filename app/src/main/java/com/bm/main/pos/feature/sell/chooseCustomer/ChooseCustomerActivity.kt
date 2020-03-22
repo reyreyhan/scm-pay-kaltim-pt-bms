@@ -2,6 +2,7 @@ package com.bm.main.pos.feature.sell.chooseCustomer
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -36,7 +37,7 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
-        getPresenter()?.onViewCreated()
+        getPresenter()?.onViewCreated(intent)
     }
 
     private fun renderView() {
@@ -180,5 +181,9 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
             setResult(RESULT_OK, newintent)
             finish()
         }
+    }
+
+    override fun setBackgroundButtonAddCustomer(){
+        btn_pelanggan_baru.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
     }
 }

@@ -45,13 +45,13 @@ class SuccessAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val nameTv = view.tv_name
         private val countTv = view.tv_count
-        private val priceTv = view.tv_price
+        //private val priceTv = view.tv_price
         private val subtotalTv = view.tv_subtotal
 
         fun bindData(data: DetailTransaction.Data, position: Int) {
             nameTv.text = "${data.nama_barang}"
-            countTv.text = "${Helper.convertToCurrency(data.jumlah!!)}"
-            priceTv.text = "${Helper.convertToCurrency(data.harga!!)}"
+            countTv.text = "${data.jumlah} x ${data.harga} = ${Helper.convertToCurrency(data.jumlah!!)}"
+            //priceTv.text = "${Helper.convertToCurrency(data.harga!!)}"
             subtotalTv.text = "${Helper.convertToCurrency(data.totalharga!!)}"
         }
     }

@@ -10,7 +10,7 @@ import com.bm.main.pos.R
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.utils.Helper
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_list_choose_product.view.*
+import kotlinx.android.synthetic.main.item_list_choose_product_2.view.*
 
 class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -18,7 +18,7 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_choose_product, parent, false))
+            .inflate(R.layout.item_list_choose_product_2, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -48,6 +48,8 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val nameTv = view.tv_name
         private val kodeTv = view.tv_kode
+        private val hargaTv = view.tv_harga
+        private val countTv = view.tv_count
         private val imageIv = view.iv_photo
 
         fun bindData(data: Product, position: Int) {
@@ -56,7 +58,8 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             if(desc.isNullOrEmpty() || desc.isNullOrBlank()){
                 desc = "-"
             }
-
+            countTv.text = Helper.convertToCurrency(data.stok)
+            hargaTv.text = "Rp Rp ${Helper.convertToCurrency(data.hargabeli)} - Rp ${Helper.convertToCurrency(data.hargajual)}"
 //            infoTv.text = "$desc"
 //            priceTv.text = "Rp ${Helper.convertToCurrency(data.hargajual!!)}"
 //            stockTv.text = "Stok : ${Helper.convertToCurrency(data.stok!!)}"

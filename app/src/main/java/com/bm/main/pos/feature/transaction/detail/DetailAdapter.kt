@@ -8,6 +8,9 @@ import com.bm.main.pos.R
 import com.bm.main.pos.models.transaction.DetailTransaction
 import kotlinx.android.synthetic.main.item_list_transaction.view.*
 import com.bm.main.pos.utils.Helper
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class DetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -47,15 +50,29 @@ class DetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val nameTv = view.tv_name
         private val countTv = view.tv_count
-        private val priceTv = view.tv_price
-        private val subtotalTv = view.tv_subtotal
+        private val imageIv = view.iv_image
+        private val priceTv = view.tv_subtotal
 
 
         fun bindData(data: DetailTransaction.Data, position: Int) {
             nameTv.text = "${data.nama_barang}"
-            countTv.text = "${Helper.convertToCurrency(data.jumlah!!)}x"
-            priceTv.text = "@${Helper.convertToCurrency(data.harga!!)}"
-            subtotalTv.text = "Rp ${Helper.convertToCurrency(data.totalharga!!)}"
+            countTv.text = "${data.jumlah} x ${data.harga} = ${Helper.convertToCurrency(data.jumlah!!)}"
+            priceTv.text = "Rp ${Helper.convertToCurrency(data.totalharga!!)}"
+
+//            if (data. == null) {
+//                Glide.with(itemView.context)
+//                    .load(R.drawable.logo)
+//                    .transform(CenterCrop(), RoundedCorners(8))
+//                    .into(imageIv)
+//
+//            } else {
+//                Glide.with(itemView.context)
+//                    .load(data.gbr)
+//                    .error(R.drawable.logo)
+//                    .placeholder(R.drawable.logo)
+//                    .transform(CenterCrop(), RoundedCorners(8))
+//                    .into(imageIv)
+//            }
         }
     }
 }

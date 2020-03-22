@@ -1,21 +1,18 @@
 package com.bm.main.pos.feature.setting.main
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.bm.main.pos.base.BaseFragment
+import android.view.MenuItem
 import com.bm.main.pos.R
-import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.fragment_setting.view.*
+import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.setting.account.AccountActivity
-import com.bm.main.pos.feature.setting.store.StoreActivity
 import com.bm.main.pos.feature.setting.staff.list.StaffListActivity
+import com.bm.main.pos.feature.setting.store.StoreActivity
+import com.bm.main.pos.utils.AppConstant
+import kotlinx.android.synthetic.main.fragment_setting.*
 
 
 /**
@@ -28,78 +25,47 @@ import com.bm.main.pos.feature.setting.staff.list.StaffListActivity
  *
  */
 
-class SettingFragment : BaseFragment<SettingPresenter, SettingContract.View>(),
+class SettingActivity : BaseActivity<SettingPresenter, SettingContract.View>(),
     SettingContract.View {
 
-    private val TAG = SettingFragment::class.java.simpleName
+    private val TAG = SettingActivity::class.java.simpleName
 
     private val ARGUMENT_PARAM = "ARGUMENT_PARAM"
-
-    private lateinit var _view: View
 
     private val CODE_LOGIN = 1001
     private val CODE_ACCOUNT = 1002
     private var listener: Listener? = null
 
-    companion object {
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param intros ArrayList Intro.
-         * @return A new instance of fragment ContentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance() =
-                SettingFragment().apply {
-                    arguments = Bundle().apply {
-
-                    }
-                }
-    }
 
     override fun createPresenter(): SettingPresenter {
-        return SettingPresenter(activity as Context, this)
-    }
-
-    override fun onCreateLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-
-        return inflater.inflate(R.layout.fragment_setting, container, false)
-    }
-
-
-    override fun initAction(view: View) {
-        _view = view
-        renderView()
-        getPresenter()?.onViewCreated()
+        return SettingPresenter(this, this)
     }
 
     private fun renderView(){
-        _view.btn_account.setOnClickListener {
+        btn_account.setOnClickListener {
             openAccountPage()
         }
 
-        _view.btn_printer.setOnClickListener {
+        btn_printer.setOnClickListener {
             openPrinterPage()
         }
 
-        _view.btn_staff.setOnClickListener {
+        btn_staff.setOnClickListener {
             openStaffPage()
         }
 
-        _view.btn_privacy.setOnClickListener {
+        btn_privacy.setOnClickListener {
             openPrivacyPage()
         }
-        _view.btn_term.setOnClickListener {
+        btn_term.setOnClickListener {
             openTermsPage()
         }
-        _view.btn_help.setOnClickListener {
+        btn_help.setOnClickListener {
             openHelpPage()
         }
-        _view.btn_logout.setOnClickListener {
 
+        btn_logout.setOnClickListener {
+            restartLoginActivity()
         }
     }
 
@@ -119,7 +85,7 @@ class SettingFragment : BaseFragment<SettingPresenter, SettingContract.View>(),
     }
 
     override fun openAccountPage() {
-        val intent = Intent(activity,AccountActivity::class.java)
+        val intent = Intent(this,AccountActivity::class.java)
         startActivityForResult(intent,CODE_ACCOUNT)
     }
 
@@ -129,12 +95,12 @@ class SettingFragment : BaseFragment<SettingPresenter, SettingContract.View>(),
     }
 
     override fun openStorePage() {
-        val browserIntent = Intent(activity,StoreActivity::class.java)
+        val browserIntent = Intent(this,StoreActivity::class.java)
         startActivity(browserIntent)
     }
 
     override fun openStaffPage() {
-        val browserIntent = Intent(activity,StaffListActivity::class.java)
+        val browserIntent = Intent(this,StaffListActivity::class.java)
         startActivity(browserIntent)
     }
 
@@ -149,19 +115,46 @@ class SettingFragment : BaseFragment<SettingPresenter, SettingContract.View>(),
         fun onReloadProfile()
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is Listener) {
-            listener = context
-        } else {
-            throw RuntimeException("$context must implement Listener")
+
+    override fun createLayout(): Int {
+        return R.layout.fragment_setting
+    }
+
+    override fun startingUpActivity(savedInstanceState: Bundle?) {
+        renderView()
+        getPresenter()?.onViewCreated()
+//        if (context is Listener) {
+//            listener = context
+//        } else {
+//            throw RuntimeException("$context must implement Listener")
+//        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        listener = null
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            title = "Pengaturan"
+
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
+            setHomeAsUpIndicator(backArrow)
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    override fun onResume() {
+        super.onResume()
+        setupToolbar()
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item!!)
+    }
 }

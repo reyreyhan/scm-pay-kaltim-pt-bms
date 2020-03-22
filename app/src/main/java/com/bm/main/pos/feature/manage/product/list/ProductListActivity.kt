@@ -2,23 +2,31 @@ package com.bm.main.pos.feature.manage.product.list
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.product.edit.EditProductActivity
+import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
 import com.bm.main.pos.feature.scan.ScanCodeActivity
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activity_list_product.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_product_search.*
+import org.jetbrains.anko.backgroundColor
+
 
 class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContract.View>(),
     ProductListContract.View {
@@ -29,12 +37,14 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
     private val CODE_OPEN_EDIT = 1002
     private val CODE_OPEN_SCAN = 1003
 
+    lateinit var fab:FloatingActionButton
+
     override fun createPresenter(): ProductListPresenter {
         return ProductListPresenter(this, this)
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_product_search
+        return R.layout.fragment_product_search
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -43,6 +53,10 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
     }
 
     private fun renderView() {
+        addFABButton()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            layout_search.backgroundColor = getColor(R.color.colorAccent)
+        }
         sw_refresh.isRefreshing = false
         sw_refresh.setOnRefreshListener {
             scrollListener.resetState()
@@ -50,8 +64,8 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
         }
 
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        rv_list.layoutManager = layoutManager
-        rv_list.adapter = adapter
+        rv_list_barang.layoutManager = layoutManager
+        rv_list_barang.adapter = adapter
 
         scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onFirstItemVisible(isFirstItem: Boolean) {
@@ -62,7 +76,7 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
 
             }
         }
-        rv_list.addOnScrollListener(scrollListener)
+        rv_list_barang.addOnScrollListener(scrollListener)
 
         adapter.callback = object : ProductListAdapter.ItemClickCallback{
             override fun onClick(data: Product) {
@@ -93,19 +107,19 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
             }
         })
 
-        btn_add.setOnClickListener {
+        fab.setOnClickListener {
             openAddPage()
         }
 
-        btn_scanner.setOnClickListener {
-            getPresenter()?.onCheckScan()
-        }
-
-        btn_sort.setOnClickListener {
-            sw_refresh.isRefreshing = true
-            adapter.clearAdapter()
-            getPresenter()?.onCheckSort()
-        }
+//        btn_scanner.setOnClickListener {
+//            getPresenter()?.onCheckScan()
+//        }
+//
+//        btn_sort.setOnClickListener {
+//            sw_refresh.isRefreshing = true
+//            adapter.clearAdapter()
+//            getPresenter()?.onCheckSort()
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -122,7 +136,7 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.lbl_manage_produk_title)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
 
@@ -209,9 +223,8 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
     }
 
     override fun openAddPage() {
-//        val intent = Intent(this,
-//            AddProductActivity::class.java)
-//        startActivityForResult(intent,CODE_OPEN_ADD)
+        val intent = Intent(this, AddProductMainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun openEditPage(data: Product) {
@@ -231,5 +244,19 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
         startActivityForResult(intent,CODE_OPEN_SCAN)
     }
 
-
+    fun addFABButton(){
+        fab = FloatingActionButton(this)
+        val rel = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        rel.setMargins(15, 15, 15, 15)
+        rel.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+        rel.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+        fab.layoutParams = rel
+        fab.setImageResource(R.drawable.ic_add_white)
+        fab.size = FloatingActionButton.SIZE_NORMAL
+        fab.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.md_red_A700))
+        layout_parent.addView(fab)
+    }
 }

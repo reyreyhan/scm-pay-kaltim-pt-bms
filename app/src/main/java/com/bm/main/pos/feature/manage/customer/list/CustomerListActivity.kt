@@ -36,7 +36,7 @@ class CustomerListActivity : BaseActivity<CustomerListPresenter, CustomerListCon
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_list_customer
+        return R.layout.activity_daftar_pelanggan_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {

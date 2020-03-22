@@ -13,12 +13,11 @@ import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity
 import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.supplier.Supplier
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activity_piutang_customer.*
+import kotlinx.android.synthetic.main.activity_piutang_customer_new.*
 
 class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCustomerContract.View>(),
     PiutangCustomerContract.View {
@@ -32,7 +31,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_piutang_customer
+        return R.layout.activity_piutang_customer_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -102,7 +101,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.menu_piutang_customer)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
 

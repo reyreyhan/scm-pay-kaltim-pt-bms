@@ -74,9 +74,7 @@ class TransactionPresenter(val context: Context, val view: TransactionContract.V
                             trx.pos = pos
                             list.add(0, trx)
                         }
-
                         list.add(0, header)
-
                     }
                 }
             }

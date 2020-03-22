@@ -23,7 +23,7 @@ interface EditCustomerContract {
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated(intent:Intent)
         fun onDestroy()
-        fun onCheck(name:String,email:String,phone:String,address:String)
+        fun onCheck(name:String,email:String,phone:String)
         fun onCheckPhoto()
         fun setImagePhotoPath(path:String?)
     }
@@ -31,7 +31,7 @@ interface EditCustomerContract {
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
         fun onRestartDisposable()
-        fun callEditCustomerAPI(context: Context, model: CustomerRestModel, id:String, name:String, email:String, phone:String, address:String, gbr:String?)
+        fun callEditCustomerAPI(context: Context, model: CustomerRestModel, id:String, name:String, email:String, phone:String)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {

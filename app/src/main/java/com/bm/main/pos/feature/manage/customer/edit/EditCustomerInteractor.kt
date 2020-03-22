@@ -26,9 +26,9 @@ class EditCustomerInteractor(var output: EditCustomerContract.InteractorOutput?)
         disposable = CompositeDisposable()
     }
 
-    override fun callEditCustomerAPI(context: Context, model: CustomerRestModel, id:String, name: String,email:String,phone:String,address:String,gbr:String?) {
+    override fun callEditCustomerAPI(context: Context, model: CustomerRestModel, id:String, name: String,email:String,phone:String) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(model.update(key!!,id,name,email,phone,address,gbr).subscribeWith(object : DisposableObserver<Message>() {
+        disposable.add(model.update(key!!,id,name,email,phone,"","").subscribeWith(object : DisposableObserver<Message>() {
 
             override fun onNext(@NonNull response: Message) {
                 output?.onSuccessEditCustomer(response.message)

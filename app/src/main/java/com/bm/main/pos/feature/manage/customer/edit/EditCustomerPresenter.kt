@@ -53,7 +53,7 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
         }
     }
 
-    override fun onCheck(name: String, email: String, phone: String, address: String) {
+    override fun onCheck(name: String, email: String, phone: String) {
         if (name.isNullOrBlank() || name.isNullOrEmpty()) {
             view.showMessage(999, context.getString(R.string.err_empty_name))
             return
@@ -76,19 +76,19 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
             return
         }
 
-        if (address.isNullOrBlank() || address.isNullOrEmpty()) {
-            view.showMessage(999, context.getString(R.string.err_empty_address))
-            return
-        }
+//        if (address.isNullOrBlank() || address.isNullOrEmpty()) {
+//            view.showMessage(999, context.getString(R.string.err_empty_address))
+//            return
+//        }
 
         newdata = Customer()
         newdata?.id_pelanggan = data?.id_pelanggan
         newdata?.nama_pelanggan = name
         newdata?.email = email
         newdata?.telpon = phone
-        newdata?.alamat = address
-        newdata?.gbr = photoPath
-        interactor.callEditCustomerAPI(context, restModel, data?.id_pelanggan!!, name, email, phone, address, photoPath)
+//        newdata?.alamat = address
+//        newdata?.gbr = photoPath
+        interactor.callEditCustomerAPI(context, restModel, data?.id_pelanggan!!, name, email, phone)
     }
 
     override fun onDestroy() {

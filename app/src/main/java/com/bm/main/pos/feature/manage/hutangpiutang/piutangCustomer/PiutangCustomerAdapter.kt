@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.customer.Customer
-import kotlinx.android.synthetic.main.item_list_piutang_customer.view.*
+import kotlinx.android.synthetic.main.item_list_piutang_customer_new.view.*
 
 class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -14,7 +14,7 @@ class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_piutang_customer, parent, false))
+                .inflate(R.layout.item_list_piutang_customer_new, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -43,13 +43,11 @@ class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val nameTv = view.tv_name
-        private val infoTv = view.tv_phone
-
-
+        //private val infoTv = view.tv_phone
 
         fun bindData(data: Customer, position: Int) {
             nameTv.text = "${data.nama_pelanggan}"
-            infoTv.text = "${data.telpon}"
+            //infoTv.text = "${data.telpon}"
 
             itemView.setOnClickListener {
                 if(callback != null){

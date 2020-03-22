@@ -33,14 +33,16 @@ class AddCustomerPresenter(val context: Context, val view: AddCustomerContract.V
             return
         }
 
-        if(email.isNullOrBlank() || email.isNullOrEmpty()){
-            view.showMessage(999,context.getString(R.string.err_empty_email))
-            return
-        }
+//        if(email.isNullOrBlank() || email.isNullOrEmpty()){
+//            view.showMessage(999,context.getString(R.string.err_empty_email))
+//            return
+//        }
 
-        if(!Helper.isEmailValid(email)){
-            view.showMessage(999,context.getString(R.string.err_email_format))
-            return
+        if(!email.isNullOrEmpty() || !email.isNullOrBlank()){
+            if(!Helper.isEmailValid(email)){
+                view.showMessage(999,context.getString(R.string.err_email_format))
+                return
+            }
         }
 
         if(phone.isNullOrBlank() || phone.isNullOrEmpty()){
