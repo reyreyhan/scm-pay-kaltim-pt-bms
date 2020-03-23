@@ -36,7 +36,7 @@ class AddProductInteractor (var output: AddProductContract.InteractorOutput?) :
         disposable.add(
             request.subscribeWith(object : DisposableObserver<Message>() {
                 override fun onNext(@NonNull response: Message) {
-                    output?.onSuccessAddProduct(response.message)
+                    output?.onSuccessAddProduct(response.message, kode)
                 }
 
                 override fun onError(@NonNull e: Throwable) {
@@ -103,7 +103,7 @@ class AddProductInteractor (var output: AddProductContract.InteractorOutput?) :
             override fun onNext(@NonNull response: List<Product>) {
 
                 Timber.d("onNext $response")
-                //output?.onSuccessByBarcode(response)
+                output?.onSuccessByBarcode(response)
             }
 
             override fun onError(@NonNull e: Throwable) {

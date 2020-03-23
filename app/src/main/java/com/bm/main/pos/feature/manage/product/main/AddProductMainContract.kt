@@ -20,18 +20,21 @@ interface AddProductMainContract {
         fun changeFragmentPage(page:Int, barcode:String?)
         fun openScanFragment()
         fun openAddProductFragmentFromScan(barode:String)
+        fun onResult(data:Product)
     }
 
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated(intent: Intent)
+        fun searchByBarcode(search: String)
         fun onDestroy()
     }
 
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
+        fun callSearchByBarcodeAPI(context: Context, restModel: ProductRestModel, search: String)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
-
+        fun onSuccessByBarcode(list: List<Product>)
     }
 }

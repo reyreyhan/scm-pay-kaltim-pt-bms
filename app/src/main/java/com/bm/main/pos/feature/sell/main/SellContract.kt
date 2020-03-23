@@ -51,6 +51,8 @@ interface SellContract {
         fun openSuccessPage(id:String)
         fun onNoteSaved(selected: Cart, pos: Int)
         fun onCountSaved(selected: Cart, pos: Int)
+        fun hideContainerFragment()
+        fun setDeselectButtonSearch()
     }
 
     interface Presenter : BasePresenterImpl<View> {

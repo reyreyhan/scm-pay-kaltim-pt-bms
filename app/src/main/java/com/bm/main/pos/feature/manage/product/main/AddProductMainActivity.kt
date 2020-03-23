@@ -32,7 +32,8 @@ class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductM
     AddProductMainContract.View,
     ScanCodeFragment.OnProductSelectedListener,
     ProductListFragment.OnProductSearchSelectedListener,
-    BottomDialog.Listener {
+    BottomDialog.Listener,
+    AddProductFragment.OnProductAdded{
 
     private val categoryDialog = BottomDialog.newInstance()
     private var ft: FragmentTransaction? = null
@@ -230,5 +231,17 @@ class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductM
 
     override fun onProductSearchSelectedListener(data: Product) {
         openAddProductFragmentFromSearch(data)
+    }
+
+
+    override fun onResult(data: Product) {
+        val newintent: Intent = intent
+        newintent.putExtra(AppConstant.DATA, data)
+        setResult(Activity.RESULT_OK, newintent)
+        finish()
+    }
+
+    override fun setOnProductAdded(data: String) {
+        getPresenter()?.searchByBarcode(data)
     }
 }

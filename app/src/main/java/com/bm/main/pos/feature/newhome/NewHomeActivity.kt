@@ -210,6 +210,7 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
         if (fragment is SellFragment) {
             fragment.getPresenter()?.checkCart(data, null)
             fragment.hideContainerFragment()
+            fragment.setDeselectButtonSearch()
         }
     }
 

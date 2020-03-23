@@ -1,8 +1,11 @@
 package com.bm.main.pos.feature.manage.product.add
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,17 +23,24 @@ import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.ui.ext.toast
-import com.bm.main.pos.utils.ImageCompression
-import com.bm.main.pos.utils.ImageUtil
+import com.bm.main.pos.utils.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import kotlinx.android.synthetic.main.fragment_add_product_new.*
 import kotlinx.android.synthetic.main.fragment_add_product_new.view.*
+import kotlinx.android.synthetic.main.fragment_add_product_new.view.iv_foto
 import timber.log.Timber
 import java.io.File
 
 class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.View>(),
     AddProductContract.View{
+
+    interface OnProductAdded{
+        fun setOnProductAdded(data: String)
+    }
 
     companion object {
         @JvmStatic
@@ -150,10 +160,14 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
         }
     }
 
-    override fun onClose(msg: String?, status: Int) {
+    override fun onClose(msg: String?, status: Int, barcode: String?) {
         hideLoadingDialog()
         toast(msg!!)
-        activity!!.finish()
+        if (barcode== null){
+            requireActivity().finish()
+        }else{
+            productListener!!.setOnProductAdded(barcode)
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -249,5 +263,44 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
         _view.tv_barcode.text = data.kodebarang
         _view.et_name_product.setText(data.nama_barang)
         _view.et_product_category.text = data.nama_kategori
+        _view.et_harga_beli.setText(data.hargabeli)
+        _view.et_harga_jual.setText(data.hargabeli)
+        _view.et_stok_barang.setText(if (data.stok.toInt() > 0) data.stok else "100")
+        _view.et_catatan_produk.setText(data.deskripsi)
+        data.gbr.let {
+            if (it.isNotBlank()) {
+                Glide.with(_view.iv_foto).asBitmap().load(it).into(object : CustomTarget<Bitmap>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
+//                        iv_photo.setImageBitmap(resource)
+                        ImageHelper.bitmapToCacheFile(
+                            requireContext(),
+                            resource,
+                            "tmp_item.${data.nama_barang.replace(" ", "")}.jpg"
+                        ) {
+                            Glide.with(_view.iv_foto).load(File(it)).into(_view.iv_foto)
+                            getPresenter()?.setImagePhotoPath(it)
+                        }
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                    }
+                })
+                _view.iv_tambah_foto.visibility = View.GONE
+            }
+        }
+    }
+
+    var productListener: OnProductAdded? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnProductAdded) {
+            productListener = context
+        } else {
+            throw RuntimeException("$context must implement OnProductAdded")
+        }
     }
 }

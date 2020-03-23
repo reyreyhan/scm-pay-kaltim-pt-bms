@@ -158,6 +158,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             _view.btn_non_tunai.isSelected = false
             _view.btn_hutang.isSelected = false
             showTunaiView()
+            getPresenter()?.countCashback()
         }
 
         _view.btn_non_tunai.setOnClickListener {
@@ -174,6 +175,12 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             _view.btn_non_tunai.isSelected = false
             _view.btn_hutang.isSelected = true
             showPiutangView()
+            getPresenter()?.updateCustomer(null)
+            if (_view.et_data_pelanggan.text.isNullOrEmpty()){
+                enableBtnBuy(false)
+            }else{
+                enableBtnBuy(true)
+            }
         }
 
         _view.et_data_pelanggan.setOnClickListener {
@@ -293,6 +300,9 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             if (product.id_barang == null) {
                 toast("Data tidak ditemukan")
             } else {
+                hideContainerFragment()
+                fragmentManager!!.beginTransaction().remove(scanCodeFragment).commit()
+                setDeselectButtonSearch()
                 getPresenter()?.addCart(product)
             }
         } else if (requestCode == CODE_OPEN_EDIT_MANUAL && resultCode == Activity.RESULT_OK) {
@@ -521,6 +531,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun openSuccessPage(id: String) {
+        adapter.clearAdapter()
         val intent = Intent(activity, SuccessActivity::class.java)
         intent.putExtra(AppConstant.DATA, id)
         startActivity(intent)
@@ -554,8 +565,13 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         getPresenter()?.updateCart(selected, pos)
     }
 
-    fun hideContainerFragment(){
+    override fun hideContainerFragment(){
         _view.container_fragment.visibility = View.GONE
+    }
+
+    override fun setDeselectButtonSearch() {
+        _view.btn_search.isSelected = false
+        _view.btn_scanner.isSelected = false
     }
 
     private fun showContainerFragment(code: Int){

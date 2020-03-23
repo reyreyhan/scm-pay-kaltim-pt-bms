@@ -90,6 +90,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     override fun checkCart(data: Product, barcode:String?) {
         if(data.posisi == true){
             addCart(data)
+            view.hideContainerFragment()
         }
         else{
             view.showTambahBarangDialog(barcode!!)
@@ -207,6 +208,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             checkCart(product, tempBarcode!!)
             tempBarcode = ""
         }
+        view.setDeselectButtonSearch()
     }
 
     override fun onFailedBarcode(code: Int, msg: String) {
@@ -231,8 +233,14 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     }
 
     override fun updateCustomer(data: Customer?) {
-        customer = data
-        view.setCustomerName(data)
+        if (data==null){
+            if (customer != null){
+                view.setCustomerName(customer)
+            }
+        }else{
+            customer = data
+            view.setCustomerName(data)
+        }
     }
 
     override fun setSelectedDate(date: CalendarDay?) {

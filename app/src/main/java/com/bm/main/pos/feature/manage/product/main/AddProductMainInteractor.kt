@@ -24,6 +24,39 @@ class AddProductMainInteractor(var output: AddProductMainContract.InteractorOutp
         disposable.clear()
     }
 
+    override fun callSearchByBarcodeAPI(
+        context: Context,
+        restModel: ProductRestModel,
+        search: String
+    ) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(restModel.searchByBarcode(key!!, search).subscribeWith(object :
+            DisposableObserver<List<Product>>() {
+
+            override fun onNext(@NonNull response: List<Product>) {
+
+                Timber.d("onNext $response")
+                output?.onSuccessByBarcode(response)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                } else {
+                    errorMessage = e.message.toString()
+                }
+                //output?.onFailedByBarcode(errorCode, errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
 //    override fun onRestartDisposable() {
 //        disposable.dispose()
 //        disposable = CompositeDisposable()

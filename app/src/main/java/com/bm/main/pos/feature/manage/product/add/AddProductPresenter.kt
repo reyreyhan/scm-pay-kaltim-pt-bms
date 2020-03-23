@@ -49,7 +49,10 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
         }
 
         if (bundle.getBoolean("FromScan")){
-            bundle.getString(AppConstant.DATA)?.let { view.setBarcodeText(it) }
+            bundle.getString(AppConstant.DATA)?.let {
+                view.setBarcodeText(it)
+                searchByBarcode(it)
+            }
         }else{
             if (bundle.getSerializable(AppConstant.DATA) is Product) {
                 val product = bundle.getSerializable(AppConstant.DATA) as Product
@@ -92,8 +95,9 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             return
         }
 
-        if (category == null) {
-            category = DialogModel()
+        if (categoryId == null) {
+            view.showMessage(999, "Kategori tidak boleh kosong")
+            return
         }
 
         if (buy.isBlank() || buy.isEmpty() || "0" == buy) {
@@ -134,8 +138,8 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
         )
     }
 
-    override fun onSuccessAddProduct(msg: String?) {
-        view.onClose(msg, Activity.RESULT_OK)
+    override fun onSuccessAddProduct(msg: String?, barcode: String?) {
+        view.onClose(msg, Activity.RESULT_OK, barcode)
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
@@ -166,9 +170,25 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
         view.openCategories("Pilih Kategori", categories, category)
     }
 
+    override fun onSuccessByBarcode(list: List<Product>){
+        if (list.isNotEmpty()) {
+            val data =
+                list.firstOrNull { it.nama_barang.isNotEmpty() && it.gbr.isNotEmpty() && it.hargajual.isNotEmpty() && it.hargabeli.isNotEmpty() }
+                    ?: list.first()
+//            Log.d("addProductPresenter ",list[0].toString())
+//            Log.d("addProductPresenter ",data.)
+            categoryId = data.id_kategori
+            view.setProduct(data)
+        }
+    }
+
     override fun setSelectedCategory(data: DialogModel) {
         category = data
         categoryId = data.id
         view.setCategoryName(data.value!!)
+    }
+
+    override fun searchByBarcode(search: String) {
+        interactor.callSearchByBarcodeAPI(context, restModel, search)
     }
 }

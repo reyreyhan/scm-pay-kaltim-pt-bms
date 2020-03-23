@@ -25,6 +25,8 @@ class AddProductMainPresenter(val context: Context, val view: AddProductMainCont
     AddProductMainContract.Presenter,
     AddProductMainContract.InteractorOutput{
 
+    private var restModel = ProductRestModel(context)
+
     private var interactor =
         AddProductMainInteractor(this)
 
@@ -37,6 +39,20 @@ class AddProductMainPresenter(val context: Context, val view: AddProductMainCont
         }
     }
 
+    override fun searchByBarcode(search: String) {
+        interactor.callSearchByBarcodeAPI(context, restModel, search)
+    }
+
+    override fun onSuccessByBarcode(list: List<Product>){
+        if (list.isNotEmpty()) {
+            val data =
+                list.firstOrNull { it.nama_barang.isNotEmpty() && it.gbr.isNotEmpty() && it.hargajual.isNotEmpty() && it.hargabeli.isNotEmpty() }
+                    ?: list.first()
+//            Log.d("addProductPresenter ",list[0].toString())
+//            Log.d("addProductPresenter ",data.)
+            view.onResult(data)
+        }
+    }
     override fun onDestroy() {
         interactor.onDestroy()
     }

@@ -15,7 +15,7 @@ import com.bm.main.pos.models.product.ProductRestModel
 interface AddProductContract {
     interface View : BaseViewImpl {
         fun showMessage(code: Int, msg: String?)
-        fun onClose(msg: String?, status: Int)
+        fun onClose(msg: String?, status: Int, barcode: String?)
         fun setBarcodeText(code:String)
         fun setProduct(data:Product)
         fun openImageChooser()
@@ -43,6 +43,7 @@ interface AddProductContract {
             barcode: String
         )
         fun setSelectedCategory(data: DialogModel)
+        fun searchByBarcode(search: String)
     }
 
     interface Interactor : BaseInteractorImpl {
@@ -67,8 +68,9 @@ interface AddProductContract {
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
-        fun onSuccessAddProduct(msg: String?)
+        fun onSuccessAddProduct(msg: String?, barcode: String?)
         fun onSuccessGetCategories(list: List<Category>)
+        fun onSuccessByBarcode(list: List<Product>)
         fun onFailedAPI(code: Int, msg: String)
     }
 }
