@@ -58,7 +58,6 @@ class ConfirmPayDialog : DialogFragment() {
             tv_uang_kembalian.text = "Rp 0"
         }else{
             container_hutang.visibility = View.GONE
-            tv_uang_kembalian.text = "Rp 0"
         }
 
         btn_update_barang.setOnClickListener {

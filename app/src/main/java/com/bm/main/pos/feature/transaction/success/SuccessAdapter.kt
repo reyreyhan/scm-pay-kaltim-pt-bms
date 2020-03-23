@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.transaction.DetailTransaction
-import kotlinx.android.synthetic.main.item_list_transaction.view.*
+import kotlinx.android.synthetic.main.item_list_transaction_2.view.*
 import com.bm.main.pos.utils.Helper
 
 class SuccessAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -15,7 +15,7 @@ class SuccessAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_transaction, parent, false))
+                .inflate(R.layout.item_list_transaction_2, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -45,13 +45,13 @@ class SuccessAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val nameTv = view.tv_name
         private val countTv = view.tv_count
-        //private val priceTv = view.tv_price
+        private val priceTv = view.tv_harga
         private val subtotalTv = view.tv_subtotal
 
         fun bindData(data: DetailTransaction.Data, position: Int) {
             nameTv.text = "${data.nama_barang}"
-            countTv.text = "${data.jumlah} x ${data.harga} = ${Helper.convertToCurrency(data.jumlah!!)}"
-            //priceTv.text = "${Helper.convertToCurrency(data.harga!!)}"
+            countTv.text = "${data.jumlah}x"
+            priceTv.text = "${Helper.convertToCurrency(data.harga!!)}"
             subtotalTv.text = "${Helper.convertToCurrency(data.totalharga!!)}"
         }
     }

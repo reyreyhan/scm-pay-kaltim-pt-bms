@@ -67,7 +67,6 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
             msg?.let {
                 toast(this,it)
             }
-
         }
     }
 
