@@ -96,7 +96,6 @@ class ScanCodeFragment : BaseFragment<ScanCodePresenter, ScanCodeContract.View>(
             mScannerView.startCamera(mCameraId)
             mScannerView.flash = mFlash
             mScannerView.setAutoFocus(mAutoFocus)
-            resumeCamera()
         }
     }
 

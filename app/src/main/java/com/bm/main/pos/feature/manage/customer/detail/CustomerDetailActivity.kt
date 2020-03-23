@@ -126,6 +126,7 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
     override fun setCustomer(name: String?, email: String?, phone: String?, address: String?, url:String?)
     {
         name?.let {
+            tv_customer_name.text = it
             tv_customer_name_detail.text = it
         }
         email?.let {
@@ -178,7 +179,7 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
         if(resultCode == Activity.RESULT_OK && requestCode == CODE_OPEN_EDIT) {
             status = Activity.RESULT_OK
             val dt = data?.getSerializableExtra(AppConstant.DATA) as Customer
-            dt?.let {
+            dt.let {
                 getPresenter()?.setCustomerData(dt)
             }
         }

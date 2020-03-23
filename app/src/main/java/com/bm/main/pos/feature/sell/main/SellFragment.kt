@@ -104,7 +104,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
                         putInt("CartPosition", position)
                     }
                 }
-                dialog.setTargetFragment(this@SellFragment, 101)
+                dialog.setTargetFragment(this@SellFragment, CODE_DIALOG_COUNT_BARANG)
                 dialog.show(fragmentManager!!, ProductDialog.TAG)
             }
 
@@ -358,7 +358,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         }
         else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_CANCELED){
             hideLoadingDialog()
-            showContainerFragment(ADD_PRODUCT_SCAN)
+            showContainerFragment(CODE_OPEN_SCAN)
         }
     }
 
