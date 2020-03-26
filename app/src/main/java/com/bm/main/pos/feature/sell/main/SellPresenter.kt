@@ -153,6 +153,11 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         countCart()
     }
 
+    override fun clearCart(){
+        carts.clear()
+        countCart()
+    }
+
     override fun countCart() {
         if(carts.size == 0){
             view.setCartText("0","0")

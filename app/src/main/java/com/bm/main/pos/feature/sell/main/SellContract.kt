@@ -75,6 +75,7 @@ interface SellContract {
         fun checkPiutang()
         fun getCartsSize():Int
         fun getCustomerName():String
+        fun clearCart()
     }
 
     interface Interactor : BaseInteractorImpl {

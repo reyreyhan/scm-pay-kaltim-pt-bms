@@ -191,7 +191,7 @@
                                 android:layout_marginTop="@dimen/standard_margin"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Data Pelanggan"
+                                android:text="Tambahkan Foto"
                                 android:textSize="@dimen/_12sdp"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorAccent"/>

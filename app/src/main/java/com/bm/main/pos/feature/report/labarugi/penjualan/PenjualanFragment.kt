@@ -13,7 +13,9 @@ import com.bm.main.pos.R
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.feature.report.labarugi.penjualan.PenjualanAdapter
+import com.bm.main.pos.models.FilterDialogDate
 import com.bm.main.pos.models.report.ReportLabaRugi
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.android.synthetic.main.fragment_report_penjualan.view.*
 
 
@@ -70,7 +72,7 @@ class PenjualanFragment : BaseFragment<PenjualanPresenter, PenjualanContract.Vie
     override fun initAction(view: View) {
         _view = view
         renderView()
-        getPresenter()?.onViewCreated()
+//        getPresenter()?.onViewCreated()
     }
 
     private fun renderView(){
@@ -87,7 +89,7 @@ class PenjualanFragment : BaseFragment<PenjualanPresenter, PenjualanContract.Vie
         adapter.setItems(list)
     }
 
-    override fun showErrorMessage(code: Int, msg: String) {
+    override fun showErrorMessage(isToday: Boolean?, code: Int, msg: String) {
         if(code == RestException.CODE_USER_NOT_FOUND){
             restartLoginActivity()
         }
@@ -101,14 +103,48 @@ class PenjualanFragment : BaseFragment<PenjualanPresenter, PenjualanContract.Vie
 
     }
 
+    override fun setYesterdayData(data: ReportLabaRugi) {
+
+    }
+
+    override fun setDate(firstDate: String, lastDate: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun reloadData() {
+        TODO("Not yet implemented")
+    }
+
+    override fun openFilter(data: FilterDialogDate?) {
+        TODO("Not yet implemented")
+    }
+
     override fun onDetach() {
         super.onDetach()
         getPresenter()?.onDestroy()
 
     }
 
+//    override fun loadData() {
+//    }
+//
+//    override fun getToday(): CalendarDay? {
+//        return null
+//    }
+//
+//    override fun setFilterDateSelected(data: FilterDialogDate?) {
+//    }
+//
+//    override fun getFilterDateSelected(): FilterDialogDate? {
+//        return null
+//    }
+
     override fun setData(list: List<ReportLabaRugi.Penjualan>?) {
         getPresenter()?.onCheck(list)
+    }
+
+    override fun setData(data: ReportLabaRugi) {
+        TODO("Not yet implemented")
     }
 
 }

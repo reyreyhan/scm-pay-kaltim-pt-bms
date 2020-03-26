@@ -531,6 +531,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun openSuccessPage(id: String) {
+        getPresenter()?.clearCart()
         adapter.clearAdapter()
         val intent = Intent(activity, SuccessActivity::class.java)
         intent.putExtra(AppConstant.DATA, id)

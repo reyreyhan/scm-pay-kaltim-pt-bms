@@ -70,6 +70,10 @@ class SellAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyItemRangeInserted(lastCount, listProduct!!.size)
     }
 
+    fun getList():List<Cart>{
+        return listProduct
+    }
+
     fun clearAdapter() {
         listProduct.clear()
         tempList.clear()

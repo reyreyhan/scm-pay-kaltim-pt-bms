@@ -180,6 +180,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".feature.report.main.ReportActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.report.labarugi.penjualan.PenjualanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
             android:name=".feature.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />

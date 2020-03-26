@@ -1,10 +1,10 @@
 package com.bm.main.pos.feature.report.labarugi.penjualan
 
 import android.content.Context
-import com.bm.main.pos.models.hutangpiutang.Hutang
-import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
-import com.bm.main.pos.models.hutangpiutang.Piutang
-import com.bm.main.pos.models.transaction.Transaction
+import com.bm.main.fpl.utils.PreferenceClass
+import com.bm.main.pos.models.report.ReportLabaRugi
+import com.bm.main.pos.models.report.ReportRestModel
+import com.bm.main.pos.models.transaction.HistoryTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppSession
@@ -26,4 +26,59 @@ class PenjualanInteractor(var output: PenjualanContract.InteractorOutput?) : Pen
         disposable = CompositeDisposable()
     }
 
+    override fun callGetReportsAPI(context: Context, restModel: ReportRestModel, awal:String, akhir:String) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(restModel.labaRugi(key!!,awal,akhir).subscribeWith(object : DisposableObserver<ReportLabaRugi>() {
+
+            override fun onNext(@NonNull response: ReportLabaRugi) {
+                output?.onSuccessGetReports(response)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedAPI(true, errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
+
+    override fun callGetReportsYesterdayAPI(context: Context, restModel: ReportRestModel, awal:String, akhir:String) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(restModel.labaRugi(key!!,awal,akhir).subscribeWith(object : DisposableObserver<ReportLabaRugi>() {
+
+            override fun onNext(@NonNull response: ReportLabaRugi) {
+                output?.onSuccessGetReportsYesterday(response)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedAPI(false, errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
 }

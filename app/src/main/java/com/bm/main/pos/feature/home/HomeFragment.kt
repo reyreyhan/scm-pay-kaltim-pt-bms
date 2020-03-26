@@ -24,6 +24,7 @@ import com.bm.main.pos.feature.drawer.DrawerActivity
 import com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity
 import com.bm.main.pos.feature.manage.product.list.ProductListActivity
 import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
+import com.bm.main.pos.feature.report.main.ReportActivity
 import com.bm.main.pos.feature.sell.chooseCustomer.ChooseCustomerActivity
 import com.bm.main.pos.feature.setting.account.AccountActivity
 import com.bm.main.pos.feature.setting.main.SettingActivity
@@ -95,6 +96,10 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
                     }
                     1 -> {
                         val intent = Intent(requireContext(), TransactionHistoryActivity::class.java)
+                        startActivity(intent)
+                    }
+                    2 -> {
+                        val intent = Intent(requireContext(), ReportActivity::class.java)
                         startActivity(intent)
                     }
                     3 -> {
