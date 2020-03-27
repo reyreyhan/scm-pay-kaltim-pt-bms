@@ -13,7 +13,6 @@ import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.events.onHistoryChangedDate
 import com.bm.main.pos.feature.transaction.detail.DetailSuccessActivity
 import com.bm.main.pos.feature.transaction.historyTransaction.TransactionAdapter.*
-import com.bm.main.pos.feature.transaction.historyTransaction.TransactionNewAdapter.OnItemClick
 import com.bm.main.pos.models.FilterDialogDate
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.rest.entity.RestException
