@@ -9,6 +9,7 @@ import com.bm.main.pos.R
 import com.bm.main.pos.models.report.ReportStock
 import com.bm.main.pos.utils.Helper
 import kotlinx.android.synthetic.main.item_list_report_stok_runout_new.view.*
+import timber.log.Timber
 
 
 class StockRunningOutAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -34,17 +35,21 @@ class StockRunningOutAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun setItems(listProduct: List<ReportStock>?) {
         //this.listProduct.clear()
         val lastCount = itemCount
-        val newItemCount = 0
+//        var newItemCount = 0
         for (data in listProduct!!){
-            if (data.stok_terakhir!!.toDouble() < 10.0){
+            if (data.stok_terakhir!!.toInt() < 10){
                 this.listProduct.add(data)
-                newItemCount.plus(1)
+//                newItemCount.plus(1)
             }
         }
-        if (newItemCount == 0){
+        if (itemCount == 0){
             callback?.onItemEmpty()
         }
-        notifyItemRangeInserted(lastCount, newItemCount)
+        notifyItemRangeInserted(lastCount, itemCount)
+//        Timber.d("lastCount: $lastCount")
+//        Timber.d("ItemCount: $itemCount")
+//        Timber.d("NewItemCount: $newItemCount")
+
     }
 
     fun clearAdapter(){
@@ -61,7 +66,7 @@ class StockRunningOutAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         @SuppressLint("SetTextI18n")
         fun bindData(data: ReportStock, position: Int) {
             nameTv.text = "${data.nama_barang}"
-            countTv.text = "Stok: ${Helper.convertToCurrency(data.stok_terakhir!!)}"
+            countTv.text = data.stok_terakhir!!
             updateBtn.setOnClickListener {
                 callback!!.onClick(data)
             }
