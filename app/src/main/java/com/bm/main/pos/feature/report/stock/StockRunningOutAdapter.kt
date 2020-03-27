@@ -36,7 +36,7 @@ class StockRunningOutAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val lastCount = itemCount
         val newItemCount = 0
         for (data in listProduct!!){
-            if (data.stok_terakhir!!.toDouble() < data.minimal_stok!!.toDouble()){
+            if (data.stok_terakhir!!.toDouble() < 10.0){
                 this.listProduct.add(data)
                 newItemCount.plus(1)
             }
