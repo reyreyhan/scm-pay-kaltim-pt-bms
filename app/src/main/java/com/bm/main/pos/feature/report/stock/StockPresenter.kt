@@ -26,13 +26,7 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
     override fun onViewCreated() {
         val now = org.threeten.bp.LocalDate.now()
         today = CalendarDay.from(now)
-        val yesterday = today?.date!!.minusDays(1)
-        firstDate =  CalendarDay.from(yesterday)
-        lastDate = today
-        selectedDate = FilterDialogDate()
-        selectedDate?.id = AppConstant.FilterDate.DAILY
-        selectedDate?.firstDate = firstDate
-        selectedDate?.lastDate = lastDate
+        setDate(today, null)
         generateSortList()
         loadData()
     }
@@ -40,6 +34,28 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
     override fun loadData() {
 //        interactor.callGetReportsAPI(context,restModel,selectedDate?.firstDate?.date.toString(),selectedDate?.lastDate?.date.toString())
         sort(sortSelected!!)
+    }
+
+    override fun setDate(date: CalendarDay?, date2: CalendarDay?) {
+        if (date2==null){
+            today = date
+            val yesterday = today?.date!!.minusDays(1)
+            firstDate =  CalendarDay.from(yesterday)
+            lastDate = today
+            selectedDate = FilterDialogDate()
+            selectedDate?.id = AppConstant.FilterDate.DAILY
+            selectedDate?.firstDate = firstDate
+            selectedDate?.lastDate = lastDate
+            view.setDate(firstDate?.date.toString(), lastDate?.date.toString())
+        }else{
+            firstDate = date
+            lastDate = date2
+            selectedDate = FilterDialogDate()
+            selectedDate?.id = AppConstant.FilterDate.DAILY
+            selectedDate?.firstDate = date
+            selectedDate?.lastDate = date2
+            view.setDate(selectedDate?.firstDate?.date.toString(), selectedDate?.lastDate?.date.toString())
+        }
     }
 
     override fun search(search: String) {

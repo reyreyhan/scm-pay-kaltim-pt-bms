@@ -23,10 +23,12 @@ interface PenjualanContract {
 
     interface View : BaseViewImpl {
         fun setData(list:List<ReportLabaRugi.Penjualan>?)
+        fun setYesterdayData(data:ReportLabaRugi)
+        fun setReportUIData()
         fun setList(list:List<ReportLabaRugi.Penjualan>)
         fun showErrorMessage(isToday:Boolean?, code: Int, msg: String)
+        fun resetData(isToday:Boolean?)
         fun setData(data:ReportLabaRugi)
-        fun setYesterdayData(data:ReportLabaRugi)
         fun setDate(firstDate:String,lastDate:String)
         fun reloadData()
         fun openFilter(data: FilterDialogDate?)

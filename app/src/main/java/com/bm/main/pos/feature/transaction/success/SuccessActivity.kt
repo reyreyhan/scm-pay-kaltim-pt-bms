@@ -61,8 +61,6 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     }
 
     private fun renderView() {
-        setupToolbar()
-
         sw_refresh.isRefreshing = false
         sw_refresh.setOnRefreshListener {
             reloadData()
@@ -120,6 +118,11 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
         tv_nanti.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupToolbar()
     }
 
     private fun setupToolbar() {

@@ -103,7 +103,15 @@ class PenjualanFragment : BaseFragment<PenjualanPresenter, PenjualanContract.Vie
 
     }
 
+    override fun resetData(isToday: Boolean?) {
+
+    }
+
     override fun setYesterdayData(data: ReportLabaRugi) {
+
+    }
+
+    override fun setReportUIData() {
 
     }
 

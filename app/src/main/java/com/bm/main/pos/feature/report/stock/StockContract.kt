@@ -24,15 +24,15 @@ interface StockContract {
         fun showSuccessMessage(msg: String?)
         fun reloadData()
         fun openFilter(data: FilterDialogDate?)
-
         fun openSortDialog(title: String, list: List<DialogModel>, selected: DialogModel?, type: Int)
-
+        fun setDate(firstDate:String,lastDate:String)
     }
 
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated()
         fun onDestroy()
         fun loadData()
+        fun setDate(date:CalendarDay?, date2:CalendarDay?)
         fun search(search:String)
         fun sort(data:DialogModel)
         fun sortByName()

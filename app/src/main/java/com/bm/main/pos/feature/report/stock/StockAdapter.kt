@@ -1,24 +1,14 @@
 package com.bm.main.pos.feature.report.stock
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.report.ReportStock
 import com.bm.main.pos.utils.Helper
-import kotlinx.android.synthetic.main.item_list_report_stok.view.*
-import com.bm.main.pos.models.DialogModel
-import kotlinx.android.synthetic.main.item_list_report_stok.view.tv_name
-import kotlinx.android.synthetic.main.item_list_report_stok_chart.view.*
-import android.view.ViewTreeObserver
-import android.widget.*
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
-import com.bm.main.pos.models.StockChartModel
+import kotlinx.android.synthetic.main.item_list_report_stok_new.view.*
 
 
 class StockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -27,7 +17,7 @@ class StockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_list_report_stok, parent, false))
+            .inflate(R.layout.item_list_report_stok_new, parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -56,8 +46,9 @@ class StockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val nameTv = view.tv_name
-        private val stokTv = view.tv_stok
-        private val infoIv = view.iv_info
+        private val stockTv = view.tv_count
+        private val codeIv = view.tv_code
+        private val priceTv = view.tv_price
 //        private val terjualTv = view.tv_terjual
 //        private val dateTv = view.tv_date
 //        private val detailView = view.ll_detail
@@ -67,9 +58,13 @@ class StockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         @SuppressLint("SetTextI18n")
         fun bindData(data: ReportStock, position: Int) {
-
             nameTv.text = "${data.nama_barang}"
-            stokTv.text = "Stok: ${Helper.convertToCurrency(data.stok_terakhir!!)}"
+            stockTv.text = "${Helper.convertToCurrency(data.stok_terakhir!!)}"
+            codeIv.text = "${data.id_barang}"
+            itemView.setOnClickListener{
+                callback?.onClick(data)
+            }
+//            priceTv.text = "${Helper.convertToCurrency(data.)}"
 //            terjualTv.text = "Terjual: ${Helper.convertToCurrency(data.terjual!!)}"
 //
 //            var day1 = ""
@@ -88,14 +83,14 @@ class StockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 //                dateTv.text = "$day1 - $day2"
 //            }
 
-            val stok = data.stok_terakhir!!.toDouble()
-            val min = data.minimal_stok!!.toDouble()
-            if(stok > min){
-                infoIv.visibility = View.GONE
-            }
-            else{
-                infoIv.visibility = View.VISIBLE
-            }
+//            val stok = data.stok_terakhir.toDouble()
+//            val min = data.minimal_stok!!.toDouble()
+//            if(stok > min){
+//                infoIv.visibility = View.GONE
+//            }
+//            else{
+//                infoIv.visibility = View.VISIBLE
+//            }
 
 //            val dataList = ArrayList<ReportStock.Detail>()
 //            var max = 0.0

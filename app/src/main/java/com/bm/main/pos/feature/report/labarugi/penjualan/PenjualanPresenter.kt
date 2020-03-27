@@ -90,5 +90,6 @@ class PenjualanPresenter(val context: Context, val view: PenjualanContract.View)
 
     override fun onFailedAPI(isToday:Boolean?, code: Int, msg: String) {
         view.showErrorMessage(isToday,code,msg)
+        view.resetData(isToday)
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,21 +24,26 @@ import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activityt_report_stock.*
+import com.bm.main.pos.utils.Helper
+import kotlinx.android.synthetic.main.activityt_report_stock_new.*
+import org.threeten.bp.LocalDate
+import timber.log.Timber
 
 class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
-    StockContract.View, BottomDialog.Listener{
+    StockContract.View, BottomDialog.Listener, RangeDateDialog.Listener{
 
     private val openFilter = 1100
     val adapter = StockAdapter()
+    val adapterRunout = StockRunningOutAdapter()
     private lateinit var scrollListener: EndlessRecyclerViewScrollListener
+    private val rangeDateDialog = RangeDateDialog.newInstance()
 
     override fun createPresenter(): StockPresenter {
         return StockPresenter(this, this)
     }
 
     override fun createLayout(): Int {
-        return R.layout.activityt_report_stock
+        return R.layout.activityt_report_stock_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -54,6 +60,24 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv_list.layoutManager = layoutManager
         rv_list.adapter = adapter
+        val layoutManager2 = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        rv_list_barang.layoutManager = layoutManager2
+        rv_list_barang.adapter = adapterRunout
+
+        adapter.callback = object: StockAdapter.ItemClickCallback{
+            override fun onClick(data: ReportStock) {
+
+            }
+        }
+
+        adapterRunout.callback = object: StockRunningOutAdapter.ItemClickCallback{
+            override fun onClick(data: ReportStock) {
+            }
+
+            override fun onItemEmpty() {
+                container_stock_runout.visibility = View.GONE
+            }
+        }
 
         scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onFirstItemVisible(isFirstItem: Boolean) {
@@ -69,6 +93,7 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
         et_search.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 adapter.clearAdapter()
+                adapterRunout.clearAdapter()
                 sw_refresh.isRefreshing = true
                 getPresenter()?.search(p0.toString())
             }
@@ -82,7 +107,11 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
             }
         })
 
-        btn_date.setOnClickListener {
+        et_date_1.setOnClickListener {
+            openFilter(getPresenter()?.getFilterDateSelected())
+        }
+
+        et_date_2.setOnClickListener{
             openFilter(getPresenter()?.getFilterDateSelected())
         }
 
@@ -103,18 +132,18 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            title = "Laporan"
+            title = "Laporan Persediaan Barang"
 
-            val backArrow = ContextCompat.getDrawable(this@StockActivity,R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
-
     }
 
     override fun setData(list: List<ReportStock>) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
         adapter.setItems(list)
+        adapterRunout.setItems(list)
     }
 
     override fun onResume() {
@@ -148,13 +177,17 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
     override fun reloadData() {
         sw_refresh.isRefreshing = true
         adapter.clearAdapter()
+        adapterRunout.clearAdapter()
         getPresenter()?.loadData()
     }
 
     override fun openFilter(data: FilterDialogDate?) {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(AppConstant.DATA,data)
-        startActivityForResult(intent,openFilter)
+        hideLoadingDialog()
+        val now = CalendarDay.from(LocalDate.now())
+        val min = LocalDate.of(2000, 1, 1)
+        val max = LocalDate.of(2100, 12, 31)
+        rangeDateDialog.setData(min, max, CalendarDay.from(now.date.minusDays(1)), now)
+        rangeDateDialog.show(supportFragmentManager, "rangedate")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -178,9 +211,27 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
         dialog.show(this.supportFragmentManager, BottomDialog.TAG)
     }
 
+    override fun setDate(firstDate: String, lastDate: String) {
+        val date1 = Helper.getDateFormat(this,firstDate,"yyyy-MM-dd","dd MMMM yyyy")
+        val date2 = Helper.getDateFormat(this,lastDate,"yyyy-MM-dd","dd MMMM yyyy")
+        et_date_1.text = date1
+        et_date_2.text = date2
+    }
+
     override fun onItemClicked(data: DialogModel, type: Int) {
         adapter.clearAdapter()
+        adapterRunout.clearAdapter()
         sw_refresh.isRefreshing = true
         getPresenter()?.sort(data)
+    }
+
+    override fun onDateRangeClicked(firstDate: CalendarDay?, lastDate: CalendarDay?, type: Int) {
+        adapter.clearAdapter()
+        adapterRunout.clearAdapter()
+        sw_refresh.isRefreshing = true
+        Timber.d("FirstDate: ${firstDate!!.date}")
+        Timber.d("LastDate: ${lastDate!!.date}")
+        getPresenter()?.setDate(firstDate, lastDate)
+        getPresenter()?.loadData()
     }
 }
