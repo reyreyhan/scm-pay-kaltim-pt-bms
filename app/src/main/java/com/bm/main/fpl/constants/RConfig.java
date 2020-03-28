@@ -3,8 +3,8 @@ package com.bm.main.fpl.constants;
 public class RConfig {
     public static final String API_URL_FP = "remoteConfigApiUrlFP";
     public static final String API_URL_POS = "remoteConfigApiUrlPOS";
-    public static final String API_URL_FP_DEVEL = "remoteConfigApiUrlFPDevel2";
-    public static final String API_URL_POS_DEVEL = "remoteConfigApiUrlPOSDevel2";
+    public static final String API_URL_FP_DEVEL = "remoteConfigApiUrlFPDevel";
+    public static final String API_URL_POS_DEVEL = "remoteConfigApiUrlPOSDevel";
     public static final String API_URL_FT = "remoteConfigApiUrlFT";
     public static final String API_YOU_TUBE = "remoteConfigApiYoutube";
 
