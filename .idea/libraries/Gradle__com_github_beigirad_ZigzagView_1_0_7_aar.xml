@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.beigirad:ZigzagView:1.0.7@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/59b1e2cd263c251edbe23337de7c2bbd/jetified-ZigzagView-1.0.7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/59b1e2cd263c251edbe23337de7c2bbd/jetified-ZigzagView-1.0.7/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.beigirad/ZigzagView/1.0.7/dfe7ba563b2fdd9cb238a7150e1fe2a33bb5a020/ZigzagView-1.0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
