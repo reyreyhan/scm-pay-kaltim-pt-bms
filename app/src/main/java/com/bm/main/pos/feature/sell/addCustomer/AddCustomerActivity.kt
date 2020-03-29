@@ -60,10 +60,19 @@ class AddCustomerActivity : BaseActivity<AddCustomerPresenter, AddCustomerContra
 
     override fun showMessage(code: Int, msg: String?) {
         hideLoadingDialog()
-        if(code == RestException.CODE_USER_NOT_FOUND){
-            restartLoginActivity()
-        }
-        else{
+//        if(code == RestException.CODE_USER_NOT_FOUND){
+//            restartLoginActivity()
+//        }
+//        else{
+//            msg?.let {
+//                toast(this,it)
+//            }
+//        }
+        if (msg.equals("No HP Sudah terdaftar")){
+            msg?.let{
+                et_no_hp.error = msg
+            }
+        }else{
             msg?.let {
                 toast(this,it)
             }

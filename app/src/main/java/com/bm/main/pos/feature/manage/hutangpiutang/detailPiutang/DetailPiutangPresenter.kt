@@ -77,9 +77,15 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
         }
         val piutang = data.datapiutang
         val list = data.sudah_bayar
-        view.setPiutang("Rp ${Helper.convertToCurrency(piutang?.total_tagihan!!)}","Rp ${Helper.convertToCurrency(piutang?.jumlah_piutang!!)}",
-            "Rp ${Helper.convertToCurrency(piutang?.total_dibayar!!)}","${Helper.getDateFormat(context,piutang?.jatuh_tempo!!,
-                "yyyy-MM-dd","dd MMMM yyyy")}")
+        var tglTransaksi = ""
+        if (data.sudah_bayar!!.firstOrNull() != null){
+            tglTransaksi = Helper.getDateFormat(context,list?.firstOrNull()?.tanggal!!,
+                "yyyy-MM-dd","dd MMMM yyyy")
+        }else{
+            tglTransaksi = ""
+        }
+        view.setPiutang("Rp ${Helper.convertToCurrency(piutang?.total_tagihan!!)}","Rp ${Helper.convertToCurrency(piutang.jumlah_piutang!!)}",
+            "Rp ${Helper.convertToCurrency(piutang.total_dibayar!!)}","$tglTransaksi")
         view.setList(list!!)
     }
 }

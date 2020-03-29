@@ -1,6 +1,8 @@
 package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +13,7 @@ import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.models.hutangpiutang.DetailPiutang
 import com.bm.main.pos.rest.entity.RestException
+import com.bm.main.pos.ui.PaymentNumberTextWatcher
 import com.bm.main.pos.ui.ext.toast
 import com.bumptech.glide.Glide
 //import com.bm.main.pos.utils.glide.GlideApp
@@ -60,6 +63,20 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv_list.layoutManager = layoutManager
         rv_list.adapter = adapter
+
+        et_bayar.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                if (!s.isNullOrEmpty() || !s.isNullOrEmpty()){
+                    btn_bayar.isEnabled = true
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
     }
 
     private fun setupToolbar() {

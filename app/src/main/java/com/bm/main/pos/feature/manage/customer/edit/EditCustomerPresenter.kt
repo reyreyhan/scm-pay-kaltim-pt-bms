@@ -30,6 +30,7 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
     private var photoPath: String? = null
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var photoPermission: PermissionCallback
+    private var customerId = ""
 
 
     override fun onViewCreated(intent: Intent) {
@@ -50,6 +51,7 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
 
         data?.let {
             view.setCustomer(it.nama_pelanggan, it.email, it.telpon, it.alamat, it.gbr)
+            customerId = it.id_pelanggan!!
         }
     }
 
@@ -99,12 +101,20 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
         view.onClose(msg, Activity.RESULT_OK, newdata)
     }
 
+    override fun onSuccessDeleteCustomer(msg: String?) {
+        view.onCloseDelete(msg, Activity.RESULT_OK)
+    }
+
     override fun onFailedEditCustomer(code: Int, msg: String) {
         view.showMessage(code, msg)
     }
 
     override fun onCheckPhoto() {
         permissionUtil.checkCameraPermission(photoPermission)
+    }
+
+    override fun deleteCustomer() {
+        interactor.callDeleteCustomerAPI(context, restModel, customerId)
     }
 
     override fun setImagePhotoPath(path: String?) {

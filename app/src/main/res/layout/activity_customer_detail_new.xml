@@ -42,7 +42,8 @@
         android:textAllCaps="true"
         android:paddingTop="@dimen/standard_margin_2x"
         android:paddingBottom="@dimen/standard_margin_2x"
-        android:backgroundTint="@color/orange"/>
+        android:backgroundTint="@color/orange"
+        android:visibility="gone"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

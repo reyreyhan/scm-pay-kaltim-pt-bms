@@ -274,10 +274,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void setConfig() {
         PreferenceClass.putString(RConfig.API_URL_FP, firebaseRemoteConfig.getString("apiUrlFP"));
-        PreferenceClass.putString(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel2"));
+        PreferenceClass.putString(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel"));
         PreferenceClass.putString(RConfig.API_URL_FT, firebaseRemoteConfig.getString("apiUrlFT"));
         PreferenceClass.putString(RConfig.API_URL_POS, firebaseRemoteConfig.getString("apiUrlPOS"));
-        PreferenceClass.putString(RConfig.API_URL_POS_DEVEL, firebaseRemoteConfig.getString("apiUrlPOSDevel2"));
+        PreferenceClass.putString(RConfig.API_URL_POS_DEVEL, firebaseRemoteConfig.getString("apiUrlPOSDevel"));
         PreferenceClass.putString(RConfig.API_YOU_TUBE, firebaseRemoteConfig.getString("api_youtube"));
         PreferenceClass.putString(RConfig.MIN_VERSION_CODE, firebaseRemoteConfig.getString("minVersionCode"));
         SBFApplication.log(RConfig.MIN_VERSION_CODE, firebaseRemoteConfig.getString("minVersionCode"));
@@ -298,8 +298,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         PreferenceClass.putString("qrStrukJogjaKita", firebaseRemoteConfig.getString("qrStrukJogjaKita"));
         Timber.d("onComplete: " + firebaseRemoteConfig.getString("isBigPromo") + " " + firebaseRemoteConfig.getString("isToolTipAjakBisnis"));
         if (BuildConfig.DEBUG) {
-            SBFApplication.log(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel2"));
-            RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFPDevel2"));
+            SBFApplication.log(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel"));
+            RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFPDevel"));
         } else {
             SBFApplication.log(RConfig.API_URL_FP, firebaseRemoteConfig.getString("apiUrlFP"));
             RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFP"));

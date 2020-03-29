@@ -175,7 +175,7 @@ class CustomerListActivity : BaseActivity<CustomerListPresenter, CustomerListCon
     override fun openEditPage(data: Customer) {
         val intent = Intent(this,CustomerDetailActivity::class.java)
         intent.putExtra(AppConstant.DATA,data)
-        startActivityForResult(intent,CODE_OPEN_EDIT)
+        startActivityForResult(intent, CODE_OPEN_EDIT)
     }
 
     override fun onDestroy() {

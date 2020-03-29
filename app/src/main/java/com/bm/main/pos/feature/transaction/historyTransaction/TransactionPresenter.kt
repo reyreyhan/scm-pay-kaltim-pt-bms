@@ -30,7 +30,7 @@ class TransactionPresenter(val context: Context, val view: TransactionContract.V
     override fun onViewCreated() {
         val now = LocalDate.now()
         today = CalendarDay.from(now)
-        val yesterday = today?.date!!.minusDays(1)
+        val yesterday = today?.date!!.minusDays(30)
         val firstDate = CalendarDay.from(yesterday)
         val lastDate = today
         selectedDate = FilterDialogDate()

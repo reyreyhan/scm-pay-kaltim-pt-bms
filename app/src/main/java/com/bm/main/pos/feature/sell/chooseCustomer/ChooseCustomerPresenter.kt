@@ -11,11 +11,13 @@ import com.bm.main.pos.models.product.ProductRestModel
 class ChooseCustomerPresenter(val context: Context, val view: ChooseCustomerContract.View) : BasePresenter<ChooseCustomerContract.View>(),
     ChooseCustomerContract.Presenter, ChooseCustomerContract.InteractorOutput {
 
+    var isTransaction = false
     private var interactor  = ChooseCustomertInteractor(this)
     private var restModel = CustomerRestModel(context)
 
     override fun onViewCreated(intent: Intent) {
-        if (intent.getBooleanExtra("FromToko", false)){
+        isTransaction = intent.getBooleanExtra("isTransaction", false)
+        if (intent.getBooleanExtra("isTransaction", false)){
             view.setBackgroundButtonAddCustomer()
         }
         loadData()

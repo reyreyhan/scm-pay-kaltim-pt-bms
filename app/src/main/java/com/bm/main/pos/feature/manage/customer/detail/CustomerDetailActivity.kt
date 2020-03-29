@@ -182,6 +182,8 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
             dt.let {
                 getPresenter()?.setCustomerData(dt)
             }
+        }else if (resultCode == 9999 && requestCode == CODE_OPEN_EDIT){
+            finish()
         }
     }
 

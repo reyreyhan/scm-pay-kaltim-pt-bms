@@ -160,6 +160,7 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
 //        newintent.putExtra(AppConstant.DATA,data)
 //        setResult(RESULT_OK,newintent)
         val intent = Intent(this, CustomerDetailActivity::class.java)
+        intent.putExtra("isTransaction", getPresenter()?.isTransaction)
         intent.putExtra(AppConstant.DATA, data)
         startActivityForResult(intent, 101)
     }

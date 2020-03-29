@@ -76,7 +76,9 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
 //            val address = et_address.text.toString().trim()
             getPresenter()?.onCheck(name, email, phone)
         }
-
+        btn_delete.setOnClickListener {
+            getPresenter()?.deleteCustomer()
+        }
 //        iv_photo.setOnClickListener {
 //            getPresenter()?.onCheckPhoto()
 //        }
@@ -115,6 +117,22 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
 
         }
 
+    }
+
+    override fun onCloseDelete(msg: String?, status:Int){
+        val callback = object : DialogCallback {
+            override fun onSuccess() {
+                if (Activity.RESULT_OK == status) {
+                    setResult(9999)
+                    finish()
+                }
+            }
+
+            override fun onFailed() {
+
+            }
+        }
+        successDialog(this, msg!!, callback)
     }
 
     override fun onClose(msg: String?, status: Int, data: Customer?) {

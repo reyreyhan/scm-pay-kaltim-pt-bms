@@ -112,7 +112,7 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
                     }
                     5 -> {
                         val intent = Intent(requireContext(), ChooseCustomerActivity::class.java)
-                        intent.putExtra("FromToko", true)
+                        intent.putExtra("isTransaction", false)
                         startActivity(intent)
                     }
                 }

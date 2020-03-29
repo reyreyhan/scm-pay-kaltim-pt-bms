@@ -125,7 +125,9 @@
                         android:paddingVertical="@dimen/standard_margin"
                         android:paddingHorizontal="@dimen/_50sdp"
                         android:enabled="false"
-                        android:layout_marginTop="@dimen/standard_margin"/>
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:backgroundTint="@color/selector_btn_green_grey"
+                        android:textColor="@color/white"/>
                 </LinearLayout>
                 <View
                     android:layout_marginTop="@dimen/standard_margin"

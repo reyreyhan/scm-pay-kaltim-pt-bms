@@ -31,6 +31,7 @@ interface EditProductContract {
         fun setBuyPrice(value: String)
         fun setDescription(value: String)
         fun setBarcode(value: String)
+        fun expandTambahKeterangan()
     }
 
     interface Presenter : BasePresenterImpl<View> {
