@@ -298,8 +298,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         PreferenceClass.putString("qrStrukJogjaKita", firebaseRemoteConfig.getString("qrStrukJogjaKita"));
         Timber.d("onComplete: " + firebaseRemoteConfig.getString("isBigPromo") + " " + firebaseRemoteConfig.getString("isToolTipAjakBisnis"));
         if (BuildConfig.DEBUG) {
-            SBFApplication.log(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel2"));
-            RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFPDevel2"));
+            SBFApplication.log(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel"));
+            RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFPDevel"));
         } else {
             SBFApplication.log(RConfig.API_URL_FP, firebaseRemoteConfig.getString("apiUrlFP"));
             RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFP"));
