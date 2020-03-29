@@ -201,6 +201,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
 
     override fun loadPhoto(path: String) {
         Timber.d("loadphoto $path")
+        _view.iv_foto.visibility = View.VISIBLE
         if (path != "https://api-pos.fastpay.co.id/api/images/small_") {
             Glide.with(this)
                 .load(path)
