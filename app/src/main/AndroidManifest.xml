@@ -283,7 +283,7 @@
         <activity
             android:name=".feature.manage.product.edit.EditProductActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar2" />
+            android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.transaction.detail.DetailActivity"
             android:screenOrientation="portrait"
