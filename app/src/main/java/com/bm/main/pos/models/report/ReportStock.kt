@@ -17,6 +17,8 @@ class ReportStock : Serializable {
     val terjual : String? = null
     val stok_terakhir : String? = "0"
     val minimal_stok : String? = null
+    var gbr:String? = null
+    var folder:String? = null
     val datastok: List<Detail>? = null
 
     @JsonIgnoreProperties(ignoreUnknown = true)

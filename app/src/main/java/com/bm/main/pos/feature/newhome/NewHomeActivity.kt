@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.FragmentTransaction
@@ -16,8 +17,8 @@ import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.di.userComponent
 import com.bm.main.pos.feature.dialog.NoteDialog
 import com.bm.main.pos.feature.dialog.SingleDateDialog
-import com.bm.main.pos.feature.home.HomeFragment
 import com.bm.main.pos.feature.manage.product.ProductViewModel
+import com.bm.main.pos.feature.merchant.MerchantActivity
 import com.bm.main.pos.feature.newhome.adapter.NewHomeFragmentStateAdapter
 import com.bm.main.pos.feature.newhome.adapter.PENJUALAN_FRAGMENT_INDEX
 import com.bm.main.pos.feature.scan.ScanCodeFragment
@@ -28,11 +29,9 @@ import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rabbit.QrisViewModel
 import com.bm.main.pos.rest.salesforce.SfViewModel
 import com.google.android.material.tabs.TabLayout
-import com.google.zxing.Result
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.activity_home_new.*
 import org.threeten.bp.LocalDate
 import timber.log.Timber
@@ -224,5 +223,15 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_home_new, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_merchant -> {
+                val intent = Intent(this, MerchantActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

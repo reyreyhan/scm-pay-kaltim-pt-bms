@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.report.ReportTransaksi
 import com.bm.main.pos.utils.Helper
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_list_report_transaction_new.view.*
 
 class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -45,6 +47,7 @@ class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        private val productIv = view.iv_product
         private val nameTv = view.tv_name
         private val profitTv = view.tv_profit
         private val earningTv = view.tv_earning
@@ -56,6 +59,20 @@ class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             countTv.text = Helper.convertToCurrency(data.penjualan!!)
             earningTv.text = "Rp ${Helper.convertToCurrency(data.harga_jual!!.toDouble().times(data.penjualan!!.toDouble()))}"
             profitTv.text = "Rp ${Helper.convertToCurrency(data.raba_rugi!!)}"
+            if (data.gbr == null) {
+                Glide.with(itemView.context)
+                    .load(R.drawable.logo)
+                    .transform(CenterCrop(), RoundedCorners(8))
+                    .into(productIv)
+
+            } else {
+                Glide.with(itemView.context)
+                    .load(data.gbr)
+                    .error(R.drawable.logo)
+                    .placeholder(R.drawable.logo)
+                    .transform(CenterCrop(), RoundedCorners(8))
+                    .into(productIv)
+            }
 //
 //            var day1 = ""
 //            var day2 = ""

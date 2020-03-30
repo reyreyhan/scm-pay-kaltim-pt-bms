@@ -1,6 +1,5 @@
 package com.bm.main.pos.feature.report.stock
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -8,15 +7,12 @@ import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.dialog.BottomDialog
 import com.bm.main.pos.feature.dialog.RangeDateDialog
-import com.bm.main.pos.feature.filterDate.main.MainActivity
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
 import com.bm.main.pos.models.report.ReportStock
@@ -25,12 +21,16 @@ import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.Helper
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.android.synthetic.main.activityt_report_stock_new.*
 import org.threeten.bp.LocalDate
 import timber.log.Timber
 
 class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
-    StockContract.View, BottomDialog.Listener, RangeDateDialog.Listener{
+    StockContract.View,
+    BottomDialog.Listener,
+    RangeDateDialog.Listener,
+    StockProductDialog.Listener{
 
     private val openFilter = 1100
     val adapter = StockAdapter()
@@ -66,12 +66,23 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
 
         adapter.callback = object: StockAdapter.ItemClickCallback{
             override fun onClick(data: ReportStock) {
-
+                val dialog = StockProductDialog.newInstance().apply {
+                    arguments = Bundle().apply {
+                        putSerializable(AppConstant.DATA, data)
+                    }
+                }
+                dialog.show(supportFragmentManager, StockProductDialog.TAG)
             }
         }
 
         adapterRunout.callback = object: StockRunningOutAdapter.ItemClickCallback{
             override fun onClick(data: ReportStock) {
+                val dialog = StockProductDialog.newInstance().apply {
+                    arguments = Bundle().apply {
+                        putSerializable(AppConstant.DATA, data)
+                    }
+                }
+                dialog.show(supportFragmentManager, StockProductDialog.TAG)
             }
 
             override fun onItemEmpty() {
@@ -233,5 +244,9 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
         Timber.d("LastDate: ${lastDate!!.date}")
         getPresenter()?.setDate(firstDate, lastDate)
         getPresenter()?.loadData()
+    }
+
+    override fun onUpdateStock(name:String, stock:String) {
+        getPresenter()?.updateProduct(name, stock)
     }
 }

@@ -1,19 +1,17 @@
 package com.bm.main.pos.feature.report.stock
 
 import android.content.Context
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
-import com.bm.main.pos.models.discount.Discount
+import com.bm.main.pos.models.product.Product
+import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.models.report.ReportRestModel
 import com.bm.main.pos.models.report.ReportStock
-import com.bm.main.pos.models.report.ReportTransaksi
-import com.bm.main.pos.models.supplier.Supplier
-import com.bm.main.pos.models.supplier.SupplierRestModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 
 
 interface StockContract {
@@ -42,6 +40,7 @@ interface StockContract {
         fun generateSortList()
         fun getSortList():ArrayList<DialogModel>
         fun getSelectedSort():DialogModel?
+        fun updateProduct(name:String, stock:String)
     }
 
     interface Interactor : BaseInteractorImpl {
@@ -51,10 +50,24 @@ interface StockContract {
         fun callSearchAPI(context: Context, restModel:ReportRestModel,cari:String,awal:String,akhir:String)
         fun callSortByStockAPI(context: Context, restModel:ReportRestModel,awal:String,akhir:String)
         fun callSortByNameAPI(context: Context, restModel:ReportRestModel,awal:String,akhir:String)
+        fun callUpdateBarangAPI(context: Context,
+                                model: ProductRestModel,
+                                id:String,
+                                name: String,
+                                kode: String,
+                                idkategori: String,
+                                jual: String,
+                                beli: String,
+                                stok: String,
+                                minstok: String,
+                                desk: String)
+        fun callSearchProductAPI(context: Context, restModel:ProductRestModel, search:String, stock:String?)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
+        fun onSuccessGetProducts(list:List<Product>, stock:String?)
         fun onSuccessGetReports(list:List<ReportStock>)
+        fun onSuccessUpdateBarang(msg: String?, barcode: String?)
         fun onFailedAPI(code:Int,msg:String)
     }
 

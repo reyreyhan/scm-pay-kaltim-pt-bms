@@ -1,7 +1,6 @@
 package com.bm.main.pos.feature.manage.product.add
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -23,15 +22,15 @@ import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.ui.ext.toast
-import com.bm.main.pos.utils.*
+import com.bm.main.pos.utils.ImageCompression
+import com.bm.main.pos.utils.ImageHelper
+import com.bm.main.pos.utils.ImageUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import kotlinx.android.synthetic.main.fragment_add_product_new.*
 import kotlinx.android.synthetic.main.fragment_add_product_new.view.*
-import kotlinx.android.synthetic.main.fragment_add_product_new.view.iv_foto
 import timber.log.Timber
 import java.io.File
 
@@ -184,7 +183,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
     }
 
     override fun hideBarcode() {
-        _view.tv_barcode.visibility = View.GONE
+        _view.layout_barcode.visibility = View.GONE
     }
 
     override fun expandTambahKeterangan() {
@@ -201,13 +200,13 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
 
     override fun loadPhoto(path: String) {
         Timber.d("loadphoto $path")
-        _view.iv_foto.visibility = View.VISIBLE
         if (path != "https://api-pos.fastpay.co.id/api/images/small_") {
             Glide.with(this)
                 .load(path)
                 .transform(CenterCrop(), RoundedCorners(4))
                 .into(_view.iv_foto)
         } else {
+            _view.iv_tambah_foto.visibility = View.VISIBLE
             Glide.with(this)
                 .load("https://api-pos.fastpay.co.id/api/images/no_product.jpg")
                 .transform(CenterCrop(), RoundedCorners(4))

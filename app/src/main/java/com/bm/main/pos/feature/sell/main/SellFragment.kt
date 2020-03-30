@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseFragment
-import com.bm.main.pos.feature.manage.product.main.ADD_PRODUCT_SCAN
 import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
 import com.bm.main.pos.feature.scan.ScanCodeFragment
 import com.bm.main.pos.feature.sell.add.AddActivity
@@ -522,6 +521,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
     override fun openChooseCustomer() {
         val intent = Intent(activity, ChooseCustomerActivity::class.java)
+        intent.putExtra("isTransaction", true)
         startActivityForResult(intent, CODE_OPEN_CHOOSE_CUSTOMER)
     }
 

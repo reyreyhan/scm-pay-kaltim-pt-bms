@@ -58,8 +58,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
                 val product = bundle.getSerializable(AppConstant.DATA) as Product
                 categoryId = product.id_kategori
                 view.setProduct(product)
-            }
-            else {
+            }else{
                 view.hideBarcode()
             }
         }

@@ -53,6 +53,38 @@ class ProductListInteractor(var output: ProductListContract.InteractorOutput?) :
         }))
     }
 
+    override fun callSearchProductByNameAPI(
+        context: Context,
+        restModel: ProductRestModel,
+        search: String
+    ) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(restModel.searchByName(key!!, search).subscribeWith(object : DisposableObserver<List<Product>>() {
+
+            override fun onNext(@NonNull response: List<Product>) {
+                output?.onSuccessGetProducts(response)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedAPI(errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
+
     override fun callDeleteProductAPI(context: Context, restModel: ProductRestModel, id: String) {
         val key = PreferenceClass.getTokenPos()
         disposable.add(restModel.delete(key!!,id).subscribeWith(object : DisposableObserver<Message>() {

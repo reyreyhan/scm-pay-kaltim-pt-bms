@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,16 +19,13 @@ import com.bm.main.fpl.utils.Device
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseFragment
-import com.bm.main.pos.feature.drawer.DrawerActivity
 import com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity
 import com.bm.main.pos.feature.manage.product.list.ProductListActivity
 import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
 import com.bm.main.pos.feature.report.main.ReportActivity
 import com.bm.main.pos.feature.sell.chooseCustomer.ChooseCustomerActivity
-import com.bm.main.pos.feature.setting.account.AccountActivity
 import com.bm.main.pos.feature.setting.main.SettingActivity
 import com.bm.main.pos.feature.transaction.historyTransaction.TransactionHistoryActivity
-import com.bm.main.pos.feature.webpage.WebViewActivity
 import com.bm.main.pos.models.menu.Menu
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.GridItemOffsetDecoration
@@ -38,7 +34,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import kotlinx.android.synthetic.main.fragment_home_new.view.*
-import timber.log.Timber
 
 class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContract.View {
 
@@ -114,6 +109,13 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
                         val intent = Intent(requireContext(), ChooseCustomerActivity::class.java)
                         intent.putExtra("isTransaction", false)
                         startActivity(intent)
+                    }
+                    6->{
+                        val url =
+                            "https://profit.fastpay.co.id/"
+                        val browserIntent =
+                            Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(browserIntent)
                     }
                 }
                 //EventBus.getDefault().post(onMenuClicked(data.id!!))

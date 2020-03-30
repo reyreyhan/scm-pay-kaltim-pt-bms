@@ -10,17 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
-import com.bm.main.pos.events.onHistoryChangedDate
 import com.bm.main.pos.feature.transaction.detail.DetailSuccessActivity
-import com.bm.main.pos.feature.transaction.historyTransaction.TransactionAdapter.*
+import com.bm.main.pos.feature.transaction.historyTransaction.TransactionAdapter.ItemClickCallback
 import com.bm.main.pos.models.FilterDialogDate
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.utils.AppConstant
 import kotlinx.android.synthetic.main.activity_history_transaction_new.*
-import org.greenrobot.eventbus.Subscribe
-import timber.log.Timber
 
 class TransactionHistoryActivity : BaseActivity<TransactionPresenter, TransactionContract.View>(), TransactionContract.View {
 
@@ -59,11 +56,8 @@ class TransactionHistoryActivity : BaseActivity<TransactionPresenter, Transactio
 
     private fun renderView() {
         sw_refresh.isRefreshing = false
-//        sw_refresh.setOnRefreshListener {
-//            scrollListener.resetState()
-//            reloadData()
-//        }
         sw_refresh.setOnRefreshListener {
+            scrollListener.resetState()
             reloadData()
         }
 

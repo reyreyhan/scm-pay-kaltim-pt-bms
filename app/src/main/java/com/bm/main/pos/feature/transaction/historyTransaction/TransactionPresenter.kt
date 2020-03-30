@@ -1,19 +1,14 @@
 package com.bm.main.pos.feature.transaction.historyTransaction
 
 import android.content.Context
-import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.hutangpiutang.Hutang
-import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
-import com.bm.main.pos.models.hutangpiutang.Piutang
 import com.bm.main.pos.models.transaction.HistoryTransaction
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.utils.AppConstant
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import org.threeten.bp.LocalDate
 
 class TransactionPresenter(val context: Context, val view: TransactionContract.View) : BasePresenter<TransactionContract.View>(),
@@ -48,7 +43,6 @@ class TransactionPresenter(val context: Context, val view: TransactionContract.V
 
     override fun loadTransaction() {
         interactor.callGetHistoryAPI(context, transactionRestModel, selectedDate?.firstDate?.date.toString(), selectedDate?.lastDate?.date.toString(), filterSelected!!.id.toString())
-
     }
 
     override fun onSuccessGetHistory(data: List<HistoryTransaction>?) {

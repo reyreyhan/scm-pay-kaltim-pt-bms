@@ -51,6 +51,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
         _view = view
         renderView()
         getPresenter()?.onViewCreated()
+        getPresenter()?.loadProducts()
     }
 
     private fun renderView() {
@@ -87,7 +88,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
             override fun afterTextChanged(p0: Editable?) {
                 adapter.clearAdapter()
                 _view.sw_refresh.isRefreshing = true
-                getPresenter()?.searchProduct(p0.toString())
+                getPresenter()?.searchProductMaster(p0.toString())
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -129,7 +130,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
     override fun reloadData() {
         _view.sw_refresh.isRefreshing = true
         adapter.clearAdapter()
-        getPresenter()?.loadProducts()
+        getPresenter()?.searchProductMaster("")
     }
 
     override fun openAddPage() {

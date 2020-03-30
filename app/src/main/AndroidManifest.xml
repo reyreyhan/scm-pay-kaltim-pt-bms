@@ -321,6 +321,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
+            android:name=".feature.merchant.MerchantActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
             android:name=".feature.sell.chooseProduct.ChooseProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />

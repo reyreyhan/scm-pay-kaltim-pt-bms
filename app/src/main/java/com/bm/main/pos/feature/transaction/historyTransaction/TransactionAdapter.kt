@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.utils.Helper
-import kotlinx.android.synthetic.main.item_list_aktivitas_item.view.*
 import kotlinx.android.synthetic.main.item_list_aktivitas_header.view.*
+import kotlinx.android.synthetic.main.item_list_aktivitas_item.view.*
 
 class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -89,7 +89,8 @@ class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             else{
                 itemView.title.text = "Rp ${Helper.convertToCurrency(data.totalorder!!)}"
                 itemView.subtitle.text = data.nama_barang
-                itemView.date.text = Helper.getDateFormat(itemView.context,data.tanggal!!,"yyyy-MM-dd HH:mm:ss","HH:mm")
+//                itemView.date.text = Helper.getDateFormat(itemView.context,data.tanggal!!,"yyyy-MM-dd HH:mm:ss","HH:mm")
+                itemView.date.text = ""
                 itemView.layout_parent.setOnClickListener {
                     callback?.onClick(data)
                 // idTv.text = data.no_invoice

@@ -20,13 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bm.main.fpl.activities.BigPromoActivity;
 import com.bm.main.fpl.activities.LoginActivity;
-//import com.bm.main.pos.feature.login.LoginActivity;
 import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.templates.MutedVideoView;
 import com.bm.main.fpl.utils.DetectConnection;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
-import com.bm.main.pos.feature.drawer.DrawerActivity;
 import com.bm.main.pos.feature.newhome.NewHomeActivity;
 import com.bm.main.pos.services.SBFService;
 import com.bm.main.single.ftl.utils.RequestUtilsTravel;
@@ -37,6 +35,8 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 import timber.log.Timber;
+
+//import com.bm.main.pos.feature.login.LoginActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -277,7 +277,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         PreferenceClass.putString(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel"));
         PreferenceClass.putString(RConfig.API_URL_FT, firebaseRemoteConfig.getString("apiUrlFT"));
         PreferenceClass.putString(RConfig.API_URL_POS, firebaseRemoteConfig.getString("apiUrlPOS"));
-        PreferenceClass.putString(RConfig.API_URL_POS_DEVEL, firebaseRemoteConfig.getString("apiUrlPOSDevel"));
+        PreferenceClass.putString(RConfig.API_URL_POS_DEVEL, firebaseRemoteConfig.getString("apiUrlPOSDevel2"));
         PreferenceClass.putString(RConfig.API_YOU_TUBE, firebaseRemoteConfig.getString("api_youtube"));
         PreferenceClass.putString(RConfig.MIN_VERSION_CODE, firebaseRemoteConfig.getString("minVersionCode"));
         SBFApplication.log(RConfig.MIN_VERSION_CODE, firebaseRemoteConfig.getString("minVersionCode"));
@@ -307,7 +307,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         RequestUtilsTravel.setUrl(firebaseRemoteConfig.getString("apiUrlFT"));
 
         SBFApplication.log("Saving remote config...");
-        Timber.d("onComplete: %s", firebaseRemoteConfig.getString("apiUrlPOSDevel"));
+        Timber.d("onComplete: %s", firebaseRemoteConfig.getString("apiUrlPOSDevel2"));
     }
 
 

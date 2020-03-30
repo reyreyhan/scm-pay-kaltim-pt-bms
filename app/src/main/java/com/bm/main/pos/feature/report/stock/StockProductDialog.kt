@@ -1,29 +1,35 @@
 package com.bm.main.pos.feature.report.stock
 
 import android.app.Dialog
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
-import android.util.DisplayMetrics
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.bm.main.pos.R
-import com.bm.main.pos.models.cart.Cart
-import com.bm.main.pos.models.product.Product
+import com.bm.main.pos.models.report.ReportStock
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.utils.Helper
-import kotlinx.android.synthetic.main.dialog_penjualan_edit_product.*
-import org.jetbrains.anko.windowManager
+import kotlinx.android.synthetic.main.dialog_report_stock_update_new.*
 
 
 class StockProductDialog : DialogFragment() {
+    private var mListener: Listener? = null
+
+    var stock = ""
+
     companion object {
         const val TAG = "StockProductDialog"
 
         fun newInstance(): StockProductDialog =
             StockProductDialog()
 
+    }
+
+    interface Listener {
+        fun onUpdateStock(name:String, stock:String)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -49,40 +55,31 @@ class StockProductDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cart = arguments!!.getSerializable(AppConstant.DATA) as Cart
-        val position = arguments!!.getInt("CartPosition")
-        tv_title_product.text = cart.product!!.nama_barang
-        tv_product_count.text = cart.count!!.toInt().toString()
-        btn_product_decrease.setOnClickListener {
-            val count = cart.count!!.minus(1)
-            if(count > 0){
-                cart.count = count
+        val data = arguments!!.getSerializable(AppConstant.DATA) as ReportStock
+        tv_title_product.text = data.nama_barang!!
+        tv_current_stock.text = data.stok_terakhir
+        et_add_stock.addTextChangedListener(object:TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                var additional = 0
+                var newValue = 0
+                if (!s.isNullOrEmpty()){
+                    additional = s.toString().trim().toInt()
+                    newValue = tv_current_stock.text!!.toString().toInt() + additional
+                    stock = newValue.toString()
+                }
+                et_total_stock.text = "$newValue"
             }
-            tv_product_count.text = cart.count!!.toInt().toString()
-            setTotalHargaText(cart)
-        }
-        btn_product_increase.setOnClickListener {
-            val stok = cart.product!!.stok.toDouble()
-            val count = cart.count!!.plus(1)
-            if(count <= stok){
-                cart.count = count
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
-            tv_product_count.text = cart.count!!.toInt().toString()
-            setTotalHargaText(cart)
-        }
-        setTotalHargaText(cart)
-        btn_update_barang.setOnClickListener {
-            val newIntent: Intent = activity!!.intent
-            newIntent.putExtra(AppConstant.DATA, cart)
-            newIntent.putExtra("CartPosition", position)
-            targetFragment!!.onActivityResult(targetRequestCode, 1201, activity!!.intent)
-            dismiss()
-        }
-        btn_delete.setOnClickListener {
-            val newIntent: Intent = activity!!.intent
-            newIntent.putExtra(AppConstant.DATA, cart)
-            newIntent.putExtra("CartPosition", position)
-            targetFragment!!.onActivityResult(targetRequestCode, 1202, activity!!.intent)
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
+        btn_update_stock.setOnClickListener {
+            mListener?.onUpdateStock(data.nama_barang, stock)
             dismiss()
         }
         btn_close.setOnClickListener {
@@ -90,8 +87,18 @@ class StockProductDialog : DialogFragment() {
         }
     }
 
-    fun setTotalHargaText(cart:Cart){
-        tv_total_harga.text = "Jumlah ${cart!!.count!!.toInt()} x ${cart.product!!.hargajual} = ${cart.product!!.hargajual.toDouble().times(
-            cart.count!!).toInt()}"
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val parent = parentFragment
+        if (parent != null) {
+            mListener = parent as Listener
+        } else {
+            mListener = context as Listener
+        }
+    }
+
+    override fun onDetach() {
+        mListener = null
+        super.onDetach()
     }
 }
