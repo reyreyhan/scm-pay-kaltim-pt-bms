@@ -1,22 +1,17 @@
 package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 
+//import com.bm.main.pos.utils.glide.GlideApp
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.google.android.material.appbar.AppBarLayout
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
-import com.bm.main.pos.models.hutangpiutang.DetailPiutang
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.rest.entity.RestException
-import com.bm.main.pos.ui.PaymentNumberTextWatcher
 import com.bm.main.pos.ui.ext.toast
-import com.bumptech.glide.Glide
-//import com.bm.main.pos.utils.glide.GlideApp
 import kotlinx.android.synthetic.main.activity_piutang_detail_new.*
 
 
@@ -159,15 +154,13 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
         getPresenter()?.loadDetailCustomer()
     }
 
-    override fun setPiutang(tagihan: String, piutang: String, total: String, jatuhTempo: String) {
+    override fun setPiutang(piutang: String?, tanggal: String?) {
         sw_refresh.isRefreshing = false
-        tv_jumlah_hutang.text = total
-//        tv_piutang.text = piutang
-//        tv_total.text = total
-        tv_tanggal_hutang.text = jatuhTempo
+        tv_jumlah_hutang.text = piutang!!
+        tv_tanggal_hutang.text = tanggal!!
     }
 
-    override fun setList(list: List<DetailPiutang.Data>) {
+    override fun setList(list: List<DetailPiutangNew.Data>) {
         adapter.setItems(list)
     }
 

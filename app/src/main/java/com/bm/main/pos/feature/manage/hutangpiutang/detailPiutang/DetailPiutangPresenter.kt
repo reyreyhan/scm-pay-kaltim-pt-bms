@@ -3,11 +3,10 @@ package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.customer.CustomerRestModel
-import com.bm.main.pos.models.hutangpiutang.DetailPiutang
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.Helper
@@ -36,7 +35,6 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
         } else{
             customer?.nama_pelanggan!!
         }
-
     }
 
     private fun checkCustomer(){
@@ -70,22 +68,14 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
         interactor.callGetHutang(context,hutangRestModel,customer?.id_pelanggan!!)
     }
 
-    override fun onSuccessGetHutang(data: DetailPiutang) {
+    override fun onSuccessGetHutang(data: DetailPiutangNew) {
         if(data == null){
             onFailedAPI(999,"Data tidak ditemukan")
             return
         }
         val piutang = data.datapiutang
-        val list = data.sudah_bayar
-        var tglTransaksi = ""
-        if (data.sudah_bayar!!.firstOrNull() != null){
-            tglTransaksi = Helper.getDateFormat(context,list?.firstOrNull()?.tanggal!!,
-                "yyyy-MM-dd","dd MMMM yyyy")
-        }else{
-            tglTransaksi = ""
-        }
-        view.setPiutang("Rp ${Helper.convertToCurrency(piutang?.total_tagihan!!)}","Rp ${Helper.convertToCurrency(piutang.jumlah_piutang!!)}",
-            "Rp ${Helper.convertToCurrency(piutang.total_dibayar!!)}","$tglTransaksi")
+        val list = data.history
+        view.setPiutang("Rp ${Helper.convertToCurrency(piutang!!.jumlah_piutang!!)}", Helper.getDateFormat(context, piutang.tanggal_hutang!!, "yyyy-MM-dd", "dd MMMM yyyy"))
         view.setList(list!!)
     }
 }

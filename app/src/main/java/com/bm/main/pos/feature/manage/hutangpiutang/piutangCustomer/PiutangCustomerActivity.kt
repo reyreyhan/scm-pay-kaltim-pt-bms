@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity
-import com.bm.main.pos.models.customer.Customer
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
@@ -50,7 +49,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
         rv_list.adapter = adapter
 
         adapter.callback = object : PiutangCustomerAdapter.ItemClickCallback{
-            override fun onClick(data: Customer) {
+            override fun onClick(data: DetailPiutangNew.Piutang) {
                 data?.let {
                     openDetailPiutangPage(it)
                 }
@@ -107,10 +106,16 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
 
     }
 
-    override fun setData(list: List<Customer>) {
+    override fun setList(list: List<DetailPiutangNew>) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
         adapter.setItems(list)
+    }
+
+    override fun addItemToAdapter(item: DetailPiutangNew) {
+        hideLoadingDialog()
+        sw_refresh.isRefreshing = false
+        adapter.addItem(item)
     }
 
     override fun onResume() {
@@ -149,10 +154,9 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
         getPresenter()?.onDestroy()
     }
 
-    override fun openDetailPiutangPage(data: Customer) {
+    override fun openDetailPiutangPage(data: DetailPiutangNew.Piutang) {
         val intent = Intent(this,DetailPiutangActivity::class.java)
         intent.putExtra(AppConstant.DATA,data)
         startActivity(intent)
     }
-
 }

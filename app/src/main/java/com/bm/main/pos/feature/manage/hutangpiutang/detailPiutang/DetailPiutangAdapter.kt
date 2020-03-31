@@ -1,17 +1,19 @@
 package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.hutangpiutang.DetailPiutang
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.utils.Helper
 import kotlinx.android.synthetic.main.item_list_piutang_detail_new.view.*
 
 class DetailPiutangAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val listProduct = mutableListOf<DetailPiutang.Data>()
+    private val listProduct = mutableListOf<DetailPiutangNew.Data>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -30,7 +32,7 @@ class DetailPiutangAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    fun setItems(listProduct: List<DetailPiutang.Data>?) {
+    fun setItems(listProduct: List<DetailPiutangNew.Data>?) {
         //this.listProduct.clear()
         val lastCount = itemCount
         listProduct?.let { this.listProduct.addAll(it) }
@@ -46,11 +48,15 @@ class DetailPiutangAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val tvDate = view.tv_date
         private val tvNominal = view.tv_total
+        private val tvStatus = view.tv_status
 
 
-        fun bindData(data: DetailPiutang.Data, position: Int) {
-            tvDate.text = "${Helper.getDateFormat(itemView.context,data.tanggal!!,"yyyy-MM-dd","dd MMMM yyyy")}"
+        @SuppressLint("SetTextI18n")
+        fun bindData(data: DetailPiutangNew.Data, position: Int) {
+            tvDate.text =
+                Helper.getDateFormat(itemView.context, data.tanggal!!,"yyyy-MM-dd","dd MMMM yyyy")
             tvNominal.text = "Rp ${Helper.convertToCurrency(data.nominal!!)}"
+            tvStatus.text = data.status
         }
     }
 

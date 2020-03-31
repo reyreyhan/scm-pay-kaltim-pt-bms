@@ -15,7 +15,6 @@ import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.customer.detail.CustomerDetailActivity
 import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
 import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
@@ -126,13 +125,12 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     override fun showErrorMessage(code: Int, msg: String) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
-        if(code == RestException.CODE_USER_NOT_FOUND){
-            restartLoginActivity()
-        }
-        else{
+//        if(code == RestException.CODE_USER_NOT_FOUND){
+//            restartLoginActivity()
+//        }
+//        else{
             toast(this,msg)
-        }
-
+//        }
     }
 
     override fun showSuccessMessage(msg: String?) {

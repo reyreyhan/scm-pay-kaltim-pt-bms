@@ -2,12 +2,9 @@ package com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
-import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.hutangpiutang.Hutang
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
-import com.bm.main.pos.models.supplier.Supplier
-import com.bm.main.pos.models.supplier.SupplierRestModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppSession
 import io.reactivex.annotations.NonNull
@@ -85,6 +82,32 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
         }))
     }
 
+    override fun callGetDetailHutangAPI(context: Context, restModel: HutangPiutangRestModel,id:String) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(restModel.getDetailPiutangCustomerNew(key!!,id).subscribeWith(object : DisposableObserver<DetailPiutangNew>() {
 
+            override fun onNext(@NonNull response: DetailPiutangNew) {
+                output?.onSuccessGetDetailHutang(response)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedAPI(errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
 
 }

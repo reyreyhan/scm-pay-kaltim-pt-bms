@@ -8,7 +8,7 @@ import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.customer.CustomerRestModel
-import com.bm.main.pos.models.hutangpiutang.DetailPiutang
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
 
 interface DetailPiutangContract {
@@ -17,8 +17,8 @@ interface DetailPiutangContract {
         fun onClose(status:Int)
         fun setCustomer(name: String?,email:String?,phone:String?,address:String?,url:String?)
         fun showMessage(code: Int, msg: String?)
-        fun setPiutang(tagihan:String,piutang:String,total:String,jatuhTempo:String)
-        fun setList(list:List<DetailPiutang.Data>)
+        fun setPiutang(piutang:String?, tanggal:String?)
+        fun setList(list:List<DetailPiutangNew.Data>)
     }
 
     interface Presenter : BasePresenterImpl<View> {
@@ -27,8 +27,6 @@ interface DetailPiutangContract {
         fun getTitleName():String
         fun loadDetailCustomer()
         fun loadHutang()
-
-
     }
 
     interface Interactor : BaseInteractorImpl {
@@ -36,13 +34,12 @@ interface DetailPiutangContract {
         fun onRestartDisposable()
         fun callGetDetailCustomer(context: Context, restModel:CustomerRestModel, id:String)
         fun callGetHutang(context: Context, restModel: HutangPiutangRestModel, id:String)
-
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
         fun onSuccessGetDetailCustomer(data:Customer)
         fun onFailedAPI(code:Int,msg:String)
-        fun onSuccessGetHutang(data:DetailPiutang)
+        fun onSuccessGetHutang(data: DetailPiutangNew)
 
     }
 

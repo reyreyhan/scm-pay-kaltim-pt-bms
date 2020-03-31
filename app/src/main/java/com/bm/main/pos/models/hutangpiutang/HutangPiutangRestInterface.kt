@@ -1,11 +1,10 @@
 package com.bm.main.pos.models.hutangpiutang
 
-import com.google.gson.JsonObject
-import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.supplier.Supplier
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface HutangPiutangRestInterface {
 
@@ -63,6 +62,8 @@ interface HutangPiutangRestInterface {
         @Query("key") key:String,
         @Query("id_pelanggan") id:String): Observable<DetailPiutang>
 
-
-
+    @GET("pelanggan/detail_utang_pelanggan.php ")
+    fun getDetailPiutangCustomerNew(
+        @Query("key") key:String,
+        @Query("id_pelanggan") id:String): Observable<DetailPiutangNew>
 }
