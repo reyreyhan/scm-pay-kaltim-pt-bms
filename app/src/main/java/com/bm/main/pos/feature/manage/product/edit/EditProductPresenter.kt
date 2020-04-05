@@ -1,24 +1,23 @@
 package com.bm.main.pos.feature.manage.product.edit
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import com.google.gson.Gson
-import com.bm.main.pos.R
-import com.bm.main.pos.base.BasePresenter
-import com.bm.main.pos.models.category.CategoryRestModel
 //import com.bm.main.pos.models.supplier.SupplierRestModel
 //import com.bm.main.pos.utils.Helper
 //import com.google.gson.reflect.TypeToken
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.util.Log
-import com.bm.main.pos.base.BaseActivity
+import com.bm.main.pos.R
+import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.callback.PermissionCallback
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.category.Category
+import com.bm.main.pos.models.category.CategoryRestModel
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.PermissionUtil
+import com.google.gson.Gson
 
 
 class EditProductPresenter(val context: Context, val view: EditProductContract.View) : BasePresenter<EditProductContract.View>(),
@@ -179,7 +178,7 @@ class EditProductPresenter(val context: Context, val view: EditProductContract.V
             }
             setSelectedCategory(cat)
 
-            if (it.gbr != "https://api-pos.fastpay.co.id/api/images/small_") {
+            if (it.gbr != "https://apifp.exploreindonesia.id/api2/images/small_") {
                 view.loadPhoto(it.gbr)
             }
 

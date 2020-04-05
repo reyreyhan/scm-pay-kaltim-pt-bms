@@ -10,20 +10,37 @@ import java.io.Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Transaction : Serializable {
-    var nama_barang: String? = null
-    var nama_supplier: String? = null
-    var gbr: String? = null
+    var id_pelanggan: String? = null
     var no_invoice: String? = null
     var tanggal: String? = null
     var pembayaran: String? = null
     var totalorder: String? = null
-    var totalomset: String? = null
-    var totalprofit: String? = null
+    var totalbayar: String? = null
+    var kembalian: String? = null
     var status: String? = null
     var type: String? = null
-    var pos: Int? = 0
+    var pos: String? = null
 
     fun json(): String {
         return Gson().toJson(this)
     }
 }
+//
+//class Transaction : Serializable {
+//    var nama_barang: String? = null
+//    var nama_supplier: String? = null
+//    var gbr: String? = null
+//    var no_invoice: String? = null
+//    var tanggal: String? = null
+//    var pembayaran: String? = null
+//    var totalorder: String? = null
+//    var totalomset: String? = null
+//    var totalprofit: String? = null
+//    var status: String? = null
+//    var type: String? = null
+//    var pos: Int? = 0
+//
+//    fun json(): String {
+//        return Gson().toJson(this)
+//    }
+//}

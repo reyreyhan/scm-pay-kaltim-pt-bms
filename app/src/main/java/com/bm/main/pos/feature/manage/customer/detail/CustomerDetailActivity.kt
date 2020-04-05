@@ -167,7 +167,7 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
     override fun openEditPage() {
         val intent = Intent(this, EditCustomerActivity::class.java)
         intent.putExtra(AppConstant.DATA,getPresenter()?.getCustomerData())
-        startActivityForResult(intent,CODE_OPEN_EDIT)
+        startActivityForResult(intent, CODE_OPEN_EDIT)
     }
 
     override fun showButtonTransaction() {

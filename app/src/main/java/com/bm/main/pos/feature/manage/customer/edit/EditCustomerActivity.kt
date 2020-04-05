@@ -12,10 +12,6 @@ import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.successDialog
 import com.bm.main.pos.ui.ext.toast
-import com.bm.main.pos.utils.AppConstant
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import kotlinx.android.synthetic.main.activity_edit_customer_new.*
 
 class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerContract.View>(),
@@ -132,36 +128,36 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
 
             }
         }
-        successDialog(this, msg!!, callback)
+        if (msg.isNullOrEmpty() || msg.isNullOrBlank()) {
+            if (Activity.RESULT_OK == status) {
+                setResult(status)
+                finish()
+            }
+        } else {
+            successDialog(this, msg, callback)
+        }
     }
 
     override fun onClose(msg: String?, status: Int, data: Customer?) {
         val callback = object : DialogCallback {
             override fun onSuccess() {
-                val newIntent = intent
                 if (Activity.RESULT_OK == status) {
-                    newIntent.putExtra(AppConstant.DATA, data)
+                    setResult(status)
+                    finish()
                 }
-                setResult(status, newIntent)
-                finish()
             }
-
             override fun onFailed() {
 
             }
         }
-
         if (msg.isNullOrEmpty() || msg.isNullOrBlank()) {
-            val newIntent = intent
             if (Activity.RESULT_OK == status) {
-                newIntent.putExtra(AppConstant.DATA, data)
+                setResult(status)
+                finish()
             }
-            setResult(status, newIntent)
-            finish()
         } else {
             successDialog(this, msg, callback)
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

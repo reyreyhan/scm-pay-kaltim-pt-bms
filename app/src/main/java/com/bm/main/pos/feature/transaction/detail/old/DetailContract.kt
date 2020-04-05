@@ -1,4 +1,4 @@
-package com.bm.main.pos.feature.transaction.detail
+package com.bm.main.pos.feature.transaction.detail.old
 
 import android.content.Context
 import android.content.Intent
@@ -7,8 +7,6 @@ import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
-import com.bm.main.pos.models.Message
-import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
 

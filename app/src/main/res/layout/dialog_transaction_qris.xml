@@ -6,32 +6,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/standard_margin_2x"
     android:background="@drawable/rounded_white_4dp">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
         <TextView
             android:id="@+id/tv_nama_toko"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="Toko Sahabat"
             android:textAllCaps="true"
             android:gravity="center"
             android:textSize="@dimen/_18sdp"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/tv_alamat_toko"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Jalan Delta Raya Utara No. 24 Waru Sidoarjo Jawa Timur"
-            android:gravity="center"
-            android:textSize="@dimen/_13sdp"
-            android:lines="2"
-            android:layout_marginLeft="@dimen/standard_margin_4x"
-            android:layout_marginRight="@dimen/standard_margin_4x"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_alamat_toko"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tv_nama_toko"-->
+<!--            android:text="Jalan Delta Raya Utara No. 24 Waru Sidoarjo Jawa Timur"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="@dimen/_13sdp"-->
+<!--            android:lines="2"-->
+<!--            android:layout_marginLeft="@dimen/standard_margin_4x"-->
+<!--            android:layout_marginRight="@dimen/standard_margin_4x"-->
+<!--            android:visibility="gone"/>-->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/ll_id"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nama_toko"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/standard_margin"
@@ -59,7 +67,11 @@
                 tools:text="231231234"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/ll_date"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_id"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
@@ -107,7 +119,12 @@
                 tools:text="16:15"/>
         </LinearLayout>
         <ImageView
-            android:layout_width="match_parent"
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_lbl_msg_scan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_date"
             android:layout_height="@dimen/_3sdp"
             android:src="@drawable/divider_dash_new"
             android:layerType="software"
@@ -116,7 +133,12 @@
             android:layout_marginLeft="@dimen/_35sdp"
             android:layout_marginRight="@dimen/_35sdp" />
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tv_lbl_msg_scan"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@id/qr_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
             android:layout_height="wrap_content"
             android:text="Scan Barcode ini untuk membayar "
             android:gravity="center"
@@ -127,9 +149,12 @@
             android:layout_marginRight="@dimen/standard_margin_4x"/>
         <ImageView
             android:id="@+id/qr_img"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_store_nmid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_lbl_msg_scan"
             android:layout_height="wrap_content"
-            android:layout_below="@id/store_nmid"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/standard_small_margin"
             android:layout_marginBottom="@dimen/standard_small_margin"
@@ -138,13 +163,20 @@
             tools:src="@android:drawable/ic_menu_report_image" />
         <TextView
             android:id="@+id/tv_store_nmid"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qr_img"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="@dimen/_13sdp"
             tools:text="NMID: 1234567890" />
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/ll_total"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_store_nmid"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/standard_small_margin"
@@ -170,7 +202,11 @@
                 android:layout_weight="1"/>
         </LinearLayout>
         <ImageView
-            android:layout_width="match_parent"
+            android:id="@+id/divier2"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_total"
             android:layout_height="@dimen/_3sdp"
             android:src="@drawable/divider_dash_new"
             android:layerType="software"
@@ -179,7 +215,11 @@
             android:layout_marginLeft="@dimen/_35sdp"
             android:layout_marginRight="@dimen/_35sdp" />
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/ll_image"
+            android:layout_width="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divier2"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/standard_margin_2x"
             android:layout_marginRight="@dimen/standard_margin_2x" >
@@ -211,14 +251,18 @@
             </LinearLayout>
         </LinearLayout>
         <TextView
-            android:id="@+id/btn_cancel"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_bayar"
+            android:layout_width="0dp"
+            android:text="Bayar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:gravity="center"
             android:textSize="@dimen/_13sdp"
-            android:text="Tutup"
+            app:layout_constraintTop_toBottomOf="@id/ll_image"
             android:layout_marginTop="@dimen/standard_margin"
             android:layout_marginBottom="@dimen/standard_margin"/>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

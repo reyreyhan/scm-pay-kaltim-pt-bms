@@ -356,8 +356,9 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_CANCELED){
             hideLoadingDialog()
         }
-        else if (requestCode == CODE_PAY_NONTUNAI && resultCode == Activity.RESULT_CANCELED){
+        else if (requestCode == CODE_PAY_NONTUNAI && resultCode == Activity.RESULT_OK){
             hideLoadingDialog()
+            getPresenter()?.checkNonTunai()
         }
         else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_OK){
             val code = data?.getStringExtra(AppConstant.DATA)
@@ -405,7 +406,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     override fun getPayValue(): Double {
         val value = _view.et_pay.text.toString().replace(Regex("\\D"), "").replace(".", "")
         if (value.isBlank() || value.isEmpty()) {
-            return 0.0
+            return getTotalValue()
         }
         return value.toDouble()
     }

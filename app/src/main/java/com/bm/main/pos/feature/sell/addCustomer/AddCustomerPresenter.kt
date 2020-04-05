@@ -1,20 +1,11 @@
 package com.bm.main.pos.feature.sell.addCustomer
 
-import android.app.Activity
 import android.content.Context
-import com.google.gson.Gson
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BasePresenter
-import com.bm.main.pos.models.category.CategoryRestModel
-import com.bm.main.pos.models.supplier.SupplierRestModel
-import com.bm.main.pos.utils.Helper
-import com.google.gson.reflect.TypeToken
-import android.util.Log
-import com.bm.main.pos.callback.PermissionCallback
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.customer.CustomerRestModel
-import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.utils.PermissionUtil
+import com.bm.main.pos.utils.Helper
 
 
 class AddCustomerPresenter(val context: Context, val view: AddCustomerContract.View) : BasePresenter<AddCustomerContract.View>(),
@@ -62,12 +53,8 @@ class AddCustomerPresenter(val context: Context, val view: AddCustomerContract.V
         interactor.onDestroy()
     }
 
-    override fun onSuccessAdd(data:List<Customer>) {
-        if(data.isEmpty()){
-            onFailedAPI(999,"Terjadi kesalahan")
-            return
-        }
-        view.onSuccess(data[0])
+    override fun onSuccessAdd(data:Customer) {
+        view.onSuccess(data)
     }
 
     override fun onFailedAPI(code: Int, msg: String) {

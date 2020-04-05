@@ -4,7 +4,7 @@ import android.content.Context
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
-import com.bm.main.pos.models.product.Product
+import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.models.report.ReportRestModel
 import com.bm.main.pos.models.report.ReportStock
@@ -89,27 +89,12 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
         interactor.onDestroy()
     }
 
-    override fun onSuccessGetProducts(list: List<Product>, stock:String?) {
-        val data = list.first()
-        interactor.callUpdateBarangAPI(context,
-            restModelProduct,
-            data.id_barang,
-            data.nama_barang,
-            data.kodebarang,
-            data.id_kategori,
-            data.hargajual,
-            data.hargabeli,
-            data.minimalstok,
-            stock!!,
-            data.deskripsi)
-    }
-
     override fun onSuccessGetReports(list: List<ReportStock>) {
         view.setData(list)
     }
 
-    override fun onSuccessUpdateBarang(msg: String?, barcode: String?) {
-        view.reloadData()
+    override fun onSuccessUpdateUpdateStock(msg: Message) {
+        view.showSuccessMessage(msg.message)
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
@@ -157,7 +142,7 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
         return sortSelected
     }
 
-    override fun updateProduct(name:String, stock:String) {
-        interactor.callSearchProductAPI(context, restModelProduct, name, stock)
+    override fun updateProduct(id: String, stok: String) {
+        interactor.callUpdateStockAPI(context, restModelProduct, id, stok)
     }
 }

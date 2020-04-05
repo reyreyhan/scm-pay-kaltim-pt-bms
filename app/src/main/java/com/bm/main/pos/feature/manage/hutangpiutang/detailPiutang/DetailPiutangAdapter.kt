@@ -1,9 +1,11 @@
 package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.hutangpiutang.DetailPiutang
@@ -51,12 +53,20 @@ class DetailPiutangAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val tvStatus = view.tv_status
 
 
+        @RequiresApi(Build.VERSION_CODES.M)
         @SuppressLint("SetTextI18n")
         fun bindData(data: DetailPiutangNew.Data, position: Int) {
             tvDate.text =
                 Helper.getDateFormat(itemView.context, data.tanggal!!,"yyyy-MM-dd","dd MMMM yyyy")
             tvNominal.text = "Rp ${Helper.convertToCurrency(data.nominal!!)}"
-            tvStatus.text = data.status
+            tvStatus.text = if (data.status.equals("hutang")) {
+                tvStatus.setTextColor(itemView.context.getColor(R.color.md_red_500))
+                "Hutang"
+            }
+            else {
+                tvStatus.setTextColor(itemView.context.getColor(R.color.md_green_500))
+                "Lunas"
+            }
         }
     }
 

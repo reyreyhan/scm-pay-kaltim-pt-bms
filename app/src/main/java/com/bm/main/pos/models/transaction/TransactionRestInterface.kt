@@ -1,6 +1,5 @@
 package com.bm.main.pos.models.transaction
 
-import com.google.gson.JsonObject
 import com.bm.main.pos.models.Message
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -70,4 +69,16 @@ interface TransactionRestInterface {
         @Query("key") key:String,
         @Query("no_invoice") id:String): Observable<Message>
 
+    @FormUrlEncoded
+    @POST("transaksi/bayarhutangidpelanggan.php")
+    fun payPiutangIdCustomer(
+        @Field("id_pelanggan") id:String,
+        @Field("total_bayar") pay:String,
+        @Field("key") key:String): Observable<Message>
+
+    @POST("transaksi/struk_send.php")
+    fun sendStruk(
+        @Query("key") key:String,
+        @Query("no_invoice") invoice:String,
+        @Query("email") email:String): Observable<Message>
 }

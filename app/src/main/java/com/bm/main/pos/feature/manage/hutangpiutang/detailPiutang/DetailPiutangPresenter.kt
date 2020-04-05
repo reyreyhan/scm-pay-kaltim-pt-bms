@@ -4,10 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.bm.main.pos.base.BasePresenter
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.customer.CustomerRestModel
+import com.bm.main.pos.models.Message
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
+import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.Helper
 
@@ -15,14 +16,14 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
     DetailPiutangContract.Presenter, DetailPiutangContract.InteractorOutput {
 
     private var interactor = DetailPiutangInteractor(this)
-    private val customerRestModel = CustomerRestModel(context)
+    private val transactionRestModel = TransactionRestModel(context)
     private val hutangRestModel = HutangPiutangRestModel(context)
-    private var customer:Customer ?= null
+    private var detailPiutangNew:CustomerNew ?= null
 
     override fun onViewCreated(intent: Intent) {
-        customer = intent.getSerializableExtra(AppConstant.DATA) as Customer
+        detailPiutangNew = intent.getSerializableExtra(AppConstant.DATA) as CustomerNew
         checkCustomer()
-        loadDetailCustomer()
+        loadHutang()
     }
 
     override fun onDestroy() {
@@ -30,34 +31,20 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
     }
 
     override fun getTitleName(): String {
-        return if(customer == null){
+        return if(detailPiutangNew == null){
             ""
         } else{
-            customer?.nama_pelanggan!!
+            detailPiutangNew?.nama_pelanggan!!
         }
     }
 
     private fun checkCustomer(){
-        if(customer == null){
+        if(detailPiutangNew == null){
             view.onClose(Activity.RESULT_CANCELED)
             return
         }
 
-        view.setCustomer(customer?.nama_pelanggan,customer?.email,customer?.telpon,customer?.alamat,customer?.gbr)
-    }
-
-    override fun loadDetailCustomer() {
-        interactor.callGetDetailCustomer(context,customerRestModel,customer?.id_pelanggan!!)
-    }
-
-    override fun onSuccessGetDetailCustomer(data: Customer) {
-        if(data == null){
-            onFailedAPI(999,"Data tidak ditemukan")
-            return
-        }
-        customer = data
-        checkCustomer()
-        loadHutang()
+        view.setCustomer(detailPiutangNew?.nama_pelanggan)
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
@@ -65,7 +52,11 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
     }
 
     override fun loadHutang() {
-        interactor.callGetHutang(context,hutangRestModel,customer?.id_pelanggan!!)
+        interactor.callGetHutang(context,hutangRestModel,detailPiutangNew?.id_pelanggan!!)
+    }
+
+    override fun payHutang(pay:String) {
+        interactor.callPayHutang(context,transactionRestModel,detailPiutangNew?.id_pelanggan!!,pay)
     }
 
     override fun onSuccessGetHutang(data: DetailPiutangNew) {
@@ -75,7 +66,13 @@ class DetailPiutangPresenter(val context: Context, val view: DetailPiutangContra
         }
         val piutang = data.datapiutang
         val list = data.history
-        view.setPiutang("Rp ${Helper.convertToCurrency(piutang!!.jumlah_piutang!!)}", Helper.getDateFormat(context, piutang.tanggal_hutang!!, "yyyy-MM-dd", "dd MMMM yyyy"))
+        view.setPiutang("Rp ${Helper.convertToCurrency(if (piutang!!.jumlah_piutang != null) piutang.jumlah_piutang!! else "0" )}",
+            Helper.getDateFormat(context, piutang.tanggal_hutang!!,
+                "yyyy-MM-dd", "dd MMMM yyyy"))
         view.setList(list!!)
+    }
+
+    override fun onSuccessPayHutang(msg: Message) {
+        view.showSuccess(msg.message!!)
     }
 }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.report.ReportLabaRugi
-import com.bm.main.pos.models.transaction.HistoryTransaction
 import com.bm.main.pos.utils.Helper
 import kotlinx.android.synthetic.main.item_list_report_penjualan_new.view.*
 
@@ -56,7 +55,7 @@ class PenjualanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bindData(data: ReportLabaRugi.Penjualan, position: Int) {
             nameTv.text = "${data.nama_barang}"
             totalTv.text = "Rp ${Helper.convertToCurrency(data.totalharga!!)}"
-            var jual = data.hargajual
+            var jual = data.harga
             if (jual == null) {
                 jual = "0"
             }

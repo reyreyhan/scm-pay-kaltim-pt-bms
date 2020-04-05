@@ -1,8 +1,6 @@
 package com.bm.main.pos.models.product
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.util.Log
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.rest.RestClient
 import com.bm.main.pos.rest.RestModel
@@ -31,35 +29,35 @@ class ProductRestModel(context: Context) : RestModel<ProductRestInterface>(conte
 
     fun add(key: String, name: String, kode: String, idkategori: String, jual: String, beli: String, stok: String, minstok: String, gbr: String?, desk: String): Observable<Message> {
         return restInterface.add(
-            Helper.createPartFromString(key),
-            Helper.createPartFromString(name),
-            Helper.createPartFromString(kode),
-            Helper.createPartFromString(idkategori),
-            Helper.createPartFromString(beli),
-            Helper.createPartFromString(jual),
-            Helper.createPartFromString(stok),
-            Helper.createPartFromString(minstok),
-            Helper.createPartFromString(desk),
-            Helper.createPartFromFile(gbr, "gbr")
-        )
+                Helper.createPartFromString(key),
+                Helper.createPartFromString(name),
+                Helper.createPartFromString(kode),
+                Helper.createPartFromString(idkategori),
+                Helper.createPartFromString(beli),
+                Helper.createPartFromString(jual),
+                Helper.createPartFromString(stok),
+                Helper.createPartFromString(minstok),
+                Helper.createPartFromString(desk),
+                Helper.createPartFromFile(gbr, "gbr")
+            )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun update(key: String, id: String, name: String, kode: String, idkategori: String, jual: String, beli: String, stok: String, minstok: String, gbr: String?, desk: String): Observable<Message> {
         return restInterface.update(
-            Helper.createPartFromString(key),
-            Helper.createPartFromString(id),
-            Helper.createPartFromString(name),
-            Helper.createPartFromString(kode),
-            Helper.createPartFromString(idkategori),
-            Helper.createPartFromString(beli),
-            Helper.createPartFromString(jual),
-            Helper.createPartFromString(stok),
-            Helper.createPartFromString(minstok),
-            Helper.createPartFromString(desk),
-            Helper.createPartFromFile(gbr, "gbr")
-        )
+                Helper.createPartFromString(key),
+                Helper.createPartFromString(id),
+                Helper.createPartFromString(name),
+                Helper.createPartFromString(kode),
+                Helper.createPartFromString(idkategori),
+                Helper.createPartFromString(beli),
+                Helper.createPartFromString(jual),
+                Helper.createPartFromString(stok),
+                Helper.createPartFromString(minstok),
+                Helper.createPartFromString(desk),
+                Helper.createPartFromFile(gbr, "gbr")
+            )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
@@ -84,6 +82,11 @@ class ProductRestModel(context: Context) : RestModel<ProductRestInterface>(conte
 
     fun searchByName(key: String, name: String): Observable<List<Product>> {
         return restInterface.searchByName(key, name)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+    fun updateStok(key:String, id:String, stok:String): Observable<Message>{
+        return restInterface.updateStok(key, id, stok)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

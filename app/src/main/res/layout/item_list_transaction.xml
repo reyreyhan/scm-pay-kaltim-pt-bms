@@ -14,7 +14,7 @@
         android:layout_height="@dimen/_32sdp"
         android:layout_marginRight="@dimen/standard_margin"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1">
@@ -25,7 +25,9 @@
             android:textColor="@color/primaryText"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
-            tools:text="Indomie Instant Goreng" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Map Binder Fancy WaltDisney A5" />
         <TextView
             android:id="@+id/tv_count"
             android:layout_width="wrap_content"
@@ -40,13 +42,12 @@
 
     <TextView
         android:id="@+id/tv_subtotal"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_3sdp"
-        android:layout_weight="1"
         android:gravity="end"
         android:textColor="@color/primaryText"
         android:textSize="@dimen/_12sdp"
-        tools:text="Rp 9.999" />
+        tools:text="Rp 10.000.000" />
 </LinearLayout>

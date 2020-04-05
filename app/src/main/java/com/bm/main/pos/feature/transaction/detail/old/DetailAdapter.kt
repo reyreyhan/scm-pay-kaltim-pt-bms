@@ -1,4 +1,4 @@
-package com.bm.main.pos.feature.transaction.detail
+package com.bm.main.pos.feature.transaction.detail.old
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.transaction.DetailTransaction
-import kotlinx.android.synthetic.main.item_list_transaction.view.*
 import com.bm.main.pos.utils.Helper
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import kotlinx.android.synthetic.main.item_list_transaction.view.*
 
 class DetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

@@ -285,7 +285,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.transaction.detail.DetailActivity"
+            android:name=".feature.transaction.detail.old.DetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity

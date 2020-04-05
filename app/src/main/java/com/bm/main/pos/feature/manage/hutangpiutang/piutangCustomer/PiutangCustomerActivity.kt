@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity
-import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
@@ -49,7 +49,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
         rv_list.adapter = adapter
 
         adapter.callback = object : PiutangCustomerAdapter.ItemClickCallback{
-            override fun onClick(data: DetailPiutangNew.Piutang) {
+            override fun onClick(data: CustomerNew) {
                 data?.let {
                     openDetailPiutangPage(it)
                 }
@@ -103,16 +103,15 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
             val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
-
     }
 
-    override fun setList(list: List<DetailPiutangNew>) {
+    override fun setList(list: List<CustomerNew>) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
         adapter.setItems(list)
     }
 
-    override fun addItemToAdapter(item: DetailPiutangNew) {
+    override fun addItemToAdapter(item: CustomerNew) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
         adapter.addItem(item)
@@ -121,6 +120,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
     override fun onResume() {
         super.onResume()
         setupToolbar()
+        reloadData()
     }
 
     override fun showErrorMessage(code: Int, msg: String) {
@@ -154,7 +154,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
         getPresenter()?.onDestroy()
     }
 
-    override fun openDetailPiutangPage(data: DetailPiutangNew.Piutang) {
+    override fun openDetailPiutangPage(data: CustomerNew) {
         val intent = Intent(this,DetailPiutangActivity::class.java)
         intent.putExtra(AppConstant.DATA,data)
         startActivity(intent)

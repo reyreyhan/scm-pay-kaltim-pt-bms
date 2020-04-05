@@ -1,16 +1,10 @@
-package com.bm.main.pos.feature.transaction.detail
+package com.bm.main.pos.feature.transaction.detail.old
 
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
@@ -24,18 +18,24 @@ import com.bm.main.pos.feature.dialog.PaymentDialog
 import com.bm.main.pos.feature.printer.PrinterActivity
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.rest.entity.RestException
-import com.bm.main.pos.ui.ext.htmlText
 import com.bm.main.pos.ui.ext.toast
-import com.bm.main.pos.utils.*
+import com.bm.main.pos.utils.AppConstant
+import com.bm.main.pos.utils.BluetoothConnectTask
+import com.bm.main.pos.utils.BluetoothUtil
+import com.bm.main.pos.utils.DialogUtils
 import com.bm.main.pos.utils.print.PrinterUtil
 import kotlinx.android.synthetic.main.activity_transaction_detail.*
 
-class DetailActivity : BaseActivity<DetailPresenter, DetailContract.View>(), DetailContract.View, PaymentDialog.Listener {
+class DetailActivity : BaseActivity<DetailPresenter, DetailContract.View>(),
+    DetailContract.View, PaymentDialog.Listener {
 
     val adapter = DetailAdapter()
 
     override fun createPresenter(): DetailPresenter {
-        return DetailPresenter(this, this)
+        return DetailPresenter(
+            this,
+            this
+        )
     }
 
     override fun createLayout(): Int {

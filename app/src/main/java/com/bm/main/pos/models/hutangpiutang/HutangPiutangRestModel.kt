@@ -1,7 +1,7 @@
 package com.bm.main.pos.models.hutangpiutang
 
 import android.content.Context
-import com.bm.main.pos.models.customer.Customer
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.supplier.Supplier
 import com.bm.main.pos.rest.RestClient
 import com.bm.main.pos.rest.RestModel
@@ -57,7 +57,7 @@ class HutangPiutangRestModel(context: Context) : RestModel<HutangPiutangRestInte
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getListPiutangCustomer(key:String): Observable<List<Customer>> {
+    fun getListPiutangCustomer(key:String): Observable<List<CustomerNew>> {
         return restInterface.getListPiutangCustomer(key)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -69,7 +69,7 @@ class HutangPiutangRestModel(context: Context) : RestModel<HutangPiutangRestInte
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getSearchPiutangCustomer(key:String,search:String): Observable<List<Customer>> {
+    fun getSearchPiutangCustomer(key:String,search:String): Observable<List<CustomerNew>> {
         return restInterface.getSearchPiutangCustomer(key,search)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

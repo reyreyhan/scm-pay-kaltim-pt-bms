@@ -78,7 +78,8 @@
                     android:layout_marginTop="2dp"
                     tools:text="Subtitle"
                     android:singleLine="true"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="gone"/>
             </LinearLayout>
         </RelativeLayout>
     </FrameLayout>

@@ -257,7 +257,7 @@
                                 android:background="@android:color/transparent"
                                 android:hint="Struk via E-mail"
                                 android:inputType="textEmailAddress"
-                                android:maxLength="16"
+                                android:maxLength="64"
                                 android:textColor="@color/primaryText"
                                 android:textColorHint="@color/secondaryText"
                                 android:textSize="@dimen/_13sdp" />

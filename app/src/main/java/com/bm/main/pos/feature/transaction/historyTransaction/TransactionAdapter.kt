@@ -43,12 +43,12 @@ class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         val transaction = listProduct[position]
-
         return if ("header" == transaction.type) {
             HEADER
         } else {
             DATA
         }
+        return DATA
     }
 
     fun setItems(listProduct: List<Transaction>?) {
@@ -65,30 +65,15 @@ class TransactionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-//        private val headerDateTv = view.tv_header_date
-//        private val headerTotalTv = view.tv_header_total
-//        private val headerOmsetTv = view.tv_header_omset
-//        private val headerProfitTv = view.tv_header_profit
-
-//        private val photoIv = view.iv_photo
-//        private val idTv = view.tv_id
-//        private val totalTv = view.tv_total
-//        private val methodTv = view.tv_method
-//        private val statusTv = view.tv_status
-
-
         @SuppressLint("SetTextI18n")
         fun bindData(data: Transaction, position: Int, type:Int) {
 
             if(HEADER == type){
                 itemView.subheaderText.text = Helper.getDateFormat(itemView.context,data.tanggal!!,"yyyy-MM-dd","EEE, dd MMMM yyyy")
-//                headerTotalTv.text = Helper.convertToCurrency(data.totalorder!!)
-//                headerOmsetTv.text = "Rp ${Helper.convertToCurrency(data.totalomset!!)}"
-//                headerProfitTv.text = "Rp ${Helper.convertToCurrency(data.totalprofit!!)}"
             }
             else{
                 itemView.title.text = "Rp ${Helper.convertToCurrency(data.totalorder!!)}"
-                itemView.subtitle.text = data.nama_barang
+                itemView.subtitle.text = ""
 //                itemView.date.text = Helper.getDateFormat(itemView.context,data.tanggal!!,"yyyy-MM-dd HH:mm:ss","HH:mm")
                 itemView.date.text = ""
                 itemView.layout_parent.setOnClickListener {

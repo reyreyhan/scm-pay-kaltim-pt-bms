@@ -13,6 +13,7 @@ import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.Helper
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import org.threeten.bp.LocalDate
+import timber.log.Timber
 
 class MerchantPresenter(val context:Context, val view: MerchantContract.View) : BasePresenter<MerchantContract.View>(),
     MerchantContract.Presenter,
@@ -53,24 +54,16 @@ class MerchantPresenter(val context:Context, val view: MerchantContract.View) : 
                 view.showErrorMessage(999, "Data tidak ditemukan")
                 return
             }
+            Timber.d("Detail Terakhir: " + data[data.lastIndex].detail.toString())
             val list = ArrayList<Transaction>()
             for (history in it) {
                 history.detail?.let { detail ->
                     if (detail.isNotEmpty()) {
-                        val header = Transaction()
-                        header.tanggal = history.tanggal
-                        header.type = "header"
-                        header.totalorder = history.jumlah_transaksi
-                        header.totalomset = history.totalordersemua
-                        header.totalprofit = history.jumlah_profit
                         val size = detail.size
                         for (i in size - 1 downTo 0) {
                             val trx = detail[i]
-                            val pos = i + 1
-                            trx.pos = pos
                             list.add(0, trx)
                         }
-                        list.add(0, header)
                     }
                 }
             }

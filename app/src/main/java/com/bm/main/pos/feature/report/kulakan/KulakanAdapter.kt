@@ -1,19 +1,18 @@
 package com.bm.main.pos.feature.report.kulakan
 
+//import com.bm.main.pos.utils.glide.GlideApp
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bm.main.pos.R
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.utils.Helper
 import com.bumptech.glide.Glide
-//import com.bm.main.pos.utils.glide.GlideApp
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_list_history_header.view.*
 import kotlinx.android.synthetic.main.item_list_history_kulakan.view.*
 
@@ -48,11 +47,12 @@ class KulakanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         val transaction = listProduct[position]
-        return if ("header" == transaction.type) {
-            HEADER
-        } else {
-            DATA
-        }
+//        return if ("header" == transaction.type) {
+//            HEADER
+//        } else {
+//            DATA
+//        }
+        return DATA
     }
 
     fun setItems(listProduct: List<Transaction>?) {
@@ -88,12 +88,12 @@ class KulakanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 headerTotalTv.text = "Rp ${Helper.convertToCurrency(data.totalorder!!)}"
             }
             else{
-                when(data.pos){
-                    0 -> idTv.text = data.no_invoice
-                    else -> idTv.text = "Kulakan ke ${data.pos!!}"
-                }
+//                when(data.pos){
+//                    0 -> idTv.text = data.no_invoice
+//                    else -> idTv.text = "Kulakan ke ${data.pos!!}"
+//                }
 
-                supplierTv.text = data.nama_supplier
+//                supplierTv.text = data.nama_supplier
                 totalTv.text = "Rp ${Helper.convertToCurrency(data.totalorder!!)}"
                 methodTv.text = data.pembayaran
                 statusTv.text = data.status

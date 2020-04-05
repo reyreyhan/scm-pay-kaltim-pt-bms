@@ -1,6 +1,6 @@
 package com.bm.main.pos.models.hutangpiutang
 
-import com.bm.main.pos.models.customer.Customer
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.supplier.Supplier
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -40,7 +40,7 @@ interface HutangPiutangRestInterface {
 
     @GET("pelanggan/listpiutang.php")
     fun getListPiutangCustomer(
-        @Query("key") key:String): Observable<List<Customer>>
+        @Query("key") key:String): Observable<List<CustomerNew>>
 
     @GET("supplier/searchhutang.php")
     fun getSearchHutangSupplier(
@@ -50,7 +50,7 @@ interface HutangPiutangRestInterface {
     @GET("pelanggan/searchpiutang.php")
     fun getSearchPiutangCustomer(
         @Query("key") key:String,
-        @Query("search") search:String): Observable<List<Customer>>
+        @Query("search") search:String): Observable<List<CustomerNew>>
 
     @GET("supplier/detailpiutangpersupplier.php")
     fun getDetailHutangSupplier(

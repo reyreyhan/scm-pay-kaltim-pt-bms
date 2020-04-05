@@ -3,8 +3,8 @@ package com.bm.main.pos.feature.transaction.success
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
-import android.content.ComponentName
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
@@ -27,12 +27,11 @@ import com.bm.main.pos.feature.printer.PrinterActivity
 import com.bm.main.pos.feature.transaction.detail.DetailSuccessActivity
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.rest.entity.RestException
-import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.*
 import com.bm.main.pos.utils.print.PrinterUtil
 import kotlinx.android.synthetic.main.activity_transaction_success_new.*
-import org.jetbrains.anko.sdk25.coroutines.textChangedListener
 import java.lang.Integer.parseInt
+import java.net.URLEncoder
 
 class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
     SuccessContract.View {
@@ -76,9 +75,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
         }
 
         btn_kirim_email.setOnClickListener {
-            //getPresenter()?.onCheckShare()
-//            openDetailPage()
-
+            getPresenter()?.sendStruk(et_email.editableText.toString().trim())
         }
 
         et_email.addTextChangedListener(object:TextWatcher{
@@ -110,8 +107,26 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
         })
 
         btn_kirim_no_wa.setOnClickListener {
-            if (et_no_wa.editableText.toString().isNotEmpty() && fileStruk.isNotEmpty()){
-                shareToWhatsapp(et_no_wa.editableText.toString(), fileStruk)
+//            if (et_no_wa.editableText.toString().isNotEmpty() && fileStruk.isNotEmpty()){
+//                shareToWhatsapp(et_no_wa.editableText.toString(), fileStruk)
+//
+//            }
+            val packageManager: PackageManager = getPackageManager()
+            val i = Intent(Intent.ACTION_VIEW)
+            val noWa = "62${et_no_wa.editableText.toString().trim().substring(1)}"
+            try {
+                val url =
+                    "https://api.whatsapp.com/send?phone=" + noWa + "&text=" + URLEncoder.encode(
+                        "Terima kasih sudah membeli.\nInvoice Anda: ${getPresenter()?.getInvoice()}",
+                        "UTF-8"
+                    )
+                i.setPackage("com.whatsapp")
+                i.data = Uri.parse(url)
+                if (i.resolveActivity(packageManager) != null) {
+                    startActivity(i)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
@@ -163,6 +178,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
             }
         }else{
             ImageHelper.takeScreenshot(this, ns_content, filename)
+            showToast("Berhasil mengunduh Struk")
         }
         container_action.visibility = View.VISIBLE
     }
@@ -199,6 +215,12 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
         } else {
             onErrorView(msg.toString())
         }
+    }
+
+    override fun showSuccessMessage(msg: String?) {
+        hideLoadingDialog()
+        sw_refresh.isRefreshing = false
+        showToast(msg!!)
     }
 
     private fun reloadData() {

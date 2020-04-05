@@ -58,14 +58,11 @@ class TransactionPresenter(val context: Context, val view: TransactionContract.V
                         val header = Transaction()
                         header.tanggal = history.tanggal
                         header.type = "header"
-                        header.totalorder = history.jumlah_transaksi
-                        header.totalomset = history.totalordersemua
-                        header.totalprofit = history.jumlah_profit
                         val size = detail.size
                         for (i in size - 1 downTo 0) {
                             val trx = detail[i]
                             val pos = i + 1
-                            trx.pos = pos
+                            trx.pos = pos.toString()
                             list.add(0, trx)
                         }
                         list.add(0, header)

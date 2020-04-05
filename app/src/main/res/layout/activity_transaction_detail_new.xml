@@ -162,7 +162,7 @@
                     android:layout_weight="0.285"
                     android:textSize="@dimen/_12sdp"
                     android:gravity="right"
-                    tools:text="Rp 120.000"
+                    android:text="Rp 0"
                     android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
@@ -181,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.265"
                     android:textSize="@dimen/_12sdp"
-                    android:text="Tunai"/>
+                    android:text="Bayar"/>
                 <TextView
                     android:id="@+id/tv_tunai"
                     android:layout_width="0dp"
@@ -189,15 +189,17 @@
                     android:layout_weight="0.285"
                     android:textSize="@dimen/_12sdp"
                     android:gravity="right"
-                    tools:text="Rp 150.000"
+                    android:text="Rp 0"
                     android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ll_cashback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/standard_margin"
                 android:layout_marginRight="@dimen/standard_margin_2x"
+                android:visibility="gone"
                 android:weightSum="1">
                 <View
                     android:layout_width="0dp"
@@ -216,7 +218,36 @@
                     android:layout_weight="0.285"
                     android:textSize="@dimen/_12sdp"
                     android:gravity="right"
-                    tools:text="Rp 30.000"
+                    android:text="Rp 0"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_hutang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:layout_marginRight="@dimen/standard_margin_2x"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="1">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.45"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.265"
+                    android:text="Hutang"
+                    android:textSize="@dimen/_12sdp"/>
+                <TextView
+                    android:id="@+id/tv_hutang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.285"
+                    android:gravity="right"
+                    android:text="Rp 0"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"/>
             </LinearLayout>
         </LinearLayout>

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import com.bm.main.fpl.templates.choosephotohelper.ChoosePhotoHelper
 import com.bm.main.fpl.templates.choosephotohelper.callback.ChoosePhotoCallback
 import com.bm.main.pos.R
@@ -22,7 +21,6 @@ import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.ui.ext.successDialog
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.utils.ImageCompression
 import com.bm.main.pos.utils.ImageUtil
 import com.bumptech.glide.Glide
@@ -221,24 +219,24 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
     }
 
     override fun loadPhoto(path: String) {
-        if (path.isEmpty() || path.isBlank()) {
-            iv_tambah_foto.visibility = View.VISIBLE
-        } else {
-            iv_tambah_foto.visibility = View.GONE
-        }
-        iv_foto.visibility = View.VISIBLE
-        Log.d("loadphoto edit ", path)
-        if (path != "https://api-pos.fastpay.co.id/api/images/small_") {
+//        if (path.isEmpty() || path.isBlank()) {
+//            iv_tambah_foto.visibility = View.VISIBLE
+//        } else {
+//            iv_tambah_foto.visibility = View.GONE
+//        }
+        if (path != "https://apifp.exploreindonesia.id/api2/images/small_") {
             Glide.with(this)
                 .load(path)
                 .transform(CenterCrop(), RoundedCorners(4))
                 .into(iv_foto)
         } else {
+            iv_tambah_foto.visibility = View.VISIBLE
             Glide.with(this)
-                .load("https://api-pos.fastpay.co.id/api/images/no_product.jpg")
+                .load("https://apifp.exploreindonesia.id/api2/images/no_product.jpg")
                 .transform(CenterCrop(), RoundedCorners(4))
                 .into(iv_foto)
         }
+        iv_foto.visibility = View.VISIBLE
 //        Glide.with(this).asBitmap().load(path).transform(CenterCrop(), RoundedCorners(4))
 //            .encodeFormat(Bitmap.CompressFormat.PNG).encodeQuality(50).diskCacheStrategy(
 //                DiskCacheStrategy.NONE

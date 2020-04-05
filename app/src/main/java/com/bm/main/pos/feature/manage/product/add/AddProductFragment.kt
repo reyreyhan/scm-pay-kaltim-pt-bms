@@ -3,8 +3,6 @@ package com.bm.main.pos.feature.manage.product.add
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,13 +21,10 @@ import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.ImageCompression
-import com.bm.main.pos.utils.ImageHelper
 import com.bm.main.pos.utils.ImageUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 import kotlinx.android.synthetic.main.fragment_add_product_new.view.*
 import timber.log.Timber
 import java.io.File
@@ -118,7 +113,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
                 if (photo.isNullOrEmpty() || photo.isNullOrBlank()) {
                     getPresenter()?.setImagePhotoPath(null)
                     loadPhoto("")
-                    _view.iv_foto.visibility = View.VISIBLE
+                    _view.iv_tambah_foto.visibility = View.VISIBLE
                 } else {
                     val imageUtil = @SuppressLint("StaticFieldLeak")
                     object : ImageCompression(requireContext()) {
@@ -199,8 +194,8 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
     }
 
     override fun loadPhoto(path: String) {
-        Timber.d("loadphoto $path")
-        if (path != "https://api-pos.fastpay.co.id/api/images/small_") {
+//        Timber.d("loadphoto $path")
+        if (path != "https://apifp.exploreindonesia.id/api2/images/small_") {
             Glide.with(this)
                 .load(path)
                 .transform(CenterCrop(), RoundedCorners(4))
@@ -208,7 +203,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
         } else {
             _view.iv_tambah_foto.visibility = View.VISIBLE
             Glide.with(this)
-                .load("https://api-pos.fastpay.co.id/api/images/no_product.jpg")
+                .load("https://apifp.exploreindonesia.id/api2/images/no_product.jpg")
                 .transform(CenterCrop(), RoundedCorners(4))
                 .into(_view.iv_foto)
         }
@@ -268,27 +263,30 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
         _view.et_stok_barang.setText(if (data.stok.toInt() > 0) data.stok else "100")
         _view.et_catatan_produk.setText(data.deskripsi)
         data.gbr.let {
-            if (it.isNotBlank()) {
-                Glide.with(_view.iv_foto).asBitmap().load(it).into(object : CustomTarget<Bitmap>() {
-                    override fun onResourceReady(
-                        resource: Bitmap,
-                        transition: Transition<in Bitmap>?
-                    ) {
+//            if (it.isNotBlank()) {
+//                Glide.with(_view.iv_foto).asBitmap().load(it).into(object : CustomTarget<Bitmap>() {
+//                    override fun onResourceReady(
+//                        resource: Bitmap,
+//                        transition: Transition<in Bitmap>?
+//                    ) {
 //                        iv_photo.setImageBitmap(resource)
-                        ImageHelper.bitmapToCacheFile(
-                            requireContext(),
-                            resource,
-                            "tmp_item.${data.nama_barang.replace(" ", "")}.jpg"
-                        ) {
-                            Glide.with(_view.iv_foto).load(File(it)).into(_view.iv_foto)
-                            getPresenter()?.setImagePhotoPath(it)
-                        }
-                    }
-
-                    override fun onLoadCleared(placeholder: Drawable?) {
-                    }
-                })
-                _view.iv_tambah_foto.visibility = View.GONE
+//                        ImageHelper.bitmapToCacheFile(
+//                            requireContext(),
+//                            resource,
+//                            "tmp_item.${data.nama_barang.replace(" ", "")}.jpg"
+//                        ) {
+//                            Glide.with(_view.iv_foto).load(File(it)).into(_view.iv_foto)
+//                            getPresenter()?.setImagePhotoPath(it)
+//                        }
+//                    }
+//
+//                    override fun onLoadCleared(placeholder: Drawable?) {
+//                    }
+//                })
+//                _view.iv_tambah_foto.visibility = View.GONE
+//            }
+            if (it.isNotEmpty()){
+                loadPhoto(it)
             }
         }
     }

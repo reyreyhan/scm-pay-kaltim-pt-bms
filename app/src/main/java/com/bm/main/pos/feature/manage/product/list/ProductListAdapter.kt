@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bm.main.pos.R
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.utils.Helper
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.item_list_choose_product_2.view.*
 
 class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -59,7 +59,7 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 desc = "-"
             }
             countTv.text = Helper.convertToCurrency(data.stok)
-            hargaTv.text = "Rp Rp ${Helper.convertToCurrency(data.hargabeli)} - Rp ${Helper.convertToCurrency(data.hargajual)}"
+            hargaTv.text = "Rp ${Helper.convertToCurrency(data.hargabeli)} - Rp ${Helper.convertToCurrency(data.hargajual)}"
 //            infoTv.text = "$desc"
 //            priceTv.text = "Rp ${Helper.convertToCurrency(data.hargajual!!)}"
 //            stockTv.text = "Stok : ${Helper.convertToCurrency(data.stok!!)}"

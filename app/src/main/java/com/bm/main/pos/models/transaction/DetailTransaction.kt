@@ -12,6 +12,7 @@ import java.io.Serializable
 class DetailTransaction : Serializable {
     var struk: Struk? = null
     var data: List<Data>? = null
+    var url_struk: String? = null
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Struk : Serializable {
@@ -23,8 +24,8 @@ class DetailTransaction : Serializable {
         var operator: String? = null
         var id_pelanggan: String? = null
         var nama_pelanggan: String? = null
-        var id_supplier: String? = null
-        var nama_supplier: String? = null
+//        var id_supplier: String? = null
+//        var nama_supplier: String? = null
         var tanggal: String? = null
         var pembayaran: String? = null
         var totalorder: String? = null
@@ -41,13 +42,21 @@ class DetailTransaction : Serializable {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Data : Serializable {
-        var kodebarang: String? = null
-        var nama_barang: String? = null
-        var tanggal: String? = null
+        var id_penjualan: String? = null
+        var id_pelanggan: String? = null
+        var id_barang: String? = null
+        var user: String? = null
+        var no_invoice: String? = null
         var jumlah: String? = null
         var harga: String? = null
         var totalharga: String? = null
+        var totalmodal: String? = null
+        var tanggal: String? = null
         var status: String? = null
+        var catatan: String? = null
+        var sisa_stok: String? = null
+        var kodebarang: String? = null
+        var nama_barang: String? = null
 
         fun json(): String {
             return Gson().toJson(this)

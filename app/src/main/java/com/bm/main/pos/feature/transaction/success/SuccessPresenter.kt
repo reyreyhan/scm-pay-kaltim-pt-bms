@@ -2,19 +2,16 @@ package com.bm.main.pos.feature.transaction.success
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.util.Log
-import androidx.core.widget.NestedScrollView
-import com.google.gson.Gson
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.callback.PermissionCallback
-import com.bm.main.pos.models.cart.CartRestModel
-import com.bm.main.pos.models.product.Product
-import com.bm.main.pos.models.product.ProductRestModel
+import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
-import com.bm.main.pos.utils.*
+import com.bm.main.pos.utils.AppConstant
+import com.bm.main.pos.utils.BluetoothUtil
+import com.bm.main.pos.utils.Helper
+import com.bm.main.pos.utils.PermissionUtil
 
 class SuccessPresenter(val context: Context, val view: SuccessContract.View) : BasePresenter<SuccessContract.View>(),
     SuccessContract.Presenter,
@@ -87,6 +84,10 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
         view.showMessage(code, msg)
     }
 
+    override fun onSuccessSendStruk(msg: Message) {
+        view.showSuccessMessage(msg.message)
+    }
+
     override fun onSuccessGetDetail(detail: DetailTransaction?) {
         this.detail = detail
 
@@ -131,6 +132,14 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
 
     override fun onCheckDownload(){
         permissionUtil.checkWriteExternalPermission(downloadStruk)
+    }
+
+    override fun sendStruk(email: String?) {
+        interactor.callSendStruk(context, restModel, invoice!!, email!!)
+    }
+
+    override fun getInvoice():String {
+        return invoice!!
     }
 
     override fun getDataStruk(): DetailTransaction {

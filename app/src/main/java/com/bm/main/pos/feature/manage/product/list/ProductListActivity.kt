@@ -50,7 +50,7 @@ class ProductListActivity : BaseActivity<ProductListPresenter, ProductListContra
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
         getPresenter()?.onViewCreated()
-        getPresenter()?.searchProductMaster("")
+        getPresenter()?.loadProducts()
     }
 
     private fun renderView() {

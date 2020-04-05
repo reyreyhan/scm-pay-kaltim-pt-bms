@@ -72,14 +72,14 @@ class TransactionHistoryActivity : BaseActivity<TransactionPresenter, Transactio
 //            }
         }
 
-//        scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
-//            override fun onFirstItemVisible(isFirstItem: Boolean) {
-//                sw_refresh.isEnabled = isFirstItem && adapter!!.itemCount > 0
-//            }
-//            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {}
-//        }
-//
-//        rv_list.addOnScrollListener(scrollListener)
+        scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
+            override fun onFirstItemVisible(isFirstItem: Boolean) {
+                sw_refresh.isEnabled = isFirstItem && adapter.itemCount > 0
+            }
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {}
+        }
+
+        rv_list.addOnScrollListener(scrollListener)
 //        _view.btn_date.setOnClickListener {
 //            openFilter(getPresenter()?.getFilterDateSelected())
 //            //listener?.openFilterDateDialog(null,getPresenter()?.getTodayDate()?.date,getPresenter()?.getFirstDate(),getPresenter()?.getLastDate(),AppConstant.Code.CODE_FILTER_DATE_HISTORY)

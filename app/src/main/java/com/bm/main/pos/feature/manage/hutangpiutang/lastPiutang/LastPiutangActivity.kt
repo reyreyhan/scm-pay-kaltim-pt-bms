@@ -6,23 +6,19 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.events.onReloadTransaction
-import com.bm.main.pos.feature.manage.hutangpiutang.hutang.HutangAdapter
 import com.bm.main.pos.feature.manage.hutangpiutang.piutang.PiutangAdapter
-import com.bm.main.pos.models.hutangpiutang.Hutang
+import com.bm.main.pos.feature.transaction.detail.old.DetailActivity
 import com.bm.main.pos.models.hutangpiutang.Piutang
-import com.bm.main.pos.models.supplier.Supplier
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
 import kotlinx.android.synthetic.main.activity_last_hutang.*
-import com.bm.main.pos.feature.transaction.detail.DetailActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 

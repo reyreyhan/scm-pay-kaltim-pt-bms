@@ -246,7 +246,7 @@ class StockActivity : BaseActivity<StockPresenter, StockContract.View>(),
         getPresenter()?.loadData()
     }
 
-    override fun onUpdateStock(name:String, stock:String) {
-        getPresenter()?.updateProduct(name, stock)
+    override fun onUpdateStock(id:String, stock:String) {
+        getPresenter()?.updateProduct(id, stock)
     }
 }

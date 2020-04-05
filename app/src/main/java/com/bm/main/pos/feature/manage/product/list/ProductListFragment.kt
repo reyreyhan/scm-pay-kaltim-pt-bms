@@ -51,7 +51,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
         _view = view
         renderView()
         getPresenter()?.onViewCreated()
-        getPresenter()?.loadProducts()
+        getPresenter()?.searchProductMaster("")
     }
 
     private fun renderView() {

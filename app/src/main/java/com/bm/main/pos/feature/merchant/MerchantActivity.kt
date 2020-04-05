@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
+import com.bm.main.pos.feature.setting.main.SettingActivity
 import com.bm.main.pos.feature.transaction.detail.DetailSuccessActivity
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.rest.entity.RestException
@@ -18,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import kotlinx.android.synthetic.main.activity_merchant_new.*
+import org.jetbrains.anko.toast
 
 class MerchantActivity : BaseActivity<MerchantPresenter, MerchantContract.View>(), MerchantContract.View,
 MerchantTransactionAdapter.ItemClickCallback{
@@ -65,7 +67,7 @@ MerchantTransactionAdapter.ItemClickCallback{
     private fun renderView() {
         sw_refresh.isRefreshing = false
         sw_refresh.setOnRefreshListener {
-            scrollListener.resetState()
+//            scrollListener.resetState()
             reloadData()
         }
 
@@ -74,12 +76,20 @@ MerchantTransactionAdapter.ItemClickCallback{
         rv_list.adapter = adapter
         adapter.callback = object : MerchantTransactionAdapter.ItemClickCallback {
             override fun onClick(data: Transaction) {
-                openDetail(data.no_invoice!!)
+                if (data.no_invoice!=null){
+                    openDetail(data.no_invoice!!)
+                }else{
+                    toast("Nomor Invoice tidak ada")
+                }
             }
         }
 
         tv_name_merchant.text = PreferenceClass.getString("nama_toko").toUpperCase()
         tv_no_id.text = PreferenceClass.getString("nmid").toUpperCase()
+
+        ll_info.setOnClickListener {
+            openAccountPage()
+        }
     }
 
     override fun showErrorMessage(code: Int, msg: String) {
@@ -139,5 +149,10 @@ MerchantTransactionAdapter.ItemClickCallback{
         if (data.no_invoice!=null){
             openDetail(data.no_invoice!!)
         }
+    }
+
+    fun openAccountPage() {
+        val intent = Intent(this, SettingActivity::class.java)
+        startActivity(intent)
     }
 }

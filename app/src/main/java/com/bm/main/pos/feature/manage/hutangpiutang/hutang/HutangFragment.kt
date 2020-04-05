@@ -8,18 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.R
+import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.events.onReloadTransaction
+import com.bm.main.pos.feature.manage.hutangpiutang.hutangSupplier.HutangSupplierActivity
+import com.bm.main.pos.feature.manage.hutangpiutang.lastHutang.LastHutangActivity
+import com.bm.main.pos.feature.transaction.detail.old.DetailActivity
+import com.bm.main.pos.models.hutangpiutang.Hutang
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.feature.manage.hutangpiutang.hutang.HutangAdapter
-import com.bm.main.pos.models.hutangpiutang.Hutang
 import kotlinx.android.synthetic.main.fragment_hutang.view.*
-import com.bm.main.pos.feature.manage.hutangpiutang.lastHutang.LastHutangActivity
-import com.bm.main.pos.feature.manage.hutangpiutang.hutangSupplier.HutangSupplierActivity
-import com.bm.main.pos.feature.transaction.detail.DetailActivity
-import kotlinx.android.synthetic.main.fragment_hutang.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -157,7 +155,8 @@ class HutangFragment : BaseFragment<HutangPresenter, HutangContract.View>(),
     }
 
     override fun openDetail(id: String) {
-        val intent = Intent(activity,DetailActivity::class.java)
+        val intent = Intent(activity,
+            DetailActivity::class.java)
         intent.putExtra(AppConstant.CODE,AppConstant.Code.CODE_TRANSACTION_SUPPLIER)
         intent.putExtra(AppConstant.DATA,id)
         startActivity(intent)

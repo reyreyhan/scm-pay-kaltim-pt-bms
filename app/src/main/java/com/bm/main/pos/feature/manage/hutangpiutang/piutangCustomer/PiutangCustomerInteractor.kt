@@ -2,8 +2,7 @@ package com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppSession
@@ -28,9 +27,9 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
 
     override fun callGetHutangAPI(context: Context, restModel: HutangPiutangRestModel) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.getListPiutangCustomer(key!!).subscribeWith(object : DisposableObserver<List<Customer>>() {
+        disposable.add(restModel.getListPiutangCustomer(key!!).subscribeWith(object : DisposableObserver<List<CustomerNew>>() {
 
-            override fun onNext(@NonNull response: List<Customer>) {
+            override fun onNext(@NonNull response: List<CustomerNew>) {
                 output?.onSuccessGetHutang(response)
             }
 
@@ -56,9 +55,9 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
 
     override fun callSearchHutangAPI(context: Context, restModel: HutangPiutangRestModel, search: String) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.getSearchPiutangCustomer(key!!,search).subscribeWith(object : DisposableObserver<List<Customer>>() {
+        disposable.add(restModel.getSearchPiutangCustomer(key!!,search).subscribeWith(object : DisposableObserver<List<CustomerNew>>() {
 
-            override fun onNext(@NonNull response: List<Customer>) {
+            override fun onNext(@NonNull response: List<CustomerNew>) {
                 output?.onSuccessGetHutang(response)
             }
 
@@ -81,33 +80,4 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
             }
         }))
     }
-
-    override fun callGetDetailHutangAPI(context: Context, restModel: HutangPiutangRestModel,id:String) {
-        val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.getDetailPiutangCustomerNew(key!!,id).subscribeWith(object : DisposableObserver<DetailPiutangNew>() {
-
-            override fun onNext(@NonNull response: DetailPiutangNew) {
-                output?.onSuccessGetDetailHutang(response)
-            }
-
-            override fun onError(@NonNull e: Throwable) {
-                e.printStackTrace()
-                var errorCode = 999
-                var errorMessage = "Terjadi kesalahan"
-                if (e is RestException) {
-                    errorCode = e.errorCode
-                    errorMessage = e.message ?: "Terjadi kesalahan"
-                }
-                else{
-                    errorMessage = e.message.toString()
-                }
-                output?.onFailedAPI(errorCode,errorMessage)
-            }
-
-            override fun onComplete() {
-
-            }
-        }))
-    }
-
 }

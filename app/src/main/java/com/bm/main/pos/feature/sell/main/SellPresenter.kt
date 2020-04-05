@@ -2,7 +2,6 @@ package com.bm.main.pos.feature.sell.main
 
 import android.content.Context
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.constants.EventParam
 import com.bm.main.pos.R
@@ -18,7 +17,6 @@ import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.utils.PermissionUtil
 import com.prolificinteractive.materialcalendarview.CalendarDay
-import kotlinx.android.synthetic.main.layout_bayar_tunai.view.*
 
 class SellPresenter(val context: Context, val view: SellContract.View) : BasePresenter<SellContract.View>(),
     SellContract.Presenter, SellContract.InteractorOutput {
@@ -190,7 +188,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         val total = view.getTotalValue()
         if(pay == 0.0 || total == 0.0){
             view.hideShowCashback(View.INVISIBLE)
-            view.enableBtnBuy(false)
+            //view.enableBtnBuy(false)
             return
         }
         val cashback = total - pay
@@ -275,6 +273,28 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         (context as BaseActivity).logEventFireBase(
             "Penjualan",
             "Tunai",
+            EventParam.EVENT_ACTION_SELL_PRODUCT,
+
+            EventParam.EVENT_ACTION_SELL_PRODUCT,
+            SellFragment::class.java.simpleName
+        )
+        interactor.callOrderAPI(context,transactionRestModel,req)
+    }
+
+    override fun checkNonTunai() {
+        var pay = view.getPayValue()
+        if(pay == 0.0){
+            pay = view.getTotalValue()
+        }
+        val total = view.getTotalValue()
+        val req = RequestTransaction()
+        req.tipe_pembayaran = 2
+        req.jumlah_pembayaran = pay.toInt()
+        req.total_order = total.toInt()
+        req.barang = getBarang()
+        (context as BaseActivity).logEventFireBase(
+            "Penjualan",
+            "NonTunai",
             EventParam.EVENT_ACTION_SELL_PRODUCT,
 
             EventParam.EVENT_ACTION_SELL_PRODUCT,

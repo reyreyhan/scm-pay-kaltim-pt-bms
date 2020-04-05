@@ -14,13 +14,13 @@ import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.events.onReloadTransaction
 import com.bm.main.pos.feature.dialog.BottomDialog
 import com.bm.main.pos.feature.filterDate.main.MainActivity
+import com.bm.main.pos.feature.transaction.detail.old.DetailActivity
+import com.bm.main.pos.models.DialogModel
+import com.bm.main.pos.models.FilterDialogDate
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppConstant
 import kotlinx.android.synthetic.main.activityt_report_kulakan.*
-import com.bm.main.pos.feature.transaction.detail.DetailActivity
-import com.bm.main.pos.models.DialogModel
-import com.bm.main.pos.models.FilterDialogDate
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 

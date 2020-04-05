@@ -13,6 +13,8 @@ import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.toast
 import kotlinx.android.synthetic.main.activity_piutang_detail_new.*
+import org.jetbrains.anko.toast
+import timber.log.Timber
 
 
 class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutangContract.View>(), DetailPiutangContract.View {
@@ -35,21 +37,6 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
 
     private fun renderView(){
         setupToolbar()
-//        appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-//            if (Math.abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
-//
-//                var title = ""
-//                getPresenter()?.getTitleName()?.let {
-//                    title = it
-//                }
-//                ctl.title = title
-//
-//            } else {
-//                ctl.title = ""
-//
-//            }
-//        })
-//        ctl.title = ""
         sw_refresh.isRefreshing = true
         sw_refresh.setOnRefreshListener {
             reloadData()
@@ -61,8 +48,14 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
 
         et_bayar.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                if (!s.isNullOrEmpty() || !s.isNullOrEmpty()){
-                    btn_bayar.isEnabled = true
+                btn_bayar.isEnabled = !s.isNullOrEmpty()
+                val rmvRp = tv_jumlah_hutang.text.replace("\\bRp".toRegex(), "")
+                val hutang = rmvRp.replace(".", "").trim()
+                Timber.d("Hutang: $hutang")
+                if (!s.isNullOrEmpty()){
+                    if (s.toString().trim().toInt() > hutang.toInt()){
+                        et_bayar.setText(hutang)
+                    }
                 }
             }
 
@@ -72,6 +65,9 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
+        btn_bayar.setOnClickListener {
+            getPresenter()?.payHutang(et_bayar.editableText.toString().trim())
+        }
     }
 
     private fun setupToolbar() {
@@ -90,30 +86,10 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
         finish()
     }
 
-    override fun setCustomer(name: String?, email: String?, phone: String?, address: String?, url: String?) {
+    override fun setCustomer(name: String?) {
         name?.let {
             tv_name.text = it
         }
-
-//        email?.let {
-//            tv_email.text = it
-//        }
-//
-//        phone?.let {
-//            tv_phone.text = it
-//        }
-//
-//        address?.let {
-//            tv_address.text = it
-//        }
-//
-//        url?.let {
-//            Glide.with(this)
-//                .load(it)
-//                .error(R.drawable.ic_user_pos)
-//                .transform(CenterCrop(), CircleCrop())
-//                .into(iv_photo)
-//        }
     }
 
     override fun onResume() {
@@ -143,15 +119,18 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
             msg?.let {
                 toast(this,it)
             }
-
         }
+    }
 
+    override fun showSuccess(msg: String) {
+        toast(msg)
+        finish()
     }
 
     private fun reloadData() {
         sw_refresh.isRefreshing = true
         adapter.clearAdapter()
-        getPresenter()?.loadDetailCustomer()
+        getPresenter()?.loadHutang()
     }
 
     override fun setPiutang(piutang: String?, tanggal: String?) {

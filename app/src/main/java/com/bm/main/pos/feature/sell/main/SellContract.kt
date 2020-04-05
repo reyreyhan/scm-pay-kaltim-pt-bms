@@ -1,12 +1,10 @@
 package com.bm.main.pos.feature.sell.main
 
 import android.content.Context
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
-import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.product.Product
@@ -14,6 +12,7 @@ import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.models.transaction.Order
 import com.bm.main.pos.models.transaction.RequestTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 
 
 interface SellContract {
@@ -72,6 +71,7 @@ interface SellContract {
         fun setSelectedDate(date:CalendarDay?)
         fun getSelectedDate():CalendarDay?
         fun checkTunai()
+        fun checkNonTunai()
         fun checkPiutang()
         fun getCartsSize():Int
         fun getCustomerName():String

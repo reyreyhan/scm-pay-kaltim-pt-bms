@@ -1,9 +1,8 @@
-package com.bm.main.pos.feature.transaction.detail
+package com.bm.main.pos.feature.transaction.detail.old
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.constants.EventParam
 import com.bm.main.pos.R
@@ -12,7 +11,10 @@ import com.bm.main.pos.callback.PermissionCallback
 import com.bm.main.pos.events.onReloadTransaction
 import com.bm.main.pos.models.transaction.DetailTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
-import com.bm.main.pos.utils.*
+import com.bm.main.pos.utils.AppConstant
+import com.bm.main.pos.utils.BluetoothUtil
+import com.bm.main.pos.utils.Helper
+import com.bm.main.pos.utils.PermissionUtil
 import com.google.firebase.analytics.FirebaseAnalytics
 import org.greenrobot.eventbus.EventBus
 
@@ -20,7 +22,8 @@ class DetailPresenter(val context: Context, val view: DetailContract.View) :
     BasePresenter<DetailContract.View>(), DetailContract.Presenter,
     DetailContract.InteractorOutput {
 
-    private var interactor = DetailInteractor(this)
+    private var interactor =
+        DetailInteractor(this)
     private var restModel = TransactionRestModel(context)
     private val permissionUtil = PermissionUtil(context)
     private var data: DetailTransaction? = null
@@ -48,7 +51,6 @@ class DetailPresenter(val context: Context, val view: DetailContract.View) :
         storagePermission = object : PermissionCallback {
             override fun onSuccess() {
                 view.takeScreenshot("Struk_${ detail?.struk?.no_invoice ?: System.currentTimeMillis() }.jpg")
-
 //                ImageHelper.takeScreenshot(
 //                    context,
 //                    view.getParentLayout(),
@@ -96,7 +98,7 @@ class DetailPresenter(val context: Context, val view: DetailContract.View) :
         val struk = detail.struk
         val data = detail.data
         val pelanggan = struk?.nama_pelanggan
-        val supplier = struk?.nama_supplier
+//        val supplier = struk?.nama_supplier
         val operator = struk?.operator
         var bayar = struk?.totalbayar
         var kembalian = struk?.kembalian
@@ -136,7 +138,7 @@ class DetailPresenter(val context: Context, val view: DetailContract.View) :
             Helper.getDateFormat(context, struk.tanggal!!, "yyyy-MM-dd", "dd MMMM yyyy"),
             operator,
             pelanggan,
-            supplier,
+            "",
             struk.pembayaran!!,
             struk.status!!,
             bayar,

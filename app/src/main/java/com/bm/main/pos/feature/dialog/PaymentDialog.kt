@@ -5,24 +5,19 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.R
 import com.bm.main.pos.models.transaction.DetailTransaction
-import com.bm.main.pos.models.transaction.Transaction
-import kotlinx.android.synthetic.main.fragment_pay_dialog.*
-import org.threeten.bp.LocalDate
+import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.Helper
-import com.bm.main.pos.ui.NumberTextWatcher
-import kotlinx.android.synthetic.main.fragment_cart_count_dialog.*
-import kotlinx.android.synthetic.main.fragment_pay_dialog.btn_save
-import kotlinx.android.synthetic.main.fragment_pay_dialog.close_btn
-import kotlinx.android.synthetic.main.fragment_pay_dialog.et_count
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.fragment_pay_dialog.*
 
 
 class PaymentDialog : BottomSheetDialogFragment() {
@@ -59,9 +54,9 @@ class PaymentDialog : BottomSheetDialogFragment() {
 
                 if(type == AppConstant.Code.CODE_TRANSACTION_SUPPLIER){
                     lbl_name.text = "Supplier"
-                    struk.nama_supplier?.let {
-                        tv_name.text = it
-                    }
+//                    struk.nama_supplier?.let {
+//                        tv_name.text = it
+//                    }
                 }
                 else{
                     lbl_name.text = "Pelanggan"

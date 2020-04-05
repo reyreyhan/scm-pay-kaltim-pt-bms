@@ -29,7 +29,7 @@ class StockProductDialog : DialogFragment() {
     }
 
     interface Listener {
-        fun onUpdateStock(name:String, stock:String)
+        fun onUpdateStock(id:String, stock:String)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -57,7 +57,7 @@ class StockProductDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val data = arguments!!.getSerializable(AppConstant.DATA) as ReportStock
         tv_title_product.text = data.nama_barang!!
-        tv_current_stock.text = data.stok_terakhir
+        tv_current_stock.text = data.stok!!
         et_add_stock.addTextChangedListener(object:TextWatcher{
             override fun afterTextChanged(s: Editable?) {
                 var additional = 0
@@ -69,17 +69,14 @@ class StockProductDialog : DialogFragment() {
                 }
                 et_total_stock.text = "$newValue"
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
             }
         })
         btn_update_stock.setOnClickListener {
-            mListener?.onUpdateStock(data.nama_barang, stock)
+            mListener?.onUpdateStock(data.id_barang!!, stock)
             dismiss()
         }
         btn_close.setOnClickListener {

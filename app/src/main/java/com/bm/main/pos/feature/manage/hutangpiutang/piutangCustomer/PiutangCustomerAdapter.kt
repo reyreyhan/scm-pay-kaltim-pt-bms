@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
-import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.utils.Helper
 import kotlinx.android.synthetic.main.item_list_piutang_customer_new.view.*
 
 class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val listPiutang = mutableListOf<DetailPiutangNew>()
+    private val listPiutang = mutableListOf<CustomerNew>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
@@ -27,18 +27,18 @@ class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) {
             val hutang = listPiutang[position]
-            holder.bindData(hutang.datapiutang!!, position)
+            holder.bindData(hutang, position)
         }
     }
 
-    fun setItems(listPiutang: List<DetailPiutangNew>?) {
+    fun setItems(listPiutang: List<CustomerNew>?) {
         //this.listProduct.clear()
         val lastCount = itemCount
         listPiutang?.let { this.listPiutang.addAll(it) }
         notifyItemRangeInserted(lastCount, listPiutang!!.size)
     }
 
-    fun addItem(item: DetailPiutangNew?) {
+    fun addItem(item: CustomerNew?) {
         //this.listProduct.clear()
         val lastCount = itemCount
         item?.let { this.listPiutang.add(it) }
@@ -57,15 +57,15 @@ class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val statusTv = view.tv_status
 
         @SuppressLint("SetTextI18n")
-        fun bindData(data: DetailPiutangNew.Piutang, position: Int) {
+        fun bindData(data: CustomerNew, position: Int) {
             nameTv.text = data.nama_pelanggan
-            totalTv.text = "Rp ${Helper.convertToCurrency(data.jumlah_piutang!!)}"
-            statusTv.text = if (data.jumlah_piutang == "0") {
+            totalTv.text = "Rp ${Helper.convertToCurrency(data.total_hutang!!)}"
+            statusTv.text = if (data.sisa_hutang == "0") {
                 statusTv.setTextColor(itemView.context.resources.getColor(R.color.md_green_500))
                     "Lunas"
             } else {
                 statusTv.setTextColor(itemView.context.resources.getColor(R.color.md_red_500))
-                "- Rp ${Helper.convertToCurrency(data.jumlah_piutang!!)}"
+                "- Rp ${Helper.convertToCurrency(data.sisa_hutang!!)}"
             }
             itemView.setOnClickListener {
                 if(callback != null){
@@ -78,6 +78,6 @@ class PiutangCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var callback: ItemClickCallback?= null
 
     interface ItemClickCallback{
-        fun onClick(data: DetailPiutangNew.Piutang)
+        fun onClick(data: CustomerNew)
     }
 }

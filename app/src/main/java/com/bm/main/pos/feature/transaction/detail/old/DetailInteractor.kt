@@ -1,4 +1,4 @@
-package com.bm.main.pos.feature.transaction.detail
+package com.bm.main.pos.feature.transaction.detail.old
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass

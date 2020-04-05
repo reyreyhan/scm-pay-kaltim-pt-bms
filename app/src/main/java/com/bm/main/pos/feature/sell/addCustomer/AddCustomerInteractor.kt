@@ -2,8 +2,6 @@ package com.bm.main.pos.feature.sell.addCustomer
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
-import com.bm.main.pos.models.Message
-import com.bm.main.pos.models.category.CategoryRestModel
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.customer.CustomerRestModel
 import com.bm.main.pos.rest.entity.RestException
@@ -28,9 +26,9 @@ class AddCustomerInteractor(var output: AddCustomerContract.InteractorOutput?) :
 
     override fun callAddCustomerAPI(context: Context, model: CustomerRestModel, name:String, email:String, phone:String) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(model.addPenjualan(key!!,name,email,phone,"").subscribeWith(object : DisposableObserver<List<Customer>>() {
+        disposable.add(model.addPenjualan(key!!,name,email,phone,"").subscribeWith(object : DisposableObserver<Customer>() {
 
-            override fun onNext(@NonNull response: List<Customer>) {
+            override fun onNext(@NonNull response: Customer) {
                 output?.onSuccessAdd(response)
             }
 

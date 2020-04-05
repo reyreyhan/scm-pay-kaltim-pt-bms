@@ -15,7 +15,7 @@ class ReportStock : Serializable {
     val tanggal_awal : String? = null
     val tanggal_akhir : String? = "0"
     val terjual : String? = null
-    val stok_terakhir : String? = "0"
+    val stok : String? = "0"
     val minimal_stok : String? = null
     var gbr:String? = null
     var folder:String? = null
