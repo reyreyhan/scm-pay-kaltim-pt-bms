@@ -117,7 +117,7 @@ class SuccessActivity : BaseActivity<SuccessPresenter, SuccessContract.View>(),
             try {
                 val url =
                     "https://api.whatsapp.com/send?phone=" + noWa + "&text=" + URLEncoder.encode(
-                        "Terima kasih sudah membeli.\nInvoice Anda: ${getPresenter()?.getInvoice()}",
+                        "Terima kasih sudah membeli.\nStruk Anda: ${getPresenter()?.getDataStruk()?.url_struk}",
                         "UTF-8"
                     )
                 i.setPackage("com.whatsapp")

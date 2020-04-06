@@ -119,7 +119,6 @@ class SuccessPresenter(val context: Context, val view: SuccessContract.View) : B
         }
         val data = detail.data
         view.setProducts(data!!)
-
     }
 
     override fun onCheckBluetooth() {

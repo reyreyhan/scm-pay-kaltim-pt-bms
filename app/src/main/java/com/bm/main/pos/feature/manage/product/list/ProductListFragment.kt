@@ -51,7 +51,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
         _view = view
         renderView()
         getPresenter()?.onViewCreated()
-        getPresenter()?.searchProductMaster("")
+//        getPresenter()?.searchProductMaster("")
     }
 
     private fun renderView() {
@@ -71,7 +71,8 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
             }
 
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-
+//                reloadData()
+                getPresenter()?.searchProductMaster(_view.et_search.editableText.toString(), adapter.itemCount)
             }
         }
         _view.rv_list_barang.addOnScrollListener(scrollListener)
@@ -88,7 +89,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
             override fun afterTextChanged(p0: Editable?) {
                 adapter.clearAdapter()
                 _view.sw_refresh.isRefreshing = true
-                getPresenter()?.searchProductMaster(p0.toString())
+                getPresenter()?.searchProductMaster(p0.toString(), 0)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -104,7 +105,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
     override fun setProducts(list: List<Product>) {
         hideLoadingDialog()
         _view.sw_refresh.isRefreshing = false
-        adapter.setItems(list)
+        adapter.addItems(list)
     }
 
     override fun showErrorMessage(code: Int, msg: String) {
@@ -130,7 +131,7 @@ class ProductListFragment : BaseFragment<ProductListPresenter, ProductListContra
     override fun reloadData() {
         _view.sw_refresh.isRefreshing = true
         adapter.clearAdapter()
-        getPresenter()?.searchProductMaster("")
+        getPresenter()?.searchProductMaster("", 0)
     }
 
     override fun openAddPage() {

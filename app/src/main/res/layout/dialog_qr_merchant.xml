@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_24sdp">
-
+    android:background="@drawable/inset_dialog"
+    android:paddingHorizontal="@dimen/standard_margin_4x"
+    android:paddingTop="@dimen/_130sdp"
+    android:paddingBottom="@dimen/_100sdp">
     <ImageView
         android:id="@+id/ic_qris"
         android:layout_width="match_parent"
@@ -14,7 +16,8 @@
         android:adjustViewBounds="true"
         android:contentDescription="@null"
         android:scaleType="fitCenter"
-        android:src="@drawable/img_qris" />
+        android:src="@drawable/img_qris"
+        android:tint="@color/white"/>
 
     <ImageView
         android:id="@+id/download"
@@ -27,7 +30,7 @@
         android:padding="@dimen/_8sdp"
         android:scaleType="fitCenter"
         android:src="@android:drawable/stat_sys_download"
-        android:tint="@color/black" />
+        android:tint="@color/white" />
 
     <ImageView
         android:id="@+id/print"
@@ -46,8 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ic_qris"
-        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/standard_margin"
         android:gravity="center_horizontal"
+        android:textColor="@color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         tools:text="TOKO HIDAYAH" />
 
@@ -58,6 +62,7 @@
         android:layout_below="@id/store_name"
         android:gravity="center_horizontal"
         android:textSize="20sp"
+        android:textColor="@color/white"
         tools:text="NMID: 1234567890" />
 
     <ImageView
@@ -66,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/store_nmid"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/standard_margin"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         tools:src="@android:drawable/ic_menu_report_image" />

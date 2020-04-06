@@ -121,7 +121,7 @@ class DetailSuccessActivity :
             tv_tanggal.text = it
         }
         total?.let{
-            tv_total_item.text = "Rp ${Helper.convertToCurrency(it)}"
+            tv_total_item.text = total
         }
         bayar?.let{
             tv_tunai.text = it

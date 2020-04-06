@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.customer.Customer
+import com.bm.main.pos.models.customer.CustomerRestModel
 import com.bm.main.pos.utils.AppConstant
 
 class CustomerDetailPresenter(val context: Context, val view: CustomerDetailContract.View) : BasePresenter<CustomerDetailContract.View>(),
@@ -15,6 +16,7 @@ class CustomerDetailPresenter(val context: Context, val view: CustomerDetailCont
     private var title = ""
     private var data : Customer?= null
     private var isTransaction:Boolean = false
+    private val restModel = CustomerRestModel(context)
 
 
     override fun onViewCreated(intent: Intent) {
@@ -51,7 +53,19 @@ class CustomerDetailPresenter(val context: Context, val view: CustomerDetailCont
         return data
     }
 
+    override fun loadData() {
+        data?.id_pelanggan?.let { interactor.callGetDetailCustomer(context, restModel, it) }
+    }
+
     override fun onDestroy() {
         interactor.onDestroy()
+    }
+
+    override fun onSuccessGetDetail(data: Customer) {
+        setCustomerData(data)
+    }
+
+    override fun onFailedAPI(code: Int, msg: String) {
+        view.showMessage(code, msg)
     }
 }

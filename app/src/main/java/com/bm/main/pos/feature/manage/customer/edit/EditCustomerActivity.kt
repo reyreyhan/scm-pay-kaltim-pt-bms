@@ -130,7 +130,7 @@ class EditCustomerActivity : BaseActivity<EditCustomerPresenter, EditCustomerCon
         }
         if (msg.isNullOrEmpty() || msg.isNullOrBlank()) {
             if (Activity.RESULT_OK == status) {
-                setResult(status)
+                setResult(9999)
                 finish()
             }
         } else {

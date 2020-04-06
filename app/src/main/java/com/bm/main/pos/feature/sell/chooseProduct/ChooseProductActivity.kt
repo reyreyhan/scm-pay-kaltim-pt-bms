@@ -113,6 +113,7 @@ class ChooseProductActivity : BaseActivity<ChooseProductPresenter, ChooseProduct
     override fun onResume() {
         super.onResume()
         setupToolbar()
+        reloadData()
     }
 
     override fun showErrorMessage(code: Int, msg: String) {
@@ -170,6 +171,4 @@ class ChooseProductActivity : BaseActivity<ChooseProductPresenter, ChooseProduct
     override fun checkStockProducts(isCheck: Boolean) {
         adapter.setCheckStok(isCheck)
     }
-
-
 }

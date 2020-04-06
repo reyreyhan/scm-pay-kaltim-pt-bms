@@ -30,7 +30,6 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
         )
         val check = intent.getBooleanExtra(AppConstant.DATA,true)
         view.checkStockProducts(check)
-        loadProducts()
     }
 
     override fun onViewCreated(intent: Intent) {

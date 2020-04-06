@@ -90,6 +90,11 @@ MerchantTransactionAdapter.ItemClickCallback{
         ll_info.setOnClickListener {
             openAccountPage()
         }
+
+        btn_qr_code.setOnClickListener {
+            val dialog = QRISDialog.newInstance()
+            dialog.show(supportFragmentManager, QRISDialog.TAG)
+        }
     }
 
     override fun showErrorMessage(code: Int, msg: String) {

@@ -14,7 +14,9 @@ import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.customer.edit.EditCustomerActivity
 import com.bm.main.pos.models.customer.Customer
+import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ViewPagerAdapter
+import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
 import kotlinx.android.synthetic.main.activity_customer_detail_new.*
 
@@ -177,11 +179,12 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK && requestCode == CODE_OPEN_EDIT) {
-            status = Activity.RESULT_OK
-            val dt = data?.getSerializableExtra(AppConstant.DATA) as Customer
-            dt.let {
-                getPresenter()?.setCustomerData(dt)
-            }
+//            status = Activity.RESULT_OK
+//            val dt = data?.getSerializableExtra(AppConstant.DATA) as Customer
+//            dt.let {
+//                getPresenter()?.setCustomerData(dt)
+//            }
+            getPresenter()?.loadData()
         }else if (resultCode == 9999 && requestCode == CODE_OPEN_EDIT){
             finish()
         }
@@ -191,4 +194,14 @@ class CustomerDetailActivity : BaseActivity<CustomerDetailPresenter, CustomerDet
         onClose(status)
     }
 
+    override fun showMessage(code: Int, msg: String?) {
+        hideLoadingDialog()
+//        if (code == RestException.CODE_USER_NOT_FOUND) {
+//            restartLoginActivity()
+//        } else {
+        msg?.let {
+            toast(this, it)
+        }
+//        }
+    }
 }

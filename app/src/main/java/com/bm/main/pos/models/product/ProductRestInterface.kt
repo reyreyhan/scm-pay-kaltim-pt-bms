@@ -78,7 +78,9 @@ interface ProductRestInterface {
     @GET("barang/searchtext.php")
     fun searchByName(
             @Query("key") key: String,
-            @Query("search") id: String
+            @Query("search") id: String,
+            @Query("limit") limit: Int,
+            @Query("offset") offset: Int
     ): Observable<List<Product>>
 
     @GET("barang/sort.php")

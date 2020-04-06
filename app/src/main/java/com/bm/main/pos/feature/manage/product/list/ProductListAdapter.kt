@@ -33,7 +33,13 @@ class ProductListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun setItems(listProduct: List<Product>?) {
-        //this.listProduct.clear()
+        this.listProduct.clear()
+        val lastCount = itemCount
+        listProduct?.let { this.listProduct.addAll(it) }
+        notifyItemRangeInserted(lastCount,listProduct!!.size)
+    }
+
+    fun addItems(listProduct: List<Product>?){
         val lastCount = itemCount
         listProduct?.let { this.listProduct.addAll(it) }
         notifyItemRangeInserted(lastCount,listProduct!!.size)

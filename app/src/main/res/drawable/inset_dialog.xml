@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable is a reference to your 'real' dialog background -->
+<!-- insetRight and insetLeft add the margins -->
+<inset
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_qris_merchant"
+    android:insetRight="@dimen/standard_margin_2x"
+    android:insetLeft="@dimen/standard_margin_2x"
+    android:insetTop="@dimen/standard_margin_3x"
+    android:insetBottom="@dimen/standard_margin_3x">
+</inset>

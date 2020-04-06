@@ -87,12 +87,9 @@ class DetailPresenterNew(val context: Context, val view: DetailContractNew.View)
                 }
             }
         }
-        orderAmount?.let {
-            orderAmount = "Rp ${Helper.convertToCurrency(it)}"
-        }
         view.setInfo(
             invoice!!,
-            orderAmount,
+            "Rp ${orderAmount?.let { Helper.convertToCurrency(it) }}",
             date,
             paymentMethod!!,
             paymentAmount,

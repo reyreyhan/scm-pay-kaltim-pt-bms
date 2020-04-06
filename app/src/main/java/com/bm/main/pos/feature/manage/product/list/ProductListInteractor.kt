@@ -56,10 +56,12 @@ class ProductListInteractor(var output: ProductListContract.InteractorOutput?) :
     override fun callSearchProductByNameAPI(
         context: Context,
         restModel: ProductRestModel,
-        search: String
+        search: String,
+        limit: Int,
+        offset: Int
     ) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.searchByName(key!!, search).subscribeWith(object : DisposableObserver<List<Product>>() {
+        disposable.add(restModel.searchByName(key!!, search, limit, offset).subscribeWith(object : DisposableObserver<List<Product>>() {
 
             override fun onNext(@NonNull response: List<Product>) {
                 output?.onSuccessGetProducts(response)

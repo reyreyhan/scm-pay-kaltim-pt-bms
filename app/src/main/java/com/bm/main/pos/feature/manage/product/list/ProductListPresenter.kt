@@ -16,6 +16,15 @@ class ProductListPresenter(val context: Context, val view: ProductListContract.V
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var cameraPermission: PermissionCallback
     private var sort = false
+    private var offset = 0
+
+    fun setOffset(offset:Int){
+        this.offset = offset
+    }
+
+    fun getOffset():Int{
+        return offset
+    }
 
     override fun onViewCreated() {
         cameraPermission = object : PermissionCallback{
@@ -51,13 +60,14 @@ class ProductListPresenter(val context: Context, val view: ProductListContract.V
         }
     }
 
-    override fun searchProductMaster(search: String) {
+    override fun searchProductMaster(search: String, offset:Int) {
         interactor.onRestartDisposable()
         if(search.isNullOrEmpty() || search.isNullOrBlank()){
-            interactor.callSearchProductByNameAPI(context, restModel,"")
+            this.offset = 0
+            interactor.callSearchProductByNameAPI(context, restModel,"", 20, offset)
         }
         else{
-            interactor.callSearchProductByNameAPI(context, restModel, search)
+            interactor.callSearchProductByNameAPI(context, restModel, search, 20, offset)
         }
     }
 

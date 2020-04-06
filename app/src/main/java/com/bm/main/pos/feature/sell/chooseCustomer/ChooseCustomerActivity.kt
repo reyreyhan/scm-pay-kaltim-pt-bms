@@ -169,7 +169,6 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
             reloadData()
         }
@@ -179,6 +178,9 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
             newintent.putExtra(AppConstant.DATA, customer)
             setResult(RESULT_OK, newintent)
             finish()
+        }else{
+            reloadData()
+            super.onActivityResult(requestCode, resultCode, data)
         }
     }
 

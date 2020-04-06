@@ -80,8 +80,8 @@ class ProductRestModel(context: Context) : RestModel<ProductRestInterface>(conte
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun searchByName(key: String, name: String): Observable<List<Product>> {
-        return restInterface.searchByName(key, name)
+    fun searchByName(key: String, name: String, limit: Int, offset:Int): Observable<List<Product>> {
+        return restInterface.searchByName(key, name, limit, offset)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

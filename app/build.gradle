@@ -213,6 +213,8 @@ dependencies {
     // httprequest fuel
     implementation 'com.github.kittinunf.fuel:fuel:1.16.0'
     implementation 'com.github.kittinunf.fuel:fuel-android:1.16.0'
+
+    implementation 'com.github.bobekos:SimpleBarcodeScanner:1.0.23'
 }
 
 apply plugin: 'com.google.gms.google-services'
