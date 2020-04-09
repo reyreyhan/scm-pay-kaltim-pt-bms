@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,7 @@ import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.fpl.utils.StringJson;
 import com.bm.main.fpl.utils.shimmer;
+import com.bm.main.pos.BuildConfig;
 import com.bm.main.pos.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -509,31 +511,35 @@ public class BerandaFragment extends Fragment implements ProgressResponseCallbac
                         @Override
                         public void onLoadStarted(Drawable placeholder) {
                             super.onLoadStarted(placeholder);
-                            ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, R.color.colorPrimary_ppob);
-                            animator.start();
+                            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                                ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, R.color.colorPrimary_ppob);
+                                animator.start();
+                            }
                         }
 
                         @SuppressLint("ResourceAsColor")
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> animation) {
-                            Palette.from(resource).generate(palette -> {
-                                if (palette != null) {
-                                    int vibrantColor = palette.getLightVibrantColor(R.color.colorPrimary_ppob);
-                                    ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, vibrantColor);
-                                    try {
-                                        animator.start();
-                                    } catch (Exception ignored) {
+                            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                                Palette.from(resource).generate(palette -> {
+                                    if (palette != null) {
+                                        int vibrantColor = palette.getLightVibrantColor(R.color.colorPrimary_ppob);
+                                        ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, vibrantColor);
+                                        try {
+                                            animator.start();
+                                        } catch (Exception ignored) {
+                                        }
                                     }
-                                }
-                            });
+                                });
 
-                            Palette.from(resource).generate(palette -> {
-                                if (palette != null) {
-                                    int vibrantColor = palette.getVibrantColor(R.color.colorPrimary_ppob);
-                                    collapsing_toolbar.setContentScrimColor(vibrantColor);
-                                    collapsing_toolbar.setStatusBarScrimColor(R.color.black_trans80);
-                                }
-                            });
+                                Palette.from(resource).generate(palette -> {
+                                    if (palette != null) {
+                                        int vibrantColor = palette.getVibrantColor(R.color.colorPrimary_ppob);
+                                        collapsing_toolbar.setContentScrimColor(vibrantColor);
+                                        collapsing_toolbar.setStatusBarScrimColor(R.color.black_trans80);
+                                    }
+                                });
+                            }
                         }
 
                         @Override
@@ -543,8 +549,10 @@ public class BerandaFragment extends Fragment implements ProgressResponseCallbac
                         @Override
                         public void onLoadFailed(@Nullable Drawable errorDrawable) {
                             super.onLoadFailed(errorDrawable);
-                            ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, R.color.colorPrimary_ppob);
-                            animator.start();
+                            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                                ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, R.color.colorPrimary_ppob);
+                                animator.start();
+                            }
                         }
                     });
             recyclerBanner.setAutoPlaying(true);
@@ -746,22 +754,25 @@ public class BerandaFragment extends Fragment implements ProgressResponseCallbac
                 @SuppressLint("ResourceAsColor")
                 @Override
                 public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> animation) {
-
-                    try {
-                        Palette.from(resource).generate(palette -> {
-                            int vibrantColor = palette.getLightVibrantColor(R.color.colorPrimary_ppob);
-                            ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, vibrantColor);
-                            animator.start();
-                        });
-                    } catch (Exception ignored) {
+                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                        try {
+                            Palette.from(resource).generate(palette -> {
+                                int vibrantColor = palette.getLightVibrantColor(R.color.colorPrimary_ppob);
+                                ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, vibrantColor);
+                                animator.start();
+                            });
+                        } catch (Exception ignored) {
+                        }
                     }
                 }
 
                 @Override
                 public void onLoadFailed(@Nullable Drawable errorDrawable) {
                     super.onLoadFailed(errorDrawable);
-                    ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, R.color.colorPrimary_ppob);
-                    animator.start();
+                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                        ObjectAnimator animator = ColorAnimator.ofBackgroundColor(appBarLayout, R.color.colorPrimary_ppob);
+                        animator.start();
+                    }
                 }
             });
         } catch (Exception ignored) {
