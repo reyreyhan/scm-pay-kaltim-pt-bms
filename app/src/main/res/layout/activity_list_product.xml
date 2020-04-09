@@ -79,7 +79,7 @@
                     android:clickable="true"
                     android:padding="@dimen/standard_small_margin"
                     android:tint="@color/black"
-                    app:srcCompat="@drawable/ic_barcode_button" />
+                    android:src="@drawable/icon_barcode_button" />
             </LinearLayout>
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

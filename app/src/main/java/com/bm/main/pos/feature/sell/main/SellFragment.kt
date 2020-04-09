@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -79,7 +81,11 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         return SellPresenter(activity as Context, this)
     }
 
-    override fun onCreateLayout(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateLayout(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.fragment_penjualan, container, false)
     }
 
@@ -125,6 +131,16 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             }
         }
 
+        val colorStateList = ColorStateList.valueOf(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.selector_text_white_grey_selected
+            )
+        )
+        ImageViewCompat.setImageTintList(_view.iv_cari_barang, colorStateList)
+        ImageViewCompat.setImageTintList(_view.iv_scan_barcode, colorStateList)
+        ImageViewCompat.setImageTintList(_view.iv_scan_barcode, colorStateList)
+
         _view.btn_scanner.setOnClickListener {
             _view.btn_search.isSelected = false
             _view.iv_cari_barang.isSelected = false
@@ -145,13 +161,18 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             openChooseProduct()
         }
 
-        _view.et_pay.addTextChangedListener(PaymentNumberTextWatcher(_view.et_pay, getPresenter()!!))
+        _view.et_pay.addTextChangedListener(
+            PaymentNumberTextWatcher(
+                _view.et_pay,
+                getPresenter()!!
+            )
+        )
 
         _view.btn_tunai.isSelected = true
         _view.layout_bayar_tunai.visibility = View.VISIBLE
         _view.layout_bayar_hutang.visibility = View.GONE
 
-        _view.btn_tunai.setOnClickListener{
+        _view.btn_tunai.setOnClickListener {
             payType = 1
             _view.btn_tunai.isSelected = true
             _view.btn_non_tunai.isSelected = false
@@ -175,9 +196,9 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             _view.btn_hutang.isSelected = true
             showPiutangView()
             getPresenter()?.updateCustomer(null)
-            if (_view.et_data_pelanggan.text.isNullOrEmpty()){
+            if (_view.et_data_pelanggan.text.isNullOrEmpty()) {
                 enableBtnBuy(false)
-            }else{
+            } else {
                 enableBtnBuy(true)
             }
         }
@@ -190,9 +211,18 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         _view.btn_bayar.setOnClickListener {
             showLoadingDialog()
             when (payType) {
-                1 -> showConfirmPayTunaiDialog(Helper.convertToCurrency(getPayValue()) , getPresenter()!!.calculateCashBack(), getPresenter()!!.countAllBarang())
+                1 -> showConfirmPayTunaiDialog(
+                    Helper.convertToCurrency(getPayValue()),
+                    getPresenter()!!.calculateCashBack(),
+                    getPresenter()!!.countAllBarang()
+                )
                 2 -> showPayNonTunai(Helper.convertToCurrency(getTotalValue()))
-                3 -> showConfirmPayHutangDialog(Helper.convertToCurrency(getPayValue()) , getPresenter()!!.calculateCashBack(), getPresenter()!!.countAllBarang(), getPresenter()!!.getCustomerName())
+                3 -> showConfirmPayHutangDialog(
+                    Helper.convertToCurrency(getPayValue()),
+                    getPresenter()!!.calculateCashBack(),
+                    getPresenter()!!.countAllBarang(),
+                    getPresenter()!!.getCustomerName()
+                )
             }
         }
     }
@@ -334,39 +364,31 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             } else {
                 getPresenter()?.updateCustomer(customer)
             }
-        } else if (requestCode == CODE_DIALOG_COUNT_BARANG && resultCode == CODE_RESULT_UPDATE_CART){
+        } else if (requestCode == CODE_DIALOG_COUNT_BARANG && resultCode == CODE_RESULT_UPDATE_CART) {
             val cart = data?.getSerializableExtra(AppConstant.DATA) as Cart
             val pos = data.getIntExtra("CartPosition", 0)
             getPresenter()?.updateCart(cart, pos)
-        }
-        else if (requestCode == CODE_DIALOG_COUNT_BARANG && resultCode == CODE_RESULT_DELETE_CART){
+        } else if (requestCode == CODE_DIALOG_COUNT_BARANG && resultCode == CODE_RESULT_DELETE_CART) {
             val cart = data?.getSerializableExtra(AppConstant.DATA) as Cart
             val pos = data.getIntExtra("CartPosition", 0)
             getPresenter()?.deleteCart(cart, pos)
-        }
-        else if (requestCode == CODE_CONFIRM_TUNAI && resultCode == Activity.RESULT_OK){
+        } else if (requestCode == CODE_CONFIRM_TUNAI && resultCode == Activity.RESULT_OK) {
             getPresenter()?.checkTunai()
-        }
-        else if (requestCode == CODE_CONFIRM_TUNAI && resultCode == Activity.RESULT_CANCELED){
+        } else if (requestCode == CODE_CONFIRM_TUNAI && resultCode == Activity.RESULT_CANCELED) {
             hideLoadingDialog()
-        }
-        else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_OK){
+        } else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_OK) {
             getPresenter()?.checkPiutang()
-        }
-        else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_CANCELED){
+        } else if (requestCode == CODE_CONFIRM_HUTANG && resultCode == Activity.RESULT_CANCELED) {
             hideLoadingDialog()
-        }
-        else if (requestCode == CODE_PAY_NONTUNAI && resultCode == Activity.RESULT_OK){
+        } else if (requestCode == CODE_PAY_NONTUNAI && resultCode == Activity.RESULT_OK) {
             hideLoadingDialog()
             getPresenter()?.checkNonTunai()
-        }
-        else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_OK){
+        } else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_OK) {
             val code = data?.getStringExtra(AppConstant.DATA)
-            if (!code.isNullOrEmpty()){
+            if (!code.isNullOrEmpty()) {
                 openAddProduct(code)
             }
-        }
-        else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_CANCELED){
+        } else if (requestCode == CODE_DIALOG_SCAN_BARANG && resultCode == Activity.RESULT_CANCELED) {
             hideLoadingDialog()
             showContainerFragment(CODE_OPEN_SCAN)
         }
@@ -418,16 +440,26 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
             value == 0.0 -> {
                 hideShowCashback(View.INVISIBLE)
             }
-            value < 0.0  -> {
+            value < 0.0 -> {
                 val ret = -1 * value
                 hideShowCashback(View.VISIBLE)
                 _view.tv_kembalian.text = "Kembalian Rp ${Helper.convertToCurrency(ret)}"
-                _view.tv_kembalian.setTextColor(ContextCompat.getColor(activity!!, R.color.colorAccent))
+                _view.tv_kembalian.setTextColor(
+                    ContextCompat.getColor(
+                        activity!!,
+                        R.color.colorAccent
+                    )
+                )
             }
             else -> {
                 hideShowCashback(View.VISIBLE)
                 _view.tv_kembalian.text = "Kurang bayar Rp ${Helper.convertToCurrency(value)}"
-                _view.tv_kembalian.setTextColor(ContextCompat.getColor(activity!!, R.color.vermillion))
+                _view.tv_kembalian.setTextColor(
+                    ContextCompat.getColor(
+                        activity!!,
+                        R.color.vermillion
+                    )
+                )
             }
         }
     }
@@ -454,7 +486,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         _view.layout_bayar_tunai.visibility = View.VISIBLE
     }
 
-    override fun showConfirmPayTunaiDialog(jumlah:String, cashback:String, jumlahBarang:Int) {
+    override fun showConfirmPayTunaiDialog(jumlah: String, cashback: String, jumlahBarang: Int) {
         val dialog = ConfirmPayDialog.newInstance().apply {
             arguments = Bundle().apply {
                 putString("JumlahPembayaran", "Rp $jumlah")
@@ -466,7 +498,12 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
     }
 
-    override fun showConfirmPayHutangDialog(jumlah:String, cashback:String, jumlahBarang:Int, namaPelanggan:String) {
+    override fun showConfirmPayHutangDialog(
+        jumlah: String,
+        cashback: String,
+        jumlahBarang: Int,
+        namaPelanggan: String
+    ) {
         val dialog = ConfirmPayDialog.newInstance().apply {
             arguments = Bundle().apply {
                 putString("JumlahPembayaran", "Rp $jumlah")
@@ -480,7 +517,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         dialog.show(fragmentManager!!, ConfirmPayDialog.TAG)
     }
 
-    override fun showPayNonTunai(jumlah:String) {
+    override fun showPayNonTunai(jumlah: String) {
         val dialog = NonTunaiDialog.newInstance().apply {
             arguments = Bundle().apply {
                 putString("JumlahPembayaran", "Rp $jumlah")
@@ -514,7 +551,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
     }
 
     override fun setCustomerName(data: Customer?) {
-        data?.let{
+        data?.let {
             _view.et_data_pelanggan.text = it.nama_pelanggan
             enableBtnBuy(true)
         }
@@ -541,7 +578,13 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
 
 
     interface ShowDate {
-        fun openSingleDatePickerDialog(selected: CalendarDay?, minDate: LocalDate?, maxDate: LocalDate?, type: Int)
+        fun openSingleDatePickerDialog(
+            selected: CalendarDay?,
+            minDate: LocalDate?,
+            maxDate: LocalDate?,
+            type: Int
+        )
+
         fun openNoteDialog(selected: Cart, pos: Int)
         fun openCountDialog(selected: Cart, pos: Int)
     }
@@ -567,7 +610,7 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         getPresenter()?.updateCart(selected, pos)
     }
 
-    override fun hideContainerFragment(){
+    override fun hideContainerFragment() {
         _view.container_fragment.visibility = View.GONE
     }
 
@@ -576,21 +619,20 @@ class SellFragment : BaseFragment<SellPresenter, SellContract.View>(),
         _view.btn_scanner.isSelected = false
     }
 
-    private fun showContainerFragment(code: Int){
+    private fun showContainerFragment(code: Int) {
         _view.container_fragment.visibility = View.VISIBLE
         ft = fragmentManager?.beginTransaction()
         if (code == CODE_OPEN_SCAN) {
             scanCodeFragment = ScanCodeFragment.newInstance()
             ft!!.replace(R.id.container_fragment, scanCodeFragment)
             ft!!.commit()
-        }
-        else if (code == CODE_OPEN_CHOOSE_PRODUCT) {
+        } else if (code == CODE_OPEN_CHOOSE_PRODUCT) {
             ft!!.replace(R.id.container_fragment, chooseProductFragment)
             ft!!.commit()
         }
     }
 
-    private fun openAddProduct(barcode:String){
+    private fun openAddProduct(barcode: String) {
         val intent = Intent(activity, AddProductMainActivity::class.java)
         intent.putExtra(AppConstant.DATA, barcode)
         startActivityForResult(intent, CODE_OPEN_ADD_MANUAL)
