@@ -1,19 +1,22 @@
 package com.bm.main.pos.feature.report.stock
 
 import android.content.Context
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
+import com.bm.main.pos.models.Message
+import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.models.report.ReportRestModel
 import com.bm.main.pos.models.report.ReportStock
 import com.bm.main.pos.utils.AppConstant
+import com.prolificinteractive.materialcalendarview.CalendarDay
 
 class StockPresenter(val context: Context, val view: StockContract.View) : BasePresenter<StockContract.View>(),
     StockContract.Presenter, StockContract.InteractorOutput {
 
     private var interactor = StockInteractor(this)
     private var restModel = ReportRestModel(context)
+    private var restModelProduct = ProductRestModel(context)
     private var firstDate: CalendarDay?= null
     private var lastDate: CalendarDay?= null
     private var today: CalendarDay?= null
@@ -26,13 +29,7 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
     override fun onViewCreated() {
         val now = org.threeten.bp.LocalDate.now()
         today = CalendarDay.from(now)
-        val yesterday = today?.date!!.minusDays(1)
-        firstDate =  CalendarDay.from(yesterday)
-        lastDate = today
-        selectedDate = FilterDialogDate()
-        selectedDate?.id = AppConstant.FilterDate.DAILY
-        selectedDate?.firstDate = firstDate
-        selectedDate?.lastDate = lastDate
+        setDate(today, null)
         generateSortList()
         loadData()
     }
@@ -40,6 +37,28 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
     override fun loadData() {
 //        interactor.callGetReportsAPI(context,restModel,selectedDate?.firstDate?.date.toString(),selectedDate?.lastDate?.date.toString())
         sort(sortSelected!!)
+    }
+
+    override fun setDate(date: CalendarDay?, date2: CalendarDay?) {
+        if (date2==null){
+            today = date
+            val yesterday = today?.date!!.minusDays(1)
+            firstDate =  CalendarDay.from(yesterday)
+            lastDate = today
+            selectedDate = FilterDialogDate()
+            selectedDate?.id = AppConstant.FilterDate.DAILY
+            selectedDate?.firstDate = firstDate
+            selectedDate?.lastDate = lastDate
+            view.setDate(firstDate?.date.toString(), lastDate?.date.toString())
+        }else{
+            firstDate = date
+            lastDate = date2
+            selectedDate = FilterDialogDate()
+            selectedDate?.id = AppConstant.FilterDate.DAILY
+            selectedDate?.firstDate = date
+            selectedDate?.lastDate = date2
+            view.setDate(selectedDate?.firstDate?.date.toString(), selectedDate?.lastDate?.date.toString())
+        }
     }
 
     override fun search(search: String) {
@@ -72,6 +91,10 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
 
     override fun onSuccessGetReports(list: List<ReportStock>) {
         view.setData(list)
+    }
+
+    override fun onSuccessUpdateUpdateStock(msg: Message) {
+        view.showSuccessMessage(msg.message)
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
@@ -119,6 +142,7 @@ class StockPresenter(val context: Context, val view: StockContract.View) : BaseP
         return sortSelected
     }
 
-
-
+    override fun updateProduct(id: String, stok: String) {
+        interactor.callUpdateStockAPI(context, restModelProduct, id, stok)
+    }
 }

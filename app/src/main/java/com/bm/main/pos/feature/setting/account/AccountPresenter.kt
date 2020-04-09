@@ -15,7 +15,7 @@ import com.bm.main.pos.models.customer.CustomerRestModel
 import com.bm.main.pos.models.user.UserRestModel
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.PermissionUtil
-import com.google.firebase.inappmessaging.internal.Logging
+//import com.google.firebase.inappmessaging.internal.Logging
 
 
 class AccountPresenter(val context: Context, val view: AccountContract.View) : BasePresenter<AccountContract.View>(),
@@ -32,7 +32,7 @@ class AccountPresenter(val context: Context, val view: AccountContract.View) : B
     override fun onViewCreated() {
         photoPermission = object : PermissionCallback {
             override fun onSuccess() {
-                Logging.logd("success open camera")
+//                Logging.logd("success open camera")
                 view.openImageChooser()
             }
 

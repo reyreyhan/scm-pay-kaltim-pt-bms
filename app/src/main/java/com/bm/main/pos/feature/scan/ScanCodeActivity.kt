@@ -139,6 +139,10 @@ class ScanCodeActivity : BaseActivity<ScanCodePresenter, ScanCodeContract.View>(
         mScannerView.resumeCameraPreview(this)
     }
 
+    override fun showMessage(code: Int, msg: String?) {
+
+    }
+
     private fun checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(
                     this,

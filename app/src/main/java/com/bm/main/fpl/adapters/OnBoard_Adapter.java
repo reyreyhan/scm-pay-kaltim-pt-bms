@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bm.main.pos.R;
@@ -46,6 +47,7 @@ public class OnBoard_Adapter extends PagerAdapter {
     public OnBoard_Adapter(Context mContext, ArrayList<OnBoardModel.Response_value> items) {
         this.mContext = mContext;
         this.onBoardItems = items;
+        Glide.get(mContext);
     }
 
     @Override

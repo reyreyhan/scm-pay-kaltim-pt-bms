@@ -1,20 +1,20 @@
 package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 
+//import com.bm.main.pos.utils.glide.GlideApp
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.google.android.material.appbar.AppBarLayout
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
-import com.bm.main.pos.models.hutangpiutang.DetailPiutang
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.ext.toast
-import com.bumptech.glide.Glide
-//import com.bm.main.pos.utils.glide.GlideApp
-import kotlinx.android.synthetic.main.activity_piutang_detail.*
+import kotlinx.android.synthetic.main.activity_piutang_detail_new.*
+import org.jetbrains.anko.toast
+import timber.log.Timber
 
 
 class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutangContract.View>(), DetailPiutangContract.View {
@@ -27,7 +27,7 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_piutang_detail
+        return R.layout.activity_piutang_detail_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -37,21 +37,6 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
 
     private fun renderView(){
         setupToolbar()
-        appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (Math.abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
-
-                var title = ""
-                getPresenter()?.getTitleName()?.let {
-                    title = it
-                }
-                ctl.title = title
-
-            } else {
-                ctl.title = ""
-
-            }
-        })
-        ctl.title = ""
         sw_refresh.isRefreshing = true
         sw_refresh.setOnRefreshListener {
             reloadData()
@@ -60,15 +45,38 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv_list.layoutManager = layoutManager
         rv_list.adapter = adapter
+
+        et_bayar.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                btn_bayar.isEnabled = !s.isNullOrEmpty()
+                val rmvRp = tv_jumlah_hutang.text.replace("\\bRp".toRegex(), "")
+                val hutang = rmvRp.replace(".", "").trim()
+                Timber.d("Hutang: $hutang")
+                if (!s.isNullOrEmpty()){
+                    if (s.toString().trim().toInt() > hutang.toInt()){
+                        et_bayar.setText(hutang)
+                    }
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+        btn_bayar.setOnClickListener {
+            getPresenter()?.payHutang(et_bayar.editableText.toString().trim())
+        }
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
         supportActionBar?.apply {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
             supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
     }
@@ -78,29 +86,9 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
         finish()
     }
 
-    override fun setCustomer(name: String?, email: String?, phone: String?, address: String?, url: String?) {
+    override fun setCustomer(name: String?) {
         name?.let {
             tv_name.text = it
-        }
-
-        email?.let {
-            tv_email.text = it
-        }
-
-        phone?.let {
-            tv_phone.text = it
-        }
-
-        address?.let {
-            tv_address.text = it
-        }
-
-        url?.let {
-            Glide.with(this)
-                .load(it)
-                .error(R.drawable.ic_user_pos)
-                .transform(CenterCrop(), CircleCrop())
-                .into(iv_photo)
         }
     }
 
@@ -131,26 +119,27 @@ class DetailPiutangActivity : BaseActivity<DetailPiutangPresenter, DetailPiutang
             msg?.let {
                 toast(this,it)
             }
-
         }
+    }
 
+    override fun showSuccess(msg: String) {
+        toast(msg)
+        finish()
     }
 
     private fun reloadData() {
         sw_refresh.isRefreshing = true
         adapter.clearAdapter()
-        getPresenter()?.loadDetailCustomer()
+        getPresenter()?.loadHutang()
     }
 
-    override fun setPiutang(tagihan: String, piutang: String, total: String, jatuhTempo: String) {
+    override fun setPiutang(piutang: String?, tanggal: String?) {
         sw_refresh.isRefreshing = false
-        tv_tagihan.text = tagihan
-        tv_piutang.text = piutang
-        tv_total.text = total
-        tv_jatuh_tempo.text = jatuhTempo
+        tv_jumlah_hutang.text = piutang!!
+        tv_tanggal_hutang.text = tanggal!!
     }
 
-    override fun setList(list: List<DetailPiutang.Data>) {
+    override fun setList(list: List<DetailPiutangNew.Data>) {
         adapter.setItems(list)
     }
 

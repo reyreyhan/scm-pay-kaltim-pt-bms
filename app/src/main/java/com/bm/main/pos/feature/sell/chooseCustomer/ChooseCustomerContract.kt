@@ -1,6 +1,7 @@
 package com.bm.main.pos.feature.sell.chooseCustomer
 
 import android.content.Context
+import android.content.Intent
 import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
@@ -19,10 +20,11 @@ interface ChooseCustomerContract {
         fun showSuccessMessage(msg: String?)
         fun reloadData()
         fun onSelected(data:Customer)
+        fun setBackgroundButtonAddCustomer()
     }
 
     interface Presenter : BasePresenterImpl<View> {
-        fun onViewCreated()
+        fun onViewCreated(intent:Intent)
         fun onDestroy()
         fun loadData()
         fun search(search:String)

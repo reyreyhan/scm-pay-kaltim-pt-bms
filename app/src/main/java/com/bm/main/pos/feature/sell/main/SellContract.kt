@@ -1,12 +1,10 @@
 package com.bm.main.pos.feature.sell.main
 
 import android.content.Context
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
-import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.product.Product
@@ -14,6 +12,7 @@ import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.models.transaction.Order
 import com.bm.main.pos.models.transaction.RequestTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 
 
 interface SellContract {
@@ -32,10 +31,15 @@ interface SellContract {
         fun getPayValue():Double
         fun setCashback(value:Double)
         fun hideShowCashback(value:Int)
+        fun hideContentView()
         fun enableBtnBuy(isEnable:Boolean)
         fun updateCart(cart:Cart,position: Int)
         fun deleteCart(position: Int)
         fun showTunaiView()
+        fun showConfirmPayTunaiDialog(jumlah:String, cashback:String, jumlahBarang:Int)
+        fun showConfirmPayHutangDialog(jumlah:String, cashback:String, jumlahBarang:Int, namaPelanggan:String)
+        fun showPayNonTunai(jumlah:String)
+        fun showTambahBarangDialog(code:String)
         fun showNonTunaiView()
         fun showPiutangView()
         fun setCustomerName(data:Customer?)
@@ -46,14 +50,15 @@ interface SellContract {
         fun openSuccessPage(id:String)
         fun onNoteSaved(selected: Cart, pos: Int)
         fun onCountSaved(selected: Cart, pos: Int)
-
+        fun hideContainerFragment()
+        fun setDeselectButtonSearch()
     }
 
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated()
         fun onDestroy()
         fun onCheckScan()
-        fun checkCart(data:Product)
+        fun checkCart(data:Product, barcode: String?)
         fun addCart(data:Product)
         fun increaseCart(data:Cart,position:Int)
         fun decreaseCart(data: Cart,position:Int)
@@ -66,8 +71,11 @@ interface SellContract {
         fun setSelectedDate(date:CalendarDay?)
         fun getSelectedDate():CalendarDay?
         fun checkTunai()
+        fun checkNonTunai()
         fun checkPiutang()
         fun getCartsSize():Int
+        fun getCustomerName():String
+        fun clearCart()
     }
 
     interface Interactor : BaseInteractorImpl {

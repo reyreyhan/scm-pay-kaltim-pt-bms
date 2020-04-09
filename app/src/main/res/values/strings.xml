@@ -112,19 +112,25 @@
     <string name="lbl_total_yang_dibayarkan">Total yang sudah dibayarkan</string>
     <string name="lbl_hutang_nominal">Nominal</string>
 
-
+    <string name="lbl_full_name">Nama Lengkap</string>
     <string name="lbl_name">Nama</string>
     <string name="lbl_name_hint">Masukkan Nama Lengkap Anda</string>
     <string name="lbl_phone">No. Handphone</string>
     <string name="lbl_phone_hint">Masukkan No. Handphone Anda</string>
     <string name="lbl_email">Email</string>
     <string name="lbl_email_hint">Masukkan Email Anda</string>
+    <string name="lbl_nama_toko">Nama Toko</string>
+    <string name="lbl_nama_toko_hint">Masukkan Nama Toko Anda</string>
     <string name="lbl_address">Alamat</string>
     <string name="lbl_address_hint">Masukkan Alamat Anda</string>
     <string name="lbl_province">Provinsi</string>
     <string name="lbl_province_hint">Provinsi Anda</string>
-    <string name="lbl_city">Kota</string>
+    <string name="lbl_city">Kota/Kabupaten</string>
     <string name="lbl_city_hint">Kota Anda</string>
+    <string name="lbl_district">Kecamatan</string>
+    <string name="lbl_district_hint">Kecamtan Anda</string>
+    <string name="lbl_postcode">Kode Pos</string>
+    <string name="lbl_postcode_hint">Kode Pos Anda</string>
     <string name="lbl_phone_login">No. Handphone Anda</string>
     <string name="lbl_password_login">Password Anda</string>
     <string name="lbl_omset">Omzet Toko Anda</string>
@@ -183,6 +189,7 @@
     <string name="btn_save">Simpan</string>
     <string name="btn_login">Masuk</string>
     <string name="btn_register">Daftar</string>
+    <string name="btn_register_now">Daftar Sekarang</string>
     <string name="btn_pos">Tokoku</string>
     <string name="btn_ppob">Pembayaran</string>
     <string name="btn_grosir">Grosir</string>
@@ -291,7 +298,7 @@
     <string name="hint_pilih_samsat">Pilih SAMSAT PKB</string>
     <string name="hint_cari_fmcg">Cari Nama Produk Grosir</string>
     <string name="hint_cari_propinsi">Cari Propinsi</string>
-    <string name="hint_pilih_kabupaten">Pilih Kabupaten/Kota</string>
+    <string name="hint_pilih_kabupaten">Pilih Kota/Kabupaten</string>
     <string name="hint_pilih_kecamatan">Pilih Kecamatan</string>
     <string name="hint_pilih_kodepos">Pilih Kodepos</string>
     <string name="hint_cari_kabupaten">Cari Kabupaten/Kota</string>
@@ -634,6 +641,11 @@ Berikut video tutorial login aplikasi Fastpay di Android]]></string>
     <string name="hint_tanggal_lahir">Tanggal Lahir</string>
     <string name="hint_email">Email</string>
 
+    <string name="hint_name_new">Isikan Nama Lengkap Anda</string>
+    <string name="hint_no_hp_new">Isikan Nomor HP Anda</string>
+    <string name="hint_email_new">Isikan Alamat Email Anda yang Valid</string>
+    <string name="hint_nama_toko_new">Isikan Nama Toko Anda</string>
+    <string name="hint_alamat_toko_new">Isikan Alamat Lengkap Toko Anda</string>
 
     <!--<string name="penumpang_pria_1_kosong">Nama Penumpang Pria Pertama Tidak Boleh Kosong</string>-->
     <!--<string name="penumpang_pria_2_kosong">Nama Penumpang Pria Kedua Tidak Boleh Kosong</string>-->
@@ -968,4 +980,20 @@ Aplikasi sebelum Anda login ke Aplikasi.</item>
     <string name="permission_camera_rationale">Access to the camera is needed for barcode detection.</string>
     <string name="no_camera_permission">Cannot start the barcode reader because the camera permission was not granted.</string>
 
+    <string name="grant_permission">Grant Permission</string>
+    <string name="permission_camera">This app needs camera permission to scan barcode</string>
+     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="title_activity_main">Barcode Reader Sample</string>
+    <string name="barcode_header">Click &quot;Read Barcode&quot; to read a barcode</string>
+    <string name="read_barcode">Read Barcode</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="barcode_success">Barcode read successfully</string>
+    <string name="barcode_failure">No barcode captured</string>
+    <string name="barcode_error">"Error reading barcode: %1$s"</string>
+    <string name="grant">GRANT</string>
+    <string name="cancel">CANCEL</string>
+    <string name="lbl_customer_name_hint">Isi Nama Pelanggan</string>
+    <string name="lbl_no_hp_customer_hint">Isi Nomor Handphone Pelanggan</string>
+    <string name="lbl_email_customer_hint">Isi Alamat Email Pelanggan</string>
 </resources>

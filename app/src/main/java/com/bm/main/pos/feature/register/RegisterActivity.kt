@@ -24,9 +24,9 @@ class RegisterActivity : BaseActivity<RegisterPresenter, RegisterContract.View>(
     }
 
     private fun renderView(){
-        btn_login.setOnClickListener {
+        /*btn_login.setOnClickListener {
             finish()
-        }
+        }*/
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

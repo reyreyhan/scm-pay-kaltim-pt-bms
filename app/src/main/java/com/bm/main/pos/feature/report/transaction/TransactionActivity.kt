@@ -6,13 +6,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.dialog.BottomDialog
-import com.bm.main.pos.feature.filterDate.main.MainActivity
+import com.bm.main.pos.feature.dialog.RangeDateDialog
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
 import com.bm.main.pos.models.report.ReportTransaksi
@@ -20,21 +19,26 @@ import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activityt_report_transaksi.*
+import com.bm.main.pos.utils.Helper
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import kotlinx.android.synthetic.main.activityt_report_transaksi_new.*
+import org.threeten.bp.LocalDate
+import timber.log.Timber
 
 class TransactionActivity : BaseActivity<TransactionPresenter, TransactionContract.View>(),
-    TransactionContract.View, BottomDialog.Listener {
+    TransactionContract.View, BottomDialog.Listener, RangeDateDialog.Listener {
 
     private val openFilter = 1100
     val adapter = TransactionAdapter()
     private lateinit var scrollListener: EndlessRecyclerViewScrollListener
+    private val rangeDateDialog = RangeDateDialog.newInstance()
 
     override fun createPresenter(): TransactionPresenter {
         return TransactionPresenter(this, this)
     }
 
     override fun createLayout(): Int {
-        return R.layout.activityt_report_transaksi
+        return R.layout.activityt_report_transaksi_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -79,7 +83,11 @@ class TransactionActivity : BaseActivity<TransactionPresenter, TransactionContra
             }
         })
 
-        btn_date.setOnClickListener {
+        et_date_1.setOnClickListener {
+            openFilter(getPresenter()?.getFilterDateSelected())
+        }
+
+        et_date_2.setOnClickListener{
             openFilter(getPresenter()?.getFilterDateSelected())
         }
 
@@ -103,12 +111,11 @@ class TransactionActivity : BaseActivity<TransactionPresenter, TransactionContra
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            title = "Laporan"
+            title = "Laporan Penjualan Barang"
 
-            val backArrow = ContextCompat.getDrawable(this@TransactionActivity,R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
-
     }
 
     override fun setData(list: List<ReportTransaksi>) {
@@ -157,19 +164,22 @@ class TransactionActivity : BaseActivity<TransactionPresenter, TransactionContra
     }
 
     override fun openFilter(data: FilterDialogDate?) {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(AppConstant.DATA,data)
-        startActivityForResult(intent,openFilter)
+        hideLoadingDialog()
+        val now = CalendarDay.from(LocalDate.now())
+        val min = LocalDate.of(2000, 1, 1)
+        val max = LocalDate.of(2100, 12, 31)
+        rangeDateDialog.setData(min, max, CalendarDay.from(now.date.minusDays(1)), now)
+        rangeDateDialog.show(supportFragmentManager, "rangedate")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == RESULT_OK && requestCode == openFilter){
-            val filter = data?.getParcelableExtra(AppConstant.DATA) as FilterDialogDate
-            sw_refresh.isRefreshing = true
-            adapter.clearAdapter()
-            getPresenter()?.setFilterDateSelected(filter)
-        }
+//        if(resultCode == RESULT_OK && requestCode == openFilter){
+//            val filter = data?.getParcelableExtra(AppConstant.DATA) as FilterDialogDate
+//            sw_refresh.isRefreshing = true
+//            adapter.clearAdapter()
+//            getPresenter()?.loadData()
+//        }
     }
     override fun openSortDialog(title: String, list: List<DialogModel>, selected: DialogModel?, type: Int) {
         val dialog = BottomDialog.newInstance()
@@ -177,9 +187,25 @@ class TransactionActivity : BaseActivity<TransactionPresenter, TransactionContra
         dialog.show(this.supportFragmentManager, BottomDialog.TAG)
     }
 
+    override fun setDate(firstDate: String, lastDate: String) {
+        val date1 = Helper.getDateFormat(this,firstDate,"yyyy-MM-dd","dd MMMM yyyy")
+        val date2 = Helper.getDateFormat(this,lastDate,"yyyy-MM-dd","dd MMMM yyyy")
+        et_date_1.text = date1
+        et_date_2.text = date2
+    }
+
     override fun onItemClicked(data: DialogModel, type: Int) {
         adapter.clearAdapter()
         sw_refresh.isRefreshing = true
         getPresenter()?.sort(data)
+    }
+
+    override fun onDateRangeClicked(firstDate: CalendarDay?, lastDate: CalendarDay?, type: Int) {
+        adapter.clearAdapter()
+        sw_refresh.isRefreshing = true
+        Timber.d("FirstDate: ${firstDate!!.date}")
+        Timber.d("LastDate: ${lastDate!!.date}")
+        getPresenter()?.setDate(firstDate, lastDate)
+        getPresenter()?.loadData()
     }
 }

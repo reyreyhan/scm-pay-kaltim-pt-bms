@@ -81,10 +81,6 @@ class SettingFragment : BaseFragment<SettingPresenter, SettingContract.View>(),
             openAccountPage()
         }
 
-        _view.btn_store.setOnClickListener {
-            openStorePage()
-        }
-
         _view.btn_printer.setOnClickListener {
             openPrinterPage()
         }
@@ -101,6 +97,9 @@ class SettingFragment : BaseFragment<SettingPresenter, SettingContract.View>(),
         }
         _view.btn_help.setOnClickListener {
             openHelpPage()
+        }
+        _view.btn_logout.setOnClickListener {
+
         }
     }
 

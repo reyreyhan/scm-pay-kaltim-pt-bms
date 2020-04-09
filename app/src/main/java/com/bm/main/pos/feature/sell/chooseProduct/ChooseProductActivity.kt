@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.fpl.constants.EventParam
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
-import com.bm.main.pos.feature.sell.add.AddActivity
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
@@ -114,6 +113,7 @@ class ChooseProductActivity : BaseActivity<ChooseProductPresenter, ChooseProduct
     override fun onResume() {
         super.onResume()
         setupToolbar()
+        reloadData()
     }
 
     override fun showErrorMessage(code: Int, msg: String) {
@@ -171,6 +171,4 @@ class ChooseProductActivity : BaseActivity<ChooseProductPresenter, ChooseProduct
     override fun checkStockProducts(isCheck: Boolean) {
         adapter.setCheckStok(isCheck)
     }
-
-
 }

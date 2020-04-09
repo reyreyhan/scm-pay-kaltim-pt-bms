@@ -2,6 +2,7 @@ package com.bm.main.pos.feature.sell.chooseCustomer
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,12 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
+import com.bm.main.pos.feature.manage.customer.detail.CustomerDetailActivity
+import com.bm.main.pos.feature.sell.addCustomer.AddCustomerActivity
 import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activity_choose_customer.*
+import kotlinx.android.synthetic.main.activity_choose_customer_new.*
 
 class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCustomerContract.View>(),
     ChooseCustomerContract.View {
@@ -29,12 +31,12 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_choose_customer
+        return R.layout.activity_choose_customer_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
-        getPresenter()?.onViewCreated()
+        getPresenter()?.onViewCreated(intent)
     }
 
     private fun renderView() {
@@ -82,6 +84,11 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
 
             }
         })
+
+        btn_pelanggan_baru.setOnClickListener {
+            val intent = Intent(this, AddCustomerActivity::class.java)
+            startActivityForResult(intent, 100)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -98,7 +105,7 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.menu_choose_customer)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
 
@@ -118,13 +125,12 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     override fun showErrorMessage(code: Int, msg: String) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
-        if(code == RestException.CODE_USER_NOT_FOUND){
-            restartLoginActivity()
-        }
-        else{
+//        if(code == RestException.CODE_USER_NOT_FOUND){
+//            restartLoginActivity()
+//        }
+//        else{
             toast(this,msg)
-        }
-
+//        }
     }
 
     override fun showSuccessMessage(msg: String?) {
@@ -134,7 +140,6 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
             Toast.makeText(this,msg, Toast.LENGTH_SHORT).show()
         }
         reloadData()
-
     }
 
     override fun reloadData() {
@@ -149,10 +154,13 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
     }
 
     override fun onSelected(data: Customer) {
-        val newintent:Intent = intent
-        newintent.putExtra(AppConstant.DATA,data)
-        setResult(RESULT_OK,newintent)
-        finish()
+//        val newintent:Intent = intent
+//        newintent.putExtra(AppConstant.DATA,data)
+//        setResult(RESULT_OK,newintent)
+        val intent = Intent(this, CustomerDetailActivity::class.java)
+        intent.putExtra("isTransaction", getPresenter()?.isTransaction)
+        intent.putExtra(AppConstant.DATA, data)
+        startActivityForResult(intent, 101)
     }
 
     override fun onBackPressed() {
@@ -160,5 +168,23 @@ class ChooseCustomerActivity : BaseActivity<ChooseCustomerPresenter, ChooseCusto
         finish()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
+            reloadData()
+        }
+        else if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
+            val customer = data!!.getSerializableExtra(AppConstant.DATA) as Customer
+            val newintent: Intent = intent
+            newintent.putExtra(AppConstant.DATA, customer)
+            setResult(RESULT_OK, newintent)
+            finish()
+        }else{
+            reloadData()
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
 
+    override fun setBackgroundButtonAddCustomer(){
+        btn_pelanggan_baru.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+    }
 }

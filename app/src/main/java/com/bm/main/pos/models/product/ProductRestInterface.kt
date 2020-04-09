@@ -78,7 +78,9 @@ interface ProductRestInterface {
     @GET("barang/searchtext.php")
     fun searchByName(
             @Query("key") key: String,
-            @Query("kodebarang") id: String
+            @Query("search") id: String,
+            @Query("limit") limit: Int,
+            @Query("offset") offset: Int
     ): Observable<List<Product>>
 
     @GET("barang/sort.php")
@@ -86,5 +88,11 @@ interface ProductRestInterface {
             @Query("key") key: String
     ): Observable<List<Product>>
 
+    @FormUrlEncoded
+    @POST("barang/update_stok.php")
+    fun updateStok(
+        @Field("key") key:String,
+        @Field("id_barang") id:String,
+        @Field("stok") stok:String):Observable<Message>
 
 }

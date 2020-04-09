@@ -36,10 +36,6 @@
             android:paddingLeft="-10dp"
             android:paddingEnd="-10dp"
             android:paddingRight="-10dp"
-
-
-
-
             android:iconifiedByDefault="false" />
         <View
 

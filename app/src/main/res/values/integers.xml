@@ -8,5 +8,8 @@
 
     <integer name="simpletooltip_overlay_alpha">120</integer>
     <integer name="simpletooltip_animation_duration">1000</integer>
-
+    <integer name="scanner_rect_width">230</integer>
+    <integer name="scanner_rect_height">230</integer>
+    <integer name="line_width">4</integer>
+    <integer name="line_speed">5</integer>
 </resources>

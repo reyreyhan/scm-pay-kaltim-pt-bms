@@ -38,14 +38,14 @@ android:layout_weight="1.8"
                 android:text="123456789012"
                 android:textSize="@dimen/textNormal"
                 android:fontFamily="@font/roboto_regular" />
-            <ImageView
+            <!--<ImageView
                 android:layout_width="0dp"
                 android:layout_height="24dp"
                 android:layout_weight="0.2"
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_right_arrow"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription" />-->
         </LinearLayout>
 
 

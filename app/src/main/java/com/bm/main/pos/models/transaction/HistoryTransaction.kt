@@ -10,10 +10,10 @@ import java.io.Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class HistoryTransaction : Serializable {
-    var jumlah_transaksi : String? = "0"
-    var jumlah_profit : String? = "0"
-    var totalordersemua : String? = "0"
-    var tanggal : String? = "0"
+    var jumlah_transaksi : Int? = null
+    var jumlah_profit : Int? = null
+    var totalordersemua : String? = null
+    var tanggal : String? = null
     var detail: List<Transaction>? = null
 
     fun json(): String {

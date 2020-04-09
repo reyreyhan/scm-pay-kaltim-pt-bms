@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_list_choose_customer.view.*
 
 class ChooseCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val listProduct = mutableListOf<Customer>()
+    private val listCustomer = mutableListOf<Customer>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context)
@@ -18,25 +18,25 @@ class ChooseCustomerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return listProduct.size
+        return listCustomer.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) {
-            val product = listProduct[position]
+            val product = listCustomer[position]
             holder.bindData(product, position)
         }
     }
 
     fun setItems(listProduct: List<Customer>?) {
-        //this.listProduct.clear()
+        this.listCustomer.clear()
         val lastCount = itemCount
-        listProduct?.let { this.listProduct.addAll(it) }
+        listProduct?.let { this.listCustomer.addAll(it) }
         notifyItemRangeInserted(lastCount,listProduct!!.size)
     }
 
     fun clearAdapter(){
-        listProduct.clear()
+        listCustomer.clear()
         notifyDataSetChanged()
     }
 

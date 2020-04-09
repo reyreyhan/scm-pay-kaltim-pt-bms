@@ -5,7 +5,6 @@ import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
-import com.bm.main.pos.models.category.CategoryRestModel
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.customer.CustomerRestModel
 
@@ -19,17 +18,17 @@ interface AddCustomerContract {
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated()
         fun onDestroy()
-        fun onCheck(name:String,email:String,phone:String,address:String)
+        fun onCheck(name:String,email:String,phone:String)
     }
 
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
         fun onRestartDisposable()
-        fun callAddCustomerAPI(context: Context,model:CustomerRestModel,name:String,email:String,phone:String,address:String)
+        fun callAddCustomerAPI(context: Context,model:CustomerRestModel,name:String,email:String,phone:String)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
-        fun onSuccessAdd(data:List<Customer>)
+        fun onSuccessAdd(data:Customer)
         fun onFailedAPI(code:Int,msg:String)
     }
 

@@ -26,12 +26,44 @@ class EditCustomerInteractor(var output: EditCustomerContract.InteractorOutput?)
         disposable = CompositeDisposable()
     }
 
-    override fun callEditCustomerAPI(context: Context, model: CustomerRestModel, id:String, name: String,email:String,phone:String,address:String,gbr:String?) {
+    override fun callEditCustomerAPI(context: Context, model: CustomerRestModel, id:String, name: String,email:String,phone:String) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(model.update(key!!,id,name,email,phone,address,gbr).subscribeWith(object : DisposableObserver<Message>() {
+        disposable.add(model.update(key!!,id,name,email,phone,"",null).subscribeWith(object : DisposableObserver<Message>() {
 
             override fun onNext(@NonNull response: Message) {
                 output?.onSuccessEditCustomer(response.message)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedEditCustomer(errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
+
+    override fun callDeleteCustomerAPI(
+        context: Context,
+        model: CustomerRestModel,
+        id: String
+    ) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(model.delete(key!!,id).subscribeWith(object : DisposableObserver<Message>() {
+
+            override fun onNext(@NonNull response: Message) {
+                output?.onSuccessDeleteCustomer(response.message)
             }
 
             override fun onError(@NonNull e: Throwable) {

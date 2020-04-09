@@ -190,13 +190,15 @@ object Helper {
         }
     }
 
-    fun sendMail(mail: String, context: Context) {
+    fun sendMail(email:String, pathUri: Uri, context: Context) {
         val mIntent = Intent(Intent.ACTION_SEND)
 
         mIntent.data = Uri.parse("mailto:")
-        mIntent.type = "text/plain"
+        mIntent.putExtra(Intent.EXTRA_EMAIL, email)
+        mIntent.type = "image/*"
 
-        mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(mail))
+        //mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(mail))
+        mIntent.putExtra(Intent.EXTRA_STREAM, pathUri)
         try {
             context.startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
         } catch (e: Exception) {

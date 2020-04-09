@@ -109,9 +109,7 @@ android:maxLength="24"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-
             app:indicatorColor="@color/colorPrimary_ppob"
-
             android:visibility="gone"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewPaketOutlet"
@@ -120,9 +118,7 @@ android:maxLength="24"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:scrollbars="none"
-
-android:visibility="gone"
-            />
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/linPaket"

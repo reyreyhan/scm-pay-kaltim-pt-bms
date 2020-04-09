@@ -1,11 +1,10 @@
 package com.bm.main.pos.models.hutangpiutang
 
-import com.google.gson.JsonObject
-import com.bm.main.pos.models.Message
-import com.bm.main.pos.models.customer.Customer
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.supplier.Supplier
 import io.reactivex.Observable
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface HutangPiutangRestInterface {
 
@@ -41,7 +40,7 @@ interface HutangPiutangRestInterface {
 
     @GET("pelanggan/listpiutang.php")
     fun getListPiutangCustomer(
-        @Query("key") key:String): Observable<List<Customer>>
+        @Query("key") key:String): Observable<List<CustomerNew>>
 
     @GET("supplier/searchhutang.php")
     fun getSearchHutangSupplier(
@@ -51,7 +50,7 @@ interface HutangPiutangRestInterface {
     @GET("pelanggan/searchpiutang.php")
     fun getSearchPiutangCustomer(
         @Query("key") key:String,
-        @Query("search") search:String): Observable<List<Customer>>
+        @Query("search") search:String): Observable<List<CustomerNew>>
 
     @GET("supplier/detailpiutangpersupplier.php")
     fun getDetailHutangSupplier(
@@ -63,6 +62,8 @@ interface HutangPiutangRestInterface {
         @Query("key") key:String,
         @Query("id_pelanggan") id:String): Observable<DetailPiutang>
 
-
-
+    @GET("pelanggan/detail_utang_pelanggan.php ")
+    fun getDetailPiutangCustomerNew(
+        @Query("key") key:String,
+        @Query("id_pelanggan") id:String): Observable<DetailPiutangNew>
 }

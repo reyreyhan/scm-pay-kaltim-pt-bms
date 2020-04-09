@@ -8,7 +8,7 @@ import com.bm.main.pos.BuildConfig
 //import com.bm.main.pos.MyApplication
 import com.bm.main.pos.rest.util.RequestInterceptor
 import com.bm.main.pos.rest.util.ResponseInterceptor
-import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
+//import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
 //import com.bm.main.pos.utils.glide.UnsafeOkHttpClient
 import okhttp3.Cache
 import okhttp3.OkHttpClient

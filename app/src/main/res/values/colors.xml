@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#007065</color>
     <color name="colorPrimaryLight">#B4F3EF</color>
     <color name="colorPrimaryLight30">#4DB4F3EF</color>
-    <color name="colorAccent">#28aae1</color>
+    <color name="colorAccent">#238ACB</color>
     <color name="colorAccentLight">#E1E7FC</color>
-    <color name="colorAccentDark">#002BD6</color>
+    <color name="colorAccentDark">#238ACB</color>
 
     <color name="primaryText">#40514e</color>
     <color name="secondaryText">#697586</color>
@@ -328,4 +328,6 @@
 
 
     <color name="text_shadow">#7F000000</color>
+
+    <color name="scanner_line">@color/colorAccent</color>
 </resources>

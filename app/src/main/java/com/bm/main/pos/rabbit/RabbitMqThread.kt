@@ -5,7 +5,7 @@ import com.bm.main.fpl.utils.PreferenceClass
 import com.rabbitmq.client.AMQP
 import com.rabbitmq.client.Connection
 import com.rabbitmq.client.ConnectionFactory
-import com.rabbitmq.client.QueueingConsumer
+//import com.rabbitmq.client.QueueingConsumer
 import timber.log.Timber
 
 class RabbitMqThread(val activity: Activity) : Thread() {
@@ -36,14 +36,14 @@ class RabbitMqThread(val activity: Activity) : Thread() {
                     "printstruk",
                     "trx_${PreferenceClass.getString("id_speedcash")}"
                 )
-                val consumer = QueueingConsumer(channel)
-                channel.basicConsume(q.queue, true, consumer)
+               // val consumer = QueueingConsumer(channel)
+                //channel.basicConsume(q.queue, true, consumer)
 
-                while (running) {
+                /*while (running) {
                     val msg = String(consumer.nextDelivery().body)
                     Timber.e("rabbit - receive: $msg")
                     RabbitMqPrint.printStrukRabbit(msg, activity)
-                }
+                }*/
             } catch (e: InterruptedException) {
                 Timber.e(e)
                 break

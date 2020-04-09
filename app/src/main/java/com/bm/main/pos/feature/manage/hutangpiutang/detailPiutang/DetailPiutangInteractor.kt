@@ -1,12 +1,11 @@
 package com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang
 
 import android.content.Context
-import android.os.Handler
 import com.bm.main.fpl.utils.PreferenceClass
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.customer.CustomerRestModel
-import com.bm.main.pos.models.hutangpiutang.DetailPiutang
+import com.bm.main.pos.models.Message
+import com.bm.main.pos.models.hutangpiutang.DetailPiutangNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
+import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppSession
 import io.reactivex.annotations.NonNull
@@ -27,39 +26,11 @@ class DetailPiutangInteractor(var output: DetailPiutangContract.InteractorOutput
         disposable = CompositeDisposable()
     }
 
-    override fun callGetDetailCustomer(context: Context, restModel: CustomerRestModel, id:String) {
-        val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.detail(key!!,id).subscribeWith(object : DisposableObserver<Customer>() {
-
-            override fun onNext(@NonNull response: Customer) {
-                output?.onSuccessGetDetailCustomer(response)
-            }
-
-            override fun onError(@NonNull e: Throwable) {
-                e.printStackTrace()
-                var errorCode = 999
-                var errorMessage = "Terjadi kesalahan"
-                if (e is RestException) {
-                    errorCode = e.errorCode
-                    errorMessage = e.message ?: "Terjadi kesalahan"
-                }
-                else{
-                    errorMessage = e.message.toString()
-                }
-                output?.onFailedAPI(errorCode,errorMessage)
-            }
-
-            override fun onComplete() {
-
-            }
-        }))
-    }
-
     override fun callGetHutang(context: Context, restModel: HutangPiutangRestModel, id:String) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.getDetailPiutangCustomer(key!!,id).subscribeWith(object : DisposableObserver<DetailPiutang>() {
+        disposable.add(restModel.getDetailPiutangCustomerNew(key!!,id).subscribeWith(object : DisposableObserver<DetailPiutangNew>() {
 
-            override fun onNext(@NonNull response: DetailPiutang) {
+            override fun onNext(@NonNull response: DetailPiutangNew) {
                 output?.onSuccessGetHutang(response)
             }
 
@@ -83,6 +54,36 @@ class DetailPiutangInteractor(var output: DetailPiutangContract.InteractorOutput
         }))
     }
 
+    override fun callPayHutang(
+        context: Context,
+        restModel: TransactionRestModel,
+        invoice: String,
+        pay: String
+    ) {
+        val key = PreferenceClass.getTokenPos()
+        disposable.add(restModel.payPiutangIdCustomer(key!!,invoice,pay).subscribeWith(object : DisposableObserver<Message>() {
 
+            override fun onNext(@NonNull response: Message) {
+                output?.onSuccessPayHutang(response)
+            }
 
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedAPI(errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
 }

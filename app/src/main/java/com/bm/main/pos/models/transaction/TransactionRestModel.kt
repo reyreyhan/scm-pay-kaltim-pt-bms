@@ -4,10 +4,8 @@ import android.content.Context
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.rest.RestClient
 import com.bm.main.pos.rest.RestModel
-import com.bm.main.pos.rest.entity.ResponseEntity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class TransactionRestModel(context: Context) : RestModel<TransactionRestInterface>(context) {
@@ -88,6 +86,15 @@ class TransactionRestModel(context: Context) : RestModel<TransactionRestInterfac
             .observeOn(AndroidSchedulers.mainThread())
     }
 
+    fun payPiutangIdCustomer(key:String,id:String,pay:String): Observable<Message>{
+        return restInterface.payPiutangIdCustomer(id, pay, key)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
 
-
+    fun sendStruk(key:String, invoice:String, email:String): Observable<Message>{
+        return restInterface.sendStruk(key, invoice, email)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
 }

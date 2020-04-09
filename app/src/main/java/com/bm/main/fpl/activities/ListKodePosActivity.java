@@ -55,11 +55,11 @@ public class ListKodePosActivity extends BaseActivity implements ProgressRespons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_kode_pos);
+        setContentView(R.layout.activity_pos_list_kode_pos);
         Intent intent = getIntent();
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Kodepos");
-        init(1);
+        init(0);
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         layout_data_empty = findViewById(R.id.layout_data_empty);
         txtHeader = layout_data_empty.findViewById(R.id.txtHeader);

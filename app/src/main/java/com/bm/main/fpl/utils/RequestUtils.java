@@ -14,13 +14,15 @@ import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.interfaces.ProgressListener;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.pos.BuildConfig;
-import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
+//import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
 
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
+import okhttp3.ConnectionSpec;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,11 +32,13 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import timber.log.Timber;
 
 public class RequestUtils {
-    private static OkHttpClient client;
+    public static OkHttpClient client;
+    static OkHttpClient.Builder builder;
 
     @Nullable
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static String url;
+
 
     public static void transportWithJSONObjectResponse(@NonNull AppCompatActivity context, @NonNull JSONObject requestObject, int actionCode, JsonObjectResponseCallback callback) {
         transportWithJSONObjectResponse(context, getUrl(), requestObject, actionCode, callback);
@@ -222,5 +226,21 @@ public class RequestUtils {
 
     public static void setUrl(String url) {
         RequestUtils.url = url;
+    }
+
+
+    public static void initialize() {
+        if (client == null) {
+//            client = new OkHttpClient();
+            builder = new OkHttpClient.Builder();
+//            builder.callTimeout(1,TimeUnit.MINUTES).connectTimeout(1, TimeUnit.MINUTES).
+//                    readTimeout(1, TimeUnit.MINUTES).
+//                    writeTimeout(1, TimeUnit.MINUTES).
+//                    retryOnConnectionFailure(true);
+//            if (BuildConfig.DEBUG) {
+//                builder.addInterceptor(new OkHttpProfilerInterceptor());
+//            }
+            client =  builder.build();
+        }
     }
 }

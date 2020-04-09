@@ -15,7 +15,7 @@ import com.bm.main.pos.models.TabModel
 import com.bm.main.pos.ui.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_history.view.*
 import com.bm.main.pos.feature.transaction.historyPiutang.PiutangFragment
-import com.bm.main.pos.feature.transaction.historyTransaction.TransactionFragment
+import com.bm.main.pos.feature.transaction.historyTransaction.TransactionHistoryActivity
 
 class HistoryFragment : BaseFragment<HistoryPresenter, HistoryContract.View>(),
     HistoryContract.View {
@@ -24,7 +24,7 @@ class HistoryFragment : BaseFragment<HistoryPresenter, HistoryContract.View>(),
 
     private var mFragmentManager: FragmentManager? = null
     private var viewPagerAdapter: ViewPagerAdapter? = null
-    private val transactionFragment = TransactionFragment.newInstance()
+    //private val transactionFragment = TransactionHistoryActivity.newInstance()
     private val piutangFragment = PiutangFragment.newInstance()
 
     companion object {
@@ -62,7 +62,7 @@ class HistoryFragment : BaseFragment<HistoryPresenter, HistoryContract.View>(),
     private fun setupTab() {
         val type: ArrayList<TabModel> = ArrayList()
         val tab1 = TabModel()
-        tab1.fragment = transactionFragment
+        //tab1.fragment = transactionFragment
         tab1.title = "Daftar Transaksi"
         val tab2 = TabModel()
         tab2.fragment = piutangFragment
@@ -89,7 +89,7 @@ class HistoryFragment : BaseFragment<HistoryPresenter, HistoryContract.View>(),
     override fun checkTab(position: Int) {
         setSelectTab(position)
         if (position == 0) {
-            transactionFragment.reloadData()
+            //transactionFragment.reloadData()
         } else {
             piutangFragment.reloadData()
         }

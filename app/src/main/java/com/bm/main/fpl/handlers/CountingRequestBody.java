@@ -5,16 +5,17 @@ package com.bm.main.fpl.handlers;
  **/
 
 import com.bm.main.fpl.interfaces.RequestProgress;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.ForwardingSink;
 import okio.Okio;
 import okio.Sink;
+
 public class CountingRequestBody extends RequestBody {
 
     protected RequestBody delegate;

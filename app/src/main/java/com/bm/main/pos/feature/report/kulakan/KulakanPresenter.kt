@@ -2,7 +2,6 @@ package com.bm.main.pos.feature.report.kulakan
 
 import android.content.Context
 import android.content.Intent
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.FilterDialogDate
@@ -10,6 +9,7 @@ import com.bm.main.pos.models.report.ReportRestModel
 import com.bm.main.pos.models.transaction.HistoryTransaction
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.utils.AppConstant
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import org.threeten.bp.LocalDate
 
 class KulakanPresenter(val context: Context, val view: KulakanContract.View) : BasePresenter<KulakanContract.View>(),
@@ -61,13 +61,13 @@ class KulakanPresenter(val context: Context, val view: KulakanContract.View) : B
                     if(detail.isNotEmpty()){
                         val header = Transaction()
                         header.tanggal = history.tanggal
-                        header.type = "header"
+//                        header.type = "header"
                         header.totalorder = history.totalordersemua
                         val size = detail.size
                         for(i in size-1 downTo 0){
                             val trx = detail[i]
                             val pos = i+1
-                            trx.pos = pos
+//                            trx.pos = pos
                             list.add(0,trx)
                         }
 

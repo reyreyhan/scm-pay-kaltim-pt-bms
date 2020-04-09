@@ -33,7 +33,7 @@ import com.bm.main.pos.feature.report.main.ReportFragment
 import com.bm.main.pos.feature.sell.main.SellFragment
 import com.bm.main.pos.feature.setting.main.SettingFragment
 import com.bm.main.pos.feature.transaction.history.HistoryFragment
-import com.bm.main.pos.feature.transaction.historyTransaction.TransactionFragment
+import com.bm.main.pos.feature.transaction.historyTransaction.TransactionHistoryActivity
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.rabbit.QrisViewModel
@@ -60,9 +60,11 @@ import org.threeten.bp.LocalDate
 import timber.log.Timber
 
 class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), DrawerContract.View,
-    NavigationView.OnNavigationItemSelectedListener, HomeFragment.MenuClick, SellFragment.ShowDate,
+    NavigationView.OnNavigationItemSelectedListener,
+//    HomeFragment.MenuClick,
+    SellFragment.ShowDate,
     SettingFragment.Listener, SingleDateDialog.Listener, NoteDialog.Listener,
-    CartCountDialog.Listener, TransactionFragment.Listener, RangeDateDialog.Listener,
+    CartCountDialog.Listener, RangeDateDialog.Listener,
     BottomDialog.Listener {
 
     private val productViewModel by lazy {
@@ -520,16 +522,16 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         }
     }
 
-    override fun openFilterByStatusDialog(
-        title: String,
-        list: List<DialogModel>,
-        selected: DialogModel?,
-        type: Int
-    ) {
-        val dialog = BottomDialog.newInstance()
-        dialog.setData(title, type, list, selected)
-        dialog.show(this.supportFragmentManager, BottomDialog.TAG)
-    }
+//    override fun openFilterByStatusDialog(
+//        title: String,
+//        list: List<DialogModel>,
+//        selected: DialogModel?,
+//        type: Int
+//    ) {
+//        val dialog = BottomDialog.newInstance()
+//        dialog.setData(title, type, list, selected)
+//        dialog.show(this.supportFragmentManager, BottomDialog.TAG)
+//    }
 
     override fun onReloadProfile() {
         homeFragment.reloadData()

@@ -6,19 +6,17 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.supplier.Supplier
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.EndlessRecyclerViewScrollListener
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import kotlinx.android.synthetic.main.activity_piutang_customer.*
+import kotlinx.android.synthetic.main.activity_piutang_customer_new.*
 
 class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCustomerContract.View>(),
     PiutangCustomerContract.View {
@@ -32,7 +30,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_piutang_customer
+        return R.layout.activity_piutang_customer_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -51,7 +49,7 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
         rv_list.adapter = adapter
 
         adapter.callback = object : PiutangCustomerAdapter.ItemClickCallback{
-            override fun onClick(data: Customer) {
+            override fun onClick(data: CustomerNew) {
                 data?.let {
                     openDetailPiutangPage(it)
                 }
@@ -102,21 +100,27 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
             setDisplayShowHomeEnabled(true)
             title = getString(R.string.menu_piutang_customer)
 
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
             setHomeAsUpIndicator(backArrow)
         }
-
     }
 
-    override fun setData(list: List<Customer>) {
+    override fun setList(list: List<CustomerNew>) {
         hideLoadingDialog()
         sw_refresh.isRefreshing = false
         adapter.setItems(list)
     }
 
+    override fun addItemToAdapter(item: CustomerNew) {
+        hideLoadingDialog()
+        sw_refresh.isRefreshing = false
+        adapter.addItem(item)
+    }
+
     override fun onResume() {
         super.onResume()
         setupToolbar()
+        reloadData()
     }
 
     override fun showErrorMessage(code: Int, msg: String) {
@@ -150,10 +154,9 @@ class PiutangCustomerActivity : BaseActivity<PiutangCustomerPresenter, PiutangCu
         getPresenter()?.onDestroy()
     }
 
-    override fun openDetailPiutangPage(data: Customer) {
+    override fun openDetailPiutangPage(data: CustomerNew) {
         val intent = Intent(this,DetailPiutangActivity::class.java)
         intent.putExtra(AppConstant.DATA,data)
         startActivity(intent)
     }
-
 }

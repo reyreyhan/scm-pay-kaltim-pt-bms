@@ -19,7 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep class kotlin.** { *; }
+-keep class kotlin.* { *; }
 -keep class kotlin.Metadata { *; }
 -dontwarn kotlin.**
 -keepclassmembers class **$WhenMappings {
@@ -33,21 +33,9 @@
 }
 
 
--dontwarn com.google.android.material.**
--keep class com.google.android.material.** { *; }
-
--dontwarn androidx.**
--keep class androidx.** { *; }
--keep interface androidx.** { *; }
-
-#-dontwarn id.pos.android.**
-#-keep class id.pos.android.** { *; }
-#-keep interface id.pos.android.** { *; }
-
--keep public class * extends com.bumptech.glide.module.AppGlideModule
--keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 -keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
@@ -57,32 +45,26 @@
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 #-keep class com.bumptech.glide.integration.okhttp.OkHttpGlideModule
 -keep class com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
--keep public class * extends java.lang.annotation.Annotation
--keep class com.google.android.** { *; }
+-keep public class * implements java.lang.annotation.Annotation
+-keep class com.google.android.* { *; }
 ############ Crashlytics ################################
 #-keepattributes *Annotation*
 #-keep class com.crashlytics.** { *; }
 #-dontwarn com.crashlytics.**
 #-keepattributes SourceFile,LineNumberTable
-
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
-#-renamesourcefileattribute SourceFile
 -keepattributes *Annotation*
-#-keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable
 -keep public class * extends java.lang.Exception
 -printmapping mapping.txt
 
--keep class com.crashlytics.** { *; }
+-keep class com.crashlytics.* { *; }
 -dontwarn com.crashlytics.**
 
--keep class com.google.android.gms.measurement.** { *; }
+-keep class com.google.android.gms.measurement.* { *; }
 -dontwarn com.google.android.gms.measurement.**
 
--keep class com.google.android.gms.measurement.AppMeasurement { *; }
--keep class com.google.android.gms.measurement.AppMeasurement$OnEventListener { *; }
+-keep class com.google.android.gms.measurement.AppMeasurement.* { *; }
+#-keep class com.google.android.gms.measurement.AppMeasurement$OnEventListener { *; }
 
 #=========minify=========#
 
@@ -95,10 +77,19 @@
 -verbose
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
 
--keep public class * extends android.support.v4.app.Fragment
--keep public class * extends android.support.v7.app.AppCompatActivity
+-keep public class * extends android.support.v4.app.*
+-keep public class * extends android.support.v7.app.*
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
+
+
+-dontwarn com.google.android.material.**
+-keep class com.google.android.material.* { *; }
+
+-dontwarn androidx.**
+-keep class androidx.* { *; }
+-keep interface androidx.* { *; }
+
 
 -dontwarn javax.annotation.**
 -dontwarn android.annotation.**
@@ -140,7 +131,7 @@
 -keep class com.fasterxml.jackson.databind.ObjectWriter {
     public ** writeValueAsString(**);
 }
--keepnames class com.fasterxml.jackson.** { *; }
+-keepnames class com.fasterxml.jackson.* { *; }
 -dontwarn com.fasterxml.jackson.databind.**
 #//OkHttp
 -dontwarn com.squareup.**
@@ -157,12 +148,11 @@
 #//open mobile
 -dontwarn org.simalliance.openmobileapi.**
 #//pdf_ium_core
--dontwarn com.shockwave.pdfium.**
+#-dontwarn com.shockwave.pdfium.**
 
 
--keep class com.bm.main.** {*;}
--keep interface com.bm.main.** { *; }
--keep class com.shockwave.pdfium.** {*;}
+-keep class com.bm.main.fpl.*.* {*;}
+#-keep class com.shockwave.pdfium.** {*;}
 -keepattributes Exceptions, InnerClasses, Signature, Deprecated, SourceFile,LineNumberTable, *Annotation*, EnclosingMethod
 -dontwarn android.webkit.JavascriptInterface
 
@@ -184,10 +174,10 @@
 -keepclassmembers class * extends android.app.Activity {
  public void *(android.view.View);
 }
--keepclassmembers class * extends android.support.v7.app.AppCompatActivity {
+-keepclassmembers class * extends android.support.v7.app.* {
  public void *(android.view.View);
 }
--keepclassmembers class * extends android.support.v4.app.Fragment {
+-keepclassmembers class * extends android.support.v4.app.* {
  public void *(android.view.View);
 }
 -keepclassmembers enum * {
@@ -195,18 +185,19 @@
  public static ** valueOf(java.lang.String);
 }
 
--keep class * implements android.os.Parcelable {
- public static final android.os.Parcelable$Creator *;
+-keep class * implements android.os.Parcelable.* {
+*;
+# public static final android.os.Parcelable$Creator.*;
 }
 
 -keepclassmembers class **.R$* {
  public static <fields>;
 }
 
--keep public class net.sqlcipher.** {
+-keep public class net.sqlcipher.* {
  *;
 }
 
--keep public class net.sqlcipher.database.** {
+-keep public class net.sqlcipher.database.* {
  *;
 }

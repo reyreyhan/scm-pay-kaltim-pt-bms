@@ -13,6 +13,7 @@ import com.bm.main.pos.models.report.ReportRestModel
 import com.bm.main.pos.models.report.ReportTransaksi
 import com.bm.main.pos.models.supplier.Supplier
 import com.bm.main.pos.models.supplier.SupplierRestModel
+import org.threeten.bp.LocalDate
 
 
 interface TransactionContract {
@@ -24,14 +25,14 @@ interface TransactionContract {
         fun reloadData()
         fun openFilter(data: FilterDialogDate?)
         fun openSortDialog(title: String, list: List<DialogModel>, selected: DialogModel?, type: Int)
-
-
+        fun setDate(firstDate:String,lastDate:String)
     }
 
     interface Presenter : BasePresenterImpl<View> {
         fun onViewCreated()
         fun onDestroy()
         fun loadData()
+        fun setDate(date:CalendarDay?, date2:CalendarDay?)
         fun search(search:String)
         fun sort(data: DialogModel)
         fun sortByLast()

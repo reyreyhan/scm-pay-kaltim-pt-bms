@@ -35,7 +35,7 @@ class ReportLabaRugi : Serializable {
         val nama_barang: String? = ""
         val jumlah: String? = "0"
         val totalharga: String? = "0"
-        val hargajual: String? = "0"
+        val harga: String? = "0"
         val status: String? = "sukses"
 
         fun json(): String {

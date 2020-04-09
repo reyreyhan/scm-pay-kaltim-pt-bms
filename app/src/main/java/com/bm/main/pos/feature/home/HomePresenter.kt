@@ -34,39 +34,39 @@ class HomePresenter(val context: Context,
 
     val menus by lazy { mutableListOf(
         Menu().apply {
-            id = R.id.nav_sell
-            name = context.getString(R.string.menu_sell)
-            image = R.drawable.icon_home_manajemen
-        },
-//        Menu().apply {
-//            id = R.id.nav_qris
-//            name = context.getString(R.string.menu_qris)
-//            image = R.drawable.icon_home_qr
-//        },
-        Menu().apply {
-            id = R.id.nav_history
-            name = context.getString(R.string.menu_history)
-            image = R.drawable.icon_home_transaksi
+            id = 0
+            name = "Tambah Barang"
+            image = R.drawable.ic_tambah_barang
         },
         Menu().apply {
-            id = R.id.nav_report
-            name = context.getString(R.string.menu_report)
-            image = R.drawable.icon_home_laporan
+            id = 1
+            name = "Aktivitas"
+            image = R.drawable.ic_aktifitas
         },
         Menu().apply {
-            id = R.id.nav_management
-            name = context.getString(R.string.menu_management)
-            image = R.drawable.icon_home_penjualan
+            id = 2
+            name = "Laporan"
+            image = R.drawable.ic_laporan
         },
         Menu().apply {
-            id = R.id.nav_setting
-            name = context.getString(R.string.menu_setting)
-            image = R.drawable.icon_home_pengaturan
+            id = 3
+            name = "Data Produk"
+            image = R.drawable.ic_data_produk
         },
         Menu().apply {
-            id = R.id.nav_help
-            name = context.getString(R.string.menu_help)
-            image = R.drawable.icon_home_bantuan
+            id = 4
+            name = "Data Piutang"
+            image = R.drawable.ic_tambah_barang
+        },
+        Menu().apply {
+            id = 5
+            name = "Data Pelanggan"
+            image = R.drawable.ic_data_pelanggan
+        },
+        Menu().apply {
+            id = 6
+            name = "Tips Jitu Profit"
+            image = R.drawable.ic_tips_jitu_profit
         }
     ) }
 

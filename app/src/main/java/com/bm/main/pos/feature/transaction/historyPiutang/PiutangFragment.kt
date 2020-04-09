@@ -8,18 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.R
+import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.events.onReloadTransaction
+import com.bm.main.pos.feature.manage.hutangpiutang.lastPiutang.LastPiutangActivity
+import com.bm.main.pos.feature.manage.hutangpiutang.piutang.PiutangAdapter
+import com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity
+import com.bm.main.pos.feature.transaction.detail.old.DetailActivity
+import com.bm.main.pos.models.hutangpiutang.Piutang
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.feature.manage.hutangpiutang.piutang.PiutangAdapter
-import com.bm.main.pos.models.hutangpiutang.Piutang
-import com.bm.main.pos.feature.manage.hutangpiutang.lastPiutang.LastPiutangActivity
-import com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity
 import kotlinx.android.synthetic.main.fragment_history_piutang.view.*
-import com.bm.main.pos.feature.transaction.detail.DetailActivity
-
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 

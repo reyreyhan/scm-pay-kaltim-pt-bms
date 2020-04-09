@@ -2,57 +2,42 @@ package com.bm.main.pos.feature.manage.product.add
 
 import android.app.Activity
 import android.content.Context
-import com.google.gson.Gson
-import com.bm.main.pos.R
-import com.bm.main.pos.base.BasePresenter
-import com.bm.main.pos.models.category.CategoryRestModel
-import com.bm.main.pos.models.supplier.SupplierRestModel
-import com.bm.main.pos.utils.Helper
-import com.google.gson.reflect.TypeToken
+import android.os.Bundle
 import android.util.Log
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.constants.EventParam
+import com.bm.main.pos.R
+import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.callback.PermissionCallback
+import com.bm.main.pos.feature.manage.product.main.AddProductMainActivity
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.models.category.Category
+import com.bm.main.pos.models.category.CategoryRestModel
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.utils.ImageUtil
 import com.bm.main.pos.utils.PermissionUtil
-import com.google.android.gms.measurement.module.Analytics
-import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.gson.Gson
 import timber.log.Timber
-import java.io.File
-import kotlin.math.log
 
 class AddProductPresenter(val context: Context, val view: AddProductContract.View) :
     BasePresenter<AddProductContract.View>(),
     AddProductContract.Presenter,
     AddProductContract.InteractorOutput {
 
-    private var interactor = AddProductInteractor(this)
+    private var interactor =
+        AddProductInteractor(this)
     private var restModel = ProductRestModel(context)
     private var categoryRestModel = CategoryRestModel(context)
     private var categories: ArrayList<DialogModel> = ArrayList()
     private var category: DialogModel? = null
+    private var categoryId:String? = null
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
-    private lateinit var cameraPermission: PermissionCallback
     private lateinit var photoPermission: PermissionCallback
     private var photoPath: String? = null
     private var photoUrl: String = ""
 
-    override fun onViewCreated() {
-        cameraPermission = object : PermissionCallback {
-            override fun onSuccess() {
-                view.openScanPage()
-            }
-
-            override fun onFailed() {
-                view.showMessage(999, context.getString(R.string.reason_permission_camera))
-            }
-        }
-
+    override fun onViewCreated(bundle:Bundle) {
         photoPermission = object : PermissionCallback {
             override fun onSuccess() {
                 view.openImageChooser()
@@ -62,14 +47,25 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
                 view.showMessage(999, context.getString(R.string.reason_permission_camera))
             }
         }
+
+        if (bundle.getBoolean("FromScan")){
+            bundle.getString(AppConstant.DATA)?.let {
+                view.setBarcodeText(it)
+                searchByBarcode(it)
+            }
+        }else{
+            if (bundle.getSerializable(AppConstant.DATA) is Product) {
+                val product = bundle.getSerializable(AppConstant.DATA) as Product
+                categoryId = product.id_kategori
+                view.setProduct(product)
+            }else{
+                view.hideBarcode()
+            }
+        }
     }
 
     override fun onDestroy() {
         interactor.onDestroy()
-    }
-
-    override fun onCheckScan() {
-        permissionUtil.checkCameraPermission(cameraPermission)
     }
 
     override fun onCheckPhoto() {
@@ -98,8 +94,9 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             return
         }
 
-        if (category == null) {
-            category = DialogModel()
+        if (categoryId == null) {
+            view.showMessage(999, "Kategori tidak boleh kosong")
+            return
         }
 
         if (buy.isBlank() || buy.isEmpty() || "0" == buy) {
@@ -121,7 +118,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             name,
             EventParam.EVENT_ACTION_ADD_PRODUCT,
             EventParam.EVENT_ACTION_ADD_PRODUCT,
-            AddProductActivity::class.java.getSimpleName()
+            AddProductMainActivity::class.java.simpleName
         )
         Timber.e("add product, $name -- $barcode -- $sell -- $buy -- $stok -- $photoPath -- $desc -- $photoUrl")
         interactor.callAddProductAPI(
@@ -129,7 +126,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             restModel,
             name,
             barcode,
-            category?.id!!,
+            categoryId!!,
             sell,
             buy,
             stok,
@@ -140,8 +137,8 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
         )
     }
 
-    override fun onSuccessAddProduct(msg: String?) {
-        view.onClose(msg, Activity.RESULT_OK)
+    override fun onSuccessAddProduct(msg: String?, barcode: String?) {
+        view.onClose(msg, Activity.RESULT_OK, barcode)
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
@@ -169,32 +166,28 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             categories.add(model)
         }
         Log.d("categories", Gson().toJson(categories))
-        view.openCategories("Pilih Kategori", categories!!, category)
+        view.openCategories("Pilih Kategori", categories, category)
     }
 
-    override fun setSelectedCategory(data: DialogModel) {
-        category = data
-        view.setCategoryName(data.value!!)
-    }
-
-    override fun searchByBarcode(search: String) {
-        interactor.callSearchByBarcodeAPI(context, restModel, search)
-    }
-
-    override fun onSuccessByBarcode(list: List<Product>) {
-        view.hideLoadingDialog()
+    override fun onSuccessByBarcode(list: List<Product>){
         if (list.isNotEmpty()) {
             val data =
                 list.firstOrNull { it.nama_barang.isNotEmpty() && it.gbr.isNotEmpty() && it.hargajual.isNotEmpty() && it.hargabeli.isNotEmpty() }
                     ?: list.first()
 //            Log.d("addProductPresenter ",list[0].toString())
 //            Log.d("addProductPresenter ",data.)
-
-            view.openEditPage(data)
+            categoryId = data.id_kategori
+            view.setProduct(data)
         }
     }
 
-    override fun onFailedByBarcode(code: Int, msg: String) {
-        view.hideLoadingDialog()
+    override fun setSelectedCategory(data: DialogModel) {
+        category = data
+        categoryId = data.id
+        view.setCategoryName(data.value!!)
+    }
+
+    override fun searchByBarcode(search: String) {
+        interactor.callSearchByBarcodeAPI(context, restModel, search)
     }
 }

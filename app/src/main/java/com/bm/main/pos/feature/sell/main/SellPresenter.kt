@@ -1,16 +1,12 @@
 package com.bm.main.pos.feature.sell.main
 
 import android.content.Context
-import android.util.Log
 import android.view.View
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.constants.EventParam
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.pos.R
 import com.bm.main.pos.base.BasePresenter
 import com.bm.main.pos.callback.PermissionCallback
-import com.bm.main.pos.models.DialogModel
-import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.product.Product
@@ -20,7 +16,7 @@ import com.bm.main.pos.models.transaction.RequestTransaction
 import com.bm.main.pos.models.transaction.TransactionRestModel
 import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.utils.PermissionUtil
-import com.google.firebase.analytics.FirebaseAnalytics
+import com.prolificinteractive.materialcalendarview.CalendarDay
 
 class SellPresenter(val context: Context, val view: SellContract.View) : BasePresenter<SellContract.View>(),
     SellContract.Presenter, SellContract.InteractorOutput {
@@ -42,7 +38,8 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             "Penjualan Profit",
             EventParam.EVENT_ACTION_VISIT,
             EventParam.EVENT_SUCCESS,
-            SellFragment::class.java.getSimpleName())
+            SellFragment::class.java.simpleName
+        )
         cameraPermission = object : PermissionCallback{
             override fun onSuccess() {
                 view.openScanPage()
@@ -88,12 +85,15 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         }
     }
 
-    override fun checkCart(data: Product) {
+    override fun checkCart(data: Product, barcode:String?) {
         if(data.posisi == true){
             addCart(data)
+            view.hideContainerFragment()
         }
         else{
-            view.openEditManual(data)
+            view.showTambahBarangDialog(barcode!!)
+            //view.openAddManual(tempBarcode!!)
+            tempBarcode = ""
         }
     }
 
@@ -120,7 +120,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             return
         }
         val cart = carts[id]!!
-        val stok = cart.product!!.stok!!.toDouble()
+        val stok = cart.product!!.stok.toDouble()
         val count = cart.count!!.minus(1)
         if(count < 0){
             return
@@ -130,7 +130,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             return
         }
         cart.count = count
-        carts[id!!] = cart
+        carts[id] = cart
         view.updateCart(cart,position)
         countCart()
     }
@@ -151,9 +151,14 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         countCart()
     }
 
+    override fun clearCart(){
+        carts.clear()
+        countCart()
+    }
+
     override fun countCart() {
         if(carts.size == 0){
-            view.setCartText("0","Rp 0")
+            view.setCartText("0","0")
             view.showErrorView("Keranjang belanja kosong")
             return
         }
@@ -169,10 +174,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         }
 
         if(count > 99){
-            view.setCartText(">99","Rp ${Helper.convertToCurrency(total)}")
+            view.setCartText(">99", Helper.convertToCurrency(total))
         }
         else{
-            view.setCartText(Helper.convertToCurrency(count),"Rp ${Helper.convertToCurrency(total)}")
+            view.setCartText(Helper.convertToCurrency(count), Helper.convertToCurrency(total))
         }
         view.showContentView()
         countCashback()
@@ -182,13 +187,12 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         val pay = view.getPayValue()
         val total = view.getTotalValue()
         if(pay == 0.0 || total == 0.0){
-            view.hideShowCashback(View.GONE)
+            view.hideShowCashback(View.INVISIBLE)
             //view.enableBtnBuy(false)
             return
         }
         val cashback = total - pay
         view.setCashback(cashback)
-
     }
 
     override fun onCheckScan() {
@@ -197,27 +201,24 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     override fun searchByBarcode(search:String) {
         tempBarcode = search
-        interactor.callSearchByBarcodeAPI(context,productRestModel,search)
+        interactor.callSearchByBarcodeAPI(context, productRestModel,search)
     }
 
     override fun onSuccessByBarcode(list: List<Product>) {
         view.hideLoadingDialog()
         if(list.isNotEmpty()){
             val product = list[0]
-            checkCart(product)
-        }
-        else{
-            view.openAddManual(tempBarcode!!)
+            checkCart(product, tempBarcode!!)
             tempBarcode = ""
         }
-
-
+        view.setDeselectButtonSearch()
     }
 
     override fun onFailedBarcode(code: Int, msg: String) {
         if("tidak ada data" == msg){
             view.hideLoadingDialog()
-            view.openAddManual(tempBarcode!!)
+            view.showTambahBarangDialog(tempBarcode!!)
+            //view.openAddManual(tempBarcode!!)
             tempBarcode = ""
         }
         else{
@@ -235,8 +236,14 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     }
 
     override fun updateCustomer(data: Customer?) {
-        customer = data
-        view.setCustomerName(data)
+        if (data==null){
+            if (customer != null){
+                view.setCustomerName(customer)
+            }
+        }else{
+            customer = data
+            view.setCustomerName(data)
+        }
     }
 
     override fun setSelectedDate(date: CalendarDay?) {
@@ -249,10 +256,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     override fun checkTunai() {
         var pay = view.getPayValue()
-
         if(pay == 0.0){
-//            view.showMessage(999,"Uang yang diterima tidak boleh kosong")
-//            return
             pay = view.getTotalValue()
         }
         val total = view.getTotalValue()
@@ -261,7 +265,6 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             view.showMessage(999,"Kurang bayar Rp ${Helper.convertToCurrency(cashback)}")
             return
         }
-
         val req = RequestTransaction()
         req.tipe_pembayaran = 1
         req.jumlah_pembayaran = pay.toInt()
@@ -273,9 +276,31 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
 
             EventParam.EVENT_ACTION_SELL_PRODUCT,
-            SellFragment::class.java!!.getSimpleName())
+            SellFragment::class.java.simpleName
+        )
         interactor.callOrderAPI(context,transactionRestModel,req)
+    }
 
+    override fun checkNonTunai() {
+        var pay = view.getPayValue()
+        if(pay == 0.0){
+            pay = view.getTotalValue()
+        }
+        val total = view.getTotalValue()
+        val req = RequestTransaction()
+        req.tipe_pembayaran = 2
+        req.jumlah_pembayaran = pay.toInt()
+        req.total_order = total.toInt()
+        req.barang = getBarang()
+        (context as BaseActivity).logEventFireBase(
+            "Penjualan",
+            "NonTunai",
+            EventParam.EVENT_ACTION_SELL_PRODUCT,
+
+            EventParam.EVENT_ACTION_SELL_PRODUCT,
+            SellFragment::class.java.simpleName
+        )
+        interactor.callOrderAPI(context,transactionRestModel,req)
     }
 
     override fun checkPiutang() {
@@ -283,10 +308,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             view.showMessage(999,"Data pelanggan belum diisi")
             return
         }
-        if(date == null){
-            view.showMessage(999,"Jatuh tempo belum diisi")
-            return
-        }
+//        if(date == null){
+//            view.showMessage(999,"Jatuh tempo belum diisi")
+//            return
+//        }
         val total = view.getTotalValue()
         val req = RequestTransaction()
         req.tipe_pembayaran = 3
@@ -300,7 +325,8 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
 
             EventParam.EVENT_ACTION_SELL_PRODUCT,
-            SellFragment::class.java!!.getSimpleName())
+            SellFragment::class.java.simpleName
+        )
         interactor.callOrderAPI(context,transactionRestModel,req)
     }
 
@@ -319,6 +345,28 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         return list
     }
 
+    fun calculateCashBack():String{
+        val value = view.getTotalValue() - view.getPayValue()
+        when {
+            value < 0.0  -> {
+                val ret = -1 * value
+                return "Rp ${Helper.convertToCurrency(ret)}"
+            }
+            else -> {
+                return "Rp ${Helper.convertToCurrency(value)}"
+            }
+        }
+        return ""
+    }
+
+    fun countAllBarang():Int{
+        var count = 0.0
+        for(cart:Cart in carts.values){
+            count += cart.count!!
+        }
+        return count.toInt()
+    }
+
     override fun onSuccessOrder(order: Order) {
         view.hideLoadingDialog()
         if(order.invoice == null){
@@ -330,6 +378,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     override fun getCartsSize():Int {
         return carts.size
+    }
+
+    override fun getCustomerName():String {
+        return customer!!.nama_pelanggan!!
     }
 
 }

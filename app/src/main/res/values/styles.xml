@@ -38,11 +38,10 @@
 
     <!--    <style name="ReverseAppTheme" parent="Theme.MaterialComponents.Light">-->
     <!--    <style name="ReverseAppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">-->
-    <style name="ReverseAppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
+    <style name="ReverseAppTheme" parent="Theme.MaterialComponents.Light.Bridge">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/white_gray</item>
         <item name="colorAccent">@color/colorAccent</item>
-
         <item name="android:actionBarStyle">@style/actionBarStyle</item>
         <item name="actionBarStyle">@style/actionBarStyle</item>
     </style>
@@ -50,10 +49,12 @@
     <style name="actionBarStyle" parent="Widget.AppCompat.Light.ActionBar">
         <item name="android:titleTextStyle">@style/TitleBarTextColor</item>
         <item name="titleTextStyle">@style/TitleBarTextColor</item>
+        <item name="background">@color/colorAccent</item>
+        <item name="android:background">@color/colorAccent</item>
     </style>
 
     <style name="TitleBarTextColor" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="ReverseAppTheme.NoActionBar">
@@ -445,6 +446,15 @@
         <item name="android:background">@drawable/alert_dialog_edge</item>
     </style>
 
+    <style name="AlertDialogNoInternet" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarNeutralButtonStyle">@style/neutral</item>
+    </style>
+
+    <style name="neutral">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="MSNavBarButton" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:textSize">@dimen/ms_navigation_button_text_size</item>
         <item name="android:layout_width">wrap_content</item>
@@ -653,5 +663,38 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="ButtonWhiteTextAccent" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="ButtonWhiteTextPrimary" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/white</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="DialogTheme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/rounded_white_8dp_shadow</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#f00</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primaryText</item>
     </style>
 </resources>

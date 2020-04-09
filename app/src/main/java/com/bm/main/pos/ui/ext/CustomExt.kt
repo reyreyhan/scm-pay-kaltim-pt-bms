@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bm.main.pos.R
 import com.bm.main.pos.callback.DialogCallback
 import com.bm.main.pos.utils.MyTagHandler
 import com.bm.main.pos.ui.ext.setColorFilter
@@ -53,7 +54,7 @@ fun AppCompatActivity.alert(context: Context, msg: String) {
 }
 
 fun Fragment.successDialog(msg: String, callback: DialogCallback) {
-    val builder = AlertDialog.Builder(activity!!)
+    val builder = AlertDialog.Builder(activity!!, R.style.AlertDialogTheme)
     builder.setTitle("Berhasil")
     builder.setMessage(msg)
     builder.setCancelable(false)
@@ -65,7 +66,7 @@ fun Fragment.successDialog(msg: String, callback: DialogCallback) {
 }
 
 fun AppCompatActivity.successDialog(context: Context, msg: String, callback: DialogCallback) {
-    val builder = AlertDialog.Builder(context)
+    val builder = AlertDialog.Builder(context, R.style.AlertDialogTheme)
     builder.setTitle("Berhasil")
     builder.setMessage(msg)
     builder.setCancelable(false)

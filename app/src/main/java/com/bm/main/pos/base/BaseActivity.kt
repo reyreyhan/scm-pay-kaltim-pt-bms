@@ -8,6 +8,7 @@ import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.R
 import com.bm.main.pos.SBFApplication
 import com.bm.main.pos.feature.drawer.DrawerActivity
+import com.bm.main.pos.feature.newhome.NewHomeActivity
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.DialogUtils
@@ -84,7 +85,7 @@ abstract class BaseActivity<P : BasePresenter<V>, V : BaseViewImpl> : com.bm.mai
     }
 
     fun restartMainActivity() {
-        val intent = Intent(this, DrawerActivity::class.java)
+        val intent = Intent(this, NewHomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
@@ -100,14 +101,14 @@ abstract class BaseActivity<P : BasePresenter<V>, V : BaseViewImpl> : com.bm.mai
     }
 
     fun restartMainActivity(menu: Int) {
-        val intent = Intent(this, DrawerActivity::class.java)
+        val intent = Intent(this, NewHomeActivity::class.java)
         intent.putExtra(AppConstant.DATA, menu)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
 
     fun restartMainActivity(menu: Int, position: Int) {
-        val intent = Intent(this, DrawerActivity::class.java)
+        val intent = Intent(this, NewHomeActivity::class.java)
         intent.putExtra(AppConstant.DATA, menu)
         intent.putExtra(AppConstant.POSITION, position)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

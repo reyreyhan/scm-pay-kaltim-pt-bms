@@ -1089,7 +1089,7 @@ public class StringJson {
     public String requestRegister(String no_Hape, String nama, String nama_toko, String alamat, String prop_code, String city_code, String kec_code, String email, String kode_pos, String type_loket, String upline) {
         return "{"
                 + "\"msg_type\" : \"admin\","
-                + "\"processing_code\" : \"register_pos_new\","
+                + "\"processing_code\" : \"register_pos\","
 
                 + "\"includes\" : {"
                 + "\"up_line\" : \"" + upline + "\","

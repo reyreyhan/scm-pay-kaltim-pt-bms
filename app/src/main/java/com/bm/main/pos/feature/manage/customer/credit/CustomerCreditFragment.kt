@@ -1,5 +1,6 @@
 package com.bm.main.pos.feature.manage.customer.credit
 
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.R
+import com.bm.main.pos.base.BaseFragment
 import com.bm.main.pos.events.onReloadTransaction
+import com.bm.main.pos.feature.transaction.detail.old.DetailActivity
 import com.bm.main.pos.models.customer.Customer
 import com.bm.main.pos.models.transaction.Transaction
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.feature.transaction.detail.DetailActivity
-
-
 import kotlinx.android.synthetic.main.fragment_customer_credit.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -133,7 +132,8 @@ class CustomerCreditFragment : BaseFragment<CustomerCreditPresenter, CustomerCre
     }
 
     override fun openDetail(id: String) {
-        val intent = Intent(activity,DetailActivity::class.java)
+        val intent = Intent(activity,
+            DetailActivity::class.java)
         intent.putExtra(AppConstant.DATA,id)
         startActivity(intent)
     }

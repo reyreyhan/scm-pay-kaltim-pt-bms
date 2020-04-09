@@ -30,6 +30,7 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
     private var photoPath: String? = null
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var photoPermission: PermissionCallback
+    private var customerId = ""
 
 
     override fun onViewCreated(intent: Intent) {
@@ -50,10 +51,11 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
 
         data?.let {
             view.setCustomer(it.nama_pelanggan, it.email, it.telpon, it.alamat, it.gbr)
+            customerId = it.id_pelanggan!!
         }
     }
 
-    override fun onCheck(name: String, email: String, phone: String, address: String) {
+    override fun onCheck(name: String, email: String, phone: String) {
         if (name.isNullOrBlank() || name.isNullOrEmpty()) {
             view.showMessage(999, context.getString(R.string.err_empty_name))
             return
@@ -76,19 +78,19 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
             return
         }
 
-        if (address.isNullOrBlank() || address.isNullOrEmpty()) {
-            view.showMessage(999, context.getString(R.string.err_empty_address))
-            return
-        }
+//        if (address.isNullOrBlank() || address.isNullOrEmpty()) {
+//            view.showMessage(999, context.getString(R.string.err_empty_address))
+//            return
+//        }
 
         newdata = Customer()
         newdata?.id_pelanggan = data?.id_pelanggan
         newdata?.nama_pelanggan = name
         newdata?.email = email
         newdata?.telpon = phone
-        newdata?.alamat = address
-        newdata?.gbr = photoPath
-        interactor.callEditCustomerAPI(context, restModel, data?.id_pelanggan!!, name, email, phone, address, photoPath)
+//        newdata?.alamat = address
+//        newdata?.gbr = photoPath
+        interactor.callEditCustomerAPI(context, restModel, data?.id_pelanggan!!, name, email, phone)
     }
 
     override fun onDestroy() {
@@ -99,12 +101,20 @@ class EditCustomerPresenter(val context: Context, val view: EditCustomerContract
         view.onClose(msg, Activity.RESULT_OK, newdata)
     }
 
+    override fun onSuccessDeleteCustomer(msg: String?) {
+        view.onCloseDelete(msg, Activity.RESULT_OK)
+    }
+
     override fun onFailedEditCustomer(code: Int, msg: String) {
         view.showMessage(code, msg)
     }
 
     override fun onCheckPhoto() {
         permissionUtil.checkCameraPermission(photoPermission)
+    }
+
+    override fun deleteCustomer() {
+        interactor.callDeleteCustomerAPI(context, restModel, customerId)
     }
 
     override fun setImagePhotoPath(path: String?) {

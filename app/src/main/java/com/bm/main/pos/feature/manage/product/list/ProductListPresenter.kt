@@ -7,7 +7,6 @@ import com.bm.main.pos.callback.PermissionCallback
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.models.product.ProductRestModel
 import com.bm.main.pos.utils.PermissionUtil
-import kotlin.collections.ArrayList
 
 class ProductListPresenter(val context: Context, val view: ProductListContract.View) : BasePresenter<ProductListContract.View>(),
     ProductListContract.Presenter, ProductListContract.InteractorOutput {
@@ -17,6 +16,15 @@ class ProductListPresenter(val context: Context, val view: ProductListContract.V
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var cameraPermission: PermissionCallback
     private var sort = false
+    private var offset = 0
+
+    fun setOffset(offset:Int){
+        this.offset = offset
+    }
+
+    fun getOffset():Int{
+        return offset
+    }
 
     override fun onViewCreated() {
         cameraPermission = object : PermissionCallback{
@@ -28,7 +36,6 @@ class ProductListPresenter(val context: Context, val view: ProductListContract.V
                 view.showErrorMessage(999,context.getString(R.string.reason_permission_camera))
             }
         }
-        loadProducts()
     }
     override fun onCheckScan() {
         permissionUtil.checkCameraPermission(cameraPermission)
@@ -46,10 +53,21 @@ class ProductListPresenter(val context: Context, val view: ProductListContract.V
     override fun searchProduct(search: String) {
         interactor.onRestartDisposable()
         if(search.isNullOrEmpty() || search.isNullOrBlank()){
-            interactor.callGetProductsAPI(context,restModel)
+            loadProducts()
         }
         else{
-            interactor.callSearchProductAPI(context,restModel,search)
+            interactor.callSearchProductAPI(context, restModel, search)
+        }
+    }
+
+    override fun searchProductMaster(search: String, offset:Int) {
+        interactor.onRestartDisposable()
+        if(search.isNullOrEmpty() || search.isNullOrBlank()){
+            this.offset = 0
+            interactor.callSearchProductByNameAPI(context, restModel,"", 20, offset)
+        }
+        else{
+            interactor.callSearchProductByNameAPI(context, restModel, search, 20, offset)
         }
     }
 

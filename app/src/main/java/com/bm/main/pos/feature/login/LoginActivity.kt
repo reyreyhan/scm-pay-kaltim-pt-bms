@@ -34,7 +34,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
     }
 
     private fun renderView(){
-        et_email.addTextChangedListener(object :TextWatcher{
+        et_no_hp.addTextChangedListener(object :TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
 
             }
@@ -60,13 +60,13 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val mail = et_email.text.toString()
+                val mail = et_no_hp.text.toString()
                 val pwd = p0.toString()
                 getPresenter()?.onBtnLoginCheck(mail,pwd)
             }
         })
 
-        btn_password.setOnCheckedChangeListener { view, isChecked ->
+        btn_show_password.setOnCheckedChangeListener {view, isChecked ->
             if(isChecked){
                 et_password.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
@@ -76,7 +76,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
         }
 
         btn_login.setOnClickListener {
-            val mail = et_email.text.toString()
+            val mail = et_no_hp.text.toString()
             val pwd = et_password.text.toString()
             getPresenter()?.onLogin(mail,pwd)
         }
@@ -92,7 +92,6 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
 
     override fun openRegisterPage() {
         startActivity(Intent(this, RegisterActivity::class.java))
-
     }
 
     override fun onDestroy() {

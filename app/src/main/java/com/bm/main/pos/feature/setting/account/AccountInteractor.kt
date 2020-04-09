@@ -2,13 +2,13 @@ package com.bm.main.pos.feature.setting.account
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
-import com.google.gson.Gson
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.user.User
 import com.bm.main.pos.models.user.UserRestModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppConstant
 import com.bm.main.pos.utils.AppSession
+import com.google.gson.Gson
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
@@ -29,7 +29,6 @@ class AccountInteractor(var output: AccountContract.InteractorOutput?) : Account
 
     override fun loadProfile(context: Context): User? {
         val json = appSession.getSharedPreferenceString(context,AppConstant.USER) ?: return null
-
         return Gson().fromJson(json,User::class.java)
     }
 

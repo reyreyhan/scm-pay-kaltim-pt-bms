@@ -1,8 +1,6 @@
 package com.bm.main.pos.models.customer
 
-import com.google.gson.JsonObject
 import com.bm.main.pos.models.Message
-import com.bm.main.pos.rest.entity.ResponseEntity
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -57,6 +55,5 @@ interface CustomerRestInterface {
         @Field("nama_pelanggan") nama: String,
         @Field("email") email: String,
         @Field("telpon") telpon: String,
-        @Field("alamat") alamat: String): Observable<List<Customer>>
-
+        @Field("alamat") alamat: String): Observable<Customer>
 }

@@ -20,7 +20,7 @@ import com.bm.main.fpl.interfaces.ProgressListener;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.pos.BuildConfig;
-import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
+//import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
 
 import org.json.JSONObject;
 
@@ -88,9 +88,9 @@ public class RequestUtilsTravel
                                     writeTimeout(1,TimeUnit.MINUTES).
                                     retryOnConnectionFailure(true);
 
-                    if (BuildConfig.DEBUG) {
-                        builder.addInterceptor(new OkHttpProfilerInterceptor());
-                    }
+//                    if (BuildConfig.DEBUG) {
+//                        builder.addInterceptor(new OkHttpProfilerInterceptor());
+//                    }
                     client = builder.build();
                     client.newCall(request).enqueue(new JsonObjectResponseHandler(context, callback, actionCode));
                 }
@@ -135,9 +135,9 @@ public class RequestUtilsTravel
                                     readTimeout(5,TimeUnit.MINUTES).
                                     writeTimeout(5,TimeUnit.MINUTES).
                                     retryOnConnectionFailure(false);
-                    if (BuildConfig.DEBUG) {
-                        builder.addInterceptor(new OkHttpProfilerInterceptor());
-                    }
+//                    if (BuildConfig.DEBUG) {
+//                        builder.addInterceptor(new OkHttpProfilerInterceptor());
+//                    }
                        client = builder.build();
                     client.newCall(request).enqueue(new JsonObjectResponsePaymentHandler(context, callback, actionCode));
                 }
@@ -222,9 +222,9 @@ public class RequestUtilsTravel
                                 retryOnConnectionFailure(true);
 
 //        client.newCall(request).enqueue(callback);
-        if (BuildConfig.DEBUG) {
-            builder.addInterceptor(new OkHttpProfilerInterceptor());
-        }
+//        if (BuildConfig.DEBUG) {
+//            builder.addInterceptor(new OkHttpProfilerInterceptor());
+//        }
          client = builder.build();
                 client.newCall(request).enqueue(new ProgressResponseHandler(context, callback, actionCode));
 
@@ -284,9 +284,9 @@ public class RequestUtilsTravel
                         retryOnConnectionFailure(false);
 
 //        client.newCall(request).enqueue(callback);
-        if (BuildConfig.DEBUG) {
-            builder.addInterceptor(new OkHttpProfilerInterceptor());
-        }
+//        if (BuildConfig.DEBUG) {
+//            builder.addInterceptor(new OkHttpProfilerInterceptor());
+//        }
          client = builder.build();
         client.newCall(request).enqueue(new ProgressResponseHandler(context, callback, actionCode));
 
@@ -321,9 +321,9 @@ public class RequestUtilsTravel
                 .writeTimeout(1, TimeUnit.MINUTES)
                 .retryOnConnectionFailure(true);
 
-        if (BuildConfig.DEBUG) {
-            builder.addInterceptor(new OkHttpProfilerInterceptor());
-        }
+//        if (BuildConfig.DEBUG) {
+//            builder.addInterceptor(new OkHttpProfilerInterceptor());
+//        }
          client = builder.build();
         client.newCall(request).enqueue(new BodyObjectResponseHandler(context, callback, actionCode));
     }

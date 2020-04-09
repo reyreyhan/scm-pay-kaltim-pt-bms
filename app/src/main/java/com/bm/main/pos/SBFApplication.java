@@ -5,6 +5,7 @@ import android.app.Application;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,10 +19,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
 import com.bm.main.fpl.constants.Info;
 import com.bm.main.fpl.utils.PreferenceClass;
+import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.pos.callback.BluetoothCallback;
 import com.bm.main.pos.callback.PermissionCallback;
 import com.bm.main.pos.di.AppComponent;
@@ -53,7 +56,6 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.QueueingConsumer;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -89,16 +91,18 @@ public class SBFApplication extends MultiDexApplication implements Application.A
     public void onCreate() {
 
         super.onCreate();
+        Timber.plant(new Timber.DebugTree());
         instance = this;
 
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        }
+//        if (BuildConfig.DEBUG) {
+//            Timber.plant(new Timber.DebugTree());
+//        }
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        AndroidThreeTen.init(this);
+//        AndroidThreeTen.init(this);
         PreferenceClass.initialize();
         MemoryStore.initialize();
+RequestUtils.initialize();
         sAnalytics = GoogleAnalytics.getInstance(this);
         sAnalytics.setLocalDispatchPeriod(1800);
 
@@ -123,7 +127,7 @@ public class SBFApplication extends MultiDexApplication implements Application.A
             ProviderInstaller.installIfNeeded(this);
         } catch (GooglePlayServicesRepairableException e) {
             Timber.e(e);
-            Toast.makeText(this, "Layanan Google Play dapat diperbaiki", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Layanan Google Play tidak dapat diperbaiki", Toast.LENGTH_LONG).show();
         } catch (GooglePlayServicesNotAvailableException e) {
             Timber.e(e);
             Toast.makeText(this, "Google Play Services Tidak Tersedia", Toast.LENGTH_LONG).show();
@@ -131,7 +135,7 @@ public class SBFApplication extends MultiDexApplication implements Application.A
 
         Timber.d("onCreate: %s", sTracker.get("referrer"));
 
-        getAppComponent();
+     //   getAppComponent();
         Resources res = this.getResources();
         config = res.getConfiguration();
         displayMetrics = res.getDisplayMetrics();
@@ -226,7 +230,11 @@ public class SBFApplication extends MultiDexApplication implements Application.A
         onConfigurationChanged(config);
 
     }
-
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
     @Override
     public void onActivityCreated(@NotNull Activity activity, Bundle savedInstanceState) {
     }

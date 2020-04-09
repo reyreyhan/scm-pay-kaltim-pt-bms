@@ -2,12 +2,8 @@ package com.bm.main.pos.feature.manage.hutangpiutang.piutangCustomer
 
 import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
-import com.bm.main.pos.models.Message
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.hutangpiutang.Hutang
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
-import com.bm.main.pos.models.supplier.Supplier
-import com.bm.main.pos.models.supplier.SupplierRestModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.utils.AppSession
 import io.reactivex.annotations.NonNull
@@ -31,9 +27,9 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
 
     override fun callGetHutangAPI(context: Context, restModel: HutangPiutangRestModel) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.getListPiutangCustomer(key!!).subscribeWith(object : DisposableObserver<List<Customer>>() {
+        disposable.add(restModel.getListPiutangCustomer(key!!).subscribeWith(object : DisposableObserver<List<CustomerNew>>() {
 
-            override fun onNext(@NonNull response: List<Customer>) {
+            override fun onNext(@NonNull response: List<CustomerNew>) {
                 output?.onSuccessGetHutang(response)
             }
 
@@ -59,9 +55,9 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
 
     override fun callSearchHutangAPI(context: Context, restModel: HutangPiutangRestModel, search: String) {
         val key = PreferenceClass.getTokenPos()
-        disposable.add(restModel.getSearchPiutangCustomer(key!!,search).subscribeWith(object : DisposableObserver<List<Customer>>() {
+        disposable.add(restModel.getSearchPiutangCustomer(key!!,search).subscribeWith(object : DisposableObserver<List<CustomerNew>>() {
 
-            override fun onNext(@NonNull response: List<Customer>) {
+            override fun onNext(@NonNull response: List<CustomerNew>) {
                 output?.onSuccessGetHutang(response)
             }
 
@@ -84,7 +80,4 @@ class PiutangCustomerInteractor(var output: PiutangCustomerContract.InteractorOu
             }
         }))
     }
-
-
-
 }

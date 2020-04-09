@@ -57,10 +57,6 @@ class SingleDateDialog : BottomSheetDialogFragment() {
             }
             edit.commit()
         }
-
-
-
-
         calendarView.setOnDateChangedListener { widget, date, selected ->
             if(selected){
                 Log.d("onDateSelected", date.date.toString())

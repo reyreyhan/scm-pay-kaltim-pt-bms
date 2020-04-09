@@ -42,8 +42,6 @@
                 android:paddingLeft="-10dp"
                 android:paddingRight="-10dp"
                 android:paddingStart="-10dp"
-
-
                 android:queryHint="@string/hint_pilih_propinsi" />
 
             <View

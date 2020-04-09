@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import com.bm.main.fpl.templates.choosephotohelper.ChoosePhotoHelper
 import com.bm.main.fpl.templates.choosephotohelper.callback.ChoosePhotoCallback
 import com.bm.main.pos.R
@@ -22,27 +21,12 @@ import com.bm.main.pos.ui.NumberTextWatcher
 import com.bm.main.pos.ui.ext.successDialog
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
-import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.utils.ImageCompression
 import com.bm.main.pos.utils.ImageUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import kotlinx.android.synthetic.main.activity_edit_product.*
-import kotlinx.android.synthetic.main.activity_edit_product.btn_camera
-import kotlinx.android.synthetic.main.activity_edit_product.btn_save
-import kotlinx.android.synthetic.main.activity_edit_product.btn_scan
-import kotlinx.android.synthetic.main.activity_edit_product.btn_upload
-import kotlinx.android.synthetic.main.activity_edit_product.et_barcode
-import kotlinx.android.synthetic.main.activity_edit_product.et_buy
-import kotlinx.android.synthetic.main.activity_edit_product.et_category
-import kotlinx.android.synthetic.main.activity_edit_product.et_desc
-import kotlinx.android.synthetic.main.activity_edit_product.et_minstock
-import kotlinx.android.synthetic.main.activity_edit_product.et_name
-import kotlinx.android.synthetic.main.activity_edit_product.et_sell
-import kotlinx.android.synthetic.main.activity_edit_product.et_stok
-import kotlinx.android.synthetic.main.activity_edit_product.iv_camera
-import kotlinx.android.synthetic.main.activity_edit_product.iv_photo
+import kotlinx.android.synthetic.main.activity_edit_product_new.*
 import java.io.File
 
 class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContract.View>(),
@@ -61,7 +45,7 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
     }
 
     override fun createLayout(): Int {
-        return R.layout.activity_edit_product
+        return R.layout.activity_edit_product_new
     }
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
@@ -70,38 +54,42 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
     }
 
     private fun renderView() {
-        btn_save.setOnClickListener {
+        expandTambahKeterangan()
+        btn_tambah.setOnClickListener {
             showLoadingDialog()
-            val name = et_name.text.toString().trim()
-            val buy = et_buy.text.toString().trim()
-            val sell = et_sell.text.toString().trim()
-            val stok = et_stok.text.toString().trim()
-            val minstok = et_minstock.text.toString().trim()
-            val desc = et_desc.text.toString().trim()
-            val barcode = et_barcode.text.toString().trim()
-            getPresenter()?.onCheck(name, buy, sell, stok, minstok, desc, barcode)
+            val name = et_name_product.editableText.toString().trim()
+            val buy = et_harga_beli.editableText.toString().trim()
+            val sell = et_harga_jual.editableText.toString().trim()
+            val stok = et_stok_barang.editableText.toString().trim()
+            val desc = et_catatan_produk.editableText.toString().trim()
+            val barcode = tv_barcode.text.toString().trim()
+            getPresenter()?.onCheck(name, buy, sell, stok, "0", desc, barcode)
         }
 
-        btn_scan.setOnClickListener {
-            getPresenter()?.onCheckScan()
-        }
-
-        btn_camera.setOnClickListener {
+        iv_tambah_foto.setOnClickListener {
             getPresenter()?.onCheckPhoto()
         }
 
-        btn_upload.setOnClickListener {
+        iv_foto.setOnClickListener {
             getPresenter()?.onCheckPhoto()
         }
 
-        et_category.setOnClickListener {
+        et_product_category.setOnClickListener {
             showLoadingDialog()
             getPresenter()?.onCheckCategory(false)
         }
 
-        et_sell.addTextChangedListener(NumberTextWatcher(et_sell))
-        et_buy.addTextChangedListener(NumberTextWatcher(et_buy))
-        et_stok.addTextChangedListener(NumberTextWatcher(et_stok))
+        tv_tambah_keterangan.setOnClickListener {
+            expandTambahKeterangan()
+        }
+
+        iv_arrow.setOnClickListener {
+            expandTambahKeterangan()
+        }
+
+        et_harga_jual.addTextChangedListener(NumberTextWatcher(et_harga_jual))
+        et_harga_beli.addTextChangedListener(NumberTextWatcher(et_harga_beli))
+        et_stok_barang.addTextChangedListener(NumberTextWatcher(et_stok_barang))
 
         choosePhotoHelper = ChoosePhotoHelper.with(this)
             .asFilePath()
@@ -109,7 +97,7 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
                 if (photo.isNullOrEmpty() || photo.isNullOrBlank()) {
                     getPresenter()?.setImagePhotoPath(null)
                     loadPhoto("")
-                    iv_camera.visibility = View.VISIBLE
+                    iv_foto.visibility = View.VISIBLE
                 } else {
                     val imageUtil = @SuppressLint("StaticFieldLeak")
                     object : ImageCompression(this@EditProductActivity) {
@@ -122,11 +110,11 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
                                 Log.d(tag, "choosePhotoHelper compressed size " + compressedSize)
                                 getPresenter()?.setImagePhotoPath(imagePath)
                                 loadPhoto(imagePath)
-                                iv_camera.visibility = View.GONE
+                                iv_tambah_foto.visibility = View.GONE
                             } else {
                                 getPresenter()?.setImagePhotoPath(null)
                                 loadPhoto("")
-                                iv_camera.visibility = View.VISIBLE
+                                iv_tambah_foto.visibility = View.VISIBLE
                                 showMessage(999, "Foto tidak ditemukan")
                             }
                         }
@@ -134,53 +122,16 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
                     imageUtil.execute(photo)
                 }
             })
-
-        switch_btn.setOnClickListener {
-            if (moreShown) {
-                Helper.collapse(ll_more)
-                switch_btn.setImageResource(R.drawable.ic_down_arrow)
-            } else {
-                Helper.expand(ll_more)
-                switch_btn.setImageResource(R.drawable.ic_up_arrow)
-            }
-
-            moreShown = !moreShown
-        }
-
-        switch_btn.performClick()
-        enableInput(true)
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbarx)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            toolbar_title.text = getString(R.string.menu_edit_product)
-            title = ""
+            title = "Detail Produk"
 
-            setHomeAsUpIndicator(ResourcesCompat.getDrawable(resources, R.drawable.ic_back_pos, null))
-        }
-    }
-
-    private fun enableInput(enable: Boolean = true) {
-        et_name.isEnabled = enable
-        et_category.isEnabled = enable
-        et_buy.isEnabled = enable
-        et_sell.isEnabled = enable
-        et_stok.isEnabled = enable
-        et_desc.isEnabled = enable
-        btn_upload.isEnabled = enable
-        et_barcode.isEnabled = enable
-
-        if (enable) {
-            ll_photo.setBackgroundResource(R.drawable.border_dash_white)
-            ll_barcode_input.setBackgroundResource(R.drawable.border_dash_white)
-            iv_photo.setBackgroundResource(R.drawable.rounded_white_4dp_stroke_secondary)
-        } else {
-            ll_photo.setBackgroundResource(R.drawable.border_dash_gray)
-            ll_barcode_input.setBackgroundResource(R.drawable.border_dash_gray)
-            iv_photo.setBackgroundResource(R.drawable.rounded_gray_4dp_stroke_gray)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
+            setHomeAsUpIndicator(backArrow)
         }
     }
 
@@ -268,23 +219,24 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
     }
 
     override fun loadPhoto(path: String) {
-        if (path.isEmpty() || path.isBlank()) {
-            iv_camera.visibility = View.VISIBLE
-        } else {
-            iv_camera.visibility = View.GONE
-        }
-        Log.d("loadphoto edit ", path)
-        if (path != "https://api-pos.fastpay.co.id/api/images/small_") {
+//        if (path.isEmpty() || path.isBlank()) {
+//            iv_tambah_foto.visibility = View.VISIBLE
+//        } else {
+//            iv_tambah_foto.visibility = View.GONE
+//        }
+        if (path != "https://apifp.exploreindonesia.id/api2/images/small_") {
             Glide.with(this)
                 .load(path)
                 .transform(CenterCrop(), RoundedCorners(4))
-                .into(iv_photo)
+                .into(iv_foto)
         } else {
+            iv_tambah_foto.visibility = View.VISIBLE
             Glide.with(this)
-                .load("https://api-pos.fastpay.co.id/api/images/no_product.jpg")
+                .load("https://apifp.exploreindonesia.id/api2/images/no_product.jpg")
                 .transform(CenterCrop(), RoundedCorners(4))
-                .into(iv_photo)
+                .into(iv_foto)
         }
+        iv_foto.visibility = View.VISIBLE
 //        Glide.with(this).asBitmap().load(path).transform(CenterCrop(), RoundedCorners(4))
 //            .encodeFormat(Bitmap.CompressFormat.PNG).encodeQuality(50).diskCacheStrategy(
 //                DiskCacheStrategy.NONE
@@ -341,36 +293,46 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
     }
 
     override fun setCategoryName(value: String) {
-        et_category.text = value
+        et_product_category.text = value
     }
 
     override fun setProductName(value: String) {
-        et_name.setText(value)
+        et_name_product.setText(value)
     }
 
     override fun setStock(value: String) {
-        et_stok.setText(value)
+        et_stok_barang.setText(value)
     }
 
     override fun setMinStock(value: String) {
-        et_minstock.setText(value)
+//        et_minstock.setText(value)
     }
 
     override fun setSellPrice(value: String) {
-        et_sell.setText(value)
+        et_harga_jual.setText(value)
     }
 
     override fun setBuyPrice(value: String) {
-        et_buy.setText(value)
+        et_harga_beli.setText(value)
     }
 
     override fun setDescription(value: String) {
-        et_desc.setText(value)
+        et_catatan_produk.setText(value)
     }
 
     override fun setBarcode(value: String) {
-        et_barcode.setText(value)
+        tv_barcode.text = value
     }
 
-
+    override fun expandTambahKeterangan() {
+        if (container_keterangan.visibility == View.VISIBLE){
+            iv_arrow.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down_mini))
+            tv_tambah_keterangan.visibility = View.VISIBLE
+            container_keterangan.visibility = View.GONE
+        }else{
+            iv_arrow.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_up_mini))
+            tv_tambah_keterangan.visibility = View.GONE
+            container_keterangan.visibility = View.VISIBLE
+        }
+    }
 }

@@ -5,20 +5,18 @@ import com.bm.main.pos.base.BaseInteractorImpl
 import com.bm.main.pos.base.BaseInteractorOutputImpl
 import com.bm.main.pos.base.BasePresenterImpl
 import com.bm.main.pos.base.BaseViewImpl
-import com.bm.main.pos.models.customer.Customer
-import com.bm.main.pos.models.hutangpiutang.Hutang
+import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.hutangpiutang.HutangPiutangRestModel
-import com.bm.main.pos.models.supplier.Supplier
 
 
 interface PiutangCustomerContract {
 
     interface View : BaseViewImpl {
-        fun setData(list:List<Customer>)
+        fun setList(list:List<CustomerNew>)
+        fun addItemToAdapter(item:CustomerNew)
         fun showErrorMessage(code: Int, msg: String)
         fun reloadData()
-        fun openDetailPiutangPage(data: Customer)
-
+        fun openDetailPiutangPage(data: CustomerNew)
     }
 
     interface Presenter : BasePresenterImpl<View> {
@@ -36,7 +34,7 @@ interface PiutangCustomerContract {
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
-        fun onSuccessGetHutang(list:List<Customer>)
+        fun onSuccessGetHutang(list:List<CustomerNew>)
         fun onFailedAPI(code:Int,msg:String)
     }
 

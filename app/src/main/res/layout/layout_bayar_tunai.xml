@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_bayar_tunai"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60sdp"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/standard_margin"
+    android:layout_marginRight="@dimen/standard_margin_3x"
+    android:layout_marginLeft="@dimen/standard_margin_3x">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        android:gravity="right|center_vertical"
+        android:weightSum="2">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Uang Diterima"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_weight="1.1"
+            android:gravity="right|center_vertical"/>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:paddingHorizontal="@dimen/standard_margin"
+            android:background="@drawable/rounded_white_4dp_stroke_gray">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp."
+                android:layout_gravity="center_vertical|left"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_12sdp"/>
+            <EditText
+                android:id="@+id/et_pay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:textColor="@color/orange"
+                android:textColorHint="@color/orange"
+                android:gravity="end|center_vertical"
+                android:maxLength="13"
+                android:background="@android:color/transparent">
+            </EditText>
+        </FrameLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_kembalian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/standard_margin_3x"
+        android:layout_marginLeft="@dimen/standard_margin_3x"
+        android:text="Kembalian: "
+        android:textSize="@dimen/_11sdp"
+        android:gravity="right"/>
+</LinearLayout>

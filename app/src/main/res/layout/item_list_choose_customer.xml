@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:clickable="true"
-              android:orientation="vertical"
-              android:layout_marginTop="@dimen/standard_small_margin"
-              android:padding="@dimen/standard_margin"
-              android:background="@drawable/selector_rounded_primary_light">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/standard_small_margin"
+    android:padding="@dimen/standard_margin">
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/standard_margin"
+        android:paddingRight="@dimen/standard_margin"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_customer_list_icon"
+            android:layout_marginRight="@dimen/standard_margin_3x"/>
         <LinearLayout
-                android:layout_gravity="center"
-                android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:gravity="start"
+                android:textSize="@dimen/subheading"
+                android:textColor="@color/primaryText"
+                android:textStyle="bold"/>
             <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:textSize="@dimen/subheading"
-                    android:textColor="@color/primaryText"
-                    android:textStyle="bold"/>
-            <TextView
-                    android:id="@+id/tv_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:textSize="@dimen/body"
-                    android:maxLines="1"
-                    android:textColor="@color/secondaryText"/>
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textSize="@dimen/body"
+                android:maxLines="1"
+                android:textColor="@color/secondaryText"/>
         </LinearLayout>
-
     </LinearLayout>
+    <View
+        android:layout_height="@dimen/_1sdp"
+        android:layout_width="match_parent"
+        android:background="@color/divider"/>
 </LinearLayout>

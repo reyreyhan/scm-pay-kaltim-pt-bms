@@ -20,6 +20,8 @@ class ReportTransaksi : Serializable {
     var harga_beli: String? = null
     var harga_jual: String? = null
     var raba_rugi: String? = null
+    var gbr:String? = null
+    var folder:String? = null
 
     fun json(): String {
         return Gson().toJson(this)

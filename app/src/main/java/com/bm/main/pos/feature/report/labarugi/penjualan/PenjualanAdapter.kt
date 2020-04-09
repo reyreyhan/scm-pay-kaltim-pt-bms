@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.report.ReportLabaRugi
 import com.bm.main.pos.utils.Helper
-import kotlinx.android.synthetic.main.item_list_report_penjualan.view.*
+import kotlinx.android.synthetic.main.item_list_report_penjualan_new.view.*
 
 class PenjualanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -17,7 +17,7 @@ class PenjualanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_list_report_penjualan, parent, false)
+                .inflate(R.layout.item_list_report_penjualan_new, parent, false)
         )
     }
 
@@ -49,14 +49,13 @@ class PenjualanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val nameTv = view.tv_name
         private val totalTv = view.tv_total
         private val infoTv = view.tv_info
-        private val statusTv = view.tv_status
+//        private val statusTv = view.tv_status
         private val root = view.root
-
         @SuppressLint("SetTextI18n")
         fun bindData(data: ReportLabaRugi.Penjualan, position: Int) {
             nameTv.text = "${data.nama_barang}"
             totalTv.text = "Rp ${Helper.convertToCurrency(data.totalharga!!)}"
-            var jual = data.hargajual
+            var jual = data.harga
             if (jual == null) {
                 jual = "0"
             }
@@ -64,10 +63,10 @@ class PenjualanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             infoTv.text = info
 
             if (data.status?.toLowerCase() == "batal") {
-                statusTv.visibility = View.VISIBLE
+//                statusTv.visibility = View.VISIBLE
                 root.setBackgroundResource(R.drawable.rounded_gray_4dp_stroke_gray)
             } else {
-                statusTv.visibility = View.GONE
+//                statusTv.visibility = View.GONE
                 root.setBackgroundResource(R.drawable.rounded_white_4dp_stroke_gray)
             }
         }

@@ -117,6 +117,8 @@ import com.bm.main.pos.utils.NotifUtil;
 import com.bm.main.pos.utils.PermissionUtil;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bm.main.single.ftl.utils.RequestUtilsTravel;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.google.android.gms.analytics.ecommerce.Product;
 import com.google.android.gms.common.ConnectionResult;
@@ -246,6 +248,7 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
     public static final String ACTION_REQ_BLUETOOTH_PERM = "profit-perm-bluetooth";
     public static final String QR_STRUK_PRINT = "profit-struk-msg";
     public static final String QR_IMG_PRINT = "profit-qr-img";
+    private RequestManager glide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -404,6 +407,7 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
                 SBFApplication.getInstance().rabbitThread.start();
             }
         }
+        glide = Glide.with(this);
     }
 
     public static final int back = 0;
@@ -434,7 +438,7 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
             getSupportActionBar().setElevation(0);
             getSupportActionBar().setDisplayShowCustomEnabled(true);
             if (type == back) {
-                getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_back));
+                getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_toolbar_back));
             } else if (type == close) {
                 getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_cancel));
             } else if (type == drawer) {
