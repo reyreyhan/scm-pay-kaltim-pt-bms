@@ -231,7 +231,8 @@ dependencies {
     implementation 'com.github.beigirad:ZigzagView:1.0.7'
 
     // rabbitmq
-    implementation 'com.rabbitmq:amqp-client:5.8.0'
+//    implementation 'com.rabbitmq:amqp-client:5.8.0'
+    implementation group: 'com.rabbitmq', name: 'amqp-client', version: '4.11.3'
 
     // httprequest fuel
 //    implementation 'com.github.kittinunf.fuel:fuel:1.16.0'

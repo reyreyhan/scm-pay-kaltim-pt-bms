@@ -135,7 +135,7 @@ RequestUtils.initialize();
 
         Timber.d("onCreate: %s", sTracker.get("referrer"));
 
-     //   getAppComponent();
+        getAppComponent();
         Resources res = this.getResources();
         config = res.getConfiguration();
         displayMetrics = res.getDisplayMetrics();
