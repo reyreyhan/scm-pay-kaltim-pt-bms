@@ -1,99 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingLeft="@dimen/standard_margin_2x"
         android:paddingRight="@dimen/standard_margin_2x"
         android:paddingBottom="@dimen/standard_margin_2x">
+
         <TextView
-            android:layout_marginTop="@dimen/standard_margin_3x"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin_3x"
             android:text="@string/lbl_name"
+            android:textAllCaps="true"
             android:textColor="@color/primaryText"
-            android:textStyle="bold"
             android:textSize="@dimen/body"
-            android:textAllCaps="true"/>
+            android:textStyle="bold" />
+
         <EditText
-            android:layout_marginTop="@dimen/standard_small_margin"
-            android:padding="@dimen/standard_margin"
-            android:layout_gravity="center"
-            android:inputType="textPersonName"
             android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/standart_input_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/standard_small_margin"
+            android:background="@drawable/rounded_white_4dp_stroke_gray"
             android:hint="@string/lbl_customer_name_hint"
-            android:textColorHint="@color/secondaryText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/standart_input_height"
-            android:background="@drawable/rounded_white_4dp_stroke_gray"
-            android:textColor="@color/primaryText"
-            android:textSize="@dimen/body"
-            />
-        <TextView
-            android:layout_marginTop="@dimen/standard_margin_3x"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_phone"
-            android:textColor="@color/primaryText"
-            android:textStyle="bold"
-            android:textSize="@dimen/body"
-            android:textAllCaps="true"/>
-        <EditText
-            android:layout_marginTop="@dimen/standard_small_margin"
-            android:padding="@dimen/standard_margin"
-            android:layout_gravity="center"
-            android:inputType="phone"
-            android:id="@+id/et_no_hp"
-            android:hint="@string/lbl_no_hp_customer_hint"
-            android:textColorHint="@color/secondaryText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/standart_input_height"
-            android:background="@drawable/rounded_white_4dp_stroke_gray"
-            android:textColor="@color/primaryText"
-            android:textSize="@dimen/body" />
-        <TextView
-            android:layout_marginTop="@dimen/standard_margin_3x"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_email"
-            android:textColor="@color/primaryText"
-            android:textStyle="bold"
-            android:textSize="@dimen/body"
-            android:textAllCaps="true"/>
-        <EditText
-            android:layout_marginTop="@dimen/standard_small_margin"
-            android:padding="@dimen/standard_margin"
-            android:layout_gravity="center"
             android:inputType="textPersonName"
-            android:id="@+id/et_email"
-            android:hint="@string/lbl_email_customer_hint"
+            android:padding="@dimen/standard_margin"
+            android:textColor="@color/primaryText"
             android:textColorHint="@color/secondaryText"
+            android:textSize="@dimen/body" />
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/standart_input_height"
-            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin_3x"
+            android:text="@string/lbl_phone"
+            android:textAllCaps="true"
             android:textColor="@color/primaryText"
             android:textSize="@dimen/body"
-            />
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_no_hp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/standart_input_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/standard_small_margin"
+            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:hint="@string/lbl_no_hp_customer_hint"
+            android:inputType="phone"
+            android:padding="@dimen/standard_margin"
+            android:textColor="@color/primaryText"
+            android:textColorHint="@color/secondaryText"
+            android:textSize="@dimen/body" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin_3x"
+            android:text="@string/lbl_email"
+            android:textAllCaps="true"
+            android:textColor="@color/primaryText"
+            android:textSize="@dimen/body"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/standart_input_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/standard_small_margin"
+            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:hint="@string/lbl_email_customer_hint"
+            android:inputType="textPersonName"
+            android:padding="@dimen/standard_margin"
+            android:textColor="@color/primaryText"
+            android:textColorHint="@color/secondaryText"
+            android:textSize="@dimen/body" />
     </LinearLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_tambah"
         android:layout_width="@dimen/standart_button_width"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
         android:layout_marginLeft="@dimen/standard_margin_2x"
-        android:layout_marginRight="@dimen/standard_margin_2x"
         android:layout_marginTop="@dimen/standard_margin_2x"
+        android:layout_marginRight="@dimen/standard_margin_2x"
         android:layout_marginBottom="@dimen/standard_margin_2x"
+        android:background="@color/md_red_A700"
+        android:backgroundTint="@color/md_red_A700"
+        android:gravity="center"
+        android:paddingTop="@dimen/standard_margin"
+        android:paddingBottom="@dimen/standard_margin"
         android:text="Tambahkan"
+        android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
-        android:textAllCaps="true"
-        android:paddingTop="@dimen/standard_margin"
-        android:paddingBottom="@dimen/standard_margin"
-        android:backgroundTint="@color/md_red_A700"
-        android:layout_gravity="bottom|center"
-        android:gravity="center"/>
+        app:backgroundTint="@color/md_red_A700" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

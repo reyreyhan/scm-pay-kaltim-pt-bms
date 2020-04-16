@@ -5,9 +5,11 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -15,6 +17,7 @@
             android:layout_marginLeft="@dimen/standard_margin_3x"
             android:layout_marginRight="@dimen/standard_margin_3x"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
@@ -52,13 +55,15 @@
                 android:layout_marginBottom="@dimen/standard_margin"
                 android:text="Nomor Handphone"
                 android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                android:textSize="@dimen/title"/>
+                android:textSize="@dimen/title"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/standard_margin_2x"
-                android:background="@drawable/rounded_white_4dp_stroke_gray">
+                android:background="@drawable/rounded_white_4dp_stroke_gray"
+                android:padding="@dimen/standard_margin_2x">
+
                 <EditText
                     android:id="@+id/et_no_hp"
                     android:layout_width="0dp"
@@ -82,14 +87,15 @@
                 android:layout_marginBottom="@dimen/standard_margin"
                 android:text="Password"
                 android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                android:textSize="@dimen/title"/>
+                android:textSize="@dimen/title"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/standard_margin_2x"
-                android:background="@drawable/rounded_white_4dp_stroke_gray">
+                android:background="@drawable/rounded_white_4dp_stroke_gray"
+                android:padding="@dimen/standard_margin_2x">
+
                 <EditText
                     android:id="@+id/et_password"
                     android:layout_width="0dp"
@@ -110,30 +116,34 @@
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginLeft="@dimen/standard_margin"
                     android:button="@drawable/selector_password"
-                    android:checked="false"/>
+                    android:checked="false" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_gravity="right"
                 android:layout_marginTop="@dimen/standard_margin"
                 android:layout_marginBottom="@dimen/standard_margin_2x"
-                android:layout_gravity="right"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/btn_bantuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/standard_margin"
                     android:text="Bantuan"
                     android:textColor="@color/primaryText"
-                    android:textSize="@dimen/_13sdp"
-                    android:layout_marginRight="@dimen/standard_margin"/>
+                    android:textSize="@dimen/_13sdp" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_login"
                     android:layout_width="@dimen/standart_button_small_width"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/standard_margin"
+                    android:background="@color/md_red_A700"
+                    android:backgroundTint="@color/md_red_A700"
                     android:enabled="true"
                     android:gravity="center"
                     android:text="@string/btn_login"
@@ -141,7 +151,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/subheading"
                     android:textStyle="bold"
-                    android:backgroundTint="@color/md_red_A700" />
+                    app:backgroundTint="@color/md_red_A700" />
             </LinearLayout>
 
             <LinearLayout
@@ -169,12 +179,14 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:srcCompat="@drawable/ic_bg_login_footer"
-        android:scaleType="center"/>
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_bg_login_footer" />
+
     <com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView
         android:id="@+id/aviLoading"
         style="@style/AVLoadingIndicatorView"

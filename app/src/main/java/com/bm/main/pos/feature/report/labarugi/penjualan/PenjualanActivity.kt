@@ -8,6 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
@@ -224,25 +226,25 @@ class PenjualanActivity : BaseActivity<PenjualanPresenter, PenjualanContract.Vie
         tv_percent_profit.text = "$percentProfit%"
         tv_percent_transaction.text = "$percentTransaction%"
         if (percentEarning > 0 ){
-            arrow_earning.setImageDrawable(getDrawable(R.drawable.ic_profit_up))
-            tv_percent_earning.textColor = getColor(R.color.md_green_700)
+            arrow_earning.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_profit_up, null))
+            tv_percent_earning.textColor = ContextCompat.getColor(this, R.color.md_green_700)
         }else{
-            arrow_earning.setImageDrawable(getDrawable(R.drawable.ic_profit_down))
-            tv_percent_earning.textColor = getColor(R.color.md_red_A700)
+            arrow_earning.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_profit_down, null))
+            tv_percent_earning.textColor = ContextCompat.getColor(this, R.color.md_red_A700)
         }
         if (percentProfit > 0 ){
-            arrow_profit.setImageDrawable(getDrawable(R.drawable.ic_profit_up))
-            tv_percent_profit.textColor = getColor(R.color.md_green_700)
+            arrow_profit.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_profit_up, null))
+            tv_percent_profit.textColor = ContextCompat.getColor(this, R.color.md_green_700)
         }else{
-            arrow_profit.setImageDrawable(getDrawable(R.drawable.ic_profit_down))
-            tv_percent_profit.textColor = getColor(R.color.md_red_A700)
+            arrow_profit.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_profit_down, null))
+            tv_percent_profit.textColor = ContextCompat.getColor(this, R.color.md_red_A700)
         }
         if (percentTransaction > 0 ){
-            arrow_transaction.setImageDrawable(getDrawable(R.drawable.ic_profit_up))
-            tv_percent_transaction.textColor = getColor(R.color.md_green_700)
+            arrow_transaction.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_profit_up, null))
+            tv_percent_transaction.textColor = ContextCompat.getColor(this, R.color.md_green_700)
         }else{
-            arrow_transaction.setImageDrawable(getDrawable(R.drawable.ic_profit_down))
-            tv_percent_transaction.textColor = getColor(R.color.md_red_A700)
+            arrow_transaction.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_profit_down, null))
+            tv_percent_transaction.textColor = ContextCompat.getColor(this, R.color.md_red_A700)
         }
     }
 

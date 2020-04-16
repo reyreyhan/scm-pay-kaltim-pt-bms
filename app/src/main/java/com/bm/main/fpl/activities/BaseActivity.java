@@ -404,7 +404,11 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
                 SBFApplication.getInstance().rabbitThread = new RabbitMqThread(this);
                 SBFApplication.getInstance().rabbitThread.start();
             } else if (!SBFApplication.getInstance().rabbitThread.isAlive()) {
-                SBFApplication.getInstance().rabbitThread.start();
+                try {
+                    SBFApplication.getInstance().rabbitThread.start();
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
             }
         }
         glide = Glide.with(this);

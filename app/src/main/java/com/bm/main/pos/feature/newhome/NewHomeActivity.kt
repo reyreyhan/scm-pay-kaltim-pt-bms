@@ -173,7 +173,8 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
     override fun onResume() {
         super.onResume()
 
-        fragment_pager.currentItem = 0
+        if (currentPage < 2)
+            fragment_pager.currentItem = currentPage
     }
 
     override fun onBackPressed() {

@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -100,7 +101,7 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
     LinearLayout linList;
     LinearLayout relPay;
 
-//    ImageView imageViewProduk;
+    //    ImageView imageViewProduk;
 //    TextView textViewPlusNamaProduk;
     RecyclerView recyclerViewNominalProduk;
     @NonNull
@@ -108,11 +109,11 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
     ProdukPulsaModel produkPulsaModel;
     ListGridProdukPulsaAdapter adapterProduk;
     MaterialEditText materialEditTextNoHandphone;
-//    AVLoadingIndicatorView avi;
+    //    AVLoadingIndicatorView avi;
     ImageView imageViewAddressBook;
     @Nullable
     String kodeProdukPilihan = "";
-//    AppCompatButton appCompatButtonBayar;
+    //    AppCompatButton appCompatButtonBayar;
     TextView textViewPlusSukses;
     @Nullable
     String namaProdukPilihan;
@@ -137,8 +138,8 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_up_emoney);
-     //   getWindow().setBackgroundDrawable(null);
-        logEventFireBase(ProdukGroup.EMONEY, ProdukGroup.EMONEY,EventParam.EVENT_ACTION_VISIT,EventParam.EVENT_SUCCESS,TAG);
+        //   getWindow().setBackgroundDrawable(null);
+        logEventFireBase(ProdukGroup.EMONEY, ProdukGroup.EMONEY, EventParam.EVENT_ACTION_VISIT, EventParam.EVENT_SUCCESS, TAG);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Topup Emoney");
         init(0);
@@ -172,8 +173,8 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
 
         linList = findViewById(R.id.linList);
         relPay = findViewById(R.id.relPay);
-      //  imageViewProduk = findViewById(R.id.imageViewProduk);
-     //   textViewPlusNamaProduk = findViewById(R.id.textViewPlusNamaProduk);
+        //  imageViewProduk = findViewById(R.id.imageViewProduk);
+        //   textViewPlusNamaProduk = findViewById(R.id.textViewPlusNamaProduk);
 
         textViewPlusSukses = findViewById(R.id.textViewPlusSukses);
 //        appCompatButtonBayar = findViewById(R.id.appCompatButtonBayar);
@@ -194,7 +195,7 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
 
             @Override
             public void onPaste() {
-                String selectedNumber =materialEditTextNoHandphone.getEditableText().toString();
+                String selectedNumber = materialEditTextNoHandphone.getEditableText().toString();
                 // selectedNumber= selectedNumber.replaceAll("....", "$0 ");
                 selectedNumber = selectedNumber.replace("-", "");
                 //  phoneInput.setText(selectedNumber);
@@ -210,7 +211,7 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
 //                materialEditTextNoHandphone.setMaskedText("**** **** **** ****");
                 materialEditTextNoHandphone.setText(selectedNumber);
                 // materialEditTextNoHandphone.setSelection(selectedNumber.length());
-               // requestPrefixRegular(selectedNumber);
+                // requestPrefixRegular(selectedNumber);
                 // Do your onPaste reactions
             }
         });
@@ -218,7 +219,7 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
 //        materialEditTextNoHandphone = findViewById(R.id.materialEditTextNoHandphone);
 
         recyclerViewNominalProduk = findViewById(R.id.recyclerViewNominalProduk);
-      //  avi = findViewById(R.id.avi);
+        //  avi = findViewById(R.id.avi);
 
         imageViewAddressBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,7 +248,7 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
         mLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         recyclerViewProduk.setHasFixedSize(false);
 //        recyclerViewProduk.setNestedScrollingEnabled(false);
-      //  ViewCompat.setNestedScrollingEnabled(recyclerViewProduk, false);
+        //  ViewCompat.setNestedScrollingEnabled(recyclerViewProduk, false);
         //recyclerViewPropinsi.setItemViewCacheSize(1024);
         recyclerViewProduk.setLayoutManager(mLayoutManager);
 
@@ -259,7 +260,6 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
         adapter = new ListGridTopupAdapter(data, this, this);
 
         recyclerViewProduk.setAdapter(adapter);
-
 
 
         if (PreferenceClass.getJSONObject(product).length() > 0) {
@@ -292,7 +292,6 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
         requestDaftarProduk();
 
 
-
         mLayoutManagerProduk = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         recyclerViewNominalProduk.setHasFixedSize(false);
 //        recyclerViewNominalProduk.setNestedScrollingEnabled(false);
@@ -307,74 +306,68 @@ public class TopUpEmoneyActivity extends KeyboardListenerActivity implements Jso
 
     }
 
-private void Topup(){
-    if (kodeProdukPilihan.isEmpty()) {
-        recyclerViewNominalProduk.setAnimation(BaseActivity.animShake);
-        recyclerViewNominalProduk.startAnimation(BaseActivity.animShake);
+    private void Topup() {
+        if (kodeProdukPilihan.isEmpty()) {
+            recyclerViewNominalProduk.setAnimation(BaseActivity.animShake);
+            recyclerViewNominalProduk.startAnimation(BaseActivity.animShake);
 
-        //  snackBarCustomAction(findViewById(R.id.bottom_toolbar), R.string.warning_nominal_produk, "", R.string.tutup, WARNING);
-        //   String msg=getResources().getString(R.string.warning_nominal_produk);
-        MyDynamicToast.warningMessage(TopUpEmoneyActivity.this, getResources().getString(R.string.warning_nominal_produk));
-        Device.vibrate(TopUpEmoneyActivity.this);
-        return;
-    }
-    if (is_flag.equals("ID")) {
-        if (materialEditTextNoKartu.getText().toString().isEmpty()) {
-            materialEditTextNoKartu.setAnimation(BaseActivity.animShake);
-            materialEditTextNoKartu.startAnimation(BaseActivity.animShake);
-            materialEditTextNoKartu.setError("No Kartu Tidak Boleh Kosong");
+            //  snackBarCustomAction(findViewById(R.id.bottom_toolbar), R.string.warning_nominal_produk, "", R.string.tutup, WARNING);
+            //   String msg=getResources().getString(R.string.warning_nominal_produk);
+            MyDynamicToast.warningMessage(TopUpEmoneyActivity.this, getResources().getString(R.string.warning_nominal_produk));
             Device.vibrate(TopUpEmoneyActivity.this);
             return;
-        } else {
-            idPelanggan = materialEditTextNoKartu.getText().toString().replace("-", "").replace(" ","");
         }
-    } else {
-        if (materialEditTextNoHandphone.getText().toString().isEmpty()) {
-            materialEditTextNoHandphone.setAnimation(BaseActivity.animShake);
-            materialEditTextNoHandphone.startAnimation(BaseActivity.animShake);
-            materialEditTextNoHandphone.setError("No Handphone Tidak Boleh Kosong");
-            Device.vibrate(TopUpEmoneyActivity.this);
-            return;
+        if (is_flag.equals("ID")) {
+            if (materialEditTextNoKartu.getText().toString().isEmpty()) {
+                materialEditTextNoKartu.setAnimation(BaseActivity.animShake);
+                materialEditTextNoKartu.startAnimation(BaseActivity.animShake);
+                materialEditTextNoKartu.setError("No Kartu Tidak Boleh Kosong");
+                Device.vibrate(TopUpEmoneyActivity.this);
+                return;
+            } else {
+                idPelanggan = materialEditTextNoKartu.getText().toString().replace("-", "").replace(" ", "");
+            }
         } else {
-            idPelanggan = materialEditTextNoHandphone.getText().toString().replace("-", "").replace(" ","");
+            if (materialEditTextNoHandphone.getText().toString().isEmpty()) {
+                materialEditTextNoHandphone.setAnimation(BaseActivity.animShake);
+                materialEditTextNoHandphone.startAnimation(BaseActivity.animShake);
+                materialEditTextNoHandphone.setError("No Handphone Tidak Boleh Kosong");
+                Device.vibrate(TopUpEmoneyActivity.this);
+                return;
+            } else {
+                idPelanggan = materialEditTextNoHandphone.getText().toString().replace("-", "").replace(" ", "");
+            }
         }
-    }
-    ViewGroup parent = findViewById(R.id.contentHost);
-    View v =View.inflate(TopUpEmoneyActivity.this,R.layout.dialog_header_layout, parent);
-    CFAlertDialog.Builder builder = new CFAlertDialog.Builder(TopUpEmoneyActivity.this);
-    builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT)
-            .setBackgroundColor(ContextCompat.getColor(TopUpEmoneyActivity.this, R.color.black_overlay))
-            .setTitle("Pembelian Topup")
-            .setMessage("Apakah Anda yakin akan membeli Topup " + produkName + " ?")
-            .setTextGravity(Gravity.CENTER)
-            .setHeaderView(v)
-            .setCancelable(true);
+        ViewGroup parent = findViewById(R.id.contentHost);
+        View v = View.inflate(TopUpEmoneyActivity.this, R.layout.dialog_header_layout, parent);
+        CFAlertDialog.Builder builder = new CFAlertDialog.Builder(TopUpEmoneyActivity.this);
+        builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT)
+                .setBackgroundColor(ContextCompat.getColor(TopUpEmoneyActivity.this, R.color.black_overlay))
+                .setTitle("Pembelian Topup")
+                .setMessage("Apakah Anda yakin akan membeli Topup " + produkName + " ?")
+                .setTextGravity(Gravity.CENTER)
+                .setHeaderView(v)
+                .setCancelable(true);
 
-    builder.addButton("Topup Sekarang", -1, ContextCompat.getColor(TopUpEmoneyActivity.this, R.color.md_red_500), CFAlertDialog.CFAlertActionStyle.POSITIVE, getButtonGravity(3), new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(@NonNull DialogInterface dialog, int which) {
+        builder.addButton("Topup Sekarang", -1, ContextCompat.getColor(TopUpEmoneyActivity.this, R.color.md_red_500), CFAlertDialog.CFAlertActionStyle.POSITIVE, getButtonGravity(3), (dialog, which) -> {
             // Toast.makeText(BaseActivity.this, "Neutral", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
             requestPayment();
 
-        }
-    });
-    builder.onDismissListener(new DialogInterface.OnDismissListener() {
-        @Override
-        public void onDismiss(DialogInterface dialog) {
-            adapterProduk.clearSelections();
-        }
-    });
+        });
+        builder.onDismissListener(dialog -> adapterProduk.clearSelections());
 
-    builder.show();
-}
+        builder.show();
+    }
+
     @Override
     public void onPause() {
         shimmer_view_container.stopShimmerAnimation();
         super.onPause();
     }
+
     private void requestPayment() {
-        logEventFireBase(ProdukGroup.EMONEY,produkName,EventParam.EVENT_ACTION_REQUEST_PAY,EventParam.EVENT_SUCCESS,TAG);
+        logEventFireBase(ProdukGroup.EMONEY, produkName, EventParam.EVENT_ACTION_REQUEST_PAY, EventParam.EVENT_SUCCESS, TAG);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject = new JSONObject(stringJson.requestPaymentGame(kodeProdukPilihan, idPelanggan));
@@ -384,7 +377,7 @@ private void Topup(){
         RequestUtils.transportWithJSONObjectResponsePayment(this, jsonObject, ActionCode.PAY_PULSA, this);
         @SuppressLint("InflateParams")
         ViewGroup parent = findViewById(R.id.contentHost);
-        final FrameLayout view =(FrameLayout) View.inflate(this,R.layout.loading_bar_full_dialog, parent);
+        final FrameLayout view = (FrameLayout) View.inflate(this, R.layout.loading_bar_full_dialog, parent);
         TextView text = view.findViewById(R.id.textContentProgressBar);
         text.setText(R.string.progress_bar_wording);
         openProgressBarDialog(this, view);
@@ -402,7 +395,7 @@ private void Topup(){
     }
 
     private void requestNominalProduk() {
-        logEventFireBase(ProdukGroup.EMONEY,namaProduk,EventParam.EVENT_ACTION_CHOICE,EventParam.EVENT_SUCCESS,TAG);
+        logEventFireBase(ProdukGroup.EMONEY, namaProduk, EventParam.EVENT_ACTION_CHOICE, EventParam.EVENT_SUCCESS, TAG);
         reqTag = 1;
         JSONObject jsonObject = new JSONObject();
         try {
@@ -413,7 +406,7 @@ private void Topup(){
         RequestUtils.transportWithProgressResponse(this, jsonObject, ActionCode.LIST_NOMINAL_PRODUK, this);
         @SuppressLint("InflateParams")
         ViewGroup parent = findViewById(R.id.contentHost);
-        final FrameLayout view =(FrameLayout) View.inflate(this,R.layout.loading_bar_full_dialog, parent);
+        final FrameLayout view = (FrameLayout) View.inflate(this, R.layout.loading_bar_full_dialog, parent);
 //        TextView text = view.findViewById(R.id.textContentProgressBar);
 //        text.setText(R.string.progress_bar_wording);
         openProgressBarDialog(this, view);
@@ -459,7 +452,7 @@ private void Topup(){
             relPay.setVisibility(View.GONE);
         }
 
-      //  overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        //  overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
 
     }
@@ -511,60 +504,60 @@ private void Topup(){
 //                new_popup_alert_session(this, "Informasi", response.getString("response_desc"));
 //            } else {
 
-                if (actionCode == ActionCode.LIST_PRODUK_GAME) {
-                    emoneyModel = gson.fromJson(response.toString(), EmoneyModel.class);
-                    if (emoneyModel.getResponse_code().equals(ResponseCode.SUCCESS)) {
+        if (actionCode == ActionCode.LIST_PRODUK_GAME) {
+            emoneyModel = gson.fromJson(response.toString(), EmoneyModel.class);
+            if (emoneyModel.getResponse_code().equals(ResponseCode.SUCCESS)) {
 
-                        JSONObject obj = PreferenceClass.getJSONObject(product);
-                        JSONArray array = new JSONArray();
-                        try {
-                            array = obj.getJSONArray("response_value");
-                        } catch (JSONException e) {
-                            //  e.printStackTrace();
-                        }
+                JSONObject obj = PreferenceClass.getJSONObject(product);
+                JSONArray array = new JSONArray();
+                try {
+                    array = obj.getJSONArray("response_value");
+                } catch (JSONException e) {
+                    //  e.printStackTrace();
+                }
 
 //                        if (PreferenceClass.getJSONObject(product).length() != response.length()) {
-                        if (array.length() != emoneyModel.getResponse_value().size()) {
-                            PreferenceClass.putJSONObject(product, response);
-                            data.clear();
-                            data.addAll(emoneyModel.getResponse_value());
-                            adapter.notifyDataSetChanged();
-                        }
-                        recyclerViewProduk.setVisibility(View.VISIBLE);
+                if (array.length() != emoneyModel.getResponse_value().size()) {
+                    PreferenceClass.putJSONObject(product, response);
+                    data.clear();
+                    data.addAll(emoneyModel.getResponse_value());
+                    adapter.notifyDataSetChanged();
+                }
+                recyclerViewProduk.setVisibility(View.VISIBLE);
 //                        nestedScrollViewProduk.setVisibility(View.VISIBLE);
 //                data.addAll(emoneyModel.getData());
-                        //  setData(emoneyModel.getData());
+                //  setData(emoneyModel.getData());
 //                adapter.notifyDataSetChanged();
 //                    }else if (emoneyModel.getResponse_code().equals("03")) {
 //                        new_popup_alert_session(this, "Informasi", emoneyModel.getResponse_desc());
-                    } else {
+            } else {
 //non success
-                    }
+            }
+        }
+        // reqTag=1;
+        if (actionCode == ActionCode.LIST_NOMINAL_PRODUK) {
+            closeProgressBarDialog();
+
+            dataProduk.clear();
+            kodeProdukPilihan = "";
+            namaProdukPilihan = "";
+            produkPulsaModel = gson.fromJson(response.toString(), ProdukPulsaModel.class);
+            if (produkPulsaModel.getResponse_code().equals(ResponseCode.SUCCESS)) {
+                dataProduk.addAll(produkPulsaModel.getResponse_value());
+                //  setData(emoneyModel.getData());
+                adapterProduk.clearSelections();
+                //adapterProduk.notifyDataSetChanged();
+                //adapterProduk.clearSelections();
+                toolbar.setTitle("Nominal Voucher Topup Emoney");
+                isBayar = true;
+                reqTag = 2;
+                linList.setVisibility(View.GONE);
+                relPay.setVisibility(View.VISIBLE);
+                if (textViewPlusSukses.getVisibility() == View.VISIBLE) {
+                    textViewPlusSukses.setVisibility(View.GONE);
                 }
-                // reqTag=1;
-                if (actionCode == ActionCode.LIST_NOMINAL_PRODUK) {
-                    closeProgressBarDialog();
 
-                    dataProduk.clear();
-                    kodeProdukPilihan = "";
-                    namaProdukPilihan = "";
-                    produkPulsaModel = gson.fromJson(response.toString(), ProdukPulsaModel.class);
-                    if (produkPulsaModel.getResponse_code().equals(ResponseCode.SUCCESS)) {
-                        dataProduk.addAll(produkPulsaModel.getResponse_value());
-                        //  setData(emoneyModel.getData());
-                        adapterProduk.clearSelections();
-                        //adapterProduk.notifyDataSetChanged();
-                        //adapterProduk.clearSelections();
-                        toolbar.setTitle("Nominal Voucher Topup Emoney");
-                        isBayar = true;
-                        reqTag = 2;
-                        linList.setVisibility(View.GONE);
-                        relPay.setVisibility(View.VISIBLE);
-                        if (textViewPlusSukses.getVisibility() == View.VISIBLE) {
-                            textViewPlusSukses.setVisibility(View.GONE);
-                        }
-
-                     //   textViewPlusNamaProduk.setText(namaProduk);
+                //   textViewPlusNamaProduk.setText(namaProduk);
 //                    Picasso.with(this)
 //                            .load(urlProduk).into(imageViewProduk, new Callback() {
 //                        @Override
@@ -611,74 +604,74 @@ private void Topup(){
 //
 //                            }
 //                        });
-                        if (is_flag.equals("ID")) {
-                            showCaseEtoll();
-                        } else {
-                            showCaseSaldo();
-                        }
-                    }else if (produkPulsaModel.getResponse_code().equals("03")) {
-                        new_popup_alert_session(this, "Informasi", produkPulsaModel.getResponse_desc());
-                    } else {
-                        //NON SUCCESS
-                    }
+                if (is_flag.equals("ID")) {
+                    showCaseEtoll();
+                } else {
+                    showCaseSaldo();
                 }
-                if (actionCode == ActionCode.PAY_PULSA) {
-                    closeProgressBarDialog();
-                    PayModel payModel = gson.fromJson(response.toString(), PayModel.class);
-                    if (payModel.getResponse_code().equals(ResponseCode.SUCCESS)) {
-                        logEventFireBase(ProdukGroup.EMONEY,produkName,EventParam.EVENT_ACTION_RESULT_PAY,EventParam.EVENT_SUCCESS,TAG);
-                        reqTag = 0;
-                        // try {
-                        PreferenceClass.putString("saldo", FormatString.CurencyIDR(payModel.getSaldo().toString()));
-                        navigationBottomCustom(bottom_toolbar, FormatString.CurencyIDR(payModel.getSaldo().toString()));
+            } else if (produkPulsaModel.getResponse_code().equals("03")) {
+                new_popup_alert_session(this, "Informasi", produkPulsaModel.getResponse_desc());
+            } else {
+                //NON SUCCESS
+            }
+        }
+        if (actionCode == ActionCode.PAY_PULSA) {
+            closeProgressBarDialog();
+            PayModel payModel = gson.fromJson(response.toString(), PayModel.class);
+            if (payModel.getResponse_code().equals(ResponseCode.SUCCESS)) {
+                logEventFireBase(ProdukGroup.EMONEY, produkName, EventParam.EVENT_ACTION_RESULT_PAY, EventParam.EVENT_SUCCESS, TAG);
+                reqTag = 0;
+                // try {
+                PreferenceClass.putString("saldo", FormatString.CurencyIDR(payModel.getSaldo().toString()));
+                navigationBottomCustom(bottom_toolbar, FormatString.CurencyIDR(payModel.getSaldo().toString()));
 
 
-                        onBackPressed();
-                        if (is_flag.equals("ID")) {
-                            materialEditTextNoKartu.setText("");
+                onBackPressed();
+                if (is_flag.equals("ID")) {
+                    materialEditTextNoKartu.setText("");
 
-                        } else {
-                            materialEditTextNoHandphone.setText("");
-
-                        }
-                        textViewPlusSukses.setVisibility(View.VISIBLE);
-                        textViewPlusSukses.startAnimation(slideUp);
-
-                        textViewPlusSukses.setText("Pembelian Topup Emoney " + namaProdukPilihan + " Berhasil!");
-                        //   snackBarCustomAction(findViewById(R.id.bottom_toolbar), 0, "Pembelian voucher " + namaProdukPilihan + " Berhasil!", R.string.tutup, INFO);
-                      //  MyDynamicToast.informationMessage(TopUpEmoneyActivity.this, R.string.sukses_terbayar, "Pembelian voucher " + namaProdukPilihan + " Berhasil!");
-
-
-                        new_popup_alert(TopUpEmoneyActivity.this, getString(R.string.sukses_terbayar), "Pembelian voucher " + namaProdukPilihan + " Berhasil!");
-
-                        //  } else {
-                        // textViewPlusSukses.setText("Pembelian voucher "+namaProdukPilihan+" Gagal!");
-                        //       snackBarCustomAction(findViewById(R.id.bottom_toolbar), Integer.parseInt(String.format(getString(R.string.alert_gagal_beli), "voucher " + namaProdukPilihan)), R.string.tutup, ALERT);
-                        // closeProgressBarDialog();
-
-                        // } catch (JSONException e) {
-                        //    e.printStackTrace();
-                        // }
-                    }else if (payModel.getResponse_code().equals("03")) {
-                        new_popup_alert_session(this, "Informasi", payModel.getResponse_desc());
-                    } else if (payModel.getResponse_code().equals("06")) {
-                        new_popup_alert_session_deposit(this, "Informasi", payModel.getResponse_desc());
-
-                    } else {
-                        logEventFireBase(ProdukGroup.EMONEY,produkName,EventParam.EVENT_ACTION_RESULT_PAY,EventParam.EVENT_NOT_SUCCESS,TAG);
-                        if (is_flag.equals("ID")) {
-                            materialEditTextNoKartu.setError(payModel.getResponse_desc());
-                        } else {
-                            materialEditTextNoHandphone.setError(payModel.getResponse_desc());
-                        }
-
-                        //   snackBarCustomAction(findViewById(R.id.bottom_toolbar), 0, response.get("response_desc").toString(), R.string.tutup, ALERT);
-                     //   MyDynamicToast.errorMessage(TopUpEmoneyActivity.this, payModel.getResponse_desc());
-                        new_popup_alert(TopUpEmoneyActivity.this, "Info", payModel.getResponse_desc());
-
-                    }
+                } else {
+                    materialEditTextNoHandphone.setText("");
 
                 }
+                textViewPlusSukses.setVisibility(View.VISIBLE);
+                textViewPlusSukses.startAnimation(slideUp);
+
+                textViewPlusSukses.setText("Pembelian Topup Emoney " + namaProdukPilihan + " Berhasil!");
+                //   snackBarCustomAction(findViewById(R.id.bottom_toolbar), 0, "Pembelian voucher " + namaProdukPilihan + " Berhasil!", R.string.tutup, INFO);
+                //  MyDynamicToast.informationMessage(TopUpEmoneyActivity.this, R.string.sukses_terbayar, "Pembelian voucher " + namaProdukPilihan + " Berhasil!");
+
+
+                new_popup_alert(TopUpEmoneyActivity.this, getString(R.string.sukses_terbayar), "Pembelian voucher " + namaProdukPilihan + " Berhasil!");
+
+                //  } else {
+                // textViewPlusSukses.setText("Pembelian voucher "+namaProdukPilihan+" Gagal!");
+                //       snackBarCustomAction(findViewById(R.id.bottom_toolbar), Integer.parseInt(String.format(getString(R.string.alert_gagal_beli), "voucher " + namaProdukPilihan)), R.string.tutup, ALERT);
+                // closeProgressBarDialog();
+
+                // } catch (JSONException e) {
+                //    e.printStackTrace();
+                // }
+            } else if (payModel.getResponse_code().equals("03")) {
+                new_popup_alert_session(this, "Informasi", payModel.getResponse_desc());
+            } else if (payModel.getResponse_code().equals("06")) {
+                new_popup_alert_session_deposit(this, "Informasi", payModel.getResponse_desc());
+
+            } else {
+                logEventFireBase(ProdukGroup.EMONEY, produkName, EventParam.EVENT_ACTION_RESULT_PAY, EventParam.EVENT_NOT_SUCCESS, TAG);
+                if (is_flag.equals("ID")) {
+                    materialEditTextNoKartu.setError(payModel.getResponse_desc());
+                } else {
+                    materialEditTextNoHandphone.setError(payModel.getResponse_desc());
+                }
+
+                //   snackBarCustomAction(findViewById(R.id.bottom_toolbar), 0, response.get("response_desc").toString(), R.string.tutup, ALERT);
+                //   MyDynamicToast.errorMessage(TopUpEmoneyActivity.this, payModel.getResponse_desc());
+                new_popup_alert(TopUpEmoneyActivity.this, "Info", payModel.getResponse_desc());
+
+            }
+
+        }
 
 //            }
 //        } catch (JSONException jsone) {
@@ -732,7 +725,7 @@ private void Topup(){
 //        }
 
         if (responseCode.equals(NETWORK_ERROR)) {
-            if (actionCode == ActionCode.PAY_PULSA ||actionCode == ActionCode.LIST_NOMINAL_PRODUK) {
+            if (actionCode == ActionCode.PAY_PULSA || actionCode == ActionCode.LIST_NOMINAL_PRODUK) {
                 closeProgressBarDialog();
                 new_popup_alert_failure(TopUpEmoneyActivity.this, responseDescription);
                 //   MyDynamicToast.errorMessage(GameActivity.this, "Cek Koneksi Internet Anda Atau Coba Kembali");
@@ -744,11 +737,11 @@ private void Topup(){
 //                    recyclerViewProduk.setVisibility(View.VISIBLE);
 //                    layout_no_connection.setVisibility(View.GONE);
 //                } else {
-                    shimmer_view_container.setVisibility(View.GONE);
-                    shimmer_view_container.stopShimmerAnimation();
-                    linMain.setVisibility(View.GONE);
-                    //  layout_data_empty.setVisibility(View.GONE);
-                    layout_no_connection.setVisibility(View.VISIBLE);
+                shimmer_view_container.setVisibility(View.GONE);
+                shimmer_view_container.stopShimmerAnimation();
+                linMain.setVisibility(View.GONE);
+                //  layout_data_empty.setVisibility(View.GONE);
+                layout_no_connection.setVisibility(View.VISIBLE);
 //                }
             }
 //                if (PreferenceClass.getJSONObject(product).length() == 0) {
@@ -820,10 +813,10 @@ private void Topup(){
         adapterProduk.toggleSelection(adapterPos);
         kodeProdukPilihan = produk.getProduct_code();
         namaProdukPilihan = produk.getProduct_name();
-      //  int ownSaldo = Integer.parseInt(PreferenceClass.getString("saldo", "0").replace(".", ""));
+        //  int ownSaldo = Integer.parseInt(PreferenceClass.getString("saldo", "0").replace(".", ""));
         int nominalFrom = Integer.parseInt(nominal.replace(".", ""));
         // int nominal_adminFrom=Integer.parseInt(nominal_admin.replace(".",""));
-      //  int nominalAll = nominalFrom;
+        //  int nominalAll = nominalFrom;
 
 //        if(nominalAll>ownSaldo){
 ////            startBlinkingAnimation(true);
@@ -831,7 +824,7 @@ private void Topup(){
 //         //   return;
 //        }else{
 //            stopBlinkingAnimation();
-            Topup();
+        Topup();
 //        }
 //        appCompatButtonBayar.performClick();
 
@@ -924,7 +917,7 @@ private void Topup(){
 
 //                        LayoutInflater inflater = this.getLayoutInflater();
                         ViewGroup parent = findViewById(R.id.contentHost);
-                        View dialogView = View.inflate(this,R.layout.dialog_custom_contact, parent);
+                        View dialogView = View.inflate(this, R.layout.dialog_custom_contact, parent);
 
                         builder.setView(dialogView);
                         TextView textViewTitleDialog = dialogView.findViewById(R.id.textViewTitleDialog);
@@ -962,7 +955,7 @@ private void Topup(){
 //                                materialEditTextNoHandphone.setCharacterDelay(50);
 //                                materialEditTextNoHandphone.animateText(selectedNumber);
                                 materialEditTextNoHandphone.setText(selectedNumber);
-                               // materialEditTextNoHandphone.setSelection(selectedNumber.length());
+                                // materialEditTextNoHandphone.setSelection(selectedNumber.length());
                                 alert.dismiss();
 
                             }
@@ -986,7 +979,7 @@ private void Topup(){
 //                            materialEditTextNoHandphone.setCharacterDelay(50);
 //                            materialEditTextNoHandphone.animateText(selectedNumber);
                             materialEditTextNoHandphone.setText(selectedNumber);
-                          //  materialEditTextNoHandphone.setSelection(selectedNumber.length());
+                            //  materialEditTextNoHandphone.setSelection(selectedNumber.length());
                         }
 
                         if (phoneNumber.length() == 0) {

@@ -5,12 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,14 +16,18 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.constants.ProdukGroup;
 import com.bm.main.fpl.constants.ResponseCode;
-import com.bm.main.fpl.interfaces.ClickListener;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
-import com.bm.main.fpl.listener.RecyclerTouchListener;
 import com.bm.main.fpl.templates.AutoScaleTextView;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.PreferenceClass;
@@ -45,6 +43,8 @@ import com.bm.main.single.ftl.flight.models.FlightAirlinesModel;
 import com.bm.main.single.ftl.flight.models.FlightAirlinesPriceModel;
 import com.bm.main.single.ftl.flight.models.FlightDataModelClasses;
 import com.bm.main.single.ftl.flight.models.FlightDetailModel;
+import com.bm.main.single.ftl.flight.models.SettingFlightModel;
+import com.bm.main.single.ftl.models.BaseObject;
 import com.bm.main.single.ftl.utils.MemoryStore;
 import com.bm.main.single.ftl.utils.RequestUtilsTravel;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -59,13 +59,15 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import timber.log.Timber;
+
 import static com.bm.main.fpl.utils.DialogUtils.closeBootomSheetDialog;
 import static com.bm.main.fpl.utils.DialogUtils.openBottomSheetDialog;
 
 public class FlightScheduleActivity extends BaseActivity implements FlightScheduleOneWayAdapter.OnClickListener, ProgressResponseCallback, View.OnClickListener {
-//public class FlightScheduleActivity extends BaseActivity implements  ProgressResponseCallback, View.OnClickListener {
+    //public class FlightScheduleActivity extends BaseActivity implements  ProgressResponseCallback, View.OnClickListener {
     private static final String TAG = FlightScheduleActivity.class.getSimpleName();
-   // public static FlightScheduleActivity flightScheduleActivityInstance;
+    // public static FlightScheduleActivity flightScheduleActivityInstance;
     public ProgressBar progressBar;
     private RelativeLayout emptyView;
     private ConfigFlightModel configAirportModel;
@@ -119,13 +121,10 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_activity_schedule);
         flightScheduleActivityInstance = this;
-        //context = this.getApplicationContext();
-//        toolbar = findViewById(R.id.toolbar);
-//        toolbar.setTitle("Jadwal Pesawat");
         init(0);
         emptyView = findViewById(R.id.empty_view_flight);
         progressBar = findViewById(R.id.progressFlightPergi);
-        seek_barprogressFlightPergi= findViewById(R.id.seek_barprogressFlightPergi);
+        seek_barprogressFlightPergi = findViewById(R.id.seek_barprogressFlightPergi);
         image_view_filter_check = findViewById(R.id.image_view_filter_check);
         image_view_filter_check.setVisibility(View.GONE);
         image_view_sort_check = findViewById(R.id.image_view_sort_check);
@@ -136,28 +135,6 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
         shimmer.selectPreset(0, mShimmerViewContainer);
 
         recyclerView = findViewById(R.id.recylerList);
-        Intent intent = this.getIntent();
-        if (intent != null) {
-            show = intent.getBooleanExtra("cari", false);
-            if (show) {
-                if (mShimmerViewContainer.getVisibility() == View.GONE) {
-                    mShimmerViewContainer.setVisibility(View.VISIBLE);
-                    mShimmerViewContainer.startShimmerAnimation();
-
-                }
-//                progressBar.setProgress(0);
-//                progressBar.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.GONE);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        searchingFlight();
-                    }
-                });
-            }
-            //  Log.d(TAG, "onCreate: "+intent.getIntExtra(TravelActionCode.IS_FROM_PAY,0));
-        }
-
 
         asal = PreferenceClass.getString(FlightKeyPreference.airportNamaAsal, "");
         String arrAsal[] = asal.split("\\(");
@@ -183,84 +160,33 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
         recyclerView.setLayoutManager(mLayoutManager);
         adapter = new FlightScheduleOneWayAdapter(this, list, this);
 
-
-//        adapter = new FlightScheduleOneWayAdapter(this, list);
         recyclerView.setAdapter(adapter);
 
-
-//        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this,
-//                recyclerView, new ClickListener() {
-//            @Override
-//            public void onClick(final View view,  int position) {
-////                Toast.makeText(FlightScheduleActivity.this, "Single Click on Image :"+position,
-////                        Toast.LENGTH_SHORT).show();
-//                final FlightDataModelClasses data = list.get(position);
-//                final RelativeLayout relDetail=view.findViewById(R.id.relDetail);
-//                final TextView departureTime=view.findViewById(R.id.departureTime);
-//                final TextView arrivalTime=view.findViewById(R.id.arrivalTime);
-//                final AppCompatButton btnPrice=view.findViewById(R.id.airlinesCheckPrice);
-//
-//                final String[] seat = new String[data.getClassArr().length()];
-//
-//                for (int i = 0; i < data.getClassArr().length(); i++) {
-//                    try {
-//                        seat[i] = data.getClassArr().getJSONArray(i).getJSONObject(0).getString("seat").toString();
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                LinearLayout linMainTouch=view.findViewById(R.id.linMainTouch);
-//                relDetail.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //Toast.makeText(FlightScheduleActivity.this, "Single Click on Detail :"+position+" "+data.getFlightCode(),
-//                        //       Toast.LENGTH_SHORT).show();
-//                        onClickDetail(data.getDetailTitle(),relDetail.getTag().toString(),data, seat, departureTime.getText().toString(), arrivalTime.getText().toString());
-//                    }
-//                });
-//                linMainTouch.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-////                        Toast.makeText(FlightScheduleActivity.this, "Single Click on ticketView :"+position,
-////                                Toast.LENGTH_SHORT).show();
-//                        onClickCheckPrice(data, seat,departureTime.getText().toString(), arrivalTime.getText().toString());
-//                    }
-//                });
-//                btnPrice.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-////                        Toast.makeText(FlightScheduleActivity.this, "Single Click on ticketView :"+position,
-////                                Toast.LENGTH_SHORT).show();
-//                        onClickCheckPrice(data, seat,departureTime.getText().toString(), arrivalTime.getText().toString());
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onLongClick(View view, int position) {
-//
-//            }
-//        }));
-
+        requestConfiguration();
     }
 
-    private void searchingFlight() {
-        logEventFireBase(ProdukGroup.PESAWAT,ProdukGroup.PESAWAT, FirebaseAnalytics.Event.SEARCH,EventParam.EVENT_SUCCESS,TAG);
+    private void requestConfiguration() {
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("token", PreferenceClass.getToken());
+            RequestUtilsTravel.transportWithProgressResponse(this, FlightPath.CONFIGURATION, jsonObject, TravelActionCode.CONFIGURATION, this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-//        Random r = new Random();
-//        int rand = r.nextInt(10000000);
-        long cid=System.currentTimeMillis();
-        Log.d(TAG, "searchingFlight CID: "+cid);
-        PreferenceClass.putString(TravelActionCode.CID,String.valueOf(cid));
+    private boolean searchOnConfigReady = false;
+    private void searchingFlight() {
+        logEventFireBase(ProdukGroup.PESAWAT, ProdukGroup.PESAWAT, FirebaseAnalytics.Event.SEARCH, EventParam.EVENT_SUCCESS, TAG);
+
+        long cid = System.currentTimeMillis();
+        Timber.d("searchingFlight CID: %s", cid);
+        PreferenceClass.putString(TravelActionCode.CID, String.valueOf(cid));
         list.clear();
         progressz = 0;
         countFlight = 0;
         isFilter = false;
-        // adapter.checked(1);
         checked = 1;
-        //listClasses.clear();
-//       JSONObject jsonObject= PreferenceClass.getJSONObject(FlightKeyPreference.dataConfigFlight);
-//        configAirportModel=jsonObject.
         if (image_view_filter_check.getVisibility() == View.VISIBLE) {
             image_view_filter_check.setVisibility(View.GONE);
         }
@@ -269,16 +195,22 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
         }
 
         boolean isLowestPrice;
-        if(PreferenceClass.getString(FlightKeyPreference.searchChoicePrice,"low").equals("low")){
-            isLowestPrice=true;
-        }else{
-            isLowestPrice=false;
+        if (PreferenceClass.getString(FlightKeyPreference.searchChoicePrice, "low").equals("low")) {
+            isLowestPrice = true;
+        } else {
+            isLowestPrice = false;
+        }
+
+        String jsonConfig = PreferenceClass.getString(FlightKeyPreference.dataConfigFlight);
+        if (jsonConfig.isEmpty()) {
+            searchOnConfigReady = true;
+            requestConfiguration();
         }
 
         configAirportModel = gson.fromJson(PreferenceClass.getJSONObject(FlightKeyPreference.dataConfigFlight).toString(), ConfigFlightModel.class);
         JSONObject jsonObject = new JSONObject();
         for (int i = 0; i < configAirportModel.getConfigurations().size(); i++) {
-          //  Log.d(TAG, "searchingFlight: "+configAirportModel.getConfigurations().get(i).getAirline()+" "+configAirportModel.getConfigurations().get(i).getIsActive());
+            //  Log.d(TAG, "searchingFlight: "+configAirportModel.getConfigurations().get(i).getAirline()+" "+configAirportModel.getConfigurations().get(i).getIsActive());
             if (configAirportModel.getConfigurations().get(i).getIsActive().equals("1")) {
                 try {
                     ConfigFlightModel.Configurations airlinescode = configAirportModel.getConfigurations().get(i);//String("airline");
@@ -296,56 +228,102 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.d(TAG, "REQUEST searchingFlight: " + jsonObject);
+                Timber.d("REQUEST searchingFlight: " + jsonObject);
                 isStillRunning = true;
                 seek_barprogressFlightPergi.setProgress(0);
                 seek_barprogressFlightPergi.setVisibility(View.VISIBLE);
-//            RequestUtilsTravel.transportWithProgressResponse("flight/search", jsonObject, new ProgressResponseHandler(FlightScheduleActivity.this,this, ActionCode.SCHEDULE_ONEWAY));
 
                 RequestUtilsTravel.transportWithProgressResponse(FlightScheduleActivity.this, FlightPath.SEARCH, jsonObject, TravelActionCode.SEARCH, this);
             }
-
         }
     }
 
     @Override
     public void onSuccess(int actionCode, @NonNull JSONObject response) {
         super.onSuccess(actionCode, response);
-        Log.d(TAG, "onSuccess: " + response.toString());
+        Timber.d("onSuccess: %s", response.toString());
 
+        if (actionCode == TravelActionCode.CONFIGURATION) {
+            BaseObject baseObject = gson.fromJson(response.toString(), BaseObject.class);
+            if (baseObject.getRc().equals(ResponseCode.SUCCESS)) {
+                try {
+                    JSONObject data = response.getJSONObject("data");
+                    ConfigFlightModel configFlightModel = gson.fromJson(response.getJSONObject("data").toString(), ConfigFlightModel.class);
+                    SettingFlightModel settingFlightModel = gson.fromJson(response.getJSONObject("data").toString(), SettingFlightModel.class);
 
-        try {
-            if (actionCode == TravelActionCode.SEARCH) {
-                if (response.getString("rc").equals(ResponseCode.SUCCESS)) {
+                    JSONObject obj = PreferenceClass.getJSONObject(FlightKeyPreference.dataConfigFlight);
+                    JSONObject objSettings = PreferenceClass.getJSONObject(FlightKeyPreference.dataSettingsFlight);
+                    JSONArray array = new JSONArray();
+                    JSONArray arraySettings = new JSONArray();
 
+                    try {
+                        array = obj.getJSONArray("configurations");
+                        arraySettings = objSettings.getJSONArray("settings");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                    progressz = progressz + 1;
-                    showProgress(progressz);
-                    getSchedule(response);
+                    Timber.d("onSuccess: %s", array.length());
+                    if (array.length() != configFlightModel.getConfigurations().size()) {
+                        PreferenceClass.putJSONObject(FlightKeyPreference.dataConfigFlight, data);
 
+                    }
 
-                } else {
+                    if (arraySettings.length() != settingFlightModel.getSettings().size()) {
+                        PreferenceClass.putJSONObject(FlightKeyPreference.dataSettingsFlight, data);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                    progressz = progressz + 1;
-                    showProgress(progressz);
+                Intent intent = this.getIntent();
+                if (intent != null) {
+                    show = intent.getBooleanExtra("cari", false);
+                    if (show) {
+                        if (mShimmerViewContainer.getVisibility() == View.GONE) {
+                            mShimmerViewContainer.setVisibility(View.VISIBLE);
+                            mShimmerViewContainer.startShimmerAnimation();
 
+                        }
+                        recyclerView.setVisibility(View.GONE);
+                        runOnUiThread(this::searchingFlight);
+                    }
+                }
+
+                if (searchOnConfigReady) {
+                    searchOnConfigReady = false;
+                    searchingFlight();
                 }
             } else {
-                JSONObject oParent = response.getJSONObject("data");
-                Intent intent = null;//new Intent(FlightScheduleActivity.this, BookFlightActivity.class);
-                Bundle b = new Bundle();
-                b.putString("departureTime", oParent.getString("departureTime"));
-                b.putString("arrivalTime", oParent.getString("arrivalTime"));
-                b.putString("price", oParent.getString("price"));
-                intent.putExtras(b); //Put your id to your next Intent
-                startActivity(intent);
+                new_popup_alert_failure(this, baseObject.getRd());
             }
-        } catch (JSONException e) {
-            progressz = progressz + 1;
-            showProgress(progressz);
+        } else {
+            try {
+                if (actionCode == TravelActionCode.SEARCH) {
+                    if (response.getString("rc").equals(ResponseCode.SUCCESS)) {
+                        progressz = progressz + 1;
+                        showProgress(progressz);
+                        getSchedule(response);
+                    } else {
+                        progressz = progressz + 1;
+                        showProgress(progressz);
+                    }
+                } else {
+                    JSONObject oParent = response.getJSONObject("data");
+                    Intent intent = null;//new Intent(FlightScheduleActivity.this, BookFlightActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("departureTime", oParent.getString("departureTime"));
+                    b.putString("arrivalTime", oParent.getString("arrivalTime"));
+                    b.putString("price", oParent.getString("price"));
+                    intent.putExtras(b); //Put your id to your next Intent
+                    startActivity(intent);
+                }
+            } catch (JSONException e) {
+                progressz = progressz + 1;
+                showProgress(progressz);
+            }
+            isStillRunning = false;
         }
-        isStillRunning = false;
-
     }
 
     @Override
@@ -356,33 +334,15 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
         if (actionCode == TravelActionCode.SEARCH) {
             progressz = progressz + 1;
             showProgress(progressz);
+        } else if (actionCode == TravelActionCode.CONFIGURATION) {
+            new_popup_alert_failure(this, "Gagal mendapatkan setting pesawat");
         }
     }
 
-    // boolean check;
-//    @Override
-//    public void onClickCheckPrice(FlightDataModelClasses data, String[] seat, boolean check, String departureTime, String arrivalTime) {
-
-//    }
     @Override
-    public void onClickCheckPrice(@NonNull FlightDataModelClasses data, @NonNull String[] seat,boolean check,  String departureTime, String arrivalTime) {
-        Log.d(TAG, "onClickCheckPrice: " +data.getIsInternational()+"  "+data);
-        //   this.check = check;
-        logEventFireBase(ProdukGroup.PESAWAT, clearListFromDuplicateAirlines(listAirlines).get(0).getAirLineNama(), String.valueOf(data.getPrice()),PreferenceClass.getString(FlightKeyPreference.airportKodeAsal, ""),data.getFlightCode(),PreferenceClass.getString(FlightKeyPreference.airportKodeTujuan, "") ,PreferenceClass.getString(FlightKeyPreference.departureDateFlight, ""),String.valueOf(data.isTransit()),EventParam.EVENT_ACTION_REQUEST_FARE, EventParam.EVENT_SUCCESS, TAG);
-
-//        HashMap<String, String> eventMap = new HashMap<>();
-//        eventMap.put("upline", materialEditTextIdUplineReg.getEditableText().toString());
-//        eventMap.put("is_register", "1");
-//        eventMap.put("paket", paketName);
-//        eventMap.put("email", materialEditTextEmailReg.getEditableText().toString());
-//        eventMap.put("nama", materialEditTextNamaReg.getEditableText().toString());
-//        eventMap.put("no_handphone", materialEditTextNoHpReg.getEditableText().toString());
-//        eventMap.put("kabupaten", materialEditTextKotaReg.getEditableText().toString());
-//        eventMap.put("propinsi", materialEditTextPropinsiReg.getEditableText().toString());
-//
-//
-//        SBFApplication.sendEvent(FirebaseAnalytics.Event.VIEW_ITEM, eventMap);
-
+    public void onClickCheckPrice(@NonNull FlightDataModelClasses data, @NonNull String[] seat, boolean check, String departureTime, String arrivalTime) {
+        Timber.d("onClickCheckPrice: " + data.getIsInternational() + "  " + data);
+        logEventFireBase(ProdukGroup.PESAWAT, clearListFromDuplicateAirlines(listAirlines).get(0).getAirLineNama(), String.valueOf(data.getPrice()), PreferenceClass.getString(FlightKeyPreference.airportKodeAsal, ""), data.getFlightCode(), PreferenceClass.getString(FlightKeyPreference.airportKodeTujuan, ""), PreferenceClass.getString(FlightKeyPreference.departureDateFlight, ""), String.valueOf(data.isTransit()), EventParam.EVENT_ACTION_REQUEST_FARE, EventParam.EVENT_SUCCESS, TAG);
 
         JSONObject jsonObject = new JSONObject();
 
@@ -412,7 +372,7 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
             jsonObject.put("child", PreferenceClass.getInt(FlightKeyPreference.countChildFlight, 0));
             jsonObject.put("infant", PreferenceClass.getInt(FlightKeyPreference.countInfantFlight, 0));
             jsonObject.put("seats", jsonArray);
-            jsonObject.put("cid", PreferenceClass.getString(TravelActionCode.CID,"0"));
+            jsonObject.put("cid", PreferenceClass.getString(TravelActionCode.CID, "0"));
             jsonObject.put("token", PreferenceClass.getToken());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -442,10 +402,7 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
 //        intent.putExtra("kodePenerbangan", "TP"+data.getFlightCode().substring(0,2)); //Put your id to your next Intent
         intent.putExtra("isFare", true); //Put your id to your next Intent
         startActivityForResult(intent, TravelActionCode.IS_FROM_PAY);
-
     }
-
-
 
     @Override
     public void onClickDetail(@NonNull JSONArray detailTitle, String tag, FlightDataModelClasses data, String[] seat, String departureTime, String arrivalTime) {
@@ -463,7 +420,6 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
 //           // onClickCheckPrice(data,seat, true, departureTime,  arrivalTime);
 //        }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -510,10 +466,10 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
                     mShimmerViewContainer.stopShimmerAnimation();
 
                 }
-                if(emptyView.getVisibility()==View.VISIBLE) {
+                if (emptyView.getVisibility() == View.VISIBLE) {
                     emptyView.setVisibility(View.GONE);
                 }
-                if(recyclerView.getVisibility()==View.GONE) {
+                if (recyclerView.getVisibility() == View.GONE) {
                     recyclerView.setVisibility(View.VISIBLE);
                 }
 //                layout_filter.setFocusableInTouchMode(true);
@@ -810,8 +766,8 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
                     //int count = Collections.frequency(listAirlines, airlineName);
 //                    findDuplicates
 //                    if(count==1){
-                        Log.d(TAG, "getSchedule: "+ clearListFromDuplicateAirlines(listAirlines));
-                        logEventFireBase(ProdukGroup.PESAWAT, clearListFromDuplicateAirlines(listAirlines).get(0).getAirLineNama(), FirebaseAnalytics.Event.VIEW_SEARCH_RESULTS, EventParam.EVENT_SUCCESS, TAG);
+                    Log.d(TAG, "getSchedule: " + clearListFromDuplicateAirlines(listAirlines));
+                    logEventFireBase(ProdukGroup.PESAWAT, clearListFromDuplicateAirlines(listAirlines).get(0).getAirLineNama(), FirebaseAnalytics.Event.VIEW_SEARCH_RESULTS, EventParam.EVENT_SUCCESS, TAG);
 //                    }
                 }
 
@@ -959,10 +915,10 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
 
 
             //try {
-                stringName1 = app1.getDuration().replace("j", "").replace("m", "");
-              //  stringName1 = app1.getDetailTitle().getJSONObject(0).getString("duration").replace("j", "").replace("m", "");
-              //  stringName2 = app2.getDetailTitle().getJSONObject(0).getString("duration").replace("j", "").replace("m", "");
-                stringName2 = app2.getDuration().replace("j", "").replace("m", "");
+            stringName1 = app1.getDuration().replace("j", "").replace("m", "");
+            //  stringName1 = app1.getDetailTitle().getJSONObject(0).getString("duration").replace("j", "").replace("m", "");
+            //  stringName2 = app2.getDetailTitle().getJSONObject(0).getString("duration").replace("j", "").replace("m", "");
+            stringName2 = app2.getDuration().replace("j", "").replace("m", "");
 //            } catch (JSONException e) {
 //                e.printStackTrace();
 //            }
@@ -1024,13 +980,13 @@ public class FlightScheduleActivity extends BaseActivity implements FlightSchedu
     public void openCalendar(View v) {
         Intent intent = new Intent(FlightScheduleActivity.this, TravelTanggalActivity.class);
         intent.putExtra("initTanggal", "pergi");
-        intent.putExtra("initValue", PreferenceClass.getString(FlightKeyPreference.departureDateFlight,""));
+        intent.putExtra("initValue", PreferenceClass.getString(FlightKeyPreference.departureDateFlight, ""));
         startActivityForResult(intent, 1);
         overridePendingTransition(R.anim.popup_show, R.anim.popup_hide);
     }
 
     public void openSorter(View v) {
-        final View view = View.inflate(this,R.layout.core_sorter, null);
+        final View view = View.inflate(this, R.layout.core_sorter, null);
         textSorterLowPrice = view.findViewById(R.id.textSorterLowPrice);
         imageViewSorterLowPrice = view.findViewById(R.id.imageViewSorterLowPrice);
         textSorterLowPrice.setOnClickListener(this);

@@ -1,73 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rounded_white_4dp"
-    android:padding="@dimen/standard_margin_3x"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:padding="@dimen/standard_margin_3x">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_13sdp"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/standard_margin_2x"
+        android:gravity="center"
         android:maxLines="2"
         android:text="Barang belum terdaftar melalui proses scan barcode!"
-        android:gravity="center"
-        android:layout_marginHorizontal="@dimen/standard_margin_2x"/>
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold" />
+
     <ImageView
-        android:layout_marginTop="@dimen/standard_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_caution"/>
+        android:layout_marginTop="@dimen/standard_margin"
+        android:src="@drawable/ic_caution" />
+
     <TextView
         android:id="@+id/tv_caution"
-        android:layout_marginTop="@dimen/standard_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginHorizontal="@dimen/standard_margin_2x"/>
+        android:layout_marginHorizontal="@dimen/standard_margin_2x"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:gravity="center" />
+
     <LinearLayout
         android:id="@+id/container_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_total_harga"
-        android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/standard_margin_2x"
         android:layout_marginTop="@dimen/standard_margin_2x"
-        android:weightSum="2"
-        android:gravity="center">
+        android:layout_marginBottom="@dimen/standard_margin_2x"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_daftar_barang"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/standard_small_margin"
             android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
             android:gravity="center"
+            android:paddingHorizontal="@dimen/standard_margin"
+            android:paddingTop="@dimen/standard_margin"
+            android:paddingBottom="@dimen/standard_margin"
             android:text="Mendaftarkan Barang"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
-            android:backgroundTint="@color/colorAccent"
-            android:paddingTop="@dimen/standard_margin"
-            android:paddingBottom="@dimen/standard_margin"
-            android:paddingHorizontal="@dimen/standard_margin"
-            android:layout_marginHorizontal="@dimen/standard_small_margin"/>
+            app:backgroundTint="@color/colorAccent" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_scan_barang"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/standard_small_margin"
             android:layout_weight="1"
             android:gravity="center"
+            android:paddingHorizontal="@dimen/standard_margin"
+            android:paddingTop="@dimen/standard_margin"
+            android:paddingBottom="@dimen/standard_margin"
             android:text="Scan Barang Lain"
             android:textAllCaps="false"
             android:textColor="@color/primaryText"
             android:textSize="@dimen/_12sdp"
-            android:textStyle="bold"
-            android:paddingTop="@dimen/standard_margin"
-            android:paddingBottom="@dimen/standard_margin"
-            android:paddingHorizontal="@dimen/standard_margin"
-            android:layout_marginHorizontal="@dimen/standard_small_margin"
-            style="?attr/materialButtonOutlinedStyle"/>
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

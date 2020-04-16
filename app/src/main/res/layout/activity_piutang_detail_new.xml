@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/layout_top"
                     android:layout_width="match_parent"
@@ -23,6 +28,7 @@
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/standard_margin_3x"
                     android:paddingTop="@dimen/standard_margin_3x">
+
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
@@ -30,158 +36,180 @@
                         android:textSize="@dimen/_20sdp"
                         android:textStyle="bold"
                         tools:text="Dhani" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_1sdp"
-                        android:background="@color/divider"/>
+                        android:background="@color/divider" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/standard_margin"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Tanggal Hutang"
-                            android:textSize="@dimen/_12sdp"
-                            android:layout_weight="1"/>
+                            android:textSize="@dimen/_12sdp" />
+
                         <TextView
                             android:id="@+id/tv_tanggal_hutang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:text="3 Maret 2020"
-                            android:textSize="@dimen/_12sdp"
                             android:layout_weight="1"
-                            android:gravity="right"/>
+                            android:gravity="right"
+                            android:textSize="@dimen/_12sdp"
+                            tools:text="3 Maret 2020" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="@dimen/standard_margin"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Jumlah Hutang"
-                            android:textSize="@dimen/_12sdp"
-                            android:layout_weight="1"/>
+                            android:textSize="@dimen/_12sdp" />
+
                         <TextView
                             android:id="@+id/tv_jumlah_hutang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:text="Rp 70.000"
-                            android:textSize="@dimen/_15sdp"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:textStyle="bold"/>
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold"
+                            tools:text="Rp 70.000" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/standard_margin"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="@dimen/standard_margin">
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nominal yang Dibayarkan"
-                            android:textSize="@dimen/_12sdp"
+                            android:layout_marginRight="@dimen/standard_margin_2x"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/standard_margin_2x"/>
+                            android:text="Nominal yang Dibayarkan"
+                            android:textSize="@dimen/_12sdp" />
+
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:text="Rp"
                                 android:textSize="@dimen/_15sdp"
-                                android:textStyle="bold"
-                                android:gravity="center" />
+                                android:textStyle="bold" />
+
                             <EditText
                                 android:id="@+id/et_bayar"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Nominal bayar"
-                                android:textSize="@dimen/_13sdp"
                                 android:gravity="right"
-                                android:textStyle="bold"
-                                android:inputType="number" />
+                                android:hint="Nominal bayar"
+                                android:inputType="number"
+                                android:textSize="@dimen/_13sdp"
+                                android:textStyle="bold" />
                         </FrameLayout>
                     </LinearLayout>
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_bayar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_gravity="center"
-                        android:text="Bayar"
-                        android:textSize="@dimen/_12sdp"
-                        android:paddingVertical="@dimen/standard_margin"
-                        android:paddingHorizontal="@dimen/_50sdp"
-                        android:enabled="false"
                         android:layout_marginTop="@dimen/standard_margin"
                         android:backgroundTint="@color/selector_btn_green_grey"
-                        android:textColor="@color/white"/>
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_50sdp"
+                        android:paddingVertical="@dimen/standard_margin"
+                        android:text="Bayar"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        app:backgroundTint="@color/selector_btn_green_grey" />
                 </LinearLayout>
+
                 <View
-                    android:layout_marginTop="@dimen/standard_margin"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/divider"/>
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:background="@color/divider" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="History Piutang"
-                    android:textSize="@dimen/_15sdp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/standard_margin_2x"
-                    android:textStyle="bold"/>
+                    android:text="History Piutang"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:id="@+id/layout_top_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin_2x"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/standard_margin_4x"
-                    android:layout_marginTop="@dimen/standard_margin_2x">
+                    android:paddingHorizontal="@dimen/standard_margin_4x">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="Tanggal"
                         android:textSize="@dimen/_11sdp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:gravity="center"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="Keterangan"
                         android:textSize="@dimen/_11sdp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:gravity="center"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="Jumlah"
                         android:textSize="@dimen/_11sdp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:gravity="center"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <View
-                    android:layout_marginTop="@dimen/standard_small_margin"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_2sdp"
-                    android:background="@color/divider"
-                    android:layout_marginHorizontal="@dimen/standard_margin_4x"/>
+                    android:layout_marginHorizontal="@dimen/standard_margin_4x"
+                    android:layout_marginTop="@dimen/standard_small_margin"
+                    android:background="@color/divider" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

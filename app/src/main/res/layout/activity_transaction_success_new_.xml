@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_penjualan_success_msg"
         android:layout_marginTop="@dimen/standard_margin_2x"
-        android:layout_marginBottom="@dimen/standard_margin_2x"/>
+        android:layout_marginBottom="@dimen/standard_margin_2x"
+        app:srcCompat="@drawable/ic_penjualan_success_msg" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_penjualan_success_img"
         android:layout_marginLeft="@dimen/standard_margin_4x"
         android:layout_marginRight="@dimen/standard_margin_4x"
         android:layout_marginBottom="@dimen/standard_margin_3x"
+        android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:adjustViewBounds="true"/>
+        app:srcCompat="@drawable/ic_penjualan_success_img" />
+
     <TextView
         android:layout_width="@dimen/_180sdp"
         android:layout_height="wrap_content"
-        android:text="Struk Email Sudah Terkirim"
         android:layout_marginBottom="@dimen/standard_margin_4x"
-        android:textSize="@dimen/_20sdp"
-        android:textStyle="bold"
-        android:textColor="@color/colorAccent"
-        android:lines="2"
         android:gravity="center"
-        android:textAllCaps="true"/>
+        android:lines="2"
+        android:text="Struk Email Sudah Terkirim"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_transaksi_lagi"
         android:layout_width="match_parent"
@@ -38,13 +42,15 @@
         android:layout_marginLeft="@dimen/standard_margin_4x"
         android:layout_marginRight="@dimen/standard_margin_4x"
         android:layout_marginBottom="@dimen/standard_margin_2x"
+        android:background="@color/md_green_500"
+        android:backgroundTint="@color/md_green_500"
         android:gravity="center"
+        android:paddingTop="@dimen/standard_margin"
+        android:paddingBottom="@dimen/standard_margin"
         android:text="Transaksi Lagi"
+        android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
-        android:textAllCaps="true"
-        android:paddingTop="@dimen/standard_margin"
-        android:paddingBottom="@dimen/standard_margin"
-        android:backgroundTint="@color/md_green_500"/>
+        app:backgroundTint="@color/md_green_500" />
 </LinearLayout>

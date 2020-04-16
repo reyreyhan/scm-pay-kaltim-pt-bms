@@ -45,13 +45,17 @@ class RabbitMqThread(val activity: Activity) : Thread() {
                     RabbitMqPrint.printStrukRabbit(msg, activity)
                 }*/
             } catch (e: InterruptedException) {
+                Timber.e("interupted exception error")
                 Timber.e(e)
                 break
             } catch (e1: Exception) {
+                Timber.e("general error")
                 Timber.e(e1)
                 try {
+                    Runtime.getRuntime().gc()
                     sleep(4000) //sleep and then try again
                 } catch (e2: InterruptedException) {
+                    Timber.e("general error 2")
                     Timber.e(e2)
                     break
                 }

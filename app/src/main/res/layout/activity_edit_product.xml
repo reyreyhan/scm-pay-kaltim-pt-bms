@@ -436,8 +436,6 @@
                         android:layout_marginTop="@dimen/standard_small_margin"
                         android:background="@drawable/edittext_selector"
                         android:clickable="true"
-                        android:drawableEnd="@drawable/selector_drawer"
-                        android:drawableRight="@drawable/selector_drawer"
                         android:drawablePadding="@dimen/standard_xsmall_margin"
                         android:enabled="false"
                         android:focusable="true"
@@ -448,7 +446,9 @@
                         android:paddingBottom="@dimen/_8sdp"
                         android:textColor="@color/primaryText"
                         android:textColorHint="@color/secondaryText"
-                        android:textSize="@dimen/caption" />
+                        android:textSize="@dimen/caption"
+                        app:drawableEndCompat="@drawable/selector_drawer"
+                        app:drawableRightCompat="@drawable/selector_drawer" />
 
                     <TextView
                         android:layout_width="match_parent"
