@@ -3,7 +3,6 @@ package com.bm.main.pos.feature.sell.chooseProduct
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.activities.NewHomeActivity
 import com.bm.main.fpl.constants.EventParam
 import com.bm.main.fpl.utils.PreferenceClass
@@ -30,6 +29,7 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
         )
         val check = intent.getBooleanExtra(AppConstant.DATA,true)
         view.checkStockProducts(check)
+        loadProducts()
     }
 
     override fun onViewCreated(intent: Intent) {
