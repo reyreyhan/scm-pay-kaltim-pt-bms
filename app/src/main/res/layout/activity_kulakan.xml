@@ -32,9 +32,9 @@
             android:background="@drawable/rounded_white_4dp_stroke_gray"
             android:clickable="true"
             android:padding="@dimen/standard_small_margin"
+            android:src="@drawable/icon_barcode_button"
             android:tint="@color/black"
-            android:visibility="gone"
-            app:srcCompat="@drawable/ic_barcode_button" />
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/ll_search"
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_err_search" />
+                android:src="@drawable/ic_err_search" />
 
             <TextView
                 android:id="@+id/tv_error"
@@ -174,14 +174,14 @@
                             android:layout_weight="1"
                             android:background="@drawable/rounded_white_4dp_stroke_gray"
                             android:clickable="true"
-                            android:drawableEnd="@drawable/selector_drawer"
-                            android:drawableRight="@drawable/selector_drawer"
                             android:drawablePadding="@dimen/standard_xsmall_margin"
                             android:focusable="true"
                             android:padding="@dimen/standard_margin"
                             android:textColor="@color/primaryText"
                             android:textColorHint="@color/secondaryText"
-                            android:textSize="@dimen/body" />
+                            android:textSize="@dimen/body"
+                            app:drawableEndCompat="@drawable/selector_drawer"
+                            app:drawableRightCompat="@drawable/selector_drawer" />
 
                         <ImageView
                             android:id="@+id/btn_delete_supplier"
@@ -279,13 +279,13 @@
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:background="@drawable/rounded_white_4dp_stroke_gray"
-                                android:drawableEnd="@drawable/selector_drawer"
-                                android:drawableRight="@drawable/selector_drawer"
                                 android:drawablePadding="@dimen/standard_xsmall_margin"
                                 android:padding="@dimen/standard_margin"
                                 android:textColor="@color/primaryText"
                                 android:textColorHint="@color/secondaryText"
-                                android:textSize="@dimen/body" />
+                                android:textSize="@dimen/body"
+                                app:drawableEndCompat="@drawable/selector_drawer"
+                                app:drawableRightCompat="@drawable/selector_drawer" />
 
                             <ImageView
                                 android:layout_width="@dimen/standart_input_height"

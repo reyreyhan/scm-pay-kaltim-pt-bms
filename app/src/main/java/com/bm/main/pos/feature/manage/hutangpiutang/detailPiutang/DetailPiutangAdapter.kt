@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.pos.R
 import com.bm.main.pos.models.hutangpiutang.DetailPiutang
@@ -60,11 +61,11 @@ class DetailPiutangAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 Helper.getDateFormat(itemView.context, data.tanggal!!,"yyyy-MM-dd","dd MMMM yyyy")
             tvNominal.text = "Rp ${Helper.convertToCurrency(data.nominal!!)}"
             tvStatus.text = if (data.status.equals("hutang")) {
-                tvStatus.setTextColor(itemView.context.getColor(R.color.md_red_500))
+                tvStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.md_red_500))
                 "Hutang"
             }
             else {
-                tvStatus.setTextColor(itemView.context.getColor(R.color.md_green_500))
+                tvStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.md_green_500))
                 "Lunas"
             }
         }

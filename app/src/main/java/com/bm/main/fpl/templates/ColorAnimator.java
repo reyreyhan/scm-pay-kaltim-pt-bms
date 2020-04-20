@@ -29,8 +29,10 @@ public class ColorAnimator {
     private static class ColorEvaluator implements TypeEvaluator<Integer> {
 
         @Override
-        public Integer evaluate(float fraction, Integer startValue, Integer endValue) {
+        public Integer evaluate(float fraction, Integer start, Integer end) {
             int startA, startR, startG, startB;
+            int startValue = start != null ? start : 0;
+            int endValue = end != null ? end : 0;
             int aDelta = (int) ((Color.alpha(endValue) - (startA = Color.alpha(startValue))) * fraction);
             int rDelta = (int) ((Color.red(endValue) - (startR = Color.red(startValue))) * fraction);
             int gDelta = (int) ((Color.green(endValue) - (startG = Color.green(startValue))) * fraction);

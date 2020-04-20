@@ -13,6 +13,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
 import android.util.AttributeSet;
@@ -133,7 +134,7 @@ public class ExpandableBottomTabBar extends LinearLayout implements View.OnClick
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     mTabTextColor = getResources().getColor(Integer.valueOf(textColor.replace("@", "")), null);
                 } else {
-                    mTabTextColor = getResources().getColor(Integer.valueOf(textColor.replace("@", "")));
+                    mTabTextColor = ContextCompat.getColor(context, Integer.valueOf(textColor.replace("@", "")));
                 }
             } else if (textColor.contains("#")) {
                 mTabTextColor = Color.parseColor(textColor);

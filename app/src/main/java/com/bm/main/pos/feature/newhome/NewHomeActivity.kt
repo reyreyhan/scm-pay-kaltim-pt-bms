@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
+import com.bm.main.fpl.activities.HomeActivity
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.fpl.webview.FCMActivity
 import com.bm.main.pos.R
@@ -135,14 +136,15 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                if (currentPage != position){
-                    currentPage = position;
-                }
             }
 
             override fun onPageSelected(position: Int) {
+                if (position == 2) {
+                    startActivityForResult(Intent(this@NewHomeActivity, HomeActivity::class.java), 999)
+                } else if (currentPage != position){
+                    currentPage = position;
+                }
             }
-
         })
 
         disposables.add(
@@ -166,6 +168,13 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
                     //homeFragment.enableQrMenu(false)
                 })
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (currentPage < 2)
+            fragment_pager.currentItem = currentPage
     }
 
     override fun onBackPressed() {

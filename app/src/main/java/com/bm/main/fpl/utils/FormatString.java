@@ -148,8 +148,7 @@ public class FormatString {
 
             for (int x = 0; x < bitMatrixWidth; x++) {
 
-                pixels[offset + x] = bitMatrix.get(x, y) ?
-                        context.getResources().getColor(R.color.md_black_1000) : context.getResources().getColor(R.color.md_white_1000);
+                pixels[offset + x] = ContextCompat.getColor(context, bitMatrix.get(x, y) ? R.color.md_black_1000 : R.color.md_white_1000);
             }
         }
         Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_8888);

@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scan"
-                android:textColor="@drawable/selector_text_blue_white_checked"
+                android:textColor="@color/selector_text_blue_white_checked"
                 android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cari"
-                android:textColor="@drawable/selector_text_blue_white_checked"
+                android:textColor="@color/selector_text_blue_white_checked"
                 android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Manual"
-                android:textColor="@drawable/selector_text_blue_white_checked"
+                android:textColor="@color/selector_text_blue_white_checked"
                 android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>

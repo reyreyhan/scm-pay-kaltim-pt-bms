@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include layout="@layout/toolbar_color_primary" android:id="@+id/toolbar"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_color_primary" />
+
         <LinearLayout
             android:id="@+id/linMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="visible">
+
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:queryHint="@string/hint_cari_kecamatan"
+                android:layout_margin="@dimen/standard_margin_2x"
+                android:background="@drawable/rounded_white_4dp_stroke_secondary"
+                android:iconifiedByDefault="false"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
                 android:paddingEnd="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/rounded_white_4dp_stroke_secondary"
-                android:layout_margin="@dimen/standard_margin_2x"
-                android:iconifiedByDefault="false" />
+                android:queryHint="@string/hint_cari_kecamatan" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_pelanggan_baru"
                 android:layout_width="match_parent"
@@ -33,15 +40,17 @@
                 android:layout_marginLeft="@dimen/standard_margin_2x"
                 android:layout_marginRight="@dimen/standard_margin_2x"
                 android:layout_marginBottom="@dimen/standard_margin"
+                android:background="@color/orange"
+                android:backgroundTint="@color/orange"
                 android:gravity="center"
+                android:paddingTop="@dimen/standard_margin"
+                android:paddingBottom="@dimen/standard_margin"
                 android:text="Buat Pelanggan Baru"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
-                android:textAllCaps="true"
-                android:paddingTop="@dimen/standard_margin"
-                android:paddingBottom="@dimen/standard_margin"
-                android:backgroundTint="@color/orange"/>
+                app:backgroundTint="@color/orange" />
             <!--<View
                 android:background="@drawable/drop_shadowbottom"
                 android:layout_width="fill_parent"
@@ -49,15 +58,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data Pelanggan Terakhir"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold"
-                android:textAllCaps="true"
+                android:background="@color/md_grey_300"
                 android:paddingLeft="@dimen/standard_margin_2x"
-                android:paddingRight="@dimen/standard_margin_2x"
                 android:paddingTop="@dimen/standard_margin"
+                android:paddingRight="@dimen/standard_margin_2x"
                 android:paddingBottom="@dimen/standard_margin"
-                android:background="@color/md_grey_300"/>
+                android:text="Data Pelanggan Terakhir"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
             <com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="wrap_content"
@@ -70,29 +80,69 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <include layout="@layout/recipe_placeholder_one_item" />
-                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/placeholder_bg" />
+
                     <include layout="@layout/recipe_placeholder_one_item" />
-                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/placeholder_bg" />
+
                     <include layout="@layout/recipe_placeholder_one_item" />
-                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/placeholder_bg" />
+
                     <include layout="@layout/recipe_placeholder_one_item" />
-                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/placeholder_bg" />
+
                     <include layout="@layout/recipe_placeholder_one_item" />
-                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/placeholder_bg" />
+
                     <include layout="@layout/recipe_placeholder_one_item" />
-                    <View android:layout_height="1dp" android:layout_width="match_parent" android:background="@color/placeholder_bg"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/placeholder_bg" />
 
                 </LinearLayout>
             </com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewKecamatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@color/md_white_1000" android:visibility="gone"/>
+                android:background="@color/md_white_1000"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
-    <include layout="@layout/layout_data_empty" android:id="@+id/layout_data_empty" android:visibility="gone"/>
-    <include layout="@layout/layout_no_connection" android:id="@+id/layout_no_connection" android:visibility="gone"/>
+
+    <include
+        android:id="@+id/layout_data_empty"
+        layout="@layout/layout_data_empty"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/layout_no_connection"
+        layout="@layout/layout_no_connection"
+        android:visibility="gone" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

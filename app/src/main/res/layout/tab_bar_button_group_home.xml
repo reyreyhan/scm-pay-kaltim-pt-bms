@@ -4,159 +4,152 @@
 
     android:id="@+id/buttonGroupTabs"
 
-    android:gravity="center"
-    android:weightSum="2"
-
-    android:orientation="horizontal"
-    android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:baselineAligned="false">
+
+    android:layout_margin="5dp"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="2">
 
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="40dp"-->
-      <!---->
-        <!--android:layout_gravity="center"-->
-        <!--android:gravity="center"-->
-        <!--android:weightSum="2"-->
-        <!--android:background="@drawable/shape_toolbar_group_home"-->
-        <!--android:orientation="horizontal">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!---->
+    <!--android:layout_gravity="center"-->
+    <!--android:gravity="center"-->
+    <!--android:weightSum="2"-->
+    <!--android:background="@drawable/shape_toolbar_group_home"-->
+    <!--android:orientation="horizontal">-->
 
-        <RadioButton
-            android:id="@+id/linItemTabPpob"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_button_blue_white_checked"
-            android:button="@null"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
-            android:textColor="@drawable/selector_text_blue_white_checked"
-            android:text="@string/ppob_ticketing"
-            android:gravity="center"
-                android:checked="true"
-           />
-
-            <!--<android.support.v7.widget.AppCompatButton-->
-            <!--<TextView-->
-
-                <!--android:id="@+id/appButtonItemTabPpob"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="35dp"-->
-
-
-
-
-
-
-                <!--android:fontFamily="@font/roboto_light"-->
-                <!--android:gravity="center"-->
-                <!--android:padding="5dp"-->
-                <!--android:tag="0"-->
-                <!--android:text="@string/ppob_ticketing"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:textColor="@drawable/selector_text_blue_white_selected"-->
-                <!--android:textSize="@dimen/textSmall" />-->
-            <!--<View-->
-
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="3dip"-->
-                <!--android:background="@drawable/drop_shadowbottom" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/viewItemTabPpob"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="2dp"-->
-                <!--android:layout_marginEnd="5dp"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_marginRight="5dp"-->
-                <!--android:layout_marginStart="5dp"-->
-                <!--android:background="@drawable/selector_indicator_tab_btn_group_home" />-->
-
-
-<!--<RelativeLayout-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="match_parent" android:layout_weight="1"-->
-   <!--&gt;-->
-        <RadioButton
-            android:id="@+id/linItemTabGrosir"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+    <RadioButton
+        android:id="@+id/linItemTabPpob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
         android:background="@drawable/selector_button_blue_white_checked"
         android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/ppob_ticketing"
+        android:textColor="@color/selector_text_blue_white_checked" />
+
+    <!--<android.support.v7.widget.AppCompatButton-->
+    <!--<TextView-->
+
+    <!--android:id="@+id/appButtonItemTabPpob"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="35dp"-->
+
+
+    <!--android:fontFamily="@font/roboto_light"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="5dp"-->
+    <!--android:tag="0"-->
+    <!--android:text="@string/ppob_ticketing"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textColor="@drawable/selector_text_blue_white_selected"-->
+    <!--android:textSize="@dimen/textSmall" />-->
+    <!--<View-->
+
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="3dip"-->
+    <!--android:background="@drawable/drop_shadowbottom" />-->
+
+    <!--<View-->
+    <!--android:id="@+id/viewItemTabPpob"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="2dp"-->
+    <!--android:layout_marginEnd="5dp"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_marginStart="5dp"-->
+    <!--android:background="@drawable/selector_indicator_tab_btn_group_home" />-->
+
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent" android:layout_weight="1"-->
+    <!--&gt;-->
+    <RadioButton
+        android:id="@+id/linItemTabGrosir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector_button_blue_white_checked"
+        android:button="@null"
+        android:checked="false"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="GROSIR"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:checked="false"
 
-        android:textColor="@drawable/selector_text_blue_white_checked"
-          />
+        android:textColor="@color/selector_text_blue_white_checked" />
 
-            <!--<android.support.v7.widget.AppCompatButton-->
-            <!--<TextView-->
-                <!--android:id="@+id/appButtonItemTabGrosir"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="35dp"-->
+    <!--<android.support.v7.widget.AppCompatButton-->
+    <!--<TextView-->
+    <!--android:id="@+id/appButtonItemTabGrosir"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="35dp"-->
 
 
+    <!--android:fontFamily="@font/roboto_light"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="5dp"-->
+    <!--android:tag="1"-->
+    <!--android:text="GROSIR"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textColor="@drawable/selector_text_blue_white_selected"-->
+    <!--android:textSize="@dimen/textSmall" />-->
+    <!--&lt;!&ndash;<View&ndash;&gt;-->
 
-                <!--android:fontFamily="@font/roboto_light"-->
-                <!--android:gravity="center"-->
-                <!--android:padding="5dp"-->
-                <!--android:tag="1"-->
-                <!--android:text="GROSIR"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:textColor="@drawable/selector_text_blue_white_selected"-->
-                <!--android:textSize="@dimen/textSmall" />-->
-            <!--&lt;!&ndash;<View&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="fill_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="3dip"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/drop_shadowbottom" />&ndash;&gt;-->
 
-                <!--&lt;!&ndash;android:layout_width="fill_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="3dip"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:background="@drawable/drop_shadowbottom" />&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<View&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/viewItemTabGrosir"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="2dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_marginEnd="5dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_marginLeft="5dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_marginRight="5dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_marginStart="5dp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:background="@drawable/unselector_indicator_tab_btn_group_home" />&ndash;&gt;-->
-        <!--</CheckBox>-->
+    <!--&lt;!&ndash;<View&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/viewItemTabGrosir"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="2dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginEnd="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginLeft="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginRight="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginStart="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/unselector_indicator_tab_btn_group_home" />&ndash;&gt;-->
+    <!--</CheckBox>-->
 
     <!--<com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout-->
-        <!--android:id="@+id/frame_ribbon"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentTop="true"-->
+    <!--android:id="@+id/frame_ribbon"-->
+    <!--android:layout_width="40dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentTop="true"-->
 
 
-        <!--app:duration="3000"-->
-        <!--android:layout_gravity="end"-->
-        <!--android:visibility="gone"-->
-        <!--android:layout_alignParentEnd="true">-->
+    <!--app:duration="3000"-->
+    <!--android:layout_gravity="end"-->
+    <!--android:visibility="gone"-->
+    <!--android:layout_alignParentEnd="true">-->
 
-        <!--<ImageView-->
-            <!--android:id="@+id/image_ribbon"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
+    <!--<ImageView-->
+    <!--android:id="@+id/image_ribbon"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
 
 
-            <!--android:src="@drawable/ic_new"-->
-            <!--tools:ignore="ContentDescription"-->
-            <!--/>-->
+    <!--android:src="@drawable/ic_new"-->
+    <!--tools:ignore="ContentDescription"-->
+    <!--/>-->
 
     <!--</com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout>-->
-<!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
 
     <!--</LinearLayout>-->
 

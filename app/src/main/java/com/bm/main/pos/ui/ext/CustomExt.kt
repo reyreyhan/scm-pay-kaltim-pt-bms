@@ -79,7 +79,7 @@ fun AppCompatActivity.successDialog(context: Context, msg: String, callback: Dia
 
 fun Fragment.toast(msg: String) {
     Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
-    alert(msg)
+//    alert(msg)
 }
 
 fun AppCompatActivity.toast(context: Context, msg: String) {
