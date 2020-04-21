@@ -399,18 +399,6 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
             });
         }
 
-        if (PreferenceClass.isLoggedIn()) {
-            if (SBFApplication.getInstance().rabbitThread == null) {
-                SBFApplication.getInstance().rabbitThread = new RabbitMqThread(this);
-                SBFApplication.getInstance().rabbitThread.start();
-            } else if (!SBFApplication.getInstance().rabbitThread.isAlive()) {
-                try {
-                    SBFApplication.getInstance().rabbitThread.start();
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-            }
-        }
         glide = Glide.with(this);
     }
 

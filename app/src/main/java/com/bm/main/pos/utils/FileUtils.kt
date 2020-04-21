@@ -7,7 +7,9 @@ import android.graphics.Matrix
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
+import com.bm.main.pos.BuildConfig
 import timber.log.Timber
 import java.io.*
 import java.net.URL
@@ -81,7 +83,10 @@ object FileUtils {
     }
 
     fun getExternalDir(context: Context): File = try {
-        File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Profit")
+        if (BuildConfig.VERSION_CODE < Build.VERSION_CODES.Q)
+            File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Profit")
+        else
+            File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "Profit")
     } catch (_: IOException) {
         context.filesDir
     }.apply { if (!exists()) mkdirs() }

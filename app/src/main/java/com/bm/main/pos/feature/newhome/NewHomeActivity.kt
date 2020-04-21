@@ -14,6 +14,7 @@ import com.bm.main.fpl.activities.HomeActivity
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.fpl.webview.FCMActivity
 import com.bm.main.pos.R
+import com.bm.main.pos.SBFApplication
 import com.bm.main.pos.base.BaseActivity
 import com.bm.main.pos.di.userComponent
 import com.bm.main.pos.feature.dialog.NoteDialog
@@ -28,6 +29,7 @@ import com.bm.main.pos.feature.sell.main.SellFragment
 import com.bm.main.pos.models.cart.Cart
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rabbit.QrisViewModel
+import com.bm.main.pos.rabbit.RabbitMqThread
 import com.bm.main.pos.rest.salesforce.SfViewModel
 import com.google.android.material.tabs.TabLayout
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -81,6 +83,19 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
             startActivity(Intent(this, FCMActivity::class.java).putExtras(intent))
         } else {
             super.onCreate(savedInstanceState)
+        }
+
+        if (PreferenceClass.isLoggedIn()) {
+            if (SBFApplication.getInstance().rabbitThread == null) {
+                SBFApplication.getInstance().rabbitThread = RabbitMqThread(this)
+                SBFApplication.getInstance().rabbitThread.start()
+            } else if (!SBFApplication.getInstance().rabbitThread.isAlive) {
+                try {
+                    SBFApplication.getInstance().rabbitThread.start()
+                } catch (e: Exception) {
+                    Timber.e(e)
+                }
+            }
         }
     }
 
