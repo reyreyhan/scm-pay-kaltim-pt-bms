@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -110,12 +111,20 @@ class QRISDialog : DialogFragment() {
                 if (ContextCompat.checkSelfPermission(
                         act,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ) != PackageManager.PERMISSION_GRANTED &&
+                    )
+                    == PackageManager.PERMISSION_GRANTED &&
                     ContextCompat.checkSelfPermission(
                         act,
                         Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) != PackageManager.PERMISSION_GRANTED
+                    )
+                    == PackageManager.PERMISSION_GRANTED
                 ) {
+                    if (qrBitmap == null) {
+                        Log.e("PROFF", "BITMAP NULL, MAYBE EXIF ERROR")
+                    } else {
+                        Log.e("PROFF", "BITMAP IS NOT NULL")
+                    }
+
                     Toast.makeText(
                         act,
                         FileUtils.bitmapToExternalFile(qr_img.context, qrBitmap, "MyQr.jpg")

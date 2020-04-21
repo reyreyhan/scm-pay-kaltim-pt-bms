@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
@@ -276,8 +277,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         PreferenceClass.putString(RConfig.API_URL_FP, firebaseRemoteConfig.getString("apiUrlFP"));
         PreferenceClass.putString(RConfig.API_URL_FP_DEVEL, firebaseRemoteConfig.getString("apiUrlFPDevel"));
         PreferenceClass.putString(RConfig.API_URL_FT, firebaseRemoteConfig.getString("apiUrlFT"));
-        PreferenceClass.putString(RConfig.API_URL_POS, firebaseRemoteConfig.getString("apiUrlPOS"));
-        PreferenceClass.putString(RConfig.API_URL_POS_DEVEL, firebaseRemoteConfig.getString("apiUrlPOSDevel2"));
+        PreferenceClass.putString(RConfig.API_URL_POS, firebaseRemoteConfig.getString("apiUrlPOSv2"));
+        PreferenceClass.putString(RConfig.API_URL_POS_DEVEL, firebaseRemoteConfig.getString("apiUrlPOSv2"));
         PreferenceClass.putString(RConfig.API_YOU_TUBE, firebaseRemoteConfig.getString("api_youtube"));
         PreferenceClass.putString(RConfig.MIN_VERSION_CODE, firebaseRemoteConfig.getString("minVersionCode"));
         SBFApplication.log(RConfig.MIN_VERSION_CODE, firebaseRemoteConfig.getString("minVersionCode"));
@@ -304,6 +305,10 @@ public class SplashScreenActivity extends AppCompatActivity {
             SBFApplication.log(RConfig.API_URL_FP, firebaseRemoteConfig.getString("apiUrlFP"));
             RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFP"));
         }
+        RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFP"));
+        Log.e("PROFF", "check current url : "+ RequestUtils.getUrl());
+        Log.e("PROFF", "prod link : "+firebaseRemoteConfig.getString("apiUrlFP"));
+        Log.e("PROFF", "prod link api pos : "+firebaseRemoteConfig.getString("apiUrlPOSv2"));
         RequestUtilsTravel.setUrl(firebaseRemoteConfig.getString("apiUrlFT"));
 
         SBFApplication.log("Saving remote config...");

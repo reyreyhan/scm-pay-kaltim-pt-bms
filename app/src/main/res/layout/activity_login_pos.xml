@@ -105,7 +105,7 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:hint="@string/lbl_password_login"
-                    android:inputType="textPassword"
+                    android:inputType="numberPassword"
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/secondaryText"
                     android:textSize="@dimen/subheading" />

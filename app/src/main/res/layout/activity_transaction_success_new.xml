@@ -304,7 +304,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/standard_margin"
                             android:layout_weight="1"
-                            android:background="@color/selector_btn_green"
+                            app:backgroundTint="@color/selector_btn_green"
                             android:backgroundTint="@color/selector_btn_green"
                             android:gravity="center"
                             android:paddingVertical="@dimen/standard_margin"
@@ -312,8 +312,7 @@
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold"
-                            app:backgroundTint="@color/selector_btn_green" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -352,7 +351,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/standard_margin"
                             android:layout_weight="1"
-                            android:background="@color/selector_btn_green"
+                            app:backgroundTint="@color/selector_btn_green"
                             android:backgroundTint="@color/selector_btn_green"
                             android:gravity="center"
                             android:paddingVertical="@dimen/standard_margin"
@@ -360,8 +359,7 @@
                             android:textAllCaps="false"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold"
-                            app:backgroundTint="@color/selector_btn_green" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
