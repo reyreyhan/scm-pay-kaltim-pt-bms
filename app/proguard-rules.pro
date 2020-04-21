@@ -201,3 +201,81 @@
 -keep public class net.sqlcipher.database.* {
  *;
 }
+
+########--------Retrofit + RxJava--------#########
+-dontwarn retrofit2.*
+-keep public class retrofit2.* { *; }
+-dontwarn sun.misc.Unsafe
+-dontwarn com.octo.android.robospice.retrofit.RetrofitJackson*
+-dontwarn retrofit2.appengine.UrlFetchClient
+-keepattributes Signature
+-keepattributes Exceptions
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+-keep public class com.google.gson.* { *; }
+-keep public class com.google.inject.* { *; }
+-keep public class org.apache.http.* { *; }
+-keep public class org.apache.james.mime4j.* { *; }
+-keep public class javax.inject.* { *; }
+-dontwarn org.apache.http.*
+-dontwarn android.net.http.AndroidHttpClient
+-dontwarn retrofit2.*
+
+-dontwarn sun.misc.**
+
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+
+#-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+#   long producerNode;
+#   long consumerNode;
+#}
+
+-keep class com.bm.main.pos.* { *; }
+
+-keep class com.bm.main.pos.models.* { *; }
+
+-keep public class * extends java.io.IOException
+-dontwarn com.bm.main.pos.models.*
+-dontwarn com.bm.main.pos.rest.*
+
+-keep public class android.net.http.* { *; }
+
+-keep class !com.bm.main.* { *; }
+
+-keepnames @kotlin.Metadata class com.bm.main.pos.*
+
+-keepclassmembers class * {
+    @com.squareup.moshi.FromJson <methods>;
+    @com.squareup.moshi.ToJson <methods>;
+}
+
+#### OkHttp, Retrofit and Moshi
+-dontwarn okhttp3.**
+-dontwarn retrofit2.Platform$Java8
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+-keepclasseswithmembers class * {
+    @com.squareup.moshi.* <methods>;
+}
+-keep @com.squareup.moshi.JsonQualifier interface *
+-dontwarn org.jetbrains.annotations.**
+-keep class kotlin.Metadata { *; }
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+
+-keepclassmembers class * {
+    @com.squareup.moshi.FromJson <methods>;
+    @com.squareup.moshi.ToJson <methods>;
+}
+
+-keepnames @kotlin.Metadata class com.bm.main.pos.models*
+-keep class com.bm.main.pos.models* { *; }
+-keepclassmembers class com.bm.main.pos.models* { *; }
