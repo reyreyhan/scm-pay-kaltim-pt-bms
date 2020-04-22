@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.menu
 
+import androidx.annotation.Keep
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.Gson
 import com.bm.main.pos.models.category.Category
@@ -11,6 +12,7 @@ import com.bm.main.pos.R
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Menu : Serializable {
     var id: Int? = null

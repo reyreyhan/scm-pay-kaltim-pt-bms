@@ -1,5 +1,6 @@
 package com.bm.main.pos.rest
 
+import androidx.annotation.Keep
 import com.bm.main.pos.rest.entity.BaseResponse
 import com.bm.main.pos.rest.entity.RestException
 import com.squareup.moshi.Moshi
@@ -16,8 +17,10 @@ import java.nio.charset.Charset
 import javax.inject.Inject
 import javax.net.ssl.SSLException
 
+@Keep
 class ResultInterceptor @Inject constructor(val moshi: Moshi) : Interceptor {
 
+    @Keep
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val response = chain.proceed(request)

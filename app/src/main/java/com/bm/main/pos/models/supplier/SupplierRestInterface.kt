@@ -1,10 +1,12 @@
 package com.bm.main.pos.models.supplier
 
+import androidx.annotation.Keep
 import com.google.gson.JsonObject
 import com.bm.main.pos.models.Message
 import io.reactivex.Observable
 import retrofit2.http.*
 
+@Keep
 interface SupplierRestInterface {
 
     @GET("supplier/list.php")

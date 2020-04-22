@@ -1,6 +1,7 @@
 package com.bm.main.pos.models.store
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.rest.RestClient
 import com.bm.main.pos.rest.RestModel
@@ -11,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+@Keep
 class StoreRestModel(context: Context) : RestModel<StoreRestInterface>(context) {
 
     override fun createRestInterface(): StoreRestInterface {

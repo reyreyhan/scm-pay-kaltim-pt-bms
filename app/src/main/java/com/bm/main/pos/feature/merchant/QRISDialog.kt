@@ -119,11 +119,11 @@ class QRISDialog : DialogFragment() {
                     )
                     == PackageManager.PERMISSION_GRANTED
                 ) {
-                    if (qrBitmap == null) {
-                        Log.e("PROFF", "BITMAP NULL, MAYBE EXIF ERROR")
-                    } else {
-                        Log.e("PROFF", "BITMAP IS NOT NULL")
-                    }
+//                    if (qrBitmap == null) {
+//                        Log.e("PROFF", "BITMAP NULL, MAYBE EXIF ERROR")
+//                    } else {
+//                        Log.e("PROFF", "BITMAP IS NOT NULL")
+//                    }
 
                     Toast.makeText(
                         act,

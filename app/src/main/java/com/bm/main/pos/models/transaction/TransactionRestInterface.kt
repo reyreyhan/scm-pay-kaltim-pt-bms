@@ -1,9 +1,11 @@
 package com.bm.main.pos.models.transaction
 
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import io.reactivex.Observable
 import retrofit2.http.*
 
+@Keep
 interface TransactionRestInterface {
 
     @GET("pelanggan/transaksi.php")

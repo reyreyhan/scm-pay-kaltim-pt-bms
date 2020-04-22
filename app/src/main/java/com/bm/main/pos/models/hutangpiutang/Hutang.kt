@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.hutangpiutang
 
+import androidx.annotation.Keep
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.Gson
 import java.io.Serializable
@@ -8,11 +9,13 @@ import java.io.Serializable
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Hutang : Serializable {
     var datapiutang: Hutang? = null
     var list: List<Data>? = null
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Hutang : Serializable {
         var jumlah_hutang: Double? = 0.0
@@ -25,6 +28,7 @@ class Hutang : Serializable {
         }
     }
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Data : Serializable {
         var id_supplier: String? = null

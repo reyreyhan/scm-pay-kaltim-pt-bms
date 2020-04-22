@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.report
 
+import androidx.annotation.Keep
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.Gson
 import java.io.Serializable
@@ -8,11 +9,13 @@ import java.io.Serializable
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
 class ReportMutasi : Serializable {
     val info: Info? = null
     val transaksi: List<Transaksi>? = null
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Info : Serializable {
         val penjualan_bersih: String? = "0"
@@ -24,6 +27,7 @@ class ReportMutasi : Serializable {
         }
     }
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Transaksi : Serializable {
         val no_invoice: String? = null
@@ -36,6 +40,7 @@ class ReportMutasi : Serializable {
             return Gson().toJson(this)
         }
 
+        @Keep
         @JsonIgnoreProperties(ignoreUnknown = true)
         class Barang : Serializable {
             val id_barang: String? = null

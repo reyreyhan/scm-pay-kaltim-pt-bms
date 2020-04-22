@@ -6,6 +6,7 @@ import androidx.exifinterface.media.ExifInterface
 import android.os.AsyncTask
 import android.os.Environment
 import android.util.Log
+import androidx.annotation.Keep
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
@@ -16,6 +17,7 @@ import kotlin.math.roundToInt
  */
 //https://abdelhady.net/2015/03/28/android-loading-images-super-fast-like-whatsapp-part-2/
 
+@Keep
 open class ImageCompression(private val context: Context) : AsyncTask<String, Void, String>() {
 
     // Create the storage directory if it does not exist

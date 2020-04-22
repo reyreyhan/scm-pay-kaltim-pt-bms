@@ -1,11 +1,13 @@
 package com.bm.main.pos.models.customer
 
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
+@Keep
 interface CustomerRestInterface {
 
     @GET("pelanggan/list.php")

@@ -1,8 +1,10 @@
 package com.bm.main.pos.rest
 
 import android.content.Context
+import androidx.annotation.Keep
 
 
+@Keep
 @Suppress("DUPLICATE_LABEL_IN_WHEN")
 abstract class RestModel<T>(var context: Context?) {
 

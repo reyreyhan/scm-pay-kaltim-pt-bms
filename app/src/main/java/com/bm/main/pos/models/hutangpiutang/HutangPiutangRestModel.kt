@@ -1,6 +1,7 @@
 package com.bm.main.pos.models.hutangpiutang
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.supplier.Supplier
 import com.bm.main.pos.rest.RestClient
@@ -9,6 +10,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+@Keep
 class HutangPiutangRestModel(context: Context) : RestModel<HutangPiutangRestInterface>(context) {
 
     override fun createRestInterface(): HutangPiutangRestInterface {

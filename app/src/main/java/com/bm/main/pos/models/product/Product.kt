@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.product
 
+import androidx.annotation.Keep
 import com.bm.main.pos.di.MoshiModule
 import com.squareup.moshi.JsonClass
 import java.io.Serializable
@@ -8,6 +9,7 @@ import java.io.Serializable
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonClass(generateAdapter = true)
 data class Product(
         var id_barang: String = "",

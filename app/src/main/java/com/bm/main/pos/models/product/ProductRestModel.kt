@@ -1,6 +1,7 @@
 package com.bm.main.pos.models.product
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.rest.RestClient
 import com.bm.main.pos.rest.RestModel
@@ -9,6 +10,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+@Keep
 class ProductRestModel(context: Context) : RestModel<ProductRestInterface>(context) {
 
     override fun createRestInterface(): ProductRestInterface {

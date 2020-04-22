@@ -1,11 +1,13 @@
 package com.bm.main.pos.models.staff
 
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
+@Keep
 interface StaffRestInterface {
 
     @GET("pengaturan/datastaff.php")

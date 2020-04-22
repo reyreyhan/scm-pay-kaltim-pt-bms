@@ -1,6 +1,7 @@
 package com.bm.main.pos.models.report
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.transaction.HistoryTransaction
 import com.bm.main.pos.models.transaction.Transaction
@@ -12,6 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+@Keep
 class ReportRestModel(context: Context) : RestModel<ReportRestInterface>(context) {
 
     override fun createRestInterface(): ReportRestInterface {

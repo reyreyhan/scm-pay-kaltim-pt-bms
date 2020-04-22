@@ -1,6 +1,7 @@
 package com.bm.main.pos.rest.util
 
 import android.util.Log
+import androidx.annotation.Keep
 import com.google.gson.*
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.rest.entity.ResponseEntity
@@ -18,8 +19,10 @@ import okhttp3.ResponseBody
 import java.nio.charset.Charset
 
 
+@Keep
 class ResponseInterceptor : Interceptor {
 
+    @Keep
     companion object {
         private val UTF8 = Charset.forName("UTF-8")
         private val TAG = ResponseInterceptor::class.java.javaClass.simpleName
@@ -29,6 +32,7 @@ class ResponseInterceptor : Interceptor {
         //  val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
     }
 
+    @Keep
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         try {

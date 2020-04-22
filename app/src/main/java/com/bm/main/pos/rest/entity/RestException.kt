@@ -1,9 +1,12 @@
 package com.bm.main.pos.rest.entity
 
+import androidx.annotation.Keep
 import java.io.IOException
 
+@Keep
 class RestException(message: String?, val errorCode: Int) : IOException(message) {
 
+    @Keep
     companion object {
         const val RESPONSE_SUCCESS = "00"
         const val RESPONSE_USER_NOT_FOUND = "01"

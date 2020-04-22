@@ -1,11 +1,13 @@
 package com.bm.main.pos.models.category
 
+import androidx.annotation.Keep
 import com.google.gson.JsonObject
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.rest.entity.ResponseEntity
 import io.reactivex.Observable
 import retrofit2.http.*
 
+@Keep
 interface CategoryRestInterface {
 
     @GET("kategori/list.php")

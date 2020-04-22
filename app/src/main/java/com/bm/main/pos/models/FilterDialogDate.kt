@@ -2,6 +2,7 @@ package com.bm.main.pos.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.Keep
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.Gson
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -11,6 +12,7 @@ import java.io.Serializable
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
 class FilterDialogDate() : Parcelable {
     var id: Int? = 0

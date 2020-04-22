@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.transaction
 
+import androidx.annotation.Keep
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.Gson
 import java.io.Serializable
@@ -8,12 +9,14 @@ import java.io.Serializable
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
 class DetailTransaction : Serializable {
     var struk: Struk? = null
     var data: List<Data>? = null
     var url_struk: String? = null
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Struk : Serializable {
         var nama_toko: String? = null
@@ -40,6 +43,7 @@ class DetailTransaction : Serializable {
         }
     }
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Data : Serializable {
         var id_penjualan: String? = null

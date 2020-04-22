@@ -12,6 +12,7 @@ import android.graphics.Bitmap
 import android.os.Environment
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.Keep
 import androidx.core.widget.NestedScrollView
 import timber.log.Timber
 import java.io.*
@@ -21,6 +22,7 @@ import kotlin.math.roundToInt
 /**
  * Created by adriyoutomo on 26/10/2018.
  */
+@Keep
 object ImageHelper {
 
     private fun rotateImage(img: Bitmap, degree: Int): Bitmap {

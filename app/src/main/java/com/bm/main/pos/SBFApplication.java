@@ -91,12 +91,12 @@ public class SBFApplication extends MultiDexApplication implements Application.A
     public void onCreate() {
 
         super.onCreate();
-        Timber.plant(new Timber.DebugTree());
+//        Timber.plant(new Timber.DebugTree());
         instance = this;
 
-//        if (BuildConfig.DEBUG) {
-//            Timber.plant(new Timber.DebugTree());
-//        }
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 //        AndroidThreeTen.init(this);

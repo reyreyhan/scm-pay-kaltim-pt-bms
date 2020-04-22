@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.report
 
+import androidx.annotation.Keep
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.Gson
 import java.io.Serializable
@@ -8,12 +9,14 @@ import java.io.Serializable
  * Created by Richie on 7/15/17.
  */
 
+@Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
 class ReportKulakan : Serializable {
     var totalordersemua : String? = "0"
     var tanggal : String? = "0"
     var detail: List<Detail>? = null
 
+    @Keep
     @JsonIgnoreProperties(ignoreUnknown = true)
     class Detail : Serializable {
         var nama_barang: String? = null

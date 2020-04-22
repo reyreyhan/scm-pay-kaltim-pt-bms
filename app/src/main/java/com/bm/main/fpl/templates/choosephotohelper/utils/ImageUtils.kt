@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
+import androidx.annotation.Keep
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 
@@ -11,18 +12,21 @@ import java.io.IOException
  * Created by aminography on 5/17/2019.
  */
 
+@Keep
 fun rotate(bitmap: Bitmap, degrees: Float): Bitmap {
     val matrix = Matrix()
     matrix.postRotate(degrees)
     return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
 }
 
+@Keep
 fun flip(bitmap: Bitmap, horizontal: Boolean, vertical: Boolean): Bitmap {
     val matrix = Matrix()
     matrix.preScale((if (horizontal) -1 else 1).toFloat(), (if (vertical) -1 else 1).toFloat())
     return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
 }
 
+@Keep
 @Throws(IOException::class)
 fun modifyOrientation(bitmap: Bitmap, absolutePath: String): Bitmap {
     val ei = ExifInterface(absolutePath)

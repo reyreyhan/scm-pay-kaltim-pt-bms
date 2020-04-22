@@ -1,11 +1,13 @@
 package com.bm.main.pos.models.hutangpiutang
 
+import androidx.annotation.Keep
 import com.bm.main.pos.models.customer.CustomerNew
 import com.bm.main.pos.models.supplier.Supplier
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+@Keep
 interface HutangPiutangRestInterface {
 
     @GET("supplier/datahutang.php")

@@ -306,9 +306,9 @@ public class SplashScreenActivity extends AppCompatActivity {
             RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFP"));
         }
         RequestUtils.setUrl(firebaseRemoteConfig.getString("apiUrlFP"));
-        Log.e("PROFF", "check current url : "+ RequestUtils.getUrl());
-        Log.e("PROFF", "prod link : "+firebaseRemoteConfig.getString("apiUrlFP"));
-        Log.e("PROFF", "prod link api pos : "+firebaseRemoteConfig.getString("apiUrlPOSv2"));
+//        Log.e("PROFF", "check current url : "+ RequestUtils.getUrl());
+//        Log.e("PROFF", "prod link : "+firebaseRemoteConfig.getString("apiUrlFP"));
+//        Log.e("PROFF", "prod link api pos : "+firebaseRemoteConfig.getString("apiUrlPOSv2"));
         RequestUtilsTravel.setUrl(firebaseRemoteConfig.getString("apiUrlFT"));
 
         SBFApplication.log("Saving remote config...");

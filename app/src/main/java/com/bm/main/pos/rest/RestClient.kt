@@ -1,5 +1,6 @@
 package com.bm.main.pos.rest
 
+import androidx.annotation.Keep
 import com.bm.main.pos.SBFApplication
 import com.bm.main.fpl.constants.RConfig
 import com.bm.main.fpl.utils.PreferenceClass
@@ -20,6 +21,7 @@ import java.security.cert.CertificateException
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.*
 
+@Keep
 class RestClient {
     //    private var url: String?=""
     private var url: String? = null

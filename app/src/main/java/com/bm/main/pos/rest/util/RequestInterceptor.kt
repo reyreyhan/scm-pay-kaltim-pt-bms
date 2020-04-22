@@ -1,5 +1,6 @@
 package com.bm.main.pos.rest.util
 
+import androidx.annotation.Keep
 import com.bm.main.pos.utils.Helper
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -7,6 +8,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 
+@Keep
 class RequestInterceptor @Inject constructor() : Interceptor {
 
     @Throws(IOException::class)

@@ -1,5 +1,6 @@
 package com.bm.main.pos.models.report
 
+import androidx.annotation.Keep
 import com.google.gson.JsonObject
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.transaction.HistoryTransaction
@@ -7,6 +8,7 @@ import com.bm.main.pos.models.transaction.Transaction
 import io.reactivex.Observable
 import retrofit2.http.*
 
+@Keep
 interface ReportRestInterface {
 
     @GET("laporan/transaksi.php")

@@ -1,6 +1,7 @@
 package com.bm.main.pos.models.cart
 
 import android.content.Context
+import androidx.annotation.Keep
 import com.bm.main.pos.models.Message
 import com.bm.main.pos.models.product.Product
 import com.bm.main.pos.rest.RestClient
@@ -12,6 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+@Keep
 class CartRestModel(context: Context) : RestModel<CartRestInterface>(context) {
 
     override fun createRestInterface(): CartRestInterface {

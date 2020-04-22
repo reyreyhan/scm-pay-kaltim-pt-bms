@@ -32,6 +32,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,6 +97,7 @@ import timber.log.Timber;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR;
 
+@Keep
 public class CekDepositActivity extends BaseActivity implements View.OnClickListener, View.OnTouchListener,
         AdapterView.OnItemClickListener, ProgressResponseCallback, TextToSpeech.OnInitListener {
 
