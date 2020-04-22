@@ -1,11 +1,13 @@
 package com.bm.main.pos.rest
 
+import androidx.annotation.Keep
 import com.bm.main.pos.models.product.Product
 import com.bm.sc.bebasbayar.social.di.UserScope
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+@Keep
 @UserScope
 interface ApiService {
 

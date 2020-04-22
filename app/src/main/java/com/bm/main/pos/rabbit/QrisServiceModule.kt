@@ -1,5 +1,6 @@
 package com.bm.main.pos.rabbit
 
+import androidx.annotation.Keep
 import com.bm.main.pos.rest.ApiRequestModule
 import com.bm.sc.bebasbayar.social.di.UserScope
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
 
+@Keep
 @Module
 object QrisServiceModule {
 

@@ -2,6 +2,7 @@ package com.bm.main.pos.rest
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.annotation.Keep
 import com.bm.main.fpl.constants.RConfig
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.BuildConfig
@@ -22,6 +23,7 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
+@Keep
 @Module
 object ApiRequestModule {
 

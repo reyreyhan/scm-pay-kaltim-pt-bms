@@ -1,6 +1,7 @@
 package com.bm.main.pos.rabbit
 
 import android.app.Activity
+import androidx.annotation.Keep
 import com.bm.main.fpl.utils.PreferenceClass
 import com.rabbitmq.client.AMQP
 import com.rabbitmq.client.Connection
@@ -8,6 +9,7 @@ import com.rabbitmq.client.ConnectionFactory
 //import com.rabbitmq.client.QueueingConsumer
 import timber.log.Timber
 
+@Keep
 class RabbitMqThread(val activity: Activity) : Thread() {
 
     var running = true

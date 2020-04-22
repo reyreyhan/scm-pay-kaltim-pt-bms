@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import androidx.annotation.Keep
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.callback.BluetoothCallback
@@ -18,6 +19,7 @@ import timber.log.Timber
 import java.io.IOException
 import java.util.concurrent.LinkedBlockingQueue
 
+@Keep
 object RabbitMqPrint {
 
     private val listDevice by lazy { BluetoothUtil.getPairedPrinterDevices() }

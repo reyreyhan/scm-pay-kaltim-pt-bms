@@ -1,11 +1,13 @@
 package com.bm.main.pos.rabbit
 
+import androidx.annotation.Keep
 import com.bm.sc.bebasbayar.social.di.UserScope
 import io.reactivex.Single
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
+@Keep
 @UserScope
 interface QrisService {
 
