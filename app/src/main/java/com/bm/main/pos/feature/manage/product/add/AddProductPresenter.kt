@@ -31,13 +31,13 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
     private var categoryRestModel = CategoryRestModel(context)
     private var categories: ArrayList<DialogModel> = ArrayList()
     private var category: DialogModel? = null
-    private var categoryId:String? = null
+    private var categoryId: String? = null
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var photoPermission: PermissionCallback
     private var photoPath: String? = null
     private var photoUrl: String = ""
 
-    override fun onViewCreated(bundle:Bundle) {
+    override fun onViewCreated(bundle: Bundle) {
         photoPermission = object : PermissionCallback {
             override fun onSuccess() {
                 view.openImageChooser()
@@ -48,17 +48,17 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             }
         }
 
-        if (bundle.getBoolean("FromScan")){
+        if (bundle.getBoolean("FromScan")) {
             bundle.getString(AppConstant.DATA)?.let {
                 view.setBarcodeText(it)
                 searchByBarcode(it)
             }
-        }else{
+        } else {
             if (bundle.getSerializable(AppConstant.DATA) is Product) {
                 val product = bundle.getSerializable(AppConstant.DATA) as Product
                 categoryId = product.id_kategori
                 view.setProduct(product)
-            }else{
+            } else {
                 view.hideBarcode()
             }
         }
@@ -94,7 +94,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             return
         }
 
-        if (categoryId == null) {
+        if (categoryId == null || categoryId.isNullOrEmpty()) {
             view.showMessage(999, "Kategori tidak boleh kosong")
             return
         }
@@ -111,6 +111,13 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
 
         if (stok.isBlank() || stok.isEmpty() || "0" == stok) {
             view.showMessage(999, context.getString(R.string.err_empty_stock))
+            return
+        }
+
+        val buyWithoutDot = buy.replace(".", "")
+        val sellWithoutDot = sell.replace(".", "")
+        if (buyWithoutDot.toInt() > sellWithoutDot.toInt()) {
+            view.showMessage(999, "Harga Beli tidak boleh lebih besar dari harga jual")
             return
         }
         (context as BaseActivity).logEventFireBase(
@@ -169,7 +176,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
         view.openCategories("Pilih Kategori", categories, category)
     }
 
-    override fun onSuccessByBarcode(list: List<Product>){
+    override fun onSuccessByBarcode(list: List<Product>) {
         if (list.isNotEmpty()) {
             val data =
                 list.firstOrNull { it.nama_barang.isNotEmpty() && it.gbr.isNotEmpty() && it.hargajual.isNotEmpty() && it.hargabeli.isNotEmpty() }
