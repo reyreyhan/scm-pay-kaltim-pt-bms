@@ -44,12 +44,13 @@ interface EditProductContract {
         fun onCheck(name: String, buy: String, sell: String, stok: String, minstok: String, desc: String, barcode: String)
         fun setSelectedCategory(data: DialogModel)
         fun searchByBarcode(search: String)
-
+        fun deleteProduct()
     }
 
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
         fun onRestartDisposable()
+        fun callDeleteProductAPI(context: Context, restModel:ProductRestModel, id:String)
         fun callGetCategoriesAPI(context: Context, restModel: CategoryRestModel)
         fun callSearchByBarcodeAPI(context: Context, restModel: ProductRestModel, search: String)
         fun callEditProductAPI(context: Context, model: ProductRestModel, id: String, name: String, kode: String, idkategori: String, jual: String, beli: String, stok: String, minstok: String, gbr: String?, desk: String)
@@ -57,6 +58,7 @@ interface EditProductContract {
 
     interface InteractorOutput : BaseInteractorOutputImpl {
         fun onSuccessEditProduct(msg: String?)
+        fun onSuccessDeleteProduct(msg: String?)
         fun onSuccessGetCategories(list: List<Category>)
         fun onFailedAPI(code: Int, msg: String)
         fun onSuccessByBarcode(list: List<Product>)

@@ -53,6 +53,21 @@ fun AppCompatActivity.alert(context: Context, msg: String) {
     builder.show()
 }
 
+fun AppCompatActivity.alert(context: Context, msg: String, callback: DialogCallback) {
+    val builder = AlertDialog.Builder(context)
+    builder.setTitle("Peringatan")
+    builder.setMessage(msg)
+    builder.setCancelable(false)
+    builder.setPositiveButton("Ya") { dialog, _ ->
+        callback.onSuccess()
+    }
+    builder.setPositiveButton("Tidak") { dialog, _ ->
+        callback.onFailed()
+        dialog.dismiss()
+    }
+    builder.show()
+}
+
 fun Fragment.successDialog(msg: String, callback: DialogCallback) {
     val builder = AlertDialog.Builder(activity!!, R.style.AlertDialogTheme)
     builder.setTitle("Berhasil")

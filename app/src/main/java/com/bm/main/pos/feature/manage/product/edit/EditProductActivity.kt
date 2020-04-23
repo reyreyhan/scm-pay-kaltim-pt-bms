@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.bm.main.fpl.templates.choosephotohelper.ChoosePhotoHelper
 import com.bm.main.fpl.templates.choosephotohelper.callback.ChoosePhotoCallback
 import com.bm.main.pos.R
@@ -18,6 +19,7 @@ import com.bm.main.pos.feature.scan.ScanCodeActivity
 import com.bm.main.pos.models.DialogModel
 import com.bm.main.pos.rest.entity.RestException
 import com.bm.main.pos.ui.NumberTextWatcher
+import com.bm.main.pos.ui.ext.alert
 import com.bm.main.pos.ui.ext.successDialog
 import com.bm.main.pos.ui.ext.toast
 import com.bm.main.pos.utils.AppConstant
@@ -64,6 +66,19 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
             val desc = et_catatan_produk.editableText.toString().trim()
             val barcode = tv_barcode.text.toString().trim()
             getPresenter()?.onCheck(name, buy, sell, stok, "0", desc, barcode)
+        }
+
+        btn_hapus.setOnClickListener {
+            val callback = object : DialogCallback {
+                override fun onSuccess() {
+                    getPresenter()?.deleteProduct()
+                }
+
+                override fun onFailed() {
+
+                }
+            }
+            alert(this, "Apakah anda akan menhapus produk ini?", callback)
         }
 
         iv_tambah_foto.setOnClickListener {

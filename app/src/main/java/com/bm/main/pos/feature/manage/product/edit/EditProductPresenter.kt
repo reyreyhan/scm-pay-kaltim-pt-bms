@@ -115,6 +115,10 @@ class EditProductPresenter(val context: Context, val view: EditProductContract.V
         view.onClose(msg, Activity.RESULT_OK)
     }
 
+    override fun onSuccessDeleteProduct(msg: String?) {
+        view.onClose(msg, Activity.RESULT_OK)
+    }
+
     override fun onFailedAPI(code: Int, msg: String) {
         view.showMessage(code, msg)
     }
@@ -150,6 +154,10 @@ class EditProductPresenter(val context: Context, val view: EditProductContract.V
 
     override fun searchByBarcode(search: String) {
         interactor.callSearchByBarcodeAPI(context, restModel, search)
+    }
+
+    override fun deleteProduct() {
+        interactor.callDeleteProductAPI(context, restModel, data?.id_barang!!)
     }
 
     override fun onSuccessByBarcode(list: List<Product>) {

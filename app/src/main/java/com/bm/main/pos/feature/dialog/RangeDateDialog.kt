@@ -17,6 +17,8 @@ import com.bm.main.pos.R
 import com.bm.main.pos.utils.Helper
 import kotlinx.android.synthetic.main.fragment_filter_date_dialog.*
 import org.threeten.bp.LocalDate
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RangeDateDialog : BottomSheetDialogFragment() {
     private var mListener: Listener? = null
@@ -43,6 +45,14 @@ class RangeDateDialog : BottomSheetDialogFragment() {
     fun setData(minDate:LocalDate?,maxDate:LocalDate?,firstDate: CalendarDay?,lastDate: CalendarDay?){
         this.minDate = minDate
         this.maxDate = maxDate
+        /* overriding passed maxDate with max date tomorrow */
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val stringDateNow = simpleDateFormat.format(Date())
+        this.maxDate = LocalDate.of(
+            stringDateNow.split("-")[0].toInt(),
+            stringDateNow.split("-")[1].toInt(),
+            stringDateNow.split("-")[2].toInt()
+        )
         this.firstDate = firstDate
         this.lastDate = lastDate
     }
