@@ -90,19 +90,19 @@ object RabbitMqPrint {
                                             )
                                         }
                                     }
+//                                    if (PreferenceClass.getString("qrStrukJogjaKita") == "1") {
+//                                        icon = "icon-jogjakita-trans.png"
+//                                        footer = ""
+//                                    } else {
+//                                        icon = "logo_profit.bmp"
+//                                        footer = "https://profit.fastpay.co.id"
+//                                    }
 
-                                    val icon: String
-                                    val footer: String
-                                    if (PreferenceClass.getString("qrStrukJogjaKita") == "1") {
-                                        icon = "icon-jogjakita-trans.png"
-                                        footer = ""
-                                    } else {
-                                        icon = "logo_profit.bmp"
-                                        footer = "https://profit.fastpay.co.id"
-                                    }
+                                    val icon = "logo_profit.bmp"
+                                    val footer = "https://profit.fastpay.co.id"
 
                                     imgFile?.let {
-                                        PrinterUtil.printImg(
+                                        PrinterUtil.printImgLeft(
                                             socket,
                                             Drawable.createFromPath(it),
                                             Drawable.createFromStream(activity.assets.open(icon),null),

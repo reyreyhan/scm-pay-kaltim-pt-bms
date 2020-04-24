@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentActivity
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.pos.R
 import com.bm.main.pos.rabbit.RabbitMqPrint
@@ -26,7 +27,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import kotlinx.android.synthetic.main.dialog_qr_merchant.*
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileOutputStream
 
 class QRISDialog : DialogFragment() {
     companion object {
@@ -70,6 +73,7 @@ class QRISDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         download.isEnabled = false
+        print.isEnabled = false
         Glide.with(qr_img).asBitmap().load(PreferenceClass.getString("url_qr"))
             .into(object : CustomTarget<Bitmap>() {
                 override fun onLoadCleared(placeholder: Drawable?) {
@@ -77,10 +81,12 @@ class QRISDialog : DialogFragment() {
 
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                     qrBitmap = resource
+                    saveQrToTemp(requireActivity(), qrBitmap)
 //                qrFile = FileUtils.bitmapToExternalFile(qr_img.context, resource, "MyQr.jpg")
                     //qrFilePrint = FileUtils.bitmapToCacheFile(qr_img.context, FileUtils.resizeBitmap(resource, 300, 300), "MyQrSmall.jpg")
                     qr_img.setImageBitmap(qrBitmap)
                     download.isEnabled = true
+                    print.isEnabled = true
                 }
             })
 
@@ -92,16 +98,18 @@ class QRISDialog : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
 
         activity?.let { act ->
-            print.setOnClickListener {
+            print.setOnClickListener { it ->
                 it.isEnabled = false
-                Toast.makeText(it.context, "Mencetak QR", Toast.LENGTH_SHORT).show()
-                RabbitMqPrint.printStrukRabbit("", act, qrFilePrint?.path) {
-                    print.isEnabled = true
-                    Toast.makeText(
-                        print.context,
-                        (if (it) "Berhasil" else "Gagal") + " mencetak QR",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                qrFilePrint?.let { file ->
+                    Toast.makeText(it.context, "Mencetak QR", Toast.LENGTH_SHORT).show()
+                    RabbitMqPrint.printStrukRabbit("", act, file.path) {
+                        print.isEnabled = true
+                        Toast.makeText(
+                            print.context,
+                            (if (it) "Berhasil" else "Gagal") + " mencetak QR",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
 
@@ -166,5 +174,18 @@ class QRISDialog : DialogFragment() {
 
     override fun onCancel(dialog: DialogInterface) {
         dialog.dismiss()
+    }
+
+    private fun saveQrToTemp(fragmentActivity: FragmentActivity, bitmap: Bitmap) {
+        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
+        val bytes = ByteArrayOutputStream()
+        resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = "${fragmentActivity.cacheDir}${File.separator}qr.jpg"
+        val f =  File(path)
+        f.createNewFile()
+        val fo = FileOutputStream(f)
+        fo.write(bytes.toByteArray())
+        fo.close()
+        qrFilePrint = f
     }
 }

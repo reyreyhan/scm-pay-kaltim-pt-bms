@@ -286,6 +286,23 @@ public class PrinterUtil {
         }
     }
 
+    public static void printImgLeft(BluetoothSocket bluetoothSocket, Drawable drawable, Drawable footer, String footerTxt, PrintListener listener) {
+        try {
+            PrinterUtil pUtil = new PrinterUtil(bluetoothSocket.getOutputStream(), "GBK");
+
+            byte[] img = getLogo(drawable);
+            pUtil.printImageModeLeft(img);
+            printFooter(pUtil, footer);
+            bluetoothSocket.close();
+            if (listener != null)
+                listener.afterPrint(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+            if (listener != null)
+                listener.afterPrint(false);
+        }
+    }
+
     static void printHeader(PrinterUtil pUtil, DetailTransaction data, Store store) {
         try {
             if (data.getStruk().getPembayaran().equals("tunai")) {
