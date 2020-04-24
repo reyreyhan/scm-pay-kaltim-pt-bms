@@ -43,6 +43,7 @@ MerchantTransactionAdapter.ItemClickCallback{
     override fun onResume() {
         super.onResume()
         setupToolbar()
+        getPresenter()?.onViewCreated()
     }
 
     private fun setupToolbar() {

@@ -218,6 +218,7 @@ class HomeFragment : BaseFragment<HomePresenter, HomeContract.View>(), HomeContr
 
     override fun onResume() {
         super.onResume()
+        reloadData()
         //context?.let { (activity as DrawerActivity).openShowCaseHomeFragment(it) }
     }
 
