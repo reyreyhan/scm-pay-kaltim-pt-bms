@@ -29,7 +29,6 @@
         android:layout_weight="0.9"
         android:background="@drawable/rounded_white_4dp_stroke_gray"
         android:drawablePadding="@dimen/standard_margin"
-        android:gravity="end"
         android:padding="@dimen/_8sdp"
         android:textStyle="bold"
         app:drawableRightCompat="@drawable/ic_penjualan_daftar_pelanggan"

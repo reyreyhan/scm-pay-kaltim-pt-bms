@@ -61,7 +61,7 @@ fun AppCompatActivity.alert(context: Context, msg: String, callback: DialogCallb
     builder.setPositiveButton("Ya") { dialog, _ ->
         callback.onSuccess()
     }
-    builder.setPositiveButton("Tidak") { dialog, _ ->
+    builder.setNegativeButton("Tidak") { dialog, _ ->
         callback.onFailed()
         dialog.dismiss()
     }

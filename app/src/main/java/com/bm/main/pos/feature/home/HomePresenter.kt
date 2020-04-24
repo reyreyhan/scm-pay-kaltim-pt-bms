@@ -56,7 +56,7 @@ class HomePresenter(val context: Context,
         Menu().apply {
             id = 4
             name = "Data Piutang"
-            image = R.drawable.ic_tambah_barang
+            image = R.drawable.ic_data_piutang
         },
         Menu().apply {
             id = 5
