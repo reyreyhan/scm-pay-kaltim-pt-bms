@@ -30,9 +30,16 @@ class AddProductInteractor (var output: AddProductContract.InteractorOutput?) :
         disposable = CompositeDisposable()
     }
 
-    override fun callAddProductAPI(context: Context, model: ProductRestModel, name: String, kode: String, idkategori: String, jual: String, beli: String, stok: String, minstok: String, gbr: String?, desk: String, photoUrl: String) {
+    override fun callAddProductAPI(context: Context, model: ProductRestModel,
+                                   name: String, kode: String, idkategori: String, jual: String,
+                                   beli: String, stok: String, minstok: String, gbr: String?,
+                                   desk: String, photoUrl: String) {
         val key = PreferenceClass.getTokenPos()
-        val request = if (photoUrl.isEmpty()) model.add(key!!, name, kode, idkategori, jual, beli, stok, minstok, gbr, desk) else model.add(key!!, name, kode, idkategori, jual, beli, stok, minstok, photoUrl, desk)
+        val request =
+            if (photoUrl.isEmpty())
+                model.add(key!!, name, kode, idkategori, jual, beli, stok, minstok, gbr, desk)
+            else
+                model.addFromMaster(key!!, name, kode, idkategori, jual, beli, stok, minstok, photoUrl, desk)
         disposable.add(
             request.subscribeWith(object : DisposableObserver<Message>() {
                 override fun onNext(@NonNull response: Message) {

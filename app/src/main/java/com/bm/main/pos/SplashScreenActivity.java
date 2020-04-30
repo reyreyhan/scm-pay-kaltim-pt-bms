@@ -312,7 +312,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         RequestUtilsTravel.setUrl(firebaseRemoteConfig.getString("apiUrlFT"));
 
         SBFApplication.log("Saving remote config...");
-        Timber.d("onComplete: %s", firebaseRemoteConfig.getString("apiUrlPOSDevel2"));
+        Timber.d("onComplete: %s", firebaseRemoteConfig.getString("apiUrlPOSv2"));
     }
 
 

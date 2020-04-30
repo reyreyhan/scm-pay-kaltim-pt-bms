@@ -29,7 +29,8 @@ class ProductRestModel(context: Context) : RestModel<ProductRestInterface>(conte
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun add(key: String, name: String, kode: String, idkategori: String, jual: String, beli: String, stok: String, minstok: String, gbr: String?, desk: String): Observable<Message> {
+    fun add(key: String, name: String, kode: String, idkategori: String, jual: String,
+            beli: String, stok: String, minstok: String, gbr: String?, desk: String): Observable<Message> {
         return restInterface.add(
                 Helper.createPartFromString(key),
                 Helper.createPartFromString(name),
@@ -42,6 +43,24 @@ class ProductRestModel(context: Context) : RestModel<ProductRestInterface>(conte
                 Helper.createPartFromString(desk),
                 Helper.createPartFromFile(gbr, "gbr")
             )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun addFromMaster(key: String, name: String, kode: String, idkategori: String, jual: String,
+            beli: String, stok: String, minstok: String, photoUrl: String, desk: String): Observable<Message> {
+        return restInterface.addFromMaster(
+            Helper.createPartFromString(key),
+            Helper.createPartFromString(name),
+            Helper.createPartFromString(kode),
+            Helper.createPartFromString(idkategori),
+            Helper.createPartFromString(beli),
+            Helper.createPartFromString(jual),
+            Helper.createPartFromString(stok),
+            Helper.createPartFromString(minstok),
+            Helper.createPartFromString(desk),
+            Helper.createPartFromString(photoUrl)
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

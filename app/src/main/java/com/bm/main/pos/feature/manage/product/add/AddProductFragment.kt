@@ -128,6 +128,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
                                     imagePath + " " + compressedSize
                                 )
                                 getPresenter()?.setImagePhotoPath(imagePath)
+                                getPresenter()?.setImagePhotoUrl("")
                                 loadPhoto(imagePath)
                                 _view.iv_tambah_foto.visibility = View.GONE
                             } else {
@@ -194,7 +195,7 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
     }
 
     override fun loadPhoto(path: String) {
-//        Timber.d("loadphoto $path")
+        Timber.d("loadphoto $path")
         if (path != "https://apifp.exploreindonesia.id/api2/images/small_") {
             Glide.with(this)
                 .load(path)
@@ -286,8 +287,10 @@ class AddProductFragment : BaseFragment<AddProductPresenter, AddProductContract.
 //                _view.iv_tambah_foto.visibility = View.GONE
 //            }
             if (it.isNotEmpty()){
+                getPresenter()?.setImagePhotoUrl(it)
                 loadPhoto(it)
             }
+
         }
     }
 

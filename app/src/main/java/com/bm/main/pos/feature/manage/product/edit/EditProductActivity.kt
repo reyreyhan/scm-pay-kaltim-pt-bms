@@ -78,7 +78,7 @@ class EditProductActivity : BaseActivity<EditProductPresenter, EditProductContra
 
                 }
             }
-            alert(this, "Apakah anda akan menhapus produk ini?", callback)
+            alert(this, "Apakah anda akan menghapus produk ini?", callback)
         }
 
         iv_tambah_foto.setOnClickListener {

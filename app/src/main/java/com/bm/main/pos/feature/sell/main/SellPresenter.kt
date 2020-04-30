@@ -18,7 +18,8 @@ import com.bm.main.pos.utils.Helper
 import com.bm.main.pos.utils.PermissionUtil
 import com.prolificinteractive.materialcalendarview.CalendarDay
 
-class SellPresenter(val context: Context, val view: SellContract.View) : BasePresenter<SellContract.View>(),
+class SellPresenter(val context: Context, val view: SellContract.View) :
+    BasePresenter<SellContract.View>(),
     SellContract.Presenter, SellContract.InteractorOutput {
 
     private var interactor = SellInteractor(this)
@@ -27,10 +28,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     private var permissionUtil: PermissionUtil = PermissionUtil(context)
     private lateinit var cameraPermission: PermissionCallback
-    private var carts:HashMap<String,Cart> = HashMap()
-    private var tempBarcode:String?=null
-    private var customer:Customer?=null
-    private var date:CalendarDay?=null
+    private var carts: HashMap<String, Cart> = HashMap()
+    private var tempBarcode: String? = null
+    private var customer: Customer? = null
+    private var date: CalendarDay? = null
 
     override fun onViewCreated() {
         (context as BaseActivity).logEventFireBase(
@@ -40,13 +41,13 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_SUCCESS,
             SellFragment::class.java.simpleName
         )
-        cameraPermission = object : PermissionCallback{
+        cameraPermission = object : PermissionCallback {
             override fun onSuccess() {
                 view.openScanPage()
             }
 
             override fun onFailed() {
-                view.showMessage(999,context.getString(R.string.reason_permission_camera))
+                view.showMessage(999, context.getString(R.string.reason_permission_camera))
             }
         }
         carts = HashMap()
@@ -56,28 +57,25 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     override fun addCart(data: Product) {
         data.let {
             val stok = it.stok!!.toDouble()
-            if(carts.containsKey(it.id_barang)){
+            if (carts.containsKey(it.id_barang)) {
                 val cart = carts[it.id_barang]
                 val count = cart?.count!!.plus(1)
-                if(count <= stok){
+                if (count <= stok) {
                     cart.count = count
                     view.addCart(cart)
-                }
-                else{
-                    view.showMessage(999,"Stok max ${Helper.convertToCurrency(stok)}")
+                } else {
+                    view.showMessage(999, "Stok max ${Helper.convertToCurrency(stok)}")
                 }
 
-            }
-            else{
-                if(stok > 0){
+            } else {
+                if (stok > 0) {
                     val cart = Cart()
                     cart.product = it
                     cart.count = 1.0
-                    carts.put(it.id_barang!!,cart)
+                    carts.put(it.id_barang!!, cart)
                     view.addCart(cart)
-                }
-                else{
-                    view.showMessage(999,"Stok produk kosong")
+                } else {
+                    view.showMessage(999, "Stok produk kosong")
                 }
 
             }
@@ -85,80 +83,79 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         }
     }
 
-    override fun checkCart(data: Product, barcode:String?) {
-        if(data.posisi == true){
+    override fun checkCart(data: Product, barcode: String?) {
+        if (data.posisi == true) {
             addCart(data)
             view.hideContainerFragment()
-        }
-        else{
+        } else {
             view.showTambahBarangDialog(barcode!!)
             //view.openAddManual(tempBarcode!!)
             tempBarcode = ""
         }
     }
 
-    override fun increaseCart(data: Cart,position:Int) {
+    override fun increaseCart(data: Cart, position: Int) {
         val id = data.product!!.id_barang
-        if(!carts.containsKey(id)){
+        if (!carts.containsKey(id)) {
             return
         }
         val cart = carts[id]!!
         val stok = cart.product!!.stok!!.toDouble()
         val count = cart.count!!.plus(1)
-        if(count > stok){
+        if (count > stok) {
             return
         }
         cart.count = count
         carts[id!!] = cart
-        view.updateCart(cart,position)
+        view.updateCart(cart, position)
         countCart()
     }
 
-    override fun decreaseCart(data: Cart,position:Int) {
+    override fun decreaseCart(data: Cart, position: Int) {
         val id = data.product!!.id_barang
-        if(!carts.containsKey(id)){
+        if (!carts.containsKey(id)) {
             return
         }
         val cart = carts[id]!!
         val stok = cart.product!!.stok.toDouble()
         val count = cart.count!!.minus(1)
-        if(count < 0){
+        if (count < 0) {
             return
         }
-        if(count == 0.0){
-            deleteCart(data,position)
+        if (count == 0.0) {
+            deleteCart(data, position)
             return
         }
         cart.count = count
         carts[id] = cart
-        view.updateCart(cart,position)
+        view.updateCart(cart, position)
         countCart()
     }
 
-    override fun updateCart(data: Cart,position:Int) {
+    override fun updateCart(data: Cart, position: Int) {
         val id = data.product!!.id_barang
-        if(!carts.containsKey(id)){
+        if (!carts.containsKey(id)) {
             return
         }
         carts[id!!] = data
-        carts[id!!]?.let { view.updateCart(it,position) }
+        carts[id!!]?.let { view.updateCart(it, position) }
         countCart()
     }
 
-    override fun deleteCart(data: Cart,position:Int) {
+    override fun deleteCart(data: Cart, position: Int) {
         carts.remove(data.product!!.id_barang)
         view.deleteCart(position)
         countCart()
     }
 
-    override fun clearCart(){
+    override fun clearCart() {
         carts.clear()
         countCart()
     }
 
     override fun countCart() {
-        if(carts.size == 0){
-            view.setCartText("0","0")
+        if (carts.size == 0) {
+            view.setCartText("0", "0")
             view.showErrorView("Keranjang belanja kosong")
             return
         }
@@ -166,17 +163,16 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         var total = 0.0
         var count = 0.0
 
-        for(cart:Cart in carts.values){
+        for (cart: Cart in carts.values) {
             count += cart.count!!
             val sell = cart.product!!.hargajual!!.toDouble()
-            val subtotal = cart.count!!*sell
+            val subtotal = cart.count!! * sell
             total += subtotal
         }
 
-        if(count > 99){
+        if (count > 99) {
             view.setCartText(">99", Helper.convertToCurrency(total))
-        }
-        else{
+        } else {
             view.setCartText(Helper.convertToCurrency(count), Helper.convertToCurrency(total))
         }
         view.showContentView()
@@ -186,7 +182,7 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     override fun countCashback() {
         val pay = view.getPayValue()
         val total = view.getTotalValue()
-        if(pay == 0.0 || total == 0.0){
+        if (pay == 0.0 || total == 0.0) {
             view.hideShowCashback(View.INVISIBLE)
             //view.enableBtnBuy(false)
             return
@@ -199,36 +195,38 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         permissionUtil.checkCameraPermission(cameraPermission)
     }
 
-    override fun searchByBarcode(search:String) {
+    override fun searchByBarcode(search: String) {
         tempBarcode = search
-        interactor.callSearchByBarcodeAPI(context, productRestModel,search)
+        interactor.callSearchByBarcodeAPI(context, productRestModel, search)
     }
 
     override fun onSuccessByBarcode(list: List<Product>) {
         view.hideLoadingDialog()
-        if(list.isNotEmpty()){
+        if (list.isNotEmpty()) {
             val product = list[0]
             checkCart(product, tempBarcode!!)
             tempBarcode = ""
+        } else {
+            // show dialog
+            view.showTambahBarangDialog(tempBarcode!!)
         }
         view.setDeselectButtonSearch()
     }
 
     override fun onFailedBarcode(code: Int, msg: String) {
-        if("tidak ada data" == msg){
+        if ("tidak ada data" == msg) {
             view.hideLoadingDialog()
             view.showTambahBarangDialog(tempBarcode!!)
             //view.openAddManual(tempBarcode!!)
             tempBarcode = ""
-        }
-        else{
-            onFailedAPI(code,msg)
+        } else {
+            onFailedAPI(code, msg)
         }
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
         view.hideLoadingDialog()
-        view.showMessage(code,msg)
+        view.showMessage(code, msg)
     }
 
     override fun onDestroy() {
@@ -236,11 +234,11 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
     }
 
     override fun updateCustomer(data: Customer?) {
-        if (data==null){
-            if (customer != null){
+        if (data == null) {
+            if (customer != null) {
                 view.setCustomerName(customer)
             }
-        }else{
+        } else {
             customer = data
             view.setCustomerName(data)
         }
@@ -256,13 +254,13 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     override fun checkTunai() {
         var pay = view.getPayValue()
-        if(pay == 0.0){
+        if (pay == 0.0) {
             pay = view.getTotalValue()
         }
         val total = view.getTotalValue()
         val cashback = total - pay
-        if(cashback > 0){
-            view.showMessage(999,"Kurang bayar Rp ${Helper.convertToCurrency(cashback)}")
+        if (cashback > 0) {
+            view.showMessage(999, "Kurang bayar Rp ${Helper.convertToCurrency(cashback)}")
             return
         }
         val req = RequestTransaction()
@@ -278,12 +276,12 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
             SellFragment::class.java.simpleName
         )
-        interactor.callOrderAPI(context,transactionRestModel,req)
+        interactor.callOrderAPI(context, transactionRestModel, req)
     }
 
     override fun checkNonTunai() {
         var pay = view.getPayValue()
-        if(pay == 0.0){
+        if (pay == 0.0) {
             pay = view.getTotalValue()
         }
         val total = view.getTotalValue()
@@ -300,12 +298,12 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
             SellFragment::class.java.simpleName
         )
-        interactor.callOrderAPI(context,transactionRestModel,req)
+        interactor.callOrderAPI(context, transactionRestModel, req)
     }
 
     override fun checkPiutang() {
-        if(customer == null){
-            view.showMessage(999,"Data pelanggan belum diisi")
+        if (customer == null) {
+            view.showMessage(999, "Data pelanggan belum diisi")
             return
         }
 //        if(date == null){
@@ -327,15 +325,15 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
             EventParam.EVENT_ACTION_SELL_PRODUCT,
             SellFragment::class.java.simpleName
         )
-        interactor.callOrderAPI(context,transactionRestModel,req)
+        interactor.callOrderAPI(context, transactionRestModel, req)
     }
 
-    private fun getBarang():List<RequestTransaction.Barang>{
+    private fun getBarang(): List<RequestTransaction.Barang> {
         val list = ArrayList<RequestTransaction.Barang>()
-        if(carts.size == 0){
+        if (carts.size == 0) {
             return list
         }
-        for(cart in carts.values){
+        for (cart in carts.values) {
             val barang = RequestTransaction.Barang()
             barang.id_barang = cart.product?.id_barang
             barang.jumlah_barang = cart.count?.toInt()
@@ -345,10 +343,10 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         return list
     }
 
-    fun calculateCashBack():String{
+    fun calculateCashBack(): String {
         val value = view.getTotalValue() - view.getPayValue()
         when {
-            value < 0.0  -> {
+            value < 0.0 -> {
                 val ret = -1 * value
                 return "Rp ${Helper.convertToCurrency(ret)}"
             }
@@ -359,9 +357,9 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
         return ""
     }
 
-    fun countAllBarang():Int{
+    fun countAllBarang(): Int {
         var count = 0.0
-        for(cart:Cart in carts.values){
+        for (cart: Cart in carts.values) {
             count += cart.count!!
         }
         return count.toInt()
@@ -369,18 +367,18 @@ class SellPresenter(val context: Context, val view: SellContract.View) : BasePre
 
     override fun onSuccessOrder(order: Order) {
         view.hideLoadingDialog()
-        if(order.invoice == null){
-            view.showMessage(999,"Nomor invoice tidak ditemukan")
+        if (order.invoice == null) {
+            view.showMessage(999, "Nomor invoice tidak ditemukan")
             return
         }
         view.openSuccessPage(order.invoice!!)
     }
 
-    override fun getCartsSize():Int {
+    override fun getCartsSize(): Int {
         return carts.size
     }
 
-    override fun getCustomerName():String {
+    override fun getCustomerName(): String {
         return customer!!.nama_pelanggan!!
     }
 

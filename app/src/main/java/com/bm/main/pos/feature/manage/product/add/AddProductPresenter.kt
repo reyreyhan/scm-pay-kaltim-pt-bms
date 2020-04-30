@@ -127,7 +127,7 @@ class AddProductPresenter(val context: Context, val view: AddProductContract.Vie
             EventParam.EVENT_ACTION_ADD_PRODUCT,
             AddProductMainActivity::class.java.simpleName
         )
-        Timber.e("add product, $name -- $barcode -- $sell -- $buy -- $stok -- $photoPath -- $desc -- $photoUrl")
+        Timber.e("add product, name : $name --  barcode : $barcode -- price sell : $sell -- price buy : $buy -- stok : $stok -- photoPath :  $photoPath -- desc : $desc -- photoUrl : $photoUrl")
         interactor.callAddProductAPI(
             context,
             restModel,

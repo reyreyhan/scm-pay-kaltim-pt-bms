@@ -30,6 +30,21 @@ interface ProductRestInterface {
 
     @Multipart
     @POST("barang/insert.php")
+    fun addFromMaster(
+        @Part("key") key: RequestBody,
+        @Part("nama_barang") nama: RequestBody,
+        @Part("kodebarang") kode: RequestBody,
+        @Part("id_kategori") idkategori: RequestBody,
+        @Part("hargabeli") beli: RequestBody,
+        @Part("hargajual") jual: RequestBody,
+        @Part("stok") stok: RequestBody,
+        @Part("minimalstok") minstok: RequestBody,
+        @Part("deskripsi") deskripsi: RequestBody,
+        @Part("photoUrl") photoUrl: RequestBody
+    ): Observable<Message>
+
+    @Multipart
+    @POST("barang/insert.php")
     fun addWithoutImg(
             @Part("key") key: RequestBody,
             @Part("nama_barang") nama: RequestBody,

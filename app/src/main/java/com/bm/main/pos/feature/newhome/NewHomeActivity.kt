@@ -258,4 +258,12 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 999) {
+            restartMainActivity()
+        }
+    }
 }

@@ -9,6 +9,8 @@ import android.util.Log
 import androidx.annotation.Keep
 import timber.log.Timber
 import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
 import java.io.IOException
 import kotlin.math.roundToInt
 
@@ -139,19 +141,19 @@ open class ImageCompression(private val context: Context) : AsyncTask<String, Vo
         } catch (exception: OutOfMemoryError) {
             exception.printStackTrace()
         }
-        /* var out: FileOutputStream? = null
-         val filepath = filename
-         try {
-             out = FileOutputStream(filepath)
+        var out: FileOutputStream? = null
+        val filepath = filename
+        try {
+            out = FileOutputStream(filepath)
 
-             //write the compressed bitmap at the destination specified by filename.
-             scaledBitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, out)
+            //write the compressed bitmap at the destination specified by filename.
+            scaledBitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, out)
 
-         } catch (e: FileNotFoundException) {
-             e.printStackTrace()
-         }*/
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
 
-        return imagePath
+        return filepath
     }
 
     companion object {
