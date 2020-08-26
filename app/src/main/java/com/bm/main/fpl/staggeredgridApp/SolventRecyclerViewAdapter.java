@@ -14,12 +14,11 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.shimmer;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.MaterialRippleLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SolventRecyclerViewAdapter extends RecyclerView.Adapter<SolventRecyclerViewAdapter.SolventViewHolders> {

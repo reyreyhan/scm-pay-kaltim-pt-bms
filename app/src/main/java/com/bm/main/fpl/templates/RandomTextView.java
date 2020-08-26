@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.LinkedList;
 import java.util.Random;

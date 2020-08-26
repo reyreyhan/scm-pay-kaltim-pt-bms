@@ -11,7 +11,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.PelangganModel;
 import com.bm.main.fpl.templates.TextViewPlus;
 

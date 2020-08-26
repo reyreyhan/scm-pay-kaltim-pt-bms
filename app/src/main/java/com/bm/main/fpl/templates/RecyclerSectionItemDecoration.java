@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 /**
  * Created by paetztm on 2/6/2017.

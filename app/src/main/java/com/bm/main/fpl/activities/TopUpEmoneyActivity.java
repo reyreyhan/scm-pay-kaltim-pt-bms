@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -41,7 +40,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.ListGridProdukPulsaAdapter;
 import com.bm.main.fpl.adapters.ListGridTopupAdapter;
 import com.bm.main.fpl.constants.ActionCode;

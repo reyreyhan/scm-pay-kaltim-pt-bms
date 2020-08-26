@@ -36,7 +36,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.materialsearchview.utils.AnimationUtil;
 
 import java.lang.reflect.Field;

@@ -18,12 +18,8 @@ import androidx.annotation.IntDef;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

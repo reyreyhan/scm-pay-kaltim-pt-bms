@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class EditTextFontCustom extends AppCompatEditText {
     private static final String TAG = "TextView";

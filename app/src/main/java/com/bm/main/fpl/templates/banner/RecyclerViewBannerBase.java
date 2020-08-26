@@ -27,7 +27,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.ArrayList;
 import java.util.List;

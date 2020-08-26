@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.google.android.material.tabs.TabLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;

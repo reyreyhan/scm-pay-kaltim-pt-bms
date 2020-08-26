@@ -16,7 +16,7 @@ import com.bm.main.fpl.listener.RecyclerTouchListener;
 import com.bm.main.fpl.staggeredgridApp.MenuLaporanModel;
 import com.bm.main.fpl.staggeredgridApp.SolventRecyclerViewLaporanAdapter;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.activities.TravelPesananActivity;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bm.main.single.ftl.flight.activities.FlightSearchRevActivity;

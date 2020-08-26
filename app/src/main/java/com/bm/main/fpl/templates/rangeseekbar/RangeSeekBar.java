@@ -43,7 +43,7 @@ import android.view.ViewConfiguration;
 import android.widget.ImageView;
 
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.util.BitmapUtil;
 import com.bm.main.fpl.templates.util.PixelUtil;
 

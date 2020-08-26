@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
@@ -40,7 +39,7 @@ import com.bm.main.fpl.models.PaketModelModelResponse_valueTipe_loket_footer;
 import com.bm.main.fpl.models.PromoProdukModel;
 import com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;

@@ -29,7 +29,7 @@ import android.util.Property;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ProgressBar;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.stepstone.stepper.internal.util.TintUtil;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;

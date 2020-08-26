@@ -36,9 +36,9 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
-import com.bm.main.pos.SplashScreenActivity;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
+import com.bm.main.scm.SplashScreenActivity;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.constants.FCMConstants;
 import com.google.android.gms.analytics.HitBuilders;

@@ -23,7 +23,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.MaterialEditText;
 
 

@@ -35,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.OnBoard_Adapter;
 import com.bm.main.fpl.models.OnBoardModel;
 import com.bm.main.fpl.utils.PreferenceClass;

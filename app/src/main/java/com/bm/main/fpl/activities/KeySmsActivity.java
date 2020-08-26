@@ -32,7 +32,7 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.constants.RequestCode;
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.constants.ResponseCode;
@@ -47,7 +47,6 @@ import com.bm.main.fpl.utils.MobileAES;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.feature.drawer.DrawerActivity;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

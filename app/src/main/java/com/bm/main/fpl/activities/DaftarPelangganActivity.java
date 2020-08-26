@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,7 +22,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.PelangganAdapter;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.ResponseCode;

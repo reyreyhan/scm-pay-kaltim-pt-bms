@@ -1,7 +1,5 @@
 package com.bm.main.fpl.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -11,10 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.Fee_List_FlightAdapter;
 import com.bm.main.fpl.constants.ResponseCode;
-import com.bm.main.fpl.handlers.JsonObjectResponseHandler;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.models.FeeFlightModel;
 import com.bm.main.fpl.utils.PreferenceClass;

@@ -10,7 +10,7 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bm.main.pos.SplashScreenActivity;
+import com.bm.main.scm.SplashScreenActivity;
 import com.bm.main.fpl.constants.Info;
 import com.crashlytics.android.Crashlytics;
 

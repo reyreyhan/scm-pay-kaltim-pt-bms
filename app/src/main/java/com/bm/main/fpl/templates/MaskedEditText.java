@@ -21,7 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.MaterialEditText;
 import com.bm.main.materialedittext.OnCutCopyPasteListener;
 

@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.FrameLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class RoundedView extends FrameLayout {
 

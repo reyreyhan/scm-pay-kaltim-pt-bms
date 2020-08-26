@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.List;
 

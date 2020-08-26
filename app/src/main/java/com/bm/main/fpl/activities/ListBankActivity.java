@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.ListBankAdapter;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;

@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.models.NotificationModel;
 import com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView;

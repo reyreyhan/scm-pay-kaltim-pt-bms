@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.templates.carouselview.CarouselView;
 import com.bm.main.fpl.templates.carouselview.ViewListener;

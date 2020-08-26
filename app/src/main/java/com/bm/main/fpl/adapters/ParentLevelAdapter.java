@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.DownlineModel;
 import com.bm.main.fpl.models.DownlineModelResponse_valueLevel2;
 

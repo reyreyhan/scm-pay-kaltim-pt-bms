@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.material.snackbar.Snackbar;
 

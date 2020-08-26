@@ -3,7 +3,7 @@ package com.reciter.lib;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class SoundHelper
 {

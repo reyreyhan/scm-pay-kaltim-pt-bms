@@ -20,12 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-
-import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.templates.ticketview.TicketView;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.ship.constants.ShipKeyPreference;
 import com.bm.main.single.ftl.ship.models.ShipFareModel;
 import com.bm.main.single.ftl.ship.models.ShipModel;

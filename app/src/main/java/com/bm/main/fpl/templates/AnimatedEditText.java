@@ -25,7 +25,7 @@ import android.view.Gravity;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;

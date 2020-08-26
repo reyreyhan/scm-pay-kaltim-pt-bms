@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class TestTabLayoutCustomActivity extends BaseActivity {
 @NonNull

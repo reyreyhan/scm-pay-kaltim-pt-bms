@@ -2,7 +2,7 @@ package com.bm.main.fpl.activities;
 
 import android.os.Bundle;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class FmcgDetailActivity extends BaseActivity {
 

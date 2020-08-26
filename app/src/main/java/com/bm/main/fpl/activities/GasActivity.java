@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.bm.main.fpl.staggeredgridApp.MenuGasModel;
 import com.bm.main.fpl.staggeredgridApp.SolventRecyclerViewGasAdapter;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.ArrayList;
 import java.util.List;

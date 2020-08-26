@@ -1,7 +1,6 @@
 package com.bm.main.fpl.activities;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -11,9 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -26,27 +23,20 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.widget.NestedScrollView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import android.text.method.LinkMovementMethod;
-import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bm.main.fpl.templates.htmlspanner.handlers.TableHandler;
 import com.bm.main.fpl.templates.htmltextview.HtmlTextView;
 import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.DialogUtils;
 import com.bm.main.fpl.utils.FormatString;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.RequestCode;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.models.CUModel;

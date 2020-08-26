@@ -15,7 +15,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.activities.SettingPrinterActivity;
 import com.bm.main.fpl.constants.ResponseCode;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.io.IOException;
 import java.io.OutputStream;

@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.models.TiketHistoryModel;
 import com.bm.main.fpl.templates.MaterialRippleLayout;

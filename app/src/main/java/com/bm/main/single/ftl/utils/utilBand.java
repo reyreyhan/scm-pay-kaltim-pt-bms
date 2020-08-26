@@ -2,13 +2,10 @@ package com.bm.main.single.ftl.utils;
 
 
 
-import com.bm.main.fpl.activities.BaseActivity;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.SBFApplication;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 
 /**
  * Created by sarifhidayat on 6/16/17.

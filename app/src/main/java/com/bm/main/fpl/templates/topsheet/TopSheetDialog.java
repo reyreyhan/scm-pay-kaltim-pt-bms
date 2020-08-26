@@ -32,7 +32,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 /**

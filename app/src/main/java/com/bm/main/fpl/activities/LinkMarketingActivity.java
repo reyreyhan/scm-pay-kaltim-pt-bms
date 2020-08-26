@@ -30,7 +30,7 @@ import com.bm.main.fpl.models.AjakBisnisModel;
 import com.bm.main.fpl.models.PanduanAjakBisnisModel;
 import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;

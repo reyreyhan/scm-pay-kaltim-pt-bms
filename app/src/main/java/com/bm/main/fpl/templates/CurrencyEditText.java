@@ -14,12 +14,11 @@ import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.MaterialEditText;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Currency;
 import java.util.Locale;

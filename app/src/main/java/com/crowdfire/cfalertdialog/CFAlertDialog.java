@@ -43,7 +43,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.crowdfire.cfalertdialog.utils.DeviceUtil;
 import com.crowdfire.cfalertdialog.utils.SwipeToHideViewListener;
 import com.crowdfire.cfalertdialog.views.CFPushButton;

@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.slider.library.Tricks.InfinitePagerAdapter;
 import com.bm.main.fpl.templates.slider.library.Tricks.ViewPagerEx;
 

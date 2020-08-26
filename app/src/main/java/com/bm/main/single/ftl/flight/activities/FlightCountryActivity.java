@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import androidx.appcompat.widget.AppCompatButton;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.templates.DividerItemDecoration;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.adapters.ListCountryAdapter;
 import com.bm.main.single.ftl.models.Country;
 import com.bm.main.single.ftl.utils.CountryComparator;

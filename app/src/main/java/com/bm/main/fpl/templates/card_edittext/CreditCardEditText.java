@@ -10,7 +10,7 @@ import android.text.InputType;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.MaterialEditText;
 
 import java.util.List;

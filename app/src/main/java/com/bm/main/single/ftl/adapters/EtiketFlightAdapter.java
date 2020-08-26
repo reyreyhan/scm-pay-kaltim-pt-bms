@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 
 import com.bm.main.fpl.templates.AutoResizeTextView;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.models.EtiketFlightModel;
 import com.bumptech.glide.Glide;
 

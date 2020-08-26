@@ -3,7 +3,7 @@ package com.bm.main.fpl.templates.card_edittext;
 import android.content.Context;
 import androidx.annotation.NonNull;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.ArrayList;
 import java.util.List;

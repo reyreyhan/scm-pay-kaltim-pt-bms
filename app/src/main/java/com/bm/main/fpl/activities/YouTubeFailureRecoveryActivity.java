@@ -23,7 +23,7 @@ import androidx.annotation.NonNull;
 
 import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;

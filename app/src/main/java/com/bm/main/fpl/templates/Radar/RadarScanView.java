@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 
 /**

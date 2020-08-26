@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.ListProdukJenisAdapter;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.RequestCode;

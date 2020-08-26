@@ -12,7 +12,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.ProdukPulsaInternetModel;
 import com.bm.main.fpl.templates.AutoResizeTextView;
 import com.bm.main.fpl.templates.MaterialRippleLayout;

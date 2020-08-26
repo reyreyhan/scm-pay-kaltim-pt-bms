@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 
 import com.bm.main.fpl.activities.BaseActivity;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.vision.MultiProcessor;

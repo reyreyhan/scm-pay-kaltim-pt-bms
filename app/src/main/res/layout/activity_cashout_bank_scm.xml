@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="@dimen/activity_vertical_margin"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo akan di-Cashout ke:" />
+
+    <TextView
+        android:id="@+id/tv_back_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Bank BRI - 31690103211537 a.n. Robby Dzikrillah" />
+
+    <!-- Nominal Penarikan -->
+    <LinearLayout
+        android:id="@+id/ll_withdraw_ammount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nominal Penarikan" />
+
+        <EditText
+            android:id="@+id/et_withdraw_ammount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/activity_cashout_bank_withdraw_ammount_hint"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <!-- Keterangan Penarikan -->
+    <LinearLayout
+        android:id="@+id/ll_withdraw_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keterangan Penarikan" />
+
+        <EditText
+            android:id="@+id/et_withdraw_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/activity_cashout_bank_scm_withdraw_information_hint"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Keterangan Penarikan -->
+    <LinearLayout
+        android:id="@+id/ll_pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PIN" />
+
+        <EditText
+            android:id="@+id/et_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/activity_cashout_bank_scm_pin_hint"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/standard_margin"
+        android:background="@drawable/rounded_white_4dp_stroke_gray"
+        android:layout_marginTop="@dimen/standard_margin_2x">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saldo Anda"
+                android:drawableLeft="@drawable/ic_total_omzet"
+                android:drawablePadding="@dimen/standard_small_margin"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Rp 12.599.750"
+            android:drawablePadding="@dimen/standard_small_margin"
+            android:layout_weight="2"
+            android:gravity="right|center_vertical"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cashout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:backgroundTint="@color/colorAccent"
+        android:clipToPadding="false"
+        android:text="Cashout Sekarang"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:theme="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp" />
+    
+    <TextView
+        android:id="@+id/tv_lbl_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Untuk penggantian data Bank silakan hubungi CS"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:layout_gravity="center"/>
+</LinearLayout>

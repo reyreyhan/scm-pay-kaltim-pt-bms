@@ -3,7 +3,6 @@ package com.bm.main.single.ftl.flight.adapters;
 import android.content.Context;
 import android.os.Build;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -19,7 +18,7 @@ import android.widget.TextView;
 
 
 import com.bm.main.fpl.templates.ticketview.TicketView;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.flight.models.FlightDataModelClasses;
 import com.bm.main.single.ftl.utils.utilBand;
 import com.bumptech.glide.Glide;

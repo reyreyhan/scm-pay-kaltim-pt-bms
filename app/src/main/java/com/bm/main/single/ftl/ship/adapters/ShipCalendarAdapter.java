@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.bm.main.fpl.templates.MaterialRippleLayout;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 /**
  * Created by sarifhidayat on 2019-06-27.

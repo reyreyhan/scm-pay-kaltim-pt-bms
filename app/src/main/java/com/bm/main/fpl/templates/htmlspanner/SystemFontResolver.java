@@ -3,10 +3,6 @@ package com.bm.main.fpl.templates.htmlspanner;
 import android.graphics.Typeface;
 import android.util.Log;
 
-import androidx.core.content.res.ResourcesCompat;
-
-import com.bm.main.pos.R;
-
 /**
  * Created with IntelliJ IDEA.
  * User: alex

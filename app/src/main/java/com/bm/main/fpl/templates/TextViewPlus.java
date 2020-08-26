@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class TextViewPlus extends AppCompatTextView {
     private static final String TAG = TextViewPlus.class.getSimpleName();

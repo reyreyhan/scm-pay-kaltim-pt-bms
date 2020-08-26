@@ -23,7 +23,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.stepstone.stepper.StepperLayout;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;

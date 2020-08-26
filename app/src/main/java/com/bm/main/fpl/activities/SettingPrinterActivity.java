@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.FormatString;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.templates.RandomTextView;
 import com.bm.main.fpl.utils.PreferenceClass;

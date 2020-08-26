@@ -27,7 +27,7 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.taptargetview.TapTarget;
 import com.bm.main.fpl.templates.taptargetview.TapTargetSequence;
 

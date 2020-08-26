@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bm.main.pos"
+    package="com.bm.main.scm"
     android:installLocation="auto">
 
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
-<!--    <uses-permission android:name="android.permission.CAMERA" />-->
+    <!--    <uses-permission android:name="android.permission.CAMERA" />-->
+    <!--    <uses-permission android:name="android.permission.CAMERA" />-->
+    <!--    <uses-permission android:name="android.permission.CAMERA" />-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <permission
-        android:name="com.bm.main.pos.permission.MAPS_RECEIVE"
+        android:name="com.bm.main.scm.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
     <permission
-        android:name="com.bm.main.pos.permission.ACTION_MANAGE_OVERLAY_PERMISSION"
+        android:name="com.bm.main.scm.permission.ACTION_MANAGE_OVERLAY_PERMISSION"
         android:protectionLevel="signature" />
     <permission
         android:name="android.permission.STATUS_BAR"
@@ -31,7 +31,7 @@
         android:name="android.permission.WRITE_SETTINGS"
         android:protectionLevel="signature|preinstalled|appop|pre23" /> <!-- NORMAL PERMISION -->
     <permission
-        android:name="com.bm.main.pos.permission.C2D_MESSAGE"
+        android:name="com.bm.main.scm.permission.C2D_MESSAGE"
         android:protectionLevel="signature" /> <!-- <uses-permission android:name="android.permission.GET_TASKS" /> -->
     <supports-screens
         android:anyDensity="true"
@@ -132,16 +132,16 @@
     <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
 
     <application
-        android:name=".SBFApplication"
+        android:name="com.bm.main.scm.SBFApplication"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
         android:largeHeap="true"
         android:logo="@mipmap/ic_launcher"
         android:protectionLevel="installer"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SBFTheme"
@@ -153,279 +153,288 @@
             android:value="AppGlideModule" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.bm.main.pos.fileprovider"
+            android:authorities="com.bm.main.scm.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/fileprovider"
-              />
+                android:resource="@xml/fileprovider" />
         </provider>
         <meta-data
             android:name="com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule"
             android:value="AppGlideModule" />
 
+        <!--        <activity-->
+        <!--            android:name="com.bm.main.scm.SplashScreenActivity"-->
+        <!--            android:configChanges="orientation|screenSize"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/FullscreenTheme">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.VIEW" />-->
+
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
+
+        <!--                <data-->
+        <!--                    android:host="profit.fastpay.co.id"-->
+        <!--                    android:scheme="https" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+
         <activity
-            android:name=".SplashScreenActivity"
-            android:configChanges="orientation|screenSize"
+            android:name="com.bm.main.scm.feature.report.main.ReportActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name="com.bm.main.scm.feature.report.labarugi.penjualan.PenjualanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <!--        <activity-->
+        <!--            android:name="com.bm.main.scm.feature.login.LoginActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/ReverseAppTheme.NoActionBar" />-->
+        <activity
+            android:name="com.bm.main.scm.feature.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="profit.fastpay.co.id"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".feature.report.main.ReportActivity"
+            android:name="com.bm.main.scm.feature.register.RegisterMerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.report.labarugi.penjualan.PenjualanActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
-        <activity
-            android:name=".feature.login.LoginActivity"
+            android:name="com.bm.main.scm.feature.drawer.DrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
-            android:name=".feature.register.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
-        <activity
-            android:name=".feature.drawer.DrawerActivity"
+            android:name="com.bm.main.scm.feature.newhome.NewHomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
-            android:name=".feature.newhome.NewHomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme.NoActionBar" />
-        <activity
-            android:name=".feature.manage.product.main.AddProductMainActivity"
+            android:name="com.bm.main.scm.feature.manage.product.main.AddProductMainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.product.list.ProductListActivity"
+            android:name="com.bm.main.scm.feature.manage.product.list.ProductListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".feature.manage.category.list.CategoryListActivity"
+            android:name="com.bm.main.scm.feature.manage.category.list.CategoryListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".feature.manage.discount.list.DiscountListActivity"
+            android:name="com.bm.main.scm.feature.manage.discount.list.DiscountListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".feature.manage.customer.list.CustomerListActivity"
+            android:name="com.bm.main.scm.feature.manage.customer.list.CustomerListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".feature.manage.supplier.list.SupplierListActivity"
+            android:name="com.bm.main.scm.feature.manage.supplier.list.SupplierListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".feature.manage.category.add.AddCategoryActivity"
+            android:name="com.bm.main.scm.feature.manage.category.add.AddCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.category.edit.EditCategoryActivity"
+            android:name="com.bm.main.scm.feature.manage.category.edit.EditCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.supplier.add.AddSupplierActivity"
+            android:name="com.bm.main.scm.feature.manage.supplier.add.AddSupplierActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.supplier.edit.EditSupplierActivity"
+            android:name="com.bm.main.scm.feature.manage.supplier.edit.EditSupplierActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.customer.add.AddCustomerActivity"
+            android:name="com.bm.main.scm.feature.manage.customer.add.AddCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.customer.edit.EditCustomerActivity"
+            android:name="com.bm.main.scm.feature.manage.customer.edit.EditCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.customer.detail.CustomerDetailActivity"
+            android:name="com.bm.main.scm.feature.manage.customer.detail.CustomerDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.scan.ScanCodeActivity"
+            android:name="com.bm.main.scm.feature.scan.ScanCodeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
-<!--        <activity-->
-<!--            android:name=".feature.manage.product.main.AddProductMainActivity"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            android:theme="@style/ReverseAppTheme.NoActionBar2" />-->
+        <!--        <activity-->
+        <!--            android:name=".feature.manage.product.main.AddProductMainActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/ReverseAppTheme.NoActionBar2" />-->
         <activity
-            android:name=".feature.manage.product.search.ProductSearchActivity"
+            android:name="com.bm.main.scm.feature.manage.product.search.ProductSearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar2" />
         <activity
-            android:name=".feature.transaction.detail.DetailSuccessActivity"
+            android:name="com.bm.main.scm.feature.transaction.detail.DetailSuccessActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme"/>
+            android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.webpage.WebViewActivity"
+            android:name="com.bm.main.scm.feature.webpage.WebViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar2" />
         <activity
-            android:name=".feature.manage.product.edit.EditProductActivity"
+            android:name="com.bm.main.scm.feature.manage.product.edit.EditProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.transaction.detail.old.DetailActivity"
+            android:name="com.bm.main.scm.feature.transaction.detail.old.DetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.transaction.historyTransaction.TransactionHistoryActivity"
+            android:name="com.bm.main.scm.feature.transaction.historyTransaction.TransactionHistoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.main.MainActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.lastHutang.LastHutangActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.lastHutang.LastHutangActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.lastPiutang.LastPiutangActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.lastPiutang.LastPiutangActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.hutangSupplier.HutangSupplierActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.hutangSupplier.HutangSupplierActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.piutangCustomer.PiutangCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.detailHutang.DetailHutangActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.detailHutang.DetailHutangActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity"
+            android:name="com.bm.main.scm.feature.manage.hutangpiutang.detailPiutang.DetailPiutangActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.merchant.MerchantActivity"
+            android:name="com.bm.main.scm.feature.merchant.MerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.sell.chooseProduct.ChooseProductActivity"
+            android:name="com.bm.main.scm.feature.sell.chooseProduct.ChooseProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.sell.add.AddActivity"
+            android:name="com.bm.main.scm.feature.sell.add.AddActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar2" />
         <activity
-            android:name=".feature.sell.edit.EditActivity"
+            android:name="com.bm.main.scm.feature.sell.edit.EditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.printer.PrinterActivity"
+            android:name="com.bm.main.scm.feature.printer.PrinterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.sell.chooseCustomer.ChooseCustomerActivity"
+            android:name="com.bm.main.scm.feature.sell.chooseCustomer.ChooseCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.sell.addCustomer.AddCustomerActivity"
+            android:name="com.bm.main.scm.feature.sell.addCustomer.AddCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.transaction.success.SuccessActivity"
+            android:name="com.bm.main.scm.feature.transaction.success.SuccessActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.kulakan.main.KulakanActivity"
+            android:name="com.bm.main.scm.feature.kulakan.main.KulakanActivity"
             android:label="Data Kulakan"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.kulakan.chooseSupplier.ChooseSupplierActivity"
+            android:name="com.bm.main.scm.feature.kulakan.chooseSupplier.ChooseSupplierActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.kulakan.addProduct.AddActivity"
+            android:name="com.bm.main.scm.feature.kulakan.addProduct.AddActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.kulakan.editProduct.EditActivity"
+            android:name="com.bm.main.scm.feature.kulakan.editProduct.EditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.report.transaction.TransactionActivity"
+            android:name="com.bm.main.scm.feature.report.transaction.TransactionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.report.labarugi.main.MainActivity"
+            android:name="com.bm.main.scm.feature.report.labarugi.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.report.mutasi.MutasiActivity"
+            android:name="com.bm.main.scm.feature.report.mutasi.MutasiActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.report.stock.StockActivity"
+            android:name="com.bm.main.scm.feature.report.stock.StockActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.report.kulakan.KulakanActivity"
+            android:name="com.bm.main.scm.feature.report.kulakan.KulakanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.setting.main.SettingActivity"
+            android:name="com.bm.main.scm.feature.setting.main.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.setting.account.AccountActivity"
+            android:name="com.bm.main.scm.feature.setting.account.AccountActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.setting.password.PasswordActivity"
+            android:name="com.bm.main.scm.feature.setting.password.PasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.setting.store.StoreActivity"
+            android:name="com.bm.main.scm.feature.setting.store.StoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.setting.staff.list.StaffListActivity"
+            android:name="com.bm.main.scm.feature.setting.staff.list.StaffListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".feature.setting.staff.add.AddStaffActivity"
+            android:name="com.bm.main.scm.feature.setting.staff.add.AddStaffActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.setting.staff.edit.EditStaffActivity"
+            android:name="com.bm.main.scm.feature.setting.staff.edit.EditStaffActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.filterDate.main.MainActivity"
+            android:name="com.bm.main.scm.feature.filterDate.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/TransparentCompat" />
         <activity
@@ -718,7 +727,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme" />
         <activity
-            android:name=".OnBoardingActivity"
+            android:name="com.bm.main.scm.OnBoardingActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -1257,7 +1266,7 @@
 
         <provider
             android:name="com.cardnfc.lib.bninfc.tapcashgo.provider.CardProvider"
-            android:authorities="com.bm.main.pos.cardprovider"
+            android:authorities="com.bm.main.scm.cardprovider"
             android:enabled="true"
             android:exported="false" />
 
@@ -1274,11 +1283,11 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".services.RestarterBroadcastReceiver"
+            android:name="com.bm.main.scm.services.RestarterBroadcastReceiver"
             android:exported="true"
             android:label="RestartServiceWhenStopped" />
         <receiver
-            android:name=".services.BootBroadcast"
+            android:name="com.bm.main.scm.services.BootBroadcast"
             android:enabled="true"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -1295,7 +1304,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".services.backgroundlocationupdates.LocationUpdatesBroadcastReceiver"
+            android:name="com.bm.main.scm.services.backgroundlocationupdates.LocationUpdatesBroadcastReceiver"
             android:exported="true"
             android:permission="android.permission.ACCESS_FINE_LOCATION">
             <intent-filter>
@@ -1303,7 +1312,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".services.UplineReceiver"
+            android:name="com.bm.main.scm.services.UplineReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.INSTALL_PACKAGES">
@@ -1335,7 +1344,7 @@
         </receiver>
 
         <service
-            android:name=".services.ScreenOnOffBackgroundService"
+            android:name="com.bm.main.scm.services.ScreenOnOffBackgroundService"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE">
@@ -1361,10 +1370,10 @@
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- <activity android:airLineName="com.google.zxing.client.android.CaptureActivity" android:screenOrientation="portrait"> -->
         <service
-            android:name=".services.SensorService"
+            android:name="com.bm.main.scm.services.SensorService"
             android:enabled="true" />
         <service
-            android:name=".services.SBFService"
+            android:name="com.bm.main.scm.services.SBFService"
             android:permission="com.google.android.c2dm.permission.SEND"
             android:stopWithTask="false">
             <intent-filter android:priority="999">
@@ -1376,14 +1385,14 @@
             </intent-filter>
         </service>
         <service
-            android:name=".services.backgroundlocationupdates.LocationUpdatesIntentService"
+            android:name="com.bm.main.scm.services.backgroundlocationupdates.LocationUpdatesIntentService"
             android:exported="false" />
         <service
             android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
             android:exported="false" />
         <service
-            android:name=".services.BadgeIntentService"
+            android:name="com.bm.main.scm.services.BadgeIntentService"
             android:exported="false" /> <!-- TRAVEL -->
         <service
             android:name="com.google.firebase.messaging.FirebaseMessagingService"

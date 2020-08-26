@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.HashMap;
 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Tambahkan QRIS Kasir"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:textColor="@color/textColorPrimary"/>
+
+    <!-- Nama Kasir -->
+    <LinearLayout
+        android:id="@+id/ll_cashier_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:layout_marginRight="@dimen/standard_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Isikan Nama Kasir" />
+
+        <EditText
+            android:id="@+id/et_cashier_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/activity_qris_add_cashier_hint"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+    <!-- Nomor Handphone -->
+    <LinearLayout
+        android:id="@+id/ll_cashier_num_hp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Rekening" />
+
+        <EditText
+            android:id="@+id/et_cashier_num_hp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/activity_qris_add_cashier_num_hp_hint"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+    <!-- Pin Kasir -->
+    <LinearLayout
+        android:id="@+id/ll_cashier_pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buat PIN Kasir" />
+
+        <EditText
+            android:id="@+id/et_bank_owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/activity_qris_add_cashier_pin_hint"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+    <CheckBox
+        android:id="@+id/cb_activate_cashier_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:text="Aktifkan fitur Pembayaran pada Kasir"
+        android:textSize="@dimen/_12sdp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_cashier"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:backgroundTint="@color/colorAccent"
+        android:clipToPadding="false"
+        android:text="Tambahkan Kasir"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:theme="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp" />
+</LinearLayout>

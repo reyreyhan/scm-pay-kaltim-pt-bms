@@ -11,11 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-
-import com.bm.main.fpl.activities.BaseActivity;
-import com.bm.main.fpl.templates.MaterialRippleLayout;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

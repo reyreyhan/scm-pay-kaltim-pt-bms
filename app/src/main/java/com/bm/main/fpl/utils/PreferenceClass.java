@@ -8,7 +8,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.fpl.models.SignOn;
 import com.bm.main.fpl.models.UserModel;
 import com.google.gson.Gson;
@@ -20,7 +20,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import timber.log.Timber;

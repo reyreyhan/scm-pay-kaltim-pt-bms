@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,7 +40,7 @@ import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.zxing.client.android.Intents;
 
 import org.json.JSONException;

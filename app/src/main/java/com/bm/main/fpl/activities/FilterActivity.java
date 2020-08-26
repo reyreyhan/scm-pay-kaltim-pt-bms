@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.FilterTypeAdapter;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.Filter;

@@ -15,7 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.activities.FeePesawatActivity;
 import com.bm.main.fpl.models.FeeFlightModel;
 
@@ -26,7 +26,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Sarif Hidayat on 05/06/2017.

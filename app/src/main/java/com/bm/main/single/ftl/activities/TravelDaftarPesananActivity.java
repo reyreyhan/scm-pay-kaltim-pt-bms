@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
@@ -34,15 +33,14 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bm.main.fpl.activities.BaseActivity;
-import com.bm.main.fpl.activities.KeyboardListenerActivity;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.RequestCode;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.fpl.utils.FileUtils;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.adapters.EtiketFlightAdapter;
 import com.bm.main.single.ftl.adapters.EtiketShipAdapter;
 import com.bm.main.single.ftl.adapters.EtiketTrainAdapter;
@@ -63,9 +61,7 @@ import org.threeten.bp.format.DateTimeFormatter;
 
 import java.io.File;
 import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 public class TravelDaftarPesananActivity extends BaseActivity implements  ProgressResponseCallback, SearchView.OnQueryTextListener, SearchView.OnCloseListener , EtiketFlightAdapter.OnClickProdukFlight, EtiketTrainAdapter.OnClickProdukTrain, EtiketShipAdapter.OnClickProdukShip {

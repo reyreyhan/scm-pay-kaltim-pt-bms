@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Utils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.showcaseview.GuideView;
 import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.MyClipboardManager;

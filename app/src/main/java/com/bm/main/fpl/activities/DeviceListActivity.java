@@ -21,7 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.DeviceListAdapter;
 
 import java.lang.reflect.Method;

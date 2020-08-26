@@ -13,7 +13,7 @@ import android.os.Build;
 import android.text.Html;
 import android.text.Spanned;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;

@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.activities.DaftarPelangganActivity;
 import com.bm.main.fpl.activities.InqueryResultActivity;

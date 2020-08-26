@@ -1,24 +1,15 @@
 package com.bm.main.fpl.utils;
 
-import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
-import androidx.appcompat.widget.AppCompatCheckBox;
 import android.util.Log;
-import android.widget.CompoundButton;
 
-import com.bm.main.pos.R;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**

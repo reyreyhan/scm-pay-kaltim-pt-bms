@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.utils.DialogUtils;
 import com.bm.main.fpl.utils.FileUtils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.io.File;
 

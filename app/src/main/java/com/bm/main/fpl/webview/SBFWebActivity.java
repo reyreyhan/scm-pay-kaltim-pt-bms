@@ -37,7 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;

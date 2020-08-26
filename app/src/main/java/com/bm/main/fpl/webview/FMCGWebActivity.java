@@ -28,7 +28,7 @@ import android.webkit.WebViewClient;
 import android.widget.RadioButton;
 
 import com.bm.main.fpl.utils.UrlUtils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.utils.PreferenceClass;
 

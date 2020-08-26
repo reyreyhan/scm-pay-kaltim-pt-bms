@@ -26,7 +26,7 @@ import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.fpl.templates.RecyclerSectionItemDecoration;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bm.main.single.ftl.flight.adapters.FlightAirportAdapter;
 import com.bm.main.single.ftl.flight.constants.FlightKeyPreference;

@@ -1,14 +1,12 @@
 package com.bm.main.single.ftl.flight.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +15,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 
@@ -26,12 +23,10 @@ import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.constants.ProdukGroup;
 import com.bm.main.fpl.templates.MaterialNumberPicker;
-import com.bm.main.fpl.templates.showcaseview.GuideView;
-import com.bm.main.fpl.templates.switchbutton.SwitchButton;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.activities.TravelTanggalActivity;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bm.main.single.ftl.flight.constants.FlightKeyPreference;

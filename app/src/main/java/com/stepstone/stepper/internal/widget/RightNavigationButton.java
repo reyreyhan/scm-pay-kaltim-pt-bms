@@ -22,7 +22,7 @@ import androidx.annotation.RestrictTo;
 import androidx.appcompat.widget.AppCompatButton;
 import android.util.AttributeSet;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 

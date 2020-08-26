@@ -1,9 +1,8 @@
 package com.bm.main.fpl.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class NewHomeActivity extends BaseActivity {
 

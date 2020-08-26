@@ -17,7 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 
 public class AVLoadingIndicatorView extends View {

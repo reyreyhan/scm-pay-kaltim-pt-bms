@@ -24,7 +24,7 @@ import com.bm.main.fpl.models.CaraDepositModel;
 import com.bm.main.fpl.templates.htmltextview.HtmlTextView;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

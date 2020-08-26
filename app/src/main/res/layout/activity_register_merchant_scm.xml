@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:id="@+id/ll_main_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin_2x"
+                android:layout_marginBottom="@dimen/standard_margin_2x">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Merchant"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/speedcash_colour" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lbl_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Isi Form Pendaftaran untuk mendaftarkan QRIS Merchant Anda"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
+
+            <!-- Nama Merchant -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Merchant" />
+
+                <EditText
+                    android:id="@+id/et_merchant_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_et_merchant_name_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Kategori Usaha-->
+            <LinearLayout
+                android:id="@+id/ll_merchant_business"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori Usaha" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:paddingVertical="10dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_merchant_business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="@string/activity_register_spinner_merchant_business_hint" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Kriteria Usaha-->
+            <LinearLayout
+                android:id="@+id/ll_merchant_criteria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lbl_criteria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_baseline_help_24"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@android:color/holo_blue_dark"
+                    android:gravity="center_vertical"
+                    android:text="Kriteria Usaha" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:paddingVertical="10dp">
+
+                    <Spinner
+                        android:id="@+id/spinner_merchant_criteria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="@string/activity_register_spinner_merchant_criteria_hint"
+                        android:paddingVertical="10dp" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- No. HP Pemilik -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_num_hp_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No. HP Pemilik" />
+
+                <EditText
+                    android:id="@+id/et_merchant_num_hp_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_num_hp_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Email Pemilik -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email Pemilik" />
+
+                <EditText
+                    android:id="@+id/et_merchant_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_email_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- No. KTP/NIK Pemillik -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_id_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No. KTP/NIK Pemilik" />
+
+                <EditText
+                    android:id="@+id/et_merchant_id_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_id_card_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!--        NPWP-->
+            <LinearLayout
+                android:id="@+id/ll_merchant_npwp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NPWP (Opsional)" />
+
+                <EditText
+                    android:id="@+id/et_merchant_npwp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_npwp_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Provinsi -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_provinsi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Provinsi" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_province"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Provinsi"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Kota/Kabupaten -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kota/Kabupaten" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Kota/Kabupaten"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Kecamatan -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_district"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kecamatan" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Kecamatan"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Kelurahan -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_sub_district"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kota/Kabupaten" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_sub_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Kelurahan"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Alamat -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Alamat Merchant" />
+
+                <EditText
+                    android:id="@+id/et_merchant_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_address_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:clipToPadding="false"
+                android:text="Daftarkan Merchant"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                android:theme="@style/Widget.MaterialComponents.Button"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/bottom_sheet_register_scm_help_layout" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

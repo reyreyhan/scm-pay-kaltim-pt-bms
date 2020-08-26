@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:id="@+id/ll_main_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin_2x"
+                android:layout_marginBottom="@dimen/standard_margin_2x">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Merchant"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/speedcash_colour" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lbl_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Isi form berikut untuk mendaftar"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
+
+            <!-- Nama Pemilik -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pemilik" />
+
+                <EditText
+                    android:id="@+id/et_merchant_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_et_merchant_owner_hint"
+                    android:inputType="textPersonName"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Nama Merchant -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Merchant" />
+
+                <EditText
+                    android:id="@+id/et_merchant_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_et_merchant_name_hint"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Kategori Usaha
+            <LinearLayout
+                android:id="@+id/ll_merchant_business"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori Usaha" />
+
+                <Spinner
+                    android:id="@+id/spinner_merchant_business"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/activity_register_spinner_merchant_business_hint"
+                    android:background="@drawable/bg_edittext_border"
+                    android:paddingVertical="10dp" />
+            </LinearLayout>
+
+            Kriteria Usaha
+            <LinearLayout
+                android:id="@+id/ll_merchant_criteria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lbl_criteria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_baseline_help_24"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@android:color/holo_blue_dark"
+                    android:gravity="center_vertical"
+                    android:text="Kriteria Usaha" />
+
+                <Spinner
+                    android:id="@+id/spinner_merchant_criteria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/activity_register_spinner_merchant_criteria_hint"
+                    android:background="@drawable/bg_edittext_border"
+                    android:paddingVertical="10dp" />
+            </LinearLayout>
+    -->
+            <!-- No. HP -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_num_hp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Handphone" />
+
+                <EditText
+                    android:id="@+id/et_merchant_num_hp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_num_hp_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- PIN -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buat PIN" />
+
+                <EditText
+                    android:id="@+id/et_merchant_pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_pin_hint"
+                    android:inputType="numberPassword"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- PIN Confirm -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_pin_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buat PIN" />
+
+                <EditText
+                    android:id="@+id/et_merchant_pin_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_pin_confirm_hint"
+                    android:inputType="numberPassword"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Email Pemilik -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email Pemilik" />
+
+                <EditText
+                    android:id="@+id/et_merchant_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- No. KTP/NIK Pemillik
+            <LinearLayout
+                android:id="@+id/ll_merchant_id_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No. KTP/NIK Pemilik" />
+
+                <EditText
+                    android:id="@+id/et_merchant_id_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_id_card_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            NPWP
+            <LinearLayout
+                android:id="@+id/ll_merchant_npwp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NPWP (Opsional)" />
+
+                <EditText
+                    android:id="@+id/et_merchant_npwp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_npwp_hint"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+     -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:text="Daftarkan Sekarang"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                android:theme="@style/Widget.MaterialComponents.Button"
+                android:backgroundTint="@color/colorAccent"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

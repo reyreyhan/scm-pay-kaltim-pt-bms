@@ -33,8 +33,8 @@ import com.bm.main.fpl.templates.clearableedittext.ClearableEditText;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.Validate;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.ship.constants.ShipKeyPreference;
 
 import java.text.SimpleDateFormat;

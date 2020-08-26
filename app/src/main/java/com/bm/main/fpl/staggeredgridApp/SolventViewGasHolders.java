@@ -12,7 +12,7 @@ import com.bm.main.fpl.constants.MenuActionCode;
 import com.bm.main.fpl.listener.ShowModuleGasOnClickListener;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.shimmer;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class SolventViewGasHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 

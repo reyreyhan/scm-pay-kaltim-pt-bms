@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import org.w3c.dom.Node;
 

@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 /**
  * Created by vatsaldesai on 15-11-2016.

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import androidx.core.content.ContextCompat;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class ScannerOverlay extends ViewGroup {
     private float left, top, endY;

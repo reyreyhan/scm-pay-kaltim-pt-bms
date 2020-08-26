@@ -21,8 +21,8 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.flight.constants.FlightKeyPreference;
 import com.bm.main.single.ftl.flight.models.FlightDataModelClasses;
 import com.bm.main.single.ftl.utils.MemoryStore;

@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.lang.reflect.Field;
 

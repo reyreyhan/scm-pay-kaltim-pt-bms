@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RemoteViews.RemoteView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;

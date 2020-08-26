@@ -24,7 +24,7 @@ import com.bm.main.fpl.templates.DividerItemDecoration;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

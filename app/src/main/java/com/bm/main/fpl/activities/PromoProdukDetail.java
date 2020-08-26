@@ -16,7 +16,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.models.PromoProdukModel;
 import com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView;

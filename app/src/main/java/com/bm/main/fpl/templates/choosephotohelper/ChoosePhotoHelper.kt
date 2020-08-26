@@ -19,7 +19,7 @@ import com.bm.main.fpl.templates.choosephotohelper.utils.modifyOrientation
 import com.bm.main.fpl.templates.choosephotohelper.utils.pathFromUri
 import com.bm.main.fpl.templates.choosephotohelper.utils.uriFromFile
 
-import com.bm.main.pos.R
+import com.bm.main.scm.R
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast

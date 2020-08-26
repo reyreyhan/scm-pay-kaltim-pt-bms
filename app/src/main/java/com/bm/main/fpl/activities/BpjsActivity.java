@@ -50,7 +50,7 @@ import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.materialedittext.MaterialEditText;
 import com.bm.main.materialedittext.OnCutCopyPasteListener;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 

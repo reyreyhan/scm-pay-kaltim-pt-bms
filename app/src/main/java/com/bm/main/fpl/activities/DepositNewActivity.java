@@ -35,7 +35,7 @@ import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.ListBankSubVAAdapter;
 import com.bm.main.fpl.adapters.ListBankVANewAdapter;
 import com.bm.main.fpl.adapters.ListGridBankAdapter;

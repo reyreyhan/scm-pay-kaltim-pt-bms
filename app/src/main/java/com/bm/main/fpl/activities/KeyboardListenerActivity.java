@@ -6,7 +6,7 @@ import android.view.ViewTreeObserver;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class KeyboardListenerActivity extends BaseActivity implements ViewTreeObserver.OnGlobalLayoutListener {
 

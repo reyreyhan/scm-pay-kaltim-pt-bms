@@ -31,7 +31,7 @@ import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 
 /**

@@ -28,7 +28,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.stepstone.stepper.internal.util.TintUtil;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;

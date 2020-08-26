@@ -7,8 +7,8 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bm.main.pos.SBFApplication;
-import com.bm.main.pos.SplashScreenActivity;
+import com.bm.main.scm.SBFApplication;
+import com.bm.main.scm.SplashScreenActivity;
 
 /**
  * Created by sarifhidayat on 12/28/18.

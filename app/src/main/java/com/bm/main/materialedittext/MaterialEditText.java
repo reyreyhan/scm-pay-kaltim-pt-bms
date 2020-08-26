@@ -37,9 +37,8 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
-import androidx.core.content.res.ResourcesCompat;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.validation.METLengthChecker;
 import com.bm.main.materialedittext.validation.METValidator;
 import com.nineoldandroids.animation.ArgbEvaluator;

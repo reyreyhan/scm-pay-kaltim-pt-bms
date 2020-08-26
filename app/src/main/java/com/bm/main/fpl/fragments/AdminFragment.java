@@ -40,7 +40,7 @@ import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.fpl.utils.StringJson;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;

@@ -27,7 +27,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.stickylistheaders.WrapperViewList.LifeCycleListener;
 
 /**

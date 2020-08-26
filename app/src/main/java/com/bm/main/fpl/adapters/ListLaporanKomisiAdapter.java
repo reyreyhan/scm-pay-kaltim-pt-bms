@@ -12,7 +12,7 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.LaporanKomisiModel;
 import com.bm.main.fpl.templates.MaterialRippleLayout;
 import com.bm.main.fpl.utils.FormatString;

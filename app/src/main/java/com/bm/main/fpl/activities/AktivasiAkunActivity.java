@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.utils.DialogUtils;
 import com.bm.main.fpl.utils.Utils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.PreferenceClass;

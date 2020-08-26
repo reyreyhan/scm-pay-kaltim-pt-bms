@@ -3,7 +3,7 @@ package com.bm.main.fpl.templates.slider.library.Animations;
 import androidx.annotation.NonNull;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;

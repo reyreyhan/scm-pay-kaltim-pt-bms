@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;

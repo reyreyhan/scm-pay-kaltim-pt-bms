@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.staggeredgridApp.MenuPerbankanModel;
 import com.bm.main.fpl.staggeredgridApp.SolventRecyclerViewPerbankanAdapter;
 

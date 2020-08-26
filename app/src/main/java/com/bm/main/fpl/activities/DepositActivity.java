@@ -62,7 +62,7 @@ import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;

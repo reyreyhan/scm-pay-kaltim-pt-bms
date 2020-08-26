@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.stepstone.stepper.StepperLayout;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;

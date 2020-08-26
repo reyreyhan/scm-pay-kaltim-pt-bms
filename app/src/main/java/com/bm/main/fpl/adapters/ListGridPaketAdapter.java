@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.PaketModel;
 import com.bm.main.fpl.templates.MaterialRippleLayout;
 

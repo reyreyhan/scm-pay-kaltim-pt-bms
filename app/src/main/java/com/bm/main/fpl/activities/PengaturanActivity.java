@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.PreferenceKey;
 import com.bm.main.fpl.templates.MaterialRippleLayout;
 import com.bm.main.fpl.templates.switchbutton.SwitchButton;

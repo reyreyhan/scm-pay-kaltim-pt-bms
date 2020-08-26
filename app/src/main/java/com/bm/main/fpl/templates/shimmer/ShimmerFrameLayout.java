@@ -23,7 +23,7 @@ import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class ShimmerFrameLayout extends FrameLayout {
 

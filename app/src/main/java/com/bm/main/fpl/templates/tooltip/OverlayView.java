@@ -36,7 +36,7 @@ import android.graphics.RectF;
 import androidx.annotation.NonNull;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 /**
  * View que faz o efeito de escurecer a tela e dar destaque no ponto de ancoragem.<br>

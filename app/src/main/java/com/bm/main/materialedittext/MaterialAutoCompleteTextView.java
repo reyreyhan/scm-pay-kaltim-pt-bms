@@ -32,7 +32,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.materialedittext.validation.METLengthChecker;
 import com.bm.main.materialedittext.validation.METValidator;
 import com.nineoldandroids.animation.ArgbEvaluator;

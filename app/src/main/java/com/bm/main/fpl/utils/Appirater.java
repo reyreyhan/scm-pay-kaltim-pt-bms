@@ -28,8 +28,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bm.main.fpl.activities.BaseActivity;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class Appirater {
     private static final String PREF_LAUNCH_COUNT = "launch_count";

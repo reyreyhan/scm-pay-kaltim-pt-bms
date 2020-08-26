@@ -996,4 +996,33 @@ Aplikasi sebelum Anda login ke Aplikasi.</item>
     <string name="lbl_customer_name_hint">Isi Nama Pelanggan</string>
     <string name="lbl_no_hp_customer_hint">Isi Nomor Handphone Pelanggan</string>
     <string name="lbl_email_customer_hint">Isi Alamat Email Pelanggan</string>
+
+    <string name="login_activity_title">Login</string>
+    <string name="login_activity_title_caption">untuk login lengkapi data di bawah ini</string>
+    <string name="login_activity_et_num_hp_hint">Masukkan nomor handphone, contoh: 081234567890</string>
+    <string name="login_activity_et_pin_hint">Masukkan 6 digit PIN Anda</string>
+    <string name="login_activity_lbl_register">Belum Jadi Merchant? Daftar Merchant QRIS Sekarang!</string>
+    <string name="activity_register_et_merchant_name_hint">Contoh: Counter Pulsa Sumber Jaya</string>
+    <string name="activity_register_spinner_merchant_business_hint">Pilih Kategori Usaha!</string>
+    <string name="activity_register_spinner_merchant_criteria_hint">Pilih Kriteria Usaha!</string>
+    <string name="activity_register_merchant_num_hp_hint">Contoh: 08123456890</string>
+    <string name="activity_register_merchant_email_hint">Contoh: emailsaya@gmail.com</string>
+    <string name="activity_register_merchant_id_card_hint">Contoh: 3515182206XXXXXX</string>
+    <string name="activity_register_merchant_npwp_hint">Contoh: 3142-1984-1298-XXXX-XXXX-XXXX</string>
+    <string name="bottom_sheet_register_help_title">Keterangan Kriteria Usaha</string>
+    <string name="activity_register_et_merchant_owner_hint">Masukkan nama Anda</string>
+    <string name="activity_register_merchant_pin_hint">Masukkan 6 digit PIN</string>
+    <string name="activity_register_merchant_pin_confirm_hint">Masukan ulang 6 digit PIN</string>
+    <string name="activity_register_merchant_address_hint">Contoh: Jl. Medokan Sawah Baru 32</string>
+    <string name="activity_cashout_bank_withdraw_ammount_hint">Masukkan nominal penarikkan</string>
+    <string name="activity_cashout_bank_scm_withdraw_information_hint">Masukkan keterangan penarikkan (jika ada)</string>
+    <string name="activity_cashout_bank_scm_pin_hint">Masukkan 6 digit PIN</string>
+    <string name="activity_input_bank_explaination">Untuk memperlancar dan mempermudah proses pencairan dana, Anda harus mengisi form data Bank berikut</string>
+    <string name="activity_input_bank_scm_bank_name_hint">Pilih Bank tujuan</string>
+    <string name="activity_input_bank_scm_bank_account_hint">Masukkan Nomor Rekening</string>
+    <string name="activity_input_bank_scm_bank_owner_hint">Masukkan atas nama rekening</string>
+    <string name="activity_qris_add_cashier_hint">Nama kasir, Contoh: Kasir 1 - Abdullah</string>
+    <string name="activity_qris_add_cashier_num_hp_hint">Nomor Handphone. Contoh: 081234567890</string>
+    <string name="activity_qris_add_cashier_pin_hint">Masukkan 6 digit PIN</string>
+
 </resources>

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.ship.adapters.ShipCalendarAdapter;
 import com.bm.main.single.ftl.ship.constants.ShipKeyPreference;
 

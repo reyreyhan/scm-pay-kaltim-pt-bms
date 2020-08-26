@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.Log;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.cardnfc.lib.bninfc.tapcashgo.card.Card;

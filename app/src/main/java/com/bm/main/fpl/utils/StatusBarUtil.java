@@ -24,7 +24,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

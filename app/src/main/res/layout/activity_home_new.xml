@@ -57,7 +57,7 @@
             app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
             android:paddingVertical="@dimen/_8sdp"
             android:layout_marginHorizontal="@dimen/standard_margin_3x"/>
-        <com.bm.main.pos.ui.NonSwipeableViewPage
+        <com.bm.main.scm.ui.NonSwipeableViewPage
             android:id="@+id/fragment_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

@@ -44,7 +44,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.ListGridGameAdapter;
 import com.bm.main.fpl.adapters.ListGridProdukPulsaAdapter;
 import com.bm.main.fpl.constants.ActionCode;

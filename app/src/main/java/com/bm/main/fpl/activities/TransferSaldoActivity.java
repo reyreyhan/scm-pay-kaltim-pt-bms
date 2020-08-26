@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;

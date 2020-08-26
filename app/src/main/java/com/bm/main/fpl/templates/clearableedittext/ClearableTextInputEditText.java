@@ -17,7 +17,7 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 /** */

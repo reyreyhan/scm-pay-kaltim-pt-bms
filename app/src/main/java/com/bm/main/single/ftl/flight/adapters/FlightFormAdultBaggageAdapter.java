@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 
 import com.bm.main.fpl.templates.DividerItemDecoration;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.flight.models.FlightFormBaggageModel;
 import com.bumptech.glide.Glide;
 

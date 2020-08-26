@@ -19,7 +19,6 @@ import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.interfaces.ProgressListener;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.BuildConfig;
 //import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
 
 import org.json.JSONObject;

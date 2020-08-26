@@ -19,7 +19,7 @@ package com.stepstone.stepper.internal.feedback;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.internal.widget.StepViewPager;
 

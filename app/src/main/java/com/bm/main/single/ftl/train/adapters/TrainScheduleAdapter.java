@@ -11,13 +11,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.bm.main.fpl.templates.MaterialRippleLayout;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.train.models.TrainDataModel;
 import com.bm.main.single.ftl.utils.utilBand;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
 /**

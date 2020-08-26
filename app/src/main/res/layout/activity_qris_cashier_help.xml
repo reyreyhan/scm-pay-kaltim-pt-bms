@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    android:paddingVertical="@dimen/activity_vertical_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ayo Buat QRIS Kasir"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryText"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/standard_margin_2x"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apa yang akan Anda dapatkan"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginBottom="@dimen/standard_margin_2x"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_benefit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/standard_margin_2x"
+        tools:listitem="@layout/item_qris_help"
+        tools:itemCount="5"/>
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*Saldo dari Kasir akan diambil dari Saldo Owner"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginBottom="@dimen/standard_margin_2x"
+        android:textColor="@color/primaryText"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_qris_cashier"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:backgroundTint="@color/colorAccent"
+        android:clipToPadding="false"
+        android:text="Tambahkan QRIS Kasir"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:theme="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp" />
+</LinearLayout>

@@ -9,13 +9,11 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.bm.main.fpl.activities.BaseActivity;
-import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.templates.decorator.HighlightWeekendsDecorator;
 import com.bm.main.fpl.templates.decorator.HighlightWeekendsSatDecorator;
 import com.bm.main.fpl.templates.decorator.OneDayDecorator;
-import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -24,10 +22,8 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.DateTimeFormatter;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class TravelTanggalPesananActivity extends BaseActivity implements OnDateSelectedListener, OnMonthChangedListener {
     private static final String TAG = TravelTanggalPesananActivity.class.getSimpleName();

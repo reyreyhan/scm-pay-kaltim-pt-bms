@@ -29,7 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
@@ -39,7 +39,6 @@ import com.bm.main.fpl.templates.showcaseview.GuideView;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.models.transaction.Transaction;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 //import com.bumptech.glide.load.resource.drawable.GlideDrawable;

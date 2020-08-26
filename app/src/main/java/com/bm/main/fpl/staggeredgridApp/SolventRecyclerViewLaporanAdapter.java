@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.shimmer;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.List;
 

@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.Utils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.adapters.ListGridSaranAdapter;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.ResponseCode;

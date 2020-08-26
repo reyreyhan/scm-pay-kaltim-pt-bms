@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.flight.adapters.FlightBaggageAdapter;
 import com.bm.main.single.ftl.flight.constants.FlightKeyPreference;
 import com.bm.main.single.ftl.flight.models.FlightBaggageDetailModel;

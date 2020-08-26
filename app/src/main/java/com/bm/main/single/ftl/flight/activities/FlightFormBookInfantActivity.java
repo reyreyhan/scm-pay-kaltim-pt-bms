@@ -35,12 +35,11 @@ import com.bm.main.fpl.templates.clearableedittext.ClearableEditText;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.Validate;
 import com.bm.main.materialedittext.MaterialEditText;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bm.main.single.ftl.flight.constants.FlightKeyPreference;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.BitmapEncoder;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 

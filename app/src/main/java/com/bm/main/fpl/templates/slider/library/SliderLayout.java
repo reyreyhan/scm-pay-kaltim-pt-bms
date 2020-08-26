@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.RelativeLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.templates.slider.library.Animations.BaseAnimationInterface;
 import com.bm.main.fpl.templates.slider.library.Indicators.PagerIndicator;
 import com.bm.main.fpl.templates.slider.library.SliderTypes.BaseSliderView;

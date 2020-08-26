@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.utils.RequestUtils;

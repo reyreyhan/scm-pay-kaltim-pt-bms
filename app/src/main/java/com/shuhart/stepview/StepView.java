@@ -25,7 +25,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.shuhart.stepview.animation.AnimatorListener;
 
 import java.lang.annotation.Retention;

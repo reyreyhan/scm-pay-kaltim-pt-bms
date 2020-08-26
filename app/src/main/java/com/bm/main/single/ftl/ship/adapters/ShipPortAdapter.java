@@ -12,8 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.bm.main.fpl.templates.MaterialRippleLayout;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.ship.models.ShipDestinationModel;
 
 import java.util.ArrayList;

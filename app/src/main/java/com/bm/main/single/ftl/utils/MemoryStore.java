@@ -1,11 +1,11 @@
 package com.bm.main.single.ftl.utils;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.SBFApplication;
 
 import org.json.JSONArray;
 import org.json.JSONException;

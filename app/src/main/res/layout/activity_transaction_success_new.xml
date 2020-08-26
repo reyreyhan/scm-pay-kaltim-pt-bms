@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.bm.main.pos.ui.CheckOutView
+                <com.bm.main.scm.ui.CheckOutView
                     android:id="@+id/checkout_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -252,7 +252,7 @@
                                 app:srcCompat="@drawable/speedcash_colour" />
                         </LinearLayout>
                     </LinearLayout>
-                </com.bm.main.pos.ui.CheckOutView>
+                </com.bm.main.scm.ui.CheckOutView>
 
                 <LinearLayout
                     android:id="@+id/container_action"

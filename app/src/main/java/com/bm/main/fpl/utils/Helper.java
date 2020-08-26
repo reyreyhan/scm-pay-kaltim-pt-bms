@@ -9,7 +9,7 @@ import android.provider.MediaStore;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class Helper {
     private static Dialog mDialog;

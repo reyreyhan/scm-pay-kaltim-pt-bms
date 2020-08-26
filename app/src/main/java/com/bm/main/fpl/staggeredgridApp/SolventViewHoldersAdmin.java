@@ -26,7 +26,7 @@ import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.DialogUtils;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 public class SolventViewHoldersAdmin extends RecyclerView.ViewHolder implements View.OnClickListener {
 

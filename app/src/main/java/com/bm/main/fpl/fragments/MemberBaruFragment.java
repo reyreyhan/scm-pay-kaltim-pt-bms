@@ -35,8 +35,8 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
 import com.bm.main.fpl.utils.DialogUtils;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.activities.HomeActivity;
 import com.bm.main.fpl.activities.ListKabupatenActivity;
@@ -50,7 +50,6 @@ import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.fpl.models.PaketModel;
 import com.bm.main.fpl.models.PaketModelModelResponse_valueTipe_loket_detail;
 import com.bm.main.fpl.models.PaketModelModelResponse_valueTipe_loket_footer;
-import com.bm.main.fpl.templates.AutoScaleTextView;
 import com.bm.main.fpl.templates.indicators.AVLoadingIndicatorView;
 import com.bm.main.fpl.templates.toast.MyDynamicToast;
 import com.bm.main.fpl.utils.FormatString;

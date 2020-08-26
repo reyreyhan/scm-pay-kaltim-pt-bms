@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 //import com.facebook.drawee.view.SimpleDraweeView;
 
 /**

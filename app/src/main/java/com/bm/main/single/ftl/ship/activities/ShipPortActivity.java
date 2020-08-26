@@ -25,7 +25,7 @@ import com.bm.main.fpl.interfaces.ProgressResponseCallback;
 import com.bm.main.fpl.templates.DividerItemDecoration;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.bm.main.single.ftl.ship.adapters.ShipPortAdapter;
 import com.bm.main.single.ftl.ship.constants.ShipKeyPreference;

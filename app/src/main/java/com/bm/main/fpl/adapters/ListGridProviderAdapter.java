@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.ProviderModel;
 import com.bm.main.fpl.templates.AutoResizeTextView;
 import com.bm.main.fpl.templates.MaterialRippleLayout;

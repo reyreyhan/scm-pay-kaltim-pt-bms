@@ -19,7 +19,6 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +28,8 @@ import android.widget.TextView;
 
 import com.bm.main.fpl.templates.AsteriskPasswordTransformationMethod;
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.EventParam;
 import com.bm.main.fpl.constants.ResponseCode;

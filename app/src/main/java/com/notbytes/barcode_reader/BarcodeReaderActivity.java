@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.google.android.gms.vision.barcode.Barcode;
 
 import java.util.List;

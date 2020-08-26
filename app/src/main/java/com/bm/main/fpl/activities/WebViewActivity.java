@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.models.PromoProdukModel;
 
 public class WebViewActivity extends BaseActivity {

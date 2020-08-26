@@ -4,9 +4,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 
-import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.utils.PreferenceClass;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.constants.TravelKeyPreference;
 
 import java.text.DecimalFormat;

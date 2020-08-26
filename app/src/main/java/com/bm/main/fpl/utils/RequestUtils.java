@@ -13,23 +13,20 @@ import com.bm.main.fpl.handlers.ProgressResponseHandler;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;
 import com.bm.main.fpl.interfaces.ProgressListener;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
-import com.bm.main.pos.BuildConfig;
+import com.bm.main.scm.BuildConfig;
 //import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor;
 
 import org.json.JSONObject;
 
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
-import okhttp3.ConnectionSpec;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
-import timber.log.Timber;
 
 public class RequestUtils {
     public static OkHttpClient client;

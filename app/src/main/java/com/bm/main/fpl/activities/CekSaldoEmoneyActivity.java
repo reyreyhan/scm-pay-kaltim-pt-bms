@@ -35,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bm.main.fpl.utils.Device;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.utils.MyClipboardManager;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.cardnfc.lib.NfcCardReaderListenerSBF;

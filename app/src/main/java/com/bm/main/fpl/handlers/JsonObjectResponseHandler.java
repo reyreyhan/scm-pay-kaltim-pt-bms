@@ -5,7 +5,7 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.constants.FCMConstants;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.interfaces.JsonObjectResponseCallback;

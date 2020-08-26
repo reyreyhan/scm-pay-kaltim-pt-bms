@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bm.main.fpl.models.KodePosModel;
 import com.bm.main.fpl.templates.MaterialRippleLayout;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import java.util.ArrayList;
 

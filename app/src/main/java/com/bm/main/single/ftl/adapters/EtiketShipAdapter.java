@@ -15,10 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.templates.AutoResizeTextView;
-import com.bm.main.pos.R;
-import com.bm.main.pos.SBFApplication;
+import com.bm.main.scm.R;
+import com.bm.main.scm.SBFApplication;
 import com.bm.main.single.ftl.models.EtiketShipModel;
 import com.bumptech.glide.Glide;
 

@@ -1,7 +1,6 @@
 package com.bm.main.fpl.activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,26 +16,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bm.main.fpl.adapters.ListKabupatenAdapter;
 import com.bm.main.fpl.adapters.ListKecamatanAdapter;
 import com.bm.main.fpl.constants.ActionCode;
 import com.bm.main.fpl.constants.ResponseCode;
 import com.bm.main.fpl.interfaces.ProgressResponseCallback;
-import com.bm.main.fpl.models.KabupatenModel;
 import com.bm.main.fpl.models.KecamatanModel;
 import com.bm.main.fpl.templates.DividerItemDecoration;
 import com.bm.main.fpl.templates.shimmer.ShimmerFrameLayout;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import okhttp3.Response;
 
 
 public class ListKecamatanActivity extends BaseActivity implements ProgressResponseCallback, ListKecamatanAdapter.OnClickProduk, SearchView.OnQueryTextListener, SearchView.OnCloseListener {

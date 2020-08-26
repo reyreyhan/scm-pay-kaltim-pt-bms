@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bm.main.pos.R;
+import com.bm.main.scm.R;
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.models.ProdukTomoModel;
 import com.bm.main.fpl.templates.MaterialRippleLayout;
@@ -26,7 +26,6 @@ import com.bm.main.fpl.utils.FormatString;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.BitmapEncoder;
 //import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;
