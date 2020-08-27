@@ -17,17 +17,11 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/btn_drawer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_drawer" />
-
-        <ImageView
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/ic_logout" />
+            app:srcCompat="@drawable/ic_close_scm" />
     </RelativeLayout>
 
     <LinearLayout
@@ -65,31 +59,105 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_address"
+                android:id="@+id/tv_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standard_xsmall_margin"
-                android:text="Alamat Toko"
-                android:textColor="@color/secondaryText"
+                android:text="ID: PK2298231"
+                android:textColor="@color/md_grey_500"
                 android:textSize="@dimen/caption" />
 
             <TextView
-                android:id="@+id/tv_city"
+                android:id="@+id/tv_merchant_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standard_xsmall_margin"
-                android:text="Kota Toko"
-                android:textColor="@color/secondaryText"
-                android:textSize="@dimen/caption" />
-
-            <TextView
-                android:id="@+id/tv_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Telepon Toko"
-                android:textColor="@color/orange"
+                android:text="Lihat Profil Merchant"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/caption"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:padding="@dimen/standard_margin">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saldo QRIS"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="@dimen/caption" />
+
+                <TextView
+                    android:id="@+id/tv_qris_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:text="Rp 128.300"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/caption"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_white_4dp_stroke_gray"
+            android:padding="@dimen/standard_margin">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saldo Bisnis"
+                    android:textColor="@color/md_grey_500"
+                    android:textSize="@dimen/caption" />
+
+                <TextView
+                    android:id="@+id/tv_business_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:text="Rp 12.599.750"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/caption"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:drawableLeft="@drawable/ic_baseline_help_24"
+        android:drawablePadding="@dimen/standard_margin"
+        android:drawableTint="@color/colorAccent"
+        android:gravity="center_vertical"
+        android:text="Klik untuk info lebih lanjut"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/caption" />
 </LinearLayout>

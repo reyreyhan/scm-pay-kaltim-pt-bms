@@ -157,4 +157,6 @@
     <dimen name="material_size_8">8dp</dimen>
     <dimen name="material_size_4">4dp</dimen>
     <dimen name="material_size_2">2dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
 </resources>

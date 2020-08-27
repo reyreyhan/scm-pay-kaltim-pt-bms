@@ -1024,5 +1024,13 @@ Aplikasi sebelum Anda login ke Aplikasi.</item>
     <string name="activity_qris_add_cashier_hint">Nama kasir, Contoh: Kasir 1 - Abdullah</string>
     <string name="activity_qris_add_cashier_num_hp_hint">Nomor Handphone. Contoh: 081234567890</string>
     <string name="activity_qris_add_cashier_pin_hint">Masukkan 6 digit PIN</string>
+    <string name="fragment_home_scm_payment_ammount_hint">Isikan nominal pembayaran</string>
+    <string name="title_activity_newdrawer">newdrawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 
 </resources>

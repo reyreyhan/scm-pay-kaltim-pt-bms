@@ -19,12 +19,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bm.main.fpl.activities.BigPromoActivity;
-import com.bm.main.fpl.activities.LoginActivity;
 import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.templates.MutedVideoView;
 import com.bm.main.fpl.utils.DetectConnection;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
+import com.bm.main.scm.feature.login.LoginActivity;
 import com.bm.main.scm.feature.newhome.NewHomeActivity;
 import com.bm.main.single.ftl.utils.RequestUtilsTravel;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;

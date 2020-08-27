@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.dialog_success_layout.view.*
 
 class SuccessDialog : DialogFragment() {
     companion object{
-        const val TAG = "RegisterSuccessDialog"
+        const val TAG = "SuccessDialog"
 
         private const val KEY_TITLE = "KEY_TITLE"
         private const val KEY_SUBTITLE = "KEY_SUBTITLE"
