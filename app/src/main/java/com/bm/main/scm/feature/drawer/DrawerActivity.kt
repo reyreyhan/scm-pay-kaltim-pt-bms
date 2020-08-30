@@ -53,6 +53,7 @@ import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.content_drawer.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.nav_header_drawer.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.threeten.bp.LocalDate
@@ -65,6 +66,8 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     SettingFragment.Listener, SingleDateDialog.Listener, NoteDialog.Listener,
     CartCountDialog.Listener, RangeDateDialog.Listener,
     BottomDialog.Listener {
+
+    private var isMerchant = false
 
     private val productViewModel by lazy {
         ViewModelProvider(
@@ -81,23 +84,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     }
 
     private val TAG = DrawerActivity::class.java.simpleName
-    private var homeFragment: HomeFragment = HomeFragment.newInstance()
-    private var sellFragment: SellFragment = SellFragment.newInstance()
-    private var historyFragment: Fragment = HistoryFragment.newInstance()
-    private var reportFragment: ReportFragment = ReportFragment.newInstance()
-    private var managementFragment: ManageFragment = ManageFragment.newInstance()
-    private var settingFragment: SettingFragment = SettingFragment.newInstance()
-    private val qrFragment by lazy { QrFragment() }
-    private var helpFragment: Fragment = Fragment()
-
-    //private lateinit var toolbar:Toolbar
-    private lateinit var tvName: TextView
-    private lateinit var tvAddress: TextView
-    private lateinit var tvCity: TextView
-    private lateinit var tvPhone: TextView
-    private lateinit var ivPhoto: ImageView
-    private lateinit var btnLogout: ImageView
-    private lateinit var btnDrawer: ImageView
+    private lateinit var homeFragment: HomeFragment
 
     private var ft: FragmentTransaction? = null
 
@@ -108,6 +95,8 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
             startActivity(Intent(this, FCMActivity::class.java).putExtras(intent))
         } else {
             super.onCreate(savedInstanceState)
+            isMerchant = intent.getBooleanExtra("IsMerchant", false)
+            homeFragment = HomeFragment.newInstance(isMerchant)
         }
     }
 
@@ -135,13 +124,6 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     private fun renderView() {
         setSupportActionBar(toolbarx)
 
-        toolbar_logo.setOnClickListener {
-            RabbitMqPrint.printStrukRabbit(
-                "aku adalah\nanak gembala\nselalu riang\ndan bergembira\n",
-                this
-            )
-        }
-
         val toggle = ActionBarDrawerToggle(
             this,
             drawer_layout,
@@ -160,237 +142,238 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         nav_view.setNavigationItemSelectedListener(this)
 
         val headerView = nav_view.getHeaderView(0)
-        tvName = headerView.findViewById(R.id.tv_name) as TextView
-        tvAddress = headerView.findViewById(R.id.tv_address) as TextView
-        tvPhone = headerView.findViewById(R.id.tv_phone) as TextView
-        tvCity = headerView.findViewById(R.id.tv_city) as TextView
-        ivPhoto = headerView.findViewById(R.id.iv_photo) as ImageView
-        btnLogout = headerView.findViewById(R.id.btn_logout) as ImageView
-        btnDrawer = headerView.findViewById(R.id.btn_drawer) as ImageView
 
-        btnLogout.setOnClickListener {
-            restartLoginActivity()
-        }
+//        btnLogout.setOnClickListener {
+//            restartLoginActivity()
+//        }
 
-        btnDrawer.setOnClickListener {
+        headerView.btn_close.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
         }
 
-        productViewModel.moshi.adapter<List<CustomMenu>>(
-                Types.newParameterizedType(
-                    List::class.java,
-                    CustomMenu::class.java
-                )
-            )
-            .fromJson(FirebaseRemoteConfig.getInstance().getString("customMenu"))
-            ?.filter { it.isActive }?.sortedBy { it.order }?.forEach {
-                nav_view.menu.add(0, it.code.hashCode(), it.order, it.label).apply {
-                    Glide.with(this@DrawerActivity).asDrawable().load(it.icon)
-                        .into(object : CustomTarget<Drawable>() {
-                            override fun onResourceReady(
-                                resource: Drawable,
-                                transition: Transition<in Drawable>?
-                            ) {
-                                icon = resource
-                            }
-
-                            override fun onLoadCleared(placeholder: Drawable?) {}
-                        })
-                }
-            }
-
-        disposables.add(
-            qrisViewModel.service.check(PreferenceClass.getId().orEmpty())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
-                    nav_view.menu.findItem(R.id.nav_qris).isEnabled = res.rc == "00"
-                    homeFragment.enableQrMenu(res.rc == "00")
-
-                    res.result.firstOrNull()?.let {
-                        PreferenceClass.putString("url_qr", it.url_qr)
-                        PreferenceClass.putString("nmid", it.nmid)
-                        PreferenceClass.putString("id_speedcash", it.id_speedcash)
-                        PreferenceClass.putString("nama_toko", it.nama_toko)
-                        PreferenceClass.putString("nama_pemilik", it.nama_pemilik)
-                    }
-                }, { e ->
-                    Timber.e(e)
-                    nav_view.menu.findItem(R.id.nav_qris).isEnabled = false
-                    homeFragment.enableQrMenu(false)
-                })
-        )
-
-        disposables.add(
-            sfViewModel.apiService.checkStatus(PreferenceClass.getId().orEmpty())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
-                    homeFragment.setLengkapiButtonVisibility(if (res.status == 0) View.VISIBLE else View.GONE)
-                }, { e ->
-                    Timber.e(e)
-                    homeFragment.setLengkapiButtonVisibility(View.GONE)
-                })
-        )
-    }
-
-    private fun replaceContent(resId: Int) {
         ft = supportFragmentManager.beginTransaction()
-        when (resId) {
-            R.id.nav_home -> {
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.visibility = View.GONE
-                toolbar_logo.visibility = View.VISIBLE
-                if (homeFragment.isAdded) {
-                    ft!!.show(homeFragment)
-                } else {
-                    ft!!.add(R.id.fragment_container, homeFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, settingFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, qrFragment)
-            }
-            R.id.nav_sell -> {
-                toolbar_title.visibility = View.VISIBLE
-                toolbar_logo.visibility = View.GONE
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.text = getString(R.string.menu_sell)
-                if (sellFragment.isAdded) {
-                    ft!!.show(sellFragment)
-                    sellFragment.checkCarts()
-                } else {
-                    ft!!.add(R.id.fragment_container, sellFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, homeFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, settingFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, qrFragment)
-            }
-            R.id.nav_history -> {
-                toolbar_title.visibility = View.VISIBLE
-                toolbar_logo.visibility = View.GONE
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.text = getString(R.string.menu_history)
-                if (historyFragment.isAdded) {
-                    ft!!.show(historyFragment)
-
-                } else {
-                    ft!!.add(R.id.fragment_container, historyFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, homeFragment)
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, settingFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, qrFragment)
-            }
-            R.id.nav_report -> {
-                toolbar_title.visibility = View.VISIBLE
-                toolbar_logo.visibility = View.GONE
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.text = getString(R.string.menu_report)
-                if (reportFragment.isAdded) {
-                    ft!!.show(reportFragment)
-                } else {
-                    ft!!.add(R.id.fragment_container, reportFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, homeFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, settingFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, qrFragment)
-            }
-            R.id.nav_management -> {
-                toolbar_title.visibility = View.VISIBLE
-                toolbar_logo.visibility = View.GONE
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.text = getString(R.string.menu_management)
-                if (managementFragment.isAdded) {
-                    ft!!.show(managementFragment)
-                } else {
-                    ft!!.add(R.id.fragment_container, managementFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, homeFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, settingFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, qrFragment)
-            }
-            R.id.nav_setting -> {
-                toolbar_title.visibility = View.VISIBLE
-                toolbar_logo.visibility = View.GONE
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.text = getString(R.string.menu_setting)
-                if (settingFragment.isAdded) {
-                    ft!!.show(settingFragment)
-                } else {
-                    ft!!.add(R.id.fragment_container, settingFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, homeFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, qrFragment)
-            }
-            R.id.nav_help -> {
-                val id = getPresenter()?.getSelectedIdMenu()
-                nav_view.setCheckedItem(id!!)
-                openHelpPage()
-            }
-            R.id.nav_qris -> {
-                toolbar_title.visibility = View.VISIBLE
-                toolbar_logo.visibility = View.GONE
-                getPresenter()?.setSelectedIdMenu(resId)
-                toolbar_title.text = getString(R.string.menu_qris)
-                if (qrFragment.isAdded) {
-                    ft!!.show(qrFragment)
-                } else {
-                    ft!!.add(R.id.fragment_container, qrFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, homeFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, helpFragment)
-                hideFragment(ft!!, settingFragment)
-            }
-            else -> {
-                toolbar_title.visibility = View.GONE
-                toolbar_logo.visibility = View.VISIBLE
-                getPresenter()?.setSelectedIdMenu(resId)
-                if (homeFragment.isAdded) {
-                    ft!!.show(homeFragment)
-                } else {
-                    ft!!.add(R.id.fragment_container, homeFragment)
-                }
-                ft!!.commit()
-                hideFragment(ft!!, sellFragment)
-                hideFragment(ft!!, historyFragment)
-                hideFragment(ft!!, reportFragment)
-                hideFragment(ft!!, managementFragment)
-                hideFragment(ft!!, settingFragment)
-                hideFragment(ft!!, helpFragment)
-            }
+        if (homeFragment.isAdded) {
+            ft!!.show(homeFragment)
+        } else {
+            ft!!.add(R.id.fragment_container, homeFragment)
         }
+        ft!!.commit()
+
+//        productViewModel.moshi.adapter<List<CustomMenu>>(
+//                Types.newParameterizedType(
+//                    List::class.java,
+//                    CustomMenu::class.java
+//                )
+//            )
+//            .fromJson(FirebaseRemoteConfig.getInstance().getString("customMenu"))
+//            ?.filter { it.isActive }?.sortedBy { it.order }?.forEach {
+//                nav_view.menu.add(0, it.code.hashCode(), it.order, it.label).apply {
+//                    Glide.with(this@DrawerActivity).asDrawable().load(it.icon)
+//                        .into(object : CustomTarget<Drawable>() {
+//                            override fun onResourceReady(
+//                                resource: Drawable,
+//                                transition: Transition<in Drawable>?
+//                            ) {
+//                                icon = resource
+//                            }
+//
+//                            override fun onLoadCleared(placeholder: Drawable?) {}
+//                        })
+//                }
+//            }
+
+//        disposables.add(
+//            qrisViewModel.service.check(PreferenceClass.getId().orEmpty())
+//                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
+//                    nav_view.menu.findItem(R.id.nav_qris).isEnabled = res.rc == "00"
+//                    homeFragment.enableQrMenu(res.rc == "00")
+//
+//                    res.result.firstOrNull()?.let {
+//                        PreferenceClass.putString("url_qr", it.url_qr)
+//                        PreferenceClass.putString("nmid", it.nmid)
+//                        PreferenceClass.putString("id_speedcash", it.id_speedcash)
+//                        PreferenceClass.putString("nama_toko", it.nama_toko)
+//                        PreferenceClass.putString("nama_pemilik", it.nama_pemilik)
+//                    }
+//                }, { e ->
+//                    Timber.e(e)
+//                    nav_view.menu.findItem(R.id.nav_qris).isEnabled = false
+//                    homeFragment.enableQrMenu(false)
+//                })
+//        )
+
+//        disposables.add(
+//            sfViewModel.apiService.checkStatus(PreferenceClass.getId().orEmpty())
+//                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
+//                    homeFragment.setLengkapiButtonVisibility(if (res.status == 0) View.VISIBLE else View.GONE)
+//                }, { e ->
+//                    Timber.e(e)
+//                    homeFragment.setLengkapiButtonVisibility(View.GONE)
+//                })
+//        )
     }
+
+//    private fun replaceContent(resId: Int) {
+//        ft = supportFragmentManager.beginTransaction()
+//        when (resId) {
+//            R.id.nav_home -> {
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.visibility = View.GONE
+//                toolbar_logo.visibility = View.VISIBLE
+//                if (homeFragment.isAdded) {
+//                    ft!!.show(homeFragment)
+//                } else {
+//                    ft!!.add(R.id.fragment_container, homeFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, settingFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, qrFragment)
+//            }
+//            R.id.nav_sell -> {
+//                toolbar_title.visibility = View.VISIBLE
+//                toolbar_logo.visibility = View.GONE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.text = getString(R.string.menu_sell)
+//                if (sellFragment.isAdded) {
+//                    ft!!.show(sellFragment)
+//                    sellFragment.checkCarts()
+//                } else {
+//                    ft!!.add(R.id.fragment_container, sellFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, homeFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, settingFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, qrFragment)
+//            }
+//            R.id.nav_history -> {
+//                toolbar_title.visibility = View.VISIBLE
+//                toolbar_logo.visibility = View.GONE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.text = getString(R.string.menu_history)
+//                if (historyFragment.isAdded) {
+//                    ft!!.show(historyFragment)
+//
+//                } else {
+//                    ft!!.add(R.id.fragment_container, historyFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, homeFragment)
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, settingFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, qrFragment)
+//            }
+//            R.id.nav_report -> {
+//                toolbar_title.visibility = View.VISIBLE
+//                toolbar_logo.visibility = View.GONE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.text = getString(R.string.menu_report)
+//                if (reportFragment.isAdded) {
+//                    ft!!.show(reportFragment)
+//                } else {
+//                    ft!!.add(R.id.fragment_container, reportFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, homeFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, settingFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, qrFragment)
+//            }
+//            R.id.nav_management -> {
+//                toolbar_title.visibility = View.VISIBLE
+//                toolbar_logo.visibility = View.GONE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.text = getString(R.string.menu_management)
+//                if (managementFragment.isAdded) {
+//                    ft!!.show(managementFragment)
+//                } else {
+//                    ft!!.add(R.id.fragment_container, managementFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, homeFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, settingFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, qrFragment)
+//            }
+//            R.id.nav_setting -> {
+//                toolbar_title.visibility = View.VISIBLE
+//                toolbar_logo.visibility = View.GONE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.text = getString(R.string.menu_setting)
+//                if (settingFragment.isAdded) {
+//                    ft!!.show(settingFragment)
+//                } else {
+//                    ft!!.add(R.id.fragment_container, settingFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, homeFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, qrFragment)
+//            }
+//            R.id.nav_help -> {
+//                val id = getPresenter()?.getSelectedIdMenu()
+//                nav_view.setCheckedItem(id!!)
+//                openHelpPage()
+//            }
+//            R.id.nav_qris -> {
+//                toolbar_title.visibility = View.VISIBLE
+//                toolbar_logo.visibility = View.GONE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                toolbar_title.text = getString(R.string.menu_qris)
+//                if (qrFragment.isAdded) {
+//                    ft!!.show(qrFragment)
+//                } else {
+//                    ft!!.add(R.id.fragment_container, qrFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, homeFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, helpFragment)
+//                hideFragment(ft!!, settingFragment)
+//            }
+//            else -> {
+//                toolbar_title.visibility = View.GONE
+//                toolbar_logo.visibility = View.VISIBLE
+//                getPresenter()?.setSelectedIdMenu(resId)
+//                if (homeFragment.isAdded) {
+//                    ft!!.show(homeFragment)
+//                } else {
+//                    ft!!.add(R.id.fragment_container, homeFragment)
+//                }
+//                ft!!.commit()
+//                hideFragment(ft!!, sellFragment)
+//                hideFragment(ft!!, historyFragment)
+//                hideFragment(ft!!, reportFragment)
+//                hideFragment(ft!!, managementFragment)
+//                hideFragment(ft!!, settingFragment)
+//                hideFragment(ft!!, helpFragment)
+//            }
+//        }
+//    }
 
     private fun hideFragment(ft: FragmentTransaction, fragment: Fragment) {
         if (fragment.isAdded) {
@@ -400,8 +383,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 
     override fun selectMenu(resId: Int) {
         Log.d("drawer", "selectMenu")
-        nav_view.setCheckedItem(resId)
-        replaceContent(resId)
+//        nav_view.setCheckedItem(resId)
     }
 
     override fun onBackPressed() {
@@ -419,7 +401,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         Timber.e("onNavigationItemSelected: $item")
-        replaceContent(item.itemId)
+//        replaceContent(item.itemId)
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -431,19 +413,19 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         phone: String,
         url: String
     ) {
-        tvName.text = name
-        tvAddress.text = address
-
-        if (city.isNotBlank()) {
-            tvCity.visibility = View.VISIBLE
-            tvCity.text = city
-        } else {
-            tvCity.visibility = View.GONE
-        }
-
-        tvPhone.text = phone
-        Glide.with(this).load(url).error(R.drawable.logo).placeholder(R.drawable.logo)
-            .transform(CenterCrop(), CircleCrop()).into(ivPhoto)
+//        tvName.text = name
+//        tvAddress.text = address
+//
+//        if (city.isNotBlank()) {
+//            tvCity.visibility = View.VISIBLE
+//            tvCity.text = city
+//        } else {
+//            tvCity.visibility = View.GONE
+//        }
+//
+//        tvPhone.text = phone
+//        Glide.with(this).load(url).error(R.drawable.logo).placeholder(R.drawable.logo)
+//            .transform(CenterCrop(), CircleCrop()).into(ivPhoto)
     }
 
     @Subscribe
@@ -478,7 +460,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 
     override fun onDateClicked(selected: CalendarDay?, type: Int) {
         if (AppConstant.Code.CODE_FILTER_DATE_SELL == type) {
-            sellFragment.setSelectedDate(selected)
+//            sellFragment.setSelectedDate(selected)
         }
     }
 
@@ -495,11 +477,11 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     }
 
     override fun onNoteSaved(selected: Cart, pos: Int) {
-        sellFragment.onNoteSaved(selected, pos)
+//        sellFragment.onNoteSaved(selected, pos)
     }
 
     override fun onCountSaved(selected: Cart, pos: Int) {
-        sellFragment.onCountSaved(selected, pos)
+//        sellFragment.onCountSaved(selected, pos)
     }
 
     override fun openFilterDateDialog(
@@ -543,43 +525,43 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     }
 
     override fun openShowCaseHomeFragment(context: Context) {
-        if (PreferenceClass.getInt(TAG, 0) != 1) {
-            showCaseFirstHomePos(
-                context,
-                "",
-                "Klik disini untuk melakukan transaksi PPOB dan pemesanan Tiket Pesawat, Kereta, dan Kapal",
-                homeFragment.btn_ppob
-            )
-            mGbuilder.setGuideListener(GuideView.GuideListener { view ->
-                when (view.id) {
-                    R.id.btn_ppob -> mGbuilder.setTitle("")
-                        .setBackgroundColor(R.color.black_overlay).setContentText(
-                            "Klik disini untuk melakukan pembelian barang kebutuhan Toko Anda"
-                        ).setTargetView(
-                            homeFragment.btn_grocery
-                        ).build()
-                    R.id.btn_grocery -> {
-                        PreferenceClass.putInt(TAG, 1)
-                        return@GuideListener
-                    }
-                }
-                mGuideView = mGbuilder.build()
-                mGuideView.show()
-            })
-            mGuideView = mGbuilder.build()
-            mGuideView.show()
-        }
+//        if (PreferenceClass.getInt(TAG, 0) != 1) {
+//            showCaseFirstHomePos(
+//                context,
+//                "",
+//                "Klik disini untuk melakukan transaksi PPOB dan pemesanan Tiket Pesawat, Kereta, dan Kapal",
+//                homeFragment.btn_ppob
+//            )
+//            mGbuilder.setGuideListener(GuideView.GuideListener { view ->
+//                when (view.id) {
+//                    R.id.btn_ppob -> mGbuilder.setTitle("")
+//                        .setBackgroundColor(R.color.black_overlay).setContentText(
+//                            "Klik disini untuk melakukan pembelian barang kebutuhan Toko Anda"
+//                        ).setTargetView(
+//                            homeFragment.btn_grocery
+//                        ).build()
+//                    R.id.btn_grocery -> {
+//                        PreferenceClass.putInt(TAG, 1)
+//                        return@GuideListener
+//                    }
+//                }
+//                mGuideView = mGbuilder.build()
+//                mGuideView.show()
+//            })
+//            mGuideView = mGbuilder.build()
+//            mGuideView.show()
+//        }
     }
 
-    fun showCaseFirstHomePos(
+    private fun showCaseFirstHomePos(
         context: Context?,
         title: String?,
         description: String?,
         viewFirst: View?
     ) {
-        mGbuilder = GuideView.Builder(context).setTitle(title)
-            .setBackgroundColor(R.color.black_overlay).setContentText(description)
-            .setGravity(GuideView.Gravity.center).setDismissType(GuideView.DismissType.anywhere)
-            .setTargetView(viewFirst)
+//        mGbuilder = GuideView.Builder(context).setTitle(title)
+//            .setBackgroundColor(R.color.black_overlay).setContentText(description)
+//            .setGravity(GuideView.Gravity.center).setDismissType(GuideView.DismissType.anywhere)
+//            .setTargetView(viewFirst)
     }
 }

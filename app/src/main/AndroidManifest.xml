@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bm.main.scm"
-    android:installLocation="auto" >
+    android:installLocation="auto">
     <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
     <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
     <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
@@ -146,12 +146,7 @@
         android:theme="@style/SBFTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity"
-        tools:targetApi="m" >
-        <activity
-            android:name=".feature.newdrawer.newdrawer"
-            android:label="@string/title_activity_newdrawer"
-            android:theme="@style/SBFTheme.NoActionBar" >
-        </activity>
+        tools:targetApi="m">
 
         <meta-data
             android:name="com.bm.main.fpl.utils.GlideConfiguration"
@@ -161,7 +156,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.bm.main.scm.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
@@ -175,7 +170,7 @@
             android:name=".SplashScreenActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -208,7 +203,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
-            android:name=".feature.register.RegisterMerchantActivity"
+            android:name=".feature.register.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.registermerchant.RegisterMerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
@@ -744,7 +743,7 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateUnchanged" >
+            android:windowSoftInputMode="stateUnchanged">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.GET_CONTENT" />
@@ -765,7 +764,7 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -792,7 +791,7 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -805,7 +804,7 @@
             android:name="com.bm.main.fpl.activities.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/SBFTheme" >
+            android:theme="@style/SBFTheme">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -896,7 +895,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -1074,7 +1073,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -1119,7 +1118,7 @@
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -1164,7 +1163,7 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/SBFTheme"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
 
@@ -1184,7 +1183,7 @@
             android:stateNotNeeded="true"
             android:theme="@style/FullscreenTheme"
             android:windowSoftInputMode="stateAlwaysHidden"
-            tools:replace="android:screenOrientation,android:theme" >
+            tools:replace="android:screenOrientation,android:theme">
             <intent-filter>
                 <action android:name="com.google.zxing.client.android.SCAN" />
 
@@ -1277,7 +1276,7 @@
         <receiver
             android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
@@ -1290,7 +1289,7 @@
             android:name=".services.BootBroadcast"
             android:enabled="true"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -1306,7 +1305,7 @@
         <receiver
             android:name=".services.backgroundlocationupdates.LocationUpdatesBroadcastReceiver"
             android:exported="true"
-            android:permission="android.permission.ACCESS_FINE_LOCATION" >
+            android:permission="android.permission.ACCESS_FINE_LOCATION">
             <intent-filter>
                 <action android:name=".LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES" />
             </intent-filter>
@@ -1315,7 +1314,7 @@
             android:name=".services.UplineReceiver"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.INSTALL_PACKAGES" >
+            android:permission="android.permission.INSTALL_PACKAGES">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
 
@@ -1325,7 +1324,7 @@
         <receiver
             android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
@@ -1338,7 +1337,7 @@
             android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.INSTALL_PACKAGES" >
+            android:permission="android.permission.INSTALL_PACKAGES">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
@@ -1348,7 +1347,7 @@
             android:name=".services.ScreenOnOffBackgroundService"
             android:enabled="true"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" >
+            android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -1376,8 +1375,8 @@
         <service
             android:name=".services.SBFService"
             android:permission="com.google.android.c2dm.permission.SEND"
-            android:stopWithTask="false" >
-            <intent-filter android:priority="999" >
+            android:stopWithTask="false">
+            <intent-filter android:priority="999">
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -1397,8 +1396,8 @@
             android:exported="false" /> <!-- TRAVEL -->
         <service
             android:name="com.google.firebase.messaging.FirebaseMessagingService"
-            android:exported="false" >
-            <intent-filter android:priority="-500" >
+            android:exported="false">
+            <intent-filter android:priority="-500">
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>

@@ -1,12 +1,10 @@
-package com.example.samq.ui.register
+package com.bm.main.scm.feature.registermerchant
 
 import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
 import kotlinx.android.synthetic.main.item_register_scm_criteria_help_layout.view.*

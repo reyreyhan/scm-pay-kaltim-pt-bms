@@ -234,9 +234,9 @@
 #   long consumerNode;
 #}
 
--keep class com.bm.main.pos.* { *; }
+-keep class com.bm.main.scm.* { *; }
 
--keep class com.bm.main.pos.models.* { *; }
+-keep class com.bm.main.scm.models.* { *; }
 
 -keep public class * extends java.io.IOException
 -dontwarn com.bm.main.pos.models.*
@@ -246,7 +246,7 @@
 
 -keep class !com.bm.main.* { *; }
 
--keepnames @kotlin.Metadata class com.bm.main.pos.*
+-keepnames @kotlin.Metadata class com.bm.main.scm.*
 
 -keepclassmembers class * {
     @com.squareup.moshi.FromJson <methods>;
@@ -276,6 +276,6 @@
     @com.squareup.moshi.ToJson <methods>;
 }
 
--keepnames @kotlin.Metadata class com.bm.main.pos.models*
--keep class com.bm.main.pos.models* { *; }
--keepclassmembers class com.bm.main.pos.models* { *; }
+-keepnames @kotlin.Metadata class com.bm.main.scm.models*
+-keep class com.bm.main.scm.models* { *; }
+-keepclassmembers class com.bm.main.scm.models* { *; }

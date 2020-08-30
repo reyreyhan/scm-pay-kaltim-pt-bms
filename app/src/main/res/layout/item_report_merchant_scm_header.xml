@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+    android:layout_marginVertical="@dimen/standard_margin"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:gravity="center_vertical"
+    android:id="@+id/ll_header">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_cashier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/_13sdp"
+            tools:text="Kasir 1 - Aisyah" />
+
+        <TextView
+            android:id="@+id/tv_transactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10sdp"
+            tools:text="2 transaksi - Omzet Rp 58.000" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_dropdown"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:tint="@color/textColorPrimary"
+        app:srcCompat="@drawable/ic_arrow_down_mini"
+        android:layout_gravity="center"/>
+</LinearLayout>

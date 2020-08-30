@@ -1,23 +1,15 @@
 package com.bm.main.scm.feature.register
 
-import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.TypedValue
 import android.view.MenuItem
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.registermerchant.RegisterMerchantContract
+import com.bm.main.scm.feature.registermerchant.RegisterMerchantPresenter
 import com.example.samq.ui.register.SuccessDialog
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_register_scm.*
 
 class RegisterActivity : BaseActivity<RegisterMerchantPresenter, RegisterMerchantContract.View>(), RegisterMerchantContract.View {
@@ -48,10 +40,10 @@ class RegisterActivity : BaseActivity<RegisterMerchantPresenter, RegisterMerchan
 
     private fun setupToolbar() {
         supportActionBar?.apply {
-            title = ""
+            title = "Registrasi"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            setBackgroundDrawable(ColorDrawable(resources.getColor(android.R.color.transparent)))
+            setBackgroundDrawable(ColorDrawable(resources.getColor(android.R.color.white)))
             val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
             setHomeAsUpIndicator(backArrow)
         }

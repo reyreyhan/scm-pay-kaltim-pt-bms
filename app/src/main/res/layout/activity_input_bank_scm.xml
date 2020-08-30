@@ -101,6 +101,8 @@
         android:clipToPadding="false"
         android:text="Tambahkan Data Bank"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        android:theme="@style/Widget.MaterialComponents.Button"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        app:iconGravity="textStart"
+        app:icon="@drawable/ic_add_white"
         app:cornerRadius="10dp" />
 </LinearLayout>

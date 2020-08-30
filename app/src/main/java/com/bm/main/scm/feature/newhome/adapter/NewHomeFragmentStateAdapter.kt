@@ -17,7 +17,7 @@ class NewHomeFragmentStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapt
     init {
         childFragments = arrayOf(
             SellFragment.newInstance(),
-            HomeFragment.newInstance(),
+            HomeFragment.newInstance(true),
             Fragment()//0
         )
     }

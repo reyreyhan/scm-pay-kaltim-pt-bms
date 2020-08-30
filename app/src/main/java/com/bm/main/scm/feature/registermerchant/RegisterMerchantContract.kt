@@ -1,4 +1,4 @@
-package com.bm.main.scm.feature.register
+package com.bm.main.scm.feature.registermerchant
 
 import com.bm.main.scm.base.BaseInteractorImpl
 import com.bm.main.scm.base.BaseInteractorOutputImpl

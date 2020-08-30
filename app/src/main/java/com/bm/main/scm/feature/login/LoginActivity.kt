@@ -9,11 +9,15 @@ import android.text.style.ClickableSpan
 import android.view.View
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
-import com.bm.main.scm.feature.register.RegisterMerchantActivity
+import com.bm.main.scm.feature.drawer.DrawerActivity
+import com.bm.main.scm.feature.register.RegisterActivity
+import com.bm.main.scm.feature.registermerchant.RegisterMerchantActivity
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_login_scm.*
 
 class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginContract.View {
+
+    private var merchantLogin = false
 
     override fun createPresenter(): LoginPresenter {
         return LoginPresenter(this, this)
@@ -25,7 +29,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
-        getPresenter()?.onViewCreated()
+//        getPresenter()?.onViewCreated()
     }
 
     override fun enableLoginBtn(isLogin: Boolean) {
@@ -51,7 +55,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val pwd = et_pin.text.toString()
                 val hp = p0.toString()
-                getPresenter()?.onBtnLoginCheck(hp, pwd)
+//                getPresenter()?.onBtnLoginCheck(hp, pwd)
             }
         })
 
@@ -67,7 +71,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val hp = et_num_hp.toString()
                 val pwd = p0.toString()
-                getPresenter()?.onBtnLoginCheck(hp, pwd)
+//                getPresenter()?.onBtnLoginCheck(hp, pwd)
             }
         })
 
@@ -80,10 +84,18 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
 //            }
 //        }
 
+        btn_login.isEnabled = true
         btn_login.setOnClickListener {
             val mail = et_num_hp.text.toString()
             val pwd = et_pin.text.toString()
-            getPresenter()?.onLogin(mail, pwd)
+//            getPresenter()?.onLogin(mail, pwd)
+            if (merchantLogin){
+                startActivity(Intent(this@LoginActivity, RegisterMerchantActivity::class.java))
+            }else{
+                val intent = Intent(this@LoginActivity, DrawerActivity::class.java)
+                intent.putExtra("IsMerchant", false)
+                startActivity(intent)
+            }
         }
     }
 
@@ -104,6 +116,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
         tab_login.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(p0: TabLayout.Tab?) {
                 switchLoginTab(p0!!.position)
+                merchantLogin = p0.position == 0
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {
@@ -125,7 +138,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             }
 
             override fun onClick(p0: View) {
-                startActivity(Intent(this@LoginActivity, RegisterMerchantActivity::class.java))
+                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             }
         }
         ss.setSpan(clickableSpan, 21, ss.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

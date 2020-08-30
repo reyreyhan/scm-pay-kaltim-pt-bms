@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nominal Pembayaran"
+        android:textColor="@color/primaryText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/et_payment_ammount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_weight="0.75"
+            android:background="@drawable/bg_edittext_border"
+            android:hint="@string/fragment_home_scm_payment_ammount_hint"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textSize="@dimen/_10sdp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_process"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Proses"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:textSize="@dimen/_9sdp"
+            app:icon="@drawable/ic_qr_white_scm"
+            app:iconGravity="textEnd" />
+    </LinearLayout>
+</LinearLayout>

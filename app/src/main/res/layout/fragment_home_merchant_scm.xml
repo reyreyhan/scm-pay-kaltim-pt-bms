@@ -29,9 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/standard_margin"
+                android:layout_weight="4"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_weight="4">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/ll_menu_qris"
@@ -159,23 +159,24 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/standard_margin_2x"
-                android:paddingBottom="@dimen/standard_margin">
+                android:paddingBottom="@dimen/standard_margin"
+                android:weightSum="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.2"
                     android:text="Buat QRIS\nDinamis"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/_10sdp" />
 
                 <EditText
-                    android:id="@+id/et_pin"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/et_payment_ammount"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/standard_margin"
                     android:layout_marginRight="@dimen/standard_margin"
-                    android:layout_weight="3"
+                    android:layout_weight="0.5"
                     android:background="@drawable/bg_edittext_border"
                     android:hint="@string/fragment_home_scm_payment_ammount_hint"
                     android:inputType="number"
@@ -185,12 +186,15 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_process"
                     style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="0.3"
                     android:backgroundTint="@color/colorAccent"
                     android:text="Proses"
                     android:textAllCaps="false"
+                    app:icon="@drawable/ic_qr_white_scm"
+                    app:iconGravity="textEnd"
+                    android:textSize="@dimen/_9sdp"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
             </LinearLayout>
         </LinearLayout>
@@ -220,16 +224,21 @@
             android:drawableRight="@drawable/selector_dropdown"
             android:drawablePadding="@dimen/standard_xsmall_margin"
             android:drawableTint="@color/black"
+            android:gravity="center"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:padding="@dimen/standard_margin"
-            android:textSize="@dimen/_10sdp" />
+            android:scrollbarSize="@dimen/_15sdp"
+            android:textSize="@dimen/_10sdp"
+            tools:text="27/07/2020 - 27/07/2020" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_transactions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/standard_margin_2x" />
+            android:layout_marginTop="@dimen/standard_margin_2x"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_transaction_merchant_scm"/>
     </LinearLayout>
 
     <View

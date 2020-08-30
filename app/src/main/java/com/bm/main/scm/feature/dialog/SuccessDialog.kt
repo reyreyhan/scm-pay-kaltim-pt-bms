@@ -1,5 +1,6 @@
 package com.example.samq.ui.register
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -31,12 +32,23 @@ class SuccessDialog : DialogFragment() {
         }
     }
 
+    public lateinit var listener: SuccessDialogListener
+
+    interface SuccessDialogListener {
+        fun onPositiveButtonDialog()
+    }
+
     override fun onStart() {
         super.onStart()
         dialog?.window?.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as SuccessDialogListener
     }
 
     override fun onCreateView(
@@ -54,7 +66,10 @@ class SuccessDialog : DialogFragment() {
     }
 
     private fun setupView(view: View) {
-        val iconAnimation: Animation = AnimationUtils.loadAnimation(view.context, R.anim.scale_check_icon_success)
+        val iconAnimation: Animation = AnimationUtils.loadAnimation(
+            view.context,
+            R.anim.scale_check_icon_success
+        )
         Handler().postDelayed({
             iv_check_circle_success.startAnimation(iconAnimation)
         }, 250)
@@ -62,6 +77,9 @@ class SuccessDialog : DialogFragment() {
 
     private fun setupClickListeners(view: View) {
         view.btn_positive.setOnClickListener {
+            if (listener != null) {
+                listener.onPositiveButtonDialog()
+            }
             dismiss()
         }
     }

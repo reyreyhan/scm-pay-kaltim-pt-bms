@@ -1032,5 +1032,9 @@ Aplikasi sebelum Anda login ke Aplikasi.</item>
     <string name="action_settings">Settings</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="activity_contact_us_scm_company_address">Head Office\nPT. Bimasakti Multi Energi\nGraha Bimasakti, Jl. Delta Raya Utara Kav. 49-51\nDelta Baru, Sidoarjo, Jawa Timur 61256</string>
+    <string name="activity_contact_us_scm_hunting_number">031 - 8535 799 (hunting)</string>
+    <string name="activity_contact_us_scm_call_only">0813 857 857 99 (call only)</string>
+    <string name="activity_contact_us_scm_email">support@fastpay.co.id</string>
 
 </resources>

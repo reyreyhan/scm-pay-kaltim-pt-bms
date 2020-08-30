@@ -1,4 +1,4 @@
-package com.bm.main.scm.feature.register
+package com.bm.main.scm.feature.registermerchant
 
 import android.content.Intent
 import android.graphics.Color
@@ -26,7 +26,7 @@ import com.bm.main.fpl.constants.ActionCode
 import com.bm.main.fpl.utils.Device
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
-import com.example.samq.ui.register.HelpBottomSheetAdapter
+import com.bm.main.scm.feature.drawer.DrawerActivity
 import com.example.samq.ui.register.SuccessDialog
 import com.example.samq.util.dp
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -36,14 +36,14 @@ import kotlinx.android.synthetic.main.bottom_sheet_register_scm_help_layout.view
 
 class RegisterMerchantActivity :
     BaseActivity<RegisterMerchantPresenter, RegisterMerchantContract.View>(),
-    RegisterMerchantContract.View {
+    RegisterMerchantContract.View, SuccessDialog.SuccessDialogListener {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     var provinceCode: String? = ""
     var cityCode: String? = ""
     var districtCode: String? = ""
-    var postCode:String? = ""
+    var postCode: String? = ""
 
     override fun createPresenter(): RegisterMerchantPresenter {
         return RegisterMerchantPresenter(this, this)
@@ -76,7 +76,7 @@ class RegisterMerchantActivity :
             title = "Pendaftaran Merchant QRIS"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            setBackgroundDrawable(ColorDrawable(resources.getColor(android.R.color.transparent)))
+            setBackgroundDrawable(ColorDrawable(resources.getColor(android.R.color.white)))
             val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
             setHomeAsUpIndicator(backArrow)
         }
@@ -455,5 +455,11 @@ class RegisterMerchantActivity :
                 et_merchant_sub_district.setText(data.getStringExtra("detail"))
             }
         }
+    }
+
+    override fun onPositiveButtonDialog() {
+        val intent = Intent(this, DrawerActivity::class.java)
+        intent.putExtra("IsMerchant", true)
+        startActivity(intent)
     }
 }

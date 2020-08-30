@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_border"
+            android:iconifiedByDefault="false"
+            android:queryHint="Cari data" />
+
+        <EditText
+            android:id="@+id/et_date_range"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_border"
+            android:drawableStart="@drawable/ic_date_range_grey"
+            android:drawableLeft="@drawable/ic_date_range_grey"
+            android:drawableEnd="@drawable/selector_dropdown"
+            android:drawableRight="@drawable/selector_dropdown"
+            android:drawablePadding="@dimen/standard_xsmall_margin"
+            android:drawableTint="@color/black"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="@dimen/standard_margin"
+            android:scrollbarSize="@dimen/_15sdp"
+            android:textSize="@dimen/_10sdp"
+            tools:text="27/07/2020 - 27/07/2020" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_report"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        app:layout_constraintTop_toBottomOf="@id/ll_top_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

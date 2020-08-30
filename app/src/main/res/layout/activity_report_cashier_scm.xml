@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_border"
+            android:iconifiedByDefault="false"
+            android:queryHint="Cari data" />
+
+        <EditText
+            android:id="@+id/et_date_range"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_border"
+            android:drawableStart="@drawable/ic_date_range_grey"
+            android:drawableLeft="@drawable/ic_date_range_grey"
+            android:drawableEnd="@drawable/selector_dropdown"
+            android:drawableRight="@drawable/selector_dropdown"
+            android:drawablePadding="@dimen/standard_xsmall_margin"
+            android:drawableTint="@color/black"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="@dimen/standard_margin"
+            android:scrollbarSize="@dimen/_15sdp"
+            android:textSize="@dimen/_10sdp"
+            tools:text="27/07/2020 - 27/07/2020" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_report"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_transaction_cashier_scm"
+        app:layout_constraintBottom_toTopOf="@id/view_shadow"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_top_container"
+        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+        android:clipToPadding="false"/>
+
+    <View
+        android:id="@+id/view_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/drop_shadowbottom_soft"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom_container"
+        app:layout_constraintTop_toBottomOf="@id/rv_report" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/standard_margin_2x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_shadow">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_trolley"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/standard_margin"
+                android:src="@drawable/ic_total_transaksi" />
+
+            <TextView
+                android:id="@+id/tv_lbl_total_transaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/iv_trolley"
+                android:text="Total Transaksi"
+                android:textSize="@dimen/_9sdp" />
+
+            <TextView
+                android:id="@+id/tv_value_total_transaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/iv_trolley"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                tools:text="4 transkasi" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/standard_margin"
+                android:src="@drawable/ic_total_omzet" />
+
+            <TextView
+                android:id="@+id/tv_lbl_total_ammount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/iv_wallet"
+                android:text="Total Omzet"
+                android:textSize="@dimen/_9sdp" />
+
+            <TextView
+                android:id="@+id/tv_value_total_ammount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/iv_wallet"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                tools:text="Rp 168.700" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
