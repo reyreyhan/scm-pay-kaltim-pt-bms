@@ -21,11 +21,12 @@
             android:id="@+id/iv_check_circle_success"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_check_circle_success"
+            app:srcCompat="@drawable/ic_check_circle_success"
             android:layout_gravity="center"/>
     </FrameLayout>
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/standard_margin_2x"
@@ -37,6 +38,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tv_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/standard_margin_2x"

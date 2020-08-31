@@ -3,7 +3,6 @@ package com.bm.main.scm.feature.newhome.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.bm.main.scm.feature.home.HomeFragment
 import com.bm.main.scm.feature.sell.main.SellFragment
 
 
@@ -17,7 +16,7 @@ class NewHomeFragmentStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapt
     init {
         childFragments = arrayOf(
             SellFragment.newInstance(),
-            HomeFragment.newInstance(true),
+//            HomeFragment.newInstance(true),
             Fragment()//0
         )
     }

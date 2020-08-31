@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/standard_margin"
+    android:clipToPadding="false"
+    android:padding="@dimen/activity_horizontal_margin"
     android:background="@color/md_grey_200">
 
     <LinearLayout
@@ -17,11 +18,12 @@
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/_12sdp"
-            tools:text="Cashout ke BRI - 386901039211551233"
             android:ellipsize="end"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:textColor="@color/textColorPrimary"
+
+            android:textSize="@dimen/_12sdp"
+            tools:text="OVO - Rizqy Ali Syaifurrahman" />
 
         <TextView
             android:id="@+id/tv_datetime"

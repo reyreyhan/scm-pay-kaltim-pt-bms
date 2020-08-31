@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,8 +27,8 @@ import com.bm.main.fpl.constants.ActionCode
 import com.bm.main.fpl.utils.Device
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.dialog.SuccessDialog
 import com.bm.main.scm.feature.drawer.DrawerActivity
-import com.example.samq.ui.register.SuccessDialog
 import com.example.samq.util.dp
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_register_merchant_scm.*
@@ -77,10 +78,12 @@ class RegisterMerchantActivity :
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
             setBackgroundDrawable(ColorDrawable(resources.getColor(android.R.color.white)))
-            val backArrow = resources.getDrawable(R.drawable.ic_back_pos)
+            val backArrow = resources.getDrawable(R.drawable.ic_toolbar_back)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                backArrow.setTint(resources.getColor(android.R.color.black))
+            }
             setHomeAsUpIndicator(backArrow)
         }
-
     }
 
     override fun onResume() {

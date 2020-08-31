@@ -24,11 +24,10 @@
             tools:text="Kasir 1 - Aisyah" />
 
         <TextView
-            android:id="@+id/tv_transactions"
+            android:id="@+id/tv_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/standard_small_margin"
-            android:textColor="@color/colorAccent"
             android:textSize="@dimen/_10sdp"
             tools:text="Status: Aktif" />
     </LinearLayout>

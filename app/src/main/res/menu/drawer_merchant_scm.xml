@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cashout_balance"
+            android:icon="@drawable/ic_nav_cashout_scm"
+            android:title="Cashout Saldo" />
+        <item
+            android:id="@+id/nav_mutation"
+            android:icon="@drawable/ic_nav_mutation_scm"
+            android:title="Mutasi" />
+        <item
+            android:id="@+id/nav_qris_cashier"
+            android:icon="@drawable/ic_nav_qr_cashier_scm"
+            android:title="QRIS Kasir"/>
+        <item
+            android:id="@+id/nav_my_store"
+            android:icon="@drawable/ic_nav_my_store_scm"
+            android:title="Tokoku" />
+        <item
+            android:id="@+id/nav_POS"
+            android:icon="@drawable/ic_nav_pos_scm"
+            android:title="Penjualan (POS)" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_nav_contact_scm"
+            android:title="Hubungi Kami" />
+    </group>
+</menu>

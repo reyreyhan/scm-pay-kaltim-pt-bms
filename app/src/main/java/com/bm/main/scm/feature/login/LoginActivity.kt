@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_login_scm.*
 
 class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginContract.View {
 
-    private var merchantLogin = false
+    private var merchantLogin = true
 
     override fun createPresenter(): LoginPresenter {
         return LoginPresenter(this, this)
@@ -90,9 +90,9 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             val pwd = et_pin.text.toString()
 //            getPresenter()?.onLogin(mail, pwd)
             if (merchantLogin){
-                startActivity(Intent(this@LoginActivity, RegisterMerchantActivity::class.java))
+                startActivity(Intent(this, RegisterMerchantActivity::class.java))
             }else{
-                val intent = Intent(this@LoginActivity, DrawerActivity::class.java)
+                val intent = Intent(this, DrawerActivity::class.java)
                 intent.putExtra("IsMerchant", false)
                 startActivity(intent)
             }

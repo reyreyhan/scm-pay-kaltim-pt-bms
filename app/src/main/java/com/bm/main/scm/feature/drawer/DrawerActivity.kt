@@ -2,21 +2,19 @@ package com.bm.main.scm.feature.drawer
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
-import com.bm.main.fpl.templates.showcaseview.GuideView
-import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.fpl.webview.FCMActivity
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
@@ -24,35 +22,27 @@ import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.events.onHistoryChangedDate
 import com.bm.main.scm.events.onHistoryChangedStatus
 import com.bm.main.scm.events.onMenuClicked
+import com.bm.main.scm.feature.cashout.CashoutActivity
 import com.bm.main.scm.feature.dialog.*
-import com.bm.main.scm.feature.home.HomeFragment
-import com.bm.main.scm.feature.manage.main.ManageFragment
+import com.bm.main.scm.feature.home.cashier.HomeCashierFragment
+import com.bm.main.scm.feature.home.merchant.HomeMerchantFragment
+import com.bm.main.scm.feature.manage.cashier.list.CashierListActivity
 import com.bm.main.scm.feature.manage.product.ProductViewModel
-import com.bm.main.scm.feature.qris.QrFragment
-import com.bm.main.scm.feature.report.main.ReportFragment
+import com.bm.main.scm.feature.notification.NotificationSCM
+import com.bm.main.scm.feature.profilescm.ProfileSCMActivity
+import com.bm.main.scm.feature.reportscm.mutation.ReportMutationActivity
 import com.bm.main.scm.feature.sell.main.SellFragment
 import com.bm.main.scm.feature.setting.main.SettingFragment
-import com.bm.main.scm.feature.transaction.history.HistoryFragment
 import com.bm.main.scm.models.DialogModel
 import com.bm.main.scm.models.cart.Cart
 import com.bm.main.scm.rabbit.QrisViewModel
-import com.bm.main.scm.rabbit.RabbitMqPrint
 import com.bm.main.scm.rest.salesforce.SfViewModel
 import com.bm.main.scm.utils.AppConstant
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.squareup.moshi.Types
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.content_drawer.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.nav_header_drawer.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -67,6 +57,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     CartCountDialog.Listener, RangeDateDialog.Listener,
     BottomDialog.Listener {
 
+    private val MENU_NOTIFICATION = 1
     private var isMerchant = false
 
     private val productViewModel by lazy {
@@ -84,7 +75,9 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     }
 
     private val TAG = DrawerActivity::class.java.simpleName
-    private lateinit var homeFragment: HomeFragment
+
+    private val homeCashierFragment: HomeCashierFragment = HomeCashierFragment()
+    private val homeMerchantFragment: HomeMerchantFragment = HomeMerchantFragment()
 
     private var ft: FragmentTransaction? = null
 
@@ -94,9 +87,8 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         if (intent.hasExtra("url") && intent.getStringExtra("url").orEmpty().isNotEmpty()) {
             startActivity(Intent(this, FCMActivity::class.java).putExtras(intent))
         } else {
-            super.onCreate(savedInstanceState)
             isMerchant = intent.getBooleanExtra("IsMerchant", false)
-            homeFragment = HomeFragment.newInstance(isMerchant)
+            super.onCreate(savedInstanceState)
         }
     }
 
@@ -121,6 +113,21 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         getPresenter()?.onViewCreated(intent)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (isMerchant){
+            menu!!.clear()
+            menu.add(0, MENU_NOTIFICATION, Menu.NONE, "Notification").setIcon(R.drawable.ic_notif_scm_white).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            MENU_NOTIFICATION->startActivity(Intent(this, NotificationSCM::class.java))
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun renderView() {
         setSupportActionBar(toolbarx)
 
@@ -137,11 +144,29 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
             setDisplayShowTitleEnabled(false)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_drawer)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                setBackgroundDrawable(ColorDrawable(getColor(R.color.colorAccent)))
+            } else {
+                setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.colorAccent)))
+            }
         }
 
         nav_view.setNavigationItemSelectedListener(this)
 
         val headerView = nav_view.getHeaderView(0)
+
+        if (!isMerchant) {
+            nav_view.menu.removeItem(R.id.nav_cashout_balance)
+            nav_view.menu.removeItem(R.id.nav_mutation)
+            nav_view.menu.removeItem(R.id.nav_qris_cashier)
+            nav_view.menu.removeItem(R.id.nav_my_store)
+            nav_view.menu.removeItem(R.id.nav_POS)
+            headerView.tv_merchant_profile.visibility = View.GONE
+        } else {
+            headerView.tv_merchant_profile.setOnClickListener {
+                startActivity(Intent(this, ProfileSCMActivity::class.java))
+            }
+        }
 
 //        btnLogout.setOnClickListener {
 //            restartLoginActivity()
@@ -152,10 +177,19 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         }
 
         ft = supportFragmentManager.beginTransaction()
-        if (homeFragment.isAdded) {
-            ft!!.show(homeFragment)
+
+        if (!isMerchant) {
+            if (homeCashierFragment.isAdded) {
+                ft!!.show(homeCashierFragment)
+            } else {
+                ft!!.add(R.id.fragment_container, homeCashierFragment)
+            }
         } else {
-            ft!!.add(R.id.fragment_container, homeFragment)
+            if (homeMerchantFragment.isAdded) {
+                ft!!.show(homeMerchantFragment)
+            } else {
+                ft!!.add(R.id.fragment_container, homeMerchantFragment)
+            }
         }
         ft!!.commit()
 
@@ -383,7 +417,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 
     override fun selectMenu(resId: Int) {
         Log.d("drawer", "selectMenu")
-//        nav_view.setCheckedItem(resId)
+        nav_view.setCheckedItem(resId)
     }
 
     override fun onBackPressed() {
@@ -402,6 +436,11 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         // Handle navigation view item clicks here.
         Timber.e("onNavigationItemSelected: $item")
 //        replaceContent(item.itemId)
+        when (item.itemId) {
+            R.id.nav_cashout_balance -> startActivity(Intent(this, CashoutActivity::class.java))
+            R.id.nav_qris_cashier -> startActivity(Intent(this, CashierListActivity::class.java))
+            R.id.nav_mutation -> startActivity(Intent(this, ReportMutationActivity::class.java))
+        }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -515,7 +554,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 //    }
 
     override fun onReloadProfile() {
-        homeFragment.reloadData()
+//        homeFragment.reloadData()
     }
 
     override fun onItemClicked(data: DialogModel, type: Int) {

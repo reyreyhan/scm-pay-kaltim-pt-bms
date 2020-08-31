@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_white_4dp"
+    android:clipToPadding="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/standard_margin_2x">
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_gravity="right"
+        app:srcCompat="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/standard_margin_2x"
+        android:gravity="center"
+        android:text="Masukkan PIN Anda"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/standard_margin_2x"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:gravity="center"
+        android:text="untu menambahkan kasir"
+        android:textSize="@dimen/_12sdp" />
+
+    <EditText
+        android:id="@+id/et_pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin_3x"
+        android:background="@drawable/bg_edittext_border"
+        android:hint="@string/activity_cashout_bank_scm_pin_hint"
+        android:inputType="numberPassword"
+        android:padding="@dimen/standard_margin"
+        android:textSize="@dimen/_11sdp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_positive"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="@dimen/standard_margin_2x"
+        android:backgroundTint="@color/colorAccent"
+        android:clipToPadding="false"
+        android:text="Konfirmasi"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:theme="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp" />
+</LinearLayout>

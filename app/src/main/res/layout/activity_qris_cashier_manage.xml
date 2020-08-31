@@ -17,7 +17,7 @@
         android:layout_marginBottom="@dimen/standard_margin_2x"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_benefit"
+        android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_cashier_manage_scm"

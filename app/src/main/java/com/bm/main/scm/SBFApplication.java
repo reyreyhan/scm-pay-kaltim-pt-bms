@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentCallbacks2;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import com.bm.main.scm.di.AppComponent;
 import com.bm.main.scm.di.AppComponentProvider;
 import com.bm.main.scm.di.DaggerAppComponent;
 import com.bm.main.scm.rabbit.RabbitMqThread;
-import com.bm.main.scm.services.ScreenOnOffBackgroundService;
 import com.bm.main.single.ftl.utils.MemoryStore;
 import com.bm.sc.bebasbayar.social.di.UserComponent;
 import com.crashlytics.android.Crashlytics;
@@ -246,8 +244,8 @@ RequestUtils.initialize();
 
     @Override
     public void onActivityDestroyed(@NotNull Activity activity) {
-        Intent backgroundService = new Intent(getApplicationContext(), ScreenOnOffBackgroundService.class);
-        startService(backgroundService);
+//        Intent backgroundService = new Intent(getApplicationContext(), ScreenOnOffBackgroundService.class);
+//        startService(backgroundService);
     }
 
     /**

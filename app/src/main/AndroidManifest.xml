@@ -211,6 +211,44 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
+            android:name=".feature.manage.cashier.list.CashierListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.cashier.add.CashierAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.manage.inputbank.InputBankActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.cashout.CashoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.reportscm.mutation.ReportMutationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.reportscm.transaction.cashier.ReportTransactionCashierActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.reportscm.transaction.merchant.ReportTransactionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.profilescm.ProfileSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+
+        <activity
+            android:name=".feature.notification.NotificationSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+
+        <activity
             android:name=".feature.drawer.DrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />

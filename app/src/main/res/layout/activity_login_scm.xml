@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray">
@@ -78,7 +77,8 @@
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tab_login"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        app:tabIndicatorColor="@color/colorAccent">
 
                         <com.google.android.material.tabs.TabItem
                             android:id="@+id/tab_owner"
@@ -146,11 +146,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginTop="@dimen/standard_margin_2x"
-                        android:background="@drawable/selector_material_button_scm"
+                        android:backgroundTint="@color/colorAccent"
                         android:clipToPadding="false"
-                        android:enabled="false"
                         android:text="masuk"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:textColor="@color/white"
                         app:cornerRadius="15dp" />
                 </LinearLayout>
             </FrameLayout>

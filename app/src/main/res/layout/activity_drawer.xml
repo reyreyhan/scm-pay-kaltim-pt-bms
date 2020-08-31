@@ -23,7 +23,7 @@
         app:headerLayout="@layout/nav_header_drawer"
         app:itemBackground="@drawable/selector_nav"
         app:itemIconTint="@color/colorAccent"
-        app:menu="@menu/drawer_scm">
+        app:menu="@menu/drawer_merchant_scm">
 
         <LinearLayout
             android:layout_width="match_parent"

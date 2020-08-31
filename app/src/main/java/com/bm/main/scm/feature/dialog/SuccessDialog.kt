@@ -1,4 +1,4 @@
-package com.example.samq.ui.register
+package com.bm.main.scm.feature.dialog
 
 import android.content.Context
 import android.os.Bundle
@@ -66,6 +66,8 @@ class SuccessDialog : DialogFragment() {
     }
 
     private fun setupView(view: View) {
+        tv_title.text = arguments!!.getString(KEY_TITLE, "")
+        tv_caption.text = arguments!!.getString(KEY_SUBTITLE, "")
         val iconAnimation: Animation = AnimationUtils.loadAnimation(
             view.context,
             R.anim.scale_check_icon_success
