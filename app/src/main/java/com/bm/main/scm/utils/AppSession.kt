@@ -17,7 +17,10 @@ class AppSession {
 
     init {
 //        sharedPreferences = MyApplication.applicationContext().getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE)
-        sharedPreferences = SBFApplication.getInstance().applicationContext.getSharedPreferences(PREF_SESSION, Context.MODE_PRIVATE)
+        sharedPreferences = SBFApplication.getInstance()!!.applicationContext.getSharedPreferences(
+            PREF_SESSION,
+            Context.MODE_PRIVATE
+        )
     }
 
 
@@ -64,55 +67,49 @@ class AppSession {
         editor.apply()
     }
 
-    fun getSharedPreferenceString(context: Context,key: String): String? {
+    fun getSharedPreferenceString(key: String): String? {
 
         return sharedPreferences.getString(key, null)
     }
 
-    fun getSharedPreferenceInt(context: Context,key: String): Int {
+    fun getSharedPreferenceInt(key: String): Int {
 
         return sharedPreferences.getInt(key, 0)
     }
 
-    fun getSharedPreferenceBoolean(context: Context,key: String): Boolean {
+    fun getSharedPreferenceBoolean(key: String): Boolean {
         return sharedPreferences.getBoolean(key, false)
     }
 
-    fun getSharedPreferenceLong(context: Context,key: String): Long {
+    fun getSharedPreferenceLong(key: String): Long {
         return sharedPreferences.getLong(key, 0)
     }
 
-    fun getSharedPreferenceFloat(context: Context,key: String): Float {
+    fun getSharedPreferenceFloat(key: String): Float {
         return sharedPreferences.getFloat(key, 0f)
     }
 
-    fun getToken(context: Context): String? {
-        var token = getSharedPreferenceString(context, AppConstant.TOKEN)
+    fun getToken(): String? {
+        var token = getSharedPreferenceString(AppConstant.TOKEN)
         if (token != null) {
             if (token.isEmpty()) {
                 token = ""
             }
-        }
-        else{
+        } else {
             token = ""
         }
         return token
     }
 
-    fun getDeviceToken(context: Context): String? {
-        var token = getSharedPreferenceString(context, AppConstant.DEVICE_TOKEN)
+    fun getDeviceToken(): String? {
+        var token = getSharedPreferenceString(AppConstant.DEVICE_TOKEN)
         if (token != null) {
             if (token.isEmpty()) {
                 token = ""
             }
-        }
-        else{
+        } else {
             token = ""
         }
         return token
     }
-
-
-
-
 }

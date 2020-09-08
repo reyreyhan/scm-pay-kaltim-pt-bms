@@ -4,16 +4,46 @@ import android.annotation.SuppressLint
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.rabbit.QrTransaction
+import com.bm.main.scm.rabbit.QrisService
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_report_cashier_scm.*
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPresenter, ReportTransactionCashierContract.View>(), ReportTransactionCashierContract.View {
+
+    private val dateFormat by lazy { SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) }
+    private val itemDateFormat by lazy { SimpleDateFormat("d MMMM yyyy", Locale.getDefault()) }
+    private val respDateFormat by lazy {
+        SimpleDateFormat(
+            "yyyy-MM-dd HH:mm:ss.SSS",
+            Locale.getDefault()
+        )
+    }
+    private val listDates by lazy { ArrayList<String>() }
+    val dateNow by lazy {
+        Calendar.getInstance().time
+    }
+
+    @Inject
+    lateinit var qrisService: QrisService
+
+    private var disposable: Disposable? = null
+
+
     override fun createPresenter(): ReportTransactionCashierPresenter {
         return ReportTransactionCashierPresenter(this, this)
     }
@@ -49,13 +79,11 @@ class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPr
     private fun renderView() {
         initDatePicker()
         initRecyclerView()
+        loadData(dateNow, dateNow)
     }
 
     private fun initRecyclerView() {
-        val listTransaction = mutableListOf<Transaction>()
-        listTransaction.add(Transaction("OVO - Rizqy Ali Syaifurrahman", "Senin, 27 Agustus 2020 - 16:17", "12341231235", 25000.00))
-        listTransaction.add(Transaction("Link Aja - Rizqy Ali Syaifurrahman", "Senin, 28 Agustus 2020 - 16:17", "5435324223", 50000.00))
-        listTransaction.add(Transaction("Link Aja - Rizqy Ali Syaifurrahman", "Senin, 29 Agustus 2020 - 16:17", "489257934759", 75000.00))
+        val listTransaction = mutableListOf<QrTransaction>()
         val adapter = ReportTransactionCashierAdapter(listTransaction)
         rv_report.adapter = adapter
         rv_report.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -81,6 +109,49 @@ class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPr
         }
     }
 
+    fun setBottomCounter(list:List<QrTransaction>){
+        var sumOmzet = 0.0
+        list.forEach { qr ->
+            sumOmzet+= qr.nominal.toFloat()
+        }
+        tv_value_total_transaction.text = "${list.size} transaksi"
+        tv_value_total_ammount.text = "Rp ${sumOmzet.toInt()}"
+    }
+
+    private fun loadData(dateStart: Date, dateEnd: Date) {
+        val adapter = rv_report.adapter as ReportTransactionCashierAdapter
+
+        disposable?.dispose()
+        disposable = qrisService
+            .getTransaksiRange(
+                "1247628",
+                dateFormat.format(dateStart),
+                dateFormat.format(dateEnd)
+            )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ result ->
+//                swipe.isRefreshing = false
+                if (result.rc == "00" && result.data.isNotEmpty()) {
+                    result.data
+                        .sortedByDescending { it.time_request }
+                        .forEach {
+                            val timeStr = it.time_request.replace("T", " ")
+                            val timeFormatted = respDateFormat.parse(timeStr)
+                            Timber.d("Time: %s", timeStr)
+                            Timber.d("Time Long: %d", timeFormatted.time)
+                            Timber.d("Time Str: %s", itemDateFormat.format(timeFormatted))
+                            it.time = timeFormatted.time
+                            it.time_request = itemDateFormat.format(timeFormatted)
+                            adapter.list.add(it)
+                        }
+                    setBottomCounter(adapter.list)
+                    adapter.notifyDataSetChanged()
+                }
+            }, { error ->
+                Log.d("Error: %s", error.toString())
+            })
+    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:id="@+id/qrisDynamic2View"
     android:orientation="vertical">
 
     <TextView
@@ -16,6 +17,7 @@
         android:textSize="@dimen/_12sdp" />
 
     <TextView
+        android:id="@+id/tv_ammount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standard_margin"
@@ -35,6 +37,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton

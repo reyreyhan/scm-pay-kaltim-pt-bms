@@ -1,7 +1,7 @@
 package com.bm.main.scm.rabbit
 
 import androidx.annotation.Keep
-import com.bm.sc.bebasbayar.social.di.UserScope
+import com.bm.main.scm.di.UserScope
 import io.reactivex.Single
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -16,11 +16,15 @@ interface QrisService {
     fun check(@Field("id_outlet") id_outlet: String): Single<CheckResponse>
 
     @FormUrlEncoded
-    @POST("qris/get_transaksi")
-    fun getTransaksi(@Field("id_sc") id_sc: String, @Field("date") date: String): Single<TransactionResponse>
+    @POST("qris/get_transaksi_range")
+    fun getTransaksiRange(@Field("id_sc") id_sc: String,
+                     @Field("start") start: String,
+                     @Field("end") end: String): Single<TransactionResponse>
 
     @FormUrlEncoded
-    @POST("qris/get_mutasi")
-    fun getMutasiSaldo(@Field("id_sc") id_sc: String, @Field("date") date: String): Single<MutationResponse>
+    @POST("qris/get_mutasi_range")
+    fun getMutasiRange(@Field("id_sc") id_sc: String,
+                       @Field("start") start: String,
+                       @Field("end") end: String): Single<MutationResponse>
 
 }

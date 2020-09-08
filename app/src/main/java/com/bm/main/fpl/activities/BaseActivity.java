@@ -1080,7 +1080,7 @@ public class BaseActivity extends AppCompatActivity implements ProgressResponseC
     }
 
     public void requestLogout() {
-        SBFApplication.getInstance().rabbitThread.setRunning(false);
+        SBFApplication.getInstance().getRabbitThread().setRunning(false);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject = new JSONObject(stringJson.requestSignOut(PreferenceClass.getLoggedUser().getId()));

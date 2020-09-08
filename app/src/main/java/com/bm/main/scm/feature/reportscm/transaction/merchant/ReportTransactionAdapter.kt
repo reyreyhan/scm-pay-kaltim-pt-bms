@@ -7,17 +7,22 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import com.bm.main.scm.R
+import com.bm.main.scm.rabbit.QrTransaction
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder
 import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder
 import kotlinx.android.synthetic.main.item_report_merchant_scm_content.view.*
 import kotlinx.android.synthetic.main.item_report_merchant_scm_header.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
     ExpandableRecyclerViewAdapter<ReportTransactionAdapter.MutationGroupViewHolder,
             ReportTransactionAdapter.MutationViewHolder>(groups) {
+
+    val list = getGroups()!!
 
     override fun onCreateGroupViewHolder(
         parent: ViewGroup,
@@ -47,7 +52,7 @@ class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
         group: ExpandableGroup<*>,
         childIndex: Int
     ) {
-        val transaction: Transaction = (group as TransactionGroup).items[childIndex]
+        val transaction: QrTransaction = (group as TransactionGroup).items[childIndex]
         holder.setContent(transaction)
     }
 
@@ -58,11 +63,11 @@ class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
     ) {
         holder.setGroupTitle(group!!)
         var sum = 0.0
-        for (i in 0..group.items.size-1){
-            var item = group.items[i] as Transaction
-            sum+= item.ammount!!
+        for (i in 0 until group.items.size){
+            var item = group.items[i] as QrTransaction
+            sum+= item.nominal.toFloat()
         }
-        val subtitle = "${group.itemCount} transaksi - Omzet Rp ${sum}"
+        val subtitle = "${group.itemCount} transaksi - Omzet Rp ${sum.toInt()}"
         holder.setGroupSubtitle(subtitle)
     }
 
@@ -102,12 +107,18 @@ class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
         private val tvDateTime = itemView.tv_datetime
         private val tvTransactionId = itemView.tv_transaction_id
         private val tvAmmount = itemView.tv_ammount
-
-        fun setContent(item:Transaction){
-            tvName.text = item.title
-            tvDateTime.text = item.date
-            tvTransactionId.text = item.id
-            tvAmmount.text = "Rp ${item.ammount.toString()}"
+        private val respDateFormat by lazy {
+            SimpleDateFormat(
+                "ddd, dd-MM-yyyy HH:mm:ss",
+                Locale.getDefault()
+            )
+        }
+        private val context = itemView.context
+        fun setContent(item:QrTransaction){
+            tvName.text = item.buyer_reff
+            tvDateTime.text = respDateFormat.format(Date(item.time!!))
+            tvTransactionId.text = item.id_transaksi
+            tvAmmount.text = "Rp ${item.nominal}"
         }
     }
 }

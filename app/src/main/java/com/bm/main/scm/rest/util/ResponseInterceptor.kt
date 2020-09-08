@@ -2,21 +2,21 @@ package com.bm.main.scm.rest.util
 
 import android.util.Log
 import androidx.annotation.Keep
-import com.google.gson.*
 import com.bm.main.scm.models.Message
 import com.bm.main.scm.rest.entity.ResponseEntity
+import com.bm.main.scm.rest.entity.RestException
+import com.google.gson.*
 import okhttp3.Interceptor
+import okhttp3.MediaType
 import okhttp3.Response
+import okhttp3.ResponseBody
 import java.io.IOException
 import java.net.ConnectException
 import java.net.HttpURLConnection
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-import javax.net.ssl.SSLException
-import com.bm.main.scm.rest.entity.RestException
-import okhttp3.MediaType
-import okhttp3.ResponseBody
 import java.nio.charset.Charset
+import javax.net.ssl.SSLException
 
 
 @Keep
@@ -68,7 +68,8 @@ class ResponseInterceptor : Interceptor {
                     /** check JSON format of response as [ResponseEntity]  */
                     val apiResponse: ResponseEntity
                     try {
-                        apiResponse = Gson().fromJson<ResponseEntity>(cObject, ResponseEntity::class.java)
+                        apiResponse =
+                            Gson().fromJson<ResponseEntity>(cObject, ResponseEntity::class.java)
                     } catch (e: JsonSyntaxException) {
                         Log.e(TAG, e.localizedMessage)
                         throw RestException(e.message, RestException.CODE_ERROR_UNKNOWN)
@@ -77,7 +78,7 @@ class ResponseInterceptor : Interceptor {
                     responseBody.close()
 
                     when {
-                        apiResponse.errCode == RestException.RESPONSE_SUCCESS        -> {
+                        apiResponse.errCode == RestException.RESPONSE_SUCCESS -> {
                             val jsonElement: JsonElement
                             val data = cObject.get(KEY_DATA) ?: null
                             if (data == null) {
@@ -92,7 +93,7 @@ class ResponseInterceptor : Interceptor {
                                 return newResponse.build()
                             }
                             when {
-                                data!!.isJsonArray  -> {
+                                data!!.isJsonArray -> {
                                     Log.d(TAG, "data is array")
 
                                     val arr = cObject.getAsJsonArray(KEY_DATA)
@@ -106,7 +107,10 @@ class ResponseInterceptor : Interceptor {
                                     jsonElement = cObject.get(KEY_DATA)
 
                                 }
-                                else                -> throw RestException("data is not object or array", RestException.CODE_ERROR_UNKNOWN)
+                                else -> throw RestException(
+                                    "data is not object or array",
+                                    RestException.CODE_ERROR_UNKNOWN
+                                )
                             }
 
                             val newResponse = response.newBuilder()
@@ -121,15 +125,18 @@ class ResponseInterceptor : Interceptor {
                         apiResponse.errCode == RestException.RESPONSE_DATA_NOT_FOUND -> {
                             throw RestException(apiResponse.msg, RestException.CODE_DATA_NOT_FOUND)
                         }
-                        else                                                         -> {
+                        else -> {
                             throw RestException(apiResponse.msg, RestException.CODE_ERROR_UNKNOWN)
                         }
                     }
 
 
                 }
-                HttpURLConnection.HTTP_GATEWAY_TIMEOUT                    -> throw RestException("Mohon cek koneksi internet anda", responseCode)
-                else                                                      -> {
+                HttpURLConnection.HTTP_GATEWAY_TIMEOUT -> throw RestException(
+                    "Mohon cek koneksi internet anda",
+                    responseCode
+                )
+                else -> {
                     val source = responseBody!!.source()
                     source.request(java.lang.Long.MAX_VALUE) // Buffer the entire body.
                     val buffer = source.buffer()

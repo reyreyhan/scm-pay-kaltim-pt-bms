@@ -1,5 +1,6 @@
 package com.bm.main.scm.utils
 
+//import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import android.Manifest
 import android.app.Activity
 import android.content.Context
@@ -19,10 +20,9 @@ import android.view.animation.Transformation
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.bm.main.scm.SBFApplication
 import com.bm.main.scm.R
+import com.bm.main.scm.SBFApplication
 import okhttp3.MediaType
-//import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -287,7 +287,7 @@ object Helper {
 
     fun isNetworkAvailable(): Boolean {
         val connectivityManager: ConnectivityManager =
-            SBFApplication.getInstance().applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            SBFApplication.getInstance()!!.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         //MyApplication.applicationContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetworkInfo = connectivityManager.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnected

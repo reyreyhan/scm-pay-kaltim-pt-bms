@@ -14,11 +14,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProvider
 import com.bm.main.fpl.webview.FCMActivity
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
-import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.events.onHistoryChangedDate
 import com.bm.main.scm.events.onHistoryChangedStatus
 import com.bm.main.scm.events.onMenuClicked
@@ -26,8 +24,8 @@ import com.bm.main.scm.feature.cashout.CashoutActivity
 import com.bm.main.scm.feature.dialog.*
 import com.bm.main.scm.feature.home.cashier.HomeCashierFragment
 import com.bm.main.scm.feature.home.merchant.HomeMerchantFragment
+import com.bm.main.scm.feature.login.LoginActivity
 import com.bm.main.scm.feature.manage.cashier.list.CashierListActivity
-import com.bm.main.scm.feature.manage.product.ProductViewModel
 import com.bm.main.scm.feature.notification.NotificationSCM
 import com.bm.main.scm.feature.profilescm.ProfileSCMActivity
 import com.bm.main.scm.feature.reportscm.mutation.ReportMutationActivity
@@ -35,11 +33,14 @@ import com.bm.main.scm.feature.sell.main.SellFragment
 import com.bm.main.scm.feature.setting.main.SettingFragment
 import com.bm.main.scm.models.DialogModel
 import com.bm.main.scm.models.cart.Cart
-import com.bm.main.scm.rabbit.QrisViewModel
-import com.bm.main.scm.rest.salesforce.SfViewModel
 import com.bm.main.scm.utils.AppConstant
+import com.bm.main.scm.utils.AppSession
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.google.android.material.navigation.NavigationView
 import com.prolificinteractive.materialcalendarview.CalendarDay
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.content_drawer.*
@@ -49,6 +50,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.threeten.bp.LocalDate
 import timber.log.Timber
 
+@AndroidEntryPoint
 class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), DrawerContract.View,
     NavigationView.OnNavigationItemSelectedListener,
 //    HomeFragment.MenuClick,
@@ -60,7 +62,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     private val MENU_NOTIFICATION = 1
     private var isMerchant = false
 
-    private val productViewModel by lazy {
+  /*  private val productViewModel by lazy {
         ViewModelProvider(
             this,
             userComponent!!.productComponentFactory()
@@ -74,6 +76,15 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         ).get(SfViewModel::class.java)
     }
 
+     private val qrisViewModel by lazy {
+        ViewModelProvider(
+            this,
+            userComponent!!.qrisComponentFactory()
+        ).get(QrisViewModel::class.java)
+    }
+
+    */
+
     private val TAG = DrawerActivity::class.java.simpleName
 
     private val homeCashierFragment: HomeCashierFragment = HomeCashierFragment()
@@ -83,20 +94,15 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 
     private val disposables by lazy { CompositeDisposable() }
 
+    private val appSession = AppSession()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         if (intent.hasExtra("url") && intent.getStringExtra("url").orEmpty().isNotEmpty()) {
             startActivity(Intent(this, FCMActivity::class.java).putExtras(intent))
         } else {
-            isMerchant = intent.getBooleanExtra("IsMerchant", false)
+            isMerchant = appSession.getSharedPreferenceBoolean("IS_MERCHANT")
             super.onCreate(savedInstanceState)
         }
-    }
-
-    private val qrisViewModel by lazy {
-        ViewModelProvider(
-            this,
-            userComponent!!.qrisComponentFactory()
-        ).get(QrisViewModel::class.java)
     }
 
     override fun createPresenter(): DrawerPresenter {
@@ -114,16 +120,18 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        if (isMerchant){
+        if (isMerchant) {
             menu!!.clear()
-            menu.add(0, MENU_NOTIFICATION, Menu.NONE, "Notification").setIcon(R.drawable.ic_notif_scm_white).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            menu.add(0, MENU_NOTIFICATION, Menu.NONE, "Notification")
+                .setIcon(R.drawable.ic_notif_scm_white)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
         }
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            MENU_NOTIFICATION->startActivity(Intent(this, NotificationSCM::class.java))
+        when (item.itemId) {
+            MENU_NOTIFICATION -> startActivity(Intent(this, NotificationSCM::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
@@ -168,9 +176,11 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
             }
         }
 
-//        btnLogout.setOnClickListener {
-//            restartLoginActivity()
-//        }
+        ll_nav_exit.setOnClickListener {
+            getPresenter()?.logOut()
+            startActivity(Intent(this, LoginActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            finish()
+        }
 
         headerView.btn_close.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -420,6 +430,7 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
         nav_view.setCheckedItem(resId)
     }
 
+
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -447,24 +458,17 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 
     override fun setProfile(
         name: String,
-        address: String,
-        city: String,
-        phone: String,
-        url: String
+        id: String
     ) {
-//        tvName.text = name
-//        tvAddress.text = address
-//
-//        if (city.isNotBlank()) {
-//            tvCity.visibility = View.VISIBLE
-//            tvCity.text = city
-//        } else {
-//            tvCity.visibility = View.GONE
-//        }
-//
-//        tvPhone.text = phone
-//        Glide.with(this).load(url).error(R.drawable.logo).placeholder(R.drawable.logo)
-//            .transform(CenterCrop(), CircleCrop()).into(ivPhoto)
+        val headerView = nav_view.getHeaderView(0)
+        headerView.tv_name.text = name
+        headerView.tv_id.text = id
+    }
+
+    override fun setProfilePict(url: String) {
+        val headerView = nav_view.getHeaderView(0)
+        Glide.with(this).load(url).error(R.drawable.logo).placeholder(R.drawable.logo)
+            .transform(CenterCrop(), CircleCrop()).into(headerView.iv_photo)
     }
 
     @Subscribe

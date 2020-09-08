@@ -1,6 +1,6 @@
 package com.bm.main.scm.rest.salesforce
 
-import com.bm.sc.bebasbayar.social.di.UserScope
+import com.bm.main.scm.di.UserScope
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -2,17 +2,14 @@ package com.bm.main.scm.di
 
 import com.squareup.moshi.*
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dagger.Module
-import dagger.Provides
-import dagger.Reusable
 import java.lang.reflect.Type
 import java.util.*
 
-@Module
+//@Module
 object MoshiModule {
 
-    @Reusable
-    @Provides
+//    @Reusable
+//    @Provides
     @JvmStatic
     fun instance(): Moshi {
         return Moshi.Builder()

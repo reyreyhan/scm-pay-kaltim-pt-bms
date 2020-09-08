@@ -6,12 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProvider
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
-import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.feature.dialog.BottomDialog
-import com.bm.main.scm.feature.manage.product.ProductViewModel
 import com.bm.main.scm.feature.manage.product.add.AddProductFragment
 import com.bm.main.scm.feature.manage.product.list.ProductListFragment
 import com.bm.main.scm.feature.scan.ScanCodeFragment
@@ -38,12 +35,12 @@ class AddProductMainActivity : BaseActivity<AddProductMainPresenter, AddProductM
     private val categoryDialog = BottomDialog.newInstance()
     private var ft: FragmentTransaction? = null
 
-    private val productViewModel by lazy {
-        ViewModelProvider(
-            this,
-            userComponent!!.productComponentFactory()
-        ).get(ProductViewModel::class.java)
-    }
+//    private val productViewModel by lazy {
+//        ViewModelProvider(
+//            this,
+//            userComponent!!.productComponentFactory()
+//        ).get(ProductViewModel::class.java)
+//    }
 
     override fun createPresenter(): AddProductMainPresenter {
         return AddProductMainPresenter(

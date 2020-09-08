@@ -5,15 +5,20 @@ import com.bm.main.scm.base.BaseInteractorImpl
 import com.bm.main.scm.base.BaseInteractorOutputImpl
 import com.bm.main.scm.base.BasePresenterImpl
 import com.bm.main.scm.base.BaseViewImpl
-import com.bm.main.scm.models.user.User
-import com.bm.main.scm.models.user.UserRestModel
+import com.bm.main.scm.models.cashier.CashierRestModel
+import com.bm.main.scm.models.cashier.LoginCashier
+import com.bm.main.scm.models.user.merchant.MerchantUser
+import com.bm.main.scm.models.user.merchant.MerchantUserRestModel
 
 interface LoginContract {
 
     interface View : BaseViewImpl {
         fun enableLoginBtn(isLogin:Boolean)
-        fun showLoginSuccess()
+//        fun showLoginSuccess()
+        fun getPin():String
         fun openRegisterPage()
+        fun navigateMerchant()
+        fun navigateCashier()
     }
 
     interface Presenter : BasePresenterImpl<View> {
@@ -21,18 +26,23 @@ interface LoginContract {
         fun onViewCreated()
         fun onBtnLoginCheck(phone:String,password:String)
         fun onLogin(phone:String,password:String)
+        fun changeLogin(isMerchant:Boolean)
     }
 
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
         fun onRestartDisposable()
-        fun saveSession(user:User)
+        fun saveSession(user: MerchantUser)
+        fun saveSessionCashier(user: LoginCashier)
+        fun savePin(pin:String)
         fun clearSession()
-        fun callLoginAPI(context: Context, restModel: UserRestModel, phone:String, password:String)
+        fun callMerchantLoginAPI(context: Context, restModel: MerchantUserRestModel, phone:String, password:String)
+        fun callCashierLoginAPI(context: Context, restModel: CashierRestModel, phone:String, password:String)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
-        fun onSuccessLogin(list:List<User>)
+        fun onSuccessLogin(list:MerchantUser)
+        fun onSuccessCashierLogin(list:LoginCashier)
         fun onFailedAPI(code:Int,msg:String)
     }
 

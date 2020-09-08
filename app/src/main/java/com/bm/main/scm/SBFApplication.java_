@@ -23,7 +23,7 @@ import com.bm.main.scm.di.AppComponentProvider;
 import com.bm.main.scm.di.DaggerAppComponent;
 import com.bm.main.scm.rabbit.RabbitMqThread;
 import com.bm.main.single.ftl.utils.MemoryStore;
-import com.bm.sc.bebasbayar.social.di.UserComponent;
+import com.bm.main.scm.di.UserComponent;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
@@ -77,7 +77,7 @@ public class SBFApplication extends MultiDexApplication implements Application.A
 //        AndroidThreeTen.init(this);
         PreferenceClass.initialize();
         MemoryStore.initialize();
-RequestUtils.initialize();
+        RequestUtils.initialize();
         sAnalytics = GoogleAnalytics.getInstance(this);
         sAnalytics.setLocalDispatchPeriod(1800);
 
@@ -205,11 +205,13 @@ RequestUtils.initialize();
         onConfigurationChanged(config);
 
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
+
     @Override
     public void onActivityCreated(@NotNull Activity activity, Bundle savedInstanceState) {
     }

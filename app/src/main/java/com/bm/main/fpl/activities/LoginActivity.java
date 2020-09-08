@@ -506,7 +506,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                     toHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     toHome.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-                    SBFApplication.initUserComponent(PreferenceClass.getTokenPos());
+//                    SBFApplication.initUserComponent(PreferenceClass.getTokenPos());
 
                     startActivity(toHome);
                     finish();

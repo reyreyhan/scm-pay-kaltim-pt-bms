@@ -41,7 +41,7 @@ class UserRestModel(context: Context) : RestModel<UserRestInterface>(context) {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun login(user:String,password:String): Observable<List<User>> {
+    fun login(user:String,password:String): Observable<User> {
         return restInterface.login(user,password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

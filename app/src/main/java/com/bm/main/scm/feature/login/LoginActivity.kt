@@ -17,8 +17,6 @@ import kotlinx.android.synthetic.main.activity_login_scm.*
 
 class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginContract.View {
 
-    private var merchantLogin = true
-
     override fun createPresenter(): LoginPresenter {
         return LoginPresenter(this, this)
     }
@@ -29,11 +27,28 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
-//        getPresenter()?.onViewCreated()
+        getPresenter()?.onViewCreated()
     }
 
     override fun enableLoginBtn(isLogin: Boolean) {
         btn_login.isEnabled = isLogin
+    }
+
+    override fun getPin():String = et_pin.text.toString()
+
+    override fun navigateMerchant() {
+        val intent = Intent(this, DrawerActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.putExtra("IsMerchant", true)
+        startActivity(intent)
+//        startActivity(Intent(this, RegisterMerchantActivity::class.java))
+    }
+
+    override fun navigateCashier() {
+        val intent = Intent(this, DrawerActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.putExtra("IsMerchant", false)
+        startActivity(intent)
     }
 
     private fun renderView() {
@@ -55,7 +70,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val pwd = et_pin.text.toString()
                 val hp = p0.toString()
-//                getPresenter()?.onBtnLoginCheck(hp, pwd)
+                getPresenter()?.onBtnLoginCheck(hp, pwd)
             }
         })
 
@@ -71,7 +86,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val hp = et_num_hp.toString()
                 val pwd = p0.toString()
-//                getPresenter()?.onBtnLoginCheck(hp, pwd)
+                getPresenter()?.onBtnLoginCheck(hp, pwd)
             }
         })
 
@@ -84,23 +99,11 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
 //            }
 //        }
 
-        btn_login.isEnabled = true
         btn_login.setOnClickListener {
             val mail = et_num_hp.text.toString()
             val pwd = et_pin.text.toString()
-//            getPresenter()?.onLogin(mail, pwd)
-            if (merchantLogin){
-                startActivity(Intent(this, RegisterMerchantActivity::class.java))
-            }else{
-                val intent = Intent(this, DrawerActivity::class.java)
-                intent.putExtra("IsMerchant", false)
-                startActivity(intent)
-            }
+            getPresenter()?.onLogin(mail, pwd)
         }
-    }
-
-    override fun showLoginSuccess() {
-        restartMainActivity()
     }
 
     override fun openRegisterPage() {
@@ -116,15 +119,12 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
         tab_login.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(p0: TabLayout.Tab?) {
                 switchLoginTab(p0!!.position)
-                merchantLogin = p0.position == 0
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {
-
             }
 
             override fun onTabReselected(p0: TabLayout.Tab?) {
-
             }
         })
     }
@@ -147,13 +147,15 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
         lbl_register.highlightColor = Color.TRANSPARENT
     }
 
-    fun switchLoginTab(selected: Int) {
+    private fun switchLoginTab(selected: Int) {
         when (selected) {
             0 -> {
+                getPresenter()!!.changeLogin(true)
                 lbl_et_pin.text = "PIN Owner"
                 lbl_register.visibility = View.VISIBLE
             }
             1 -> {
+                getPresenter()!!.changeLogin(false)
                 lbl_et_pin.text = "PIN Kasir"
                 lbl_register.visibility = View.GONE
             }

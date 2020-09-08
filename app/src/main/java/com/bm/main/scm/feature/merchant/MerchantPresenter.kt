@@ -10,7 +10,6 @@ import com.bm.main.scm.models.transaction.TransactionRestModel
 import com.bm.main.scm.models.user.User
 import com.bm.main.scm.models.user.UserRestModel
 import com.bm.main.scm.utils.AppConstant
-import com.bm.main.scm.utils.Helper
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import org.threeten.bp.LocalDate
 import timber.log.Timber
@@ -87,12 +86,12 @@ class MerchantPresenter(val context:Context, val view: MerchantContract.View) : 
 
         val user = list[0]
         interactor.saveUser(user)
-        view.setProfile(user.nama_lengkap!!,
-            user.alamat!!,
-            user.kota!!,
-            user.no_telp!!,
-            user.gbr!!,
-            "Rp " + Helper.convertToCurrency(user.omset!!))
+//        view.setProfile(user.nama_lengkap!!,
+//            user.alamat!!,
+//            user.kota!!,
+//            user.no_telp!!,
+//            user.gbr!!,
+//            "Rp " + Helper.convertToCurrency(user.omset!!))
     }
 
 

@@ -1,8 +1,10 @@
 package com.bm.main.scm.feature.login;
 
 import android.content.Context
-import com.bm.main.scm.models.user.User
-import com.bm.main.scm.models.user.UserRestModel
+import com.bm.main.scm.models.cashier.CashierRestModel
+import com.bm.main.scm.models.cashier.LoginCashier
+import com.bm.main.scm.models.user.merchant.MerchantUser
+import com.bm.main.scm.models.user.merchant.MerchantUserRestModel
 import com.bm.main.scm.rest.entity.RestException
 import com.bm.main.scm.utils.AppConstant
 import com.bm.main.scm.utils.AppSession
@@ -28,16 +30,29 @@ class LoginInteractor(var output: LoginContract.InteractorOutput?) : LoginContra
         appSession.clearSession()
     }
 
-    override fun saveSession(user: User) {
-        val token = user.key
-        appSession.setSharedPreferenceString(AppConstant.TOKEN,token)
-        appSession.setSharedPreferenceString(AppConstant.USER,user.json())
+    override fun saveSession(user: MerchantUser) {
+        val token = user.id_session
+        appSession.setSharedPreferenceString(AppConstant.TOKEN, token)
+        appSession.setSharedPreferenceString("OWNER_HP", user.no_telp)
+        appSession.setSharedPreferenceBoolean("IS_LOGGED_IN", true)
+        appSession.setSharedPreferenceBoolean("IS_MERCHANT", true)
     }
 
-    override fun callLoginAPI(context: Context, restModel: UserRestModel, phone: String, password: String) {
-        disposable.add(restModel.login(phone,password).subscribeWith(object : DisposableObserver<List<User>>() {
+    override fun saveSessionCashier(user: LoginCashier) {
+        appSession.setSharedPreferenceString("NO_HP", user.no_hp)
+        appSession.setSharedPreferenceString("OWNER_HP", user.no_telp_owner)
+        appSession.setSharedPreferenceBoolean("IS_LOGGED_IN", true)
+        appSession.setSharedPreferenceBoolean("IS_MERCHANT", false)
+    }
 
-            override fun onNext(@NonNull response: List<User>) {
+    override fun savePin(pin: String) {
+        appSession.setSharedPreferenceString("PIN", pin)
+    }
+
+    override fun callMerchantLoginAPI(context: Context, restModel: MerchantUserRestModel, phone: String, password: String) {
+        disposable.add(restModel.login(phone,password).subscribeWith(object : DisposableObserver<MerchantUser>() {
+
+            override fun onNext(@NonNull response: MerchantUser) {
                 output?.onSuccessLogin(response)
             }
 
@@ -61,4 +76,32 @@ class LoginInteractor(var output: LoginContract.InteractorOutput?) : LoginContra
         }))
     }
 
+    override fun callCashierLoginAPI(context: Context, restModel: CashierRestModel, phone: String, password: String) {
+        disposable.add(restModel
+            .login(phone,password)
+            .subscribeWith(object : DisposableObserver<LoginCashier>() {
+
+            override fun onNext(@NonNull response: LoginCashier) {
+                output?.onSuccessCashierLogin(response)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                e.printStackTrace()
+                var errorCode = 999
+                var errorMessage = "Terjadi kesalahan"
+                if (e is RestException) {
+                    errorCode = e.errorCode
+                    errorMessage = e.message ?: "Terjadi kesalahan"
+                }
+                else{
+                    errorMessage = e.message.toString()
+                }
+                output?.onFailedAPI(errorCode,errorMessage)
+            }
+
+            override fun onComplete() {
+
+            }
+        }))
+    }
 }

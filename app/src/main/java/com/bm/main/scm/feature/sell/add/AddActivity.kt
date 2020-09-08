@@ -8,15 +8,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bm.main.fpl.templates.choosephotohelper.ChoosePhotoHelper
 import com.bm.main.fpl.templates.choosephotohelper.callback.ChoosePhotoCallback
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
-import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.feature.dialog.BottomDialog
 import com.bm.main.scm.feature.manage.category.add.AddCategoryActivity
-import com.bm.main.scm.feature.manage.product.ProductViewModel
 import com.bm.main.scm.feature.scan.ScanCodeActivity
 import com.bm.main.scm.feature.sell.chooseProduct.ChooseProductActivity
 import com.bm.main.scm.models.DialogModel
@@ -40,7 +37,7 @@ class AddActivity : BaseActivity<AddPresenter, AddContract.View>(),
     BottomDialog.Listener {
 
     private val categoryDialog = BottomDialog.newInstance()
-    private val productViewModel by lazy { ViewModelProvider(this, userComponent!!.productComponentFactory()).get(ProductViewModel::class.java) }
+//    private val productViewModel by lazy { ViewModelProvider(this, userComponent!!.productComponentFactory()).get(ProductViewModel::class.java) }
     private lateinit var choosePhotoHelper: ChoosePhotoHelper
     private val CODE_OPEN_SCAN = 1001
     private val CODE_OPEN_CHOOSE_PRODUCT = 1023
@@ -245,7 +242,7 @@ class AddActivity : BaseActivity<AddPresenter, AddContract.View>(),
         } else if (requestCode == CODE_OPEN_SEARCH && resultCode == RESULT_OK && data != null) {
             // set value from item
             try {
-                productViewModel.moshi.adapter(Product::class.java).fromJson(data.getStringExtra("item"))?.let { setData(it) }
+//                productViewModel.moshi.adapter(Product::class.java).fromJson(data.getStringExtra("item"))?.let { setData(it) }
             } catch (e: Exception) {
                 Timber.e(e)
             }

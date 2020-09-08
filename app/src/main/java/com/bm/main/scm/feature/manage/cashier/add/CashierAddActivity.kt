@@ -8,10 +8,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.dialog.SuccessDialog
 import com.bm.main.scm.feature.manage.cashier.list.CashierListActivity
 import kotlinx.android.synthetic.main.activity_qris_cashier_add.*
 
-class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.View>(), CashierAddContract.View {
+class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.View>(), CashierAddContract.View, SuccessDialog.SuccessDialogListener {
     override fun createPresenter(): CashierAddPresenter {
         return CashierAddPresenter(this, this)
     }
@@ -22,7 +23,7 @@ class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
-//        getPresenter()?.onViewCreated()
+        getPresenter()?.onViewCreated()
     }
 
 
@@ -57,7 +58,7 @@ class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.
 
     private fun initButton() {
         btn_add_cashier.setOnClickListener {
-            startActivity(Intent(this, CashierListActivity::class.java))
+            getPresenter()?.addCashier(et_cashier_num_hp.text.toString(), et_cashier_name.text.toString(), et_pin.text.toString())
         }
     }
 
@@ -72,7 +73,7 @@ class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+                getPresenter()?.checkForm(et_cashier_num_hp.text.toString(), p0.toString(), et_pin.text.toString())
             }
         })
 
@@ -86,11 +87,11 @@ class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+                getPresenter()?.checkForm(p0.toString(), et_cashier_name.text.toString(), et_pin.text.toString())
             }
         })
 
-        et_bank_owner.addTextChangedListener(object : TextWatcher {
+        et_pin.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
 
             }
@@ -100,7 +101,7 @@ class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+                getPresenter()?.checkForm(et_cashier_num_hp.text.toString(), et_cashier_name.text.toString(), p0.toString())
             }
         })
     }
@@ -108,5 +109,25 @@ class CashierAddActivity : BaseActivity<CashierAddPresenter, CashierAddContract.
     override fun onDestroy() {
         super.onDestroy()
         getPresenter()?.onDestroy()
+    }
+
+    override fun onPositiveButtonDialog() {
+        startActivity(Intent(this, CashierListActivity::class.java))
+        finish()
+    }
+
+    override fun toastError(msg: String) {
+        showToast(msg)
+    }
+
+    override fun dialogSuccess(title: String, msg: String) {
+        SuccessDialog.newInstance(
+            title,
+            msg
+        ).show(supportFragmentManager, SuccessDialog.TAG)
+    }
+
+    override fun enableAddButton(enable: Boolean) {
+        btn_add_cashier.isEnabled = enable
     }
 }

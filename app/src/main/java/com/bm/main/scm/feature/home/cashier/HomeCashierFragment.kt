@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,18 +20,49 @@ import com.bm.main.fpl.utils.Device
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseFragment
+import com.bm.main.scm.feature.home.merchant.HomeTransactionAdapter
+import com.bm.main.scm.feature.qrisscm.QrisSCMActivity
+import com.bm.main.scm.feature.reportscm.detail.ReportTransactionDetailActivity
 import com.bm.main.scm.feature.reportscm.transaction.cashier.ReportTransactionCashierActivity
 import com.bm.main.scm.feature.setting.main.SettingActivity
 import com.bm.main.scm.models.menu.Menu
+import com.bm.main.scm.rabbit.QrTransaction
+import com.bm.main.scm.rabbit.QrisService
 import com.bm.main.scm.rest.entity.RestException
 import com.bm.main.scm.ui.ext.toast
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home_cashier_scm.view.*
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeCashierFragment : BaseFragment<HomeCashierPresenter, HomeCashierContract.View>(),
-    HomeCashierContract.View {
+    HomeCashierContract.View, HomeTransactionAdapter.OnItemClickListener {
+
+    private val dateFormat by lazy { SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) }
+    private val itemDateFormat by lazy { SimpleDateFormat("d MMMM yyyy", Locale.getDefault()) }
+    private val respDateFormat by lazy {
+        SimpleDateFormat(
+            "yyyy-MM-dd HH:mm:ss.SSS",
+            Locale.getDefault()
+        )
+    }
+    private val listDates by lazy { ArrayList<String>() }
+    val dateNow by lazy {
+        Calendar.getInstance().time
+    }
+
+    @Inject
+    lateinit var qrisService: QrisService
+
+    private var disposable: Disposable? = null
+
 
     private lateinit var _view: View
     val adapter = MenuAdapter()
@@ -68,9 +100,13 @@ class HomeCashierFragment : BaseFragment<HomeCashierPresenter, HomeCashierContra
     private fun renderView() {
         setupDatePicker()
         initRecyclerView()
+        _view.ll_menu_qris.setOnClickListener {
+            startActivity(Intent(activity, QrisSCMActivity::class.java))
+        }
         _view.ll_menu_report.setOnClickListener {
             startActivity(Intent(activity, ReportTransactionCashierActivity::class.java))
         }
+        loadData(dateNow, dateNow)
 //        val spaceItem = resources.getDimensionPixelSize(R.dimen.standard_margin)
 //        _view.rv_list.addItemDecoration(GridItemOffsetDecoration(spaceItem))
 //        val layoutManager = GridLayoutManager(activity, 3, RecyclerView.VERTICAL, false)
@@ -153,18 +189,12 @@ class HomeCashierFragment : BaseFragment<HomeCashierPresenter, HomeCashierContra
     }
 
     private fun initRecyclerView() {
-        val listTransaction = mutableListOf<TransactionHomeCashier>()
-        listTransaction.add(TransactionHomeCashier("OVO - Rizqy Ali Syaifurrahman", "Senin, 27 Agustus 2020 - 16:17", "12341231235", 25000.00))
-        listTransaction.add(TransactionHomeCashier("Link Aja - Rizqy Ali Syaifurrahman", "Senin, 28 Agustus 2020 - 16:17", "5435324223", 50000.00))
-        listTransaction.add(TransactionHomeCashier("OVO - Rizqy Ali Syaifurrahman", "Senin, 27 Agustus 2020 - 16:17", "12341231235", 25000.00))
-        listTransaction.add(TransactionHomeCashier("Link Aja - Rizqy Ali Syaifurrahman", "Senin, 28 Agustus 2020 - 16:17", "5435324223", 50000.00))
-        listTransaction.add(TransactionHomeCashier("OVO - Rizqy Ali Syaifurrahman", "Senin, 27 Agustus 2020 - 16:17", "12341231235", 25000.00))
-        listTransaction.add(TransactionHomeCashier("Link Aja - Rizqy Ali Syaifurrahman", "Senin, 28 Agustus 2020 - 16:17", "5435324223", 50000.00))
-        val adapter = HomeTransactionAdapter(listTransaction)
+        val listTransaction = mutableListOf<QrTransaction>()
+        val adapter = HomeTransactionAdapter(listTransaction, this)
         _view.rv_transactions.adapter = adapter
-        _view.rv_transactions.layoutManager = LinearLayoutManager(_view.context, RecyclerView.VERTICAL, false)
+        _view.rv_transactions.layoutManager =
+            LinearLayoutManager(_view.context, RecyclerView.VERTICAL, false)
     }
-
     fun enableQrMenu(enable: Boolean) {
         /*if (::_view.isInitialized)
             _view.btn_grocery.isEnabled = enable*/
@@ -185,6 +215,15 @@ class HomeCashierFragment : BaseFragment<HomeCashierPresenter, HomeCashierContra
 //        }
 //    }
 
+    fun setBottomCounter(list:List<QrTransaction>){
+        var sumOmzet = 0.0
+        list.forEach { qr ->
+            sumOmzet+= qr.nominal.toFloat()
+        }
+        _view.tv_value_total_transaction.text = "${list.size} transaksi"
+        _view.tv_value_total_ammount.text = "Rp ${sumOmzet.toInt()}"
+    }
+
     @SuppressLint("SimpleDateFormat")
     private fun setupDatePicker() {
         val now = Calendar.getInstance()
@@ -199,10 +238,52 @@ class HomeCashierFragment : BaseFragment<HomeCashierPresenter, HomeCashierContra
             val date1 = formatter.format(it.first?.let { it1 -> Date(it1) })
             val date2 = formatter.format(it.second?.let { it1 -> Date(it1) })
             _view.tv_date_range.text = "${date1} - ${date2}"
+            loadData(Date(it.first!!), Date(it.second!!))
         }
         _view.tv_date_range.setOnClickListener {
             picker.show(activity?.supportFragmentManager!!, picker.toString())
         }
+    }
+
+    private fun loadData(dateStart: Date, dateEnd: Date) {
+        val adapter = _view.rv_transactions.adapter as HomeTransactionAdapter
+
+        disposable?.dispose()
+        disposable = qrisService
+            .getTransaksiRange(
+                "1247628",
+                dateFormat.format(dateStart),
+                dateFormat.format(dateEnd)
+            )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ result ->
+//                swipe.isRefreshing = false
+                if (result.rc == "00" && result.data.isNotEmpty()) {
+                    result.data
+                        .sortedByDescending { it.time_request }
+                        .forEach {
+                            val timeStr = it.time_request.replace("T", " ")
+                            val timeFormatted = respDateFormat.parse(timeStr)
+                            Timber.d("Time: %s", timeStr)
+                            Timber.d("Time Long: %d", timeFormatted.time)
+                            Timber.d("Time Str: %s", itemDateFormat.format(timeFormatted))
+                            it.time = timeFormatted.time
+                            it.time_request = itemDateFormat.format(timeFormatted)
+                            adapter.list.add(it)
+                        }
+                    setBottomCounter(adapter.list)
+                    adapter.notifyDataSetChanged()
+                }
+            }, { error ->
+                Log.d("Error: %s", error.toString())
+            })
+    }
+
+    override fun onItemClicked(trx: QrTransaction) {
+        startActivity(Intent(requireContext(), ReportTransactionDetailActivity::class.java).apply {
+            putExtra("QrTransaction", trx)
+        })
     }
 
     override fun setMenu(list: List<Menu>) {

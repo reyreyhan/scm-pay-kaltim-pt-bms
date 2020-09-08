@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.bm.main.fpl.activities.HomeActivity
 import com.bm.main.fpl.utils.PreferenceClass
@@ -16,10 +15,8 @@ import com.bm.main.fpl.webview.FCMActivity
 import com.bm.main.scm.R
 import com.bm.main.scm.SBFApplication
 import com.bm.main.scm.base.BaseActivity
-import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.feature.dialog.NoteDialog
 import com.bm.main.scm.feature.dialog.SingleDateDialog
-import com.bm.main.scm.feature.manage.product.ProductViewModel
 import com.bm.main.scm.feature.merchant.MerchantActivity
 import com.bm.main.scm.feature.newhome.adapter.NewHomeFragmentStateAdapter
 import com.bm.main.scm.feature.newhome.adapter.PENJUALAN_FRAGMENT_INDEX
@@ -28,12 +25,9 @@ import com.bm.main.scm.feature.sell.chooseProduct.ChooseProductFragment
 import com.bm.main.scm.feature.sell.main.SellFragment
 import com.bm.main.scm.models.cart.Cart
 import com.bm.main.scm.models.product.Product
-import com.bm.main.scm.rabbit.QrisViewModel
 import com.bm.main.scm.rabbit.RabbitMqThread
-import com.bm.main.scm.rest.salesforce.SfViewModel
 import com.google.android.material.tabs.TabLayout
 import com.prolificinteractive.materialcalendarview.CalendarDay
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_home_new.*
 import org.threeten.bp.LocalDate
@@ -50,7 +44,7 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
 
     lateinit var fragmentAdapter:NewHomeFragmentStateAdapter
 
-    private val productViewModel by lazy {
+   /* private val productViewModel by lazy {
         ViewModelProvider(
             this,
             userComponent!!.productComponentFactory()
@@ -69,8 +63,7 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
             this,
             userComponent!!.qrisComponentFactory()
         ).get(QrisViewModel::class.java)
-    }
-
+    }*/
 
     private val TAG = NewHomeActivity::class.java.simpleName
 
@@ -88,10 +81,10 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
         if (PreferenceClass.isLoggedIn()) {
             if (SBFApplication.getInstance().rabbitThread == null) {
                 SBFApplication.getInstance().rabbitThread = RabbitMqThread(this)
-                SBFApplication.getInstance().rabbitThread.start()
-            } else if (!SBFApplication.getInstance().rabbitThread.isAlive) {
+                SBFApplication.getInstance().rabbitThread!!.start()
+            } else if (!SBFApplication.getInstance().rabbitThread!!.isAlive) {
                 try {
-                    SBFApplication.getInstance().rabbitThread.start()
+                    SBFApplication.getInstance().rabbitThread!!.start()
                 } catch (e: Exception) {
                     Timber.e(e)
                 }
@@ -162,27 +155,27 @@ class NewHomeActivity : BaseActivity<NewHomePresenter, NewHomeContract.View>(),
             }
         })
 
-        disposables.add(
-            qrisViewModel.service.check(PreferenceClass.getId().orEmpty())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
-                    //nav_view.menu.findItem(R.id.nav_qris).isEnabled = res.rc == "00"
-                    //homeFragment.enableQrMenu(res.rc == "00")
-                    res.result.firstOrNull()?.let {
-                        Timber.d("Outlet ID: ${PreferenceClass.getId()}")
-                        Timber.d("url_qr: ${it.url_qr}")
-                        Timber.d("nmid: ${it.nmid}")
-                        PreferenceClass.putString("url_qr", it.url_qr)
-                        PreferenceClass.putString("nmid", it.nmid)
-                        PreferenceClass.putString("id_speedcash", it.id_speedcash)
-                        PreferenceClass.putString("nama_toko", it.nama_toko)
-                        PreferenceClass.putString("nama_pemilik", it.nama_pemilik)
-                    }
-                }, { e ->
-                    Timber.e(e)
-                    //nav_view.menu.findItem(R.id.nav_qris).isEnabled = false
-                    //homeFragment.enableQrMenu(false)
-                })
-        )
+//        disposables.add(
+//            qrisViewModel.service.check(PreferenceClass.getId().orEmpty())
+//                .observeOn(AndroidSchedulers.mainThread()).subscribe({ res ->
+//                    //nav_view.menu.findItem(R.id.nav_qris).isEnabled = res.rc == "00"
+//                    //homeFragment.enableQrMenu(res.rc == "00")
+//                    res.result.firstOrNull()?.let {
+//                        Timber.d("Outlet ID: ${PreferenceClass.getId()}")
+//                        Timber.d("url_qr: ${it.url_qr}")
+//                        Timber.d("nmid: ${it.nmid}")
+//                        PreferenceClass.putString("url_qr", it.url_qr)
+//                        PreferenceClass.putString("nmid", it.nmid)
+//                        PreferenceClass.putString("id_speedcash", it.id_speedcash)
+//                        PreferenceClass.putString("nama_toko", it.nama_toko)
+////                        PreferenceClass.putString("nama_pemilik", it.nama_pemilik)
+//                    }
+//                }, { e ->
+//                    Timber.e(e)
+//                    //nav_view.menu.findItem(R.id.nav_qris).isEnabled = false
+//                    //homeFragment.enableQrMenu(false)
+//                })
+//        )
     }
 
     override fun onResume() {

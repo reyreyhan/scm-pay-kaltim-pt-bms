@@ -1,22 +1,16 @@
 package com.bm.main.scm.feature.qris
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.fpl.templates.StickHeaderItemDecoration
-import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.R
-import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.rabbit.QrMutation
-import com.bm.main.scm.rabbit.QrisViewModel
 import com.bm.main.scm.ui.LinearItemDecoration
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.qr_saldo_fragment.*
 import java.text.SimpleDateFormat
@@ -40,11 +34,11 @@ class QrSaldoFragment : Fragment() {
         )
     }
 
-    private val qrisViewModel by lazy {
-        ViewModelProvider(parentFragment!!, userComponent!!.qrisComponentFactory()).get(
-            QrisViewModel::class.java
-        )
-    }
+//    private val qrisViewModel by lazy {
+//        ViewModelProvider(parentFragment!!, userComponent!!.qrisComponentFactory()).get(
+//            QrisViewModel::class.java
+//        )
+//    }
 
     private var disposable: Disposable? = null
 
@@ -72,40 +66,40 @@ class QrSaldoFragment : Fragment() {
         val calendar = Calendar.getInstance().apply { time = date }
 
         disposable?.dispose()
-        disposable = qrisViewModel.service.getMutasiSaldo(
-            PreferenceClass.getString("id_speedcash"),
-            dateFormat.format(date)
-        ).observeOn(AndroidSchedulers.mainThread()).subscribe({ result ->
-            swipe.isRefreshing = false
-
-            if (result.rc == "00" && result.data.isNotEmpty()) {
-                result.data
-                    .sortedByDescending { it.mutation_date }
-                    .forEach {
-                        it.time = respDateFormat.parse(it.mutation_date)
-                        it.mutation_date = itemDateFormat.format(it.time)
-
-                        if (!listDates.contains(it.mutation_date)) {
-                            listDates.add(it.mutation_date)
-                            adapter.listItem.add(QrItem(0, it))
-                        }
-                        adapter.listItem.add(QrItem(1, it))
-                    }
-                adapter.notifyItemRangeInserted(adapter.listItem.size, result.data.size)
-            }
-
-            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
-                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
-            } else if (adapter.listItem.isEmpty()) {
-                t_error.visibility = View.VISIBLE
-            }
-        }, {
-            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
-                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
-            } else if (adapter.listItem.isEmpty()) {
-                t_error.visibility = View.VISIBLE
-            }
-        })
+//        disposable = qrisViewModel.service.getMutasiSaldo(
+//            PreferenceClass.getString("id_speedcash"),
+//            dateFormat.format(date)
+//        ).observeOn(AndroidSchedulers.mainThread()).subscribe({ result ->
+//            swipe.isRefreshing = false
+//
+//            if (result.rc == "00" && result.data.isNotEmpty()) {
+//                result.data
+//                    .sortedByDescending { it.mutation_date }
+//                    .forEach {
+//                        it.time = respDateFormat.parse(it.mutation_date)
+//                        it.mutation_date = itemDateFormat.format(it.time)
+//
+//                        if (!listDates.contains(it.mutation_date)) {
+//                            listDates.add(it.mutation_date)
+//                            adapter.listItem.add(QrItem(0, it))
+//                        }
+//                        adapter.listItem.add(QrItem(1, it))
+//                    }
+//                adapter.notifyItemRangeInserted(adapter.listItem.size, result.data.size)
+//            }
+//
+//            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
+//                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
+//            } else if (adapter.listItem.isEmpty()) {
+//                t_error.visibility = View.VISIBLE
+//            }
+//        }, {
+//            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
+//                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
+//            } else if (adapter.listItem.isEmpty()) {
+//                t_error.visibility = View.VISIBLE
+//            }
+//        })
     }
 
     override fun onDestroy() {
@@ -138,13 +132,13 @@ class QrSaldoFragment : Fragment() {
                 holder.trx_id.text = "#" + item.trx_reff
                 holder.trx_time.text = itemTimeFormat.format(item.time)
                 holder.trx_name.text = item.merchant_reff
-                if (item.debit > 0) {
-                    holder.trx_nominal.text = "-Rp " + item.debit
-                    holder.trx_nominal.setTextColor(Color.parseColor("#b40b3a"))
-                } else {
-                    holder.trx_nominal.text = "Rp " + item.credit
-                    holder.trx_nominal.setTextColor(Color.parseColor("#139943"))
-                }
+//                if (item.debit > 0) {
+//                    holder.trx_nominal.text = "-Rp " + item.debit
+//                    holder.trx_nominal.setTextColor(Color.parseColor("#b40b3a"))
+//                } else {
+//                    holder.trx_nominal.text = "Rp " + item.credit
+//                    holder.trx_nominal.setTextColor(Color.parseColor("#139943"))
+//                }
             }
         }
 

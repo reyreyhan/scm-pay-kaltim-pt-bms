@@ -12,6 +12,7 @@ object AppConstant {
     const val CODE = "code"
     const val DATA = "data"
     const val USER = "user"
+    const val TOKO = "toko"
     const val POSITION = "position"
 
     const val REQUEST_CAMERA_PERMISSION = 1001

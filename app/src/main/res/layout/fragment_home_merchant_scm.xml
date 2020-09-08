@@ -242,7 +242,7 @@
         android:id="@+id/view_shadow"
         android:layout_width="match_parent"
         android:layout_height="8dp"
-        android:background="@drawable/drop_shadowbottom_soft"
+        android:background="@drawable/drop_shadowtop_soft"
         app:layout_constraintBottom_toTopOf="@id/ll_bottom_container"
         app:layout_constraintTop_toBottomOf="@id/ll_main_container" />
 
@@ -270,7 +270,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/standard_margin"
-                android:src="@drawable/ic_total_transaksi" />
+                app:srcCompat="@drawable/ic_total_transaksi" />
 
             <TextView
                 android:id="@+id/tv_lbl_total_transaction"
@@ -305,7 +305,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/standard_margin"
-                android:src="@drawable/ic_total_omzet" />
+                app:srcCompat="@drawable/ic_total_omzet" />
 
             <TextView
                 android:id="@+id/tv_lbl_total_ammount"

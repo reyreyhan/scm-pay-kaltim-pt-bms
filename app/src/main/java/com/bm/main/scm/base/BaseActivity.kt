@@ -6,7 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import com.bm.main.fpl.activities.LoginActivity
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.R
-import com.bm.main.scm.SBFApplication
+import com.bm.main.scm.feature.drawer.DrawerActivity
 import com.bm.main.scm.feature.newhome.NewHomeActivity
 import com.bm.main.scm.ui.ext.toast
 import com.bm.main.scm.utils.AppConstant
@@ -83,7 +83,7 @@ abstract class BaseActivity<P : BasePresenter<V>, V : BaseViewImpl> : com.bm.mai
     }
 
     fun restartMainActivity() {
-        val intent = Intent(this, NewHomeActivity::class.java)
+        val intent = Intent(this, DrawerActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
@@ -91,7 +91,6 @@ abstract class BaseActivity<P : BasePresenter<V>, V : BaseViewImpl> : com.bm.mai
     fun restartLoginActivity() {
         requestLogout()
         PreferenceClass.setLogOut()
-        SBFApplication.clearUserComponent()
         // val intent = Intent(this, LoginActivity::class.java)
         val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

@@ -2,21 +2,23 @@ package com.bm.main.scm.feature.drawer
 
 import android.content.Context
 import android.content.Intent
-import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.bm.main.scm.base.BaseInteractorImpl
 import com.bm.main.scm.base.BaseInteractorOutputImpl
 import com.bm.main.scm.base.BasePresenterImpl
 import com.bm.main.scm.base.BaseViewImpl
 import com.bm.main.scm.models.cart.Cart
+import com.bm.main.scm.models.user.merchant.MerchantToko
+import com.bm.main.scm.models.user.merchant.MerchantUser
+import com.bm.main.scm.models.user.merchant.MerchantUserRestModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import org.threeten.bp.LocalDate
-import com.bm.main.scm.models.user.User
-import com.bm.main.scm.models.user.UserRestModel
 
 interface DrawerContract {
 
     interface View : BaseViewImpl {
         fun selectMenu(resId: Int)
-        fun setProfile(name: String, address: String, city: String, phone: String, url: String)
+        fun setProfile(name: String, id:String)
+        fun setProfilePict(url: String)
         fun openHelpPage()
         fun openSingleDatePickerDialog(
             selected: CalendarDay?,
@@ -44,19 +46,29 @@ interface DrawerContract {
         fun getSelectedIdMenu(): Int
         fun setSelectedPosition(position: Int)
         fun getSelectedPosition(): Int
-        fun loadProfile()
+        fun loadProfileRemote()
+        fun loadProfileLocal()
+        fun logOut()
         fun onDestroy()
     }
 
     interface Interactor : BaseInteractorImpl {
         fun onDestroy()
         fun onRestartDisposable()
-        fun callGetProfileAPI(context: Context, restModel: UserRestModel)
-        fun saveUser(user: User)
+        fun callGetProfileAPI(context: Context, restModel: MerchantUserRestModel)
+        fun callGetTokoAPI(context: Context, restModel: MerchantUserRestModel)
+        fun saveUser(user: MerchantUser)
+        fun saveToko(toko: MerchantToko)
+        fun checkProfileToko()
+        fun getLocalProfileToko()
+        fun resetAppSession()
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl {
-        fun onSuccessGetProfile(list: List<User>)
+        fun onSuccessGetProfile(list: List<MerchantUser>)
+        fun onSuccessGetToko(list: List<MerchantToko>)
+        fun onProfileTokoExisting(isExisting:Boolean)
+        fun onSuccessGetProfileTokoLocal(user:MerchantUser, toko:MerchantToko)
         fun onFailedAPI(code: Int, msg: String)
     }
 }

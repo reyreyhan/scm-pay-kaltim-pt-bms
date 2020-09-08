@@ -14,7 +14,6 @@ interface ReportMutationContract {
     interface Presenter : BasePresenterImpl<View> {
         fun onDestroy()
         fun onViewCreated()
-
     }
 
     interface Interactor : BaseInteractorImpl {

@@ -7,8 +7,8 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ProductResponse(
     var status: String = "",
-    var msg: String = "",
     var errCode: String = "",
+    var msg: String = "",
     var data: List<ProductResponseData> = emptyList()
 )
 

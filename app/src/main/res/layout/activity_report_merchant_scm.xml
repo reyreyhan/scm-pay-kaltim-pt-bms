@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/standard_margin"
-                android:src="@drawable/ic_total_transaksi" />
+                app:srcCompat="@drawable/ic_total_transaksi" />
 
             <TextView
                 android:id="@+id/tv_lbl_total_transaction"
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/standard_margin"
-                android:src="@drawable/ic_total_omzet" />
+                app:srcCompat="@drawable/ic_total_omzet" />
 
             <TextView
                 android:id="@+id/tv_lbl_total_ammount"

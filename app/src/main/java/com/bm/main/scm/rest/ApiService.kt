@@ -1,8 +1,8 @@
 package com.bm.main.scm.rest
 
 import androidx.annotation.Keep
+import com.bm.main.scm.di.UserScope
 import com.bm.main.scm.models.product.Product
-import com.bm.sc.bebasbayar.social.di.UserScope
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

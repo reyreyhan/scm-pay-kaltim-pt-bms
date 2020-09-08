@@ -7,16 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.fpl.templates.StickHeaderItemDecoration
-import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.R
-import com.bm.main.scm.di.userComponent
 import com.bm.main.scm.rabbit.QrTransaction
-import com.bm.main.scm.rabbit.QrisViewModel
 import com.bm.main.scm.ui.LinearItemDecoration
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.qr_transaction_fragment.*
 import java.text.SimpleDateFormat
@@ -40,11 +35,11 @@ class QrTransactionFragment : Fragment() {
         )
     }
 
-    private val qrisViewModel by lazy {
+    /*private val qrisViewModel by lazy {
         ViewModelProvider(parentFragment!!, userComponent!!.qrisComponentFactory()).get(
             QrisViewModel::class.java
         )
-    }
+    }*/
 
     private var disposable: Disposable? = null
 
@@ -72,39 +67,39 @@ class QrTransactionFragment : Fragment() {
         val calendar = Calendar.getInstance().apply { time = date }
 
         disposable?.dispose()
-        disposable = qrisViewModel.service.getTransaksi(
-            PreferenceClass.getString("id_speedcash"),
-            dateFormat.format(date)
-        ).observeOn(AndroidSchedulers.mainThread()).subscribe({ result ->
-            swipe.isRefreshing = false
-            if (result.rc == "00" && result.data.isNotEmpty()) {
-                result.data
-                    .sortedByDescending { it.time_request }
-                    .forEach {
-                        it.time = respDateFormat.parse(it.time_request)
-                        it.time_request = itemDateFormat.format(it.time)
-
-                        if (!listDates.contains(it.time_request)) {
-                            listDates.add(it.time_request)
-                            trxAdapter.listItem.add(QrItem(0, it))
-                        }
-                        trxAdapter.listItem.add(QrItem(1, it))
-                    }
-                trxAdapter.notifyItemRangeInserted(trxAdapter.listItem.size, result.data.size)
-            }
-
-            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
-                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
-            } else if (trxAdapter.itemCount == 0) {
-                t_error.visibility = View.VISIBLE
-            }
-        }, {
-            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
-                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
-            } else if (trxAdapter.itemCount == 0) {
-                t_error.visibility = View.VISIBLE
-            }
-        })
+//        disposable = qrisViewModel.service.getTransaksi(
+//            PreferenceClass.getString("id_speedcash"),
+//            dateFormat.format(date)
+//        ).observeOn(AndroidSchedulers.mainThread()).subscribe({ result ->
+//            swipe.isRefreshing = false
+//            if (result.rc == "00" && result.data.isNotEmpty()) {
+//                result.data
+//                    .sortedByDescending { it.time_request }
+//                    .forEach {
+//                        it.time = respDateFormat.parse(it.time_request)
+//                        it.time_request = itemDateFormat.format(it.time)
+//
+//                        if (!listDates.contains(it.time_request)) {
+//                            listDates.add(it.time_request)
+//                            trxAdapter.listItem.add(QrItem(0, it))
+//                        }
+//                        trxAdapter.listItem.add(QrItem(1, it))
+//                    }
+//                trxAdapter.notifyItemRangeInserted(trxAdapter.listItem.size, result.data.size)
+//            }
+//
+//            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
+//                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
+//            } else if (trxAdapter.itemCount == 0) {
+//                t_error.visibility = View.VISIBLE
+//            }
+//        }, {
+//            if (calendar.get(Calendar.DAY_OF_YEAR) > calendarNow.get(Calendar.DAY_OF_YEAR)) {
+//                loadData(calendar.apply { add(Calendar.DAY_OF_YEAR, -1) }.time)
+//            } else if (trxAdapter.itemCount == 0) {
+//                t_error.visibility = View.VISIBLE
+//            }
+//        })
     }
 
     override fun onDestroy() {
@@ -135,7 +130,7 @@ class QrTransactionFragment : Fragment() {
             } else {
                 holder as ItemViewHolder
                 holder.trx_id.text = "#" + item.id_transaksi
-                holder.trx_time.text = itemTimeFormat.format(item.time)
+                holder.trx_time.text = itemTimeFormat.format(Date(item.time!!))
                 holder.trx_name.text = item.buyer_reff
                 holder.trx_reff.text = item.issuer_reff
                 holder.trx_nominal.text =
@@ -145,12 +140,12 @@ class QrTransactionFragment : Fragment() {
                         "#139943"
                     )
                 )
-                if (item.fee > 0) {
-                    holder.trx_tips.visibility = View.VISIBLE
-                    holder.trx_tips.text = "tips: Rp ${item.fee}"
-                } else {
-                    holder.trx_tips.visibility = View.GONE
-                }
+//                if (item.fee > 0) {
+//                    holder.trx_tips.visibility = View.VISIBLE
+//                    holder.trx_tips.text = "tips: Rp ${item.fee}"
+//                } else {
+//                    holder.trx_tips.visibility = View.GONE
+//                }
             }
         }
 

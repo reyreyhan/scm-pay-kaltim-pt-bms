@@ -10,7 +10,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.fpl.constants.RConfig
 import com.bm.main.fpl.utils.PreferenceClass
@@ -21,18 +20,15 @@ import com.bm.main.scm.datasources.NETWORK_FAILED
 import com.bm.main.scm.datasources.NETWORK_LOADING
 import com.bm.main.scm.datasources.NETWORK_SUCCESS
 import com.bm.main.scm.datasources.NetworkState
-import com.bm.main.scm.di.userComponent
-import com.bm.main.scm.feature.manage.product.ProductViewModel
 import com.bm.main.scm.feature.scan.ScanCodeActivity
 import com.bm.main.scm.models.product.Product
-import com.bm.main.scm.ui.ext.toast
 import com.bm.main.scm.utils.AppConstant
 import kotlinx.android.synthetic.main.activity_product_search.*
 import timber.log.Timber
 
 class ProductSearchActivity : BaseActivity() {
 
-    private val productViewModel by lazy { ViewModelProvider(this, userComponent!!.productComponentFactory()).get(ProductViewModel::class.java) }
+//    private val productViewModel by lazy { ViewModelProvider(this, userComponent!!.productComponentFactory()).get(ProductViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +79,7 @@ class ProductSearchActivity : BaseActivity() {
             ll_error.visibility = if (it.state == NETWORK_FAILED) View.VISIBLE else View.GONE
 
             if (it.state == NETWORK_SUCCESS) {
-                productViewModel.loadState.observe(this, loadingObserver)
+//                productViewModel.loadState.observe(this, loadingObserver)
             }
         }
     }
@@ -91,11 +87,11 @@ class ProductSearchActivity : BaseActivity() {
     private val itemHandler by lazy {
         object : AdapterItemCallback<Product> {
             override fun onItemClick(item: Product, pos: Int) {
-                setResult(
-                    RESULT_OK,
-                    intent.putExtra("item", productViewModel.moshi.adapter(Product::class.java).toJson(item))
-                )
-                finish()
+//                setResult(
+//                    RESULT_OK,
+//                    intent.putExtra("item", productViewModel.moshi.adapter(Product::class.java).toJson(item))
+//                )
+//                finish()
             }
 
             override fun onItemLongClick(item: Product, pos: Int) {
@@ -144,7 +140,7 @@ class ProductSearchActivity : BaseActivity() {
     private val handler by lazy { Handler() }
     private val searchProduct by lazy {
         Runnable {
-            productViewModel.productList.removeObserver(productObserver)
+           /* productViewModel.productList.removeObserver(productObserver)
             productViewModel.initState.removeObserver(initObserver)
             productViewModel.initState.observe(this, initObserver)
 
@@ -155,7 +151,7 @@ class ProductSearchActivity : BaseActivity() {
             loading.visibility = View.VISIBLE
             ll_error.visibility = View.GONE
             productViewModel.searchProduct(search.text.toString().trim())
-            productViewModel.productList.observe(this, productObserver)
+            productViewModel.productList.observe(this, productObserver)*/
         }
     }
 
@@ -165,14 +161,14 @@ class ProductSearchActivity : BaseActivity() {
             data?.getStringExtra(AppConstant.DATA)?.let {
                 if (it.isNotBlank()) {
                     loadingDialog.show()
-                    productViewModel.searchBarcode(it) {
+                    /*productViewModel.searchBarcode(it) {
                         loadingDialog.dismiss()
                         it?.let {
                             setResult(RESULT_OK)
                             intent.putExtra("item", it.json())
                             finish()
                         } ?: toast(this, "Barang tidak ditemukan")
-                    }
+                    }*/
                 }
             }
         } else {

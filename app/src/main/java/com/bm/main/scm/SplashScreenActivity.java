@@ -18,14 +18,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bm.main.fpl.activities.BigPromoActivity;
 import com.bm.main.fpl.constants.RConfig;
 import com.bm.main.fpl.templates.MutedVideoView;
 import com.bm.main.fpl.utils.DetectConnection;
 import com.bm.main.fpl.utils.PreferenceClass;
 import com.bm.main.fpl.utils.RequestUtils;
+import com.bm.main.scm.feature.drawer.DrawerActivity;
 import com.bm.main.scm.feature.login.LoginActivity;
-import com.bm.main.scm.feature.newhome.NewHomeActivity;
+import com.bm.main.scm.utils.AppSession;
 import com.bm.main.single.ftl.utils.RequestUtilsTravel;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
@@ -49,6 +49,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     public static DisplayMetrics displayMetrics;
     public Configuration config;
     FirebaseRemoteConfig firebaseRemoteConfig;
+    public AppSession appSession = new AppSession();
     //    RelativeLayout rel_footer;
 
     @Override
@@ -155,7 +156,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         slideToTop(imageViewPowered);
 
-     //   startService(new Intent(this, SBFService.class));
+        //   startService(new Intent(this, SBFService.class));
     }
 
     public void slideToTop(@NonNull View view) {
@@ -191,40 +192,52 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 Timber.d("run: %s", isFirstStart);
                 if (isFirstStart) {
-                    PreferenceClass.putInt("deposit_bank_non", 0);
-                    intent = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
-                } else {
-                    if (PreferenceClass.getString(RConfig.IS_BIG_PROMO, "0").equals("1")) {
-                        intent = new Intent(SplashScreenActivity.this, BigPromoActivity.class);
-                    } else {
-                        if (PreferenceClass.isLoggedIn()) {
-                            if (PreferenceClass.getId().equals(PreferenceClass.getIdDemo())) {
-                                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            } else {
-                                PreferenceClass.setLocked();
-                                SBFApplication.initUserComponent(PreferenceClass.getTokenPos());
-
-//                                RabbitViewModel vm = new ViewModelProvider(SplashScreenActivity.this, SBFApplication.userComponent.rabbitComponent()).get(RabbitViewModel.class);
-//                                vm.getThread().start();
-//                                intent = new Intent(SplashScreenActivity.this, KunciActivity.class);
-
-                                intent = new Intent(SplashScreenActivity.this, NewHomeActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                            }
-                        } else {
-                            intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        }
+                    if (!appSession.getSharedPreferenceBoolean("IS_LOGGED_IN")){
+                        intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    }else{
+                        intent = new Intent(SplashScreenActivity.this, DrawerActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     }
-                }
-
+//                    PreferenceClass.putInt("deposit_bank_non", 0);
+//                    intent = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
+//                    intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                } else {
+//                    if (PreferenceClass.getString(RConfig.IS_BIG_PROMO, "0").equals("1")) {
+//                        intent = new Intent(SplashScreenActivity.this, BigPromoActivity.class);
+//                    } else {
+//                        if (PreferenceClass.isLoggedIn()) {
+//                            if (PreferenceClass.getId().equals(PreferenceClass.getIdDemo())) {
+//                                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            } else {
+//                                PreferenceClass.setLocked();
+////                                SBFApplication.initUserComponent(PreferenceClass.getTokenPos());
+////                                RabbitViewModel vm = new ViewModelProvider(SplashScreenActivity.this, SBFApplication.userComponent.rabbitComponent()).get(RabbitViewModel.class);
+////                                vm.getThread().start();
+////                                intent = new Intent(SplashScreenActivity.this, KunciActivity.class);
+//
+//                                intent = new Intent(SplashScreenActivity.this, NewHomeActivity.class);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                            }
+//                        } else {
+//                            intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        }
+                    }
                 startActivity(intent);
                 finish();
             }

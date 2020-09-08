@@ -1,5 +1,6 @@
 package com.bm.main.scm.feature.setting.account
 
+//import com.bm.main.pos.utils.glide.GlideApp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -8,22 +9,21 @@ import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import com.bm.main.fpl.templates.choosephotohelper.ChoosePhotoHelper
 import com.bm.main.fpl.templates.choosephotohelper.callback.ChoosePhotoCallback
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
 import com.bm.main.scm.callback.DialogCallback
+import com.bm.main.scm.feature.setting.password.PasswordActivity
 import com.bm.main.scm.models.user.User
-import com.bm.main.scm.ui.ext.toast
 import com.bm.main.scm.rest.entity.RestException
+import com.bm.main.scm.ui.ext.successDialog
+import com.bm.main.scm.ui.ext.toast
 import com.bm.main.scm.utils.ImageCompression
 import com.bm.main.scm.utils.ImageUtil
-//import com.bm.main.pos.utils.glide.GlideApp
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import kotlinx.android.synthetic.main.activity_account.*
 import java.io.File
-import com.bm.main.scm.feature.setting.password.PasswordActivity
-import com.bm.main.scm.ui.ext.successDialog
-import com.bumptech.glide.Glide
 
 
 class AccountActivity : BaseActivity<AccountPresenter, AccountContract.View>(), AccountContract.View {
@@ -191,25 +191,25 @@ class AccountActivity : BaseActivity<AccountPresenter, AccountContract.View>(), 
     }
 
     override fun setInfo(user: User) {
-        user.nama_lengkap?.let {
-            et_name.setText(it)
-        }
-
-        user.no_telp?.let {
-            et_phone.setText(it)
-        }
-
-        user.email?.let {
-            et_email.setText(it)
-        }
-
-        user.alamat?.let {
-            et_address.setText(it)
-        }
-
-        user.gbr?.let {
-            loadPhoto(it)
-        }
+//        user.nama_lengkap?.let {
+//            et_name.setText(it)
+//        }
+//
+//        user.no_telp?.let {
+//            et_phone.setText(it)
+//        }
+//
+//        user.email?.let {
+//            et_email.setText(it)
+//        }
+//
+//        user.alamat?.let {
+//            et_address.setText(it)
+//        }
+//
+//        user.gbr?.let {
+//            loadPhoto(it)
+//        }
     }
 
     override fun openPasswordPage() {

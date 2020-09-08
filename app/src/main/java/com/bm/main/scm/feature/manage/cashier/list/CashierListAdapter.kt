@@ -11,7 +11,7 @@ import com.bm.main.scm.R
 import com.bm.main.scm.ui.ext.htmlText
 import kotlinx.android.synthetic.main.item_cashier_manage_scm.view.*
 
-class CashierListAdapter(private var list: ArrayList<CashierObject>) :
+class CashierListAdapter(var list: List<CashierObject>, val itemClickListener: CashierListAdapter.OnItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -25,17 +25,7 @@ class CashierListAdapter(private var list: ArrayList<CashierObject>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ViewHolder) {
-            holder.bind(list[position], position)
-            holder.btnActivate.setOnClickListener {
-                var active = list[position].active
-                if (!active) {
-                    active = true
-                    notifyItemChanged(position)
-                } else {
-                    active = false
-                    notifyItemChanged(position)
-                }
-            }
+            holder.bind(list[position], itemClickListener)
         }
     }
 
@@ -45,25 +35,35 @@ class CashierListAdapter(private var list: ArrayList<CashierObject>) :
         val btnEdit = view.btn_edit
         val btnActivate = view.iv_qris
         val context = view.context
+        val _view = view
 
         @SuppressLint("ResourceType")
-        fun bind(item: CashierObject, position: Int) {
+        fun bind(item: CashierObject, clickListener: OnItemClickListener) {
             tvCashier.text = "Kasir ${item.id} - ${item.name}"
             if (item.active) {
                 tvStatus.htmlText(
-                    "<span>Status: </span><span style=\"color:${context.resources.getString(
-                        R.color.md_green_500
-                    )}\">Aktif</span>"
+                    "<span>Status: </span><span style=\"color:#4CAF50}\">Aktif</span>"
                 )
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    btnActivate.backgroundTintList = ColorStateList.valueOf(context.resources.getColor(R.color.colorAccent))
-                }
             } else {
                 tvStatus.text = "Status: Menunggu Konfirmasi"
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     ColorStateList.valueOf(context.resources.getColor(R.color.md_grey_400))
                 }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    btnActivate.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.md_grey_400))
+                }
+            }
+            btnActivate.setOnClickListener {
+                clickListener.onActivate(item.id!!, if (item.active)1 else 0)
+            }
+            btnEdit.setOnClickListener {
+                clickListener.onEdit(item.id!!, item.name!!, item.phone!!)
             }
         }
+    }
+
+    interface OnItemClickListener{
+        fun onActivate(id:Int, isBlocked:Int)
+        fun onEdit(id:Int, name:String, phone:String)
     }
 }

@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.bm.main.scm.R
+import com.bm.main.scm.utils.AppSession
 import kotlinx.android.synthetic.main.dialog_pin_scm.view.*
 
 
@@ -28,10 +30,11 @@ class PinConfirmDialog : DialogFragment() {
         }
     }
 
-    public lateinit var listener: PinConfirmDialogListener
+    lateinit var listener: PinConfirmDialogListener
+    private val appSession = AppSession()
 
     interface PinConfirmDialogListener {
-        fun onPositiveButtonDialog()
+        fun onPinConfirmSuccess()
     }
 
     override fun onStart() {
@@ -69,7 +72,12 @@ class PinConfirmDialog : DialogFragment() {
     private fun setupClickListeners(view: View) {
         view.btn_positive.setOnClickListener {
             if (listener != null) {
-                listener.onPositiveButtonDialog()
+                if (!appSession.getSharedPreferenceString("PIN").isNullOrEmpty() &&
+                    appSession.getSharedPreferenceString("PIN") == view.et_pin.text.toString()) {
+                    listener.onPinConfirmSuccess()
+                }
+                Toast.makeText(view.context, "PIN Anda Salah!", Toast.LENGTH_SHORT).show()
+                dismiss()
             }
             dismiss()
         }

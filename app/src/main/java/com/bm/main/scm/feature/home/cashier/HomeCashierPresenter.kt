@@ -8,7 +8,6 @@ import com.bm.main.scm.base.BasePresenter
 import com.bm.main.scm.models.menu.Menu
 import com.bm.main.scm.models.user.User
 import com.bm.main.scm.models.user.UserRestModel
-import com.bm.main.scm.utils.Helper
 
 class HomeCashierPresenter(val context: Context,
                            val view: HomeCashierContract.View) : BasePresenter<HomeCashierContract.View>(), HomeCashierContract.Presenter, HomeCashierContract.InteractorOutput {
@@ -83,12 +82,12 @@ class HomeCashierPresenter(val context: Context,
 
         val user = list[0]
         interactor.saveUser(user)
-        view.setProfile(user.nama_lengkap!!,
-                user.alamat!!,
-                user.kota!!,
-                user.no_telp!!,
-                user.gbr!!,
-                "Rp " + Helper.convertToCurrency(user.omset!!))
+//        view.setProfile(user.nama_lengkap!!,
+//                user.alamat!!,
+//                user.kota!!,
+//                user.no_telp!!,
+//                user.gbr!!,
+//                "Rp " + Helper.convertToCurrency(user.omset!!))
     }
 
     override fun onFailedAPI(code: Int, msg: String) {

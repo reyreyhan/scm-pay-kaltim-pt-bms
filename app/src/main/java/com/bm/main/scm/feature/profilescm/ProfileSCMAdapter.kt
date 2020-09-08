@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
 import kotlinx.android.synthetic.main.item_profile_merchant_scm.view.*
 
-class ProfileSCMAdapter(private var list: ArrayList<String>) :
+class ProfileSCMAdapter(private var list: List<String>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -44,5 +44,10 @@ class ProfileSCMAdapter(private var list: ArrayList<String>) :
             }
             view.tv_value.text = item
         }
+    }
+
+    fun updateList(newList:List<String>){
+        list = newList
+        notifyDataSetChanged()
     }
 }

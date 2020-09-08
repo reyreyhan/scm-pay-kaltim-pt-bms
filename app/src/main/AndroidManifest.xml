@@ -227,6 +227,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
+            android:name=".feature.qrisscm.QrisSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
             android:name=".feature.reportscm.mutation.ReportMutationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
@@ -236,6 +240,10 @@
             android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.reportscm.transaction.merchant.ReportTransactionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.reportscm.detail.ReportTransactionDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity

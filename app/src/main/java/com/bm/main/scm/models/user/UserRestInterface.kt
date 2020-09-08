@@ -32,11 +32,9 @@ interface UserRestInterface {
         @Field("password_baru") baru: String): Observable<Message>
 
     @FormUrlEncoded
-    @POST("profil/login.php")
+    @POST("merchant/login.php")
     fun login(
         @Field("user") key: String,
-        @Field("password") lama: String): Observable<List<User>>
-
-
+        @Field("password") lama: String): Observable<User>
 
 }

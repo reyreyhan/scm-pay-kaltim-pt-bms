@@ -1,25 +1,26 @@
 package com.bm.main.scm.rest
 
-import androidx.annotation.Keep
-import com.bm.main.scm.SBFApplication
-import com.bm.main.fpl.constants.RConfig
-import com.bm.main.fpl.utils.PreferenceClass
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import com.bm.main.scm.BuildConfig
 //import com.bm.main.pos.MyApplication
-import com.bm.main.scm.rest.util.RequestInterceptor
-import com.bm.main.scm.rest.util.ResponseInterceptor
 //import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
 //import com.bm.main.pos.utils.glide.UnsafeOkHttpClient
+//import okhttp3.logging.HttpLoggingInterceptor
+import androidx.annotation.Keep
+import com.bm.main.scm.BuildConfig
+import com.bm.main.scm.SBFApplication
+import com.bm.main.scm.rest.util.RequestInterceptor
+import com.bm.main.scm.rest.util.ResponseInterceptor
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-//import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.cert.CertificateException
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.*
+import javax.net.ssl.HostnameVerifier
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 @Keep
 class RestClient {
@@ -60,7 +61,8 @@ class RestClient {
          * @return ApiVersion
          */
         private fun getApiVersion(appVer: String): String {
-            val separatorCount = appVer.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray().size - 1
+            val separatorCount =
+                appVer.split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray().size - 1
             var lastIndex = appVer.length
             if (separatorCount > 1) {
                 lastIndex = appVer.indexOf(".", appVer.indexOf(".") + 1)
@@ -74,11 +76,17 @@ class RestClient {
             // Create a trust manager that does not validate certificate chains
             val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
                 @Throws(CertificateException::class)
-                override fun checkClientTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
+                override fun checkClientTrusted(
+                    chain: Array<java.security.cert.X509Certificate>,
+                    authType: String
+                ) {
                 }
 
                 @Throws(CertificateException::class)
-                override fun checkServerTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
+                override fun checkServerTrusted(
+                    chain: Array<java.security.cert.X509Certificate>,
+                    authType: String
+                ) {
                 }
 
                 override fun getAcceptedIssuers(): Array<java.security.cert.X509Certificate> {
@@ -95,7 +103,7 @@ class RestClient {
 
             val cacheSize: Long = 10 * 1024 * 1024 // 10 MiB
             //  val cache = Cache(MyApplication.applicationContext().cacheDir, cacheSize)
-            val cache = Cache(SBFApplication.getInstance().applicationContext.cacheDir, cacheSize)
+            val cache = Cache(SBFApplication.getInstance()!!.applicationContext.cacheDir, cacheSize)
 
             val hostnameVerifier = HostnameVerifier { hostname, sslSession -> true }
             val builder = OkHttpClient.Builder()
@@ -143,11 +151,12 @@ class RestClient {
 
     fun getUrl(): String {
 //        Log.d(TAG, "getUrl: $url")
-        if (BuildConfig.DEBUG) {
-            url = PreferenceClass.getString(RConfig.API_URL_POS_DEVEL, "").toString()
-        } else {
-            url = PreferenceClass.getString(RConfig.API_URL_POS, "").toString()
-        }
+//        if (BuildConfig.DEBUG) {
+//            url = PreferenceClass.getString(RConfig.API_URL_POS_DEVEL, "").toString()
+//        } else {
+//            url = PreferenceClass.getString(RConfig.API_URL_POS, "").toString()
+//        }
+        url = "https://api-dev-profit.fastpay.co.id/"
 
         return url as String
     }

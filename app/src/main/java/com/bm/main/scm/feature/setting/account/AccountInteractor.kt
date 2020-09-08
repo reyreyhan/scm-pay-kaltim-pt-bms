@@ -28,7 +28,7 @@ class AccountInteractor(var output: AccountContract.InteractorOutput?) : Account
     }
 
     override fun loadProfile(context: Context): User? {
-        val json = appSession.getSharedPreferenceString(context,AppConstant.USER) ?: return null
+        val json = appSession.getSharedPreferenceString(AppConstant.USER) ?: return null
         return Gson().fromJson(json,User::class.java)
     }
 

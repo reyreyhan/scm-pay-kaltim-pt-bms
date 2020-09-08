@@ -1,23 +1,6 @@
 package com.bm.main.scm.feature.manage.product
 
-import android.annotation.SuppressLint
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.paging.DataSource
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
-import com.bm.main.scm.datasources.NetworkState
-import com.bm.main.scm.models.product.Product
-import com.bm.main.scm.rest.ApiService
-import com.squareup.moshi.Moshi
-import io.reactivex.Completable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
-import javax.inject.Inject
-import javax.inject.Named
-
+/*
 class ProductViewModel @Inject constructor(
         val apiService: ApiService,
         @Named("token") val token: String,
@@ -98,4 +81,4 @@ class ProductViewModel @Inject constructor(
         disposables.dispose()
         disposables.clear()
     }
-}
+}*/

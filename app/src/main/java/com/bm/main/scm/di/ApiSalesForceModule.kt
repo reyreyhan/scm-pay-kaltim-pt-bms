@@ -1,12 +1,13 @@
-package com.bm.main.scm.rest.salesforce
+package com.bm.main.scm.di
 
 import android.content.Context
-import androidx.annotation.Keep
-import com.bm.main.scm.rest.ApiRequestModule
-import com.bm.sc.bebasbayar.social.di.UserScope
+import com.bm.main.scm.rest.salesforce.ApiSalesForce
+import com.bm.main.scm.utils.SSLUtil
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -14,15 +15,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
 
-@Keep
+@InstallIn(ApplicationComponent::class)
 @Module
-object ApiSalesForceModule {
+class ApiSalesForceModule {
 
-    @UserScope
-    @JvmStatic
+    @Singleton
     @Provides
     fun provideApiSalesForce(context: Context): ApiSalesForce = Retrofit.Builder()
         .baseUrl(
@@ -34,10 +35,12 @@ object ApiSalesForceModule {
             OkHttpClient.Builder()
                 .sslSocketFactory(
                     SSLContext.getInstance("SSL").apply {
-                        init(null,
-                            ApiRequestModule.trustAllCerts, java.security.SecureRandom())
+                        init(
+                            null,
+                            SSLUtil.trustAllCerts, java.security.SecureRandom()
+                        )
                     }.socketFactory,
-                    ApiRequestModule.trustAllCerts[0] as X509TrustManager
+                    SSLUtil.trustAllCerts[0] as X509TrustManager
                 )
                 .hostnameVerifier({ hostname, sslSession -> true })
                 .addInterceptor(HttpLoggingInterceptor().apply {

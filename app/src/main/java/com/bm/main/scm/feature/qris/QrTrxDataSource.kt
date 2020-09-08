@@ -58,9 +58,9 @@ class QrTrxDataSource: ItemKeyedDataSource<Date, QrTransactionItem>() {
                             add(Calendar.DAY_OF_YEAR, -1)
                         }.time
                     }
-                } else {
+                } /*else {
                     callback.onError(Throwable())
-                }
+                }*/
             }
     }
 
@@ -99,9 +99,9 @@ class QrTrxDataSource: ItemKeyedDataSource<Date, QrTransactionItem>() {
                             add(Calendar.DAY_OF_YEAR, -1)
                         }.time
                     }
-                } else {
+                } /*else {
                     callback.onError(Throwable())
-                }
+                }*/
             }
     }
 

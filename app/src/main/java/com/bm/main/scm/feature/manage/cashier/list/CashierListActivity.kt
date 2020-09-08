@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.dialog.PinConfirmDialog
 import com.bm.main.scm.feature.manage.cashier.add.CashierAddActivity
 import kotlinx.android.synthetic.main.activity_qris_cashier_manage.*
 
-class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContract.View>(), CashierListContract.View {
+class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContract.View>(), CashierListContract.View, PinConfirmDialog.PinConfirmDialogListener, CashierListAdapter.OnItemClickListener {
     override fun createPresenter(): CashierListPresenter {
         return CashierListPresenter(this, this)
     }
@@ -22,7 +23,7 @@ class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContra
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         renderView()
-//        getPresenter()?.onViewCreated()
+        getPresenter()?.onViewCreated()
     }
 
     override fun onResume() {
@@ -56,15 +57,15 @@ class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContra
 
     private fun initButton() {
         btn_add_qris_cashier.setOnClickListener {
-            startActivity(Intent(this, CashierAddActivity::class.java))
+            PinConfirmDialog.newInstance(
+                "Masukkan PIN Anda",
+                "untuk menambahkan kasir"
+            ).show(supportFragmentManager, PinConfirmDialog.TAG)
         }
     }
 
     private fun initRecyclerView() {
-        val arrayCashier = ArrayList<CashierObject>()
-        arrayCashier.add(CashierObject(1, "Aisyah", true))
-        arrayCashier.add(CashierObject(2, "Putra", false))
-        val adapter = CashierListAdapter(arrayCashier)
+        val adapter = CashierListAdapter(emptyList(), this)
         rv_list.adapter = adapter
         rv_list.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
@@ -73,10 +74,30 @@ class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContra
         super.onDestroy()
         getPresenter()?.onDestroy()
     }
+
+    override fun onPinConfirmSuccess() {
+        startActivity(Intent(this, CashierAddActivity::class.java))
+    }
+
+    override fun setListAdapter(list: List<CashierObject>) {
+        val adapter = rv_list.adapter as CashierListAdapter
+        adapter.list = list
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onActivate(id: Int, isBlocked: Int) {
+        getPresenter()?.blockCashier(id, isBlocked)
+        showToast("OnActiveClick")
+    }
+
+    override fun onEdit(id: Int, name: String, phone: String) {
+    }
+
 }
 
 data class CashierObject(
     var id:Int? = null,
     var name:String? = null,
+    var phone:String? = null,
     var active:Boolean = false
 )

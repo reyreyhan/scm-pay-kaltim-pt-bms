@@ -2,19 +2,24 @@ package com.bm.main.scm.feature.login
 
 import android.content.Context
 import com.bm.main.scm.base.BasePresenter
-import com.bm.main.scm.models.user.User
-import com.bm.main.scm.models.user.UserRestModel
-import com.bm.main.scm.utils.Helper
+import com.bm.main.scm.models.cashier.CashierRestModel
+import com.bm.main.scm.models.cashier.LoginCashier
+import com.bm.main.scm.models.user.merchant.MerchantUser
+import com.bm.main.scm.models.user.merchant.MerchantUserRestModel
+import com.google.gson.Gson
+import timber.log.Timber
 
 class LoginPresenter(val context: Context, val view: LoginContract.View) : BasePresenter<LoginContract.View>(),
     LoginContract.Presenter, LoginContract.InteractorOutput {
 
-//    private var interactor: LoginInteractor = LoginInteractor(this)
-//    private var userRestModel = UserRestModel(context)
+    private var interactor: LoginInteractor = LoginInteractor(this)
+    private var merchantUserRestModel = MerchantUserRestModel(context)
+    private var cashierRestModel = CashierRestModel(context)
+    private var isLoginMerchant = true
 
 
     override fun onViewCreated() {
-//        interactor.clearSession()
+        interactor.clearSession()
     }
 
     override fun onBtnLoginCheck(phone: String, password: String) {
@@ -22,10 +27,10 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
             view.enableLoginBtn(false)
             return
         }
-        if(!Helper.isPhoneValid(phone)){
-            view.enableLoginBtn(false)
-            return
-        }
+//        if(!Helper.isPhoneValid(phone)){
+//            view.enableLoginBtn(false)
+//            return
+//        }
         if(password.isEmpty()){
             view.enableLoginBtn(false)
             return
@@ -39,19 +44,35 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
 
     override fun onLogin(phone: String, password: String) {
         view.showLoadingDialog()
-//        interactor.callLoginAPI(context,userRestModel,phone,password)
+        if (isLoginMerchant){
+            interactor.callMerchantLoginAPI(context,merchantUserRestModel,phone,password)
+        }else{
+            interactor.callCashierLoginAPI(context,cashierRestModel,phone,password)
+        }
     }
 
-    override fun onSuccessLogin(list: List<User>) {
-        view.hideLoadingDialog()
-        if(list.isEmpty()){
-            onFailedAPI(999,"User tidak ditemukan")
-            return
-        }
+    override fun changeLogin(isMerchant: Boolean) {
+        isLoginMerchant = isMerchant
+    }
 
-        val user = list[0]
-//        interactor.saveSession(user)
-        view.showLoginSuccess()
+    override fun onSuccessLogin(list: MerchantUser) {
+        view.hideLoadingDialog()
+        interactor.saveSession(list)
+        interactor.savePin(view.getPin())
+        if (isLoginMerchant){
+            view.navigateMerchant()
+        }
+    }
+
+    override fun onSuccessCashierLogin(list: LoginCashier) {
+        view.hideLoadingDialog()
+        val gson = Gson()
+        Timber.d("LoginCashier %s", gson.toJson(list))
+        interactor.saveSessionCashier(list)
+        interactor.savePin(view.getPin())
+        if (!isLoginMerchant){
+            view.navigateCashier()
+        }
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
@@ -60,8 +81,6 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
     }
 
     override fun onDestroy() {
-//        interactor.onDestroy()
+        interactor.onDestroy()
     }
-
-
 }
