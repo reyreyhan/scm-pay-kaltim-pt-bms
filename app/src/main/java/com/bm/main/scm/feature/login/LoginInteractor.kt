@@ -34,15 +34,16 @@ class LoginInteractor(var output: LoginContract.InteractorOutput?) : LoginContra
         val token = user.id_session
         appSession.setSharedPreferenceString(AppConstant.TOKEN, token)
         appSession.setSharedPreferenceString("OWNER_HP", user.no_telp)
-        appSession.setSharedPreferenceBoolean("IS_LOGGED_IN", true)
-        appSession.setSharedPreferenceBoolean("IS_MERCHANT", true)
     }
 
     override fun saveSessionCashier(user: LoginCashier) {
         appSession.setSharedPreferenceString("NO_HP", user.no_hp)
         appSession.setSharedPreferenceString("OWNER_HP", user.no_telp_owner)
+    }
+
+    override fun saveSessionLogin(isMerchant: Boolean) {
         appSession.setSharedPreferenceBoolean("IS_LOGGED_IN", true)
-        appSession.setSharedPreferenceBoolean("IS_MERCHANT", false)
+        appSession.setSharedPreferenceBoolean("IS_MERCHANT", isMerchant)
     }
 
     override fun savePin(pin: String) {

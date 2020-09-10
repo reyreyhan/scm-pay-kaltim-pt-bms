@@ -59,7 +59,7 @@ class ResponseInterceptor : Interceptor {
 //                    }
                     val cObject: JsonObject
                     try {
-                        cObject = parser.parse(responseBody!!.string()).asJsonObject
+                        cObject = parser.parse(responseBody.string()).asJsonObject
                     } catch (e: JsonSyntaxException) {
                         throw RestException(e.message, RestException.CODE_ERROR_UNKNOWN)
                     }

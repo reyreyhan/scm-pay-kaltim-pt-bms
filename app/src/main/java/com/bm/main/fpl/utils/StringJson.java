@@ -3,10 +3,9 @@ package com.bm.main.fpl.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
-
-import android.util.Log;
 
 import com.bm.main.fpl.activities.BaseActivity;
 import com.bm.main.fpl.constants.Info;
@@ -893,13 +892,14 @@ public class StringJson {
     @NonNull
     public String requestPropinsi() {
         return "{"
-                + "\"msg_type\" : \"admin\","
+                + "\"msg_type\" : \"support\","
                 + "\"processing_code\" : \"list_propinsi\","
 
                 + "\"credential_data\" : {"
                 + "\"id_outlet\"     : \"\","
                 + "\"pin\" : \"\","
-                + "\"session_id\" : \"\""
+                + "\"session_id\" : \"\","
+                + "\"key_validation\" : \"\""
                 + "},"
 
                 + "\"additional_data\" : {"
@@ -916,18 +916,18 @@ public class StringJson {
     @NonNull
     public String requestKota(String prop_code) {
         return "{"
-                + "\"msg_type\" : \"admin\","
+                + "\"msg_type\" : \"support\","
                 + "\"processing_code\" : \"list_kota\","
-
-                + "\"includes\" : {"
-                + "\"prop_code\" : \"" + prop_code + "\""
-                + "},"
 
                 + "\"credential_data\" : {"
                 + "\"id_outlet\"     : \"\","
                 + "\"pin\" : \"\","
-                + "\"session_id\" : \"\""
+                + "\"session_id\" : \"\","
+                + "\"key_validation\" : \"\""
+                + "},"
 
+                   + "\"includes\" : {"
+                + "\"prop_code\" : \"" + prop_code + "\""
                 + "},"
 
                 + "\"additional_data\" : {"
@@ -944,18 +944,18 @@ public class StringJson {
     @NonNull
     public String requestKecamatan(String city_code) {
         return "{"
-                + "\"msg_type\" : \"admin\","
+                + "\"msg_type\" : \"support\","
                 + "\"processing_code\" : \"list_kecamatan\","
-
-                + "\"includes\" : {"
-                + "\"city_code\" : \"" + city_code + "\""
-                + "},"
 
                 + "\"credential_data\" : {"
                 + "\"id_outlet\"     : \"\","
                 + "\"pin\" : \"\","
-                + "\"session_id\" : \"\""
+                + "\"session_id\" : \"\","
+                + "\"key_validation\" : \"\""
+                + "},"
 
+                + "\"includes\" : {"
+                + "\"city_code\" : \"" + city_code + "\""
                 + "},"
 
                 + "\"additional_data\" : {"
@@ -972,18 +972,18 @@ public class StringJson {
     @NonNull
     public String requestKodePos(String kecamatan_code) {
         return "{"
-                + "\"msg_type\" : \"admin\","
+                + "\"msg_type\" : \"support\","
                 + "\"processing_code\" : \"list_kodepos\","
-
-                + "\"includes\" : {"
-                + "\"kecamatan_code\" : \"" + kecamatan_code + "\""
-                + "},"
 
                 + "\"credential_data\" : {"
                 + "\"id_outlet\"     : \"\","
                 + "\"pin\" : \"\","
-                + "\"session_id\" : \"\""
+                + "\"session_id\" : \"\","
+                + "\"key_validation\" : \"\""
+                + "},"
 
+                + "\"includes\" : {"
+                + "\"kecamatan_code\" : \"" + kecamatan_code + "\""
                 + "},"
 
                 + "\"additional_data\" : {"

@@ -37,4 +37,20 @@ interface UserRestInterface {
         @Field("user") key: String,
         @Field("password") lama: String): Observable<User>
 
+    @FormUrlEncoded
+    @POST("merchant/register.php")
+    fun register(
+        @Field("email") email: String,
+        @Field("additional_data") additional_data: String,
+        @Field("no_telp") no_telp: String,
+        @Field("nama_lengkap") nama_lengkap: String,
+        @Field("nama_toko") nama_toko: String,
+        @Field("password") password: String,
+        @Field("prop_code") prop_code: String,
+        @Field("city_code") city_code: String,
+        @Field("kec_code") kec_code: String,
+        @Field("kel_code") kel_code: String,
+        @Field("kode_pos") kode_pos: String,
+        @Field("alamat") alamat: String
+    ): Observable<User>
 }

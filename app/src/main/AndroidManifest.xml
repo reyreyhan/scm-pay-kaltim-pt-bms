@@ -203,11 +203,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
-            android:name=".feature.register.RegisterActivity"
+            android:name=".feature.registermerchant.RegisterMerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.registermerchant.RegisterMerchantActivity"
+            android:name=".feature.registerqrismerchant.RegisterQRISMerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
@@ -228,6 +228,22 @@
             android:theme="@style/ReverseAppTheme" />
         <activity
             android:name=".feature.qrisscm.QrisSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.support.ListProvinsiSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.support.ListKotaSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.support.ListKecamatanSCMActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ReverseAppTheme" />
+        <activity
+            android:name=".feature.support.ListKelurahanSCMActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity

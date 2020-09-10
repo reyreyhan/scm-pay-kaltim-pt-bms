@@ -2,10 +2,9 @@ package com.bm.main.scm.feature.registermerchant
 
 import android.content.Context
 import com.bm.main.scm.base.BasePresenter
-import com.bm.main.scm.feature.registermerchant.RegisterMerchantContract
 
 class RegisterMerchantPresenter(val context: Context, val view: RegisterMerchantContract.View) : BasePresenter<RegisterMerchantContract.View>(),
-    RegisterMerchantContract.Presenter, RegisterMerchantContract.InteractorOutput {
+    RegisterMerchantContract.Presenter,RegisterMerchantContract.InteractorOutput {
 
 //    private var interactor: RegisterInteractor = RegisterInteractor(this)
 

@@ -74,6 +74,4 @@ class ApiRequestModule {
     @Provides
     fun provideResponseInterceptor(): ResponseInterceptor =
         ResponseInterceptor()
-
-
 }

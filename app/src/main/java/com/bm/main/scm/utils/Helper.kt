@@ -19,12 +19,14 @@ import android.view.animation.Animation
 import android.view.animation.Transformation
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.bm.main.scm.R
 import com.bm.main.scm.SBFApplication
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import java.nio.charset.Charset
@@ -420,6 +422,20 @@ object Helper {
             duration = (initialHeight / v.getContext().getResources().getDisplayMetrics().density).toLong()
         }.also {
             v.startAnimation(it)
+        }
+    }
+
+    fun closeKeyboard(context: Context, currentFocus:View?) {
+        val inputManager = context.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+        Timber.d("closeKeyboard: $inputManager")
+        if (inputManager != null) {
+            if (currentFocus != null) {
+                //  inputManager.hideSoftInputFromWindow((getCurrentFocus()).getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+                inputManager.hideSoftInputFromWindow(
+                    currentFocus.windowToken,
+                    InputMethodManager.HIDE_NOT_ALWAYS
+                )
+            }
         }
     }
 }

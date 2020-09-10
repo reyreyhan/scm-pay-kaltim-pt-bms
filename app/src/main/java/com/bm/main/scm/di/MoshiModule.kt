@@ -2,15 +2,21 @@ package com.bm.main.scm.di
 
 import com.squareup.moshi.*
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import java.lang.reflect.Type
 import java.util.*
+import javax.inject.Singleton
 
-//@Module
+@InstallIn(ApplicationComponent::class)
+@Module
 object MoshiModule {
 
 //    @Reusable
-//    @Provides
-    @JvmStatic
+    @Provides
+    @Singleton
     fun instance(): Moshi {
         return Moshi.Builder()
             .add(object : JsonAdapter.Factory {

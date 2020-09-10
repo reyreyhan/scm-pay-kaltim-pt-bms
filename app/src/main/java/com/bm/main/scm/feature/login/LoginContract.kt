@@ -19,6 +19,7 @@ interface LoginContract {
         fun openRegisterPage()
         fun navigateMerchant()
         fun navigateCashier()
+        fun checkQRISStatus(id:String)
     }
 
     interface Presenter : BasePresenterImpl<View> {
@@ -34,6 +35,7 @@ interface LoginContract {
         fun onRestartDisposable()
         fun saveSession(user: MerchantUser)
         fun saveSessionCashier(user: LoginCashier)
+        fun saveSessionLogin(isMerchant: Boolean)
         fun savePin(pin:String)
         fun clearSession()
         fun callMerchantLoginAPI(context: Context, restModel: MerchantUserRestModel, phone:String, password:String)

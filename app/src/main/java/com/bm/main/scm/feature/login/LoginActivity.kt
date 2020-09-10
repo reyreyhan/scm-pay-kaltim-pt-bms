@@ -10,12 +10,24 @@ import android.view.View
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
 import com.bm.main.scm.feature.drawer.DrawerActivity
-import com.bm.main.scm.feature.register.RegisterActivity
 import com.bm.main.scm.feature.registermerchant.RegisterMerchantActivity
+import com.bm.main.scm.feature.registerqrismerchant.RegisterQRISMerchantActivity
+import com.bm.main.scm.models.support.QRISMpRestInterface
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login_scm.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginContract.View {
+
+    @Inject
+    lateinit var apiService:QRISMpRestInterface
+
+    var disposable:Disposable? = null
 
     override fun createPresenter(): LoginPresenter {
         return LoginPresenter(this, this)
@@ -107,7 +119,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
     }
 
     override fun openRegisterPage() {
-        startActivity(Intent(this, RegisterMerchantActivity::class.java))
+        startActivity(Intent(this, RegisterQRISMerchantActivity::class.java))
     }
 
     override fun onDestroy() {
@@ -138,7 +150,7 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
             }
 
             override fun onClick(p0: View) {
-                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+                startActivity(Intent(this@LoginActivity, RegisterMerchantActivity::class.java))
             }
         }
         ss.setSpan(clickableSpan, 21, ss.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -162,4 +174,18 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
         }
     }
 
+    override fun checkQRISStatus(id:String){
+        disposable?.dispose()
+        disposable = apiService.getStatusQRIS(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({result->
+                hideLoadingDialog()
+                navigateMerchant()
+            },{error->
+                hideLoadingDialog()
+                showToast("Merchant QRIS belum terdaftarkan!")
+                startActivity(Intent(this, RegisterQRISMerchantActivity::class.java))
+            })
+    }
 }

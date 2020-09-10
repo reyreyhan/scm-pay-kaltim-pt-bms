@@ -9,7 +9,8 @@ import com.bm.main.scm.models.user.merchant.MerchantUserRestModel
 import com.google.gson.Gson
 import timber.log.Timber
 
-class LoginPresenter(val context: Context, val view: LoginContract.View) : BasePresenter<LoginContract.View>(),
+class LoginPresenter(val context: Context, val view: LoginContract.View) :
+    BasePresenter<LoginContract.View>(),
     LoginContract.Presenter, LoginContract.InteractorOutput {
 
     private var interactor: LoginInteractor = LoginInteractor(this)
@@ -23,7 +24,7 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
     }
 
     override fun onBtnLoginCheck(phone: String, password: String) {
-        if(phone.isEmpty()){
+        if (phone.isEmpty()) {
             view.enableLoginBtn(false)
             return
         }
@@ -31,11 +32,11 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
 //            view.enableLoginBtn(false)
 //            return
 //        }
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             view.enableLoginBtn(false)
             return
         }
-        if(password.length > 5){
+        if (password.length > 5) {
             view.enableLoginBtn(true)
             return
         }
@@ -44,10 +45,10 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
 
     override fun onLogin(phone: String, password: String) {
         view.showLoadingDialog()
-        if (isLoginMerchant){
-            interactor.callMerchantLoginAPI(context,merchantUserRestModel,phone,password)
-        }else{
-            interactor.callCashierLoginAPI(context,cashierRestModel,phone,password)
+        if (isLoginMerchant) {
+            interactor.callMerchantLoginAPI(context, merchantUserRestModel, phone, password)
+        } else {
+            interactor.callCashierLoginAPI(context, cashierRestModel, phone, password)
         }
     }
 
@@ -56,11 +57,10 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
     }
 
     override fun onSuccessLogin(list: MerchantUser) {
-        view.hideLoadingDialog()
         interactor.saveSession(list)
         interactor.savePin(view.getPin())
-        if (isLoginMerchant){
-            view.navigateMerchant()
+        if (isLoginMerchant) {
+            view.checkQRISStatus(list.fastpay_id!!)
         }
     }
 
@@ -70,7 +70,7 @@ class LoginPresenter(val context: Context, val view: LoginContract.View) : BaseP
         Timber.d("LoginCashier %s", gson.toJson(list))
         interactor.saveSessionCashier(list)
         interactor.savePin(view.getPin())
-        if (!isLoginMerchant){
+        if (!isLoginMerchant) {
             view.navigateCashier()
         }
     }

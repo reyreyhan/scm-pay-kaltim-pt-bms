@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -239,6 +238,170 @@
                     android:background="@drawable/bg_edittext_border"
                     android:hint="@string/activity_register_merchant_email_hint"
                     android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Provinsi -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_provinsi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Provinsi" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_province"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Provinsi"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Kota/Kabupaten -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kota/Kabupaten" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Kota/Kabupaten"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Kecamatan -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_district"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kecamatan" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Kecamatan"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Kelurahan -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_sub_district"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kota/Kabupaten" />
+
+                    <EditText
+                        android:id="@+id/et_merchant_sub_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/standard_small_margin"
+                        android:background="@drawable/bg_edittext_border"
+                        android:drawableEnd="@drawable/selector_dropdown"
+                        android:drawableRight="@drawable/selector_dropdown"
+                        android:drawablePadding="@dimen/standard_xsmall_margin"
+                        android:hint="Pilih Kelurahan"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/standard_margin"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Alamat -->
+            <LinearLayout
+                android:id="@+id/ll_merchant_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Alamat Merchant" />
+
+                <EditText
+                    android:id="@+id/et_merchant_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_border"
+                    android:hint="@string/activity_register_merchant_address_hint"
+                    android:inputType="number"
                     android:padding="10dp"
                     android:textSize="12sp" />
             </LinearLayout>

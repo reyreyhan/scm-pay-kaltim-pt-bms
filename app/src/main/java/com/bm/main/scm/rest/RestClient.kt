@@ -1,9 +1,5 @@
 package com.bm.main.scm.rest
 
-//import com.bm.main.pos.MyApplication
-//import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
-//import com.bm.main.pos.utils.glide.UnsafeOkHttpClient
-//import okhttp3.logging.HttpLoggingInterceptor
 import androidx.annotation.Keep
 import com.bm.main.scm.BuildConfig
 import com.bm.main.scm.SBFApplication
@@ -24,18 +20,10 @@ import javax.net.ssl.X509TrustManager
 
 @Keep
 class RestClient {
-    //    private var url: String?=""
     private var url: String? = null
 
     private val retrofit: Retrofit
     val client = OkHttpClient.Builder()
-//    companion object {
-//        @JvmStatic lateinit var instance: RestClient
-//    }
-//
-//    init {
-//        instance = this
-//    }
 
     companion object {
 

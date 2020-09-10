@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -129,8 +128,7 @@
                         android:id="@+id/spinner_merchant_criteria"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:autofillHints="@string/activity_register_spinner_merchant_criteria_hint"
-                        android:paddingVertical="10dp" />
+                        android:autofillHints="@string/activity_register_spinner_merchant_criteria_hint" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -392,6 +390,144 @@
                     android:inputType="number"
                     android:padding="10dp"
                     android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Upload KTP -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_photo_ktp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Foto KTP" />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edittext_border">
+                        <ImageView
+                            android:id="@+id/iv_upload_photo_ktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="@dimen/standard_margin_4x"
+                            app:srcCompat="@drawable/ic_upload_file_img"/>
+                        <ImageView
+                            android:id="@+id/iv_photo_ktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:visibility="gone"/>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/standard_margin_2x"
+                        android:text="Contoh:"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="@dimen/standard_margin"
+                            app:srcCompat="@drawable/ic_ktp_contoh"/>
+                        <TextView
+                            android:id="@+id/tv_lbl_photo_ktp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/standard_margin_2x"
+                            android:gravity="center"
+                            android:text="Pastikan foto KTP beserta datanya terlihat jelas"
+                            android:textSize="@dimen/_9sdp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <!-- Upload Selfie KTP -->
+                <LinearLayout
+                    android:id="@+id/ll_merchant_photo_selfie_ktp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Foto Selfie KTP dan TTD" />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edittext_border">
+                        <ImageView
+                            android:id="@+id/iv_upload_photo_selfie_ktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="@dimen/standard_margin_4x"
+                            app:srcCompat="@drawable/ic_upload_file_img"/>
+                        <ImageView
+                            android:id="@+id/iv_photo_selfie_ktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:visibility="gone"/>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/standard_margin_2x"
+                        android:text="Contoh:"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="@dimen/standard_margin"
+                            app:srcCompat="@drawable/ic_ktp_contoh_selfie"/>
+                        <TextView
+                            android:id="@+id/tv_lbl_photo_selfie_ktp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/standard_margin_2x"
+                            android:gravity="center"
+                            android:text="Pastikan foto KTP beserta datanya terlihat jelas"
+                            android:textSize="@dimen/_9sdp"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
