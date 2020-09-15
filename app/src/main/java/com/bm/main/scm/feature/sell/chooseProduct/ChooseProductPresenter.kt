@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import com.bm.main.fpl.activities.NewHomeActivity
 import com.bm.main.fpl.constants.EventParam
-import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.SBFApplication
 import com.bm.main.scm.base.BasePresenter
 import com.bm.main.scm.models.product.Product
@@ -13,10 +12,11 @@ import com.bm.main.scm.models.product.ProductRestModel
 import com.bm.main.scm.utils.AppConstant
 import com.google.firebase.analytics.FirebaseAnalytics
 
-class ChooseProductPresenter(val context: Context, val view: ChooseProductContract.View) : BasePresenter<ChooseProductContract.View>(),
+class ChooseProductPresenter(val context: Context, val view: ChooseProductContract.View) :
+    BasePresenter<ChooseProductContract.View>(),
     ChooseProductContract.Presenter, ChooseProductContract.InteractorOutput {
 
-    private var interactor  = ChooseProductInteractor(this)
+    private var interactor = ChooseProductInteractor(this)
     private var restModel = ProductRestModel(context)
 
     override fun onFragmentViewCreated(intent: Intent) {
@@ -27,7 +27,7 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
             EventParam.EVENT_SUCCESS,
             NewHomeActivity::class.java.simpleName
         )
-        val check = intent.getBooleanExtra(AppConstant.DATA,true)
+        val check = intent.getBooleanExtra(AppConstant.DATA, true)
         view.checkStockProducts(check)
         loadProducts()
     }
@@ -40,22 +40,21 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
             EventParam.EVENT_SUCCESS,
             ChooseProductActivity::class.java.simpleName
         )
-        val check = intent.getBooleanExtra(AppConstant.DATA,true)
+        val check = intent.getBooleanExtra(AppConstant.DATA, true)
         view.checkStockProducts(check)
         loadProducts()
     }
 
     override fun loadProducts() {
-        interactor.callGetProductsAPI(context,restModel)
+        interactor.callGetProductsAPI(context, restModel)
     }
 
     override fun searchProduct(search: String) {
         interactor.onRestartDisposable()
-        if(search.isNullOrEmpty() || search.isNullOrBlank()){
-            interactor.callGetProductsAPI(context,restModel)
-        }
-        else{
-            interactor.callSearchProductAPI(context,restModel,search)
+        if (search.isNullOrEmpty() || search.isNullOrBlank()) {
+            interactor.callGetProductsAPI(context, restModel)
+        } else {
+            interactor.callSearchProductAPI(context, restModel, search)
         }
     }
 
@@ -68,7 +67,7 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
     }
 
     override fun onFailedAPI(code: Int, msg: String) {
-        view.showErrorMessage(code,msg)
+        view.showErrorMessage(code, msg)
     }
 
     fun logEventFireBaseVIEW_ITEM_LIST(
@@ -79,14 +78,14 @@ class ChooseProductPresenter(val context: Context, val view: ChooseProductContra
         tag: String?
     ) {
         val bundle = Bundle()
-        if (PreferenceClass.getUser() != null) {
-            bundle.putString(
-                FirebaseAnalytics.Param.ITEM_ID,
-                PreferenceClass.getUser().id_outlet
-            )
-        } else {
-            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, PreferenceClass.getId())
-        }
+        /*  if (PreferenceClass.getUser() != null) {
+              bundle.putString(
+                  FirebaseAnalytics.Param.ITEM_ID,
+                  PreferenceClass.getUser().id_outlet
+              )
+          } else {*/
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, interactor.appSession.getSharedPreferenceString("FASTPAY_ID"))
+//        }
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, itemName)
         bundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, itemCategory)
         bundle.putString(FirebaseAnalytics.Param.SOURCE, tag)

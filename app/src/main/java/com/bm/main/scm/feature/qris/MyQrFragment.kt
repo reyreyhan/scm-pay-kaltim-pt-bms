@@ -51,7 +51,7 @@ class MyQrFragment : Fragment() {
         print.setOnClickListener {
             it.isEnabled = false
             Toast.makeText(it.context, "Mencetak QR", Toast.LENGTH_SHORT).show()
-            RabbitMqPrint.printStrukRabbit("", activity!!, qrFilePrint?.path) {
+            RabbitMqPrint.printStrukRabbit("", requireActivity(), qrFilePrint?.path) {
                 print.isEnabled = true
                 Toast.makeText(print.context, (if (it) "Berhasil" else "Gagal") + " mencetak QR", Toast.LENGTH_SHORT).show()
             }

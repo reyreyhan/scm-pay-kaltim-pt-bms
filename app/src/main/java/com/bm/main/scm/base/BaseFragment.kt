@@ -1,5 +1,6 @@
 package com.bm.main.scm.base
 
+//import com.bm.main.pos.feature.login.LoginActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.bm.main.scm.R
-import com.bm.main.scm.ui.ext.toast
-import com.bm.main.scm.utils.Helper
-import com.bm.main.scm.utils.AppConstant
-//import com.bm.main.pos.feature.login.LoginActivity
 import com.bm.main.fpl.activities.LoginActivity
-import com.bm.main.scm.feature.drawer.DrawerActivity
+import com.bm.main.scm.R
+import com.bm.main.scm.feature.drawerscm.DrawerActivity
+import com.bm.main.scm.ui.ext.toast
+import com.bm.main.scm.utils.AppConstant
+import com.bm.main.scm.utils.Helper
 
 
 abstract class BaseFragment<P : BasePresenter<V>, V: BaseViewImpl> : Fragment() {

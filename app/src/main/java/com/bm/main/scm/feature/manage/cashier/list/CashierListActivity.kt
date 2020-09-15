@@ -8,11 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.dialog.EditDataQRISCashierDialog
 import com.bm.main.scm.feature.dialog.PinConfirmDialog
+import com.bm.main.scm.feature.dialog.SuccessDialog
 import com.bm.main.scm.feature.manage.cashier.add.CashierAddActivity
 import kotlinx.android.synthetic.main.activity_qris_cashier_manage.*
 
-class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContract.View>(), CashierListContract.View, PinConfirmDialog.PinConfirmDialogListener, CashierListAdapter.OnItemClickListener {
+class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContract.View>(),
+    CashierListContract.View,
+    PinConfirmDialog.PinConfirmDialogListener,
+    CashierListAdapter.OnItemClickListener,
+    EditDataQRISCashierDialog.EditDataQRISCashierDialogListener{
     override fun createPresenter(): CashierListPresenter {
         return CashierListPresenter(this, this)
     }
@@ -85,12 +91,28 @@ class CashierListActivity : BaseActivity<CashierListPresenter, CashierListContra
         adapter.notifyDataSetChanged()
     }
 
+    override fun showSuccessDialog() {
+        SuccessDialog.newInstance(
+            "Edit Data QRIS Kasir Berhasil",
+            "Data kasir telah berhasil diubah!"
+        ).show(supportFragmentManager, SuccessDialog.TAG)
+    }
+
     override fun onActivate(id: Int, isBlocked: Int) {
         getPresenter()?.blockCashier(id, isBlocked)
         showToast("OnActiveClick")
     }
 
     override fun onEdit(id: Int, name: String, phone: String) {
+        EditDataQRISCashierDialog.newInstance(
+            name,
+            phone,
+            id.toString()
+        ).show(supportFragmentManager, EditDataQRISCashierDialog.TAG)
+    }
+
+    override fun onEditButtonSubmit(name: String, phone: String, id:String) {
+        getPresenter()?.editCashier(id.toInt(), name, phone)
     }
 
 }

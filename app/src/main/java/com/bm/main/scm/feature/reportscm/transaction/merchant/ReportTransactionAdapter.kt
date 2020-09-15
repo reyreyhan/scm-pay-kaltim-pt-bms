@@ -18,7 +18,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
+class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?,
+var reportTransactionListener: ReportTransactionListener) :
     ExpandableRecyclerViewAdapter<ReportTransactionAdapter.MutationGroupViewHolder,
             ReportTransactionAdapter.MutationViewHolder>(groups) {
 
@@ -53,7 +54,7 @@ class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
         childIndex: Int
     ) {
         val transaction: QrTransaction = (group as TransactionGroup).items[childIndex]
-        holder.setContent(transaction)
+        holder.setContent(transaction, reportTransactionListener)
     }
 
     override fun onBindGroupViewHolder(
@@ -114,11 +115,19 @@ class ReportTransactionAdapter(groups: List<ExpandableGroup<*>?>?) :
             )
         }
         private val context = itemView.context
-        fun setContent(item:QrTransaction){
+        private val view = itemView
+        fun setContent(item:QrTransaction, reportTransactionListener: ReportTransactionListener){
             tvName.text = item.buyer_reff
             tvDateTime.text = respDateFormat.format(Date(item.time!!))
             tvTransactionId.text = item.id_transaksi
             tvAmmount.text = "Rp ${item.nominal}"
+            view.setOnClickListener {
+                reportTransactionListener.OnReportTransactionClick(item)
+            }
         }
+    }
+
+    interface ReportTransactionListener{
+        fun OnReportTransactionClick(transaction: QrTransaction)
     }
 }

@@ -7,7 +7,7 @@ import com.bm.main.scm.models.FilterDialogDate
 import com.bm.main.scm.models.transaction.HistoryTransaction
 import com.bm.main.scm.models.transaction.Transaction
 import com.bm.main.scm.models.transaction.TransactionRestModel
-import com.bm.main.scm.models.user.User
+import com.bm.main.scm.models.user.Profile
 import com.bm.main.scm.models.user.UserRestModel
 import com.bm.main.scm.utils.AppConstant
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -78,7 +78,7 @@ class MerchantPresenter(val context:Context, val view: MerchantContract.View) : 
         interactor.callGetProfileAPI(context, userRestModel)
     }
 
-    override fun onSuccessGetProfile(list: List<User>) {
+    override fun onSuccessGetProfile(list: List<Profile>) {
         if (list.isEmpty()) {
             view.showErrorMessage(999, "User tidak ditemukan")
             return

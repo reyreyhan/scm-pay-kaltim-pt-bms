@@ -9,14 +9,17 @@ import com.bm.main.scm.base.BaseViewImpl
 interface ReportTransactionDetailContract {
 
     interface View : BaseViewImpl {
-
+        fun openPrinterPage()
+        fun takeScreenshot(filename: String, isShare:Boolean)
     }
 
     interface Presenter : BasePresenterImpl<View> {
         fun onDestroy()
         fun onViewCreated(intent: Intent)
-
-        fun setAdapterList(adapter:ReportTransactionDetailAdapter)
+        fun onCheckBluetooth()
+        fun onCheckShare()
+        fun onCheckDownload()
+        fun setAdapterList(adapter: ReportTransactionDetailAdapter)
     }
 
     interface Interactor : BaseInteractorImpl {

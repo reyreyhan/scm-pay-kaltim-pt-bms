@@ -131,7 +131,7 @@
                     android:id="@+id/lbl_criteria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_baseline_help_24"
+                    android:drawableRight="@drawable/ic_baseline_help_16"
                     android:drawablePadding="5dp"
                     android:drawableTint="@android:color/holo_blue_dark"
                     android:gravity="center_vertical"
@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edittext_border"
                     android:hint="@string/activity_register_merchant_num_hp_hint"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:padding="10dp"
                     android:textSize="12sp"/>
             </LinearLayout>
@@ -205,7 +205,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Buat PIN" />
+                    android:text="Masukan Ulang PIN" />
 
                 <EditText
                     android:id="@+id/et_merchant_pin_confirm"
@@ -401,7 +401,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edittext_border"
                     android:hint="@string/activity_register_merchant_address_hint"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:padding="10dp"
                     android:textSize="12sp" />
             </LinearLayout>

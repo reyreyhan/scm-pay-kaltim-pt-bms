@@ -199,15 +199,15 @@
         <!-- android:screenOrientation="portrait" -->
         <!-- android:theme="@style/ReverseAppTheme.NoActionBar" /> -->
         <activity
-            android:name=".feature.login.LoginActivity"
+            android:name=".feature.loginscm.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
-            android:name=".feature.registermerchant.RegisterMerchantActivity"
+            android:name=".feature.registermerchantscm.RegisterMerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
-            android:name=".feature.registerqrismerchant.RegisterQRISMerchantActivity"
+            android:name=".feature.registerqrismerchantscm.RegisterQRISMerchantActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme" />
         <activity
@@ -273,11 +273,11 @@
             android:theme="@style/ReverseAppTheme" />
 
         <activity
-            android:name=".feature.drawer.DrawerActivity"
+            android:name=".feature.drawerscm.DrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity
-            android:name=".feature.newhome.NewHomeActivity"
+            android:name=".feature.home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ReverseAppTheme.NoActionBar" />
         <activity

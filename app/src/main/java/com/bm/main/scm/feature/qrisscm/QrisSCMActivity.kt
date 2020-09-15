@@ -1,33 +1,40 @@
 package com.bm.main.scm.feature.qrisscm
 
+import android.annotation.SuppressLint
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.registerqrismerchantscm.HelpBottomSheetAdapter
 import com.bm.main.scm.rabbit.QrisService
 import com.bm.main.scm.utils.AppSession
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_qris_merchant_scm.*
+import kotlinx.android.synthetic.main.bottom_sheet_help_rv_scm.*
+import kotlinx.android.synthetic.main.bottom_sheet_help_rv_scm.view.*
 import kotlinx.android.synthetic.main.fragment_qris_dinamis.*
 import kotlinx.android.synthetic.main.fragment_qris_dinamis.view.*
 import kotlinx.android.synthetic.main.fragment_qris_dinamis_2.*
 import kotlinx.android.synthetic.main.fragment_qris_dinamis_2.view.*
 import kotlinx.android.synthetic.main.fragment_qris_product.*
 import kotlinx.android.synthetic.main.fragment_qris_static.*
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
     QrisSCMContract.View {
-
-
     @Inject
     lateinit var qrisService: QrisService
 
@@ -40,6 +47,8 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
     private val QRIS_STATIC = R.id.btn_qris_static
     private val QRIS_PRODUCT = R.id.btn_qris_product
 
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
     override fun createPresenter(): QrisSCMPresenter {
         return QrisSCMPresenter(this, this)
     }
@@ -50,7 +59,7 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         merchantLogin = intent.getBooleanExtra("IsMerchant", false)
-        loadData()
+        loadQrisStatic(appSession.getSharedPreferenceString("FASTPAY_ID")!!)
         renderView()
 //        getPresenter()?.onViewCreated()
     }
@@ -74,9 +83,30 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu!!.clear()
+        menu.add(0, 1, Menu.NONE, "QRIS Help").apply {
+            setIcon(R.drawable.ic_baseline_help_30)
+//            icon.setTint(resources.getColor(R.color.white))
+            setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            1 -> {
+                slideUpDownBottomSheet()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun renderView() {
         initViewTab()
         initButtonListener()
+        initBottomSheet()
     }
 
     private fun initButtonListener() {
@@ -107,20 +137,13 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
     }
 
     private fun setQrisDynamicLayoutView() {
-        if (!appSession.getSharedPreferenceString("URL_QRIS").isNullOrEmpty()){
-            Glide.with(this)
-                .load(appSession.getSharedPreferenceString("URL_QRIS"))
-                .into(qrisDynamic2View.iv_qris)
-            qrisDynamic2View.tv_ammount.text = "Rp ${qrisDynamicView.et_payment_ammount.text}"
-        }
+        val ammount = qrisDynamicView.et_payment_ammount.text.toString()
+        qrisDynamic2View.tv_ammount.text = "Rp $ammount"
+        loadQrisDynamic(appSession.getSharedPreferenceString("FASTPAY_ID")!!, ammount, ammount)
     }
 
     private fun setQrisStaticLayoutView() {
-        if (!appSession.getSharedPreferenceString("URL_QRIS").isNullOrEmpty()){
-            Glide.with(this)
-                .load(appSession.getSharedPreferenceString("URL_QRIS"))
-                .into(qrisStaticView.iv_qris)
-        }
+        loadQrisStatic(appSession.getSharedPreferenceString("FASTPAY_ID")!!)
     }
 
     private fun changeTab(selectedId: Int) {
@@ -147,21 +170,16 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
         }
     }
 
-    private fun loadData() {
-        disposable?.dispose()
-        disposable = qrisService
-            .check("FT1013")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ result ->
-//                swipe.isRefreshing = false
-                if (result.rc == "00" && !result.result.isNullOrEmpty()) {
-                    val check = result.result[0]
-                    appSession.setSharedPreferenceString("URL_QRIS", check.url_qr)
-                }
-            }, { error ->
-                Timber.d("Error: %s", error.toString())
-            })
+    private fun loadQrisStatic(fastpay_id: String) {
+        Glide.with(this)
+            .load("https://mp.fastpay.co.id/qris/image_qris_receiver?sc_id=${fastpay_id}")
+            .into(qrisStaticView.iv_qris)
+    }
+
+    private fun loadQrisDynamic(fastpay_id: String, bill: String, billNumber: String) {
+        Glide.with(this)
+            .load("https://mp.fastpay.co.id/qris/image_qris_dinamis_receiver?sc_id=$fastpay_id&nominal=$bill&bill_number=$billNumber")
+            .into(qrisDynamic2View.iv_qris)
     }
 
     override fun onDestroy() {
@@ -172,5 +190,66 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    @SuppressLint("ResourceType")
+    private fun initBottomSheet() {
+        bottom_sheet.lbl_title.text = "Jenis QRIS"
+        val listOfHelp = mutableListOf(
+            "<b>QRIS Dinamis</b> merupakan kode QR yang bisa dibuat setelah Anda menginputkan nominal tertentu sehingga pelanggan Anda tidak perlu menginputkan nominal setiap pembayaran.",
+            "<b>QRIS Statis</b> merupakan kode QR yang tidak dapat berubah. Setiap transaksi pelanggan Anda harus menginputkan nominal untuk melakukan pembayaran."
+        )
+        if (merchantLogin){
+            listOfHelp.add("<b>Qris Produk</b> merupakan kode QR yang tidak dapat berubah. Setiap transaksi pelanggan Anda harus menginputkan nominal untuk melakukan pembayaran.")
+        }
+        bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+        bottomSheetBehavior.setBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                    }
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+
+                    }
+                }
+            }
+        })
+        bottom_sheet.rv_help.adapter = HelpBottomSheetAdapter(listOfHelp.toList())
+        bottom_sheet.rv_help.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun slideUpDownBottomSheet() {
+        if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        } else {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            if (bottomSheetBehavior.state === BottomSheetBehavior.STATE_EXPANDED) {
+                val outRect = Rect()
+                bottom_sheet.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(
+                        event.rawX.toInt(),
+                        event.rawY.toInt()
+                    )
+                ) bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 }

@@ -11,8 +11,8 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.DialogFragment
 import com.bm.main.scm.R
-import kotlinx.android.synthetic.main.dialog_success_layout.*
-import kotlinx.android.synthetic.main.dialog_success_layout.view.*
+import kotlinx.android.synthetic.main.dialog_scm_success.*
+import kotlinx.android.synthetic.main.dialog_scm_success.view.*
 
 
 class SuccessDialog : DialogFragment() {
@@ -56,7 +56,7 @@ class SuccessDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dialog_success_layout, container, false)
+        return inflater.inflate(R.layout.dialog_scm_success, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,8 +66,8 @@ class SuccessDialog : DialogFragment() {
     }
 
     private fun setupView(view: View) {
-        tv_title.text = arguments!!.getString(KEY_TITLE, "")
-        tv_caption.text = arguments!!.getString(KEY_SUBTITLE, "")
+        tv_title.text = requireArguments().getString(KEY_TITLE, "")
+        tv_caption.text = requireArguments().getString(KEY_SUBTITLE, "")
         val iconAnimation: Animation = AnimationUtils.loadAnimation(
             view.context,
             R.anim.scale_check_icon_success

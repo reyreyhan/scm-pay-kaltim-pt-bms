@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Created by sarifhidayat on 10/31/17.
  */
@@ -25,7 +27,7 @@ public class StringJson {
 
     private static final String TAG = StringJson.class.getSimpleName();
     private static String version;
-    private static String via = "MOBILE_POS";
+    private static String via = "MOBILE_SKALTIM";
 
     @NonNull
     private final String uuid;
@@ -40,7 +42,7 @@ public class StringJson {
     private String line1Number = "";
     // SavePref savePref;
     @NonNull
-    private String app_id = "MobilePOSSBF";
+    private String app_id = "SAMQ";
 
 //    private TelephonyManager mTm;
 
@@ -145,6 +147,28 @@ public class StringJson {
 
     public String requestCheckValidation(String pin) {
         return requestCheckValidation(pin, PreferenceClass.getLoggedUser().getId());
+    }
+
+    @NonNull
+    public String requestAddtionalData() {
+        int delimIndex = location.indexOf(',');
+        String lat = location.substring(0, delimIndex);
+        Timber.d("lat: %s", lat);
+        String longi = location.substring(delimIndex+2, location.length() - 1);
+        Timber.d("longi: %s", longi);
+        return "{"
+                + "\"app_id\":\"" + app_id + "\","
+                + "\"device_information\":\"" + appendUserAgent() + "\","
+                + "\"fcmregid\":\"\","
+                + "\"longitude\":\"" + longi + "\","
+                + "\"latitude\":\"" + lat + "\","
+                + "\"transmission_datetime\":\"" + getCurrentTimeStamp() + "\","
+                + "\"uuid\":\"" + uuid + "\","
+                + "\"version\":\"" + version + "\","
+                + "\"version_code\":\"" + mVersionCode + "\","
+                + "\"via\" : \"" + via + "\","
+                + "\"tokenizer\" : \"\""
+                + "}";
     }
 
     @NonNull
@@ -926,7 +950,7 @@ public class StringJson {
                 + "\"key_validation\" : \"\""
                 + "},"
 
-                   + "\"includes\" : {"
+                + "\"includes\" : {"
                 + "\"prop_code\" : \"" + prop_code + "\""
                 + "},"
 

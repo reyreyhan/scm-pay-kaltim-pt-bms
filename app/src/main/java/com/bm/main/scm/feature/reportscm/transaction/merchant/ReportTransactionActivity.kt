@@ -1,6 +1,7 @@
 package com.bm.main.scm.feature.reportscm.transaction.merchant
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
+import com.bm.main.scm.feature.reportscm.detail.ReportTransactionDetailActivity
 import com.bm.main.scm.rabbit.QrTransaction
 import com.bm.main.scm.rabbit.QrisService
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -23,7 +25,7 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ReportTransactionActivity : AppCompatActivity() {
+class ReportTransactionActivity : AppCompatActivity(), ReportTransactionAdapter.ReportTransactionListener {
     private val dateFormat by lazy { SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) }
     private val itemDateFormat by lazy { SimpleDateFormat("d MMMM yyyy", Locale.getDefault()) }
     private val respDateFormat by lazy {
@@ -79,7 +81,7 @@ class ReportTransactionActivity : AppCompatActivity() {
         listGroup.add(TransactionGroup("Kasir 1 - Aisyah", mutableListOf<QrTransaction>()))
         listGroup.add(TransactionGroup("Kasir 2 - Putra", mutableListOf<QrTransaction>()))
         listGroup.add(TransactionGroup("Kasir 3 - Alea", mutableListOf<QrTransaction>()))
-        val adapter = ReportTransactionAdapter(listGroup)
+        val adapter = ReportTransactionAdapter(listGroup, this)
         rv_report.adapter = adapter
         rv_report.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
@@ -165,6 +167,12 @@ class ReportTransactionActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun OnReportTransactionClick(transaction: QrTransaction) {
+        startActivity(Intent(this, ReportTransactionDetailActivity::class.java).apply {
+            putExtra("QrTransaction", transaction)
+        })
     }
 }
 

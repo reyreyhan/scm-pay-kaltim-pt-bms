@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.bm.main.scm.base.BaseFragment
 import com.bm.main.scm.R
+import com.bm.main.scm.base.BaseFragment
 import com.bm.main.scm.models.FilterDialogDate
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.android.synthetic.main.fragment_filter_daily.view.*
 import org.threeten.bp.LocalDate
 
@@ -45,7 +45,7 @@ class DailyFragment : BaseFragment<DailyPresenter, DailyContract.View>(),
     override fun initAction(view: View) {
         _view = view
         renderView()
-        getPresenter()?.onViewCreated(activity!!.intent)
+        getPresenter()?.onViewCreated(requireActivity().intent)
     }
 
     private fun renderView(){

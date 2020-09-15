@@ -59,7 +59,7 @@ import com.bm.main.fpl.utils.saring_karakter;
 import com.bm.main.materialedittext.MaterialEditText;
 import com.bm.main.scm.R;
 import com.bm.main.scm.SBFApplication;
-import com.bm.main.scm.feature.newhome.NewHomeActivity;
+import com.bm.main.scm.feature.home.HomeActivity;
 import com.bm.main.single.ftl.constants.TravelActionCode;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -502,7 +502,7 @@ public class LoginActivity extends KeyboardListenerActivity implements ProgressR
                         PreferenceClass.putBoolean("otp_set", PreferenceClass.getString("last_id", "").equals(PreferenceClass.getId()));
                     }
 
-                    Intent toHome = new Intent(LoginActivity.this, NewHomeActivity.class);
+                    Intent toHome = new Intent(LoginActivity.this, HomeActivity.class);
                     toHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     toHome.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 

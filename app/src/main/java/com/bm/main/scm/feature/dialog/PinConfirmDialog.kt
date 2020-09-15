@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.bm.main.scm.R
 import com.bm.main.scm.utils.AppSession
-import kotlinx.android.synthetic.main.dialog_pin_scm.view.*
+import kotlinx.android.synthetic.main.dialog_scm_scm.view.*
 
 
 class PinConfirmDialog : DialogFragment() {
@@ -55,7 +55,7 @@ class PinConfirmDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dialog_pin_scm, container, false)
+        return inflater.inflate(R.layout.dialog_scm_scm, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,8 +65,8 @@ class PinConfirmDialog : DialogFragment() {
     }
 
     private fun setupView(view: View) {
-        view.tv_title.text = arguments!!.getString(KEY_TITLE, "")
-        view.tv_caption.text = arguments!!.getString(KEY_SUBTITLE, "")
+        view.tv_title.text = requireArguments().getString(KEY_TITLE, "")
+        view.tv_caption.text = requireArguments().getString(KEY_SUBTITLE, "")
     }
 
     private fun setupClickListeners(view: View) {
@@ -79,6 +79,9 @@ class PinConfirmDialog : DialogFragment() {
                 Toast.makeText(view.context, "PIN Anda Salah!", Toast.LENGTH_SHORT).show()
                 dismiss()
             }
+            dismiss()
+        }
+        view.btn_close.setOnClickListener {
             dismiss()
         }
     }

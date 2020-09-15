@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -34,14 +35,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_grey_300"
-                android:layout_marginBottom="@dimen/standard_margin"/>
+                android:layout_marginBottom="@dimen/standard_margin"
+                android:background="@color/md_grey_300" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/standard_margin">
+                android:layout_marginBottom="@dimen/standard_margin"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/ll_nav_exit"
@@ -83,5 +84,11 @@
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>
-
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <include layout="@layout/bottom_sheet_help_rv_scm" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

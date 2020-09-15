@@ -13,6 +13,7 @@ interface CashierListContract {
 
     interface View : BaseViewImpl {
         fun setListAdapter(list:List<CashierObject>)
+        fun showSuccessDialog()
     }
 
     interface Presenter : BasePresenterImpl<View> {

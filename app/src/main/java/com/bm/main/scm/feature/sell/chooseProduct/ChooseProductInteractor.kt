@@ -13,7 +13,7 @@ import io.reactivex.observers.DisposableObserver
 class ChooseProductInteractor(var output: ChooseProductContract.InteractorOutput?) : ChooseProductContract.Interactor {
 
     private var disposable = CompositeDisposable()
-    private val appSession = AppSession()
+    val appSession = AppSession()
 
     override fun onDestroy() {
         disposable.clear()

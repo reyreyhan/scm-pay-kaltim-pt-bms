@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             app:srcCompat="@drawable/ic_close_scm"
-            android:tint="@color/colorAccent"/>
+            app:tint="@color/colorAccent" />
     </RelativeLayout>
 
     <LinearLayout
@@ -154,7 +154,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/standard_margin"
-        android:drawableLeft="@drawable/ic_baseline_help_24"
+        android:drawableLeft="@drawable/ic_baseline_help_16"
         android:drawablePadding="@dimen/standard_margin"
         android:drawableTint="@color/colorAccent"
         android:gravity="center_vertical"

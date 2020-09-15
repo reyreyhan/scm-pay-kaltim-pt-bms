@@ -12,7 +12,7 @@ interface UserRestInterface {
 
     @GET("profil/dataakun.php")
     fun getProfile(
-        @Query("key") key:String): Observable<List<User>>
+        @Query("key") key:String): Observable<List<Profile>>
 
     @Multipart
     @POST("pengaturan/updateakun.php")
@@ -52,5 +52,10 @@ interface UserRestInterface {
         @Field("kel_code") kel_code: String,
         @Field("kode_pos") kode_pos: String,
         @Field("alamat") alamat: String
-    ): Observable<User>
+    ): Observable<Message>
+
+//    @POST("merchant/register.php")
+//    fun register(
+//        @Body request:RequestBody
+//    ): Observable<Message>
 }

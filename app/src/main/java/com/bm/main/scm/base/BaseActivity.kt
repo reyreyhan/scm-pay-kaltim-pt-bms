@@ -6,8 +6,8 @@ import androidx.appcompat.app.AlertDialog
 import com.bm.main.fpl.activities.LoginActivity
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.R
-import com.bm.main.scm.feature.drawer.DrawerActivity
-import com.bm.main.scm.feature.newhome.NewHomeActivity
+import com.bm.main.scm.feature.drawerscm.DrawerActivity
+import com.bm.main.scm.feature.home.HomeActivity
 import com.bm.main.scm.ui.ext.toast
 import com.bm.main.scm.utils.AppConstant
 import com.bm.main.scm.utils.Helper
@@ -98,14 +98,14 @@ abstract class BaseActivity<P : BasePresenter<V>, V : BaseViewImpl> : com.bm.mai
     }
 
     fun restartMainActivity(menu: Int) {
-        val intent = Intent(this, NewHomeActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(AppConstant.DATA, menu)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
 
     fun restartMainActivity(menu: Int, position: Int) {
-        val intent = Intent(this, NewHomeActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(AppConstant.DATA, menu)
         intent.putExtra(AppConstant.POSITION, position)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

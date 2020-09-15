@@ -1,6 +1,7 @@
 package com.bm.main.scm.feature.reportscm.transaction.cashier
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.reportscm.detail.ReportTransactionDetailActivity
 import com.bm.main.scm.rabbit.QrTransaction
 import com.bm.main.scm.rabbit.QrisService
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -23,7 +25,9 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPresenter, ReportTransactionCashierContract.View>(), ReportTransactionCashierContract.View {
+class ReportTransactionCashierActivity :
+    BaseActivity<ReportTransactionCashierPresenter, ReportTransactionCashierContract.View>(),
+    ReportTransactionCashierContract.View, ReportTransactionCashierAdapter.ReportTransactionListener {
 
     private val dateFormat by lazy { SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) }
     private val itemDateFormat by lazy { SimpleDateFormat("d MMMM yyyy", Locale.getDefault()) }
@@ -84,7 +88,7 @@ class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPr
 
     private fun initRecyclerView() {
         val listTransaction = mutableListOf<QrTransaction>()
-        val adapter = ReportTransactionCashierAdapter(listTransaction)
+        val adapter = ReportTransactionCashierAdapter(listTransaction, this)
         rv_report.adapter = adapter
         rv_report.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
@@ -109,10 +113,10 @@ class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPr
         }
     }
 
-    fun setBottomCounter(list:List<QrTransaction>){
+    fun setBottomCounter(list: List<QrTransaction>) {
         var sumOmzet = 0.0
         list.forEach { qr ->
-            sumOmzet+= qr.nominal.toFloat()
+            sumOmzet += qr.nominal.toFloat()
         }
         tv_value_total_transaction.text = "${list.size} transaksi"
         tv_value_total_ammount.text = "Rp ${sumOmzet.toInt()}"
@@ -162,11 +166,17 @@ class ReportTransactionCashierActivity : BaseActivity<ReportTransactionCashierPr
         onBackPressed()
         return true
     }
+
+    override fun OnReportTransactionClick(transaction: QrTransaction) {
+        startActivity(Intent(this, ReportTransactionDetailActivity::class.java).apply {
+            putExtra("QrTransaction", transaction)
+        })
+    }
 }
 
 data class Transaction(
-    var title:String? = null,
-    var date:String? = null,
-    var id:String? = null,
-    var ammount:Double? = null
+    var title: String? = null,
+    var date: String? = null,
+    var id: String? = null,
+    var ammount: Double? = null
 )

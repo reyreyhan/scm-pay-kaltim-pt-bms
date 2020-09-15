@@ -11,6 +11,31 @@ import java.io.Serializable
 
 @Keep
 @JsonIgnoreProperties(ignoreUnknown = true)
+class Profile : Serializable {
+    var password: String? = ""
+    var nama_lengkap: String? = ""
+    var tanggal: String? = ""
+    var kota: String? = ""
+    var master: String? = ""
+    var alamat: String? = ""
+    var email: String? = ""
+    var no_telp: String? = ""
+    var level: String? = ""
+    var blokir: String? = ""
+    var id_session: String? = ""
+    var gbr: String? = ""
+    var paket: String? = ""
+    var fastpay_id: String? = ""
+    var fastpay_pin: String? = ""
+    var omset: String? = ""
+
+    fun json(): String {
+        return Gson().toJson(this)
+    }
+}
+
+@Keep
+@JsonIgnoreProperties(ignoreUnknown = true)
 class User : Serializable {
 //    var key: String? = null
 //    var email: String? = null
@@ -32,3 +57,18 @@ class User : Serializable {
         return Gson().toJson(this)
     }
 }
+
+data class RegisterMerchantRequest(
+    var email: String,
+    var additional_data: String,
+    var no_telp:String,
+    var nama_lengkap:String,
+    var nama_toko:String,
+    var password:String,
+    var prop_code:String,
+    var city_code:String,
+    var kec_code:String,
+    var kel_code:String,
+    var kode_pos:String,
+    var alamat:String
+)

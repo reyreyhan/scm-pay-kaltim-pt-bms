@@ -10,24 +10,30 @@ import kotlinx.android.synthetic.main.item_report_mutation_scm.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ReportTransactionCashierAdapter (var list:MutableList<QrTransaction>) : RecyclerView.Adapter<ReportTransactionCashierAdapter.ViewHolder>() {
+class ReportTransactionCashierAdapter (var list:MutableList<QrTransaction>,
+                                       var reportTransactionListener: ReportTransactionListener
+) : RecyclerView.Adapter<ReportTransactionCashierAdapter.ViewHolder>() {
 
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        private val tvName = view.tv_name
-        private val tvDateTime = view.tv_datetime
-        private val tvTransactionId = view.tv_transaction_id
-        private val tvAmmount = view.tv_ammount
+    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val tvName = itemView.tv_name
+        private val tvDateTime = itemView.tv_datetime
+        private val tvTransactionId = itemView.tv_transaction_id
+        private val tvAmmount = itemView.tv_ammount
         private val respDateFormat by lazy {
             SimpleDateFormat(
                 "EEE, dd-MM-yyyy HH:mm:ss",
                 Locale.getDefault()
             )
         }
-        fun setContent(item:QrTransaction){
+        private val view = itemView
+        fun setContent(item:QrTransaction, reportTransactionListener: ReportTransactionListener){
             tvName.text = item.buyer_reff
             tvDateTime.text = respDateFormat.format(Date(item.time!!))
             tvTransactionId.text = item.id_transaksi
             tvAmmount.text = "Rp ${item.nominal}"
+            view.setOnClickListener {
+                reportTransactionListener.OnReportTransactionClick(item)
+            }
         }
     }
 
@@ -38,6 +44,10 @@ class ReportTransactionCashierAdapter (var list:MutableList<QrTransaction>) : Re
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setContent(list[position])
+        holder.setContent(list[position], reportTransactionListener)
+    }
+
+    interface ReportTransactionListener{
+        fun OnReportTransactionClick(transaction: QrTransaction)
     }
 }

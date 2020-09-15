@@ -11,7 +11,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.bm.main.fpl.activities.BaseActivity
 import com.bm.main.scm.R
-import com.bm.main.scm.feature.drawer.DrawerActivity
+import com.bm.main.scm.feature.drawerscm.DrawerActivity
 
 object NotifUtil {
 

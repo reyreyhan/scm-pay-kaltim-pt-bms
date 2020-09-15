@@ -1,6 +1,8 @@
 package com.bm.main.scm.di
 
 import android.content.Context
+import com.bm.main.scm.models.user.merchant.LengkapiQrisRestInterface
+import com.bm.main.scm.rabbit.QrisMpService
 import com.bm.main.scm.rest.ResultInterceptor
 import com.bm.main.scm.rest.util.RequestInterceptor
 import com.bm.main.scm.rest.util.ResponseInterceptor
@@ -16,11 +18,23 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
+
+
+@Qualifier
+annotation class NoInterception
+
+@Qualifier
+annotation class Lengkapi
+
+@Qualifier
+annotation class Mp
 
 @InstallIn(ApplicationComponent::class)
 @Module
@@ -74,4 +88,57 @@ class ApiRequestModule {
     @Provides
     fun provideResponseInterceptor(): ResponseInterceptor =
         ResponseInterceptor()
+
+    @Mp
+    @Singleton
+    @Provides
+    fun provideRetrofitNoInterception(@NoInterception client:OkHttpClient):Retrofit = Retrofit.Builder()
+        .baseUrl("https://mp.fastpay.co.id/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+        .client(client)
+        .build()
+
+    @Lengkapi
+    @Singleton
+    @Provides
+    fun provideRetrofitLengkapi(@NoInterception client:OkHttpClient):Retrofit = Retrofit.Builder()
+        .baseUrl("https://lengkapi.fastpay.co.id/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+        .client(client)
+        .build()
+
+    @NoInterception
+    @Singleton
+    @Provides
+    fun provideOkHttpClientNoInterception(@ApplicationContext context: Context):OkHttpClient =
+        OkHttpClient.Builder()
+            .sslSocketFactory(
+                SSLContext.getInstance("SSL").apply {
+                    init(null, SSLUtil.trustAllCerts, java.security.SecureRandom())
+                }.socketFactory,
+                SSLUtil.trustAllCerts[0] as X509TrustManager
+            )
+            .hostnameVerifier({ hostname, sslSession -> true })
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                // level = if (BuildConfig.BUILD_TYPE != "release") HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                level = HttpLoggingInterceptor.Level.BODY
+            })
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .cache(Cache(context.cacheDir, 10 * 1024 * 1024))
+            .build()
+
+//    @Singleton
+//    @Provides
+//    fun provideSupportApi(@Mp retrofit: Retrofit): SupportRestInterface = retrofit.create(SupportRestInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun provideQRISMpApi(@Mp retrofit: Retrofit): QrisMpService = retrofit.create(QrisMpService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideLengkapiQrisApi(@Lengkapi retrofit: Retrofit): LengkapiQrisRestInterface = retrofit.create(LengkapiQrisRestInterface::class.java)
 }

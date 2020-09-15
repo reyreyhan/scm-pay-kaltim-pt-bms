@@ -29,6 +29,7 @@ class CashierListPresenter(val context: Context, val view: CashierListContract.V
     }
 
     override fun editCashier(idCashier: Int, name: String, telp: String) {
+        interactor.callApiEditCashier(context, cashierRestModel, idCashier, name, telp)
     }
 
     override fun onDestroy() {
@@ -51,6 +52,7 @@ class CashierListPresenter(val context: Context, val view: CashierListContract.V
     }
 
     override fun onSuccessEditCashier(list: CashierSuccessManage) {
+        view.showSuccessDialog()
     }
 
     override fun onFailure(code: Int, msg: String) {

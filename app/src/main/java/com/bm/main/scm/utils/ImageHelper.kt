@@ -2,16 +2,16 @@ package com.bm.main.scm.utils
 
 import android.content.Context
 import android.graphics.*
-import androidx.exifinterface.media.ExifInterface;
 import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
-import android.provider.MediaStore
-import android.graphics.Bitmap
-import android.os.Environment
 import androidx.annotation.Keep
 import androidx.core.widget.NestedScrollView
+import androidx.exifinterface.media.ExifInterface
 import timber.log.Timber
 import java.io.*
 import kotlin.math.roundToInt
@@ -187,6 +187,52 @@ object ImageHelper {
         val totalWidth = nestedScrollView.getChildAt(0).width ?: 0
 
         val mBitmap = getBitmapFromView(nestedScrollView, totalHeight, totalWidth)
+
+        //Save bitmap
+        if (mBitmap != null) {
+            val direct =
+                File("${context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)}").also { if (!it.exists()) it.mkdir() }
+            val fileName =
+                if (filename.isEmpty()) "img_" + System.currentTimeMillis().toString() + ".jpg" else filename
+            val myPath = File(direct, fileName)
+            val fos: FileOutputStream?
+            try {
+                fos = FileOutputStream(myPath)
+                mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                fos.flush()
+                fos.close()
+                val path = MediaStore.Images.Media.insertImage(
+                    context.getContentResolver(),
+                    mBitmap,
+                    "Fastpay",
+                    "Fastpay"
+                )
+
+                //share bitmap from uri
+                then(path)
+                return
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
+        Toast.makeText(context, "Gagal menyimpan gambar", Toast.LENGTH_SHORT).show()
+    }
+
+    fun takeScreenshotLinearLayout(
+        context: Context,
+        linearLayout: LinearLayout,
+        filename: String = "",
+        then: (path: String) -> Unit = {}
+    ) {
+
+        //get screenshot scrollview
+        val totalHeight = linearLayout.height ?: 0
+        val totalWidth = linearLayout.width ?: 0
+
+        val mBitmap = getBitmapFromView(linearLayout, totalHeight, totalWidth)
 
         //Save bitmap
         if (mBitmap != null) {

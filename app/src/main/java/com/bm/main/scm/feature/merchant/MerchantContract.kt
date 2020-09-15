@@ -8,7 +8,7 @@ import com.bm.main.scm.base.BaseViewImpl
 import com.bm.main.scm.models.transaction.HistoryTransaction
 import com.bm.main.scm.models.transaction.Transaction
 import com.bm.main.scm.models.transaction.TransactionRestModel
-import com.bm.main.scm.models.user.User
+import com.bm.main.scm.models.user.Profile
 import com.bm.main.scm.models.user.UserRestModel
 
 interface MerchantContract {
@@ -32,11 +32,11 @@ interface MerchantContract {
         fun onRestartDisposable()
         fun callGetProfileAPI(context: Context, restModel: UserRestModel)
         fun callGetHistoryAPI(context: Context, restModel: TransactionRestModel, awal:String, akhir:String, status:String)
-        fun saveUser(user: User)
+        fun saveUser(user: Profile)
     }
 
     interface InteractorOutput : BaseInteractorOutputImpl{
-        fun onSuccessGetProfile(list:List<User>)
+        fun onSuccessGetProfile(list:List<Profile>)
         fun onSuccessGetHistory(list:List<HistoryTransaction>?)
         fun onFailedAPI(code:Int,msg:String)
     }

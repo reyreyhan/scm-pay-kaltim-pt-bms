@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bm.main.fpl.utils.StringJson
 import com.bm.main.scm.R
-import com.bm.main.scm.di.Simulator
 import com.bm.main.scm.models.support.Provinsi
 import com.bm.main.scm.models.support.SupportRestInterface
 import com.bm.main.scm.utils.Helper
@@ -26,7 +25,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ListProvinsiSCMActivity : AppCompatActivity(), ListProvinsiAdapter.OnItemClickListener {
     @Inject
-    @Simulator
     lateinit var apiService: SupportRestInterface
     var disposable: Disposable? = null
     lateinit var adapter: ListProvinsiAdapter

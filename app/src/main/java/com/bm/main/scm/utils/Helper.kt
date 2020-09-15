@@ -6,10 +6,12 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Rect
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Environment
+import android.provider.MediaStore
 import android.provider.Settings
 import android.telephony.TelephonyManager
 import android.text.TextUtils
@@ -27,6 +29,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import timber.log.Timber
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.nio.charset.Charset
@@ -370,6 +373,13 @@ object Helper {
         i.type = "image/*"
         i.putExtra(Intent.EXTRA_STREAM, pathUri)
         context.startActivity(Intent.createChooser(i, "Bagikan ke ..."))
+    }
+
+    fun getImageUriFromBitmap(context: Context, bitmap: Bitmap, title:String): Uri{
+        val bytes = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = MediaStore.Images.Media.insertImage(context.contentResolver, bitmap, title, null)
+        return Uri.parse(path.toString())
     }
 
     fun keyboardShown(rootView: View): Boolean {

@@ -4,7 +4,7 @@ import android.content.Context
 import com.bm.main.fpl.utils.PreferenceClass
 import com.bm.main.scm.models.transaction.HistoryTransaction
 import com.bm.main.scm.models.transaction.TransactionRestModel
-import com.bm.main.scm.models.user.User
+import com.bm.main.scm.models.user.Profile
 import com.bm.main.scm.models.user.UserRestModel
 import com.bm.main.scm.rest.entity.RestException
 import com.bm.main.scm.utils.AppConstant
@@ -55,9 +55,9 @@ class MerchantInteractor(val output: MerchantContract.InteractorOutput?) : Merch
 
     override fun callGetProfileAPI(context: Context, restModel: UserRestModel) {
         val key =PreferenceClass.getTokenPos()
-        disposable.add(restModel.getProfile(key!!).subscribeWith(object : DisposableObserver<List<User>>() {
+        disposable.add(restModel.getProfile(key!!).subscribeWith(object : DisposableObserver<List<Profile>>() {
 
-            override fun onNext(@NonNull response: List<User>) {
+            override fun onNext(@NonNull response: List<Profile>) {
                 output?.onSuccessGetProfile(response)
             }
 
@@ -81,7 +81,7 @@ class MerchantInteractor(val output: MerchantContract.InteractorOutput?) : Merch
         }))
     }
 
-    override fun saveUser(user: User) {
+    override fun saveUser(user: Profile) {
         //val token = user.key
         //  appSession.setSharedPreferenceString(AppConstant.TOKEN,token)
         appSession.setSharedPreferenceString(AppConstant.USER,user.json())
