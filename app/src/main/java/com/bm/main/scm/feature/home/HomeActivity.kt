@@ -15,8 +15,8 @@ import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
 import com.bm.main.scm.feature.dialog.NoteDialog
 import com.bm.main.scm.feature.dialog.SingleDateDialog
-import com.bm.main.scm.feature.home.adapter.NewHomeFragmentStateAdapter
 import com.bm.main.scm.feature.home.adapter.PENJUALAN_FRAGMENT_INDEX
+import com.bm.main.scm.feature.home.adapter.ProfitHomeFragmentStateAdapter
 import com.bm.main.scm.feature.home.adapter.TOKOKU_FRAGMENT_INDEX
 import com.bm.main.scm.feature.merchant.MerchantActivity
 import com.bm.main.scm.feature.scan.ScanCodeFragment
@@ -29,17 +29,19 @@ import com.prolificinteractive.materialcalendarview.CalendarDay
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_home_new.*
 import org.threeten.bp.LocalDate
+import timber.log.Timber
 
 
 class HomeActivity : BaseActivity<HomePresenter, HomeContract.View>(),
     HomeContract.View,
     SellFragment.ShowDate,
     ChooseProductFragment.OnProductSelectedListener,
-    ScanCodeFragment.OnProductSelectedListener{
+    ScanCodeFragment.OnProductSelectedListener {
 
     private var currentPage = 0
+    private var isTokoku = false
 
-    lateinit var fragmentAdapter:NewHomeFragmentStateAdapter
+    lateinit var fragmentAdapter: ProfitHomeFragmentStateAdapter
 
     private val TAG = HomeActivity::class.java.simpleName
 
@@ -84,6 +86,7 @@ class HomeActivity : BaseActivity<HomePresenter, HomeContract.View>(),
 
     override fun startingUpActivity(savedInstanceState: Bundle?) {
         //EventBus.getDefault().register(this)
+        isTokoku = intent.getBooleanExtra("IS_TOKOKU", false)
         renderView()
         getPresenter()?.onViewCreated(intent)
     }
@@ -99,7 +102,7 @@ class HomeActivity : BaseActivity<HomePresenter, HomeContract.View>(),
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor = getColor(R.color.white)
         }
-        fragmentAdapter = NewHomeFragmentStateAdapter(supportFragmentManager)
+        fragmentAdapter = ProfitHomeFragmentStateAdapter(supportFragmentManager)
         fragment_pager.adapter = fragmentAdapter
         tab_layout.setupWithViewPager(fragment_pager)
         for (i in 0 until tab_layout.tabCount) {
@@ -110,6 +113,7 @@ class HomeActivity : BaseActivity<HomePresenter, HomeContract.View>(),
                 2 -> tab.text = "PPOB"
             }
         }
+        fragment_pager.currentItem = if (isTokoku) 1 else 0
         currentPage = fragment_pager.currentItem
         fragment_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -123,6 +127,7 @@ class HomeActivity : BaseActivity<HomePresenter, HomeContract.View>(),
             }
 
             override fun onPageSelected(position: Int) {
+                Timber.d("Fragment Pager Current Item: %s", fragment_pager.currentItem)
                 if (position == 2) {
                     startActivityForResult(Intent(this@HomeActivity, HomeActivity::class.java), 999)
                 } else if (currentPage != position) {
@@ -140,8 +145,8 @@ class HomeActivity : BaseActivity<HomePresenter, HomeContract.View>(),
 
     override fun onBackPressed() {
         val fragment = fragmentAdapter.getItem(fragment_pager.currentItem)
-        if (fragment is SellFragment){
-          fragment.onFragmentBackPressed()
+        if (fragment is SellFragment) {
+            fragment.onFragmentBackPressed()
         }
         super.onBackPressed()
     }

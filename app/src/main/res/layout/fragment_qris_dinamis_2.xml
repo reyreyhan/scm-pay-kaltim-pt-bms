@@ -6,70 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/standard_margin"
-            android:text="Nominal Bayar"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/_12sdp" />
-
-        <TextView
-            android:id="@+id/tv_ammount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/standard_margin"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_18sdp"
-            android:textStyle="bold"
-            tools:text="Rp 37.000" />
-
-        <ImageView
-            android:id="@+id/iv_qris"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/standard_margin_2x"
-            android:layout_marginTop="@dimen/standard_margin_2x"
-            android:scaleType="fitCenter" />
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_download"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_marginRight="@dimen/standard_margin"
-                android:layout_weight="1"
-                android:clipToPadding="false"
-                android:text="Download"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                app:cornerRadius="10dp"
-                app:strokeColor="@color/colorAccent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:text="Nominal Bayar"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/_12sdp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_share"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_marginLeft="@dimen/standard_margin"
-                android:layout_weight="1"
-                android:clipToPadding="false"
-                android:text="Bagikan"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                app:cornerRadius="10dp"
-                app:strokeColor="@color/colorAccent" />
+            <TextView
+                android:id="@+id/tv_ammount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold"
+                tools:text="Rp 37.000" />
+
+            <ImageView
+                android:id="@+id/iv_qris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/standard_margin_2x"
+                android:layout_marginTop="@dimen/standard_margin_2x"
+                android:scaleType="fitCenter" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_download"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"
+                    android:text="Download"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                    app:cornerRadius="10dp"
+                    app:strokeColor="@color/colorAccent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_share"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"
+                    android:text="Bagikan"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                    app:cornerRadius="10dp"
+                    app:strokeColor="@color/colorAccent" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

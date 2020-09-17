@@ -50,6 +50,11 @@
         <item name="materialCalendarTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar</item>
     </style>
 
+    <style name="ReverseAppTheme.SCM" parent="ReverseAppTheme">
+        <item name="android:actionBarStyle">@style/actionBarStyle.SCM</item>
+        <item name="actionBarStyle">@style/actionBarStyle.SCM</item>
+    </style>
+
     <style name="actionBarStyle" parent="Widget.AppCompat.Light.ActionBar">
         <item name="android:titleTextStyle">@style/TitleBarTextColor</item>
         <item name="titleTextStyle">@style/TitleBarTextColor</item>
@@ -57,7 +62,18 @@
         <item name="android:background">@color/colorAccent</item>
     </style>
 
+    <style name="actionBarStyle.SCM" parent="actionBarStyle">
+        <item name="android:titleTextStyle">@style/TitleBarTextColor.SCM</item>
+        <item name="titleTextStyle">@style/TitleBarTextColor.SCM</item>
+        <item name="background">@color/colorAccent</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
     <style name="TitleBarTextColor" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TitleBarTextColor.SCM" parent="TitleBarTextColor">
         <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 

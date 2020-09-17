@@ -185,6 +185,11 @@ class LoginActivity : BaseActivity<LoginPresenter, LoginContract.View>(), LoginC
                     "03" -> {
                         loadFastpayData(user)
                     }
+                    "02" ->{
+                        hideLoadingDialog()
+                        showToast(result.keterangan)
+//                        showToast("Akun Merchant QRIS Anda sedang diverifikasi!")
+                    }
                     "00" -> {
                         getPresenter()?.interactor!!.saveSession(user)
                         getPresenter()?.interactor!!.saveSessionLogin(true)

@@ -11,7 +11,7 @@ const val PENJUALAN_FRAGMENT_INDEX = 0
 const val TOKOKU_FRAGMENT_INDEX = 1
 const val PPOB_FRAGMENT_INDEX = 2
 
-class NewHomeFragmentStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+class ProfitHomeFragmentStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     private val childFragments: Array<Fragment>
 
     init {

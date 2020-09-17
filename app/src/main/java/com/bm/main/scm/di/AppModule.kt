@@ -5,6 +5,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Qualifier
+
+@Qualifier
+annotation class QrisImage
 
 @InstallIn(ApplicationComponent::class)
 @Module

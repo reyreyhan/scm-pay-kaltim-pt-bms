@@ -205,67 +205,67 @@
         <activity
             android:name=".feature.registermerchantscm.RegisterMerchantActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.registerqrismerchantscm.RegisterQRISMerchantActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.manage.cashier.list.CashierListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.manage.cashier.add.CashierAddActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.manage.inputbank.InputBankActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.cashout.CashoutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.qrisscm.QrisSCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.support.ListProvinsiSCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.support.ListKotaSCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.support.ListKecamatanSCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.support.ListKelurahanSCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.reportscm.mutation.ReportMutationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.reportscm.transaction.cashier.ReportTransactionCashierActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.reportscm.transaction.merchant.ReportTransactionActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.reportscm.detail.ReportTransactionDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
         <activity
             android:name=".feature.profilescm.ProfileSCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/ReverseAppTheme" />
+            android:theme="@style/ReverseAppTheme.SCM" />
 
         <activity
             android:name=".feature.notification.NotificationSCMActivity"

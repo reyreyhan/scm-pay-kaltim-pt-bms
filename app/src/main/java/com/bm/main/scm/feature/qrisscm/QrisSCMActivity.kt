@@ -1,6 +1,7 @@
 package com.bm.main.scm.feature.qrisscm
 
 import android.annotation.SuppressLint
+import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -9,18 +10,25 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bm.main.scm.R
 import com.bm.main.scm.base.BaseActivity
+import com.bm.main.scm.feature.dialog.QrisDinamisDialog
 import com.bm.main.scm.feature.registerqrismerchantscm.HelpBottomSheetAdapter
-import com.bm.main.scm.rabbit.QrisService
+import com.bm.main.scm.models.product.Product
+import com.bm.main.scm.rabbit.QrisMpService
+import com.bm.main.scm.rest.entity.RestException
+import com.bm.main.scm.ui.ext.toast
 import com.bm.main.scm.utils.AppSession
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_qris_merchant_scm.*
 import kotlinx.android.synthetic.main.bottom_sheet_help_rv_scm.*
 import kotlinx.android.synthetic.main.bottom_sheet_help_rv_scm.view.*
@@ -30,24 +38,28 @@ import kotlinx.android.synthetic.main.fragment_qris_dinamis_2.*
 import kotlinx.android.synthetic.main.fragment_qris_dinamis_2.view.*
 import kotlinx.android.synthetic.main.fragment_qris_product.*
 import kotlinx.android.synthetic.main.fragment_qris_static.*
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
     QrisSCMContract.View {
     @Inject
-    lateinit var qrisService: QrisService
+    lateinit var qrisService: QrisMpService
 
     private val appSession: AppSession = AppSession()
 
     private var disposable: Disposable? = null
 
     private var merchantLogin = true
+    private var productViewInitialized = false
+
     private val QRIS_DYNAMIC = R.id.btn_qris_dynamic
     private val QRIS_STATIC = R.id.btn_qris_static
     private val QRIS_PRODUCT = R.id.btn_qris_product
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private val adapter = QrisProductAdapter()
 
     override fun createPresenter(): QrisSCMPresenter {
         return QrisSCMPresenter(this, this)
@@ -95,7 +107,7 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             1 -> {
                 slideUpDownBottomSheet()
             }
@@ -107,6 +119,25 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
         initViewTab()
         initButtonListener()
         initBottomSheet()
+    }
+
+    private fun initRecyclerViewQrisProduct() {
+        productViewInitialized = true
+        getPresenter()?.loadProducts()
+        val layoutManager = GridLayoutManager(this, 2)
+        rv_qris_product.addItemDecoration(SpacesItemDecoration(0))
+        rv_qris_product.layoutManager = layoutManager
+        rv_qris_product.adapter = adapter
+        adapter.callback = object : QrisProductAdapter.ItemClickCallback {
+            override fun onClickEdit(data: Product) {
+
+            }
+
+            override fun onClickQris(data: Product) {
+                QrisDinamisDialog.newInstance(data.hargajual)
+                    .show(supportFragmentManager, QrisDinamisDialog.TAG)
+            }
+        }
     }
 
     private fun initButtonListener() {
@@ -166,20 +197,55 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
                 qrisDynamic2View.visibility = View.GONE
                 qrisStaticView.visibility = View.GONE
                 qrisProductView.visibility = View.VISIBLE
+                if (!productViewInitialized){
+                    initRecyclerViewQrisProduct()
+                }else{
+                    reloadData()
+                }
             }
         }
     }
 
     private fun loadQrisStatic(fastpay_id: String) {
-        Glide.with(this)
-            .load("https://mp.fastpay.co.id/qris/image_qris_receiver?sc_id=${fastpay_id}")
-            .into(qrisStaticView.iv_qris)
+        disposable?.dispose()
+        disposable = qrisService
+            .getImageQrisStatis(fastpay_id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                if (response.body() != null) {
+                    val inputStream = response.body()!!.byteStream()
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+                    Timber.d("QRIS STATIS COUNT: %s", bitmap.byteCount)
+                    Timber.d("QRIS STATIS: %s", bitmap)
+//                    Glide.with(this)
+//                        .load(bitmap)
+//                        .into(qrisStaticView.iv_qris)
+                    qrisStaticView.iv_qris.setImageBitmap(bitmap)
+                }
+            }, { error ->
+                showToast(error.localizedMessage)
+            })
     }
 
     private fun loadQrisDynamic(fastpay_id: String, bill: String, billNumber: String) {
-        Glide.with(this)
-            .load("https://mp.fastpay.co.id/qris/image_qris_dinamis_receiver?sc_id=$fastpay_id&nominal=$bill&bill_number=$billNumber")
-            .into(qrisDynamic2View.iv_qris)
+        disposable?.dispose()
+        disposable = qrisService
+            .getImageQrisDinamis(fastpay_id, bill.toInt(), billNumber.toInt())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                if (response.body() != null) {
+                    val inputStream = response.body()!!.byteStream()
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+//                    Glide.with(this)
+//                        .load("https://mp.fastpay.co.id/qris/image_qris_receiver?sc_id=${fastpay_id}")
+//                        .into(qrisDynamic2View.iv_qris)
+                    qrisDynamic2View.iv_qris.setImageBitmap(bitmap)
+                }
+            }, { error ->
+                showToast(error.localizedMessage)
+            })
     }
 
     override fun onDestroy() {
@@ -199,7 +265,7 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
             "<b>QRIS Dinamis</b> merupakan kode QR yang bisa dibuat setelah Anda menginputkan nominal tertentu sehingga pelanggan Anda tidak perlu menginputkan nominal setiap pembayaran.",
             "<b>QRIS Statis</b> merupakan kode QR yang tidak dapat berubah. Setiap transaksi pelanggan Anda harus menginputkan nominal untuk melakukan pembayaran."
         )
-        if (merchantLogin){
+        if (merchantLogin) {
             listOfHelp.add("<b>Qris Produk</b> merupakan kode QR yang tidak dapat berubah. Setiap transaksi pelanggan Anda harus menginputkan nominal untuk melakukan pembayaran.")
         }
         bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
@@ -251,5 +317,38 @@ class QrisSCMActivity : BaseActivity<QrisSCMPresenter, QrisSCMContract.View>(),
             }
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    override fun setProducts(list: List<Product>) {
+        hideLoadingDialog()
+//        sw_refresh.isRefreshing = false
+        adapter.setItems(list)
+    }
+
+
+    override fun showErrorMessage(code: Int, msg: String) {
+        hideLoadingDialog()
+//        sw_refresh.isRefreshing = false
+        if (code == RestException.CODE_USER_NOT_FOUND) {
+            restartLoginActivity()
+        } else {
+            toast(this, msg)
+        }
+
+    }
+
+    override fun showSuccessMessage(msg: String?) {
+        hideLoadingDialog()
+//        sw_refresh.isRefreshing = false
+        msg?.let {
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        }
+        reloadData()
+    }
+
+    override fun reloadData() {
+//        sw_refresh.isRefreshing = true
+        adapter.clearAdapter()
+        getPresenter()?.loadProducts()
     }
 }

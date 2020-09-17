@@ -232,8 +232,8 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
             R.id.nav_cashout_balance -> startActivity(Intent(this, CashoutActivity::class.java))
             R.id.nav_qris_cashier -> startActivity(Intent(this, CashierListActivity::class.java))
             R.id.nav_mutation -> startActivity(Intent(this, ReportMutationActivity::class.java))
-            R.id.nav_my_store -> startActivity(Intent(this, HomeActivity::class.java))
-            R.id.nav_POS -> startActivity(Intent(this, HomeActivity::class.java))
+            R.id.nav_my_store -> startActivity(Intent(this, HomeActivity::class.java).putExtra("IS_TOKOKU", true))
+            R.id.nav_POS -> startActivity(Intent(this, HomeActivity::class.java).putExtra("IS_TOKOKU", false))
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
@@ -431,10 +431,11 @@ class DrawerActivity : BaseActivity<DrawerPresenter, DrawerContract.View>(), Dra
 
     private fun slideUpDownBottomSheet() {
         if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
-            coordinatorLayout.visibility = View.VISIBLE
+//            coordinatorLayout.visibility = View.VISIBLE
+            drawer_layout.closeDrawer(GravityCompat.START)
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         } else {
-            coordinatorLayout.visibility = View.GONE
+//            coordinatorLayout.visibility = View.GONE
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
     }

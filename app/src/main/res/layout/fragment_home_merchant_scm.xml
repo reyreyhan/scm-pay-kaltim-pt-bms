@@ -54,8 +54,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/standard_margin"
+                        android:autoSizeMaxTextSize="@dimen/_10sdp"
+                        android:autoSizeMinTextSize="@dimen/_9sdp"
+                        android:gravity="center"
                         android:text="QRIS"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
 
                 <View
@@ -82,8 +85,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/standard_margin"
+                        android:autoSizeMaxTextSize="@dimen/_10sdp"
+                        android:autoSizeMinTextSize="@dimen/_9sdp"
+                        android:gravity="center"
                         android:text="Laporan"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
 
                 <View
@@ -112,8 +118,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/standard_margin"
+                        android:autoSizeMaxTextSize="@dimen/_10sdp"
+                        android:autoSizeMinTextSize="@dimen/_9sdp"
+                        android:gravity="center"
                         android:text="Pembayaran"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
 
                 <View
@@ -142,8 +151,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/standard_margin"
+                        android:autoSizeMaxTextSize="@dimen/_10sdp"
+                        android:autoSizeMinTextSize="@dimen/_9sdp"
+                        android:gravity="center"
                         android:text="ACI"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -160,6 +172,7 @@
                 android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/standard_margin_2x"
                 android:paddingBottom="@dimen/standard_margin"
+                android:clipToPadding="false"
                 android:weightSum="1">
 
                 <TextView
@@ -191,11 +204,13 @@
                     android:layout_weight="0.3"
                     android:backgroundTint="@color/colorAccent"
                     android:text="Proses"
-                    android:textAllCaps="false"
-                    app:icon="@drawable/ic_qr_white_scm"
-                    app:iconGravity="textEnd"
+                    android:autoSizeMaxTextSize="@dimen/_10sdp"
+                    android:autoSizeMinTextSize="@dimen/_9sdp"
+                    android:gravity="center"
+                    android:padding="0dp"
                     android:textSize="@dimen/_9sdp"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+                    app:icon="@drawable/ic_qr_white_scm"
+                    app:iconGravity="textEnd" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
@@ -235,7 +250,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/standard_margin_2x"
             tools:itemCount="6"
-            tools:listitem="@layout/item_transaction_merchant_scm"/>
+            tools:listitem="@layout/item_transaction_merchant_scm" />
     </LinearLayout>
 
     <View

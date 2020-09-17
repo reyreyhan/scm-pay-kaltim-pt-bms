@@ -4,6 +4,8 @@ import androidx.annotation.Keep
 import com.bm.main.scm.models.user.merchant.LengkapiQrisResponse
 import io.reactivex.Single
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 @Keep
@@ -32,4 +34,16 @@ interface QrisMpService {
         @Part("id_kelurahan") id_kelurahan:RequestBody,
         @Part("alamat") alamat:RequestBody
     ): Single<LengkapiQrisResponse>
+
+    @GET("qris/image_qris_receiver")
+    fun getImageQrisStatis(
+        @Query("sc_id") id:String
+    ):Single<Response<ResponseBody>>
+
+    @GET("qris/image_qris_dinamis_receiver")
+    fun getImageQrisDinamis(
+        @Query("sc_id") id:String,
+        @Query("nominal") nominal:Int,
+        @Query("bill_number") bill_number:Int
+    ):Single<Response<ResponseBody>>
 }
